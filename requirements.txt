@@ -1,0 +1,24 @@
+# Data Fetching & Processing
+arxiv
+pandas
+
+# Embeddings & NLP
+sentence-transformers
+torch
+transformers
+spacy
+
+# Vector Store
+chromadb
+
+# Graph Database
+neo4j
+
+# LLM
+groq
+
+# Frontend
+streamlit
+
+# Environment
+python-dotenv
