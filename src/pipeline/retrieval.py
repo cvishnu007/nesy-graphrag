@@ -2,7 +2,7 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.utils.config import TOP_K
+from src.utils.config import HOP_DEPTH, TOP_K
 from src.storage.chroma_store import query as chroma_query
 from src.storage.neo4j_store import get_driver
 
@@ -14,21 +14,23 @@ def neural_retrieve(query, top_k=TOP_K):
 
 def symbolic_expand(driver, paper_ids):
     """Stage 2 — 1-2 hop graph traversal via Neo4j CITES edges."""
+    hop_depth = max(1, int(HOP_DEPTH))
+    query = f"""
+        UNWIND $ids AS pid
+        MATCH (p:Paper {{id: pid}})-[:CITES*1..{hop_depth}]-(related:Paper)
+        WHERE NOT related.id IN $ids
+        WITH related, count(*) AS connections
+        RETURN related.id       AS id,
+               related.title    AS title,
+               related.abstract AS abstract,
+               related.year     AS year,
+               related.category AS category,
+               connections
+        ORDER BY connections DESC
+        LIMIT 10
+    """
     with driver.session() as session:
-        result = session.run("""
-            UNWIND $ids AS pid
-            MATCH (p:Paper {id: pid})-[:CITES*1..2]-(related:Paper)
-            WHERE NOT related.id IN $ids
-            WITH related, count(*) AS connections
-            RETURN related.id       AS id,
-                   related.title    AS title,
-                   related.abstract AS abstract,
-                   related.year     AS year,
-                   related.category AS category,
-                   connections
-            ORDER BY connections DESC
-            LIMIT 10
-        """, ids=paper_ids)
+        result = session.run(query, ids=paper_ids)
 
         expanded = []
         for r in result:

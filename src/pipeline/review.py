@@ -2,7 +2,7 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.utils.config import TOP_K
+from src.utils.config import LLM_MODEL, TOP_K
 from src.pipeline.retrieval import nesy_retrieve
 from src.pipeline.validator import validate_citations
 
@@ -43,7 +43,7 @@ Be precise and academic in tone."""
 
     print("[LLM] Generating answer...")
     response = groq_client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model=LLM_MODEL,
         messages=[{"role": "user", "content": prompt}],
         max_tokens=1024,
         temperature=0.3

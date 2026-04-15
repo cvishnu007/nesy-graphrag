@@ -2,7 +2,7 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.utils.config import TOP_K
+from src.utils.config import LLM_MODEL, TOP_K
 from src.pipeline.retrieval import nesy_retrieve
 
 
@@ -83,7 +83,7 @@ CLAIM 2: [What Paper 2 claims]"""
 
         try:
             response = groq_client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model=LLM_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=300,
                 temperature=0.3
