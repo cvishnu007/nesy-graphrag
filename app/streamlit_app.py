@@ -10,6 +10,7 @@ from src.pipeline.contradiction import detect_contradictions
 from src.pipeline.hypothesis import generate_hypotheses
 from src.storage.chroma_store import get_collection
 from src.utils.config import CHROMA_COLLECTION, DATA_SOURCE, LLM_MODEL
+from src.pipeline.metrics import compute_all_metrics
 
 # ════════════════════════════════════════════════════
 # INIT (cached so it only runs once)
@@ -118,6 +119,21 @@ Be precise and academic in tone."""
                 st.write(f"**Category:** {p['category']}")
                 st.write(f"**Score:** {round(p['score'], 3)}")
                 st.write(f"**Abstract:** {(p.get('abstract') or 'N/A')[:400]}")
+
+        # ── METRICS — indented inside the review block ──
+        metrics = compute_all_metrics(
+            {"papers": papers, "answer": answer, "verified": verified}
+        )
+        st.markdown("### 📊 Evaluation Metrics")
+        col1, col2, col3, col4 = st.columns(4)
+        col1.metric("TS (Trustworthiness)", f"{metrics['ts']['ts']:.3f}",
+                    help="Target ≥ 0.90")
+        col2.metric("NBR (NeSy Boost)", f"{metrics['nbr']['nbr']:.3f}",
+                    help="Target > 0.30 — proves graph adds value")
+        col3.metric("ATD (Temporal Range)", f"{metrics['atd']['atd']:.3f}",
+                    help="1.0 = all 5 years represented")
+        col4.metric("RDI (Reasoning Depth)", f"{metrics['rdi']['rdi']:.3f}",
+                    help="Target ≥ 0.75")
 
     # ── CONTRADICTION MODE ────────────────────────────
     elif "contradiction" in mode.lower():
