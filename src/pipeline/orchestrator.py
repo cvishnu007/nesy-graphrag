@@ -8,6 +8,7 @@ from src.storage.neo4j_store import get_driver
 from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
 from src.pipeline.hypothesis import llm_hypothesis
+from src.pipeline.metrics import compute_all_metrics
 
 # ── Shared clients — init once ─────────────────────────
 _driver      = None
@@ -39,11 +40,18 @@ def graphrag_query(query: str, mode: str = "review", top_k: int = 10) -> dict:
     groq_client = get_groq()
 
     if mode == "review":
-        return llm_review(groq_client, driver, query, top_k=top_k)
+        result = llm_review(groq_client, driver, query, top_k=top_k)
+        # compute_all_metrics needs result to exist first — called AFTER llm_review()
+        if result.get("papers"):
+            result["metrics"] = compute_all_metrics(result)
+        return result
+
     elif mode == "contradict":
         return llm_contradict(groq_client, driver, query, top_k=top_k)
+
     elif mode == "hypothesis":
         return llm_hypothesis(groq_client, driver, query, top_k=top_k)
+
     else:
         raise ValueError(f"mode must be: review / contradict / hypothesis. Got: {mode}")
 
@@ -66,5 +74,8 @@ if __name__ == "__main__":
     print("TEST 3 — HYPOTHESIS GENERATION")
     print("█"*60)
     r3 = graphrag_query(test_query, mode="hypothesis")
+
+    # Combined metrics: review result + contradiction result together
+    scores = compute_all_metrics(r1, contradiction_result=r2)
 
     print("\n\nFull NeSy-GraphRAG + LLM Pipeline Complete!")
