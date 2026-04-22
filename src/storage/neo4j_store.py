@@ -23,12 +23,34 @@ def get_driver():
     return driver
 
 
+def drop_legacy_constraints(session):
+    """Remove old constraints that conflict with the current data model."""
+    constraints = session.run("""
+        SHOW CONSTRAINTS
+        YIELD name, type, labelsOrTypes, properties
+        WHERE type = 'NODE_PROPERTY_UNIQUENESS'
+          AND labelsOrTypes = ['Author']
+          AND properties = ['name']
+        RETURN name
+    """)
+
+    dropped = 0
+    for record in constraints:
+        constraint_name = record["name"]
+        session.run(f"DROP CONSTRAINT {constraint_name} IF EXISTS")
+        dropped += 1
+
+    if dropped:
+        print(f"Dropped {dropped} legacy Author.name constraint(s).")
+
+
 def insert_papers(driver, df):
     """Insert Paper, Author, Concept nodes and relationships — from cell 06."""
     print("Clearing existing data...")
     with driver.session() as session:
         session.run("MATCH (n) DETACH DELETE n")
         print("Cleared!")
+        drop_legacy_constraints(session)
         session.run("CREATE CONSTRAINT IF NOT EXISTS FOR (p:Paper) REQUIRE p.id IS UNIQUE")
         session.run("CREATE CONSTRAINT IF NOT EXISTS FOR (a:Author) REQUIRE a.key IS UNIQUE")
         session.run("CREATE CONSTRAINT IF NOT EXISTS FOR (c:Concept) REQUIRE c.name IS UNIQUE")
