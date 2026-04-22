@@ -3,13 +3,13 @@ import sys
 import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-from src.pipeline.orchestrator import graphrag_query, get_neo4j, get_groq
+from src.pipeline.orchestrator import get_neo4j, get_groq
 from src.pipeline.retrieval import nesy_retrieve
 from src.pipeline.validator import validate_citations
 from src.pipeline.contradiction import detect_contradictions
 from src.pipeline.hypothesis import generate_hypotheses
 from src.storage.chroma_store import get_collection
-from src.storage.neo4j_store import get_driver
+from src.utils.config import CHROMA_COLLECTION, DATA_SOURCE, LLM_MODEL
 
 # ════════════════════════════════════════════════════
 # INIT (cached so it only runs once)
@@ -22,6 +22,16 @@ def load_resources():
     return driver, groq_client, collection
 
 driver, groq_client, collection = load_resources()
+
+
+def graph_stats(driver):
+    try:
+        with driver.session() as session:
+            papers = session.run("MATCH (p:Paper) RETURN count(p) AS c").single()["c"]
+            edges = session.run("MATCH (:Paper)-[r:CITES]->(:Paper) RETURN count(r) AS c").single()["c"]
+        return papers, edges
+    except Exception:
+        return "N/A", "N/A"
 
 # ════════════════════════════════════════════════════
 # UI
@@ -42,9 +52,11 @@ with st.sidebar:
     top_k = st.slider("Papers to retrieve", min_value=3, max_value=15, value=10)
     st.markdown("---")
     st.markdown("**Pipeline:**")
-    st.markdown("- ChromaDB: 9990 papers")
-    st.markdown("- Neo4j: 24,176 edges")
-    st.markdown("- LLM: Llama-3.3-70b")
+    paper_nodes, cites_edges = graph_stats(driver)
+    st.markdown(f"- Source: `{DATA_SOURCE}`")
+    st.markdown(f"- Chroma collection: `{CHROMA_COLLECTION}` ({collection.count()} vectors)")
+    st.markdown(f"- Neo4j: {paper_nodes} papers, {cites_edges} CITES edges")
+    st.markdown(f"- LLM: `{LLM_MODEL}`")
 
 # ── Main ─────────────────────────────────────────────
 query = st.text_input(
@@ -89,7 +101,7 @@ Be precise and academic in tone."""
 
         with st.spinner("LLM generating answer..."):
             response = groq_client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model=LLM_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=1024,
                 temperature=0.3
@@ -141,7 +153,7 @@ CLAIM 2: [What Paper 2 claims]"""
 
                 with st.spinner(f"Checking pair {i+1}/{len(contradictions)}..."):
                     response = groq_client.chat.completions.create(
-                        model="llama-3.3-70b-versatile",
+                        model=LLM_MODEL,
                         messages=[{"role": "user", "content": prompt}],
                         max_tokens=300,
                         temperature=0.3
@@ -201,7 +213,7 @@ POTENTIAL IMPACT: [1 sentence on what new knowledge this could produce]"""
 
                 with st.spinner(f"Generating hypothesis {i+1}/{len(hypotheses)}..."):
                     response = groq_client.chat.completions.create(
-                        model="llama-3.3-70b-versatile",
+                        model=LLM_MODEL,
                         messages=[{"role": "user", "content": prompt}],
                         max_tokens=300,
                         temperature=0.3

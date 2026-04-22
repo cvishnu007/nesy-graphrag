@@ -6,7 +6,7 @@ from sentence_transformers import SentenceTransformer
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import (
-    CLEAN_FILE, CHROMA_DIR, EMBEDDING_MODEL, BATCH_SIZE
+    CLEAN_FILE, CHROMA_COLLECTION, CHROMA_DIR, DATA_SOURCE, EMBEDDING_MODEL, BATCH_SIZE
 )
 
 _collection = None
@@ -18,7 +18,7 @@ def get_collection():
     if _collection is None:
         client      = chromadb.PersistentClient(path=CHROMA_DIR)
         _collection = client.get_or_create_collection(
-            name="arxiv_papers",
+            name=CHROMA_COLLECTION,
             metadata={"hnsw:space": "cosine"}
         )
     return _collection
@@ -40,7 +40,7 @@ def build_index():
     embedder   = get_embedder()
 
     print(f"Loaded {len(df)} papers from {CLEAN_FILE}")
-    print(f"ChromaDB ready — already stored: {collection.count()} papers")
+    print(f"ChromaDB collection '{CHROMA_COLLECTION}' ready — already stored: {collection.count()} papers")
 
     # resume support — skip already stored
     already_stored = set(collection.get()["ids"])
@@ -65,7 +65,10 @@ def build_index():
                     "year"             : int(row["year"]),
                     "primary_category" : row["primary_category"],
                     "authors"          : ", ".join(row["authors"]) if isinstance(row["authors"], list) else "",
-                    "doi"              : str(row["doi"]) if row["doi"] else ""
+                    "doi"              : str(row["doi"]) if row["doi"] else "",
+                    "paperId"          : str(row["paperId"]) if row.get("paperId") else str(row["id"]),
+                    "corpusId"         : str(row["corpusId"]) if row.get("corpusId") else "",
+                    "source_dataset"   : DATA_SOURCE
                 }
                 for _, row in batch.iterrows()
             ]

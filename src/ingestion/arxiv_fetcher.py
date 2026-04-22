@@ -61,14 +61,23 @@ def fetch_papers():
         year_papers = []
         for i, result in enumerate(client.results(search)):
             year_papers.append({
-                "id"         : result.entry_id,
-                "title"      : result.title,
-                "abstract"   : result.summary,
-                "authors"    : [a.name for a in result.authors],
-                "categories" : result.categories,
-                "doi"        : result.doi,
-                "published"  : str(result.published),
-                "pdf_url"    : result.pdf_url
+                "id"               : result.entry_id,
+                "paperId"          : result.entry_id,
+                "corpusId"         : None,
+                "title"            : result.title,
+                "abstract"         : result.summary,
+                "authors"          : [a.name for a in result.authors],
+                "author_ids"       : [],
+                "categories"       : result.categories,
+                "doi"              : result.doi,
+                "published"        : str(result.published),
+                "pdf_url"          : result.pdf_url,
+                "venue"            : None,
+                "publicationTypes" : [],
+                "citationCount"    : 0,
+                "referenceCount"   : 0,
+                "references"       : [],
+                "source"           : "arxiv"
             })
             if (i + 1) % 500 == 0:
                 print(f"  {year}: Fetched {i + 1} papers...")
