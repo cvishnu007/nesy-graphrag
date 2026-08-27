@@ -1,0 +1,50 @@
+{
+  "ts": {
+    "ts": 1.0,
+    "citation_integrity": 1.0,
+    "hallucination_rate": 0.0,
+    "total_retrieved": 10,
+    "total_verified": 10,
+    "hallucinated_count": 0
+  },
+  "nbr": {
+    "nbr": 1.0,
+    "graph_count": 10,
+    "neural_only_count": 0,
+    "total": 10,
+    "adds_value": true
+  },
+  "atd": {
+    "atd": 0.8,
+    "distinct_years": [
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "year_distribution": {
+      "2020": 3,
+      "2021": 2,
+      "2022": 4,
+      "2023": 1
+    },
+    "span_size": 5,
+    "missing_years": [
+      2024
+    ]
+  },
+  "rdi": {
+    "rdi": 0.0909,
+    "cross_doc_support": 0.1,
+    "contradiction_resolution_rate": 0.0,
+    "cross_doc_papers": 1,
+    "contradictions_resolved": 0,
+    "total_sources": 10,
+    "total_checked": 1
+  },
+  "hns": {
+    "hns": 0.0,
+    "individual_scores": [],
+    "total_hypotheses": 0
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "query": "graph neural networks for node classification",
+  "papers": [
+    {
+      "id": "ff7f515de8b5f7f0e1826f9e1545f51770d56e43",
+      "title": "ordered subgraph aggregation networks",
+      "abstract": "numerous subgraph-enhanced graph neural networks (gnns) have emerged recently, provably boosting the expressive power of standard (message-passing) gnns. however, there is a limited understanding of how these approaches relate to each other and to the weisfeiler-leman hierarchy. moreover, current approaches either use all subgraphs of a given size, sample them uniformly at random, or use hand-crafted heuristics instead of learning to select subgraphs in a data-driven manner. here, we offer a unified way to study such architectures by introducing a theoretical framework and extending the known expressivity results of subgraph-enhanced gnns. concretely, we show that increasing subgraph size always increases the expressive power and develop a better understanding of their limitations by relating them to the established hierarchy. in addition, we explore different approaches for learning to sample subgraphs using recent methods for backpropagating through complex discrete probability distributions. empirically, we study the predictive performance of different subgraph-enhanced gnns, showing that our data-driven architectures increase prediction accuracy on standard benchmark datasets compared to non-data-driven subgraph-enhanced graph neural networks while reducing computation time.",
+      "year": 2022,
+      "category": "Computer Science",
+      "score": 5.4,
+      "source": "symbolic"
+    },
+    {
+      "id": "e3bf755eefb9c21b3ebe1a57dcbc3cf9d5041e17",
+      "title": "reconstruction for powerful graph representations",
+      "abstract": "graph neural networks (gnns) have limited expressive power, failing to represent many graph classes correctly. while more expressive graph representation learning (grl) alternatives can distinguish some of these classes, they are significantly harder to implement, may not scale well, and have not been shown to outperform well-tuned gnns in real-world tasks. thus, devising simple, scalable, and expressive grl architectures that also achieve real-world improvements remains an open challenge. in this work, we show the extent to which graph reconstruction -- reconstructing a graph from its subgraphs -- can mitigate the theoretical and practical problems currently faced by grl architectures. first, we leverage graph reconstruction to build two new classes of expressive graph representations. secondly, we show how graph reconstruction boosts the expressive power of any gnn architecture while being a (provably) powerful inductive bias for invariances to vertex removals. empirically, we show how reconstruction can boost gnns expressive power -- while maintaining its invariance to permutations of the vertices -- by solving seven graph property tasks not solvable by the original gnn. further, we demonstrate how it boosts state-of-the-art gnns performance across nine real-world benchmark datasets.",
+      "year": 2021,
+      "category": "Computer Science",
+      "score": 4.3,
+      "source": "symbolic"
+    },
+    {
+      "id": "d08a0eb7024dff5c4fabd58144a38031633d4e1a",
+      "title": "benchmarking graph neural networks",
+      "abstract": "graph neural networks (gnns) have become the standard toolkit for analyzing and learning from data on graphs. as the field grows, it becomes critical to identify key architectures and validate new ideas that generalize to larger, more complex datasets. unfortunately, it has been increasingly difficult to gauge the effectiveness of new models in the absence of a standardized benchmark with consistent experimental settings. in this paper, we introduce a reproducible gnn benchmarking framework, with the facility for researchers to add new models conveniently for arbitrary datasets. we demonstrate the usefulness of our framework by presenting a principled investigation into the recent weisfeiler-lehman gnns (wl-gnns) compared to message passing-based graph convolutional networks (gcns) for a variety of graph tasks, i.e. graph regressionclassification and nodelink prediction, with medium-scale datasets.",
+      "year": 2023,
+      "category": "Computer Science",
+      "score": 4.0,
+      "source": "symbolic"
+    },
+    {
+      "id": "1b95e5c134d56a43f362f607406aa11e3bd55569",
+      "title": "a practical, progressively-expressive gnn",
+      "abstract": "message passing neural networks (mpnns) have become a dominant flavor of graph neural networks (gnns) in recent years. yet, mpnns come with notable limitations; namely, they are at most as powerful as the 1-dimensional weisfeiler-leman (1-wl) test in distinguishing graphs in a graph isomorphism testing frame-work. to this end, researchers have drawn inspiration from the k-wl hierarchy to develop more expressive gnns. however, current k-wl-equivalent gnns are not practical for even small values of k, as k-wl becomes combinatorially more complex as k grows. at the same time, several works have found great empirical success in graph learning tasks without highly expressive models, implying that chasing expressiveness with a coarse-grained ruler of expressivity like k-wl is often unneeded in practical tasks. to truly understand the expressiveness-complexity tradeoff, one desires a more fine-grained ruler, which can more gradually increase expressiveness. our work puts forth such a proposal: namely, we first propose the (k, c)()-setwl hierarchy with greatly reduced complexity from k-wl, achieved by moving from k-tuples of nodes to sets withk nodes defined overc connected components in the induced original graph. we show favorable theoretical results for this model in relation to k-wl, and concretize it via (k, c)()-setgnn, which is as expressive as (k, c)()-setwl. our model is practical and progressively-expressive, increasing in power with k and c. we demonstrate effectiveness on several benchmark datasets, achieving several state-of-the-art results with runtime and memory usage applicable to practical graphs. we open source our implementation at",
+      "year": 2022,
+      "category": "Computer Science",
+      "score": 3.6,
+      "source": "symbolic"
+    },
+    {
+      "id": "33e31195ab6853dfb8b1d90b07da5755f9bf5de0",
+      "title": "random features strengthen graph neural networks",
+      "abstract": "graph neural networks (gnns) are powerful machine learning models for various graph learning tasks. recently, the limitations of the expressive power of various gnn models have been revealed. for example, gnns cannot distinguish some non-isomorphic graphs and they cannot learn efficient graph algorithms, and several gnn models have been proposed to overcome these limitations. in this paper, we demonstrate that gnns become powerful just by adding a random feature to each node. we prove that the random features enable gnns to learn almost optimal polynomial-time approximation algorithms for the minimum dominating set problem and maximum matching problem in terms of the approximation ratio. the main advantage of our method is that it can be combined with off-the-shelf gnn models with slight modifications. through experiments, we show that the addition of random features enables gnns to solve various problems that normal gnns, including gcns and gins, cannot solve.",
+      "year": 2020,
+      "category": "Computer Science",
+      "score": 3.3000000000000003,
+      "source": "symbolic"
+    },
+    {
+      "id": "e9ef895b56e5dee045af31e737d46c255194f4f2",
+      "title": "building powerful and equivariant graph neural networks with structural message-passing",
+      "abstract": "message-passing has proved to be an effective way to design graph neural networks, as it is able to leverage both permutation equivariance and an inductive bias towards learning local structures to achieve good generalization. however, current message-passing architectures have a limited representation power and fail to learn basic topological properties of graphs. we address this problem and propose a new message-passing framework that is powerful while preserving permutation equivariance. specifically, we propagate unique node identifiers in the form of a one-hot encoding in order to learn a local context matrix around each node. this enables to learn rich local information about both features and topology, which can be pooled to obtain node representations. experimentally, we find our model to be superior at predicting various graph topological properties, opening the way to novel powerful architectures that are both equivariant and computationally efficient.",
+      "year": 2020,
+      "category": "Computer Science",
+      "score": 3.1,
+      "source": "symbolic"
+    },
+    {
+      "id": "6360aaece0d6bf153183b9ecd075f42f7b127cc9",
+      "title": "improving graph neural network expressivity via subgraph isomorphism counting",
+      "abstract": "while graph neural networks (gnns) have achieved remarkable results in a variety of applications, recent studies exposed important shortcomings in their ability to capture the structure of the underlying graph. it has been shown that the expressive power of standard gnns is bounded by the weisfeiler-leman (wl) graph isomorphism test, from which they inherit proven limitations such as the inability to detect and count graph substructures. on the other hand, there is significant empirical evidence, e.g. in network science and bioinformatics, that substructures are often intimately related to downstream tasks. to this end, we propose graph substructure networks (gsn), a topologically-aware message passing scheme based on substructure encoding. we theoretically analyse the expressive power of our architecture, showing that it is strictly more expressive than the wl test, and provide sufficient conditions for universality. importantly, we do not attempt to adhere to the wl hierarchy; this allows us to retain multiple attractive properties of standard gnns such as locality and linear network complexity, while being able to disambiguate even hard instances of graph isomorphism. we perform an extensive experimental evaluation on graph classification and regression tasks and obtain state-of-the-art results in diverse real-world settings including molecular graphs and social networks.",
+      "year": 2020,
+      "category": "Computer Science",
+      "score": 3.0,
+      "source": "symbolic"
+    },
+    {
+      "id": "11ef232ccfb2f69d0de289d07f88e576126f2b44",
+      "title": "graph neural networks with local graph parameters",
+      "abstract": "various recent proposals increase the distinguishing power of graph neural networks gnns by propagating features between -tuples of vertices. the distinguishing power of thesehigher-order gnns is known to be bounded by the -dimensional weisfeiler-leman (wl) test, yet their memory requirements limit their applicability. other proposals infuse gnns with local higher-order graph structural information from the start, hereby inheriting the desirable memory requirement from gnns at the cost of a one-time, possibly non-linear, preprocessing step. we propose local graph parameter enabled gnns as a framework for studying the latter kind of approaches and precisely characterize their distinguishing power, in terms of a variant of the wl test, and in terms of the graph structural properties that they can take into account. local graph parameters can be added to any gnn architecture, and are cheap to compute. in terms of expressive power, our proposal lies in the middle of gnns and their higher-order counterparts. further, we propose several techniques to aide in choosing the right local graph parameters. our results connect gnns with deep results in finite model theory and finite variable logics. our experimental evaluation shows that adding local graph parameters often has a positive effect for a variety of gnns, datasets and graph learning tasks.",
+      "year": 2021,
+      "category": "Computer Science",
+      "score": 3.0,
+      "source": "symbolic"
+    },
+    {
+      "id": "eae9511a180096cbfc25bd51dd52fe81b7b5738a",
+      "title": "a theoretical comparison of graph neural network extensions",
+      "abstract": "we study and compare different graph neural network extensions that increase the expressive power of gnns beyond the weisfeiler-leman test. we focus on (i) gnns based on higher order wl methods, (ii) gnns that preprocess small substructures in the graph, (iii) gnns that preprocess the graph up to a small radius, and (iv) gnns that slightly perturb the graph to compute an embedding. we begin by presenting a simple improvement for this last extension that strictly increases the expressive power of this gnn variant. then, as our main result, we compare the expressiveness of these extensions to each other through a series of example constructions that can be distinguished by one of the extensions, but not by another one. we also show negative examples that are particularly challenging for each of the extensions, and we prove several claims about the ability of these extensions to count cliques and cycles in the graph.",
+      "year": 2022,
+      "category": "Computer Science",
+      "score": 3.0,
+      "source": "symbolic"
+    },
+    {
+      "id": "ce7e583841e6be721d8ef32ebf94956c7db2f209",
+      "title": "agent-based graph neural networks",
+      "abstract": "we present a novel graph neural network we call agentnet, which is designed specifically for graph-level tasks. agentnet is inspired by sublinear algorithms, featuring a computational complexity that is independent of the graph size. the architecture of agentnet differs fundamentally from the architectures of traditional graph neural networks. in agentnet, some trained intelligently walk the graph, and then collectively decide on the output. we provide an extensive theoretical analysis of agentnet: we show that the agents can learn to systematically explore their neighborhood and that agentnet can distinguish some structures that are even indistinguishable by 2-wl. moreover, agentnet is able to separate any two graphs which are sufficiently different in terms of subgraphs. we confirm these theoretical results with synthetic experiments on hard-to-distinguish graphs and real-world graph classification tasks. in both cases, we compare favorably not only to standard gnns but also to computationally more expensive gnn extensions.",
+      "year": 2022,
+      "category": "Computer Science",
+      "score": 3.0,
+      "source": "symbolic"
+    }
+  ],
+  "answer": "Graph neural networks (GNNs) have become the de\u2011facto approach for node\u2011level prediction tasks, yet their ability to discriminate structural nuances limits performance on many benchmark datasets. Early work highlighted that standard message\u2011passing neural networks (MPNNs) are bounded by the 1\u2011dimensional Weisfeiler\u2011Lehman (1\u2011WL) test, which restricts their capacity to distinguish certain non\u2011isomorphic neighborhoods and consequently hampers node classification on graphs with subtle local patterns\u3010a practical, progressively-expressive gnn\u3011. Subsequent research has pursued two complementary routes to overcome this bottleneck. One line augments the message\u2011passing scheme with richer subgraph information\u2014e.g., ordered subgraph aggregation networks, subgraph\u2011isomorphism counting, and local graph parameters\u2014thereby lifting the expressive power toward higher\u2011order WL tests while preserving permutation equivariance\u3010ordered subgraph aggregation networks\u3011\u3010improving graph neural network expressivity via subgraph isomorphism counting\u3011\u3010graph neural networks with local graph parameters\u3011. A second line introduces stochastic enhancements such as random feature embeddings that empirically strengthen discriminative ability without incurring prohibitive computational costs\u3010random features strengthen graph neural networks\u3011.\n\nThe evolution of these ideas is reflected in the recent benchmarking efforts that evaluate not only raw accuracy but also scalability and generalisation across increasingly complex node\u2011classification datasets\u3010benchmarking graph neural networks\u3011. By 2022, a theoretical comparison of GNN extensions demonstrated that preprocessing small substructures (e.g., motifs or ego\u2011nets) can systematically improve node\u2011level representations while keeping memory footprints manageable\u3010a theoretical comparison of graph neural network extensions\u3011. Moreover, the emergence of agent\u2011based architectures, which decouple computational complexity from graph size, points to a trend toward sublinear\u2011time node classification methods suitable for massive graphs\u3010agent-based graph neural networks\u3011. Across the 2020\u20112023 window, the field has shifted from identifying expressive limitations to engineering principled, scalable augmentations that directly benefit node\u2011classification performance.\n\n**State of the field:** Modern GNNs for node classification are rapidly integrating higher\u2011order structural cues and stochastic features to transcend 1\u2011WL limits while maintaining scalability.",
+  "verified": {
+    "ff7f515de8b5f7f0e1826f9e1545f51770d56e43": "ordered subgraph aggregation networks",
+    "e3bf755eefb9c21b3ebe1a57dcbc3cf9d5041e17": "reconstruction for powerful graph representations",
+    "d08a0eb7024dff5c4fabd58144a38031633d4e1a": "benchmarking graph neural networks",
+    "1b95e5c134d56a43f362f607406aa11e3bd55569": "a practical, progressively-expressive gnn",
+    "33e31195ab6853dfb8b1d90b07da5755f9bf5de0": "random features strengthen graph neural networks",
+    "e9ef895b56e5dee045af31e737d46c255194f4f2": "building powerful and equivariant graph neural networks with structural message-passing",
+    "6360aaece0d6bf153183b9ecd075f42f7b127cc9": "improving graph neural network expressivity via subgraph isomorphism counting",
+    "11ef232ccfb2f69d0de289d07f88e576126f2b44": "graph neural networks with local graph parameters",
+    "eae9511a180096cbfc25bd51dd52fe81b7b5738a": "a theoretical comparison of graph neural network extensions",
+    "ce7e583841e6be721d8ef32ebf94956c7db2f209": "agent-based graph neural networks"
+  },
+  "metrics": {
+    "ts": {
+      "ts": 1.0,
+      "citation_integrity": 1.0,
+      "hallucination_rate": 0.0,
+      "total_retrieved": 10,
+      "total_verified": 10,
+      "hallucinated_count": 0
+    },
+    "nbr": {
+      "nbr": 1.0,
+      "graph_count": 10,
+      "neural_only_count": 0,
+      "total": 10,
+      "adds_value": true
+    },
+    "atd": {
+      "atd": 0.8,
+      "distinct_years": [
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "year_distribution": {
+        "2020": 3,
+        "2021": 2,
+        "2022": 4,
+        "2023": 1
+      },
+      "span_size": 5,
+      "missing_years": [
+        2024
+      ]
+    },
+    "rdi": {
+      "rdi": 0.0,
+      "cross_doc_support": 0.0,
+      "contradiction_resolution_rate": 0.0,
+      "cross_doc_papers": 0,
+      "contradictions_resolved": 0,
+      "total_sources": 10,
+      "total_checked": 0
+    }
+  }
+}
