@@ -4,7 +4,6 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import HOP_DEPTH, TOP_K
 from src.storage.chroma_store import query as chroma_query
-from src.storage.neo4j_store import get_driver
 
 
 def neural_retrieve(query, top_k=TOP_K):
@@ -23,7 +22,8 @@ def symbolic_expand(driver, paper_ids):
     query = f"""
         UNWIND $ids AS pid
         MATCH (p:Paper {{id: pid}})-[:CITES*1..{hop_depth}]-(related:Paper)
-        WITH related, count(*) AS connections
+        WHERE related.id <> pid
+        WITH related, count(DISTINCT pid) AS connections
         RETURN related.id       AS id,
                related.title    AS title,
                related.abstract AS abstract,
@@ -55,9 +55,6 @@ def nesy_retrieve(driver, query, top_k=TOP_K):
     neural_papers   = neural_retrieve(query, top_k)
     neural_ids      = [p["id"] for p in neural_papers]
     symbolic_papers = symbolic_expand(driver, neural_ids)
-
-    # Build a set of neural IDs for O(1) lookup
-    neural_id_set = set(neural_ids)
 
     seen = {}
     for p in neural_papers:

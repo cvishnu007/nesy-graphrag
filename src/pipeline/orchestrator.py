@@ -3,7 +3,7 @@ import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from groq import Groq
-from src.utils.config import GROQ_API_KEY
+from src.utils.config import GROQ_API_KEY, is_configured
 from src.storage.neo4j_store import get_driver
 from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
@@ -19,8 +19,8 @@ _groq_client = None
 def get_groq():
     global _groq_client
     if _groq_client is None:
-        if not GROQ_API_KEY:
-            raise RuntimeError("Missing GROQ_API_KEY in .env")
+        if not is_configured(GROQ_API_KEY):
+            raise RuntimeError("Missing real GROQ_API_KEY in .env")
         _groq_client = Groq(api_key=GROQ_API_KEY)
     return _groq_client
 

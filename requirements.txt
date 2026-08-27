@@ -1,9 +1,12 @@
 arxiv
+numpy<2
 pandas
+scipy<1.18
 sentence-transformers
 torch
 transformers
 spacy==3.7.5
+click
 chromadb
 neo4j
 groq

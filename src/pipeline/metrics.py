@@ -3,7 +3,7 @@ src/pipeline/metrics.py
 =======================
 NeSy-GraphRAG Evaluation Metrics — Phase 3
 
-Implements four metrics that can be computed without human annotation
+Implements five metrics that can be computed without human annotation
 and with the current pipeline state (Groq + Neo4j may be unavailable;
 ChromaDB must be up).
 
@@ -13,6 +13,7 @@ Metrics
 2. NBR — NeSy Boost Ratio
 3. ATD — Answer Temporal Diversity
 4. RDI — Reasoning Depth Index
+5. HNS — Hypothesis Novelty Score
 
 Usage
 -----
@@ -28,6 +29,7 @@ import sys
 from typing import Any
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
+from src.pipeline.verdicts import has_contradiction_verdict
 
 
 # ─────────────────────────────────────────────────────────────
@@ -208,8 +210,8 @@ def compute_rdi(
     # Handles both raw detect_contradictions() output and llm_contradict() output
     resolved = 0
     for item in contradictions:
-        analysis = item.get("llm_analysis") or item.get("llm_analysis", "")
-        if "VERDICT: CONTRADICTION" in analysis.upper():
+        analysis = item.get("llm_analysis", "")
+        if has_contradiction_verdict(analysis):
             resolved += 1
 
     total_checked = (
@@ -247,7 +249,7 @@ def compute_hns(
     query_paper_ids: list,
 ) -> dict:
     """
-    HNS = mean( 1 / shortestPath_length ) across generated hypotheses.
+    HNS = mean shortestPath_length across generated hypotheses.
 
     For each hypothesis paper, find the shortest path through Concept
     nodes between any of its concepts and any concept belonging to the
@@ -264,12 +266,13 @@ def compute_hns(
 
     Returns
     -------
-    dict with hns, individual_scores, total_hypotheses
+    dict with hns, individual_scores, path_lengths, total_hypotheses
     """
     if not driver or not hypotheses or not query_paper_ids:
         return {
             "hns": 0.0,
             "individual_scores": [],
+            "path_lengths": [],
             "total_hypotheses": len(hypotheses) if hypotheses else 0,
         }
 
@@ -285,10 +288,11 @@ def compute_hns(
         return {
             "hns": 0.0,
             "individual_scores": [],
+            "path_lengths": [],
             "total_hypotheses": len(hypotheses),
         }
 
-    individual_scores = []
+    path_lengths = []
 
     try:
         with driver.session() as session:
@@ -306,29 +310,31 @@ def compute_hns(
 
                 record = result.single()
                 if record and record["pathLen"] > 0:
-                    individual_scores.append(1.0 / record["pathLen"])
+                    path_lengths.append(float(record["pathLen"]))
                 else:
-                    # No path found → maximum novelty (assign score 0 to
-                    # be conservative rather than inflate HNS)
-                    individual_scores.append(0.0)
+                    # No path found: leave the score at 0 so missing graph
+                    # evidence does not inflate novelty.
+                    path_lengths.append(0.0)
 
     except Exception as e:
         print(f"[HNS] Neo4j query failed: {e}")
         return {
             "hns": 0.0,
             "individual_scores": [],
+            "path_lengths": [],
             "total_hypotheses": len(hypotheses),
         }
 
     hns = (
-        sum(individual_scores) / len(individual_scores)
-        if individual_scores
+        sum(path_lengths) / len(path_lengths)
+        if path_lengths
         else 0.0
     )
 
     return {
         "hns": round(hns, 4),
-        "individual_scores": [round(s, 4) for s in individual_scores],
+        "individual_scores": [round(s, 4) for s in path_lengths],
+        "path_lengths": [round(s, 4) for s in path_lengths],
         "total_hypotheses": len(hypotheses),
     }
 

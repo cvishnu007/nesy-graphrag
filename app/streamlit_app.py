@@ -7,6 +7,7 @@ from src.pipeline.orchestrator import get_neo4j, get_groq
 from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
 from src.pipeline.hypothesis import llm_hypothesis
+from src.pipeline.verdicts import extract_verdict
 from src.storage.chroma_store import get_collection
 from src.utils.config import CHROMA_COLLECTION, DATA_SOURCE, LLM_MODEL
 from src.pipeline.metrics import compute_all_metrics
@@ -32,6 +33,7 @@ def graph_stats(driver):
         return papers, edges
     except Exception:
         return "N/A", "N/A"
+
 
 # ════════════════════════════════════════════════════
 # UI
@@ -131,7 +133,8 @@ if run and query:
                 p2     = item["paper2"]
                 analysis = item.get("llm_analysis", "")
 
-                verdict_color = "🔴" if "CONTRADICTION" in analysis else ("🟡" if "AGREEMENT" in analysis else "🔵")
+                verdict = extract_verdict(analysis)
+                verdict_color = "🔴" if verdict == "CONTRADICTION" else ("🟡" if verdict == "AGREEMENT" else "🔵")
 
                 with st.expander(f"{verdict_color} Pair {i+1}: {p1['title'][:40]}... vs {p2['title'][:40]}..."):
                     col1, col2 = st.columns(2)

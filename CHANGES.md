@@ -3,6 +3,25 @@
 **Status as of:** Phase 2 Complete / Phase 3 In Progress
 **Purpose:** Track every known bug/gap and the concrete change needed to fix it, organized so three workstreams can proceed in parallel without blocking each other.
 
+## Update — August 27, 2026
+
+Completed locally on `phase3`:
+
+- [x] Ran full Semantic Scholar ingestion with `DATA_SOURCE=s2`: 10,000 raw papers fetched, 8,850 papers kept after cleaning
+- [x] Ran NER over the cleaned S2 dataset: 8,850 papers with extracted entities
+- [x] Built the Chroma collection `s2_papers`: 8,850 vectors indexed
+- [x] Kept the Semantic Scholar API key in ignored local `.env` only; no tracked file contains the key
+- [x] Added placeholder-aware config checks so Neo4j/Groq fail fast when `.env` still contains template values
+- [x] Added shared contradiction verdict parsing for metrics and Streamlit display
+- [x] Aligned HNS scoring with the documented shortest-path novelty definition
+- [x] Pinned NumPy/SciPy compatibility for the Python 3.12 local environment
+
+Blocked until credentials are added locally:
+
+- [ ] Load `data/s2_ner.json` into Neo4j and create real `CITES` edges
+- [ ] Run end-to-end review/contradiction/hypothesis through Groq
+- [ ] Refresh before/after fixtures from a live end-to-end run
+
 ---
 
 ## 0. Parallelization Setup (do this first, once)
@@ -27,9 +46,10 @@ Files: `arxiv_fetcher.py`, `semantic_scholar_fetcher.py`, `run_ingestion.py`, `n
 
 ### 🔴 High priority
 
-- [ ] **Run full Semantic Scholar ingestion at scale**
+- [x] **Run full Semantic Scholar ingestion at scale**
   `semantic_scholar_fetcher.py` is fully implemented but only smoke-tested on 19 papers. Run it at target scale (`S2_LIMIT`, `S2_PAGE_SIZE` set to production values) to get real `CITES` edges instead of the arXiv concept-overlap proxy.
-  - Requires: rotated `SEMANTIC_SCHOLAR_API_KEY`, `NEO4J_URI/USERNAME/PASSWORD`, `GROQ_API_KEY` in `.env`
+  - Done locally on August 27, 2026. Generated files live under ignored `data/`.
+  - Remaining: add real `NEO4J_URI/USERNAME/PASSWORD` before graph load; add real `GROQ_API_KEY` before LLM runs.
 
 - [ ] **Re-tune `CITES_THRESHOLD` and `HOP_DEPTH`** in `config.py` once real S2 CITES edges exist — current values were tuned against the synthetic concept-overlap graph and may not transfer.
 
