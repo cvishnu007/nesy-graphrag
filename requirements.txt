@@ -1,25 +1,16 @@
-# Data Fetching & Processing
 arxiv
+numpy<2
 pandas
-
-# Embeddings & NLP
+scipy<1.18
 sentence-transformers
 torch
 transformers
 spacy==3.7.5
-
-# Vector Store
+click
 chromadb
-
-# Graph Database
 neo4j
-
-# LLM
 groq
-
-# Frontend
 streamlit
-
-# Environment
 python-dotenv
 requests
+torchvision

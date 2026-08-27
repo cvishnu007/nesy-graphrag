@@ -4,7 +4,6 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import HOP_DEPTH, TOP_K
 from src.storage.chroma_store import query as chroma_query
-from src.storage.neo4j_store import get_driver
 
 
 def neural_retrieve(query, top_k=TOP_K):
@@ -13,13 +12,18 @@ def neural_retrieve(query, top_k=TOP_K):
 
 
 def symbolic_expand(driver, paper_ids):
-    """Stage 2 — 1-2 hop graph traversal via Neo4j CITES edges."""
+    """Stage 2 — 1-2 hop graph traversal via Neo4j CITES edges.
+
+    NOTE: This intentionally does NOT exclude ``paper_ids`` from results
+    so that papers found by both neural and symbolic retrieval can be
+    correctly tagged as ``source="both"`` in ``nesy_retrieve()``.
+    """
     hop_depth = max(1, int(HOP_DEPTH))
     query = f"""
         UNWIND $ids AS pid
         MATCH (p:Paper {{id: pid}})-[:CITES*1..{hop_depth}]-(related:Paper)
-        WHERE NOT related.id IN $ids
-        WITH related, count(*) AS connections
+        WHERE related.id <> pid
+        WITH related, count(DISTINCT pid) AS connections
         RETURN related.id       AS id,
                related.title    AS title,
                related.abstract AS abstract,
@@ -27,7 +31,7 @@ def symbolic_expand(driver, paper_ids):
                related.category AS category,
                connections
         ORDER BY connections DESC
-        LIMIT 10
+        LIMIT 20
     """
     with driver.session() as session:
         result = session.run(query, ids=paper_ids)
@@ -54,12 +58,29 @@ def nesy_retrieve(driver, query, top_k=TOP_K):
 
     seen = {}
     for p in neural_papers:
+        p["source"] = "neural"
         seen[p["id"]] = p
+
     for p in symbolic_papers:
         if p["id"] in seen:
+            # Paper found by BOTH neural and symbolic retrieval
             seen[p["id"]]["score"] += p["score"]
             seen[p["id"]]["source"] = "both"
         else:
+            # Paper found only by symbolic expansion
+            p["source"] = "symbolic"
             seen[p["id"]] = p
 
     return sorted(seen.values(), key=lambda x: x["score"], reverse=True)[:top_k]
+
+
+def vector_only_retrieve(query, top_k=TOP_K):
+    """Baseline retrieval — ChromaDB only, no symbolic expansion.
+
+    Used by the baseline-comparison harness to measure the value
+    added by the Neo4j graph layer.
+    """
+    papers = chroma_query(query, top_k=top_k)
+    for p in papers:
+        p["source"] = "neural"
+    return papers

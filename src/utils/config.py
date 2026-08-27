@@ -3,6 +3,24 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+PLACEHOLDER_VALUES = {"replace_me", "your_key", "your_api_key", "none"}
+
+
+def is_configured(value, *placeholder_markers):
+    if value is None:
+        return False
+
+    text = str(value).strip()
+    if not text:
+        return False
+
+    lowered = text.lower()
+    if lowered in PLACEHOLDER_VALUES:
+        return False
+
+    return not any(marker.lower() in lowered for marker in placeholder_markers)
+
+
 # ── Source selection ───────────────────────────────────
 DATA_SOURCE = os.getenv("DATA_SOURCE", "arxiv").strip().lower()
 
@@ -66,7 +84,9 @@ USE_REAL_CITATIONS = os.getenv(
 
 # ── Models ────────────────────────────────────────────
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "allenai-specter")
-LLM_MODEL       = os.getenv("LLM_MODEL",       "llama-3.3-70b-versatile")
+LLM_MODEL          = os.getenv("LLM_MODEL",          "llama-3.3-70b-versatile")
+LLM_MODEL_FALLBACK = os.getenv("LLM_MODEL_FALLBACK", "llama-3.1-8b-instant")
+GROQ_MAX_RETRIES   = int(os.getenv("GROQ_MAX_RETRIES", 4))
 
 # ── Pipeline settings ─────────────────────────────────
 BATCH_SIZE          = int(os.getenv("BATCH_SIZE",          64))

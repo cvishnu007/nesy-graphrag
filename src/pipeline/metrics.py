@@ -3,7 +3,7 @@ src/pipeline/metrics.py
 =======================
 NeSy-GraphRAG Evaluation Metrics — Phase 3
 
-Implements four metrics that can be computed without human annotation
+Implements five metrics that can be computed without human annotation
 and with the current pipeline state (Groq + Neo4j may be unavailable;
 ChromaDB must be up).
 
@@ -13,6 +13,7 @@ Metrics
 2. NBR — NeSy Boost Ratio
 3. ATD — Answer Temporal Diversity
 4. RDI — Reasoning Depth Index
+5. HNS — Hypothesis Novelty Score
 
 Usage
 -----
@@ -28,6 +29,7 @@ import sys
 from typing import Any
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
+from src.pipeline.verdicts import has_contradiction_verdict
 
 
 # ─────────────────────────────────────────────────────────────
@@ -208,8 +210,8 @@ def compute_rdi(
     # Handles both raw detect_contradictions() output and llm_contradict() output
     resolved = 0
     for item in contradictions:
-        analysis = item.get("llm_analysis") or item.get("llm_analysis", "")
-        if "CONTRADICTION" in analysis.upper():
+        analysis = item.get("llm_analysis", "")
+        if has_contradiction_verdict(analysis):
             resolved += 1
 
     total_checked = (
@@ -238,12 +240,114 @@ def compute_rdi(
 
 
 # ─────────────────────────────────────────────────────────────
+# 5. HYPOTHESIS NOVELTY SCORE (HNS)
+# ─────────────────────────────────────────────────────────────
+
+def compute_hns(
+    driver,
+    hypotheses: list,
+    query_paper_ids: list,
+) -> dict:
+    """
+    HNS = mean shortestPath_length across generated hypotheses.
+
+    For each hypothesis paper, find the shortest path through Concept
+    nodes between any of its concepts and any concept belonging to the
+    query papers.  Longer shortest paths → higher novelty.
+
+    If Neo4j is unavailable or no paths exist, returns hns = 0.0.
+
+    Parameters
+    ----------
+    driver           : Neo4j driver (may be None)
+    hypotheses       : list — output of llm_hypothesis()["hypotheses"]
+                       Each item has a 'paper' dict with an 'id' key.
+    query_paper_ids  : list — IDs of the user's query papers
+
+    Returns
+    -------
+    dict with hns, individual_scores, path_lengths, total_hypotheses
+    """
+    if not driver or not hypotheses or not query_paper_ids:
+        return {
+            "hns": 0.0,
+            "individual_scores": [],
+            "path_lengths": [],
+            "total_hypotheses": len(hypotheses) if hypotheses else 0,
+        }
+
+    # Extract hypothesis paper IDs
+    hyp_ids = []
+    for h in hypotheses:
+        paper = h.get("paper", h)  # handle both enriched and raw format
+        pid = paper.get("id")
+        if pid:
+            hyp_ids.append(pid)
+
+    if not hyp_ids:
+        return {
+            "hns": 0.0,
+            "individual_scores": [],
+            "path_lengths": [],
+            "total_hypotheses": len(hypotheses),
+        }
+
+    path_lengths = []
+
+    try:
+        with driver.session() as session:
+            for hid in hyp_ids:
+                result = session.run("""
+                    MATCH (h:Paper {id: $hid})-[:RELATED_TO]->(hc:Concept)
+                    MATCH (q:Paper)-[:RELATED_TO]->(qc:Concept)
+                    WHERE q.id IN $qids AND hc <> qc
+                    MATCH path = shortestPath((hc)-[*..6]-(qc))
+                    WITH length(path) AS pathLen
+                    ORDER BY pathLen ASC
+                    LIMIT 1
+                    RETURN pathLen
+                """, hid=hid, qids=query_paper_ids)
+
+                record = result.single()
+                if record and record["pathLen"] > 0:
+                    path_lengths.append(float(record["pathLen"]))
+                else:
+                    # No path found: leave the score at 0 so missing graph
+                    # evidence does not inflate novelty.
+                    path_lengths.append(0.0)
+
+    except Exception as e:
+        print(f"[HNS] Neo4j query failed: {e}")
+        return {
+            "hns": 0.0,
+            "individual_scores": [],
+            "path_lengths": [],
+            "total_hypotheses": len(hypotheses),
+        }
+
+    hns = (
+        sum(path_lengths) / len(path_lengths)
+        if path_lengths
+        else 0.0
+    )
+
+    return {
+        "hns": round(hns, 4),
+        "individual_scores": [round(s, 4) for s in path_lengths],
+        "path_lengths": [round(s, 4) for s in path_lengths],
+        "total_hypotheses": len(hypotheses),
+    }
+
+
+# ─────────────────────────────────────────────────────────────
 # COMBINED RUNNER
 # ─────────────────────────────────────────────────────────────
 
 def compute_all_metrics(
     result: dict,
     contradiction_result: dict | None = None,
+    hypothesis_result: dict | None = None,
+    driver=None,
     year_range: tuple = (2020, 2024),
 ) -> dict[str, Any]:
     """
@@ -254,12 +358,15 @@ def compute_all_metrics(
     result               : dict — output of graphrag_query(mode="review")
                            Must have keys: papers, answer, verified
     contradiction_result : dict — output of graphrag_query(mode="contradict")
+    hypothesis_result    : dict — output of graphrag_query(mode="hypothesis")
+                           Optional. If provided, HNS is computed.
+    driver               : Neo4j driver — required for HNS computation
                            Optional. If None, RDI is computed with 0 contradictions.
     year_range           : tuple — dataset year span for ATD normalisation
 
     Returns
     -------
-    dict with keys: ts, nbr, atd, rdi (each is itself a dict)
+    dict with keys: ts, nbr, atd, rdi, hns (each is itself a dict)
     """
     papers      = result.get("papers", [])
     answer      = result.get("answer", "")
@@ -274,11 +381,17 @@ def compute_all_metrics(
     atd = compute_atd(papers, year_range=year_range)
     rdi = compute_rdi(papers, contradictions)
 
+    # HNS — compute only if hypothesis results and a driver are available
+    hypotheses      = hypothesis_result.get("hypotheses", []) if hypothesis_result else []
+    query_paper_ids = [p["id"] for p in papers if p.get("id")]
+    hns = compute_hns(driver, hypotheses, query_paper_ids)
+
     scores = {
         "ts" : ts,
         "nbr": nbr,
         "atd": atd,
         "rdi": rdi,
+        "hns": hns,
     }
 
     _print_summary(scores)
@@ -291,6 +404,7 @@ def _print_summary(scores: dict) -> None:
     nbr = scores["nbr"]
     atd = scores["atd"]
     rdi = scores["rdi"]
+    hns = scores.get("hns", {})
 
     print("\n" + "═" * 55)
     print("  NeSy-GraphRAG EVALUATION METRICS")
@@ -307,4 +421,7 @@ def _print_summary(scores: dict) -> None:
     print(f"  RDI (Reasoning Depth)   : {rdi['rdi']:.4f}"
           f"  [cross-doc={rdi['cross_doc_papers']}, contradictions={rdi['contradictions_resolved']}]"
           f"  {'✅' if rdi['rdi'] >= 0.75 else '⚠️ target ≥0.75'}")
+    if hns and hns.get("hns") is not None:
+        print(f"  HNS (Hypothesis Novelty): {hns['hns']:.4f}"
+              f"  [{hns.get('total_hypotheses', 0)} hypotheses scored]")
     print("═" * 55 + "\n")

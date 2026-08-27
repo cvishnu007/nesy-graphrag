@@ -1,0 +1,20 @@
+{
+  "query": "graph neural networks for node classification",
+  "contradictions": [
+    {
+      "paper1": {
+        "id": "1b95e5c134d56a43f362f607406aa11e3bd55569",
+        "title": "a practical, progressively-expressive gnn",
+        "abstract": "message passing neural networks (mpnns) have become a dominant flavor of graph neural networks (gnns) in recent years. yet, mpnns come with notable limitations; namely, they are at most as powerful as the 1-dimensional weisfeiler-leman (1-wl) test in distinguishing graphs in a graph isomorphism testing frame-work. to this end, researchers have drawn inspiration from the k-wl hierarchy to develop more expressive gnns. however, current k-wl-equivalent gnns are not practical for even small values of k, as k-wl becomes combinatorially more complex as k grows. at the same time, several works have found great empirical success in graph learning tasks without highly expressive models, implying that chasing expressiveness with a coarse-grained ruler of expressivity like k-wl is often unneeded in practical tasks. to truly understand the expressiveness-complexity tradeoff, one desires a more fine-grained ruler, which can more gradually increase expressiveness. our work puts forth such a proposal: namely, we first propose the (k, c)()-setwl hierarchy with greatly reduced complexity from k-wl, achieved by moving from k-tuples of nodes to sets withk nodes defined overc connected components in the induced original graph. we show favorable theoretical results for this model in relation to k-wl, and concretize it via (k, c)()-setgnn, which is as expressive as (k, c)()-setwl. our model is practical and progressively-expressive, increasing in power with k and c. we demonstrate effectiveness on several benchmark datasets, achieving several state-of-the-art results with runtime and memory usage applicable to practical graphs. we open source our implementation at",
+        "year": 2022
+      },
+      "paper2": {
+        "id": "d08a0eb7024dff5c4fabd58144a38031633d4e1a",
+        "title": "benchmarking graph neural networks",
+        "abstract": "graph neural networks (gnns) have become the standard toolkit for analyzing and learning from data on graphs. as the field grows, it becomes critical to identify key architectures and validate new ideas that generalize to larger, more complex datasets. unfortunately, it has been increasingly difficult to gauge the effectiveness of new models in the absence of a standardized benchmark with consistent experimental settings. in this paper, we introduce a reproducible gnn benchmarking framework, with the facility for researchers to add new models conveniently for arbitrary datasets. we demonstrate the usefulness of our framework by presenting a principled investigation into the recent weisfeiler-lehman gnns (wl-gnns) compared to message passing-based graph convolutional networks (gcns) for a variety of graph tasks, i.e. graph regressionclassification and nodelink prediction, with medium-scale datasets.",
+        "year": 2023
+      },
+      "llm_analysis": "VERDICT: DIFFERENT SCOPE  \nREASON: Paper\u202f1 discusses the theoretical expressive limits of message\u2011passing GNNs and proposes a more powerful architecture, while Paper\u202f2 focuses on creating and using benchmarks to evaluate GNN performance; the two works address distinct aspects of GNN research and do not make opposing statements.  \nCLAIM 1: Message\u2011passing neural networks are at most as powerful as the 1\u2011dimensional Weisfeiler\u2011Leman test, motivating the development of progressively more expressive GNNs.  \nCLAIM 2: A standardized benchmark suite is needed to reliably assess and compare the generalization of graph neural network architectures across diverse, large\u2011scale datasets."
+    }
+  ]
+}

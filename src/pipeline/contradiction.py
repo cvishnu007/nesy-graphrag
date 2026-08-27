@@ -2,8 +2,10 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.utils.config import LLM_MODEL, TOP_K
+from src.utils.config import LLM_MODEL, LLM_MODEL_FALLBACK, GROQ_MAX_RETRIES, TOP_K
 from src.pipeline.retrieval import nesy_retrieve
+from src.pipeline.prompts import build_contradiction_prompt
+from src.utils.groq_client import groq_chat_with_retry
 
 
 def detect_contradictions(driver, query, top_k=5):
@@ -60,35 +62,20 @@ def llm_contradict(groq_client, driver, query, top_k=5):
     for i, pair in enumerate(contradictions):
         p1   = pair["paper1"]
         p2   = pair["paper2"]
-        abs1 = (p1.get("abstract") or "No abstract available.")[:400]
-        abs2 = (p2.get("abstract") or "No abstract available.")[:400]
 
-        prompt = f"""You are a scientific fact-checker analyzing research papers.
-
-Compare these two papers and determine if they CONTRADICT each other:
-
-PAPER 1 ({p1['year']}): {p1['title']}
-Abstract: {abs1}
-
-PAPER 2 ({p2['year']}): {p2['title']}
-Abstract: {abs2}
-
-Answer in this exact format:
-VERDICT: [CONTRADICTION / AGREEMENT / DIFFERENT SCOPE]
-REASON: [1-2 sentences explaining why]
-CLAIM 1: [What Paper 1 claims]
-CLAIM 2: [What Paper 2 claims]"""
+        prompt = build_contradiction_prompt(p1, p2)
 
         print(f"[LLM] Checking pair {i+1}/{len(contradictions)}...")
 
         try:
-            response = groq_client.chat.completions.create(
+            result = groq_chat_with_retry(
+                groq_client, prompt,
                 model=LLM_MODEL,
-                messages=[{"role": "user", "content": prompt}],
+                fallback_model=LLM_MODEL_FALLBACK,
                 max_tokens=300,
-                temperature=0.3
+                temperature=0.3,
+                max_retries=GROQ_MAX_RETRIES,
             )
-            result = response.choices[0].message.content
         except Exception as e:
             result = f"LLM call failed: {e}"
 

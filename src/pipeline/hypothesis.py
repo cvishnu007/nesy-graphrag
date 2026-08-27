@@ -2,8 +2,10 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.utils.config import LLM_MODEL, TOP_K
+from src.utils.config import LLM_MODEL, LLM_MODEL_FALLBACK, GROQ_MAX_RETRIES, TOP_K
 from src.pipeline.retrieval import neural_retrieve
+from src.pipeline.prompts import build_hypothesis_prompt
+from src.utils.groq_client import groq_chat_with_retry
 
 
 def generate_hypotheses(driver, query, top_k=5):
@@ -65,36 +67,19 @@ def llm_hypothesis(groq_client, driver, query, top_k=5):
     enriched_hypotheses = []
 
     for i, h in enumerate(hypotheses):
-        prompt = f"""You are a research hypothesis generator.
-
-CURRENT RESEARCH (papers related to the query):
-{query_context}
-
-UNDISCOVERED CONNECTION:
-Title: {h['title']}
-Year: {h['year']}
-Category: {h['category']}
-Shared Concepts: {h['shared_concepts']}
-
-This paper shares {h['shared_concepts']} concepts with the query papers
-but has NEVER been cited together with them — this is a structural hole
-in the knowledge graph.
-
-Generate a research hypothesis in this format:
-HYPOTHESIS: [1 clear sentence stating the potential connection]
-RATIONALE: [2-3 sentences explaining why combining these could be valuable]
-POTENTIAL IMPACT: [1 sentence on what new knowledge this could produce]"""
+        prompt = build_hypothesis_prompt(query_context, h)
 
         print(f"[LLM] Generating hypothesis {i+1}/{len(hypotheses)}...")
 
         try:
-            response = groq_client.chat.completions.create(
+            result = groq_chat_with_retry(
+                groq_client, prompt,
                 model=LLM_MODEL,
-                messages=[{"role": "user", "content": prompt}],
+                fallback_model=LLM_MODEL_FALLBACK,
                 max_tokens=300,
-                temperature=0.3
+                temperature=0.3,
+                max_retries=GROQ_MAX_RETRIES,
             )
-            result = response.choices[0].message.content
         except Exception as e:
             result = f"LLM call failed: {e}"
 
