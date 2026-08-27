@@ -27,9 +27,6 @@ Files: `arxiv_fetcher.py`, `semantic_scholar_fetcher.py`, `run_ingestion.py`, `n
 
 ### 🔴 High priority
 
-- [ ] **Fix `source` field bug in `nesy_retrieve()` (`retrieval.py`)**
-  Merge logic in `nesy_retrieve()` is mislabeling papers as `"both"`/`"symbolic"` incorrectly, causing NBR to always read 1.0. Trace through the `seen[p["id"]]["source"] = "both"` assignment and confirm it only fires when a paper genuinely appears in both `neural_papers` and `symbolic_papers`.
-
 - [ ] **Run full Semantic Scholar ingestion at scale**
   `semantic_scholar_fetcher.py` is fully implemented but only smoke-tested on 19 papers. Run it at target scale (`S2_LIMIT`, `S2_PAGE_SIZE` set to production values) to get real `CITES` edges instead of the arXiv concept-overlap proxy.
   - Requires: rotated `SEMANTIC_SCHOLAR_API_KEY`, `NEO4J_URI/USERNAME/PASSWORD`, `GROQ_API_KEY` in `.env`
@@ -67,24 +64,13 @@ Files: `validator.py`, `review.py`, `contradiction.py`, `hypothesis.py`
 
 **Can be developed entirely against `fixtures/papers_sample.json` — no live Neo4j/ChromaDB needed. Requires only a Groq key (or a mocked Groq client for prompt-only work).**
 
-### 🔴 High priority
-
-- [ ] **Deduplicate prompt templates across 4 files**
-  The literature-review prompt is currently copy-pasted in `review.py` AND `streamlit_app.py` (already drifting risk). Contradiction and hypothesis prompts are similarly embedded inline. Extract all three into a shared `src/pipeline/prompts.py` module with functions like `build_review_prompt(toon, query)`.
-
-- [ ] **Add error handling to `llm_review()`** (`review.py`)
-  `contradiction.py` and `hypothesis.py` already wrap Groq calls in try/except with a fallback string; `review.py` does not. Bring it in line.
-
 ### 🟡 Medium priority
 
 - [ ] **Replace contradiction-detection heuristic with a real NLI/BERT model**
   Current approach (shared ≥2 concepts + different years → ask LLM to verdict) always returns AGREEMENT on consensus topics — it's a weak proxy, not real contradiction detection. Implement a DisContNet-inspired fine-tuned BERT classifier as originally scoped in Phase 1. This only touches `contradiction.py` internals — output shape (`{query, contradictions}`) stays the same.
 
-- [ ] **Add retry/backoff on Groq calls** — reuse the rate-limit/backoff pattern already implemented in `semantic_scholar_fetcher.py`'s `SemanticScholarClient` rather than writing new logic.
 
 ### 🟢 Low priority
-
-- [ ] Fallback LLM model config (in case `LLM_MODEL` gets deprecated again, as happened once already per README)
 - [ ] Hypothesis feasibility check — cross-reference generated hypotheses against existing literature before surfacing them
 
 ### Frozen output contract (do not break without notifying Section 3)
@@ -102,28 +88,8 @@ Files: `metrics.py`, `streamlit_app.py`, `orchestrator.py`
 
 **Can be developed entirely against `fixtures/review_result_sample.json` and `fixtures/contradiction_result_sample.json` — no Groq/Neo4j/ChromaDB needed.**
 
-### 🔴 High priority
-
-- [ ] **Fix RDI string-matching false positive** (`metrics.py`, `compute_rdi()`)
-  Change `"CONTRADICTION" in analysis.upper()` → `"VERDICT: CONTRADICTION" in analysis.upper()`. Currently miscounts verdicts like "this does NOT constitute a CONTRADICTION" as resolved. One-line fix, fully self-contained.
-
-- [ ] **Build the baseline-comparison harness**
-  Add a `vector_only_review()` path (or a flag on `llm_review()`) that skips `symbolic_expand()` and runs ChromaDB-only retrieval. Run the same query set through both paths, capture TS/NBR/ATD/RDI for each, and diff them. This is the core quantitative result the dissertation currently lacks — flagged repeatedly as the single biggest missing piece.
-
-### 🟡 Medium priority
-
-- [ ] **Refactor `streamlit_app.py` to call pipeline functions instead of reimplementing prompts inline**
-  The review-mode prompt is currently duplicated in the UI file. Once Section 2 ships the shared `prompts.py` (or the functions themselves), swap the UI's inline prompt-building for direct calls to `llm_review()`/`llm_contradict()`/`llm_hypothesis()`. Pure UI cleanup — depends on Section 2's dedup work but not on live data.
-
-- [ ] **Implement HNS (Hypothesis Novelty Score)**
-  Planned since Phase 1, never built. Requires Neo4j GDS `shortestPath` between concept nodes on the two ends of a generated hypothesis. Additive — does not touch TS/NBR/ATD/RDI.
-
-- [ ] **Add a results-logging layer**
-  Append each run's metrics (query, mode, TS/NBR/ATD/RDI/HNS, timestamp) to a CSV or JSON log so trends can be plotted across many queries — needed to support the evaluation chapter with more than single-run snapshots.
 
 ### 🟢 Low priority
-
-- [ ] Flag missing years (e.g., 2024 absence) explicitly in the Streamlit UI rather than only reporting the ATD number
 - [ ] PyVis interactive citation-graph visualization in the UI
 - [ ] Unit tests: fabricated paper IDs (confirm the firewall blocks them), empty query results, Neo4j connection failures
 
