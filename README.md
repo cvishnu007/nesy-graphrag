@@ -40,11 +40,6 @@ This repository now supports **two ingestion modes** behind a single switch:
    - `.env.example` added with all required variables and placeholders
    - model usage is now config-driven (`LLM_MODEL`) in pipeline and app
 
-### Security requirement (must do now)
-
-Your Semantic Scholar key was exposed in chat. **Rotate it immediately** in the Semantic Scholar dashboard and only store the new key in local `.env` (`SEMANTIC_SCHOLAR_API_KEY=...`).  
-Do not commit `.env` or any real key to git.
-
 ### Exact run agenda (current)
 
 ```bash

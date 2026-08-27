@@ -4,10 +4,9 @@ import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from src.pipeline.orchestrator import get_neo4j, get_groq
-from src.pipeline.retrieval import nesy_retrieve
-from src.pipeline.validator import validate_citations
-from src.pipeline.contradiction import detect_contradictions
-from src.pipeline.hypothesis import generate_hypotheses
+from src.pipeline.review import llm_review
+from src.pipeline.contradiction import llm_contradict
+from src.pipeline.hypothesis import llm_hypothesis
 from src.storage.chroma_store import get_collection
 from src.utils.config import CHROMA_COLLECTION, DATA_SOURCE, LLM_MODEL
 from src.pipeline.metrics import compute_all_metrics
@@ -71,43 +70,14 @@ if run and query:
 
     # ── REVIEW MODE ──────────────────────────────────
     if "review" in mode.lower():
-        with st.spinner("Retrieving papers..."):
-            papers   = nesy_retrieve(driver, query, top_k=top_k)
-            verified = validate_citations(driver, [p["id"] for p in papers if p.get("id")])
+        with st.spinner("Running NeSy retrieval + LLM synthesis..."):
+            result = llm_review(groq_client, driver, query, top_k=top_k)
+
+        papers   = result["papers"]
+        answer   = result["answer"]
+        verified = result["verified"]
 
         st.success(f"Retrieved {len(papers)} papers — {len(verified)}/{len(papers)} citations verified")
-
-        toon = "title|year|category|abstract\n"
-        for p in papers:
-            if p.get("id") in verified:
-                toon += f"{p['title'][:80]}|{p['year']}|{p['category']}|{p['abstract'][:300]}\n"
-
-        prompt = f"""You are a scientific research assistant specialized in computer science.
-
-Below are research papers in TOON format (pipe-separated):
-title|year|category|abstract
-
-PAPERS:
-{toon}
-
-QUERY: {query}
-
-Your task:
-1. Write a clear 2-3 paragraph synthesis answering the query
-2. Cite papers by their title in [brackets]
-3. Highlight key findings and trends across years
-4. End with a 1-line summary of the state of the field
-
-Be precise and academic in tone."""
-
-        with st.spinner("LLM generating answer..."):
-            response = groq_client.chat.completions.create(
-                model=LLM_MODEL,
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=1024,
-                temperature=0.3
-            )
-            answer = response.choices[0].message.content
 
         st.markdown("### 📝 Literature Review")
         st.markdown(answer)
@@ -120,9 +90,10 @@ Be precise and academic in tone."""
                 st.write(f"**Score:** {round(p['score'], 3)}")
                 st.write(f"**Abstract:** {(p.get('abstract') or 'N/A')[:400]}")
 
-        # ── METRICS — indented inside the review block ──
+        # ── METRICS ──
         metrics = compute_all_metrics(
-            {"papers": papers, "answer": answer, "verified": verified}
+            result,
+            driver=driver,
         )
         st.markdown("### 📊 Evaluation Metrics")
         col1, col2, col3, col4 = st.columns(4)
@@ -135,48 +106,32 @@ Be precise and academic in tone."""
         col4.metric("RDI (Reasoning Depth)", f"{metrics['rdi']['rdi']:.3f}",
                     help="Target ≥ 0.75")
 
+        # ── Flag missing years explicitly ──
+        missing_years = metrics["atd"].get("missing_years", [])
+        if missing_years:
+            st.warning(
+                f"⚠️ **Missing years in results:** {', '.join(str(y) for y in missing_years)}. "
+                f"Papers from these years were not found in the retrieval results, "
+                f"which may indicate gaps in dataset coverage or query specificity."
+            )
+
     # ── CONTRADICTION MODE ────────────────────────────
     elif "contradiction" in mode.lower():
-        with st.spinner("Finding contradiction candidates..."):
-            contradictions = detect_contradictions(driver, query, top_k=5)
+        with st.spinner("Running contradiction detection pipeline..."):
+            result = llm_contradict(groq_client, driver, query, top_k=5)
 
-        st.info(f"Found {len(contradictions)} candidate pairs — verifying with LLM...")
+        contradictions = result.get("contradictions", [])
+        st.info(f"Found and verified {len(contradictions)} contradiction candidate pairs")
 
         if not contradictions:
             st.warning("No contradiction candidates found for this query.")
         else:
-            for i, pair in enumerate(contradictions):
-                p1   = pair["paper1"]
-                p2   = pair["paper2"]
-                abs1 = (p1.get("abstract") or "No abstract available.")[:400]
-                abs2 = (p2.get("abstract") or "No abstract available.")[:400]
+            for i, item in enumerate(contradictions):
+                p1     = item["paper1"]
+                p2     = item["paper2"]
+                analysis = item.get("llm_analysis", "")
 
-                prompt = f"""You are a scientific fact-checker analyzing research papers.
-
-Compare these two papers and determine if they CONTRADICT each other:
-
-PAPER 1 ({p1['year']}): {p1['title']}
-Abstract: {abs1}
-
-PAPER 2 ({p2['year']}): {p2['title']}
-Abstract: {abs2}
-
-Answer in this exact format:
-VERDICT: [CONTRADICTION / AGREEMENT / DIFFERENT SCOPE]
-REASON: [1-2 sentences explaining why]
-CLAIM 1: [What Paper 1 claims]
-CLAIM 2: [What Paper 2 claims]"""
-
-                with st.spinner(f"Checking pair {i+1}/{len(contradictions)}..."):
-                    response = groq_client.chat.completions.create(
-                        model=LLM_MODEL,
-                        messages=[{"role": "user", "content": prompt}],
-                        max_tokens=300,
-                        temperature=0.3
-                    )
-                    result = response.choices[0].message.content
-
-                verdict_color = "🔴" if "CONTRADICTION" in result else ("🟡" if "AGREEMENT" in result else "🔵")
+                verdict_color = "🔴" if "CONTRADICTION" in analysis else ("🟡" if "AGREEMENT" in analysis else "🔵")
 
                 with st.expander(f"{verdict_color} Pair {i+1}: {p1['title'][:40]}... vs {p2['title'][:40]}..."):
                     col1, col2 = st.columns(2)
@@ -187,60 +142,28 @@ CLAIM 2: [What Paper 2 claims]"""
                         st.markdown(f"**Paper 2 ({p2['year']})**")
                         st.write(p2['title'])
                     st.markdown("**LLM Analysis:**")
-                    st.markdown(result)
+                    st.markdown(analysis)
 
     # ── HYPOTHESIS MODE ───────────────────────────────
     elif "hypothesis" in mode.lower():
-        from src.pipeline.retrieval import neural_retrieve
-        with st.spinner("Finding structural holes in knowledge graph..."):
-            hypotheses   = generate_hypotheses(driver, query, top_k=5)
-            query_papers = neural_retrieve(query, top_k=3)
+        with st.spinner("Running hypothesis generation pipeline..."):
+            result = llm_hypothesis(groq_client, driver, query, top_k=5)
 
-        st.info(f"Found {len(hypotheses)} structural holes — generating hypotheses with LLM...")
+        hypotheses = result.get("hypotheses", [])
+        st.info(f"Generated {len(hypotheses)} research hypotheses")
 
         if not hypotheses:
             st.warning("No hypothesis candidates found for this query.")
         else:
-            query_context = "\n".join([
-                f"- {p['title'][:80]} ({p['year']}): {(p.get('abstract') or '')[:200]}"
-                for p in query_papers
-            ])
+            for i, item in enumerate(hypotheses):
+                h = item.get("paper", {})
+                llm_text = item.get("llm_hypothesis", "")
 
-            for i, h in enumerate(hypotheses):
-                prompt = f"""You are a research hypothesis generator.
-
-CURRENT RESEARCH (papers related to the query):
-{query_context}
-
-UNDISCOVERED CONNECTION:
-Title: {h['title']}
-Year: {h['year']}
-Category: {h['category']}
-Shared Concepts: {h['shared_concepts']}
-
-This paper shares {h['shared_concepts']} concepts with the query papers
-but has NEVER been cited together with them — this is a structural hole
-in the knowledge graph.
-
-Generate a research hypothesis in this format:
-HYPOTHESIS: [1 clear sentence stating the potential connection]
-RATIONALE: [2-3 sentences explaining why combining these could be valuable]
-POTENTIAL IMPACT: [1 sentence on what new knowledge this could produce]"""
-
-                with st.spinner(f"Generating hypothesis {i+1}/{len(hypotheses)}..."):
-                    response = groq_client.chat.completions.create(
-                        model=LLM_MODEL,
-                        messages=[{"role": "user", "content": prompt}],
-                        max_tokens=300,
-                        temperature=0.3
-                    )
-                    result = response.choices[0].message.content
-
-                with st.expander(f"💡 Hypothesis {i+1}: {h['title'][:60]}... ({h['year']})"):
-                    st.markdown(f"**Category:** {h['category']}")
-                    st.markdown(f"**Shared Concepts:** {h['shared_concepts']}")
+                with st.expander(f"💡 Hypothesis {i+1}: {h.get('title', '')[:60]}... ({h.get('year', '')})"):
+                    st.markdown(f"**Category:** {h.get('category', 'N/A')}")
+                    st.markdown(f"**Shared Concepts:** {h.get('shared_concepts', 'N/A')}")
                     st.markdown("**Generated Hypothesis:**")
-                    st.markdown(result)
+                    st.markdown(llm_text)
 
 elif run and not query:
     st.warning("Please enter a query first.")

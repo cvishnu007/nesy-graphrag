@@ -9,6 +9,7 @@ from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
 from src.pipeline.hypothesis import llm_hypothesis
 from src.pipeline.metrics import compute_all_metrics
+from src.pipeline.results_logger import log_result
 
 # ── Shared clients — init once ─────────────────────────
 _driver      = None
@@ -43,14 +44,19 @@ def graphrag_query(query: str, mode: str = "review", top_k: int = 10) -> dict:
         result = llm_review(groq_client, driver, query, top_k=top_k)
         # compute_all_metrics needs result to exist first — called AFTER llm_review()
         if result.get("papers"):
-            result["metrics"] = compute_all_metrics(result)
+            result["metrics"] = compute_all_metrics(result, driver=driver)
+            log_result(query, mode, result["metrics"])
         return result
 
     elif mode == "contradict":
-        return llm_contradict(groq_client, driver, query, top_k=top_k)
+        result = llm_contradict(groq_client, driver, query, top_k=top_k)
+        log_result(query, mode, {})
+        return result
 
     elif mode == "hypothesis":
-        return llm_hypothesis(groq_client, driver, query, top_k=top_k)
+        result = llm_hypothesis(groq_client, driver, query, top_k=top_k)
+        log_result(query, mode, {})
+        return result
 
     else:
         raise ValueError(f"mode must be: review / contradict / hypothesis. Got: {mode}")
@@ -75,7 +81,14 @@ if __name__ == "__main__":
     print("█"*60)
     r3 = graphrag_query(test_query, mode="hypothesis")
 
-    # Combined metrics: review result + contradiction result together
-    scores = compute_all_metrics(r1, contradiction_result=r2)
+    # Combined metrics: review result + contradiction result + hypothesis result
+    driver = get_neo4j()
+    scores = compute_all_metrics(
+        r1,
+        contradiction_result=r2,
+        hypothesis_result=r3,
+        driver=driver,
+    )
+    log_result(test_query, "combined", scores)
 
     print("\n\nFull NeSy-GraphRAG + LLM Pipeline Complete!")
