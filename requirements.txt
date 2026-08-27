@@ -10,3 +10,4 @@ groq
 streamlit
 python-dotenv
 requests
+torchvision
