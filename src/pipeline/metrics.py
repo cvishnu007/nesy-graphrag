@@ -29,6 +29,9 @@ from typing import Any
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 
+from src.pipeline.verdicts import is_confident_contradiction
+from src.utils.config import CONTRADICTION_MIN_CONFIDENCE
+
 
 # ─────────────────────────────────────────────────────────────
 # 1. TRUSTWORTHINESS SCORE (TS)
@@ -208,8 +211,7 @@ def compute_rdi(
     # Handles both raw detect_contradictions() output and llm_contradict() output
     resolved = 0
     for item in contradictions:
-        analysis = item.get("llm_analysis") or item.get("llm_analysis", "")
-        if "VERDICT: CONTRADICTION" in analysis.upper():
+        if is_confident_contradiction(item, CONTRADICTION_MIN_CONFIDENCE):
             resolved += 1
 
     total_checked = (

@@ -67,6 +67,7 @@ Abstract: {abs2}
 
 Answer in this exact format:
 VERDICT: [CONTRADICTION / AGREEMENT / DIFFERENT SCOPE]
+CONFIDENCE: [decimal from 0.0 to 1.0]
 REASON: [1-2 sentences explaining why]
 CLAIM 1: [What Paper 1 claims]
 CLAIM 2: [What Paper 2 claims]"""

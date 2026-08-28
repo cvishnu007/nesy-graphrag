@@ -10,7 +10,7 @@ The current focus is the GraphRAG pipeline, citation validation, contradiction d
 - Expands results through a Neo4j citation/concept graph.
 - Validates paper IDs against Neo4j before sending context to the LLM.
 - Generates literature reviews through Groq-hosted Llama models.
-- Detects possible contradiction candidates across related papers.
+- Ranks contradiction candidates by normalized concept overlap and parses structured, confidence-gated verdicts.
 - Generates hypothesis candidates from structural holes in the graph.
 - Computes evaluation metrics for trustworthiness, graph contribution, temporal diversity, reasoning depth, and hypothesis novelty.
 - Provides a Streamlit UI for interactive use.
@@ -32,7 +32,8 @@ Short version:
 - CUDA embedding inference is verified on the local RTX 3050 with PyTorch `2.12.1+cu126`.
 - The corrected five-query evaluation averages `+0.56` NBR and `+0.10` RDI versus the vector baseline.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
-- The next milestone is improving contradiction detection and reasoning-depth evaluation.
+- Structured contradiction scoring and exact verdict parsing are implemented and tested.
+- The next milestone is expanding validation/metrics tests, then improving hypothesis validation.
 
 ## Project Structure
 
@@ -127,6 +128,10 @@ EMBEDDING_DEVICE=auto
 EMBEDDING_BATCH_SIZE=16
 LLM_MODEL=llama-3.3-70b-versatile
 LLM_MODEL_FALLBACK=llama-3.1-8b-instant
+
+CONTRADICTION_MIN_SHARED_CONCEPTS=2
+CONTRADICTION_MIN_CONCEPT_JACCARD=0.10
+CONTRADICTION_MIN_CONFIDENCE=0.70
 ```
 
 Useful defaults are defined in `src/utils/config.py`.

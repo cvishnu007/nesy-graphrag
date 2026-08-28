@@ -6,6 +6,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from src.pipeline.orchestrator import get_neo4j, get_groq
 from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
+from src.pipeline.verdicts import contradiction_verdict
 from src.pipeline.hypothesis import llm_hypothesis
 from src.storage.chroma_store import get_collection
 from src.utils.config import CHROMA_COLLECTION, DATA_SOURCE, LLM_MODEL
@@ -131,7 +132,8 @@ if run and query:
                 p2     = item["paper2"]
                 analysis = item.get("llm_analysis", "")
 
-                verdict_color = "🔴" if "CONTRADICTION" in analysis else ("🟡" if "AGREEMENT" in analysis else "🔵")
+                verdict = contradiction_verdict(item)
+                verdict_color = "🔴" if verdict == "CONTRADICTION" else ("🟡" if verdict == "AGREEMENT" else "🔵")
 
                 with st.expander(f"{verdict_color} Pair {i+1}: {p1['title'][:40]}... vs {p2['title'][:40]}..."):
                     col1, col2 = st.columns(2)

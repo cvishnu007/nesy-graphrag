@@ -1,6 +1,6 @@
 # NeSy-GraphRAG Project Status
 
-Last updated: August 28, 2026
+Last updated: August 29, 2026
 
 This is the single status file for the project. PDF ingestion is out of scope for the current phase.
 
@@ -143,6 +143,20 @@ Per-query NeSy NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; every baseline NBR
 - Shared prompt templates
 - Groq retry and fallback wrapper
 
+### Contradiction Detection
+
+- Cross-year graph candidate generation
+- Candidate ranking by normalized concept Jaccard and year gap
+- Configurable minimum shared concepts and overlap threshold
+- Exact structured verdict parser for:
+  - `CONTRADICTION`
+  - `AGREEMENT`
+  - `DIFFERENT SCOPE`
+- Deterministic LLM temperature for contradiction checks
+- Configurable confidence gate before a contradiction contributes to RDI
+- Shared verdict interpretation across pipeline, metrics, and Streamlit
+- Live check returned two valid `DIFFERENT SCOPE` verdicts with confidence `0.92` and `0.96`
+
 ### Metrics
 
 - `TS`: Trustworthiness Score
@@ -165,28 +179,7 @@ Per-query NeSy NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; every baseline NBR
 
 ## Top Priority Implementation Work
 
-### 1. Improve Contradiction Detection
-
-Current behavior:
-
-- finds papers that share concepts and come from different years
-- asks the LLM if they contradict
-
-This is useful for a demo but weak for evaluation.
-
-Next implementation:
-
-- keep current graph-based candidate generation
-- add a stricter NLI/contradiction classifier or structured scoring layer
-- keep the existing output shape so UI and metrics do not break
-
-Success criteria:
-
-- fewer irrelevant contradiction pairs
-- reproducible contradiction labels
-- better RDI credibility
-
-### 2. Expand Automated Tests
+### 1. Expand Automated Tests
 
 Add lightweight tests before deeper refactors.
 
@@ -195,11 +188,15 @@ Already covered:
 - graph-only results can enter top-k
 - overlap is labelled `both` and boosted
 - fusion does not mutate its inputs
+- normalized contradiction candidate scoring
+- exact verdict and confidence parsing
+- negated contradiction mentions do not become contradiction verdicts
+- malformed verdict output becomes `UNKNOWN`
+- low-confidence contradictions do not contribute to RDI
 
 Still needed:
 
 - fabricated paper ID is blocked by `validate_citations()`
-- contradiction verdict parser does not count negated mentions as contradictions
 - metric functions handle empty results
 - Chroma/Neo4j connection failures fail clearly
 
@@ -208,6 +205,10 @@ Success criteria:
 - core claims can be defended without relying only on manual runs
 
 ## Secondary Work
+
+### Scientific NLI Evaluation
+
+The structured contradiction layer is implemented, but verdict semantics still depend on the hosted LLM. Compare it against a scientific NLI or claim-level classifier before making research-grade contradiction claims.
 
 ### Retrieval Tuning
 
