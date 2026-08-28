@@ -29,6 +29,7 @@ Short version:
 - The clean S2 run contains 8,850 papers in both ChromaDB and Neo4j.
 - Hybrid rank fusion is implemented and returns neural, symbolic, and overlapping results.
 - Automatic CUDA/MPS/CPU selection and CPU worker controls are implemented.
+- CUDA embedding inference is verified on the local RTX 3050 with PyTorch `2.12.1+cu126`.
 - The next milestone is rerunning the five-query baseline evaluation with the corrected retrieval ranking.
 
 ## Project Structure
@@ -94,6 +95,8 @@ The code selects CUDA automatically when the installed PyTorch build supports it
 ```
 
 The CUDA wheel is approximately 2.6 GB. Let the first command complete before running the requirements command.
+
+The current local environment has this CUDA build installed and verified. A SPECTER query automatically selected the RTX 3050 and used approximately 429 MB allocated VRAM.
 
 Verify GPU access:
 

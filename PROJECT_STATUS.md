@@ -42,7 +42,10 @@ Fresh run completed:
 - Compute environment:
   - RTX 3050 Laptop GPU detected with 4 GB VRAM
   - automatic GPU/CPU selection is implemented
-  - the current venv still has CPU-only PyTorch; CUDA wheel installation is pending
+  - PyTorch `2.12.1+cu126` and torchvision `0.27.1+cu126` are installed
+  - `torch.cuda.is_available()` returns `True`
+  - live SPECTER retrieval automatically selected CUDA successfully
+  - measured model/query memory: about 429 MB allocated and 474 MB reserved VRAM
 
 ## Main Finding
 
