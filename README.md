@@ -2,7 +2,7 @@
 
 NeSy-GraphRAG is a research-assistant prototype for automated literature review and hypothesis generation. It combines neural retrieval with symbolic graph validation and sentence-level provenance so generated review claims remain traceable to verified abstract evidence.
 
-The current focus is the GraphRAG pipeline, citation validation, contradiction detection, hypothesis generation, and evaluation against a vector-only baseline. PDF ingestion is not part of the current scope.
+The abstract-based core pipeline is implemented. Current work should focus on benchmark construction, standard evaluation, baseline comparisons, controlled model experiments, and measured scaling. PDF ingestion is not part of the current scope.
 
 ## What It Does
 
@@ -18,7 +18,7 @@ The current focus is the GraphRAG pipeline, citation validation, contradiction d
 
 ## Current Status
 
-See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the single source of truth on what is done, what is blocked, and what needs to be implemented next.
+See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the single source of truth on implemented capabilities, missing work, limitations, and future priorities.
 
 Short version:
 
@@ -31,12 +31,25 @@ Short version:
 - Hybrid rank fusion is implemented and returns neural, symbolic, and overlapping results.
 - Automatic CUDA/MPS/CPU selection and CPU worker controls are implemented.
 - CUDA embedding inference is verified on the local RTX 3050 with PyTorch `2.12.1+cu126`.
-- The corrected five-query evaluation averages `+0.56` NBR and `+0.10` RDI versus the vector baseline.
+- The existing five-query comparison averages `+0.56` NBR and `+0.10` RDI versus the vector baseline, but has no relevance judgments and is not a final benchmark.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
 - Thirty-three pytest cases cover retrieval, claim provenance, contradiction verdicts, citation guards, empty metrics, Neo4j failures, and hypothesis validation.
 - Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
+- Sentence-level claim provenance is implemented; the latest live check accepted 5/5 claims with 9/9 valid passage citations.
 - The core prototype implementation is complete; the next milestone is the benchmark and evaluation framework.
+
+Not yet implemented or validated:
+
+- judged query sets and frozen evaluation splits
+- standard IR, contradiction, review, and hypothesis metrics
+- BM25, graph-only, standard RAG, and rule-based baselines
+- scientific NER, embedding, and LLM comparisons
+- semantic entailment verification for claim/evidence pairs
+- controlled ablations, repeated runs, confidence intervals, and significance tests
+- measured corpus scaling and evaluation-focused UI reporting
+
+See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the complete implementation inventory, limitations, and ordered future roadmap.
 
 ## Project Structure
 
@@ -59,6 +72,7 @@ nesy-graphrag/
 |   |   |-- prompts.py
 |   |   |-- provenance.py
 |   |   |-- retrieval.py
+|   |   |-- results_logger.py
 |   |   |-- review.py
 |   |   |-- validator.py
 |   |   `-- verdicts.py
