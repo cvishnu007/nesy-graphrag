@@ -33,9 +33,9 @@ Short version:
 - The corrected five-query evaluation averages `+0.56` NBR and `+0.10` RDI versus the vector baseline.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
-- Fourteen automated tests cover retrieval, contradiction verdicts, citation guards, empty metrics, and Neo4j failures.
+- Nineteen automated tests cover retrieval, contradiction verdicts, citation guards, empty metrics, Neo4j failures, and hypothesis validation; use a UTF-8 console on Windows.
 - Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
-- The next milestone is retrieval relevance/temporal-diversity tuning and HNS refinement.
+- The next milestone is a judged retrieval benchmark, followed by claim-level provenance and metric correction.
 
 ## Project Structure
 
@@ -68,7 +68,10 @@ nesy-graphrag/
 |       |-- config.py
 |       `-- groq_client.py
 |-- tests/
-|   `-- test_retrieval.py
+|   |-- test_core_guards.py
+|   |-- test_hypotheses.py
+|   |-- test_retrieval.py
+|   `-- test_verdicts.py
 |-- PROJECT_STATUS.md
 |-- requirements.txt
 `-- README.md
@@ -194,6 +197,15 @@ Implemented in `src/pipeline/metrics.py`:
 - `RDI`: Reasoning Depth Index
 - `HNS`: Hypothesis Novelty Score
 
+These are prototype diagnostics, not established scientific benchmarks. In particular, TS currently validates paper IDs rather than individual claims, NBR measures graph participation rather than relevance, and HNS needs a direction/definition correction before it is used in final evaluation. See `PROJECT_STATUS.md` for the evaluation plan and limitations.
+
+## Scope Boundaries
+
+- The current corpus is 8,850 cleaned Semantic Scholar records, primarily abstracts and metadata. It is not yet the million-scale full-text corpus proposed in the Phase 1 report.
+- The project uses pretrained SPECTER embeddings and a hosted Groq Llama model; it does not train or fine-tune a local reasoning model.
+- Citation grounding is paper-level. Exact sentence, claim, and section provenance remains to be implemented.
+- PDF ingestion is intentionally deferred for this phase. Claim-level provenance should first be implemented over the abstract text already available.
+
 ## Development Notes
 
 - Keep credentials in `.env`; do not commit them.
@@ -202,3 +214,4 @@ Implemented in `src/pipeline/metrics.py`:
 - Resource usage changes by stage: embedding can use the GPU, NER uses GPU when supported or parallel CPU otherwise, and API/Neo4j stages can be network or database bound.
 - Unit tests use small in-memory driver doubles only to isolate failure/guard behavior; end-to-end checks use the real local Neo4j graph and Chroma index.
 - Use `PROJECT_STATUS.md` for planning updates instead of creating new phase/status files.
+- On Windows, set `PYTHONIOENCODING=utf-8` before running tests until the metrics console output is made encoding-safe.

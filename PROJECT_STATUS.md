@@ -66,6 +66,22 @@ The corrected five-query baseline comparison completed successfully. Average NeS
 
 Per-query NeSy NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; every baseline NBR was `0.0`. Trustworthiness remained `1.0` for both paths. The graph now measurably affects retrieval, but reduced temporal diversity on three queries and low absolute RDI require further work.
 
+This proves that graph expansion participates in ranking. It does **not** yet prove that the extra papers are more relevant. The five-query run has no human relevance labels, so NBR cannot substitute for Precision@K, Recall@K, MRR, or NDCG.
+
+## Alignment With The Phase 1 Goal
+
+| Phase 1 expectation | Current position | Remaining gap |
+|---|---|---|
+| Automated literature review | Working end to end | Evaluate review completeness and factual quality |
+| Graph-grounded attribution | Paper IDs are checked against Neo4j | Ground individual claims to exact source sentences/sections |
+| Cross-paper contradiction reasoning | Candidate ranking and structured verdicts work | Benchmark against labeled scientific NLI/contradiction data |
+| Hypothesis generation | Evidence-ranked generation and feasibility fields work | Expert or benchmark validation of novelty and feasibility |
+| End-to-end evaluation | Custom metrics and vector baseline exist | Add relevance judgments, standard IR metrics, repeated runs, and human evaluation |
+| Large scientific corpus | 8,850 mostly CS records are indexed | Scale only after quality and metric logic are validated |
+| Model training for reasoning | Pretrained SPECTER plus hosted Llama are used | Training/fine-tuning has not been implemented |
+
+PDF ingestion remains intentionally deferred. The next provenance iteration should use sentences from the abstracts already stored, so retrieval and citation logic can be validated without expanding ingestion scope.
+
 ## What Is Implemented
 
 ### Ingestion
@@ -193,20 +209,44 @@ Per-query NeSy NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; every baseline NBR
 
 ## Top Priority Implementation Work
 
-### 1. Tune Retrieval Relevance and Temporal Diversity
+### 1. Build A Judged Retrieval Evaluation
 
-The corrected fusion produces strong graph contribution, but ATD averaged `-0.12` versus baseline.
+The corrected fusion produces strong graph contribution, but relevance has not been measured and ATD averaged `-0.12` versus baseline.
 
 Next implementation:
 
-- use retrieval diagnostics across the fixed query set
-- compare fusion-weight settings without reducing NBR below `0.3`
-- add a relevance proxy or judged sample before selecting final weights
-- preserve or improve temporal diversity
+- create a fixed query set with manually judged relevant papers
+- report Precision@K, Recall@K, MRR, and NDCG for vector-only and hybrid retrieval
+- sweep fusion weights and graph expansion depth on the same judgments
+- report source mix, NBR, ATD, and latency as diagnostics rather than relevance substitutes
+- separate retrieval comparisons from hosted-LLM variation
+
+### 2. Add Claim-Level Provenance
+
+- split available abstracts into stable sentence or passage records
+- retain paper ID and sentence offsets through retrieval and generation
+- require generated review claims to cite supporting passage IDs
+- reject citations whose quoted evidence does not support the generated claim
+- add tests for fabricated passage IDs and unsupported claims
+
+### 3. Correct Metric Semantics
+
+- revise TS to measure claim/evidence support instead of title-fragment and paper-ID checks
+- treat NBR strictly as a graph-contribution diagnostic
+- replace or justify the custom RDI formula
+- correct HNS: the current `1 / path_length` implementation rewards shorter paths while the documentation describes longer paths as more novel
+- document metric ranges, edge cases, and interpretation with tests
+
+### 4. Benchmark Reasoning Modes
+
+- evaluate contradiction verdicts on labeled scientific claim pairs or a small expert-labeled set
+- measure precision, recall, F1, calibration, and malformed-output rate
+- evaluate hypotheses separately for evidence support, novelty, feasibility, and usefulness
+- retain human review as the final gate for scientific claims
 
 ## Automated Test Coverage
 
-- 19 tests pass
+- 19 tests pass with UTF-8 stdout enabled
 - retrieval fusion and diagnostics
 - structured contradiction scoring, parsing, and confidence gating
 - fabricated citation IDs are blocked
@@ -237,6 +277,21 @@ Future improvement:
 - compare graph quality before and after
 - measure effect on hypothesis quality and fallback citation edges
 
+### Graph Coverage And Scale
+
+- diagnose why only 2,989 of 8,850 papers participate in citation edges
+- improve citation/concept coverage before increasing corpus size
+- compare one-hop and bounded multi-hop expansion under the judged benchmark
+- scale the corpus only after retrieval quality is stable; sparsity will not automatically fix ranking logic
+
+### Engineering Reliability
+
+- add live integration tests for Neo4j and Chroma behind explicit test markers
+- pin or constrain critical dependency versions for reproducible installs
+- add CI for unit tests and formatting
+- export evaluation runs and parameters in a comparison-friendly format
+- replace or guard Unicode metrics output so tests also pass in the default Windows CP1252 console
+
 ### UI Improvements
 
 Useful but not urgent:
@@ -255,11 +310,17 @@ Useful but not urgent:
 - Graph-expanded papers need qualitative relevance checks, not only a higher NBR.
 - TS is strong, but currently measures paper-level validation, not claim-level provenance.
 - The current contradiction module is heuristic-first, not a proper contradiction model.
+- The current dataset is abstracts/metadata at prototype scale, not the report's proposed large full-text corpus.
+- Current concept extraction is generic spaCy noun-phrase extraction and introduces noisy graph nodes.
+- Hypothesis feasibility is an LLM judgment, not experimental or expert validation.
+- HNS currently has a direction mismatch between its formula and documented interpretation.
+- The metrics summary currently raises `UnicodeEncodeError` in a default Windows CP1252 console; setting `PYTHONIOENCODING=utf-8` avoids it.
 
 ## Current Readiness
 
-- Working demo readiness: about 85%
-- Capstone evaluation readiness: about 78%
-- Research-grade readiness: about 45%
+- Working demo readiness: about 90%
+- Capstone prototype implementation readiness: about 82%
+- Defensible capstone evaluation readiness: about 60%
+- Research-grade readiness: about 35%
 
-The next milestone is strengthening contradiction detection and RDI while using diagnostics to protect retrieval relevance and temporal diversity.
+The pipeline is a strong working prototype: all three user-facing modes execute, graph retrieval now contributes real results, GPU inference works, and core guards have tests. The main distance remaining is no longer basic implementation. It is proving relevance and scientific validity, tightening claim-level provenance, correcting metric semantics, and evaluating reasoning against labeled or expert-reviewed evidence.
