@@ -57,6 +57,16 @@ def compute_ts(verified: dict, papers: list, answer: str) -> dict:
     total_retrieved = len(papers)
     total_verified  = len(verified)
 
+    if total_retrieved == 0:
+        return {
+            "ts": 0.0,
+            "citation_integrity": 0.0,
+            "hallucination_rate": 0.0,
+            "total_retrieved": 0,
+            "total_verified": 0,
+            "hallucinated_count": 0,
+        }
+
     # Citation Integrity: what fraction of retrieved papers actually exist in Neo4j
     citation_integrity = total_verified / total_retrieved if total_retrieved > 0 else 0.0
 

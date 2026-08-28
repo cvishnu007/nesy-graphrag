@@ -33,7 +33,8 @@ Short version:
 - The corrected five-query evaluation averages `+0.56` NBR and `+0.10` RDI versus the vector baseline.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
-- The next milestone is expanding validation/metrics tests, then improving hypothesis validation.
+- Fourteen automated tests cover retrieval, contradiction verdicts, citation guards, empty metrics, and Neo4j failures.
+- The next milestone is improving hypothesis validation.
 
 ## Project Structure
 
@@ -195,4 +196,5 @@ Implemented in `src/pipeline/metrics.py`:
 - Keep generated datasets and ChromaDB files under `data/`.
 - Rebuild the S2 Chroma collection before final evaluation if its vector count does not match the current cleaned S2 dataset.
 - Resource usage changes by stage: embedding can use the GPU, NER uses GPU when supported or parallel CPU otherwise, and API/Neo4j stages can be network or database bound.
+- Unit tests use small in-memory driver doubles only to isolate failure/guard behavior; end-to-end checks use the real local Neo4j graph and Chroma index.
 - Use `PROJECT_STATUS.md` for planning updates instead of creating new phase/status files.

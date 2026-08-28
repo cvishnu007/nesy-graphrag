@@ -179,30 +179,28 @@ Per-query NeSy NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; every baseline NBR
 
 ## Top Priority Implementation Work
 
-### 1. Expand Automated Tests
+### 1. Improve Hypothesis Validation
 
-Add lightweight tests before deeper refactors.
+Current hypothesis mode finds structural holes and asks the LLM to generate hypotheses.
 
-Already covered:
+Next implementation:
 
-- graph-only results can enter top-k
-- overlap is labelled `both` and boosted
-- fusion does not mutate its inputs
-- normalized contradiction candidate scoring
-- exact verdict and confidence parsing
-- negated contradiction mentions do not become contradiction verdicts
-- malformed verdict output becomes `UNKNOWN`
-- low-confidence contradictions do not contribute to RDI
+- add feasibility checks
+- score novelty more transparently
+- filter weak hypotheses
+- include supporting and missing evidence
 
-Still needed:
+## Automated Test Coverage
 
-- fabricated paper ID is blocked by `validate_citations()`
-- metric functions handle empty results
-- Chroma/Neo4j connection failures fail clearly
+- 14 tests pass
+- retrieval fusion and diagnostics
+- structured contradiction scoring, parsing, and confidence gating
+- fabricated citation IDs are blocked
+- empty metric inputs return defined zero values, including TS `0.0`
+- missing Neo4j credentials fail before driver creation
+- connectivity errors close the driver and report the URI without exposing credentials
 
-Success criteria:
-
-- core claims can be defended without relying only on manual runs
+The Neo4j unit tests use isolated in-memory driver doubles only for deterministic guard/failure behavior. Live retrieval and contradiction checks use the real local Neo4j database.
 
 ## Secondary Work
 
@@ -223,17 +221,6 @@ Future improvement:
 - try scispaCy or SciBERT-style concept extraction
 - compare graph quality before and after
 - measure effect on hypothesis quality and fallback citation edges
-
-### Hypothesis Validation
-
-Current hypothesis mode finds structural holes and asks the LLM to generate hypotheses.
-
-Future improvement:
-
-- add feasibility checks
-- score novelty more transparently
-- filter weak hypotheses
-- include supporting and missing evidence
 
 ### UI Improvements
 

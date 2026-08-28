@@ -18,7 +18,11 @@ def get_driver():
             "Missing Neo4j credentials. Set NEO4J_URI, NEO4J_USERNAME, and NEO4J_PASSWORD in .env."
         )
     driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USERNAME, NEO4J_PASSWORD))
-    driver.verify_connectivity()
+    try:
+        driver.verify_connectivity()
+    except Exception as error:
+        driver.close()
+        raise RuntimeError(f"Could not connect to Neo4j at {NEO4J_URI}: {error}") from error
     print("Connected to Neo4j!")
     return driver
 
