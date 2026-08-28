@@ -33,7 +33,7 @@ Short version:
 - The corrected five-query evaluation averages `+0.56` NBR and `+0.10` RDI versus the vector baseline.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
-- Nineteen automated tests cover retrieval, contradiction verdicts, citation guards, empty metrics, Neo4j failures, and hypothesis validation; use a UTF-8 console on Windows.
+- Twenty-four pytest cases cover retrieval, contradiction verdicts, citation guards, empty metrics, Neo4j failures, and hypothesis validation.
 - Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
 - The next milestone is a judged retrieval benchmark, followed by claim-level provenance and metric correction.
 
@@ -68,11 +68,13 @@ nesy-graphrag/
 |       |-- config.py
 |       `-- groq_client.py
 |-- tests/
+|   |-- conftest.py
 |   |-- test_core_guards.py
 |   |-- test_hypotheses.py
 |   |-- test_retrieval.py
 |   `-- test_verdicts.py
 |-- PROJECT_STATUS.md
+|-- pytest.ini
 |-- requirements.txt
 `-- README.md
 ```
@@ -92,6 +94,14 @@ Install Python dependencies:
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
+
+Run the automated test suite:
+
+```bash
+python -m pytest
+```
+
+Pytest configuration lives in `pytest.ini`. Shared fixtures belong in `tests/conftest.py`; tests that require live services must use the registered `integration` marker.
 
 ### NVIDIA GPU Setup
 
@@ -212,6 +222,5 @@ These are prototype diagnostics, not established scientific benchmarks. In parti
 - Keep generated datasets and ChromaDB files under `data/`.
 - Rebuild the S2 Chroma collection before final evaluation if its vector count does not match the current cleaned S2 dataset.
 - Resource usage changes by stage: embedding can use the GPU, NER uses GPU when supported or parallel CPU otherwise, and API/Neo4j stages can be network or database bound.
-- Unit tests use small in-memory driver doubles only to isolate failure/guard behavior; end-to-end checks use the real local Neo4j graph and Chroma index.
+- Pytest unit tests use small in-memory driver doubles only to isolate failure/guard behavior; end-to-end checks use the real local Neo4j graph and Chroma index.
 - Use `PROJECT_STATUS.md` for planning updates instead of creating new phase/status files.
-- On Windows, set `PYTHONIOENCODING=utf-8` before running tests until the metrics console output is made encoding-safe.

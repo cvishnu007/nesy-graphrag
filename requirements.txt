@@ -13,3 +13,4 @@ streamlit
 python-dotenv
 requests
 torchvision
+pytest>=8.0,<9.0

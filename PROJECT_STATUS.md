@@ -246,7 +246,9 @@ Next implementation:
 
 ## Automated Test Coverage
 
-- 19 tests pass with UTF-8 stdout enabled
+- 24 pytest cases pass on the default Windows console
+- pytest discovery and strict marker configuration are defined in `pytest.ini`
+- shared test fixtures are defined in `tests/conftest.py`
 - retrieval fusion and diagnostics
 - structured contradiction scoring, parsing, and confidence gating
 - fabricated citation IDs are blocked
@@ -290,7 +292,6 @@ Future improvement:
 - pin or constrain critical dependency versions for reproducible installs
 - add CI for unit tests and formatting
 - export evaluation runs and parameters in a comparison-friendly format
-- replace or guard Unicode metrics output so tests also pass in the default Windows CP1252 console
 
 ### UI Improvements
 
@@ -314,7 +315,6 @@ Useful but not urgent:
 - Current concept extraction is generic spaCy noun-phrase extraction and introduces noisy graph nodes.
 - Hypothesis feasibility is an LLM judgment, not experimental or expert validation.
 - HNS currently has a direction mismatch between its formula and documented interpretation.
-- The metrics summary currently raises `UnicodeEncodeError` in a default Windows CP1252 console; setting `PYTHONIOENCODING=utf-8` avoids it.
 
 ## Current Readiness
 

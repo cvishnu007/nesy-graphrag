@@ -1,4 +1,4 @@
-import unittest
+import pytest
 
 from src.pipeline.contradiction import score_contradiction_candidate
 from src.pipeline.verdicts import (
@@ -8,53 +8,66 @@ from src.pipeline.verdicts import (
 )
 
 
-class ContradictionVerdictTests(unittest.TestCase):
-    def test_parses_exact_structured_verdict_and_confidence(self):
-        parsed = parse_contradiction_response(
-            "VERDICT: CONTRADICTION\nCONFIDENCE: 0.85\nREASON: Claims conflict."
-        )
-        self.assertEqual(parsed["verdict"], "CONTRADICTION")
-        self.assertEqual(parsed["confidence"], 0.85)
-        self.assertTrue(parsed["valid"])
+def test_parses_exact_structured_verdict_and_confidence():
+    parsed = parse_contradiction_response(
+        "VERDICT: CONTRADICTION\nCONFIDENCE: 0.85\nREASON: Claims conflict."
+    )
 
-    def test_does_not_treat_keyword_mentions_as_verdict(self):
-        parsed = parse_contradiction_response(
-            "VERDICT: DIFFERENT SCOPE\nCONFIDENCE: 0.9\n"
-            "REASON: This is not a contradiction."
-        )
-        self.assertEqual(parsed["verdict"], "DIFFERENT SCOPE")
+    assert parsed["verdict"] == "CONTRADICTION"
+    assert parsed["confidence"] == 0.85
+    assert parsed["valid"] is True
 
-    def test_malformed_response_is_unknown(self):
-        parsed = parse_contradiction_response("The papers probably agree.")
-        self.assertEqual(parsed["verdict"], "UNKNOWN")
-        self.assertFalse(parsed["valid"])
 
-    def test_structured_item_takes_precedence_over_legacy_analysis(self):
-        verdict = contradiction_verdict({
+def test_does_not_treat_keyword_mentions_as_verdict():
+    parsed = parse_contradiction_response(
+        "VERDICT: DIFFERENT SCOPE\nCONFIDENCE: 0.9\n"
+        "REASON: This is not a contradiction."
+    )
+
+    assert parsed["verdict"] == "DIFFERENT SCOPE"
+
+
+@pytest.mark.parametrize(
+    "response",
+    ["The papers probably agree.", "", "CONFIDENCE: 0.90"],
+)
+def test_malformed_response_is_unknown(response):
+    parsed = parse_contradiction_response(response)
+
+    assert parsed["verdict"] == "UNKNOWN"
+    assert parsed["valid"] is False
+
+
+def test_structured_item_takes_precedence_over_legacy_analysis():
+    verdict = contradiction_verdict(
+        {
             "verdict": "AGREEMENT",
             "llm_analysis": "VERDICT: CONTRADICTION",
-        })
-        self.assertEqual(verdict, "AGREEMENT")
+        }
+    )
 
-    def test_candidate_score_normalizes_concept_set_size(self):
-        jaccard, year_gap, score = score_contradiction_candidate(
-            shared_count=2,
-            concepts1=5,
-            concepts2=5,
-            year1=2020,
-            year2=2023,
-        )
-        self.assertAlmostEqual(jaccard, 0.25)
-        self.assertEqual(year_gap, 3)
-        self.assertAlmostEqual(score, 0.3375)
-
-    def test_contradiction_requires_minimum_confidence(self):
-        low = {"verdict": "CONTRADICTION", "confidence": 0.69}
-        high = {"verdict": "CONTRADICTION", "confidence": 0.70}
-
-        self.assertFalse(is_confident_contradiction(low, 0.70))
-        self.assertTrue(is_confident_contradiction(high, 0.70))
+    assert verdict == "AGREEMENT"
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_candidate_score_normalizes_concept_set_size():
+    jaccard, year_gap, score = score_contradiction_candidate(
+        shared_count=2,
+        concepts1=5,
+        concepts2=5,
+        year1=2020,
+        year2=2023,
+    )
+
+    assert jaccard == pytest.approx(0.25)
+    assert year_gap == 3
+    assert score == pytest.approx(0.3375)
+
+
+@pytest.mark.parametrize(
+    ("confidence", "expected"),
+    [(0.69, False), (0.70, True), (1.0, True)],
+)
+def test_contradiction_requires_minimum_confidence(confidence, expected):
+    item = {"verdict": "CONTRADICTION", "confidence": confidence}
+
+    assert is_confident_contradiction(item, 0.70) is expected
