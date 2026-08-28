@@ -157,6 +157,20 @@ Per-query NeSy NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; every baseline NBR
 - Shared verdict interpretation across pipeline, metrics, and Streamlit
 - Live check returned two valid `DIFFERENT SCOPE` verdicts with confidence `0.92` and `0.96`
 
+### Hypothesis Validation
+
+- Structural holes must be supported by at least two neural seed papers
+- Candidate score combines normalized concept overlap and query-paper support
+- Shared concept names and supporting paper IDs are retained as evidence
+- Deterministic structured generation requires:
+  - feasibility
+  - supporting evidence
+  - missing evidence
+- Only valid `HIGH` or `MEDIUM` hypotheses enter normal results and HNS
+- Rejected or malformed generations remain available under `rejected_hypotheses`
+- Streamlit displays evidence score, supporting-paper count, feasibility, and missing evidence
+- Live check returned a valid accepted `MEDIUM`-feasibility hypothesis
+
 ### Metrics
 
 - `TS`: Trustworthiness Score
@@ -179,26 +193,27 @@ Per-query NeSy NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; every baseline NBR
 
 ## Top Priority Implementation Work
 
-### 1. Improve Hypothesis Validation
+### 1. Tune Retrieval Relevance and Temporal Diversity
 
-Current hypothesis mode finds structural holes and asks the LLM to generate hypotheses.
+The corrected fusion produces strong graph contribution, but ATD averaged `-0.12` versus baseline.
 
 Next implementation:
 
-- add feasibility checks
-- score novelty more transparently
-- filter weak hypotheses
-- include supporting and missing evidence
+- use retrieval diagnostics across the fixed query set
+- compare fusion-weight settings without reducing NBR below `0.3`
+- add a relevance proxy or judged sample before selecting final weights
+- preserve or improve temporal diversity
 
 ## Automated Test Coverage
 
-- 14 tests pass
+- 19 tests pass
 - retrieval fusion and diagnostics
 - structured contradiction scoring, parsing, and confidence gating
 - fabricated citation IDs are blocked
 - empty metric inputs return defined zero values, including TS `0.0`
 - missing Neo4j credentials fail before driver creation
 - connectivity errors close the driver and report the URI without exposing credentials
+- hypothesis evidence scoring, structured feasibility parsing, and rejection auditing
 
 The Neo4j unit tests use isolated in-memory driver doubles only for deterministic guard/failure behavior. Live retrieval and contradiction checks use the real local Neo4j database.
 
@@ -208,9 +223,9 @@ The Neo4j unit tests use isolated in-memory driver doubles only for deterministi
 
 The structured contradiction layer is implemented, but verdict semantics still depend on the hosted LLM. Compare it against a scientific NLI or claim-level classifier before making research-grade contradiction claims.
 
-### Retrieval Tuning
+### HNS Refinement
 
-The equal fusion weights produce strong graph contribution, but ATD averaged `-0.12` versus baseline. Use the new diagnostics to test weight settings without lowering NBR below the `0.3` target, and add relevance checks before selecting a final configuration.
+HNS currently measures graph path structure only. Incorporate accepted feasibility/evidence information or report it as a separate quality metric before treating HNS as a complete hypothesis-quality score.
 
 ### Entity Extraction Quality
 

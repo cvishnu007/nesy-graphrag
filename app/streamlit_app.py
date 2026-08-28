@@ -164,8 +164,12 @@ if run and query:
                 with st.expander(f"💡 Hypothesis {i+1}: {h.get('title', '')[:60]}... ({h.get('year', '')})"):
                     st.markdown(f"**Category:** {h.get('category', 'N/A')}")
                     st.markdown(f"**Shared Concepts:** {h.get('shared_concepts', 'N/A')}")
+                    st.markdown(f"**Supporting Papers:** {h.get('supporting_papers', 'N/A')}")
+                    st.markdown(f"**Evidence Score:** {h.get('evidence_score', 'N/A')}")
+                    st.markdown(f"**Feasibility:** {item.get('feasibility', 'UNKNOWN')}")
                     st.markdown("**Generated Hypothesis:**")
                     st.markdown(llm_text)
+                    st.markdown(f"**Missing Evidence:** {item.get('missing_evidence', 'Not provided')}")
 
 elif run and not query:
     st.warning("Please enter a query first.")

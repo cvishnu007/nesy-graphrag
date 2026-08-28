@@ -11,7 +11,7 @@ The current focus is the GraphRAG pipeline, citation validation, contradiction d
 - Validates paper IDs against Neo4j before sending context to the LLM.
 - Generates literature reviews through Groq-hosted Llama models.
 - Ranks contradiction candidates by normalized concept overlap and parses structured, confidence-gated verdicts.
-- Generates hypothesis candidates from structural holes in the graph.
+- Ranks structural-hole hypotheses by graph evidence and validates feasibility, support, and missing evidence.
 - Computes evaluation metrics for trustworthiness, graph contribution, temporal diversity, reasoning depth, and hypothesis novelty.
 - Provides a Streamlit UI for interactive use.
 
@@ -34,7 +34,8 @@ Short version:
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
 - Fourteen automated tests cover retrieval, contradiction verdicts, citation guards, empty metrics, and Neo4j failures.
-- The next milestone is improving hypothesis validation.
+- Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
+- The next milestone is retrieval relevance/temporal-diversity tuning and HNS refinement.
 
 ## Project Structure
 
@@ -133,6 +134,9 @@ LLM_MODEL_FALLBACK=llama-3.1-8b-instant
 CONTRADICTION_MIN_SHARED_CONCEPTS=2
 CONTRADICTION_MIN_CONCEPT_JACCARD=0.10
 CONTRADICTION_MIN_CONFIDENCE=0.70
+
+HYPOTHESIS_MIN_SHARED_CONCEPTS=2
+HYPOTHESIS_MIN_QUERY_SUPPORT=2
 ```
 
 Useful defaults are defined in `src/utils/config.py`.

@@ -103,5 +103,10 @@ in the knowledge graph.
 
 Generate a research hypothesis in this format:
 HYPOTHESIS: [1 clear sentence stating the potential connection]
+FEASIBILITY: [HIGH / MEDIUM / LOW]
+MISSING EVIDENCE: [What must still be tested or collected]
+SUPPORTING EVIDENCE: [Specific shared concepts and papers that support it]
 RATIONALE: [2-3 sentences explaining why combining these could be valuable]
-POTENTIAL IMPACT: [1 sentence on what new knowledge this could produce]"""
+POTENTIAL IMPACT: [1 sentence on what new knowledge this could produce]
+
+Use plain text with exactly one field per line. Do not use Markdown or bullet lists."""
