@@ -57,14 +57,14 @@ Live result for `graph neural networks for node classification`:
 - after: 5 neural, 4 symbolic, 1 both, NBR `0.5`
 - Neo4j and the existing 8,850-vector Chroma collection were used for this check
 
-The previous five-query baseline comparison was run before this fix and is now obsolete. Its deltas were:
+The corrected five-query baseline comparison completed successfully. Average NeSy deltas versus vector-only retrieval were:
 
 - TS delta: `0.0`
-- NBR delta: `0.0`
-- ATD delta: `0.0`
-- RDI delta: `0.0`
+- NBR delta: `+0.56`
+- ATD delta: `-0.12`
+- RDI delta: `+0.10`
 
-The next evaluation run must determine whether the improved source mix also improves answer-level metrics and qualitative review quality.
+Per-query NeSy NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; every baseline NBR was `0.0`. Trustworthiness remained `1.0` for both paths. The graph now measurably affects retrieval, but reduced temporal diversity on three queries and low absolute RDI require further work.
 
 ## What Is Implemented
 
@@ -122,6 +122,12 @@ The next evaluation run must determine whether the improved source mix also impr
   - `symbolic`
   - `both`
 - Vector-only baseline retrieval
+- One-command retrieval diagnostics with:
+  - neural and graph ranks
+  - neural similarity and graph connections
+  - citation degree
+  - final source distribution and score
+  - kept/dropped cutoff decision
 
 ### Citation Validation
 
@@ -159,35 +165,7 @@ The next evaluation run must determine whether the improved source mix also impr
 
 ## Top Priority Implementation Work
 
-### 1. Re-run Baseline Comparison After Ranking Fix
-
-Run the existing five-query harness and preserve the new results. Record TS, NBR, ATD, RDI, source distribution, and a short qualitative comparison for each query.
-
-Success criteria:
-
-- NeSy and baseline retrieval sets are no longer identical
-- graph contribution remains measurable across multiple queries
-- answer quality does not regress from admitting graph-expanded papers
-
-### 2. Add Retrieval Diagnostics
-
-Before changing deeper logic, make the pipeline easier to inspect.
-
-Add debug output or a small diagnostic function showing:
-
-- neural top-k IDs and titles
-- symbolic expanded IDs and titles
-- citation degree for retrieved papers
-- final merged ranking
-- source distribution
-- why symbolic candidates were kept or dropped
-
-Success criteria:
-
-- one command can explain why a query produced NBR `0.0`
-- ranking changes can be evaluated without guessing
-
-### 3. Improve Contradiction Detection
+### 1. Improve Contradiction Detection
 
 Current behavior:
 
@@ -208,7 +186,7 @@ Success criteria:
 - reproducible contradiction labels
 - better RDI credibility
 
-### 4. Expand Automated Tests
+### 2. Expand Automated Tests
 
 Add lightweight tests before deeper refactors.
 
@@ -230,6 +208,10 @@ Success criteria:
 - core claims can be defended without relying only on manual runs
 
 ## Secondary Work
+
+### Retrieval Tuning
+
+The equal fusion weights produce strong graph contribution, but ATD averaged `-0.12` versus baseline. Use the new diagnostics to test weight settings without lowering NBR below the `0.3` target, and add relevance checks before selecting a final configuration.
 
 ### Entity Extraction Quality
 
@@ -274,7 +256,7 @@ Useful but not urgent:
 ## Current Readiness
 
 - Working demo readiness: about 85%
-- Capstone evaluation readiness: about 72%
+- Capstone evaluation readiness: about 78%
 - Research-grade readiness: about 45%
 
-The next milestone is validating the corrected hybrid retrieval across the fixed evaluation query set, then tuning it based on evidence.
+The next milestone is strengthening contradiction detection and RDI while using diagnostics to protect retrieval relevance and temporal diversity.

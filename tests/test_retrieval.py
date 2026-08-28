@@ -1,6 +1,6 @@
 import unittest
 
-from src.pipeline.retrieval import fuse_results
+from src.pipeline.retrieval import build_retrieval_diagnostics, fuse_results
 
 
 def paper(paper_id, score=0.8):
@@ -45,6 +45,28 @@ class RetrievalFusionTests(unittest.TestCase):
 
         self.assertNotIn("neural_rank", neural[0])
         self.assertNotIn("graph_rank", symbolic[0])
+
+    def test_diagnostics_explain_kept_and_dropped_candidates(self):
+        neural = [paper("shared"), paper("neural-only")]
+        symbolic = [
+            {**paper("shared"), "graph_connections": 3},
+            {**paper("graph-only"), "graph_connections": 2},
+            {**paper("dropped"), "graph_connections": 1},
+        ]
+        final = fuse_results(neural, symbolic, top_k=2)
+
+        report = build_retrieval_diagnostics(
+            neural,
+            symbolic,
+            final,
+            {"shared": 4, "neural-only": 0, "graph-only": 2, "dropped": 1},
+        )
+        rows = {row["id"]: row for row in report["candidates"]}
+
+        self.assertEqual(report["source_distribution"]["both"], 1)
+        self.assertEqual(rows["shared"]["citation_degree"], 4)
+        self.assertEqual(rows["shared"]["decision"], "kept in final top-k")
+        self.assertEqual(rows["dropped"]["decision"], "dropped below final cutoff")
 
 
 if __name__ == "__main__":

@@ -22,6 +22,7 @@ Or from code:
 
 import sys
 import os
+from collections import Counter
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.pipeline.orchestrator import get_groq, get_neo4j
@@ -89,9 +90,12 @@ def run_baseline_comparison(
             "query"           : query,
             "nesy_metrics"    : nesy_metrics,
             "baseline_metrics": base_metrics,
+            "nesy_sources"    : dict(Counter(p["source"] for p in nesy_result["papers"])),
+            "baseline_sources": dict(Counter(p["source"] for p in base_result["papers"])),
             "delta"           : delta,
         }
         results.append(entry)
+        print(f"  Sources: NeSy={entry['nesy_sources']}  Baseline={entry['baseline_sources']}")
 
         # Log both runs
         log_result(query, "nesy",     nesy_metrics)

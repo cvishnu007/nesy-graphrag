@@ -30,7 +30,9 @@ Short version:
 - Hybrid rank fusion is implemented and returns neural, symbolic, and overlapping results.
 - Automatic CUDA/MPS/CPU selection and CPU worker controls are implemented.
 - CUDA embedding inference is verified on the local RTX 3050 with PyTorch `2.12.1+cu126`.
-- The next milestone is rerunning the five-query baseline evaluation with the corrected retrieval ranking.
+- The corrected five-query evaluation averages `+0.56` NBR and `+0.10` RDI versus the vector baseline.
+- Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
+- The next milestone is improving contradiction detection and reasoning-depth evaluation.
 
 ## Project Structure
 
@@ -150,6 +152,12 @@ Run the baseline comparison:
 
 ```bash
 python -m src.pipeline.baseline_harness
+```
+
+Explain a hybrid retrieval result without calling the LLM:
+
+```bash
+python -m src.pipeline.retrieval "graph neural networks for node classification" --top-k 10
 ```
 
 ## App
