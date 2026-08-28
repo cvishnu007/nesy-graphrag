@@ -66,6 +66,7 @@ USE_REAL_CITATIONS = os.getenv(
 
 # ── Models ────────────────────────────────────────────
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "allenai-specter")
+EMBEDDING_BATCH_SIZE = int(os.getenv("EMBEDDING_BATCH_SIZE", "16"))
 LLM_MODEL          = os.getenv("LLM_MODEL",          "llama-3.3-70b-versatile")
 LLM_MODEL_FALLBACK = os.getenv("LLM_MODEL_FALLBACK", "llama-3.1-8b-instant")
 GROQ_MAX_RETRIES   = int(os.getenv("GROQ_MAX_RETRIES", 4))

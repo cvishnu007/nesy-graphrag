@@ -26,8 +26,10 @@ Short version:
 - ChromaDB indexing is implemented and local collections exist.
 - Neo4j graph loading code is implemented.
 - Literature review, contradiction, hypothesis, metrics, and baseline comparison modules exist.
-- Static Python compilation passes.
-- The next milestone is a clean end-to-end S2 run with Neo4j reachable and the `s2_papers` Chroma collection rebuilt.
+- The clean S2 run contains 8,850 papers in both ChromaDB and Neo4j.
+- Hybrid rank fusion is implemented and returns neural, symbolic, and overlapping results.
+- Automatic CUDA/MPS/CPU selection and CPU worker controls are implemented.
+- The next milestone is rerunning the five-query baseline evaluation with the corrected retrieval ranking.
 
 ## Project Structure
 
@@ -56,8 +58,11 @@ nesy-graphrag/
 |   |   |-- chroma_store.py
 |   |   `-- neo4j_store.py
 |   `-- utils/
+|       |-- compute.py
 |       |-- config.py
 |       `-- groq_client.py
+|-- tests/
+|   `-- test_retrieval.py
 |-- PROJECT_STATUS.md
 |-- requirements.txt
 `-- README.md
@@ -79,6 +84,25 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
+### NVIDIA GPU Setup
+
+The code selects CUDA automatically when the installed PyTorch build supports it. On Windows, install a CUDA build into the existing virtual environment before installing the remaining requirements. For the detected RTX 3050, use the official CUDA 12.6 wheels:
+
+```powershell
+.\venv\Scripts\python.exe -m pip install torch==2.12.1 torchvision==0.27.1 --index-url https://download.pytorch.org/whl/cu126
+.\venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+The CUDA wheel is approximately 2.6 GB. Let the first command complete before running the requirements command.
+
+Verify GPU access:
+
+```powershell
+.\venv\Scripts\python.exe -c "import torch; print(torch.cuda.is_available(), torch.cuda.get_device_name(0))"
+```
+
+`EMBEDDING_DEVICE=auto` uses CUDA first, then Apple MPS, then CPU. SPECTER uses `EMBEDDING_BATCH_SIZE=16` by default to stay within a 4 GB GPU. The current spaCy model uses GPU only when spaCy's GPU backend is installed; otherwise NER automatically uses parallel CPU workers.
+
 ## Configuration
 
 Create a local `.env` file in the project root:
@@ -94,6 +118,8 @@ GROQ_API_KEY=your_groq_key
 SEMANTIC_SCHOLAR_API_KEY=your_semantic_scholar_key
 
 EMBEDDING_MODEL=allenai-specter
+EMBEDDING_DEVICE=auto
+EMBEDDING_BATCH_SIZE=16
 LLM_MODEL=llama-3.3-70b-versatile
 LLM_MODEL_FALLBACK=llama-3.1-8b-instant
 ```
@@ -152,4 +178,5 @@ Implemented in `src/pipeline/metrics.py`:
 - Keep credentials in `.env`; do not commit them.
 - Keep generated datasets and ChromaDB files under `data/`.
 - Rebuild the S2 Chroma collection before final evaluation if its vector count does not match the current cleaned S2 dataset.
+- Resource usage changes by stage: embedding can use the GPU, NER uses GPU when supported or parallel CPU otherwise, and API/Neo4j stages can be network or database bound.
 - Use `PROJECT_STATUS.md` for planning updates instead of creating new phase/status files.

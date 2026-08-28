@@ -39,28 +39,29 @@ Fresh run completed:
   - contradiction mode completed
   - hypothesis mode completed
   - baseline comparison completed on 5 queries
+- Compute environment:
+  - RTX 3050 Laptop GPU detected with 4 GB VRAM
+  - automatic GPU/CPU selection is implemented
+  - the current venv still has CPU-only PyTorch; CUDA wheel installation is pending
 
 ## Main Finding
 
-The system works, but NeSy is currently behaving like vector-only RAG in the final top-k output.
+The retrieval ranking defect has been fixed. Chroma now returns real cosine similarity, graph candidates receive normalized connectivity scores, and the final ranking uses reciprocal-rank fusion.
 
-The graph is not dead: symbolic expansion returns graph-neighbor candidates. The issue is ranking.
+Live result for `graph neural networks for node classification`:
 
-Current ranking behavior:
+- before: 10 neural, 0 symbolic/both, NBR `0.0`
+- after: 5 neural, 4 symbolic, 1 both, NBR `0.5`
+- Neo4j and the existing 8,850-vector Chroma collection were used for this check
 
-- neural papers get fixed score `1.0`
-- symbolic-only papers get lower graph scores, often around `0.5` or `0.6`
-- final top-10 is sorted by score
-- therefore symbolic candidates are generated but pushed below the cutoff
-
-Result from the latest baseline comparison:
+The previous five-query baseline comparison was run before this fix and is now obsolete. Its deltas were:
 
 - TS delta: `0.0`
 - NBR delta: `0.0`
 - ATD delta: `0.0`
 - RDI delta: `0.0`
 
-This means the current implementation proves the pipeline can run, but does not yet prove the graph layer improves retrieval.
+The next evaluation run must determine whether the improved source mix also improves answer-level metrics and qualitative review quality.
 
 ## What Is Implemented
 
@@ -76,12 +77,15 @@ This means the current implementation proves the pipeline can run, but does not 
 - spaCy-based entity and noun-chunk extraction in `src/ingestion/ner_extractor.py`
 - Multiprocessing support through `SPACY_N_PROCESS`
 - Batch size control through `SPACY_BATCH_SIZE`
+- Automatic spaCy GPU preference with parallel CPU fallback
 
 ### Vector Store
 
 - ChromaDB persistent indexing in `src/storage/chroma_store.py`
 - SPECTER embedding model loading
 - Resume support for partially indexed collections
+- Automatic SPECTER device selection in CUDA, MPS, CPU order
+- Conservative embedding micro-batches for limited GPU memory
 - PyTorch CPU thread controls:
   - `TORCH_NUM_THREADS`
   - `TORCH_INTEROP_THREADS`
@@ -107,7 +111,9 @@ This means the current implementation proves the pipeline can run, but does not 
 
 - Neural retrieval through ChromaDB
 - Symbolic expansion through Neo4j `CITES` traversal
-- NeSy merge function
+- Real Chroma cosine similarities instead of fixed scores
+- Normalized graph connectivity scores
+- Weighted reciprocal-rank fusion
 - Source labels:
   - `neural`
   - `symbolic`
@@ -150,35 +156,15 @@ This means the current implementation proves the pipeline can run, but does not 
 
 ## Top Priority Implementation Work
 
-### 1. Fix Retrieval Ranking So NeSy Actually Affects Top-k
+### 1. Re-run Baseline Comparison After Ranking Fix
 
-This is the highest priority.
-
-Problem:
-
-- symbolic expansion produces candidates
-- but those candidates rarely enter the final top-10
-- so NeSy and baseline outputs are effectively identical
-
-Implement one conservative ranking strategy first:
-
-- keep Chroma neural rank as a normalized score instead of fixed `1.0`
-- increase symbolic contribution enough to compete with neural-only papers
-- preserve `source = "neural" | "symbolic" | "both"`
-- log/debug the source distribution for each query
-
-Possible implementation options:
-
-- normalize neural scores using Chroma distances
-- reserve 2-3 final slots for symbolic candidates
-- boost `both` papers strongly
-- tune symbolic score from citation connections more carefully
+Run the existing five-query harness and preserve the new results. Record TS, NBR, ATD, RDI, source distribution, and a short qualitative comparison for each query.
 
 Success criteria:
 
-- at least some queries return `symbolic` or `both` papers in final top-k
-- NBR becomes non-zero for graph-relevant queries
-- NeSy vs baseline comparison shows a measurable difference
+- NeSy and baseline retrieval sets are no longer identical
+- graph contribution remains measurable across multiple queries
+- answer quality does not regress from admitting graph-expanded papers
 
 ### 2. Add Retrieval Diagnostics
 
@@ -198,34 +184,7 @@ Success criteria:
 - one command can explain why a query produced NBR `0.0`
 - ranking changes can be evaluated without guessing
 
-### 3. Re-run Baseline Comparison After Ranking Fix
-
-After retrieval ranking is fixed, rerun the existing baseline harness.
-
-Use the same 5 queries first:
-
-- graph neural networks for node classification
-- transformer architectures for natural language processing
-- reinforcement learning in robotics
-- knowledge graph embedding methods
-- federated learning privacy preserving machine learning
-
-Record:
-
-- TS
-- NBR
-- ATD
-- RDI
-- source distribution
-- short qualitative difference between NeSy and baseline answer
-
-Success criteria:
-
-- NeSy and baseline are no longer identical
-- graph contribution is measurable
-- results are suitable for the evaluation chapter
-
-### 4. Improve Contradiction Detection
+### 3. Improve Contradiction Detection
 
 Current behavior:
 
@@ -246,16 +205,21 @@ Success criteria:
 - reproducible contradiction labels
 - better RDI credibility
 
-### 5. Add Basic Tests
+### 4. Expand Automated Tests
 
 Add lightweight tests before deeper refactors.
 
-Minimum tests:
+Already covered:
+
+- graph-only results can enter top-k
+- overlap is labelled `both` and boosted
+- fusion does not mutate its inputs
+
+Still needed:
 
 - fabricated paper ID is blocked by `validate_citations()`
 - contradiction verdict parser does not count negated mentions as contradictions
 - metric functions handle empty results
-- retrieval merge preserves correct `source` labels
 - Chroma/Neo4j connection failures fail clearly
 
 Success criteria:
@@ -299,15 +263,15 @@ Useful but not urgent:
 - Current real citation graph is sparse:
   - only 2,989 of 8,850 papers participate in at least one `CITES` edge
   - 1,581 papers have outgoing real `CITES` edges
-- The default test queries often retrieve neural papers whose symbolic neighbors do not survive final ranking.
-- NBR and RDI are currently low because of ranking behavior, not because the whole graph pipeline is absent.
+- Equal neural/graph fusion weights may need tuning after the five-query evaluation.
+- Graph-expanded papers need qualitative relevance checks, not only a higher NBR.
 - TS is strong, but currently measures paper-level validation, not claim-level provenance.
 - The current contradiction module is heuristic-first, not a proper contradiction model.
 
 ## Current Readiness
 
 - Working demo readiness: about 85%
-- Capstone evaluation readiness: about 65%
+- Capstone evaluation readiness: about 72%
 - Research-grade readiness: about 45%
 
-The next milestone is not more ingestion. The next milestone is making the graph layer visibly and measurably improve retrieval.
+The next milestone is validating the corrected hybrid retrieval across the fixed evaluation query set, then tuning it based on evidence.

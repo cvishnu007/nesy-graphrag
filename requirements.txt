@@ -1,6 +1,8 @@
 arxiv
 pandas
 sentence-transformers
+# On NVIDIA systems, install the matching CUDA wheels from download.pytorch.org
+# before this file. See the GPU setup section in README.md.
 torch
 transformers
 spacy==3.7.5

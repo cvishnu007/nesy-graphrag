@@ -6,27 +6,13 @@ from sentence_transformers import SentenceTransformer
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import (
-    CLEAN_FILE, CHROMA_COLLECTION, CHROMA_DIR, DATA_SOURCE, EMBEDDING_MODEL, BATCH_SIZE
+    BATCH_SIZE, CHROMA_COLLECTION, CHROMA_DIR, CLEAN_FILE, DATA_SOURCE,
+    EMBEDDING_BATCH_SIZE, EMBEDDING_MODEL,
 )
+from src.utils.compute import configure_torch
 
 _collection = None
 _embedder   = None
-
-
-def _configure_torch_threads():
-    """Use most CPU cores for embedding without fully starving the OS."""
-    try:
-        import torch
-    except Exception:
-        return
-
-    cpu_count = os.cpu_count() or 2
-    thread_count = int(os.getenv("TORCH_NUM_THREADS", max(1, cpu_count - 1)))
-    interop_count = int(os.getenv("TORCH_INTEROP_THREADS", max(1, min(4, thread_count))))
-
-    torch.set_num_threads(thread_count)
-    torch.set_num_interop_threads(interop_count)
-    print(f"PyTorch threads: intra-op={thread_count}, inter-op={interop_count}")
 
 
 def get_collection():
@@ -43,13 +29,17 @@ def get_collection():
 def get_embedder():
     global _embedder
     if _embedder is None:
-        _configure_torch_threads()
+        device = configure_torch()
         print(f"Loading embedding model: {EMBEDDING_MODEL}")
         local_only = os.getenv("HF_HUB_OFFLINE") == "1" or os.getenv("TRANSFORMERS_OFFLINE") == "1"
         try:
-            _embedder = SentenceTransformer(EMBEDDING_MODEL, local_files_only=local_only)
+            _embedder = SentenceTransformer(
+                EMBEDDING_MODEL,
+                device=device,
+                local_files_only=local_only,
+            )
         except TypeError:
-            _embedder = SentenceTransformer(EMBEDDING_MODEL)
+            _embedder = SentenceTransformer(EMBEDDING_MODEL, device=device)
         print("Model loaded!")
     return _embedder
 
@@ -73,6 +63,7 @@ def build_index():
         batch      = df_remaining.iloc[i : i + BATCH_SIZE]
         embeddings = embedder.encode(
             batch["clean_abstract"].tolist(),
+            batch_size=EMBEDDING_BATCH_SIZE,
             show_progress_bar=False
         ).tolist()
 
@@ -105,7 +96,11 @@ def query(text, top_k=10):
     """Query ChromaDB with a text string, returns list of paper dicts."""
     collection = get_collection()
     embedder   = get_embedder()
-    query_vec  = embedder.encode([text]).tolist()
+    query_vec  = embedder.encode(
+        [text],
+        batch_size=EMBEDDING_BATCH_SIZE,
+        show_progress_bar=False,
+    ).tolist()
     results    = collection.query(
         query_embeddings=query_vec,
         n_results=top_k,

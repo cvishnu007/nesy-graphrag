@@ -5,6 +5,7 @@ import spacy
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import CLEAN_FILE, NER_FILE
+from src.utils.compute import available_cpu_workers
 
 # ── Noise words to filter out — from your notebook ────
 NOISE = {
@@ -46,12 +47,23 @@ def run():
     df = pd.read_json(CLEAN_FILE)
     print(f"Loaded {len(df)} papers from {CLEAN_FILE}")
 
+    spacy_device = os.getenv("SPACY_DEVICE", "auto").strip().lower()
+    if spacy_device not in {"auto", "gpu", "cpu"}:
+        raise ValueError("SPACY_DEVICE must be auto, gpu, or cpu")
+    if spacy_device == "gpu":
+        spacy.require_gpu(int(os.getenv("SPACY_GPU_ID", "0")))
+        gpu_enabled = True
+    elif spacy_device == "auto":
+        gpu_enabled = spacy.prefer_gpu(int(os.getenv("SPACY_GPU_ID", "0")))
+    else:
+        spacy.require_cpu()
+        gpu_enabled = False
+
     nlp = spacy.load("en_core_web_sm")
-    print("spaCy model loaded!")
+    print(f"spaCy model loaded on {'gpu' if gpu_enabled else 'cpu'}!")
 
     print("Extracting entities...")
-    cpu_count = os.cpu_count() or 2
-    n_process = int(os.getenv("SPACY_N_PROCESS", max(1, cpu_count - 1)))
+    n_process = 1 if gpu_enabled else available_cpu_workers("SPACY_N_PROCESS")
     batch_size = int(os.getenv("SPACY_BATCH_SIZE", "128"))
     print(f"spaCy workers: n_process={n_process}, batch_size={batch_size}")
 
