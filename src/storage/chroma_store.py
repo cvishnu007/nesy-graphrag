@@ -13,6 +13,22 @@ _collection = None
 _embedder   = None
 
 
+def _configure_torch_threads():
+    """Use most CPU cores for embedding without fully starving the OS."""
+    try:
+        import torch
+    except Exception:
+        return
+
+    cpu_count = os.cpu_count() or 2
+    thread_count = int(os.getenv("TORCH_NUM_THREADS", max(1, cpu_count - 1)))
+    interop_count = int(os.getenv("TORCH_INTEROP_THREADS", max(1, min(4, thread_count))))
+
+    torch.set_num_threads(thread_count)
+    torch.set_num_interop_threads(interop_count)
+    print(f"PyTorch threads: intra-op={thread_count}, inter-op={interop_count}")
+
+
 def get_collection():
     global _collection
     if _collection is None:
@@ -27,8 +43,13 @@ def get_collection():
 def get_embedder():
     global _embedder
     if _embedder is None:
+        _configure_torch_threads()
         print(f"Loading embedding model: {EMBEDDING_MODEL}")
-        _embedder = SentenceTransformer(EMBEDDING_MODEL)
+        local_only = os.getenv("HF_HUB_OFFLINE") == "1" or os.getenv("TRANSFORMERS_OFFLINE") == "1"
+        try:
+            _embedder = SentenceTransformer(EMBEDDING_MODEL, local_files_only=local_only)
+        except TypeError:
+            _embedder = SentenceTransformer(EMBEDDING_MODEL)
         print("Model loaded!")
     return _embedder
 

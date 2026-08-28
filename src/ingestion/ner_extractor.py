@@ -50,7 +50,26 @@ def run():
     print("spaCy model loaded!")
 
     print("Extracting entities...")
-    df["entities"] = df["clean_abstract"].apply(lambda t: extract_entities(nlp, t))
+    cpu_count = os.cpu_count() or 2
+    n_process = int(os.getenv("SPACY_N_PROCESS", max(1, cpu_count - 1)))
+    batch_size = int(os.getenv("SPACY_BATCH_SIZE", "128"))
+    print(f"spaCy workers: n_process={n_process}, batch_size={batch_size}")
+
+    def extract_from_doc(doc):
+        entities = []
+        for ent in doc.ents:
+            if ent.label_ in ["ORG", "PRODUCT", "GPE", "WORK_OF_ART", "EVENT"]:
+                entities.append(ent.text.lower().strip())
+        for chunk in doc.noun_chunks:
+            if len(chunk.text.split()) <= 4:
+                entities.append(chunk.text.lower().strip())
+        return list(set(entities))
+
+    texts = [text[:1000] if text else "" for text in df["clean_abstract"].tolist()]
+    df["entities"] = [
+        extract_from_doc(doc)
+        for doc in nlp.pipe(texts, batch_size=batch_size, n_process=n_process)
+    ]
 
     print("Filtering entities...")
     df["entities"] = df["entities"].apply(filter_entities)
