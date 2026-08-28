@@ -106,17 +106,24 @@ def query(text, top_k=10):
     collection = get_collection()
     embedder   = get_embedder()
     query_vec  = embedder.encode([text]).tolist()
-    results    = collection.query(query_embeddings=query_vec, n_results=top_k)
+    results    = collection.query(
+        query_embeddings=query_vec,
+        n_results=top_k,
+        include=["documents", "metadatas", "distances"],
+    )
 
     papers = []
     for i in range(len(results["ids"][0])):
+        distance = float(results["distances"][0][i])
+        similarity = max(0.0, min(1.0, 1.0 - distance))
         papers.append({
             "id"       : results["ids"][0][i],
             "abstract" : results["documents"][0][i],
             "title"    : results["metadatas"][0][i].get("title", ""),
             "year"     : results["metadatas"][0][i].get("year", ""),
             "category" : results["metadatas"][0][i].get("primary_category", ""),
-            "score"    : 1.0,
+            "score"    : round(similarity, 6),
+            "neural_score": round(similarity, 6),
             "source"   : "neural"
         })
     return papers
