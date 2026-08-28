@@ -1,6 +1,6 @@
 # NeSy-GraphRAG
 
-NeSy-GraphRAG is a research-assistant prototype for automated literature review and hypothesis generation. It combines neural retrieval with symbolic graph validation so generated reviews are grounded in papers that exist in the project knowledge graph.
+NeSy-GraphRAG is a research-assistant prototype for automated literature review and hypothesis generation. It combines neural retrieval with symbolic graph validation and sentence-level provenance so generated review claims remain traceable to verified abstract evidence.
 
 The current focus is the GraphRAG pipeline, citation validation, contradiction detection, hypothesis generation, and evaluation against a vector-only baseline. PDF ingestion is not part of the current scope.
 
@@ -9,7 +9,8 @@ The current focus is the GraphRAG pipeline, citation validation, contradiction d
 - Retrieves relevant scientific papers with SPECTER embeddings and ChromaDB.
 - Expands results through a Neo4j citation/concept graph.
 - Validates paper IDs against Neo4j before sending context to the LLM.
-- Generates literature reviews through Groq-hosted Llama models.
+- Generates literature reviews through Groq-hosted Llama models with deterministic claim-to-passage citations.
+- Blocks claims with missing, malformed, or fabricated passage IDs and retains them for audit.
 - Ranks contradiction candidates by normalized concept overlap and parses structured, confidence-gated verdicts.
 - Ranks structural-hole hypotheses by graph evidence and validates feasibility, support, and missing evidence.
 - Computes evaluation metrics for trustworthiness, graph contribution, temporal diversity, reasoning depth, and hypothesis novelty.
@@ -33,9 +34,9 @@ Short version:
 - The corrected five-query evaluation averages `+0.56` NBR and `+0.10` RDI versus the vector baseline.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
-- Twenty-four pytest cases cover retrieval, contradiction verdicts, citation guards, empty metrics, Neo4j failures, and hypothesis validation.
+- Thirty-three pytest cases cover retrieval, claim provenance, contradiction verdicts, citation guards, empty metrics, Neo4j failures, and hypothesis validation.
 - Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
-- The next milestone is a judged retrieval benchmark, followed by claim-level provenance and metric correction.
+- The core prototype implementation is complete; the next milestone is the benchmark and evaluation framework.
 
 ## Project Structure
 
@@ -56,6 +57,7 @@ nesy-graphrag/
 |   |   |-- metrics.py
 |   |   |-- orchestrator.py
 |   |   |-- prompts.py
+|   |   |-- provenance.py
 |   |   |-- retrieval.py
 |   |   |-- review.py
 |   |   |-- validator.py
@@ -71,6 +73,7 @@ nesy-graphrag/
 |   |-- conftest.py
 |   |-- test_core_guards.py
 |   |-- test_hypotheses.py
+|   |-- test_provenance.py
 |   |-- test_retrieval.py
 |   `-- test_verdicts.py
 |-- PROJECT_STATUS.md
@@ -194,6 +197,7 @@ streamlit run app/streamlit_app.py
 The app supports:
 
 - Literature Review
+- Claim evidence inspection and unsupported-claim audits
 - Contradiction Detection
 - Hypothesis Generation
 
@@ -207,14 +211,14 @@ Implemented in `src/pipeline/metrics.py`:
 - `RDI`: Reasoning Depth Index
 - `HNS`: Hypothesis Novelty Score
 
-These are prototype diagnostics, not established scientific benchmarks. In particular, TS currently validates paper IDs rather than individual claims, NBR measures graph participation rather than relevance, and HNS needs a direction/definition correction before it is used in final evaluation. See `PROJECT_STATUS.md` for the evaluation plan and limitations.
+These are prototype diagnostics, not established scientific benchmarks. TS now uses valid passage citations and grounded-claim coverage, but semantic entailment still requires benchmark evaluation. NBR measures graph participation rather than relevance, and HNS needs a direction/definition correction before final evaluation. See `PROJECT_STATUS.md` for limitations.
 
 ## Scope Boundaries
 
 - The current corpus is 8,850 cleaned Semantic Scholar records, primarily abstracts and metadata. It is not yet the million-scale full-text corpus proposed in the Phase 1 report.
 - The project uses pretrained SPECTER embeddings and a hosted Groq Llama model; it does not train or fine-tune a local reasoning model.
-- Citation grounding is paper-level. Exact sentence, claim, and section provenance remains to be implemented.
-- PDF ingestion is intentionally deferred for this phase. Claim-level provenance should first be implemented over the abstract text already available.
+- Review claims are traceable to deterministic sentence IDs from verified abstracts. Passage existence is enforced; semantic entailment quality is not yet benchmarked.
+- PDF ingestion and full-text section provenance remain intentionally deferred for this phase.
 
 ## Development Notes
 

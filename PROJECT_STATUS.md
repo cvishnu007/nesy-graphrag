@@ -73,14 +73,14 @@ This proves that graph expansion participates in ranking. It does **not** yet pr
 | Phase 1 expectation | Current position | Remaining gap |
 |---|---|---|
 | Automated literature review | Working end to end | Evaluate review completeness and factual quality |
-| Graph-grounded attribution | Paper IDs are checked against Neo4j | Ground individual claims to exact source sentences/sections |
+| Graph-grounded attribution | Review claims cite deterministic sentences from Neo4j-verified paper abstracts | Benchmark semantic support; add section provenance only if full text enters scope |
 | Cross-paper contradiction reasoning | Candidate ranking and structured verdicts work | Benchmark against labeled scientific NLI/contradiction data |
 | Hypothesis generation | Evidence-ranked generation and feasibility fields work | Expert or benchmark validation of novelty and feasibility |
 | End-to-end evaluation | Custom metrics and vector baseline exist | Add relevance judgments, standard IR metrics, repeated runs, and human evaluation |
 | Large scientific corpus | 8,850 mostly CS records are indexed | Scale only after quality and metric logic are validated |
 | Model training for reasoning | Pretrained SPECTER plus hosted Llama are used | Training/fine-tuning has not been implemented |
 
-PDF ingestion remains intentionally deferred. The next provenance iteration should use sentences from the abstracts already stored, so retrieval and citation logic can be validated without expanding ingestion scope.
+PDF ingestion remains intentionally deferred. Claim provenance is implemented over the abstracts already stored, without expanding ingestion scope.
 
 ## What Is Implemented
 
@@ -150,6 +150,19 @@ PDF ingestion remains intentionally deferred. The next provenance iteration shou
 - `validate_citations()` verifies retrieved paper IDs against Neo4j
 - LLM review context only includes verified papers
 - Latest run verified `10/10` retrieved citations in review mode
+
+### Claim Provenance
+
+- verified abstracts are split into deterministic sentence passages
+- passage IDs are stable hashes of paper ID plus sentence position
+- review prompts contain exact passage IDs and require a citation for every claim
+- only claims whose complete citation set exists in the supplied passage index are displayed
+- missing, malformed, mixed-validity, and fabricated passage citations are blocked
+- generation is deterministic and one bounded format-repair attempt is allowed only when the first response yields zero valid claims
+- rejected claims, parse errors, raw output, and passage metadata are retained for audit
+- TS now uses passage-citation integrity and grounded-claim coverage
+- Streamlit exposes the supporting sentence and paper for every accepted claim
+- latest live smoke result: 23 passages, 5/5 grounded claims, 9/9 valid citations, 0 unsupported claims, 0 parse errors, and no repair needed
 
 ### LLM Modes
 
@@ -221,23 +234,15 @@ Next implementation:
 - report source mix, NBR, ATD, and latency as diagnostics rather than relevance substitutes
 - separate retrieval comparisons from hosted-LLM variation
 
-### 2. Add Claim-Level Provenance
+### 2. Correct Metric Semantics
 
-- split available abstracts into stable sentence or passage records
-- retain paper ID and sentence offsets through retrieval and generation
-- require generated review claims to cite supporting passage IDs
-- reject citations whose quoted evidence does not support the generated claim
-- add tests for fabricated passage IDs and unsupported claims
-
-### 3. Correct Metric Semantics
-
-- revise TS to measure claim/evidence support instead of title-fragment and paper-ID checks
+- benchmark or replace prototype TS with a semantic claim/evidence support measure
 - treat NBR strictly as a graph-contribution diagnostic
 - replace or justify the custom RDI formula
 - correct HNS: the current `1 / path_length` implementation rewards shorter paths while the documentation describes longer paths as more novel
 - document metric ranges, edge cases, and interpretation with tests
 
-### 4. Benchmark Reasoning Modes
+### 3. Benchmark Reasoning Modes
 
 - evaluate contradiction verdicts on labeled scientific claim pairs or a small expert-labeled set
 - measure precision, recall, F1, calibration, and malformed-output rate
@@ -246,7 +251,7 @@ Next implementation:
 
 ## Automated Test Coverage
 
-- 24 pytest cases pass on the default Windows console
+- 33 pytest cases pass on the default Windows console
 - pytest discovery and strict marker configuration are defined in `pytest.ini`
 - shared test fixtures are defined in `tests/conftest.py`
 - retrieval fusion and diagnostics
@@ -256,6 +261,7 @@ Next implementation:
 - missing Neo4j credentials fail before driver creation
 - connectivity errors close the driver and report the URI without exposing credentials
 - hypothesis evidence scoring, structured feasibility parsing, and rejection auditing
+- stable passage IDs, lowercase sentence splitting, strict claim parsing, fabricated passage blocking, provenance-aware TS, and review-level filtering
 
 The Neo4j unit tests use isolated in-memory driver doubles only for deterministic guard/failure behavior. Live retrieval and contradiction checks use the real local Neo4j database.
 
@@ -309,7 +315,7 @@ Useful but not urgent:
   - 1,581 papers have outgoing real `CITES` edges
 - Equal neural/graph fusion weights may need tuning after the five-query evaluation.
 - Graph-expanded papers need qualitative relevance checks, not only a higher NBR.
-- TS is strong, but currently measures paper-level validation, not claim-level provenance.
+- Claim provenance validates citation IDs and traceability, but does not itself prove semantic entailment.
 - The current contradiction module is heuristic-first, not a proper contradiction model.
 - The current dataset is abstracts/metadata at prototype scale, not the report's proposed large full-text corpus.
 - Current concept extraction is generic spaCy noun-phrase extraction and introduces noisy graph nodes.
@@ -318,9 +324,9 @@ Useful but not urgent:
 
 ## Current Readiness
 
-- Working demo readiness: about 90%
-- Capstone prototype implementation readiness: about 82%
-- Defensible capstone evaluation readiness: about 60%
+- Working demo readiness: about 95%
+- Capstone prototype implementation readiness: about 90%
+- Defensible capstone evaluation readiness: about 62%
 - Research-grade readiness: about 35%
 
-The pipeline is a strong working prototype: all three user-facing modes execute, graph retrieval now contributes real results, GPU inference works, and core guards have tests. The main distance remaining is no longer basic implementation. It is proving relevance and scientific validity, tightening claim-level provenance, correcting metric semantics, and evaluating reasoning against labeled or expert-reviewed evidence.
+The core implementation is now sealed as a working prototype: all three user-facing modes execute, graph retrieval contributes real results, GPU inference works, claim-level abstract provenance blocks fabricated evidence references, and core contracts have tests. Remaining work is experimental validation: concrete benchmarks, standard metrics, classical and modern baselines, controlled ablations, measured scaling, and evaluation-focused UI/reporting.

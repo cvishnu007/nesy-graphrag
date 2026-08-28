@@ -77,11 +77,47 @@ if run and query:
         papers   = result["papers"]
         answer   = result["answer"]
         verified = result["verified"]
+        claims = result.get("claims", [])
+        unsupported_claims = result.get("unsupported_claims", [])
+        provenance = result.get("provenance", {})
+        provenance_stats = provenance.get("stats", {})
+        parse_errors = provenance.get("parse_errors", [])
 
-        st.success(f"Retrieved {len(papers)} papers — {len(verified)}/{len(papers)} citations verified")
+        st.success(
+            f"Retrieved {len(papers)} papers — {len(verified)}/{len(papers)} papers verified — "
+            f"{len(claims)}/{provenance_stats.get('total_claims', 0)} claims grounded"
+        )
 
         st.markdown("### 📝 Literature Review")
         st.markdown(answer)
+
+        st.markdown("### Claim Evidence")
+        if not claims:
+            st.warning("No claim with a completely valid passage citation set was produced.")
+        for index, claim in enumerate(claims, start=1):
+            with st.expander(f"Claim {index}: {claim['text'][:90]}"):
+                for evidence in claim.get("evidence", []):
+                    st.markdown(
+                        f"**{evidence['id']} — {evidence['paper_title']}**"
+                    )
+                    st.write(evidence["text"])
+
+        if unsupported_claims:
+            st.warning(
+                f"Blocked {len(unsupported_claims)} claim(s) with missing or invalid evidence."
+            )
+            with st.expander("Unsupported claim audit"):
+                for claim in unsupported_claims:
+                    st.write(claim.get("text") or "Empty claim")
+                    st.caption(
+                        ", ".join(claim.get("rejection_reasons", []))
+                    )
+
+        if parse_errors:
+            st.warning(f"Detected {len(parse_errors)} structured-output error(s).")
+            with st.expander("Parser audit"):
+                for error in parse_errors:
+                    st.code(error)
 
         st.markdown("### 📄 Retrieved Papers")
         for p in papers:

@@ -37,6 +37,37 @@ from src.utils.config import CONTRADICTION_MIN_CONFIDENCE
 # 1. TRUSTWORTHINESS SCORE (TS)
 # ─────────────────────────────────────────────────────────────
 
+def compute_provenance_ts(provenance: dict) -> dict:
+    """Compute prototype trustworthiness from validated claim provenance."""
+    stats = provenance.get("stats", {})
+    total_claims = int(stats.get("total_claims", 0))
+    total_citations = int(stats.get("total_citations", 0))
+    valid_citations = int(stats.get("valid_citations", 0))
+    grounded_claims = int(stats.get("grounded_claims", 0))
+
+    citation_integrity = (
+        valid_citations / total_citations if total_citations else 0.0
+    )
+    hallucination_rate = (
+        (total_citations - valid_citations) / total_citations
+        if total_citations
+        else 0.0
+    )
+    claim_coverage = grounded_claims / total_claims if total_claims else 0.0
+    ts = 0.5 * citation_integrity + 0.5 * claim_coverage
+
+    return {
+        "ts": round(ts, 4),
+        "citation_integrity": round(citation_integrity, 4),
+        "hallucination_rate": round(hallucination_rate, 4),
+        "claim_coverage": round(claim_coverage, 4),
+        "total_claims": total_claims,
+        "grounded_claims": grounded_claims,
+        "total_citations": total_citations,
+        "valid_citations": valid_citations,
+        "hallucinated_count": total_citations - valid_citations,
+    }
+
 def compute_ts(verified: dict, papers: list, answer: str) -> dict:
     """
     TS = 0.5 * Citation_Integrity + 0.5 * (1 - Hallucination_Rate)
@@ -382,7 +413,12 @@ def compute_all_metrics(
     if contradiction_result:
         contradictions = contradiction_result.get("contradictions", [])
 
-    ts  = compute_ts(verified, papers, answer)
+    provenance = result.get("provenance")
+    ts = (
+        compute_provenance_ts(provenance)
+        if provenance is not None
+        else compute_ts(verified, papers, answer)
+    )
     nbr = compute_nbr(papers)
     atd = compute_atd(papers, year_range=year_range)
     rdi = compute_rdi(papers, contradictions)
