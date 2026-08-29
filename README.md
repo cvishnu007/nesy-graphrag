@@ -34,7 +34,7 @@ Short version:
 - The existing five-query comparison averages `+0.56` NBR and `+0.10` RDI versus the vector baseline, but has no relevance judgments and is not a final benchmark.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
-- Thirty-seven pytest cases cover retrieval, claim provenance, metrics, logging, contradiction verdicts, citation guards, Neo4j failures, and hypothesis validation.
+- Thirty-nine pytest cases cover retrieval, claim provenance, metrics, logging, configuration guards, contradiction verdicts, Neo4j failures, and hypothesis validation.
 - Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
 - Sentence-level claim provenance is implemented; the latest live check accepted 5/5 claims with 9/9 valid passage citations.
 - The core prototype implementation is complete; the next milestone is the benchmark and evaluation framework.

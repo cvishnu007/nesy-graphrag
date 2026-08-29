@@ -46,7 +46,7 @@ The core implementation is sealed for the current scope. The project is not yet 
 
 ### Tests And Live Checks
 
-- 37 pytest cases pass
+- 39 pytest cases pass
 - `src`, `app`, and `tests` compile successfully
 - Pytest uses strict configuration and registered integration markers
 - Latest claim-provenance smoke test:
@@ -106,12 +106,14 @@ Per-query hybrid NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; vector-only NBR 
 - Real Semantic Scholar citation loading
 - Simulated-citation fallback code for sources without references; unused in the current S2 graph
 - Credential validation, connectivity checks, and safe driver cleanup
+- Placeholder-aware validation for Neo4j, Groq, and Semantic Scholar credentials
 - Explicit `NEO4J_ALLOW_RESET=true` opt-in before destructive graph rebuilds
 
 ### Hybrid Retrieval
 
 - Neural retrieval from Chroma
 - Symbolic expansion through Neo4j citation traversal
+- Seed self-match exclusion and distinct seed-connection counting
 - Real cosine similarity from Chroma
 - Normalized graph-connectivity scoring
 - Weighted reciprocal-rank fusion

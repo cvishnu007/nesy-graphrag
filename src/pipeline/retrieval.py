@@ -30,7 +30,8 @@ def symbolic_expand(driver, paper_ids):
     query = f"""
         UNWIND $ids AS pid
         MATCH (p:Paper {{id: pid}})-[:CITES*1..{hop_depth}]-(related:Paper)
-        WITH related, count(*) AS connections
+        WHERE related.id <> pid
+        WITH related, count(DISTINCT pid) AS connections
         RETURN related.id       AS id,
                related.title    AS title,
                related.abstract AS abstract,
@@ -117,7 +118,6 @@ def nesy_retrieve(driver, query, top_k=TOP_K):
     symbolic_papers = symbolic_expand(driver, neural_ids)
 
     return fuse_results(neural_papers, symbolic_papers, top_k)
-
 
 def _citation_degrees(driver, paper_ids):
     """Return undirected citation degree for every known paper ID."""

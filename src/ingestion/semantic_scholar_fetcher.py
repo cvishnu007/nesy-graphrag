@@ -29,6 +29,7 @@ from src.utils.config import (
     SEMANTIC_SCHOLAR_MAX_RETRIES,
     SEMANTIC_SCHOLAR_MIN_INTERVAL_SEC,
     SEMANTIC_SCHOLAR_TIMEOUT_SEC,
+    is_configured,
 )
 
 
@@ -55,7 +56,7 @@ class SemanticScholarClient:
 
         self.session = requests.Session()
         headers = {"User-Agent": "nesy-graphrag/1.0"}
-        if SEMANTIC_SCHOLAR_API_KEY:
+        if is_configured(SEMANTIC_SCHOLAR_API_KEY):
             headers["x-api-key"] = SEMANTIC_SCHOLAR_API_KEY
         self.session.headers.update(headers)
 
@@ -365,7 +366,7 @@ def preprocess(papers: List[Dict[str, Any]]) -> pd.DataFrame:
 
 def run() -> pd.DataFrame:
     print("=== Semantic Scholar ingestion ===")
-    if not SEMANTIC_SCHOLAR_API_KEY:
+    if not is_configured(SEMANTIC_SCHOLAR_API_KEY):
         print("[S2] Warning: SEMANTIC_SCHOLAR_API_KEY not set. Unauthenticated calls may be heavily limited.")
 
     client = SemanticScholarClient()

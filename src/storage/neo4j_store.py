@@ -9,14 +9,19 @@ from src.utils.config import (
     NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD,
     NEO4J_ALLOW_RESET,
     NER_FILE, NEO4J_BATCH_SIZE, MAX_AUTHORS, MAX_CONCEPTS, CITES_THRESHOLD,
-    USE_REAL_CITATIONS
+    USE_REAL_CITATIONS, is_configured
 )
 
 
 def get_driver():
-    if not NEO4J_URI or not NEO4J_USERNAME or not NEO4J_PASSWORD:
+    if not (
+        is_configured(NEO4J_URI, "YOUR_INSTANCE")
+        and is_configured(NEO4J_USERNAME)
+        and is_configured(NEO4J_PASSWORD)
+    ):
         raise RuntimeError(
-            "Missing Neo4j credentials. Set NEO4J_URI, NEO4J_USERNAME, and NEO4J_PASSWORD in .env."
+            "Missing Neo4j credentials or placeholders detected. Set NEO4J_URI, "
+            "NEO4J_USERNAME, and NEO4J_PASSWORD in .env."
         )
     driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USERNAME, NEO4J_PASSWORD))
     try:

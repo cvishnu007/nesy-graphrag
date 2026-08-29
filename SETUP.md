@@ -273,7 +273,7 @@ Run the complete unit suite:
 .\venv\Scripts\python.exe -m pytest
 ```
 
-The current repository collects 37 pytest cases after the setup-consistency sweep.
+The current repository collects 39 pytest cases after the setup and merge-consistency sweeps.
 
 Compile all Python modules:
 

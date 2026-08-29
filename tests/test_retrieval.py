@@ -1,4 +1,31 @@
-from src.pipeline.retrieval import build_retrieval_diagnostics, fuse_results
+from src.pipeline.retrieval import (
+    build_retrieval_diagnostics,
+    fuse_results,
+    symbolic_expand,
+)
+
+
+class EmptyGraphSession:
+    def __init__(self):
+        self.query = ""
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        return False
+
+    def run(self, query, **parameters):
+        self.query = query
+        return []
+
+
+class EmptyGraphDriver:
+    def __init__(self):
+        self.active_session = EmptyGraphSession()
+
+    def session(self):
+        return self.active_session
 
 
 def test_graph_only_results_can_enter_top_k(paper_factory):
@@ -10,6 +37,14 @@ def test_graph_only_results_can_enter_top_k(paper_factory):
     assert len(results) == 10
     assert any(item["source"] == "symbolic" for item in results)
     assert any(item["source"] == "neural" for item in results)
+
+
+def test_symbolic_expansion_excludes_seed_self_matches_and_counts_distinct_seeds():
+    driver = EmptyGraphDriver()
+
+    assert symbolic_expand(driver, ["seed-1", "seed-2"]) == []
+    assert "WHERE related.id <> pid" in driver.active_session.query
+    assert "count(DISTINCT pid) AS connections" in driver.active_session.query
 
 
 def test_overlap_is_labelled_both_and_boosted(paper_factory):

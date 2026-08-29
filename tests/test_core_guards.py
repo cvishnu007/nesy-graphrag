@@ -6,6 +6,7 @@ from src.pipeline.metrics import compute_all_metrics, compute_atd
 from src.pipeline.results_logger import log_result
 from src.pipeline.validator import validate_citations
 from src.storage import neo4j_store
+from src.utils.config import is_configured
 
 
 class FakeSession:
@@ -83,6 +84,12 @@ def test_missing_neo4j_credentials_fail_before_driver_creation(monkeypatch):
         neo4j_store.get_driver()
 
     assert driver_called is False
+
+
+def test_placeholder_credentials_are_not_treated_as_configured():
+    assert is_configured("replace_me") is False
+    assert is_configured("neo4j+s://YOUR_INSTANCE.example", "YOUR_INSTANCE") is False
+    assert is_configured("actual-secret") is True
 
 
 def test_connectivity_failure_is_clear_and_closes_driver(monkeypatch):
