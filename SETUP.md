@@ -49,6 +49,24 @@ git status --short --branch
 
 The final command should show `master` with a clean worktree.
 
+### Before Making Any Changes
+
+Always synchronize the local `master` branch before editing code, documentation, configuration, or tests:
+
+```powershell
+git switch master
+git status --short --branch
+git pull --ff-only origin master
+```
+
+Do not begin new work until `master` is up to date and `git status` shows a clean worktree. Resolve or preserve any existing local changes before pulling. After the pull succeeds, create or switch to the branch where the new work will be committed:
+
+```powershell
+git switch -c your-branch-name
+```
+
+For every later change, repeat the synchronization step against `master` first. Using `--ff-only` prevents Git from silently creating an unintended merge commit during the pull.
+
 ## 3. Create Or Reuse The Virtual Environment
 
 For a fresh clone:
