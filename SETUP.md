@@ -39,15 +39,15 @@ git --version
 py -3.11 --version
 ```
 
-## 2. Clone The Phase 3 Branch
+## 2. Clone The Repository
 
 ```powershell
-git clone --branch phase3 --single-branch https://github.com/cvishnu007/nesy-graphrag.git
+git clone --branch master --single-branch https://github.com/cvishnu007/nesy-graphrag.git
 Set-Location .\nesy-graphrag
 git status --short --branch
 ```
 
-The final command should show `phase3` with a clean worktree.
+The final command should show `master` with a clean worktree.
 
 ## 3. Create Or Reuse The Virtual Environment
 
