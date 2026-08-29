@@ -17,7 +17,7 @@ CS_CATEGORIES = [
     "cs.SC", "cs.SD", "cs.SE", "cs.SI", "cs.SY"
 ]
 
-# ── 2000 papers per year, 2020–2024 = 10,000 total ────
+# ArXiv fallback: 2,000 papers per year from 2020 through 2024.
 YEAR_RANGES = [
     ("20200101", "20201231", 2000),
     ("20210101", "20211231", 2000),
@@ -82,14 +82,14 @@ def fetch_papers():
             if (i + 1) % 500 == 0:
                 print(f"  {year}: Fetched {i + 1} papers...")
 
-        print(f"  {year}: Done — {len(year_papers)} papers")
+        print(f"  {year}: Done - {len(year_papers)} papers")
         all_papers.extend(year_papers)
 
     os.makedirs(os.path.dirname(RAW_FILE), exist_ok=True)
-    with open(RAW_FILE, "w") as f:
+    with open(RAW_FILE, "w", encoding="utf-8") as f:
         json.dump(all_papers, f, indent=2)
 
-    print(f"\nTotal fetched: {len(all_papers)} papers → {RAW_FILE}")
+    print(f"\nTotal fetched: {len(all_papers)} papers to {RAW_FILE}")
     return all_papers
 
 
@@ -113,7 +113,7 @@ def preprocess(papers):
 
     print(f"After cleaning  : {len(df)} papers")
     df.to_json(CLEAN_FILE, orient="records", indent=2)
-    print(f"Saved → {CLEAN_FILE}")
+    print(f"Saved to {CLEAN_FILE}")
     return df
 
 

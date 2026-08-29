@@ -3,7 +3,7 @@ src/pipeline/metrics.py
 =======================
 NeSy-GraphRAG Evaluation Metrics — Phase 3
 
-Implements four metrics that can be computed without human annotation
+Implements five prototype diagnostics that can be computed without human annotation
 and with the current pipeline state (Groq + Neo4j may be unavailable;
 ChromaDB must be up).
 
@@ -13,6 +13,7 @@ Metrics
 2. NBR — NeSy Boost Ratio
 3. ATD — Answer Temporal Diversity
 4. RDI — Reasoning Depth Index
+5. HNS — Hypothesis Novelty Score
 
 Usage
 -----
@@ -30,7 +31,11 @@ from typing import Any
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from src.pipeline.verdicts import is_confident_contradiction
-from src.utils.config import CONTRADICTION_MIN_CONFIDENCE
+from src.utils.config import (
+    CONTRADICTION_MIN_CONFIDENCE,
+    EVALUATION_END_YEAR,
+    EVALUATION_START_YEAR,
+)
 
 
 # ─────────────────────────────────────────────────────────────
@@ -162,7 +167,7 @@ def compute_nbr(papers: list) -> dict:
         "graph_count"      : graph_count,
         "neural_only_count": total - graph_count,
         "total"            : total,
-        "adds_value"       : nbr > 0.3,   # dissertation target
+        "graph_contributes": graph_count > 0,
     }
 
 
@@ -170,13 +175,12 @@ def compute_nbr(papers: list) -> dict:
 # 3. ANSWER TEMPORAL DIVERSITY (ATD)
 # ─────────────────────────────────────────────────────────────
 
-def compute_atd(papers: list, year_range: tuple = (2020, 2024)) -> dict:
+def compute_atd(papers: list, year_range: tuple | None = None) -> dict:
     """
     ATD = |Distinct years in cited papers| / span_size
 
-    span_size defaults to 5 (2020–2024, your dataset range).
-    ATD = 1.0 → all 5 years represented.
-    ATD = 0.2 → only 1 year (temporal tunnel vision).
+    The default range comes from EVALUATION_START_YEAR and
+    EVALUATION_END_YEAR.
 
     Parameters
     ----------
@@ -187,7 +191,7 @@ def compute_atd(papers: list, year_range: tuple = (2020, 2024)) -> dict:
     -------
     dict with atd, distinct_years, year_distribution
     """
-    start, end  = year_range
+    start, end = year_range or (EVALUATION_START_YEAR, EVALUATION_END_YEAR)
     span_size   = end - start + 1
 
     years_in_results = [
@@ -290,11 +294,11 @@ def compute_hns(
     query_paper_ids: list,
 ) -> dict:
     """
-    HNS = mean( 1 / shortestPath_length ) across generated hypotheses.
+    HNS = mean(shortestPath_length / maximum_path_length) across hypotheses.
 
     For each hypothesis paper, find the shortest path through Concept
     nodes between any of its concepts and any concept belonging to the
-    query papers.  Longer shortest paths → higher novelty.
+    query papers. Longer shortest paths produce higher structural novelty.
 
     If Neo4j is unavailable or no paths exist, returns hns = 0.0.
 
@@ -349,10 +353,9 @@ def compute_hns(
 
                 record = result.single()
                 if record and record["pathLen"] > 0:
-                    individual_scores.append(1.0 / record["pathLen"])
+                    individual_scores.append(min(float(record["pathLen"]), 6.0) / 6.0)
                 else:
-                    # No path found → maximum novelty (assign score 0 to
-                    # be conservative rather than inflate HNS)
+                    # Missing paths provide no measurable novelty evidence.
                     individual_scores.append(0.0)
 
     except Exception as e:
@@ -385,10 +388,10 @@ def compute_all_metrics(
     contradiction_result: dict | None = None,
     hypothesis_result: dict | None = None,
     driver=None,
-    year_range: tuple = (2020, 2024),
+    year_range: tuple | None = None,
 ) -> dict[str, Any]:
     """
-    Compute all four metrics from a single pipeline result dict.
+    Compute all five prototype diagnostics from a pipeline result dict.
 
     Parameters
     ----------
@@ -448,22 +451,18 @@ def _print_summary(scores: dict) -> None:
     rdi = scores["rdi"]
     hns = scores.get("hns", {})
 
-    print("\n" + "═" * 55)
+    print("\n" + "=" * 55)
     print("  NeSy-GraphRAG EVALUATION METRICS")
-    print("═" * 55)
+    print("=" * 55)
     print(f"  TS  (Trustworthiness)   : {ts['ts']:.4f}"
-          f"  [CI={ts['citation_integrity']:.2f}, HR={ts['hallucination_rate']:.2f}]"
-          f"  {'✅' if ts['ts'] >= 0.90 else '⚠️ target ≥0.90'}")
+          f"  [CI={ts['citation_integrity']:.2f}, HR={ts['hallucination_rate']:.2f}]")
     print(f"  NBR (NeSy Boost Ratio)  : {nbr['nbr']:.4f}"
-          f"  [{nbr['graph_count']}/{nbr['total']} from graph]"
-          f"  {'✅' if nbr['adds_value'] else '⚠️ target >0.30'}")
+          f"  [{nbr['graph_count']}/{nbr['total']} include graph retrieval]")
     print(f"  ATD (Temporal Diversity): {atd['atd']:.4f}"
-          f"  [years: {atd['distinct_years']}]"
-          f"  {'✅' if atd['atd'] >= 0.6 else '⚠️ low diversity'}")
+          f"  [years: {atd['distinct_years']}]")
     print(f"  RDI (Reasoning Depth)   : {rdi['rdi']:.4f}"
-          f"  [cross-doc={rdi['cross_doc_papers']}, contradictions={rdi['contradictions_resolved']}]"
-          f"  {'✅' if rdi['rdi'] >= 0.75 else '⚠️ target ≥0.75'}")
+          f"  [cross-doc={rdi['cross_doc_papers']}, contradictions={rdi['contradictions_resolved']}]")
     if hns and hns.get("hns") is not None:
         print(f"  HNS (Hypothesis Novelty): {hns['hns']:.4f}"
               f"  [{hns.get('total_hypotheses', 0)} hypotheses scored]")
-    print("═" * 55 + "\n")
+    print("=" * 55 + "\n")

@@ -45,13 +45,22 @@ def get_embedder():
 
 
 def build_index():
-    """Run once — reads arxiv_clean.json, encodes, stores in ChromaDB."""
+    """Encode the configured cleaned dataset into the configured collection."""
     df         = pd.read_json(CLEAN_FILE)
+    if df.empty:
+        print(f"No papers found in {CLEAN_FILE}; nothing to index.")
+        return
+    required_columns = {"id", "clean_abstract", "clean_title", "year", "primary_category"}
+    missing_columns = sorted(required_columns - set(df.columns))
+    if missing_columns:
+        raise RuntimeError(
+            f"{CLEAN_FILE} is missing required columns: {', '.join(missing_columns)}"
+        )
     collection = get_collection()
     embedder   = get_embedder()
 
     print(f"Loaded {len(df)} papers from {CLEAN_FILE}")
-    print(f"ChromaDB collection '{CHROMA_COLLECTION}' ready — already stored: {collection.count()} papers")
+    print(f"ChromaDB collection '{CHROMA_COLLECTION}' ready; already stored: {collection.count()} papers")
 
     # resume support — skip already stored
     already_stored = set(collection.get()["ids"])
@@ -95,6 +104,9 @@ def build_index():
 def query(text, top_k=10):
     """Query ChromaDB with a text string, returns list of paper dicts."""
     collection = get_collection()
+    result_count = min(max(0, int(top_k)), collection.count())
+    if result_count == 0:
+        return []
     embedder   = get_embedder()
     query_vec  = embedder.encode(
         [text],
@@ -103,7 +115,7 @@ def query(text, top_k=10):
     ).tolist()
     results    = collection.query(
         query_embeddings=query_vec,
-        n_results=top_k,
+        n_results=result_count,
         include=["documents", "metadatas", "distances"],
     )
 

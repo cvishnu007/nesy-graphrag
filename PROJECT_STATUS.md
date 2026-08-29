@@ -46,7 +46,7 @@ The core implementation is sealed for the current scope. The project is not yet 
 
 ### Tests And Live Checks
 
-- 33 pytest cases pass
+- 37 pytest cases pass
 - `src`, `app`, and `tests` compile successfully
 - Pytest uses strict configuration and registered integration markers
 - Latest claim-provenance smoke test:
@@ -76,6 +76,7 @@ Per-query hybrid NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; vector-only NBR 
 - ArXiv ingestion
 - Semantic Scholar ingestion with real reference IDs
 - Source selection through `DATA_SOURCE`
+- Source-name validation that rejects unsupported ingestion backends
 - Cleaning, filtering, batching, retries, and local JSON persistence
 - Configurable limits, years, fields of study, publication types, and sorting
 
@@ -105,6 +106,7 @@ Per-query hybrid NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; vector-only NBR 
 - Real Semantic Scholar citation loading
 - Simulated-citation fallback code for sources without references; unused in the current S2 graph
 - Credential validation, connectivity checks, and safe driver cleanup
+- Explicit `NEO4J_ALLOW_RESET=true` opt-in before destructive graph rebuilds
 
 ### Hybrid Retrieval
 
@@ -172,8 +174,8 @@ Claim provenance guarantees traceability and passage-ID validity. It does not by
 - NBR: graph participation in final retrieval
 - ATD: temporal diversity over a configured year range
 - RDI: prototype cross-document and contradiction reasoning score
-- HNS: prototype graph-path novelty score
-- CSV evaluation logging
+- HNS: normalized graph-path distance across evidence concepts
+- Versioned CSV evaluation logging with claim-provenance fields
 - Vector-only comparison harness
 
 These are project diagnostics, not yet standard or independently validated research metrics.
@@ -193,9 +195,11 @@ These are project diagnostics, not yet standard or independently validated resea
 - Centralized configuration and prompt templates
 - Shared Groq retry/fallback client
 - Automatic compute-resource selection
+- Pinned direct Python dependencies for the verified environment
 - Native pytest tests, fixtures, parametrization, monkeypatching, and strict markers
 - Unit guards for citation fabrication, metrics edge cases, retrieval fusion, Neo4j failures, contradiction parsing, hypothesis validation, provenance parsing, and repair behavior
-- README and this status file are the maintained project documentation
+- Detailed from-scratch Windows, Neo4j, CUDA, and CPU instructions in `SETUP.md`
+- README, setup guide, and this status file are the maintained project documentation
 
 ## Not Implemented
 
@@ -267,12 +271,12 @@ The following are not part of the current implementation:
 - NBR should be reported as a graph-contribution diagnostic only.
 - ATD measures year coverage, not review quality.
 - RDI is a custom formula and needs external justification or replacement.
-- HNS currently uses `1 / path_length`, which rewards shorter paths while the documented novelty interpretation expects longer paths to indicate novelty. This direction mismatch must be corrected before final evaluation.
+- HNS uses normalized graph-path distance as a structural proxy; it is not a validated measure of scientific novelty.
 
 ### Engineering And UI
 
 - Unit tests use deterministic doubles; most external-service workflows are verified manually rather than in CI.
-- Dependency versions are not fully locked for reproducible environments.
+- Direct dependencies are pinned, but transitive dependencies do not yet use a platform-specific lockfile with hashes.
 - The UI is functional but not yet designed for benchmark comparison or large evaluation runs.
 - Evaluation CSV logging is basic and not a complete experiment-tracking system.
 
@@ -335,7 +339,7 @@ The following are not part of the current implementation:
 
 1. Add marked Neo4j, Chroma, and Groq integration tests.
 2. Add CI for tests, compilation, formatting, and static checks.
-3. Lock critical dependency versions and document environment reproduction.
+3. Add platform-specific lockfiles with hashes when deployment targets are fixed.
 4. Replace basic CSV logging with versioned experiment records.
 5. Add structured logging, failure telemetry, and resource measurements.
 

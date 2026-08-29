@@ -1,6 +1,9 @@
+import csv
+
 import pytest
 
-from src.pipeline.metrics import compute_all_metrics
+from src.pipeline.metrics import compute_all_metrics, compute_atd
+from src.pipeline.results_logger import log_result
 from src.pipeline.validator import validate_citations
 from src.storage import neo4j_store
 
@@ -57,6 +60,13 @@ def test_all_metrics_handle_empty_result(capsys):
     capsys.readouterr()
 
 
+def test_atd_uses_configured_s2_year_range():
+    result = compute_atd([{"year": 2020}, {"year": 2025}])
+
+    assert result["span_size"] == 6
+    assert result["atd"] == pytest.approx(2 / 6, abs=0.0001)
+
+
 def test_missing_neo4j_credentials_fail_before_driver_creation(monkeypatch):
     driver_called = False
 
@@ -94,3 +104,34 @@ def test_connectivity_failure_is_clear_and_closes_driver(monkeypatch):
 
     assert driver.closed is True
     assert "secret" not in str(error.value)
+
+
+def test_graph_rebuild_requires_explicit_reset_opt_in(monkeypatch):
+    monkeypatch.setattr(neo4j_store, "NEO4J_ALLOW_RESET", False)
+
+    with pytest.raises(RuntimeError, match="NEO4J_ALLOW_RESET=true"):
+        neo4j_store.insert_papers(object(), [])
+
+
+def test_results_logger_writes_provenance_schema(tmp_path):
+    log_path = tmp_path / "evaluation.csv"
+    metrics = {
+        "ts": {
+            "ts": 1.0,
+            "citation_integrity": 1.0,
+            "hallucination_rate": 0.0,
+            "claim_coverage": 1.0,
+            "total_claims": 2,
+            "grounded_claims": 2,
+            "total_citations": 3,
+            "valid_citations": 3,
+        }
+    }
+
+    log_result("query", "review", metrics, log_path=str(log_path))
+
+    with log_path.open(encoding="utf-8", newline="") as file:
+        row = next(csv.DictReader(file))
+    assert row["schema_version"] == "2"
+    assert row["claim_coverage"] == "1.0"
+    assert row["valid_citations"] == "3"

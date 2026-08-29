@@ -50,7 +50,10 @@ with st.sidebar:
         ["📚 Literature Review", "⚡ Contradiction Detection", "💡 Hypothesis Generation"],
         index=0
     )
-    top_k = st.slider("Papers to retrieve", min_value=3, max_value=15, value=10)
+    if "review" in mode.lower():
+        top_k = st.slider("Papers to retrieve", min_value=3, max_value=15, value=10)
+    else:
+        top_k = st.slider("Candidates to evaluate", min_value=1, max_value=10, value=5)
     st.markdown("---")
     st.markdown("**Pipeline:**")
     paper_nodes, cites_edges = graph_stats(driver)
@@ -85,7 +88,7 @@ if run and query:
 
         st.success(
             f"Retrieved {len(papers)} papers — {len(verified)}/{len(papers)} papers verified — "
-            f"{len(claims)}/{provenance_stats.get('total_claims', 0)} claims grounded"
+            f"{len(claims)}/{provenance_stats.get('total_claims', 0)} claims have valid passage references"
         )
 
         st.markdown("### 📝 Literature Review")
@@ -135,13 +138,13 @@ if run and query:
         st.markdown("### 📊 Evaluation Metrics")
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("TS (Trustworthiness)", f"{metrics['ts']['ts']:.3f}",
-                    help="Target ≥ 0.90")
+                    help="Prototype passage-citation integrity and claim-coverage diagnostic")
         col2.metric("NBR (NeSy Boost)", f"{metrics['nbr']['nbr']:.3f}",
-                    help="Target > 0.30 — proves graph adds value")
+                    help="Fraction of final results that include graph retrieval")
         col3.metric("ATD (Temporal Range)", f"{metrics['atd']['atd']:.3f}",
-                    help="1.0 = all 5 years represented")
+                    help=f"1.0 means all {metrics['atd']['span_size']} configured years are represented")
         col4.metric("RDI (Reasoning Depth)", f"{metrics['rdi']['rdi']:.3f}",
-                    help="Target ≥ 0.75")
+                    help="Prototype cross-document and contradiction diagnostic")
 
         # ── Flag missing years explicitly ──
         missing_years = metrics["atd"].get("missing_years", [])
@@ -155,10 +158,10 @@ if run and query:
     # ── CONTRADICTION MODE ────────────────────────────
     elif "contradiction" in mode.lower():
         with st.spinner("Running contradiction detection pipeline..."):
-            result = llm_contradict(groq_client, driver, query, top_k=5)
+            result = llm_contradict(groq_client, driver, query, top_k=top_k)
 
         contradictions = result.get("contradictions", [])
-        st.info(f"Found and verified {len(contradictions)} contradiction candidate pairs")
+        st.info(f"Evaluated {len(contradictions)} contradiction candidate pairs")
 
         if not contradictions:
             st.warning("No contradiction candidates found for this query.")
@@ -185,7 +188,7 @@ if run and query:
     # ── HYPOTHESIS MODE ───────────────────────────────
     elif "hypothesis" in mode.lower():
         with st.spinner("Running hypothesis generation pipeline..."):
-            result = llm_hypothesis(groq_client, driver, query, top_k=5)
+            result = llm_hypothesis(groq_client, driver, query, top_k=top_k)
 
         hypotheses = result.get("hypotheses", [])
         st.info(f"Generated {len(hypotheses)} research hypotheses")

@@ -322,7 +322,7 @@ def preprocess(papers: List[Dict[str, Any]]) -> pd.DataFrame:
     if df.empty:
         os.makedirs(os.path.dirname(CLEAN_FILE), exist_ok=True)
         df.to_json(CLEAN_FILE, orient="records", indent=2)
-        print(f"Saved empty dataset → {CLEAN_FILE}")
+        print(f"Saved empty dataset to {CLEAN_FILE}")
         return df
 
     df.dropna(subset=["title", "abstract"], inplace=True)
@@ -359,7 +359,7 @@ def preprocess(papers: List[Dict[str, Any]]) -> pd.DataFrame:
     print(f"After cleaning  : {len(df)} papers")
     os.makedirs(os.path.dirname(CLEAN_FILE), exist_ok=True)
     df.to_json(CLEAN_FILE, orient="records", indent=2)
-    print(f"Saved → {CLEAN_FILE}")
+    print(f"Saved to {CLEAN_FILE}")
     return df
 
 
@@ -375,9 +375,9 @@ def run() -> pd.DataFrame:
 
     normalized = normalize_papers(seed_papers, reference_map)
     os.makedirs(os.path.dirname(RAW_FILE), exist_ok=True)
-    with open(RAW_FILE, "w") as f:
+    with open(RAW_FILE, "w", encoding="utf-8") as f:
         json.dump(normalized, f, indent=2)
-    print(f"[S2] Saved normalized raw dataset ({len(normalized)} records) → {RAW_FILE}")
+    print(f"[S2] Saved normalized raw dataset ({len(normalized)} records) to {RAW_FILE}")
 
     df = preprocess(normalized)
 

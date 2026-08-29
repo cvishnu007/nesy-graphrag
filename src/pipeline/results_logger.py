@@ -8,8 +8,10 @@ trends across many queries can be plotted for the evaluation chapter.
 
 CSV columns
 -----------
-timestamp, query, mode, ts, nbr, atd, rdi, hns,
-ci, hr, graph_count, neural_only_count, distinct_years, missing_years,
+schema_version, timestamp, query, mode, ts, nbr, atd, rdi, hns,
+citation_integrity, hallucination_rate, claim_coverage, total_claims,
+grounded_claims, total_citations, valid_citations, graph_count,
+neural_only_count, total_papers, distinct_years, missing_years,
 cross_doc_papers, contradictions_resolved
 
 Usage
@@ -25,10 +27,11 @@ from typing import Any, Optional
 
 # Default log path (relative to project root)
 _DEFAULT_LOG_PATH = os.path.join(
-    os.path.dirname(__file__), "..", "..", "data", "evaluation_log.csv"
+    os.path.dirname(__file__), "..", "..", "data", "evaluation_log_v2.csv"
 )
 
 _CSV_COLUMNS = [
+    "schema_version",
     "timestamp",
     "query",
     "mode",
@@ -41,6 +44,11 @@ _CSV_COLUMNS = [
     # Detail fields
     "citation_integrity",
     "hallucination_rate",
+    "claim_coverage",
+    "total_claims",
+    "grounded_claims",
+    "total_citations",
+    "valid_citations",
     "graph_count",
     "neural_only_count",
     "total_papers",
@@ -83,6 +91,7 @@ def log_result(
     hns_data = metrics.get("hns", {})
 
     row = {
+        "schema_version"           : 2,
         "timestamp"               : datetime.now(timezone.utc).isoformat(),
         "query"                   : query,
         "mode"                    : mode,
@@ -93,6 +102,11 @@ def log_result(
         "hns"                     : hns_data.get("hns", ""),
         "citation_integrity"      : ts_data.get("citation_integrity", ""),
         "hallucination_rate"      : ts_data.get("hallucination_rate", ""),
+        "claim_coverage"           : ts_data.get("claim_coverage", ""),
+        "total_claims"             : ts_data.get("total_claims", ""),
+        "grounded_claims"          : ts_data.get("grounded_claims", ""),
+        "total_citations"          : ts_data.get("total_citations", ""),
+        "valid_citations"          : ts_data.get("valid_citations", ""),
         "graph_count"             : nbr_data.get("graph_count", ""),
         "neural_only_count"       : nbr_data.get("neural_only_count", ""),
         "total_papers"            : nbr_data.get("total", ""),

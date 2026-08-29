@@ -1,10 +1,41 @@
 import pytest
 
+from src.pipeline.metrics import compute_hns
 from src.pipeline.hypothesis import (
     parse_hypothesis_response,
     partition_validated_hypotheses,
     score_hypothesis_candidate,
 )
+
+
+class PathResult:
+    def __init__(self, path_length):
+        self.path_length = path_length
+
+    def single(self):
+        return {"pathLen": self.path_length} if self.path_length is not None else None
+
+
+class PathSession:
+    def __init__(self, path_lengths):
+        self.path_lengths = path_lengths
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        return False
+
+    def run(self, query, *, hid, qids):
+        return PathResult(self.path_lengths.get(hid))
+
+
+class PathDriver:
+    def __init__(self, path_lengths):
+        self.path_lengths = path_lengths
+
+    def session(self):
+        return PathSession(self.path_lengths)
 
 
 def test_candidate_score_combines_overlap_and_query_support():
@@ -75,3 +106,13 @@ def test_rejected_hypotheses_are_kept_for_audit():
 
     assert [item["id"] for item in accepted] == ["good"]
     assert [item["id"] for item in rejected] == ["low", "invalid"]
+
+
+def test_hns_rewards_longer_measured_graph_paths():
+    driver = PathDriver({"near": 2, "far": 6})
+    hypotheses = [{"paper": {"id": "near"}}, {"paper": {"id": "far"}}]
+
+    result = compute_hns(driver, hypotheses, ["query-paper"])
+
+    assert result["individual_scores"] == pytest.approx([1 / 3, 1.0], abs=0.0001)
+    assert result["hns"] == pytest.approx(2 / 3, abs=0.0001)

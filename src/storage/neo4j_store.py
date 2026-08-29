@@ -7,6 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import (
     DATA_SOURCE,
     NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD,
+    NEO4J_ALLOW_RESET,
     NER_FILE, NEO4J_BATCH_SIZE, MAX_AUTHORS, MAX_CONCEPTS, CITES_THRESHOLD,
     USE_REAL_CITATIONS
 )
@@ -41,7 +42,8 @@ def drop_legacy_constraints(session):
     dropped = 0
     for record in constraints:
         constraint_name = record["name"]
-        session.run(f"DROP CONSTRAINT {constraint_name} IF EXISTS")
+        escaped_name = constraint_name.replace("`", "``")
+        session.run(f"DROP CONSTRAINT `{escaped_name}` IF EXISTS")
         dropped += 1
 
     if dropped:
@@ -50,6 +52,11 @@ def drop_legacy_constraints(session):
 
 def insert_papers(driver, df):
     """Insert Paper, Author, Concept nodes and relationships — from cell 06."""
+    if not NEO4J_ALLOW_RESET:
+        raise RuntimeError(
+            "Neo4j rebuild clears the configured database. Set "
+            "NEO4J_ALLOW_RESET=true only for a dedicated project database."
+        )
     print("Clearing existing data...")
     with driver.session() as session:
         session.run("MATCH (n) DETACH DELETE n")
