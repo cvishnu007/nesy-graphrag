@@ -22,6 +22,7 @@ Or from code:
 
 import sys
 import os
+from collections import Counter
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.pipeline.orchestrator import get_groq, get_neo4j
@@ -63,17 +64,17 @@ def run_baseline_comparison(
     results = []
 
     for i, query in enumerate(queries, 1):
-        print(f"\n{'━'*70}")
+        print(f"\n{'=' * 70}")
         print(f"  QUERY {i}/{len(queries)}: {query}")
-        print(f"{'━'*70}")
+        print(f"{'=' * 70}")
 
         # ── NeSy path ──
-        print("\n  ▶ Running NeSy (full) path...")
+        print("\n  Running NeSy (full) path...")
         nesy_result = llm_review(groq, driver, query, top_k=top_k, baseline=False)
         nesy_metrics = compute_all_metrics(nesy_result, driver=driver)
 
         # ── Baseline path ──
-        print("\n  ▶ Running Baseline (vector-only) path...")
+        print("\n  Running Baseline (vector-only) path...")
         base_result = llm_review(groq, driver, query, top_k=top_k, baseline=True)
         base_metrics = compute_all_metrics(base_result, driver=driver)
 
@@ -89,9 +90,12 @@ def run_baseline_comparison(
             "query"           : query,
             "nesy_metrics"    : nesy_metrics,
             "baseline_metrics": base_metrics,
+            "nesy_sources"    : dict(Counter(p["source"] for p in nesy_result["papers"])),
+            "baseline_sources": dict(Counter(p["source"] for p in base_result["papers"])),
             "delta"           : delta,
         }
         results.append(entry)
+        print(f"  Sources: NeSy={entry['nesy_sources']}  Baseline={entry['baseline_sources']}")
 
         # Log both runs
         log_result(query, "nesy",     nesy_metrics)
@@ -104,13 +108,13 @@ def run_baseline_comparison(
 
 def _print_comparison_table(results: list[dict]) -> None:
     """Pretty-print the NeSy vs Baseline comparison table."""
-    print("\n\n" + "═" * 90)
-    print("  NeSy-GraphRAG vs Baseline — Evaluation Comparison")
-    print("═" * 90)
+    print("\n\n" + "=" * 90)
+    print("  NeSy-GraphRAG vs Baseline - Evaluation Comparison")
+    print("=" * 90)
 
     header = f"  {'Query':<45} {'Metric':>6}  {'NeSy':>7}  {'Base':>7}  {'Δ':>7}"
     print(header)
-    print("  " + "─" * 86)
+    print("  " + "-" * 86)
 
     for entry in results:
         q = entry["query"][:42] + "..." if len(entry["query"]) > 45 else entry["query"]
@@ -125,11 +129,11 @@ def _print_comparison_table(results: list[dict]) -> None:
             ("RDI", n["rdi"]["rdi"], b["rdi"]["rdi"], d["rdi"]),
         ]:
             sign = "+" if delta_val > 0 else ""
-            marker = "✅" if delta_val > 0 else ("➖" if delta_val == 0 else "⚠️")
+            marker = "+" if delta_val > 0 else ("=" if delta_val == 0 else "-")
             label = q if metric_name == "TS" else ""
             print(f"  {label:<45} {metric_name:>6}  {nesy_val:>7.4f}  {base_val:>7.4f}  {sign}{delta_val:>6.4f} {marker}")
 
-        print("  " + "─" * 86)
+        print("  " + "-" * 86)
 
     # ── Averages ──
     n_queries = len(results)
@@ -145,7 +149,7 @@ def _print_comparison_table(results: list[dict]) -> None:
             sign = "+" if v > 0 else ""
             print(f"  {'':45} {k.upper():>6}  {'':>7}  {'':>7}  {sign}{v:>6.4f}")
 
-    print("═" * 90 + "\n")
+    print("=" * 90 + "\n")
 
 
 # ── CLI entry point ──

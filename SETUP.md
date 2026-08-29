@@ -1,0 +1,424 @@
+# NeSy-GraphRAG Setup
+
+This guide reproduces the verified local project setup from a fresh clone. The primary instructions target Windows PowerShell, Python 3.11, a local Neo4j database, Semantic Scholar data, and an optional NVIDIA GPU.
+
+PDF ingestion is not part of this setup. The current pipeline uses paper metadata and abstracts.
+
+## Tested Stack
+
+- Windows 10/11
+- Python 3.11.9, 64-bit
+- Local Neo4j `2026.07.1` using Bolt at `neo4j://127.0.0.1:7687`
+- NVIDIA GeForce RTX 3050 Laptop GPU, 4 GB VRAM
+- PyTorch `2.12.1+cu126`
+- Python dependencies pinned in `requirements.txt`
+- Semantic Scholar corpus configuration: 10,000 requested records, 2020-2025, Computer Science
+- SPECTER embeddings: `allenai-specter`
+- Groq primary model: `openai/gpt-oss-120b`
+- Groq fallback model: `llama-3.1-8b-instant`
+
+Other hardware can run the project. `EMBEDDING_DEVICE=auto` selects CUDA, then Apple MPS, then CPU.
+
+## 1. Prerequisites
+
+Install these before cloning:
+
+1. Git
+2. Python 3.11, 64-bit
+3. Neo4j Desktop, Neo4j Community Server, or another local Neo4j installation
+4. A Groq API key
+5. A Semantic Scholar API key for a reliable 10,000-paper ingestion run
+6. An NVIDIA driver that supports the CUDA 12.6 PyTorch wheel, if using NVIDIA acceleration
+
+The full CUDA Toolkit is not required by the PyTorch wheel, but a compatible NVIDIA driver is required.
+
+Confirm the basic tools:
+
+```powershell
+git --version
+py -3.11 --version
+```
+
+## 2. Clone The Repository
+
+```powershell
+git clone --branch master --single-branch https://github.com/cvishnu007/nesy-graphrag.git
+Set-Location .\nesy-graphrag
+git status --short --branch
+```
+
+The final command should show `master` with a clean worktree.
+
+### Before Making Any Changes
+
+Always synchronize the local `master` branch before editing code, documentation, configuration, or tests:
+
+```powershell
+git switch master
+git status --short --branch
+git pull --ff-only origin master
+```
+
+Do not begin new work until `master` is up to date and `git status` shows a clean worktree. Resolve or preserve any existing local changes before pulling. After the pull succeeds, create or switch to the branch where the new work will be committed:
+
+```powershell
+git switch -c your-branch-name
+```
+
+For every later change, repeat the synchronization step against `master` first. Using `--ff-only` prevents Git from silently creating an unintended merge commit during the pull.
+
+## 3. Create Or Reuse The Virtual Environment
+
+For a fresh clone:
+
+```powershell
+py -3.11 -m venv venv
+```
+
+If `venv` already exists, do not recreate it. Verify its interpreter first:
+
+```powershell
+.\venv\Scripts\python.exe --version
+.\venv\Scripts\python.exe -m pip --version
+```
+
+All commands below use the explicit virtual-environment interpreter. Activating the environment is optional.
+
+Upgrade packaging tools:
+
+```powershell
+.\venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
+```
+
+## 4. Install PyTorch And Project Dependencies
+
+### NVIDIA GPU Setup
+
+Install the tested CUDA 12.6 build first:
+
+```powershell
+.\venv\Scripts\python.exe -m pip install torch==2.12.1 torchvision==0.27.1 --index-url https://download.pytorch.org/whl/cu126
+```
+
+Then install the remaining pinned dependencies:
+
+```powershell
+.\venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Verify CUDA:
+
+```powershell
+.\venv\Scripts\python.exe -c "import torch; print('torch=', torch.__version__); print('cuda=', torch.cuda.is_available()); print('device=', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU')"
+```
+
+The verified machine reports `2.12.1+cu126`, `True`, and `NVIDIA GeForce RTX 3050 Laptop GPU`.
+
+### CPU-Only Setup
+
+Skip the CUDA-specific command and run:
+
+```powershell
+.\venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Set `EMBEDDING_DEVICE=cpu` in `.env`, or leave it as `auto` to fall back automatically.
+
+### Install The spaCy Model
+
+```powershell
+.\venv\Scripts\python.exe -m spacy download en_core_web_sm
+```
+
+Check dependency consistency:
+
+```powershell
+.\venv\Scripts\python.exe -m pip check
+```
+
+## 5. Configure Neo4j
+
+Create and start a dedicated local Neo4j database. The graph build command executes `MATCH (n) DETACH DELETE n`, so do not point this project at a database containing unrelated data.
+
+Verified local connection settings:
+
+- URI: `neo4j://127.0.0.1:7687`
+- Username: `neo4j`
+- Password: the password selected when creating the local database
+
+The code uses Neo4j constraints and Cypher syntax supported by modern Neo4j releases. The verified server is `2026.07.1`.
+
+Keep the Neo4j service running during graph loading, retrieval, tests that use live services, and Streamlit use.
+
+## 6. Create The Environment File
+
+Copy the tracked template:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Edit `.env` and replace these values:
+
+```env
+NEO4J_PASSWORD=your_local_neo4j_password
+GROQ_API_KEY=your_groq_api_key
+SEMANTIC_SCHOLAR_API_KEY=your_semantic_scholar_api_key
+```
+
+The template already matches the verified project configuration:
+
+```env
+DATA_SOURCE=s2
+NEO4J_URI=neo4j://127.0.0.1:7687
+NEO4J_USERNAME=neo4j
+NEO4J_ALLOW_RESET=true
+
+S2_QUERY=graph neural networks
+S2_LIMIT=10000
+S2_YEAR=2020-2025
+S2_FIELDS_OF_STUDY=Computer Science
+
+CHROMA_COLLECTION=s2_papers
+USE_REAL_CITATIONS=true
+
+EMBEDDING_MODEL=allenai-specter
+EMBEDDING_DEVICE=auto
+EMBEDDING_BATCH_SIZE=16
+
+LLM_MODEL=openai/gpt-oss-120b
+LLM_MODEL_FALLBACK=llama-3.1-8b-instant
+
+EVALUATION_START_YEAR=2020
+EVALUATION_END_YEAR=2025
+```
+
+`NEO4J_ALLOW_RESET=true` is required for the graph build because it intentionally clears the configured database. Set it only for a dedicated project database.
+
+Do not commit `.env`. It is ignored by Git.
+
+Verify non-secret configuration values:
+
+```powershell
+.\venv\Scripts\python.exe -c "from src.utils import config; print(config.DATA_SOURCE, config.NEO4J_URI, config.CHROMA_COLLECTION, config.EMBEDDING_MODEL, config.LLM_MODEL)"
+```
+
+## 7. Verify Neo4j Connectivity
+
+Start the Neo4j service, then run:
+
+```powershell
+.\venv\Scripts\python.exe -c "from src.storage.neo4j_store import get_driver; d=get_driver(); print('Neo4j connectivity OK'); d.close()"
+```
+
+If this fails, fix Neo4j before beginning ingestion. Confirm the service is running, the password is correct, and port `7687` is available.
+
+## 8. Build The Project Data From Scratch
+
+Run each stage from the repository root and wait for it to finish before starting the next stage.
+
+### Stage 1: Semantic Scholar Ingestion
+
+```powershell
+.\venv\Scripts\python.exe -m src.ingestion.run_ingestion
+```
+
+Expected outputs:
+
+- `data/s2_raw.json`
+- `data/s2_clean.json`
+
+The exact retained count can change as Semantic Scholar data changes. The verified run requested 10,000 records and retained 8,850 after cleaning.
+
+Semantic Scholar rate limits make this stage network-bound. Do not launch duplicate ingestion processes. If the API returns `429`, allow the built-in retry delay to continue.
+
+### Stage 2: Entity Extraction
+
+```powershell
+.\venv\Scripts\python.exe -m src.ingestion.ner_extractor
+```
+
+Expected output:
+
+- `data/s2_ner.json`
+
+On CPU, the code uses all but one logical processor unless `SPACY_N_PROCESS` is set. On supported spaCy GPU installations, `SPACY_DEVICE=auto` can select the GPU and uses one process.
+
+### Stage 3: Chroma Index
+
+```powershell
+.\venv\Scripts\python.exe -m src.storage.chroma_store
+```
+
+Expected output:
+
+- `data/chromadb/`
+- Chroma collection `s2_papers`
+
+The first run downloads `allenai-specter` from Hugging Face unless it is already cached. Keep network access enabled. The index builder resumes by skipping IDs already present in the collection.
+
+Verify the vector count:
+
+```powershell
+.\venv\Scripts\python.exe -c "from src.storage.chroma_store import get_collection; print('Chroma vectors:', get_collection().count())"
+```
+
+The count should match the cleaned-paper count.
+
+### Stage 4: Neo4j Graph
+
+Ensure Neo4j is running and `.env` contains `NEO4J_ALLOW_RESET=true`.
+
+```powershell
+.\venv\Scripts\python.exe -m src.storage.neo4j_store
+```
+
+This stage clears the configured Neo4j database and rebuilds papers, authors, concepts, and citation edges from `data/s2_ner.json`.
+
+Verify graph counts:
+
+```powershell
+.\venv\Scripts\python.exe -c "from src.storage.neo4j_store import get_driver; d=get_driver(); s=d.session(); print('Papers:', s.run('MATCH (p:Paper) RETURN count(p) AS c').single()['c']); print('CITES:', s.run('MATCH ()-[r:CITES]->() RETURN count(r) AS c').single()['c']); s.close(); d.close()"
+```
+
+The paper count should match Chroma. Real `CITES` edges are created only when both the source and referenced target paper exist in the ingested corpus.
+
+## 9. Run Automated Verification
+
+Run the complete unit suite:
+
+```powershell
+.\venv\Scripts\python.exe -m pytest
+```
+
+The current repository collects 39 pytest cases after the setup and merge-consistency sweeps.
+
+Compile all Python modules:
+
+```powershell
+.\venv\Scripts\python.exe -m compileall -q src app tests
+```
+
+Run retrieval diagnostics without calling the LLM:
+
+```powershell
+.\venv\Scripts\python.exe -m src.pipeline.retrieval "graph neural networks for node classification" --top-k 10
+```
+
+Run a single live review with Neo4j, Chroma, Hugging Face, and Groq:
+
+```powershell
+.\venv\Scripts\python.exe -c "from src.pipeline.orchestrator import graphrag_query; r=graphrag_query('graph neural networks for node classification', mode='review', top_k=5); print(r['provenance']['stats'])"
+```
+
+A valid run should report verified papers, at least one accepted claim, valid passage citations, and no fabricated passage IDs.
+
+## 10. Start The Streamlit App
+
+```powershell
+.\venv\Scripts\python.exe -m streamlit run app/streamlit_app.py
+```
+
+Open the local URL printed by Streamlit, normally `http://localhost:8501`.
+
+The app provides:
+
+- literature review with claim-level passage evidence
+- contradiction candidate evaluation
+- evidence-ranked hypothesis generation
+- prototype metrics and graph/store counts
+
+Stop the app with `Ctrl+C`.
+
+## Clean Rebuild Procedure
+
+Use this only when intentionally rebuilding generated state.
+
+1. Stop Streamlit and any running pipeline process.
+2. Confirm the current directory is the cloned `nesy-graphrag` repository.
+3. Remove generated Chroma and JSON data.
+4. Start the dedicated Neo4j database.
+5. Run Stages 1-4 again in order.
+
+PowerShell cleanup commands from the repository root:
+
+```powershell
+Remove-Item -LiteralPath .\data\chromadb -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -LiteralPath .\data\s2_raw.json -Force -ErrorAction SilentlyContinue
+Remove-Item -LiteralPath .\data\s2_clean.json -Force -ErrorAction SilentlyContinue
+Remove-Item -LiteralPath .\data\s2_ner.json -Force -ErrorAction SilentlyContinue
+```
+
+The Neo4j stage clears graph data itself after checking `NEO4J_ALLOW_RESET=true`.
+
+## Troubleshooting
+
+### `No module named ...`
+
+Use the repository interpreter explicitly:
+
+```powershell
+.\venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Do not use a global `python` or `pip` if it points outside `venv`.
+
+### `Can't find model 'en_core_web_sm'`
+
+```powershell
+.\venv\Scripts\python.exe -m spacy download en_core_web_sm
+```
+
+### CUDA Is `False`
+
+Check the installed build:
+
+```powershell
+.\venv\Scripts\python.exe -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
+```
+
+If the version does not contain `+cu126`, reinstall the CUDA wheel from Step 4. Confirm the NVIDIA driver can see the GPU with `nvidia-smi`.
+
+### Neo4j Connection Failure
+
+- Start the Neo4j service.
+- Confirm `NEO4J_URI=neo4j://127.0.0.1:7687`.
+- Confirm the username and password.
+- Confirm another process is not using port `7687`.
+- Use a dedicated database and set `NEO4J_ALLOW_RESET=true` only when rebuilding it.
+
+### Semantic Scholar Rate Limits
+
+- Ensure `SEMANTIC_SCHOLAR_API_KEY` is set.
+- Run only one ingestion process.
+- Keep `SEMANTIC_SCHOLAR_MIN_INTERVAL_SEC=1.05` or increase it.
+- Let built-in retries handle `429` and server errors.
+
+### Hugging Face Download Problems
+
+The first embedding run requires network access. If the model is already cached, set these only for intentionally offline runs:
+
+```env
+HF_HUB_OFFLINE=1
+TRANSFORMERS_OFFLINE=1
+```
+
+Do not enable offline mode before the first successful model download.
+
+### Chroma Count Does Not Match The Clean Dataset
+
+The collection may contain stale data from an older run. Follow the clean rebuild procedure, then rebuild Chroma before rebuilding Neo4j.
+
+### Groq Model Failure
+
+Confirm `GROQ_API_KEY` is valid. The configured primary model is `openai/gpt-oss-120b`; the pipeline falls back to `llama-3.1-8b-instant` when the primary model is unavailable.
+
+## Security And Data Safety
+
+- Never commit `.env` or API keys.
+- Use a dedicated Neo4j database; graph building is destructive by design.
+- Generated data and Chroma files belong under `data/` and are ignored by Git.
+- Review claims have passage-ID provenance, but semantic correctness still requires evaluation.
+- Hypotheses are generated research suggestions, not validated scientific findings.
+
+After setup, read `PROJECT_STATUS.md` for implemented capabilities, known limitations, and the evaluation roadmap.

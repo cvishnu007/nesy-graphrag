@@ -6,8 +6,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from src.pipeline.orchestrator import get_neo4j, get_groq
 from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
+from src.pipeline.verdicts import contradiction_verdict
 from src.pipeline.hypothesis import llm_hypothesis
-from src.pipeline.verdicts import extract_verdict
 from src.storage.chroma_store import get_collection
 from src.utils.config import CHROMA_COLLECTION, DATA_SOURCE, LLM_MODEL
 from src.pipeline.metrics import compute_all_metrics
@@ -34,7 +34,6 @@ def graph_stats(driver):
     except Exception:
         return "N/A", "N/A"
 
-
 # ════════════════════════════════════════════════════
 # UI
 # ════════════════════════════════════════════════════
@@ -51,7 +50,10 @@ with st.sidebar:
         ["📚 Literature Review", "⚡ Contradiction Detection", "💡 Hypothesis Generation"],
         index=0
     )
-    top_k = st.slider("Papers to retrieve", min_value=3, max_value=15, value=10)
+    if "review" in mode.lower():
+        top_k = st.slider("Papers to retrieve", min_value=3, max_value=15, value=10)
+    else:
+        top_k = st.slider("Candidates to evaluate", min_value=1, max_value=10, value=5)
     st.markdown("---")
     st.markdown("**Pipeline:**")
     paper_nodes, cites_edges = graph_stats(driver)
@@ -78,11 +80,47 @@ if run and query:
         papers   = result["papers"]
         answer   = result["answer"]
         verified = result["verified"]
+        claims = result.get("claims", [])
+        unsupported_claims = result.get("unsupported_claims", [])
+        provenance = result.get("provenance", {})
+        provenance_stats = provenance.get("stats", {})
+        parse_errors = provenance.get("parse_errors", [])
 
-        st.success(f"Retrieved {len(papers)} papers — {len(verified)}/{len(papers)} citations verified")
+        st.success(
+            f"Retrieved {len(papers)} papers — {len(verified)}/{len(papers)} papers verified — "
+            f"{len(claims)}/{provenance_stats.get('total_claims', 0)} claims have valid passage references"
+        )
 
         st.markdown("### 📝 Literature Review")
         st.markdown(answer)
+
+        st.markdown("### Claim Evidence")
+        if not claims:
+            st.warning("No claim with a completely valid passage citation set was produced.")
+        for index, claim in enumerate(claims, start=1):
+            with st.expander(f"Claim {index}: {claim['text'][:90]}"):
+                for evidence in claim.get("evidence", []):
+                    st.markdown(
+                        f"**{evidence['id']} — {evidence['paper_title']}**"
+                    )
+                    st.write(evidence["text"])
+
+        if unsupported_claims:
+            st.warning(
+                f"Blocked {len(unsupported_claims)} claim(s) with missing or invalid evidence."
+            )
+            with st.expander("Unsupported claim audit"):
+                for claim in unsupported_claims:
+                    st.write(claim.get("text") or "Empty claim")
+                    st.caption(
+                        ", ".join(claim.get("rejection_reasons", []))
+                    )
+
+        if parse_errors:
+            st.warning(f"Detected {len(parse_errors)} structured-output error(s).")
+            with st.expander("Parser audit"):
+                for error in parse_errors:
+                    st.code(error)
 
         st.markdown("### 📄 Retrieved Papers")
         for p in papers:
@@ -100,13 +138,13 @@ if run and query:
         st.markdown("### 📊 Evaluation Metrics")
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("TS (Trustworthiness)", f"{metrics['ts']['ts']:.3f}",
-                    help="Target ≥ 0.90")
+                    help="Prototype passage-citation integrity and claim-coverage diagnostic")
         col2.metric("NBR (NeSy Boost)", f"{metrics['nbr']['nbr']:.3f}",
-                    help="Target > 0.30 — proves graph adds value")
+                    help="Fraction of final results that include graph retrieval")
         col3.metric("ATD (Temporal Range)", f"{metrics['atd']['atd']:.3f}",
-                    help="1.0 = all 5 years represented")
+                    help=f"1.0 means all {metrics['atd']['span_size']} configured years are represented")
         col4.metric("RDI (Reasoning Depth)", f"{metrics['rdi']['rdi']:.3f}",
-                    help="Target ≥ 0.75")
+                    help="Prototype cross-document and contradiction diagnostic")
 
         # ── Flag missing years explicitly ──
         missing_years = metrics["atd"].get("missing_years", [])
@@ -120,10 +158,10 @@ if run and query:
     # ── CONTRADICTION MODE ────────────────────────────
     elif "contradiction" in mode.lower():
         with st.spinner("Running contradiction detection pipeline..."):
-            result = llm_contradict(groq_client, driver, query, top_k=5)
+            result = llm_contradict(groq_client, driver, query, top_k=top_k)
 
         contradictions = result.get("contradictions", [])
-        st.info(f"Found and verified {len(contradictions)} contradiction candidate pairs")
+        st.info(f"Evaluated {len(contradictions)} contradiction candidate pairs")
 
         if not contradictions:
             st.warning("No contradiction candidates found for this query.")
@@ -133,7 +171,7 @@ if run and query:
                 p2     = item["paper2"]
                 analysis = item.get("llm_analysis", "")
 
-                verdict = extract_verdict(analysis)
+                verdict = contradiction_verdict(item)
                 verdict_color = "🔴" if verdict == "CONTRADICTION" else ("🟡" if verdict == "AGREEMENT" else "🔵")
 
                 with st.expander(f"{verdict_color} Pair {i+1}: {p1['title'][:40]}... vs {p2['title'][:40]}..."):
@@ -150,7 +188,7 @@ if run and query:
     # ── HYPOTHESIS MODE ───────────────────────────────
     elif "hypothesis" in mode.lower():
         with st.spinner("Running hypothesis generation pipeline..."):
-            result = llm_hypothesis(groq_client, driver, query, top_k=5)
+            result = llm_hypothesis(groq_client, driver, query, top_k=top_k)
 
         hypotheses = result.get("hypotheses", [])
         st.info(f"Generated {len(hypotheses)} research hypotheses")
@@ -165,8 +203,12 @@ if run and query:
                 with st.expander(f"💡 Hypothesis {i+1}: {h.get('title', '')[:60]}... ({h.get('year', '')})"):
                     st.markdown(f"**Category:** {h.get('category', 'N/A')}")
                     st.markdown(f"**Shared Concepts:** {h.get('shared_concepts', 'N/A')}")
+                    st.markdown(f"**Supporting Papers:** {h.get('supporting_papers', 'N/A')}")
+                    st.markdown(f"**Evidence Score:** {h.get('evidence_score', 'N/A')}")
+                    st.markdown(f"**Feasibility:** {item.get('feasibility', 'UNKNOWN')}")
                     st.markdown("**Generated Hypothesis:**")
                     st.markdown(llm_text)
+                    st.markdown(f"**Missing Evidence:** {item.get('missing_evidence', 'Not provided')}")
 
 elif run and not query:
     st.warning("Please enter a query first.")

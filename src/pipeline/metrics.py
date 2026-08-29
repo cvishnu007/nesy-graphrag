@@ -3,7 +3,7 @@ src/pipeline/metrics.py
 =======================
 NeSy-GraphRAG Evaluation Metrics — Phase 3
 
-Implements five metrics that can be computed without human annotation
+Implements five prototype diagnostics that can be computed without human annotation
 and with the current pipeline state (Groq + Neo4j may be unavailable;
 ChromaDB must be up).
 
@@ -29,12 +29,49 @@ import sys
 from typing import Any
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.pipeline.verdicts import has_contradiction_verdict
+
+from src.pipeline.verdicts import is_confident_contradiction
+from src.utils.config import (
+    CONTRADICTION_MIN_CONFIDENCE,
+    EVALUATION_END_YEAR,
+    EVALUATION_START_YEAR,
+)
 
 
 # ─────────────────────────────────────────────────────────────
 # 1. TRUSTWORTHINESS SCORE (TS)
 # ─────────────────────────────────────────────────────────────
+
+def compute_provenance_ts(provenance: dict) -> dict:
+    """Compute prototype trustworthiness from validated claim provenance."""
+    stats = provenance.get("stats", {})
+    total_claims = int(stats.get("total_claims", 0))
+    total_citations = int(stats.get("total_citations", 0))
+    valid_citations = int(stats.get("valid_citations", 0))
+    grounded_claims = int(stats.get("grounded_claims", 0))
+
+    citation_integrity = (
+        valid_citations / total_citations if total_citations else 0.0
+    )
+    hallucination_rate = (
+        (total_citations - valid_citations) / total_citations
+        if total_citations
+        else 0.0
+    )
+    claim_coverage = grounded_claims / total_claims if total_claims else 0.0
+    ts = 0.5 * citation_integrity + 0.5 * claim_coverage
+
+    return {
+        "ts": round(ts, 4),
+        "citation_integrity": round(citation_integrity, 4),
+        "hallucination_rate": round(hallucination_rate, 4),
+        "claim_coverage": round(claim_coverage, 4),
+        "total_claims": total_claims,
+        "grounded_claims": grounded_claims,
+        "total_citations": total_citations,
+        "valid_citations": valid_citations,
+        "hallucinated_count": total_citations - valid_citations,
+    }
 
 def compute_ts(verified: dict, papers: list, answer: str) -> dict:
     """
@@ -55,6 +92,16 @@ def compute_ts(verified: dict, papers: list, answer: str) -> dict:
     """
     total_retrieved = len(papers)
     total_verified  = len(verified)
+
+    if total_retrieved == 0:
+        return {
+            "ts": 0.0,
+            "citation_integrity": 0.0,
+            "hallucination_rate": 0.0,
+            "total_retrieved": 0,
+            "total_verified": 0,
+            "hallucinated_count": 0,
+        }
 
     # Citation Integrity: what fraction of retrieved papers actually exist in Neo4j
     citation_integrity = total_verified / total_retrieved if total_retrieved > 0 else 0.0
@@ -120,7 +167,7 @@ def compute_nbr(papers: list) -> dict:
         "graph_count"      : graph_count,
         "neural_only_count": total - graph_count,
         "total"            : total,
-        "adds_value"       : nbr > 0.3,   # dissertation target
+        "graph_contributes": graph_count > 0,
     }
 
 
@@ -128,13 +175,12 @@ def compute_nbr(papers: list) -> dict:
 # 3. ANSWER TEMPORAL DIVERSITY (ATD)
 # ─────────────────────────────────────────────────────────────
 
-def compute_atd(papers: list, year_range: tuple = (2020, 2024)) -> dict:
+def compute_atd(papers: list, year_range: tuple | None = None) -> dict:
     """
     ATD = |Distinct years in cited papers| / span_size
 
-    span_size defaults to 5 (2020–2024, your dataset range).
-    ATD = 1.0 → all 5 years represented.
-    ATD = 0.2 → only 1 year (temporal tunnel vision).
+    The default range comes from EVALUATION_START_YEAR and
+    EVALUATION_END_YEAR.
 
     Parameters
     ----------
@@ -145,7 +191,7 @@ def compute_atd(papers: list, year_range: tuple = (2020, 2024)) -> dict:
     -------
     dict with atd, distinct_years, year_distribution
     """
-    start, end  = year_range
+    start, end = year_range or (EVALUATION_START_YEAR, EVALUATION_END_YEAR)
     span_size   = end - start + 1
 
     years_in_results = [
@@ -210,8 +256,7 @@ def compute_rdi(
     # Handles both raw detect_contradictions() output and llm_contradict() output
     resolved = 0
     for item in contradictions:
-        analysis = item.get("llm_analysis", "")
-        if has_contradiction_verdict(analysis):
+        if is_confident_contradiction(item, CONTRADICTION_MIN_CONFIDENCE):
             resolved += 1
 
     total_checked = (
@@ -249,11 +294,11 @@ def compute_hns(
     query_paper_ids: list,
 ) -> dict:
     """
-    HNS = mean shortestPath_length across generated hypotheses.
+    HNS = mean(shortestPath_length / maximum_path_length) across hypotheses.
 
     For each hypothesis paper, find the shortest path through Concept
     nodes between any of its concepts and any concept belonging to the
-    query papers.  Longer shortest paths → higher novelty.
+    query papers. Longer shortest paths produce higher structural novelty.
 
     If Neo4j is unavailable or no paths exist, returns hns = 0.0.
 
@@ -266,13 +311,12 @@ def compute_hns(
 
     Returns
     -------
-    dict with hns, individual_scores, path_lengths, total_hypotheses
+    dict with hns, individual_scores, total_hypotheses
     """
     if not driver or not hypotheses or not query_paper_ids:
         return {
             "hns": 0.0,
             "individual_scores": [],
-            "path_lengths": [],
             "total_hypotheses": len(hypotheses) if hypotheses else 0,
         }
 
@@ -288,11 +332,10 @@ def compute_hns(
         return {
             "hns": 0.0,
             "individual_scores": [],
-            "path_lengths": [],
             "total_hypotheses": len(hypotheses),
         }
 
-    path_lengths = []
+    individual_scores = []
 
     try:
         with driver.session() as session:
@@ -310,31 +353,28 @@ def compute_hns(
 
                 record = result.single()
                 if record and record["pathLen"] > 0:
-                    path_lengths.append(float(record["pathLen"]))
+                    individual_scores.append(min(float(record["pathLen"]), 6.0) / 6.0)
                 else:
-                    # No path found: leave the score at 0 so missing graph
-                    # evidence does not inflate novelty.
-                    path_lengths.append(0.0)
+                    # Missing paths provide no measurable novelty evidence.
+                    individual_scores.append(0.0)
 
     except Exception as e:
         print(f"[HNS] Neo4j query failed: {e}")
         return {
             "hns": 0.0,
             "individual_scores": [],
-            "path_lengths": [],
             "total_hypotheses": len(hypotheses),
         }
 
     hns = (
-        sum(path_lengths) / len(path_lengths)
-        if path_lengths
+        sum(individual_scores) / len(individual_scores)
+        if individual_scores
         else 0.0
     )
 
     return {
         "hns": round(hns, 4),
-        "individual_scores": [round(s, 4) for s in path_lengths],
-        "path_lengths": [round(s, 4) for s in path_lengths],
+        "individual_scores": [round(s, 4) for s in individual_scores],
         "total_hypotheses": len(hypotheses),
     }
 
@@ -348,10 +388,10 @@ def compute_all_metrics(
     contradiction_result: dict | None = None,
     hypothesis_result: dict | None = None,
     driver=None,
-    year_range: tuple = (2020, 2024),
+    year_range: tuple | None = None,
 ) -> dict[str, Any]:
     """
-    Compute all four metrics from a single pipeline result dict.
+    Compute all five prototype diagnostics from a pipeline result dict.
 
     Parameters
     ----------
@@ -376,7 +416,12 @@ def compute_all_metrics(
     if contradiction_result:
         contradictions = contradiction_result.get("contradictions", [])
 
-    ts  = compute_ts(verified, papers, answer)
+    provenance = result.get("provenance")
+    ts = (
+        compute_provenance_ts(provenance)
+        if provenance is not None
+        else compute_ts(verified, papers, answer)
+    )
     nbr = compute_nbr(papers)
     atd = compute_atd(papers, year_range=year_range)
     rdi = compute_rdi(papers, contradictions)
@@ -406,22 +451,18 @@ def _print_summary(scores: dict) -> None:
     rdi = scores["rdi"]
     hns = scores.get("hns", {})
 
-    print("\n" + "═" * 55)
+    print("\n" + "=" * 55)
     print("  NeSy-GraphRAG EVALUATION METRICS")
-    print("═" * 55)
+    print("=" * 55)
     print(f"  TS  (Trustworthiness)   : {ts['ts']:.4f}"
-          f"  [CI={ts['citation_integrity']:.2f}, HR={ts['hallucination_rate']:.2f}]"
-          f"  {'✅' if ts['ts'] >= 0.90 else '⚠️ target ≥0.90'}")
+          f"  [CI={ts['citation_integrity']:.2f}, HR={ts['hallucination_rate']:.2f}]")
     print(f"  NBR (NeSy Boost Ratio)  : {nbr['nbr']:.4f}"
-          f"  [{nbr['graph_count']}/{nbr['total']} from graph]"
-          f"  {'✅' if nbr['adds_value'] else '⚠️ target >0.30'}")
+          f"  [{nbr['graph_count']}/{nbr['total']} include graph retrieval]")
     print(f"  ATD (Temporal Diversity): {atd['atd']:.4f}"
-          f"  [years: {atd['distinct_years']}]"
-          f"  {'✅' if atd['atd'] >= 0.6 else '⚠️ low diversity'}")
+          f"  [years: {atd['distinct_years']}]")
     print(f"  RDI (Reasoning Depth)   : {rdi['rdi']:.4f}"
-          f"  [cross-doc={rdi['cross_doc_papers']}, contradictions={rdi['contradictions_resolved']}]"
-          f"  {'✅' if rdi['rdi'] >= 0.75 else '⚠️ target ≥0.75'}")
+          f"  [cross-doc={rdi['cross_doc_papers']}, contradictions={rdi['contradictions_resolved']}]")
     if hns and hns.get("hns") is not None:
         print(f"  HNS (Hypothesis Novelty): {hns['hns']:.4f}"
               f"  [{hns.get('total_hypotheses', 0)} hypotheses scored]")
-    print("═" * 55 + "\n")
+    print("=" * 55 + "\n")

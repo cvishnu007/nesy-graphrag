@@ -22,12 +22,17 @@ def is_configured(value, *placeholder_markers):
 
 
 # ── Source selection ───────────────────────────────────
-DATA_SOURCE = os.getenv("DATA_SOURCE", "arxiv").strip().lower()
+DATA_SOURCE = os.getenv("DATA_SOURCE", "s2").strip().lower()
+if DATA_SOURCE not in {"arxiv", "s2"}:
+    raise ValueError("DATA_SOURCE must be 'arxiv' or 's2'")
 
 # ── Neo4j ─────────────────────────────────────────────
 NEO4J_URI      = os.getenv("NEO4J_URI")
 NEO4J_USERNAME = os.getenv("NEO4J_USERNAME")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
+NEO4J_ALLOW_RESET = os.getenv("NEO4J_ALLOW_RESET", "false").strip().lower() in {
+    "1", "true", "yes", "on"
+}
 
 # ── Groq ──────────────────────────────────────────────
 GROQ_API_KEY   = os.getenv("GROQ_API_KEY")
@@ -84,7 +89,8 @@ USE_REAL_CITATIONS = os.getenv(
 
 # ── Models ────────────────────────────────────────────
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "allenai-specter")
-LLM_MODEL          = os.getenv("LLM_MODEL",          "llama-3.3-70b-versatile")
+EMBEDDING_BATCH_SIZE = int(os.getenv("EMBEDDING_BATCH_SIZE", "16"))
+LLM_MODEL          = os.getenv("LLM_MODEL",          "openai/gpt-oss-120b")
 LLM_MODEL_FALLBACK = os.getenv("LLM_MODEL_FALLBACK", "llama-3.1-8b-instant")
 GROQ_MAX_RETRIES   = int(os.getenv("GROQ_MAX_RETRIES", 4))
 
@@ -93,7 +99,37 @@ BATCH_SIZE          = int(os.getenv("BATCH_SIZE",          64))
 NEO4J_BATCH_SIZE    = int(os.getenv("NEO4J_BATCH_SIZE",    500))
 TOP_K               = int(os.getenv("TOP_K",               10))
 HOP_DEPTH           = int(os.getenv("HOP_DEPTH",           2))
+RRF_K               = int(os.getenv("RRF_K",               60))
+NEURAL_FUSION_WEIGHT = float(os.getenv("NEURAL_FUSION_WEIGHT", "1.0"))
+GRAPH_FUSION_WEIGHT  = float(os.getenv("GRAPH_FUSION_WEIGHT",  "1.0"))
 CITES_THRESHOLD     = int(os.getenv("CITES_THRESHOLD",     2))
 MAX_AUTHORS         = int(os.getenv("MAX_AUTHORS",         5))
 MAX_CONCEPTS        = int(os.getenv("MAX_CONCEPTS",        10))
 MIN_ABSTRACT_WORDS  = int(os.getenv("MIN_ABSTRACT_WORDS",  30))
+EVALUATION_START_YEAR = int(os.getenv("EVALUATION_START_YEAR", "2020"))
+EVALUATION_END_YEAR = int(
+    os.getenv("EVALUATION_END_YEAR", "2025" if DATA_SOURCE == "s2" else "2024")
+)
+if EVALUATION_END_YEAR < EVALUATION_START_YEAR:
+    raise ValueError("EVALUATION_END_YEAR must be greater than or equal to EVALUATION_START_YEAR")
+CONTRADICTION_MIN_SHARED_CONCEPTS = int(
+    os.getenv("CONTRADICTION_MIN_SHARED_CONCEPTS", "2")
+)
+CONTRADICTION_MIN_CONCEPT_JACCARD = float(
+    os.getenv("CONTRADICTION_MIN_CONCEPT_JACCARD", "0.10")
+)
+CONTRADICTION_CANDIDATE_POOL = int(
+    os.getenv("CONTRADICTION_CANDIDATE_POOL", "25")
+)
+CONTRADICTION_MIN_CONFIDENCE = float(
+    os.getenv("CONTRADICTION_MIN_CONFIDENCE", "0.70")
+)
+HYPOTHESIS_MIN_SHARED_CONCEPTS = int(
+    os.getenv("HYPOTHESIS_MIN_SHARED_CONCEPTS", "2")
+)
+HYPOTHESIS_MIN_QUERY_SUPPORT = int(
+    os.getenv("HYPOTHESIS_MIN_QUERY_SUPPORT", "2")
+)
+HYPOTHESIS_CANDIDATE_POOL = int(
+    os.getenv("HYPOTHESIS_CANDIDATE_POOL", "25")
+)

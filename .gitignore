@@ -4,10 +4,13 @@
 # Python
 venv/
 __pycache__/
+.pytest_cache/
 *.pyc
 *.pyo
 *.pyd
 .Python
+.coverage
+htmlcov/
 
 # Data — too large for git
 data/

@@ -6,8 +6,10 @@ from sentence_transformers import SentenceTransformer
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import (
-    CLEAN_FILE, CHROMA_COLLECTION, CHROMA_DIR, DATA_SOURCE, EMBEDDING_MODEL, BATCH_SIZE
+    BATCH_SIZE, CHROMA_COLLECTION, CHROMA_DIR, CLEAN_FILE, DATA_SOURCE,
+    EMBEDDING_BATCH_SIZE, EMBEDDING_MODEL,
 )
+from src.utils.compute import configure_torch
 
 _collection = None
 _embedder   = None
@@ -27,20 +29,38 @@ def get_collection():
 def get_embedder():
     global _embedder
     if _embedder is None:
+        device = configure_torch()
         print(f"Loading embedding model: {EMBEDDING_MODEL}")
-        _embedder = SentenceTransformer(EMBEDDING_MODEL)
+        local_only = os.getenv("HF_HUB_OFFLINE") == "1" or os.getenv("TRANSFORMERS_OFFLINE") == "1"
+        try:
+            _embedder = SentenceTransformer(
+                EMBEDDING_MODEL,
+                device=device,
+                local_files_only=local_only,
+            )
+        except TypeError:
+            _embedder = SentenceTransformer(EMBEDDING_MODEL, device=device)
         print("Model loaded!")
     return _embedder
 
 
 def build_index():
-    """Run once — reads arxiv_clean.json, encodes, stores in ChromaDB."""
+    """Encode the configured cleaned dataset into the configured collection."""
     df         = pd.read_json(CLEAN_FILE)
+    if df.empty:
+        print(f"No papers found in {CLEAN_FILE}; nothing to index.")
+        return
+    required_columns = {"id", "clean_abstract", "clean_title", "year", "primary_category"}
+    missing_columns = sorted(required_columns - set(df.columns))
+    if missing_columns:
+        raise RuntimeError(
+            f"{CLEAN_FILE} is missing required columns: {', '.join(missing_columns)}"
+        )
     collection = get_collection()
     embedder   = get_embedder()
 
     print(f"Loaded {len(df)} papers from {CLEAN_FILE}")
-    print(f"ChromaDB collection '{CHROMA_COLLECTION}' ready — already stored: {collection.count()} papers")
+    print(f"ChromaDB collection '{CHROMA_COLLECTION}' ready; already stored: {collection.count()} papers")
 
     # resume support — skip already stored
     already_stored = set(collection.get()["ids"])
@@ -52,6 +72,7 @@ def build_index():
         batch      = df_remaining.iloc[i : i + BATCH_SIZE]
         embeddings = embedder.encode(
             batch["clean_abstract"].tolist(),
+            batch_size=EMBEDDING_BATCH_SIZE,
             show_progress_bar=False
         ).tolist()
 
@@ -83,19 +104,33 @@ def build_index():
 def query(text, top_k=10):
     """Query ChromaDB with a text string, returns list of paper dicts."""
     collection = get_collection()
+    result_count = min(max(0, int(top_k)), collection.count())
+    if result_count == 0:
+        return []
     embedder   = get_embedder()
-    query_vec  = embedder.encode([text]).tolist()
-    results    = collection.query(query_embeddings=query_vec, n_results=top_k)
+    query_vec  = embedder.encode(
+        [text],
+        batch_size=EMBEDDING_BATCH_SIZE,
+        show_progress_bar=False,
+    ).tolist()
+    results    = collection.query(
+        query_embeddings=query_vec,
+        n_results=result_count,
+        include=["documents", "metadatas", "distances"],
+    )
 
     papers = []
     for i in range(len(results["ids"][0])):
+        distance = float(results["distances"][0][i])
+        similarity = max(0.0, min(1.0, 1.0 - distance))
         papers.append({
             "id"       : results["ids"][0][i],
             "abstract" : results["documents"][0][i],
             "title"    : results["metadatas"][0][i].get("title", ""),
             "year"     : results["metadatas"][0][i].get("year", ""),
             "category" : results["metadatas"][0][i].get("primary_category", ""),
-            "score"    : 1.0,
+            "score"    : round(similarity, 6),
+            "neural_score": round(similarity, 6),
             "source"   : "neural"
         })
     return papers

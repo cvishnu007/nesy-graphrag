@@ -66,19 +66,19 @@ def graphrag_query(query: str, mode: str = "review", top_k: int = 10) -> dict:
 if __name__ == "__main__":
     test_query = "graph neural networks for node classification"
 
-    print("\n" + "█"*60)
-    print("TEST 1 — LITERATURE REVIEW")
-    print("█"*60)
+    print("\n" + "=" * 60)
+    print("TEST 1 - LITERATURE REVIEW")
+    print("=" * 60)
     r1 = graphrag_query(test_query, mode="review")
 
-    print("\n" + "█"*60)
-    print("TEST 2 — CONTRADICTION DETECTION")
-    print("█"*60)
+    print("\n" + "=" * 60)
+    print("TEST 2 - CONTRADICTION DETECTION")
+    print("=" * 60)
     r2 = graphrag_query(test_query, mode="contradict")
 
-    print("\n" + "█"*60)
-    print("TEST 3 — HYPOTHESIS GENERATION")
-    print("█"*60)
+    print("\n" + "=" * 60)
+    print("TEST 3 - HYPOTHESIS GENERATION")
+    print("=" * 60)
     r3 = graphrag_query(test_query, mode="hypothesis")
 
     # Combined metrics: review result + contradiction result + hypothesis result
