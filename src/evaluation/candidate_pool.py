@@ -1,4 +1,4 @@
-"""Create a blind candidate pool from all four retrieval methods."""
+"""Create a method-hidden candidate pool from all retrieval methods."""
 
 import argparse
 import csv
@@ -11,8 +11,8 @@ from typing import Any
 from src.evaluation.benchmark_io import load_benchmark
 from src.pipeline.bm25_retrieval import bm25_retrieve
 from src.pipeline.graph_only_retrieval import graph_only_retrieve
+from src.pipeline.tuned_hybrid_retrieval import tuned_hybrid_retrieve
 from src.pipeline.retrieval import (
-    nesy_retrieve,
     vector_only_retrieve,
 )
 from src.storage.neo4j_store import get_driver
@@ -61,7 +61,7 @@ def _validate_result(
         )
 
 
-def _blind_sort_key(
+def _method_hidden_sort_key(
     benchmark_version: str,
     query_id: str,
     paper_id: str,
@@ -91,7 +91,7 @@ def build_retrievers(driver) -> dict[str, Callable]:
             query,
             top_k=top_k,
         ),
-        "hybrid": lambda query, top_k: nesy_retrieve(
+        "hybrid": lambda query, top_k: tuned_hybrid_retrieve(
             driver,
             query,
             top_k=top_k,
@@ -106,7 +106,7 @@ def pool_query(
     benchmark_version: str,
     pool_depth: int,
 ) -> tuple[list[dict], list[dict], dict]:
-    """Pool and blind all method results for one query."""
+    """Pool results while hiding method identity and original rank."""
     _validate_pool_depth(pool_depth)
 
     query_id = query_record["query_id"]
@@ -178,12 +178,12 @@ def pool_query(
             candidate["methods"].append(method)
             candidate["ranks"][method] = rank
 
-    blind_candidates = []
+    method_hidden_candidates = []
     audit_candidates = []
 
     ordered_candidates = sorted(
         pooled.values(),
-        key=lambda candidate: _blind_sort_key(
+        key=lambda candidate: _method_hidden_sort_key(
             benchmark_version,
             query_id,
             candidate["paper_id"],
@@ -191,7 +191,7 @@ def pool_query(
     )
 
     for candidate in ordered_candidates:
-        blind_candidates.append(
+        method_hidden_candidates.append(
             {
                 "query_id": query_id,
                 "split": query_record["split"],
@@ -225,11 +225,11 @@ def pool_query(
         "query_id": query_id,
         "split": query_record["split"],
         "method_counts": method_counts,
-        "unique_candidates": len(blind_candidates),
+        "unique_candidates": len(method_hidden_candidates),
     }
 
     return (
-        blind_candidates,
+        method_hidden_candidates,
         audit_candidates,
         summary,
     )
@@ -244,7 +244,7 @@ def pool_benchmark(
     """Pool candidates for every frozen benchmark query."""
     _validate_pool_depth(pool_depth)
 
-    all_blind = []
+    all_method_hidden = []
     all_audit = []
     query_summaries = []
     benchmark_version = benchmark["benchmark_version"]
@@ -261,14 +261,14 @@ def pool_benchmark(
             f"{query_record['query']}"
         )
 
-        blind, audit, summary = pool_query(
+        method_hidden, audit, summary = pool_query(
             query_record,
             retrievers,
             benchmark_version=benchmark_version,
             pool_depth=pool_depth,
         )
 
-        all_blind.extend(blind)
+        all_method_hidden.extend(method_hidden)
         all_audit.extend(audit)
         query_summaries.append(summary)
 
@@ -285,15 +285,15 @@ def pool_benchmark(
         "pool_depth": pool_depth,
         "methods": list(METHOD_NAMES),
         "query_count": total_queries,
-        "candidate_count": len(all_blind),
+        "candidate_count": len(all_method_hidden),
         "queries": query_summaries,
     }
 
-    return all_blind, all_audit, summary
+    return all_method_hidden, all_audit, summary
 
 
 def write_pool_outputs(
-    blind_candidates: list[dict],
+    method_hidden_candidates: list[dict],
     audit_candidates: list[dict],
     summary: Mapping[str, Any],
     *,
@@ -302,7 +302,7 @@ def write_pool_outputs(
     summary_path: str | Path,
     overwrite: bool = False,
 ) -> None:
-    """Write blind judgments, hidden audit data and summary."""
+    """Write method-hidden judgments, private audit data, and summary."""
     judgments_path = Path(judgments_path)
     audit_path = Path(audit_path)
     summary_path = Path(summary_path)
@@ -346,7 +346,7 @@ def write_pool_outputs(
             fieldnames=fieldnames,
         )
         writer.writeheader()
-        writer.writerows(blind_candidates)
+        writer.writerows(method_hidden_candidates)
 
     with audit_path.open(
         "w",
@@ -379,7 +379,7 @@ def write_pool_outputs(
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
-            "Pool blind candidates from BM25, vector, "
+            "Pool method-hidden candidates from BM25, vector, "
             "graph and hybrid retrieval"
         )
     )
@@ -444,7 +444,7 @@ def main() -> None:
 
     try:
         retrievers = build_retrievers(driver)
-        blind, audit, summary = pool_benchmark(
+        method_hidden, audit, summary = pool_benchmark(
             benchmark,
             retrievers,
             pool_depth=arguments.pool_depth,
@@ -453,7 +453,7 @@ def main() -> None:
         driver.close()
 
     write_pool_outputs(
-        blind,
+        method_hidden,
         audit,
         summary,
         judgments_path=arguments.judgments_output,
@@ -468,7 +468,7 @@ def main() -> None:
         f"Queries: {summary['query_count']}"
     )
     print(
-        f"Blind candidates: "
+        f"Method-hidden candidates: "
         f"{summary['candidate_count']}"
     )
     print(

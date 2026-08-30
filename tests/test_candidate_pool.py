@@ -49,19 +49,19 @@ def query_record(query_id="Q001", split="dev"):
     }
 
 
-def test_pool_query_deduplicates_and_blinds_candidates():
-    blind, audit, summary = pool_query(
+def test_pool_query_deduplicates_and_method_hides_candidates():
+    method_hidden, audit, summary = pool_query(
         query_record(),
         make_retrievers(),
         benchmark_version="0.1-draft",
         pool_depth=20,
     )
 
-    assert len(blind) == 4
-    assert len({row["paper_id"] for row in blind}) == 4
-    assert all("methods" not in row for row in blind)
-    assert all("ranks" not in row for row in blind)
-    assert all(row["grade"] == "" for row in blind)
+    assert len(method_hidden) == 4
+    assert len({row["paper_id"] for row in method_hidden}) == 4
+    assert all("methods" not in row for row in method_hidden)
+    assert all("ranks" not in row for row in method_hidden)
+    assert all(row["grade"] == "" for row in method_hidden)
     assert len(audit) == 4
     assert summary["unique_candidates"] == 4
     assert summary["method_counts"] == {
@@ -72,7 +72,7 @@ def test_pool_query_deduplicates_and_blinds_candidates():
     }
 
 
-def test_blind_order_is_deterministic():
+def test_method_hidden_order_is_deterministic():
     first, _, _ = pool_query(
         query_record(),
         make_retrievers(),
@@ -157,20 +157,20 @@ def test_pool_benchmark_combines_queries():
         ],
     }
 
-    blind, audit, summary = pool_benchmark(
+    method_hidden, audit, summary = pool_benchmark(
         benchmark,
         make_retrievers(),
         pool_depth=20,
     )
 
-    assert len(blind) == 8
+    assert len(method_hidden) == 8
     assert len(audit) == 8
     assert summary["query_count"] == 2
     assert summary["candidate_count"] == 8
 
 
 def test_write_outputs_and_prevent_overwrite(tmp_path):
-    blind, audit, summary = pool_query(
+    method_hidden, audit, summary = pool_query(
         query_record(),
         make_retrievers(),
         benchmark_version="0.1-draft",
@@ -179,14 +179,14 @@ def test_write_outputs_and_prevent_overwrite(tmp_path):
     full_summary = {
         "benchmark_version": "0.1-draft",
         "query_count": 1,
-        "candidate_count": len(blind),
+        "candidate_count": len(method_hidden),
     }
     judgments_path = tmp_path / "judgments.csv"
     audit_path = tmp_path / "audit.jsonl"
     summary_path = tmp_path / "summary.json"
 
     write_pool_outputs(
-        blind,
+        method_hidden,
         audit,
         full_summary,
         judgments_path=judgments_path,
@@ -210,7 +210,7 @@ def test_write_outputs_and_prevent_overwrite(tmp_path):
 
     with pytest.raises(FileExistsError):
         write_pool_outputs(
-            blind,
+            method_hidden,
             audit,
             full_summary,
             judgments_path=judgments_path,

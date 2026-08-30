@@ -102,6 +102,9 @@ HOP_DEPTH           = int(os.getenv("HOP_DEPTH",           2))
 RRF_K               = int(os.getenv("RRF_K",               60))
 NEURAL_FUSION_WEIGHT = float(os.getenv("NEURAL_FUSION_WEIGHT", "1.0"))
 GRAPH_FUSION_WEIGHT  = float(os.getenv("GRAPH_FUSION_WEIGHT",  "1.0"))
+HYBRID_BM25_WEIGHT = float(os.getenv("HYBRID_BM25_WEIGHT", "2.0"))
+HYBRID_VECTOR_WEIGHT = float(os.getenv("HYBRID_VECTOR_WEIGHT", "1.0"))
+HYBRID_GRAPH_WEIGHT = float(os.getenv("HYBRID_GRAPH_WEIGHT", "1.0"))
 BM25_K1 = float(os.getenv("BM25_K1", "1.5"))
 BM25_B = float(os.getenv("BM25_B", "0.75"))
 GRAPH_ONLY_CANDIDATE_LIMIT = int(
@@ -114,6 +117,10 @@ if not 0 <= BM25_B <= 1:
     raise ValueError("BM25_B must be between zero and one")
 if GRAPH_ONLY_CANDIDATE_LIMIT <= 0:
     raise ValueError("GRAPH_ONLY_CANDIDATE_LIMIT must be greater than zero")
+if min(HYBRID_BM25_WEIGHT, HYBRID_VECTOR_WEIGHT, HYBRID_GRAPH_WEIGHT) < 0:
+    raise ValueError("Hybrid retrieval weights cannot be negative")
+if HYBRID_BM25_WEIGHT + HYBRID_VECTOR_WEIGHT + HYBRID_GRAPH_WEIGHT <= 0:
+    raise ValueError("At least one hybrid retrieval weight must be positive")
 CITES_THRESHOLD     = int(os.getenv("CITES_THRESHOLD",     2))
 MAX_AUTHORS         = int(os.getenv("MAX_AUTHORS",         5))
 MAX_CONCEPTS        = int(os.getenv("MAX_CONCEPTS",        10))
