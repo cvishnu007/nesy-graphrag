@@ -5,13 +5,15 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from typing import Any
 
-from src.pipeline.bm25_retrieval import bm25_retrieve
-from src.pipeline.graph_only_retrieval import graph_only_retrieve
-from src.pipeline.retrieval import vector_only_retrieve
-from src.utils.config import (
+from src.evaluation.config import (
     HYBRID_BM25_WEIGHT,
     HYBRID_GRAPH_WEIGHT,
     HYBRID_VECTOR_WEIGHT,
+)
+from src.evaluation.retrievers.bm25_retrieval import bm25_retrieve
+from src.evaluation.retrievers.graph_only_retrieval import graph_only_retrieve
+from src.pipeline.retrieval import vector_only_retrieve
+from src.utils.config import (
     RRF_K,
     TOP_K,
 )

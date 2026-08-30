@@ -8,9 +8,8 @@ from typing import Iterable, Mapping
 
 import pandas as pd
 
+from src.evaluation.config import BM25_B, BM25_K1
 from src.utils.config import (
-    BM25_B,
-    BM25_K1,
     CLEAN_FILE,
     TOP_K,
 )

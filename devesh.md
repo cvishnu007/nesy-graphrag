@@ -68,9 +68,9 @@ The accurate conclusion is that the tuned Hybrid shows a promising improvement o
 - `src/evaluation/finalize_judgments.py`: CSV-to-benchmark conversion.
 - `src/evaluation/retrieval_runner.py`: four-method evaluation runner.
 - `src/evaluation/significance.py`: paired uncertainty and randomization analysis.
-- `src/pipeline/bm25_retrieval.py`: lexical baseline.
-- `src/pipeline/graph_only_retrieval.py`: concept-graph baseline.
-- `src/pipeline/tuned_hybrid_retrieval.py`: frozen three-way Hybrid.
+- `src/evaluation/retrievers/bm25_retrieval.py`: lexical baseline.
+- `src/evaluation/retrievers/graph_only_retrieval.py`: concept-graph baseline.
+- `src/evaluation/retrievers/tuned_hybrid_retrieval.py`: frozen three-way Hybrid.
 - `results/retrieval/evaluation_tuned_test/`: final test rankings, metrics, summary, and significance output.
 
 ## Reproduction commands

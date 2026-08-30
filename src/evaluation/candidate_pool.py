@@ -9,9 +9,9 @@ from pathlib import Path
 from typing import Any
 
 from src.evaluation.benchmark_io import load_benchmark
-from src.pipeline.bm25_retrieval import bm25_retrieve
-from src.pipeline.graph_only_retrieval import graph_only_retrieve
-from src.pipeline.tuned_hybrid_retrieval import tuned_hybrid_retrieve
+from src.evaluation.retrievers.bm25_retrieval import bm25_retrieve
+from src.evaluation.retrievers.graph_only_retrieval import graph_only_retrieve
+from src.evaluation.retrievers.tuned_hybrid_retrieval import tuned_hybrid_retrieve
 from src.pipeline.retrieval import (
     vector_only_retrieve,
 )
