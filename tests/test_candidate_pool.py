@@ -24,7 +24,6 @@ def paper(paper_id):
 
 def make_retrievers():
     method_rows = {
-        "bm25": [paper("p1"), paper("p2")],
         "vector": [paper("p2"), paper("p3")],
         "graph": [paper("p4")],
         "hybrid": [paper("p1"), paper("p4")],
@@ -65,7 +64,6 @@ def test_pool_query_deduplicates_and_method_hides_candidates():
     assert len(audit) == 4
     assert summary["unique_candidates"] == 4
     assert summary["method_counts"] == {
-        "bm25": 2,
         "vector": 2,
         "graph": 1,
         "hybrid": 2,
@@ -93,7 +91,7 @@ def test_missing_result_field_is_rejected():
     retrievers = make_retrievers()
     invalid = paper("bad")
     del invalid["abstract"]
-    retrievers["bm25"] = lambda query, top_k: [invalid]
+    retrievers["vector"] = lambda query, top_k: [invalid]
 
     with pytest.raises(RuntimeError):
         pool_query(

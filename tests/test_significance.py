@@ -24,10 +24,10 @@ def test_load_paired_deltas(tmp_path):
         writer.writeheader()
         writer.writerows(
             [
-                {"query_id": "Q1", "method": "bm25", "ndcg@10": 0.5},
+                {"query_id": "Q1", "method": "vector", "ndcg@10": 0.5},
                 {"query_id": "Q1", "method": "hybrid", "ndcg@10": 0.7},
-                {"query_id": "Q2", "method": "bm25", "ndcg@10": 0.4},
+                {"query_id": "Q2", "method": "vector", "ndcg@10": 0.4},
                 {"query_id": "Q2", "method": "hybrid", "ndcg@10": 0.3},
             ]
         )
-    assert load_paired_deltas(path, "hybrid", "bm25", "ndcg@10") == pytest.approx([0.2, -0.1])
+    assert load_paired_deltas(path, "hybrid", "vector", "ndcg@10") == pytest.approx([0.2, -0.1])
