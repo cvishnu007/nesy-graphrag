@@ -1,0 +1,156 @@
+{
+  "benchmark_version": "0.1-draft",
+  "status": "queries_frozen_judgments_pending",
+  "corpus": {
+    "source": "s2",
+    "paper_count": 8850,
+    "years": "2020-2025",
+    "collection": "s2_papers",
+    "neo4j_concept_count": 42937,
+    "neo4j_citation_count": 7203
+  },
+  "primary_metric": "ndcg@10",
+  "secondary_metric": "recall@10",
+  "queries": [
+    {
+      "query_id": "Q001",
+      "split": "dev",
+      "query": "graph neural networks for node classification",
+      "query_type": "application",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q002",
+      "split": "dev",
+      "query": "graph attention network methods",
+      "query_type": "method",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q003",
+      "split": "dev",
+      "query": "graph neural networks for recommendation systems",
+      "query_type": "application",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q004",
+      "split": "dev",
+      "query": "graph convolutional networks compared with graph attention networks",
+      "query_type": "comparison",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q005",
+      "split": "dev",
+      "query": "self-supervised graph representation learning",
+      "query_type": "recent trend",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q006",
+      "split": "dev",
+      "query": "graph neural networks for molecular property prediction",
+      "query_type": "application",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q007",
+      "split": "test",
+      "query": "link prediction using graph neural networks",
+      "query_type": "application",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q008",
+      "split": "test",
+      "query": "graph classification methods",
+      "query_type": "broad",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q009",
+      "split": "test",
+      "query": "heterogeneous graph neural networks",
+      "query_type": "method",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q010",
+      "split": "test",
+      "query": "dynamic graph neural networks",
+      "query_type": "method",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q011",
+      "split": "test",
+      "query": "oversmoothing in deep graph neural networks",
+      "query_type": "problem",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q012",
+      "split": "test",
+      "query": "explainable graph neural network methods",
+      "query_type": "method",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q013",
+      "split": "test",
+      "query": "graph neural networks for traffic forecasting",
+      "query_type": "application",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q014",
+      "split": "test",
+      "query": "graph neural networks for fraud detection",
+      "query_type": "application",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q015",
+      "split": "test",
+      "query": "privacy-preserving federated graph learning",
+      "query_type": "recent trend",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q016",
+      "split": "test",
+      "query": "contrastive learning for graph representations",
+      "query_type": "recent trend",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q017",
+      "split": "test",
+      "query": "adversarial attacks and robustness in graph neural networks",
+      "query_type": "problem",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q018",
+      "split": "test",
+      "query": "transformer architectures for graph learning",
+      "query_type": "method",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q019",
+      "split": "test",
+      "query": "reinforcement learning with graph neural networks",
+      "query_type": "application",
+      "judgments": {}
+    },
+    {
+      "query_id": "Q020",
+      "split": "test",
+      "query": "knowledge graph embeddings compared with graph neural networks",
+      "query_type": "comparison",
+      "judgments": {}
+    }
+  ]
+}
