@@ -11,8 +11,8 @@ from typing import Any
 from src.evaluation.benchmark_io import load_benchmark
 from src.evaluation.retrievers.bm25_retrieval import bm25_retrieve
 from src.evaluation.retrievers.graph_only_retrieval import graph_only_retrieve
-from src.evaluation.retrievers.tuned_hybrid_retrieval import tuned_hybrid_retrieve
 from src.pipeline.retrieval import (
+    nesy_retrieve,
     vector_only_retrieve,
 )
 from src.storage.neo4j_store import get_driver
@@ -91,11 +91,7 @@ def build_retrievers(driver) -> dict[str, Callable]:
             query,
             top_k=top_k,
         ),
-        "hybrid": lambda query, top_k: tuned_hybrid_retrieve(
-            driver,
-            query,
-            top_k=top_k,
-        ),
+        "hybrid": lambda query, top_k: nesy_retrieve(driver, query, top_k=top_k),
     }
 
 

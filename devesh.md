@@ -14,7 +14,7 @@ This branch completes the retrieval benchmarking and evaluation work for the NeS
 - Added method-hidden candidate pooling across BM25, Vector, Graph, and Hybrid retrieval.
 - Prepared 1,329 query-paper relevance judgments using the 0/1/2 relevance scale.
 - Added judgment finalization, four-method evaluation, and paired significance analysis.
-- Reworked Hybrid retrieval as weighted BM25 + Vector + Graph-only reciprocal-rank fusion.
+- Evaluated the application's Vector + citation-graph Hybrid against standard baselines.
 
 ## Relevance scale
 
@@ -26,36 +26,35 @@ The benchmark remains marked `judgments_pending_human_review`. The current judgm
 
 ## Hybrid design
 
-The original Hybrid used Vector retrieval followed by citation expansion. Citation proximity often promoted connected but topically weaker papers.
+The evaluated Hybrid is the same two-stage retrieval design used by the application: Vector retrieval followed by Neo4j citation expansion.
 
-The tuned Hybrid combines three complementary rankings:
+Weights were selected using only the 6 development queries:
 
-- BM25 weight: `2.0`
-- Vector weight: `1.0`
-- Graph-only weight: `1.0`
+- Vector weight: `16.0`
+- Citation-graph weight: `1.0`
 - Reciprocal-rank constant: `RRF_K=60`
 
-Weights were selected using only the 6 development queries. They were frozen before evaluation on the 14 test queries.
+The weights were frozen before evaluation on the 14 test queries.
 
 ## Final test results
 
 | Method | NDCG@10 | Recall@10 | MAP | MRR |
 |---|---:|---:|---:|---:|
-| Tuned Hybrid | **0.7670** | **0.3161** | **0.5912** | **0.9643** |
-| BM25 | 0.7270 | 0.3125 | 0.5896 | 0.9643 |
+| BM25 | **0.7270** | **0.3125** | **0.5896** | **0.9643** |
+| Vector + citation graph Hybrid | 0.3676 | 0.1440 | 0.1885 | 0.6500 |
 | Vector | 0.3643 | 0.1440 | 0.1886 | 0.6500 |
 | Graph-only | 0.2399 | 0.0841 | 0.1125 | 0.5133 |
 
-Hybrid versus BM25 on the 14 test queries:
+Hybrid versus Vector on the 14 test queries:
 
-- Wins: 6
-- Ties: 5
-- Losses: 3
-- Mean NDCG@10 improvement: `+0.0399`, approximately `+5.5%`
-- Paired bootstrap 95% interval: `[0.0080, 0.0745]`
-- Exact two-sided randomization p-value: `0.0547`
+- Wins: 1
+- Ties: 13
+- Losses: 0
+- Mean NDCG@10 improvement: `+0.0033`, approximately `+0.91%`
+- Paired bootstrap 95% interval: `[0.0000, 0.0099]`
+- Exact two-sided randomization p-value: `1.0000`
 
-The accurate conclusion is that the tuned Hybrid shows a promising improvement on this test set. The exact randomization result is borderline, so it should not be described as conclusive statistical significance.
+The accurate conclusion is that the two-way Hybrid slightly improves Vector retrieval on this test set, but the improvement is not statistically significant. BM25 remains the strongest overall baseline. The citation graph has limited ranking impact at the frozen `16:1` weight and primarily reranks papers already found by Vector retrieval.
 
 ## Important files
 
@@ -70,7 +69,7 @@ The accurate conclusion is that the tuned Hybrid shows a promising improvement o
 - `src/evaluation/significance.py`: paired uncertainty and randomization analysis.
 - `src/evaluation/retrievers/bm25_retrieval.py`: lexical baseline.
 - `src/evaluation/retrievers/graph_only_retrieval.py`: concept-graph baseline.
-- `src/evaluation/retrievers/tuned_hybrid_retrieval.py`: frozen three-way Hybrid.
+- `src/pipeline/retrieval.py`: application Vector + citation-graph Hybrid.
 - `results/retrieval/evaluation_tuned_test/`: final test rankings, metrics, summary, and significance output.
 
 ## Reproduction commands
@@ -93,10 +92,10 @@ Run the frozen test evaluation:
 .\venv\Scripts\python.exe -m src.evaluation.retrieval_runner --split test --output-dir results\retrieval\evaluation_tuned_test --overwrite
 ```
 
-Run the paired Hybrid-versus-BM25 analysis:
+Run the paired Hybrid-versus-Vector analysis:
 
 ```bat
-.\venv\Scripts\python.exe -m src.evaluation.significance results\retrieval\evaluation_tuned_test\per_query_metrics.csv --output results\retrieval\evaluation_tuned_test\significance.json
+.\venv\Scripts\python.exe -m src.evaluation.significance results\retrieval\evaluation_tuned_test\per_query_metrics.csv --challenger hybrid --reference vector --output results\retrieval\evaluation_tuned_test\significance.json
 ```
 
 ## Branch

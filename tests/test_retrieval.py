@@ -1,3 +1,4 @@
+from src.pipeline import retrieval
 from src.pipeline.retrieval import (
     build_retrieval_diagnostics,
     fuse_results,
@@ -28,7 +29,12 @@ class EmptyGraphDriver:
         return self.active_session
 
 
-def test_graph_only_results_can_enter_top_k(paper_factory):
+def test_graph_only_results_can_enter_top_k_with_balanced_weights(
+    paper_factory,
+    monkeypatch,
+):
+    monkeypatch.setattr(retrieval, "NEURAL_FUSION_WEIGHT", 1.0)
+    monkeypatch.setattr(retrieval, "GRAPH_FUSION_WEIGHT", 1.0)
     neural = [paper_factory(f"n{i}", 1.0 - i / 100) for i in range(1, 11)]
     symbolic = [paper_factory(f"s{i}", 1.0 - i / 100) for i in range(1, 11)]
 
