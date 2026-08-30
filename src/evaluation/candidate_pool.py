@@ -9,16 +9,17 @@ from pathlib import Path
 from typing import Any
 
 from src.evaluation.benchmark_io import load_benchmark
-from src.evaluation.retrievers.bm25_retrieval import bm25_retrieve
 from src.evaluation.retrievers.graph_only_retrieval import graph_only_retrieve
-from src.evaluation.retrievers.tuned_hybrid_retrieval import tuned_hybrid_retrieve
+from src.evaluation.retrievers.two_way_hybrid_retrieval import (
+    evaluation_hybrid_retrieve,
+)
 from src.pipeline.retrieval import (
     vector_only_retrieve,
 )
 from src.storage.neo4j_store import get_driver
 
 
-METHOD_NAMES = ("bm25", "vector", "graph", "hybrid")
+METHOD_NAMES = ("vector", "graph", "hybrid")
 REQUIRED_RESULT_FIELDS = {
     "id",
     "title",
@@ -76,12 +77,8 @@ def _method_hidden_sort_key(
 
 
 def build_retrievers(driver) -> dict[str, Callable]:
-    """Create four retrievers with the same two-argument interface."""
+    """Create the three NeSy ablation retrievers."""
     return {
-        "bm25": lambda query, top_k: bm25_retrieve(
-            query,
-            top_k=top_k,
-        ),
         "vector": lambda query, top_k: vector_only_retrieve(
             query,
             top_k=top_k,
@@ -91,7 +88,7 @@ def build_retrievers(driver) -> dict[str, Callable]:
             query,
             top_k=top_k,
         ),
-        "hybrid": lambda query, top_k: tuned_hybrid_retrieve(
+        "hybrid": lambda query, top_k: evaluation_hybrid_retrieve(
             driver,
             query,
             top_k=top_k,
@@ -273,8 +270,7 @@ def pool_benchmark(
         query_summaries.append(summary)
 
         print(
-            f"  BM25={summary['method_counts']['bm25']} "
-            f"Vector={summary['method_counts']['vector']} "
+            f"  Vector={summary['method_counts']['vector']} "
             f"Graph={summary['method_counts']['graph']} "
             f"Hybrid={summary['method_counts']['hybrid']} "
             f"Unique={summary['unique_candidates']}"
@@ -379,8 +375,8 @@ def write_pool_outputs(
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
-            "Pool method-hidden candidates from BM25, vector, "
-            "graph and hybrid retrieval"
+            "Pool method-hidden candidates from vector, graph "
+            "and hybrid retrieval"
         )
     )
     parser.add_argument(

@@ -74,7 +74,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("metrics_csv")
     parser.add_argument("--challenger", default="hybrid")
-    parser.add_argument("--reference", default="bm25")
+    parser.add_argument("--reference", default="vector")
     parser.add_argument("--metric", default="ndcg@10")
     parser.add_argument("--output")
     arguments = parser.parse_args()

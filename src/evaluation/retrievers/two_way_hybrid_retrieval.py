@@ -1,4 +1,4 @@
-"""Three-way lexical, semantic, and graph retrieval with weighted RRF."""
+"""Evaluation-only Vector + citation-graph retrieval with weighted RRF."""
 
 from __future__ import annotations
 
@@ -6,20 +6,17 @@ from collections.abc import Mapping, Sequence
 from typing import Any
 
 from src.evaluation.config import (
-    HYBRID_BM25_WEIGHT,
     HYBRID_GRAPH_WEIGHT,
     HYBRID_VECTOR_WEIGHT,
 )
-from src.evaluation.retrievers.bm25_retrieval import bm25_retrieve
-from src.evaluation.retrievers.graph_only_retrieval import graph_only_retrieve
-from src.pipeline.retrieval import vector_only_retrieve
+from src.pipeline.retrieval import symbolic_expand, vector_only_retrieve
 from src.utils.config import (
     RRF_K,
     TOP_K,
 )
 
 
-METHOD_ORDER = ("bm25", "vector", "graph")
+METHOD_ORDER = ("vector", "graph")
 
 
 def weighted_rrf_fuse(
@@ -73,17 +70,23 @@ def weighted_rrf_fuse(
     return sorted(results, key=lambda item: (-item["score"], item["id"]))[:top_k]
 
 
-def tuned_hybrid_retrieve(driver, query: str, top_k: int = TOP_K) -> list[dict]:
-    """Retrieve with the frozen dev-tuned BM25/vector/graph fusion."""
+def evaluation_hybrid_retrieve(
+    driver,
+    query: str,
+    top_k: int = TOP_K,
+) -> list[dict]:
+    """Run the evaluation-only dev-tuned Vector/citation-graph fusion."""
     if top_k <= 0:
         return []
+    vector_results = vector_only_retrieve(query, top_k=top_k)
     rankings = {
-        "bm25": bm25_retrieve(query, top_k=top_k),
-        "vector": vector_only_retrieve(query, top_k=top_k),
-        "graph": graph_only_retrieve(driver, query, top_k=top_k),
+        "vector": vector_results,
+        "graph": symbolic_expand(
+            driver,
+            [paper["id"] for paper in vector_results],
+        ),
     }
     weights = {
-        "bm25": HYBRID_BM25_WEIGHT,
         "vector": HYBRID_VECTOR_WEIGHT,
         "graph": HYBRID_GRAPH_WEIGHT,
     }

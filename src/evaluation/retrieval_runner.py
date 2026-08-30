@@ -43,7 +43,7 @@ def evaluate_benchmark(
     split: str = "all",
     top_k: int = 20,
 ) -> tuple[list[dict], list[dict], dict]:
-    """Evaluate four retrievers and return rows, rankings, and summary."""
+    """Evaluate the three NeSy ablation retrievers."""
     if split not in {"all", "dev", "test"}:
         raise ValueError("split must be all, dev, or test")
     if top_k < max(K_VALUES):
