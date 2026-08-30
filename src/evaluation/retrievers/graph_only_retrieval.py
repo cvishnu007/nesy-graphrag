@@ -5,10 +5,8 @@ import re
 
 from src.ingestion.ner_extractor import NOISE, filter_entities
 from src.storage.neo4j_store import get_driver
-from src.utils.config import (
-    GRAPH_ONLY_CANDIDATE_LIMIT,
-    TOP_K,
-)
+from src.evaluation.config import GRAPH_ONLY_CANDIDATE_LIMIT
+from src.utils.config import TOP_K
 
 
 TOKEN_PATTERN = re.compile(r"[a-z0-9]+")

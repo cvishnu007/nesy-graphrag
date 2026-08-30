@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from src.pipeline.bm25_retrieval import (
+from src.evaluation.retrievers.bm25_retrieval import (
     BM25Index,
     load_bm25_index,
     tokenize,
@@ -156,7 +156,7 @@ def test_load_bm25_index_from_clean_file(tmp_path):
 
     assert len(results) == 1
     assert results[0]["id"] == "paper-1"
-from src.pipeline.graph_only_retrieval import (
+from src.evaluation.retrievers.graph_only_retrieval import (
     graph_only_retrieve,
     normalize_query_concepts,
 )

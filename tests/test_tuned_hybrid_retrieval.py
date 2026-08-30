@@ -1,6 +1,6 @@
 import pytest
 
-from src.pipeline.tuned_hybrid_retrieval import weighted_rrf_fuse
+from src.evaluation.retrievers.tuned_hybrid_retrieval import weighted_rrf_fuse
 
 
 def paper(paper_id):
