@@ -102,6 +102,13 @@ HOP_DEPTH           = int(os.getenv("HOP_DEPTH",           2))
 RRF_K               = int(os.getenv("RRF_K",               60))
 NEURAL_FUSION_WEIGHT = float(os.getenv("NEURAL_FUSION_WEIGHT", "1.0"))
 GRAPH_FUSION_WEIGHT  = float(os.getenv("GRAPH_FUSION_WEIGHT",  "1.0"))
+BM25_K1 = float(os.getenv("BM25_K1", "1.5"))
+BM25_B = float(os.getenv("BM25_B", "0.75"))
+
+if BM25_K1 <= 0:
+    raise ValueError("BM25_K1 must be greater than zero")
+if not 0 <= BM25_B <= 1:
+    raise ValueError("BM25_B must be between zero and one")
 CITES_THRESHOLD     = int(os.getenv("CITES_THRESHOLD",     2))
 MAX_AUTHORS         = int(os.getenv("MAX_AUTHORS",         5))
 MAX_CONCEPTS        = int(os.getenv("MAX_CONCEPTS",        10))
