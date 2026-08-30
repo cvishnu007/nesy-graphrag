@@ -99,6 +99,6 @@ Run the paired Hybrid-versus-BM25 analysis:
 .\venv\Scripts\python.exe -m src.evaluation.significance results\retrieval\evaluation_tuned_test\per_query_metrics.csv --output results\retrieval\evaluation_tuned_test\significance.json
 ```
 
-## Branch
+## Merge status
 
-Work is prepared on the `retrieval_evaluation` branch for review through a pull request before merging into `master`.
+The retrieval and evaluation work was merged into `master` through pull request #5. This document records the completed implementation, reproduction commands, and provisional evaluation results.
