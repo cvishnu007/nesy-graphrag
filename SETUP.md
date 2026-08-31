@@ -1,13 +1,14 @@
 # NeSy-GraphRAG Setup
 
-This guide reproduces the verified local project setup from a fresh clone. The primary instructions target Windows PowerShell, Python 3.13, a local Neo4j database, Semantic Scholar data, and an optional NVIDIA GPU.
+This guide reproduces the verified local project setup from a fresh clone. The primary instructions target Windows PowerShell, Python 3.11, a local Neo4j database, Semantic Scholar data, and an optional NVIDIA GPU.
 
 PDF ingestion is not part of this setup. The current pipeline uses paper metadata and abstracts.
 
 ## Tested Stack
 
 - Windows 10/11
-- Python 3.13.14, 64-bit
+- Python 3.11.9, 64-bit for the primary CUDA environment
+- Python 3.13.14, 64-bit also verified for CPU-only evaluation
 - Local Neo4j `2026.07.1` using Bolt at `neo4j://127.0.0.1:7687`
 - NVIDIA GeForce RTX 3050 Laptop GPU, 4 GB VRAM
 - PyTorch `2.12.1+cu126`
@@ -16,15 +17,19 @@ PDF ingestion is not part of this setup. The current pipeline uses paper metadat
 - SPECTER embeddings: `allenai-specter`
 - Groq primary model: `openai/gpt-oss-120b`
 - Groq fallback model: `llama-3.1-8b-instant`
+- Retrieval benchmark: 20 queries (6 development, 14 test), version `0.2-draft`
+- Current benchmark judgments: machine-assisted and pending human review
 
 Other hardware can run the project. `EMBEDDING_DEVICE=auto` selects CUDA, then Apple MPS, then CPU.
+
+Python 3.13.14 has also been used successfully for CPU-only retrieval evaluation. The instructions below retain Python 3.11 because that is the verified CUDA setup used for the primary local machine.
 
 ## 1. Prerequisites
 
 Install these before cloning:
 
 1. Git
-2. Python 3.13, 64-bit
+2. Python 3.11, 64-bit
 3. Neo4j Desktop, Neo4j Community Server, or another local Neo4j installation
 4. A Groq API key
 5. A Semantic Scholar API key for a reliable 10,000-paper ingestion run
@@ -191,6 +196,15 @@ LLM_MODEL_FALLBACK=llama-3.1-8b-instant
 
 EVALUATION_START_YEAR=2020
 EVALUATION_END_YEAR=2025
+
+EVALUATION_HYBRID_VECTOR_WEIGHT=16.0
+EVALUATION_HYBRID_GRAPH_WEIGHT=1.0
+GRAPH_ONLY_CANDIDATE_LIMIT=100
+
+GRAPH_HIGH_SEMANTIC_THRESHOLD=0.85
+GRAPH_SEMANTIC_FLOOR=0.75
+GRAPH_MIN_QUERY_TERM_COVERAGE=0.75
+GRAPH_STRONG_CONNECTIONS=10
 ```
 
 `NEO4J_ALLOW_RESET=true` is required for the graph build because it intentionally clears the configured database. Set it only for a dedicated project database.
@@ -318,7 +332,46 @@ Run a single live review with Neo4j, Chroma, Hugging Face, and Groq:
 
 A valid run should report verified papers, at least one accepted claim, valid passage citations, and no fabricated passage IDs.
 
-## 10. Start The Streamlit App
+## 10. Run Retrieval Evaluation
+
+Retrieval evaluation requires the Chroma index and Neo4j graph. It does not call Groq. The tracked benchmark contains 20 frozen queries with 6 development and 14 held-out test queries.
+
+The current `0.2-draft` labels are machine-assisted and marked `judgments_pending_human_review`. They are suitable for development diagnostics, not final publication claims.
+
+Run the tracked judged-draft benchmark on the held-out split:
+
+```powershell
+.\venv\Scripts\python.exe -m src.evaluation.retrieval_runner `
+  --benchmark evaluation/benchmarks/retrieval_queries_judged.json `
+  --split test `
+  --top-k 20 `
+  --output-dir results/retrieval/evaluation `
+  --overwrite
+```
+
+Compare hybrid and vector NDCG@10 with paired significance analysis:
+
+```powershell
+.\venv\Scripts\python.exe -m src.evaluation.significance `
+  results/retrieval/evaluation/per_query_metrics.csv `
+  --challenger hybrid `
+  --reference vector `
+  --metric ndcg@10 `
+  --output results/retrieval/evaluation/significance.json
+```
+
+To revise the benchmark correctly:
+
+1. Review `evaluation/benchmarks/retrieval_judgments_draft.csv` without exposing retrieval-method identity.
+2. Correct grades using the documented 0/1/2 relevance scale.
+3. Record reviewer and adjudication metadata.
+4. Finalize to a new benchmark version rather than silently replacing the draft.
+5. Tune only on the six development queries.
+6. Run the fourteen test queries once after configuration is frozen.
+
+The current evaluation-only hybrid uses a 16:1 vector-to-graph weight. Production retrieval uses a separate filtered 1:1 flow; do not report the two configurations as the same system.
+
+## 11. Start The Streamlit App
 
 ```powershell
 .\venv\Scripts\python.exe -m streamlit run app/streamlit_app.py
@@ -417,6 +470,14 @@ The collection may contain stale data from an older run. Follow the clean rebuil
 ### Groq Model Failure
 
 Confirm `GROQ_API_KEY` is valid. The configured primary model is `openai/gpt-oss-120b`; the pipeline falls back to `llama-3.1-8b-instant` when the primary model is unavailable.
+
+### Retrieval Evaluation Has No Results
+
+- Start Neo4j and verify Chroma contains the cleaned-paper count.
+- Use `retrieval_queries_judged.json`; the unjudged query file intentionally cannot produce final metrics.
+- Keep `top_k` at 20 for comparison with the tracked result.
+- Use a new output directory or pass `--overwrite` intentionally.
+- Do not interpret draft machine-assisted judgments as human ground truth.
 
 ## Security And Data Safety
 

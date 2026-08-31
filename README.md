@@ -2,7 +2,7 @@
 
 NeSy-GraphRAG is a research-assistant prototype for automated literature review and hypothesis generation. It combines neural retrieval with symbolic graph validation and sentence-level provenance so generated review claims remain traceable to verified abstract evidence.
 
-The abstract-based core pipeline is implemented. Current work should focus on benchmark construction, standard evaluation, baseline comparisons, controlled model experiments, and measured scaling. PDF ingestion is not part of the current scope.
+The abstract-based core pipeline and provisional retrieval-evaluation framework are implemented. Current work should focus on human validation of the retrieval judgments, missing baselines, generated-output evaluation, controlled model experiments, and measured scaling. PDF ingestion is not part of the current scope.
 
 ## What It Does
 
@@ -15,6 +15,7 @@ The abstract-based core pipeline is implemented. Current work should focus on be
 - Ranks contradiction candidates by normalized concept overlap and parses structured, confidence-gated verdicts.
 - Ranks structural-hole hypotheses by graph evidence and validates feasibility, support, and missing evidence.
 - Computes evaluation metrics for trustworthiness, graph contribution, temporal diversity, reasoning depth, and hypothesis novelty.
+- Evaluates vector, graph-only, and two-way hybrid retrieval on a frozen dev/test query set.
 - Provides a Streamlit UI for interactive use.
 
 ## Current Status
@@ -32,10 +33,11 @@ Short version:
 - Hybrid rank fusion is implemented and returns neural, symbolic, and overlapping results.
 - Automatic CUDA/MPS/CPU selection and CPU worker controls are implemented.
 - CUDA embedding inference is verified on the local RTX 3050 with PyTorch `2.12.1+cu126`.
-- The existing five-query comparison averages `+0.56` NBR and `+0.10` RDI versus the vector baseline, but has no relevance judgments and is not a final benchmark.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
-- A judged 20-query retrieval benchmark, dev/test split, IR metrics, graph-only baseline, two-way NeSy ablation, and significance analysis are implemented under `src/evaluation/`.
+- A provisional 20-query retrieval benchmark, 6/14 dev/test split, 1,329 machine-assisted judgments, IR metrics, graph-only baseline, two-way NeSy ablation, and significance analysis are implemented under `src/evaluation/`.
+- The evaluation-only hybrid scored `0.3676` NDCG@10 versus `0.3643` for vector-only, but the paired randomization p-value is `1.0`; this is not a statistically established improvement.
+- Production graph filtering improved NDCG@10 from `0.2678` to `0.3617`, close to the vector-only reference at `0.3643`.
 - 123 pytest cases cover retrieval, evaluation, claim provenance, metrics, configuration guards, contradiction verdicts, Neo4j failures, and hypothesis validation.
 - Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
 - Sentence-level claim provenance is implemented; the latest live check accepted 5/5 claims with 9/9 valid passage citations.
@@ -45,10 +47,11 @@ Not yet implemented or validated:
 
 - human review of the current machine-assisted relevance judgments before publication-level claims
 - contradiction, review, and hypothesis benchmark datasets
-- additional lexical, standard RAG, and rule-based comparisons
+- rule-based contradiction and other task-specific baselines
 - scientific NER, embedding, and LLM comparisons
 - semantic entailment verification for claim/evidence pairs
-- controlled ablations, repeated runs, confidence intervals, and significance tests
+- BM25 and conventional matched-context RAG baselines
+- broader component ablations and repeated stochastic model runs
 - measured corpus scaling and evaluation-focused UI reporting
 
 See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the complete implementation inventory, limitations, and ordered future roadmap.
@@ -60,6 +63,14 @@ nesy-graphrag/
 |-- app/
 |   `-- streamlit_app.py
 |-- src/
+|   |-- evaluation/
+|   |   |-- retrievers/
+|   |   |-- benchmark_io.py
+|   |   |-- candidate_pool.py
+|   |   |-- finalize_judgments.py
+|   |   |-- ir_metrics.py
+|   |   |-- retrieval_runner.py
+|   |   `-- significance.py
 |   |-- ingestion/
 |   |   |-- arxiv_fetcher.py
 |   |   |-- semantic_scholar_fetcher.py
@@ -85,15 +96,32 @@ nesy-graphrag/
 |       |-- compute.py
 |       |-- config.py
 |       `-- groq_client.py
+|-- evaluation/
+|   `-- benchmarks/
+|       |-- retrieval_queries.json
+|       |-- retrieval_judgments_draft.csv
+|       `-- retrieval_queries_judged.json
+|-- results/
+|   `-- retrieval/
 |-- tests/
 |   |-- conftest.py
+|   |-- test_benchmark_io.py
+|   |-- test_candidate_pool.py
+|   |-- test_chroma_scores.py
 |   |-- test_core_guards.py
+|   |-- test_finalize_judgments.py
+|   |-- test_graph_only_retrieval.py
 |   |-- test_hypotheses.py
+|   |-- test_ir_metrics.py
 |   |-- test_provenance.py
 |   |-- test_retrieval.py
+|   |-- test_retrieval_runner.py
+|   |-- test_significance.py
+|   |-- test_two_way_hybrid_retrieval.py
 |   `-- test_verdicts.py
 |-- PROJECT_STATUS.md
 |-- SETUP.md
+|-- VISHNU.md
 |-- pytest.ini
 |-- requirements.txt
 `-- README.md
@@ -107,7 +135,8 @@ Follow [SETUP.md](SETUP.md) for the verified Windows installation, local Neo4j c
 
 ## Requirements
 
-- Python 3.13, 64-bit (verified with Python 3.13.14)
+- Python 3.11, 64-bit for the primary CUDA setup
+- Python 3.13.14 also verified for the CPU evaluation environment
 - A dedicated local Neo4j database
 - Groq API key
 - Semantic Scholar API key for S2 ingestion
@@ -183,6 +212,10 @@ GRAPH_HIGH_SEMANTIC_THRESHOLD=0.85
 GRAPH_SEMANTIC_FLOOR=0.75
 GRAPH_MIN_QUERY_TERM_COVERAGE=0.75
 GRAPH_STRONG_CONNECTIONS=10
+
+EVALUATION_HYBRID_VECTOR_WEIGHT=16.0
+EVALUATION_HYBRID_GRAPH_WEIGHT=1.0
+GRAPH_ONLY_CANDIDATE_LIMIT=100
 ```
 
 Useful defaults are defined in `src/utils/config.py`.
@@ -229,6 +262,24 @@ Explain a hybrid retrieval result without calling the LLM:
 ```powershell
 .\venv\Scripts\python.exe -m src.pipeline.retrieval "graph neural networks for node classification" --top-k 10
 ```
+
+## Retrieval Evaluation
+
+The retrieval benchmark is version `0.2-draft` and contains 20 frozen queries, split into 6 development and 14 test queries. Its 1,329 relevance labels are provisional and must be human-reviewed before publication-level claims.
+
+Run the vector, graph-only, and evaluation-only hybrid comparison with Neo4j and Chroma available:
+
+```powershell
+.\venv\Scripts\python.exe -m src.evaluation.retrieval_runner --split test --top-k 20 --output-dir results/retrieval/evaluation --overwrite
+```
+
+Run paired significance analysis:
+
+```powershell
+.\venv\Scripts\python.exe -m src.evaluation.significance results/retrieval/evaluation/per_query_metrics.csv --challenger hybrid --reference vector --metric ndcg@10 --output results/retrieval/evaluation/significance.json
+```
+
+Do not tune using the 14-query test split. Review `evaluation/benchmarks/retrieval_judgments_draft.csv`, finalize the labels, and freeze a new benchmark version before treating the results as final.
 
 ## App
 

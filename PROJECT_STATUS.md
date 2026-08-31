@@ -2,21 +2,19 @@
 
 Last updated: August 31, 2026
 
-Branch: `master` plus the `improve_graph_relevance` review branch
+Primary branch: `master`
 
-Implementation milestone: retrieval evaluation and production graph filtering complete
+Current milestone: abstract-based prototype complete; provisional retrieval evaluation complete
 
-This file is the single source of truth for current capabilities, missing work, limitations, and future priorities. PDF ingestion and full-text section extraction are intentionally outside the current scope.
+This file is the source of truth for implemented capabilities, evidence, limitations, and next priorities. PDF ingestion and full-text section extraction remain intentionally outside the current scope.
 
 ## Executive Summary
 
-NeSy-GraphRAG is an end-to-end working research prototype. It ingests scientific-paper metadata and abstracts, extracts concepts, builds Chroma and Neo4j stores, retrieves through neural and symbolic paths, generates literature reviews with sentence-level provenance, detects contradiction candidates, generates evidence-ranked hypotheses, and exposes the workflow through Streamlit.
+NeSy-GraphRAG is an end-to-end research prototype. It ingests scientific-paper metadata and abstracts, extracts concepts, builds Chroma and Neo4j stores, combines neural retrieval with citation-graph expansion, generates passage-cited literature reviews, evaluates contradiction candidates, generates evidence-ranked hypotheses, and exposes these workflows through Streamlit.
 
-The end-to-end prototype and retrieval evaluation framework are implemented. The
-project is not yet a publication-validated research system because the current
-machine-assisted relevance judgments still require human review. Remaining work
-is primarily controlled evaluation, expert review, model comparison, and measured
-scaling.
+Since the core prototype milestone, the repository has gained a separate retrieval-evaluation framework with a frozen 20-query set, development/test splits, method-hidden candidate pooling, 1,329 provisional relevance judgments, standard information-retrieval metrics, vector/graph/hybrid comparisons, and paired significance analysis. Production retrieval now filters weak graph neighbours before fusion.
+
+The implementation is working, but the research claims are not final. The current relevance judgments were produced by a fast machine-assisted title-and-abstract pass and require human review. The tuned hybrid result is not statistically better than vector-only retrieval.
 
 ## Verified Snapshot
 
@@ -27,345 +25,265 @@ scaling.
 - NER records processed: 8,850
 - Chroma collection: `s2_papers`
 - Chroma vectors: 8,850
-- Neo4j nodes:
-  - `Paper`: 8,850
-  - `Author`: 27,655
-  - `Concept`: 43,581
-- Neo4j relationships:
-  - `AUTHORED_BY`: 37,180
-  - `RELATED_TO`: 88,268
-  - real `CITES`: 7,203
-  - simulated `CITES`: 0
-- Citation coverage:
-  - 2,989 papers participate in at least one citation edge
-  - 1,581 papers have outgoing real citation edges
+- Neo4j papers: 8,850
+- Neo4j authors: 27,655
+- Neo4j real `CITES` relationships: 7,203
+- Simulated `CITES` relationships in the current S2 graph: 0
+- Papers participating in at least one citation edge: 2,989
+- Papers with outgoing real citations: 1,581
+
+Concept counts differ between recorded graph builds: the earlier CUDA/Python 3.11 build reported 43,581 concepts, while the later Python 3.13 evaluation build reported 42,937. This is a build-version snapshot difference that must be resolved through recorded dataset/model versions before final reporting.
 
 ### Compute
 
 - Automatic device selection: CUDA, then MPS, then CPU
-- Verified GPU: NVIDIA GeForce RTX 3050 Laptop GPU, 4 GB VRAM
-- Verified PyTorch build: `2.12.1+cu126`
-- SPECTER retrieval selects CUDA successfully
+- Primary local GPU verification: NVIDIA GeForce RTX 3050 Laptop GPU, 4 GB VRAM
+- Primary CUDA build: PyTorch `2.12.1+cu126`
+- SPECTER embedding inference verified on CUDA
+- CPU-only evaluation also verified under Python 3.13.14
 - NER supports configurable CPU multiprocessing and optional spaCy GPU use
 
 ### Tests And Live Checks
 
-- 123 pytest cases pass
+- 123 pytest cases pass under the current Python 3.11 environment
 - `src`, `app`, and `tests` compile successfully
-- Pytest uses strict configuration and registered integration markers
-- Latest claim-provenance smoke test:
-  - 3/3 retrieved papers verified in Neo4j
-  - 23 sentence passages created
-  - 5/5 generated claims accepted
-  - 9/9 passage citations valid
-  - 0 unsupported claims
-  - 0 parse errors
-  - 1 generation attempt; repair was not needed
+- `pip check` reports no broken requirements
+- Chroma currently reports 8,850 vectors
+- Neo4j live verification requires the local service to be running
+- Latest recorded review smoke test: 5/5 claims accepted with valid passage references
+- Latest recorded UI checks completed for review, contradiction, and hypothesis modes
 
-### Existing Retrieval Result
+## Retrieval Evaluation
 
-Production retrieval now filters citation neighbours before fusion. On the
-14-query held-out split, the old unfiltered 1:1 vector+graph flow scored `0.2678`
-NDCG@10. The filtered flow scored `0.3617`, close to vector-only at `0.3643`,
-while still allowing strongly relevant graph discoveries. The result is evidence
-that filtering fixes the large relevance loss; it is not a claim that the graph
-always beats vector retrieval. Current judgments require human review before
-publication-level reporting.
+### Benchmark
 
-The corrected five-query comparison against vector-only retrieval produced these average deltas:
+- Benchmark version: `0.2-draft`
+- Status: `judgments_pending_human_review`
+- Frozen queries: 20
+- Development queries: 6
+- Held-out test queries: 14
+- Provisional query-paper judgments: 1,329
+- Relevance scale: 0 = not relevant, 1 = partially relevant, 2 = directly relevant
+- Judgment source: fast title-and-abstract relevance pass
+- Primary metric: NDCG@10
+- Secondary metric: Recall@10
 
-- TS: `0.00`
-- NBR: `+0.56`
-- ATD: `-0.12`
-- RDI: `+0.10`
+The query definitions are frozen, but the relevance labels are not publication-ready until humans review and correct them.
 
-Per-query hybrid NBR was `0.5`, `0.5`, `0.5`, `0.7`, and `0.6`; vector-only NBR was `0.0`. This proves that graph results affect the final ranking. It does not prove improved relevance because the queries do not yet have relevance judgments.
+### Evaluation-Only Ablation
+
+The evaluation package compares vector-only, citation-graph-only, and a two-way vector-plus-graph hybrid. The tuned evaluation hybrid uses a 16:1 vector-to-graph weight selected on the development split.
+
+Held-out 14-query test results:
+
+| Method | NDCG@10 | Recall@10 | MAP | MRR |
+|---|---:|---:|---:|---:|
+| Evaluation hybrid | 0.3676 | 0.1440 | 0.1885 | 0.6500 |
+| Vector only | 0.3643 | 0.1440 | 0.1886 | 0.6500 |
+| Graph only | 0.2399 | 0.0841 | 0.1125 | 0.5133 |
+
+Hybrid versus vector NDCG@10:
+
+- Mean delta: `+0.0033` (approximately `+0.91%`)
+- Bootstrap 95% interval: `[0.0000, 0.0099]`
+- Bootstrap probability of a positive delta: `0.6456`
+- Exact two-sided randomization p-value: `1.0`
+
+This result does not establish a statistically significant hybrid advantage.
+
+### Production Retrieval Filter
+
+The application pipeline remains separate from the evaluation-only 16:1 hybrid. Production uses 1:1 reciprocal-rank fusion after filtering graph candidates by stored SPECTER similarity, meaningful query-term coverage, and distinct vector-seed connections.
+
+Held-out comparison recorded after development-only threshold selection:
+
+| Production flow | NDCG@10 | Recall@10 | Mean graph papers retained |
+|---|---:|---:|---:|
+| Old unfiltered hybrid | 0.2678 | 0.1117 | 20.00 |
+| New filtered hybrid | 0.3617 | 0.1422 | 0.79 |
+| Vector-only reference | 0.3643 | 0.1440 | 0.00 |
+
+Filtering removes the large relevance loss caused by weak graph neighbours. It does not show that production GraphRAG beats vector-only retrieval. The graph currently contributes occasional strong discoveries rather than a consistent ranking improvement.
 
 ## Implemented
 
-### Ingestion And Cleaning
+### Core Data Pipeline
 
-- ArXiv ingestion
-- Semantic Scholar ingestion with real reference IDs
-- Source selection through `DATA_SOURCE`
-- Source-name validation that rejects unsupported ingestion backends
-- Cleaning, filtering, batching, retries, and local JSON persistence
-- Configurable limits, years, fields of study, publication types, and sorting
-
-### Entity Extraction
-
+- ArXiv and Semantic Scholar ingestion
+- Real Semantic Scholar reference IDs
+- Cleaning, filtering, retries, batching, and JSON persistence
 - spaCy entity and noun-chunk extraction
-- Batched processing
-- Configurable multiprocessing through `SPACY_N_PROCESS`
-- Configurable batch sizing through `SPACY_BATCH_SIZE`
-- GPU preference with parallel CPU fallback
+- Persistent SPECTER/Chroma indexing
+- Neo4j papers, authors, concepts, `AUTHORED_BY`, `RELATED_TO`, and real `CITES`
+- Resume support for Chroma indexing
+- Placeholder-aware credential validation
+- Explicit opt-in before destructive Neo4j rebuilds
+- Automatic GPU/CPU resource selection
 
-### Vector Retrieval
+### Retrieval And Generation
 
-- Persistent Chroma storage
-- SPECTER document and query embeddings
-- Automatic CUDA/MPS/CPU selection
-- Conservative GPU batching for 4 GB VRAM
-- Resume support for partially indexed collections
-- Cached/offline Hugging Face model loading
-- CPU thread controls for PyTorch, OpenMP, and MKL
-
-### Knowledge Graph
-
-- Neo4j nodes for papers, authors, and concepts
-- `AUTHORED_BY`, `RELATED_TO`, and `CITES` relationships
-- Batched graph loading
-- Real Semantic Scholar citation loading
-- Simulated-citation fallback code for sources without references; unused in the current S2 graph
-- Credential validation, connectivity checks, and safe driver cleanup
-- Placeholder-aware validation for Neo4j, Groq, and Semantic Scholar credentials
-- Explicit `NEO4J_ALLOW_RESET=true` opt-in before destructive graph rebuilds
-
-### Hybrid Retrieval
-
-- Neural retrieval from Chroma
-- Symbolic expansion through Neo4j citation traversal
-- Seed self-match exclusion and distinct seed-connection counting
-- Real cosine similarity from Chroma
-- Normalized graph-connectivity scoring
-- Weighted reciprocal-rank fusion
-- `neural`, `symbolic`, and `both` result labels
-- Configurable fusion weights, `top_k`, hop depth, and RRF constant
-- Vector-only retrieval path
-- Retrieval diagnostics for ranks, scores, graph connections, citation degree, source distribution, and cutoff decisions
-
-### Paper And Claim Provenance
-
-- Retrieved paper IDs are checked against Neo4j before reaching the LLM
-- Only verified-paper abstracts enter review context
-- Abstracts are split into deterministic sentence passages
-- Passage IDs use a stable paper-ID hash and sentence position
-- Review prompts require every generated claim to cite supplied passage IDs
-- Passage text is treated as untrusted source data in the prompt
-- Missing, malformed, fabricated, and mixed-validity passage references are blocked
-- Claims with incomplete citation sets are excluded from the displayed review
-- Accepted claims, rejected claims, raw generations, parser errors, and passage metadata are retained
-- Generation temperature is deterministic
-- One bounded format-repair attempt runs only when the first response yields zero accepted claims
-- Console rendering is safe under the default Windows encoding
-
-Claim provenance guarantees traceability and passage-ID validity. It does not by itself prove that the cited sentence semantically entails the generated claim; that requires benchmark evaluation.
-
-### Literature Review
-
-- Hybrid or vector-only retrieval
-- Verified passage context
-- Structured claim/evidence generation
-- Grounded-review rendering from accepted claims only
-- Provenance statistics and unsupported-claim audit output
-- Groq retries and model fallback
-
-### Contradiction Detection
-
-- Cross-year graph candidate generation
-- Candidate ranking by normalized concept Jaccard and year gap
-- Configurable overlap and shared-concept thresholds
-- Structured verdicts: `CONTRADICTION`, `AGREEMENT`, and `DIFFERENT SCOPE`
-- Exact parser and malformed-output handling
-- Deterministic generation
-- Confidence gating
-- Shared verdict interpretation across pipeline, metrics, and UI
-- Live checks have returned valid structured verdicts
-
-### Hypothesis Generation
-
-- Structural-hole candidate discovery
-- Minimum query-paper support
-- Evidence scores using concept overlap and query support
-- Supporting paper IDs and shared concepts retained
-- Structured hypothesis, feasibility, evidence, missing-evidence, rationale, and impact fields
-- Only valid `HIGH` and `MEDIUM` feasibility generations accepted
-- Rejected and malformed generations retained for audit
-
-### Prototype Metrics And Logging
-
-- TS: passage-citation integrity and accepted-claim coverage when provenance exists
-- NBR: graph participation in final retrieval
-- ATD: temporal diversity over a configured year range
-- RDI: prototype cross-document and contradiction reasoning score
-- HNS: normalized graph-path distance across evidence concepts
-- Versioned CSV evaluation logging with claim-provenance fields
-- Vector-only comparison harness
-
-These are project diagnostics, not yet standard or independently validated research metrics.
-
-### Streamlit UI
-
-- Literature review, contradiction, and hypothesis modes
-- Retrieval source badges and paper details
-- Claim-to-sentence evidence inspection
-- Unsupported-claim and parser audits
-- Prototype metric display
-- Basic Neo4j and Chroma statistics
-- Hypothesis evidence, support, feasibility, and missing-evidence display
-
-### Engineering Foundation
-
-- Centralized configuration and prompt templates
-- Shared Groq retry/fallback client
-- Automatic compute-resource selection
-- Pinned direct Python dependencies for the verified environment
-- Native pytest tests, fixtures, parametrization, monkeypatching, and strict markers
-- Unit guards for citation fabrication, metrics edge cases, retrieval fusion, Neo4j failures, contradiction parsing, hypothesis validation, provenance parsing, and repair behavior
-- Detailed from-scratch Windows, Neo4j, CUDA, and CPU instructions in `SETUP.md`
-- README, setup guide, and this status file are the maintained project documentation
-
-## Not Implemented
-
-The following are not part of the current implementation:
-
-- A fixed, judged retrieval benchmark
-- Standard IR evaluation: Precision@K, Recall@K, MRR, MAP, and NDCG
-- Labeled scientific contradiction evaluation
-- Human-reviewed hypothesis evaluation
-- Frozen train/development/test splits
-- BM25 baseline
-- Standalone graph-only baseline harness
-- Conventional non-graph RAG baseline with the same generator and context budget
-- Rule-based contradiction baseline
-- Repeated-run confidence intervals and statistical significance tests
-- Semantic entailment verification between each claim and cited passage
-- scispaCy or another scientific NER model
-- SPECTER2 or systematic scientific-embedding comparisons
-- Scientific-LLM comparison
-- Local model training or fine-tuning
-- Corpus scaling beyond the current 8,850 records
-- Performance benchmarks at 10K, 50K, 100K, and larger scales
-- Full-text or PDF ingestion
-- Section-level provenance
-- Advanced graph visualization
-- Benchmark dashboards, comparison tables, and evaluation exports in the UI
-- Continuous integration and automated live-service integration tests
-- Production deployment, authentication, multi-user isolation, monitoring, or service-level objectives
-
-## Limitations
-
-### Data
-
-- The corpus contains 8,850 mostly computer-science records, not the million-scale multidisciplinary corpus proposed in the Phase 1 report.
-- Most evidence is abstract text and metadata rather than full paper content.
-- Abstract-only evidence cannot support claims that depend on methods, tables, limitations, appendices, or detailed results.
-
-### Graph
-
-- The real citation graph is sparse: only 2,989 of 8,850 papers participate in citation edges.
-- Scaling may improve coverage but will not automatically correct ranking or relevance logic.
-- Generic noun chunks create noisy or overly broad concept nodes.
-- One-hop or bounded citation expansion can favor well-connected papers regardless of query relevance.
-
-### Retrieval
-
-- NBR measures graph participation, not relevance improvement.
-- The existing five-query comparison is too small and has no human relevance labels.
-- Equal default fusion weights have not been selected through judged optimization.
-- Hybrid retrieval reduced ATD by `0.12` on average in the existing comparison.
-
-### Provenance And Generation
-
-- A valid passage ID proves that the evidence exists and was supplied to the model; it does not prove semantic entailment.
-- Structured-output repair improves format reliability but does not improve scientific correctness.
-- Hosted LLM behavior, latency, availability, and cost remain external dependencies.
-- Review generation is constrained to claims that can be represented in the strict parser format.
+- Vector retrieval with real cosine similarity
+- Citation-graph expansion with seed self-match exclusion
+- Weighted reciprocal-rank fusion and source labels
+- Production graph-candidate relevance filtering
+- Cached query embeddings and stored-paper embedding scoring
+- Retrieval diagnostics for candidate filtering and ranking
+- Neo4j paper validation before LLM context construction
+- Deterministic sentence passage IDs
+- Strict claim-to-passage provenance parsing
+- Blocking and audit retention for malformed or fabricated passage references
+- Structured literature-review rendering
+- Groq retry and fallback behavior
 
 ### Contradictions And Hypotheses
 
-- Contradiction verdicts depend on candidate heuristics and a hosted LLM rather than a validated scientific NLI model.
-- Confidence values are self-reported by the LLM and are not calibrated.
-- Hypothesis feasibility is an LLM judgment, not experimental or expert validation.
-- Structural holes indicate graph novelty, not necessarily scientific novelty or usefulness.
+- Cross-year contradiction candidate discovery
+- Normalized concept-overlap ranking
+- Strict `CONTRADICTION`, `AGREEMENT`, and `DIFFERENT SCOPE` parsing
+- Confidence gating and malformed-output handling
+- Structural-hole hypothesis candidates
+- Evidence scores, supporting papers, and shared concepts
+- Structured feasibility and missing-evidence fields
+- Rejected hypothesis audit records
 
-### Metrics
+### Evaluation And Diagnostics
 
-- TS is a prototype structural-grounding score, not a semantic factuality metric.
-- NBR should be reported as a graph-contribution diagnostic only.
-- ATD measures year coverage, not review quality.
-- RDI is a custom formula and needs external justification or replacement.
-- HNS uses normalized graph-path distance as a structural proxy; it is not a validated measure of scientific novelty.
+- Frozen 20-query dev/test retrieval set
+- Method-hidden vector/graph/hybrid candidate pooling
+- Strict benchmark and judgment validation
+- CSV-to-judged-benchmark finalization
+- Precision, Recall, Hit Rate, MRR, MAP, NDCG, unjudged rate, and latency
+- Vector-only, graph-only, and two-way hybrid retrieval ablation
+- Per-query rankings and metrics exports
+- Bootstrap intervals and exact paired randomization testing
+- Production graph-filter held-out comparison
+- Prototype TS, NBR, ATD, RDI, and HNS diagnostics
+- Versioned provenance-aware CSV logging
 
-### Engineering And UI
+### Interface And Engineering
 
-- Unit tests use deterministic doubles; most external-service workflows are verified manually rather than in CI.
-- Direct dependencies are pinned, but transitive dependencies do not yet use a platform-specific lockfile with hashes.
-- The UI is functional but not yet designed for benchmark comparison or large evaluation runs.
-- Evaluation CSV logging is basic and not a complete experiment-tracking system.
+- Streamlit review, contradiction, and hypothesis modes
+- Claim evidence and unsupported-output inspection
+- Retrieval source labels and prototype metrics
+- 123 deterministic pytest cases
+- Pinned direct dependencies
+- Windows setup instructions for local Neo4j, CUDA, and CPU
+- Python 3.11 CUDA and Python 3.13 CPU verification records
 
-## Future Work
+## Not Yet Implemented Or Validated
 
-### Phase A: Evaluation Foundation
+- Human-finalized retrieval relevance judgments and a version `1.0` benchmark
+- Independent or multi-reviewer agreement measurement
+- BM25 lexical baseline in the current evaluation package
+- Conventional non-graph RAG with the same generator and context budget
+- Rule-based contradiction baseline
+- Labeled scientific contradiction benchmark
+- Contradiction precision, recall, F1, confusion matrix, and calibration evaluation
+- Semantic entailment scoring for each review claim and cited passage
+- Claim-support, citation precision/recall, and review-completeness benchmark
+- Human-reviewed hypothesis samples and expert scoring rubric
+- Scientific novelty and feasibility validation for hypotheses
+- scispaCy or another scientific NER comparison
+- SPECTER2 or other scientific embedding comparisons
+- Scientific-domain versus general LLM comparison
+- Full controlled ablations across provenance, validation, retrieval depth, and context budget
+- Repeated stochastic model runs with uncertainty reporting
+- Scaling experiments at 10K, 50K, 100K, and larger collections
+- Indexing throughput, memory, GPU-memory, latency, and API-cost benchmark suite
+- Evaluation comparison dashboard and exports in Streamlit
+- Advanced graph exploration
+- Continuous integration and live Neo4j/Chroma/Groq integration tests
+- Platform-specific dependency lockfiles with hashes
+- Production deployment, authentication, monitoring, and multi-user isolation
+- Full-text/PDF ingestion and section-level provenance
 
-1. Define research questions and success criteria.
-2. Freeze a representative query set.
-3. Create paper-level relevance judgments.
-4. Create or adopt labeled scientific contradiction pairs.
-5. Create human-reviewed hypothesis samples and scoring rubrics.
-6. Freeze train, development, and test partitions where applicable.
-7. Record dataset versions, random seeds, prompts, models, and parameters.
+## Limitations
 
-### Phase B: Standard Metrics And Baselines
+### Evidence And Data
 
-1. Add Precision@K, Recall@K, MAP, MRR, and NDCG.
-2. Add contradiction precision, recall, F1, confusion matrix, and calibration measures.
-3. Add claim-support, citation precision/recall, and review-completeness evaluation.
-4. Add hypothesis evidence, novelty, feasibility, and expert-rating measures.
-5. Add latency, throughput, GPU memory, indexing time, and API-cost measurements.
-6. Implement BM25, graph-only, standard RAG, vector-only, and rule-based baselines.
-7. Compare every baseline with the same corpus, queries, generator, and context budget.
+- The corpus is 8,850 mostly computer-science records, not a multidisciplinary million-scale collection.
+- Most evidence is abstract text and metadata.
+- Abstract evidence cannot reliably support detailed methods, tables, appendices, or limitations.
+- A valid passage ID proves traceability, not semantic entailment or scientific correctness.
 
-### Phase C: Controlled Experiments
+### Retrieval Evaluation
 
-1. Sweep neural/graph fusion weights.
-2. Compare graph hop depth and candidate-pool size.
-3. Compare `top_k` and context budgets.
-4. Run component ablations: vector only, graph only, fusion, paper validation, claim provenance, and complete NeSy pipeline.
-5. Repeat stochastic experiments and report confidence intervals and significance tests.
+- Twenty queries are too few for broad generalization.
+- The topics are concentrated in graph machine learning.
+- The 1,329 labels are machine-assisted and require human review.
+- The evaluation-only hybrid and production hybrid are different configurations.
+- The tuned hybrid improvement over vector-only is not statistically significant.
+- Graph-only retrieval is materially weaker than vector retrieval on the current benchmark.
+- The graph is sparse, and generic noun chunks introduce noisy concept nodes.
+- Development-selected thresholds need confirmation on a human-reviewed benchmark.
 
-### Phase D: Scientific Model Experiments
+### Generated Analysis
 
-1. Compare current spaCy extraction with scispaCy or another scientific concept model.
-2. Compare current SPECTER embeddings with stronger scientific retrieval embeddings.
-3. Compare the current LLM with scientific-domain and general instruction models.
-4. Change one model family at a time and measure downstream graph, retrieval, reasoning, latency, and cost effects.
-5. Select models from benchmark results rather than domain branding alone.
+- Contradiction judgments rely on candidate heuristics and a hosted LLM, not validated scientific NLI.
+- LLM confidence values are not calibrated.
+- Hypothesis feasibility is a generated judgment, not expert or experimental validation.
+- Structural graph novelty is not equivalent to scientific novelty.
+- Hosted model latency, behavior, availability, and cost remain external dependencies.
 
-### Phase E: Scaling
+### Engineering
 
-1. Improve citation and concept quality before increasing volume.
-2. Benchmark at roughly 10K, 50K, 100K, and larger corpus sizes.
-3. Measure indexing time, throughput, storage, memory, graph density, and retrieval latency.
-4. Verify that quality remains stable as graph degree and candidate volume change.
-5. Add incremental ingestion and reproducible store-version metadata.
+- Most tests use deterministic doubles; live services are not exercised in CI.
+- Direct dependencies are pinned, but transitive dependencies lack hashed lockfiles.
+- Local graph snapshots currently report two different concept counts and need reproducible build metadata.
+- Evaluation results are file-based rather than managed by a full experiment tracker.
+- The UI is designed for the application workflow, not benchmark comparison.
 
-### Phase F: UI And Reporting
+## Priority Roadmap
 
-1. Compare BM25, vector, graph, hybrid, and validated NeSy results side by side.
-2. Display benchmark configuration, model versions, and experiment IDs.
-3. Add retrieval source distributions and ranking explanations.
-4. Add graph exploration for papers, concepts, citations, and evidence paths.
-5. Export claims, citations, metrics, and experiment results.
-6. Clearly distinguish validated evidence, rejected output, model interpretation, and generated hypotheses.
+### Priority 1: Finalize Retrieval Evidence
 
-### Phase G: Engineering Reliability
+1. Human-review the method-hidden relevance worksheet.
+2. Record reviewer identity, instructions, disagreements, and adjudication.
+3. Freeze benchmark version `1.0` without retuning on the test split.
+4. Rerun vector, graph, evaluation hybrid, and production-filter evaluation.
+5. Report the result even if vector-only remains best.
 
-1. Add marked Neo4j, Chroma, and Groq integration tests.
-2. Add CI for tests, compilation, formatting, and static checks.
-3. Add platform-specific lockfiles with hashes when deployment targets are fixed.
-4. Replace basic CSV logging with versioned experiment records.
-5. Add structured logging, failure telemetry, and resource measurements.
+### Priority 2: Complete Retrieval Baselines
+
+1. Add deterministic BM25.
+2. Add conventional vector RAG with a matched generator and context budget.
+3. Keep graph-only and hybrid ablations separate from application claims.
+4. Compare latency and resource use as well as relevance.
+
+### Priority 3: Evaluate Generated Outputs
+
+1. Build or adopt a labeled scientific contradiction set.
+2. Evaluate contradiction precision, recall, F1, and calibration.
+3. Create a claim/passage entailment and citation-quality sample.
+4. Create expert-reviewed hypothesis samples and rubrics.
+5. Separate validated findings from model-generated suggestions in reports.
+
+### Priority 4: Controlled Model Experiments
+
+1. Compare spaCy with scientific NER alternatives.
+2. Compare SPECTER with stronger scientific embeddings.
+3. Compare general and scientific-domain LLMs.
+4. Sweep fusion weights, retrieval depth, candidate limits, and `top_k` on development data only.
+5. Run component ablations and repeated stochastic trials.
+
+### Priority 5: Scaling, UI, And Reliability
+
+1. Benchmark 10K, 50K, 100K, and larger corpora.
+2. Record graph density, indexing time, latency, throughput, memory, and cost.
+3. Add benchmark comparison and export views to Streamlit.
+4. Add CI, marked live-service tests, structured logs, and experiment metadata.
+5. Add reproducible store and model version manifests.
 
 ## Recommended Next Step
 
-Start with Phase A and a small but carefully judged retrieval set. Then implement standard retrieval metrics and BM25 before changing NER, embeddings, the LLM, fusion settings, or corpus scale. This creates a fixed measuring instrument for every later decision.
+Human-review the existing 1,329 method-hidden retrieval judgments before adding or tuning more retrieval logic. Then freeze benchmark `1.0`, add BM25, and rerun the held-out comparison. This gives every later NER, embedding, LLM, graph, and scaling experiment a trustworthy measuring instrument.
 
 ## Readiness
 
-- Working demo: approximately 95%
-- Core capstone prototype implementation: approximately 90%
-- Defensible capstone evaluation: approximately 62%
-- Research-grade system: approximately 35%
+- Working abstract-based demo: approximately 95%
+- Core capstone implementation: approximately 92%
+- Retrieval-evaluation infrastructure: approximately 85%
+- Defensible capstone evaluation: approximately 72%
+- Research-grade system: approximately 40%
 
-The implementation milestone is complete for the current abstract-based scope. The research milestone will be complete only after benchmarked relevance, semantic support, reasoning quality, baseline comparisons, and controlled experiments are reported.
+The implementation milestone is complete for the current scope. The next milestone is evidence validation, not more unmeasured feature work.
