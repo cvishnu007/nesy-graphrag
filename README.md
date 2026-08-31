@@ -30,13 +30,13 @@ Short version:
 - ChromaDB indexing is implemented and local collections exist.
 - Neo4j graph loading code is implemented.
 - Literature review, contradiction, hypothesis, metrics, and baseline comparison modules exist.
-- The clean S2 run contains 8,850 papers in both ChromaDB and Neo4j.
+- The verified broad-CSE run contains 52,822 unique raw records and 47,619 papers in the clean, NER, ChromaDB, and Neo4j stores.
 - Hybrid rank fusion is implemented and returns neural, symbolic, and overlapping results.
 - Automatic CUDA/MPS/CPU selection and CPU worker controls are implemented.
 - CUDA embedding inference is verified on the local RTX 3050 with PyTorch `2.12.1+cu126`.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
-- A provisional 20-query retrieval benchmark, 6/14 dev/test split, 1,329 machine-assisted judgments, IR metrics, graph-only baseline, two-way NeSy ablation, and significance analysis are implemented under `src/evaluation/`.
+- A provisional 20-query retrieval benchmark, 6/14 dev/test split, 1,329 machine-assisted judgments, IR metrics, graph-only baseline, two-way NeSy ablation, and significance analysis are implemented under `src/evaluation/`. Its recorded scores predate the broad-CSE rebuild and must not be reported as results for the expanded corpus.
 - The evaluation-only hybrid scored `0.3676` NDCG@10 versus `0.3643` for vector-only, but the paired randomization p-value is `1.0`; this is not a statistically established improvement.
 - Production graph filtering improved NDCG@10 from `0.2678` to `0.3617`, close to the vector-only reference at `0.3643`.
 - 127 pytest cases cover retrieval, multi-topic ingestion, resume safety, evaluation, claim provenance, metrics, configuration guards, contradiction verdicts, Neo4j failures, and hypothesis validation.
@@ -53,7 +53,7 @@ Not yet implemented or validated:
 - semantic entailment verification for claim/evidence pairs
 - BM25 and conventional matched-context RAG baselines
 - broader component ablations and repeated stochastic model runs
-- measured corpus scaling and evaluation-focused UI reporting
+- controlled 10K/50K/100K scaling benchmarks and evaluation-focused UI reporting
 
 See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the complete implementation inventory, limitations, and ordered future roadmap.
 
@@ -270,7 +270,7 @@ Explain a hybrid retrieval result without calling the LLM:
 
 ## Retrieval Evaluation
 
-The retrieval benchmark is version `0.2-draft` and contains 20 frozen queries, split into 6 development and 14 test queries. Its 1,329 relevance labels are provisional and must be human-reviewed before publication-level claims.
+The retrieval benchmark is version `0.2-draft` and contains 20 frozen queries, split into 6 development and 14 test queries. Its 1,329 relevance labels are provisional, were created against the earlier 8,850-paper corpus, and must be regenerated or extended for the 47,619-paper corpus before new scores are reported.
 
 Run the vector, graph-only, and evaluation-only hybrid comparison with Neo4j and Chroma available:
 
@@ -315,7 +315,8 @@ These are prototype diagnostics, not established scientific benchmarks. TS uses 
 
 ## Scope Boundaries
 
-- The current corpus is 8,850 cleaned Semantic Scholar records, primarily abstracts and metadata. It is not yet the million-scale full-text corpus proposed in the Phase 1 report.
+- The current corpus is 47,619 cleaned Semantic Scholar records collected through 11 broad CSE topic queries, primarily abstracts and metadata. It is not a balanced taxonomy, a relevance-labeled corpus, or the million-scale full-text corpus proposed in the Phase 1 report.
+- The expanded graph has 22,370 real citation edges across 47,619 papers. Topic smoke tests found useful vector results, but strict graph filtering retained a result for only one of 11 representative queries; scaling alone has not solved sparse graph contribution.
 - The project uses pretrained SPECTER embeddings and the configurable Groq model `openai/gpt-oss-120b`; it does not train or fine-tune a local reasoning model.
 - Review claims are traceable to deterministic sentence IDs from verified abstracts. Passage existence is enforced; semantic entailment quality is not yet benchmarked.
 - PDF ingestion and full-text section provenance remain intentionally deferred for this phase.

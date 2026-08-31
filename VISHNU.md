@@ -39,6 +39,12 @@ Later retrieval-benchmark work by teammates is documented separately in `devesh.
 - Added global paper-ID deduplication with merged topic and reference provenance.
 - Preserved the existing raw corpus and checkpointed every completed topic atomically.
 - Made NER reuse existing entity output and checkpoint every 5,000 new papers.
+- Completed the 11-topic broad-CSE run with 52,822 unique raw records and 47,619 cleaned records.
+- Verified zero missing IDs from the original 10,000 raw and 8,850 cleaned/NER/store records.
+- Reused 8,850 NER records, processed 38,769 additions with 15 CPU workers, and verified 47,619 entity-bearing papers.
+- Reused 8,850 Chroma vectors, encoded 38,769 additions on the RTX 3050, and verified exact 47,619-ID parity with the clean data.
+- Rebuilt Neo4j with 47,619 papers, 145,957 authors, 195,252 concepts, and 22,370 real citation edges.
+- Ran live retrieval smoke tests across all 11 configured CSE topics; vector retrieval broadened successfully, while strict graph filtering still retained few citation neighbours.
 
 ## Compute And Performance
 
@@ -109,7 +115,9 @@ Claim provenance establishes traceability and passage existence. It does not pro
 
 After teammate evaluation work was merged, the repository reached 123 passing tests. The multi-topic ingestion and resume guards increased the current suite to 127. Those later tests are not claimed as part of the original 39-test core handoff.
 
-## Key Core Verification Snapshot
+## Verification Snapshots
+
+Original core handoff:
 
 - Cleaned Semantic Scholar papers: 8,850
 - NER papers: 8,850
@@ -117,16 +125,25 @@ After teammate evaluation work was merged, the repository reached 123 passing te
 - Neo4j papers: 8,850
 - Real citation relationships: 7,203
 - Core handoff tests: 39 passed
+
+Current broad-CSE build:
+
+- Unique raw Semantic Scholar papers: 52,822
+- Cleaned, NER, Chroma, and Neo4j papers: 47,619 each
+- Neo4j authors: 145,957
+- Neo4j concepts: 195,252
+- Real citation relationships: 22,370
+- Missing original IDs after expansion: 0
 - Current merged repository tests: 127 passed
 - Latest recorded provenance smoke test: 5/5 accepted claims and 9/9 valid passage references
 
 ## Current Handoff State
 
-The abstract-based product implementation is complete enough for a working capstone demo. The retrieval-evaluation infrastructure is also present, but the existing 1,329 relevance judgments are machine-assisted and still require human review.
+The abstract-based product implementation is complete enough for a working capstone demo. The retrieval-evaluation infrastructure is also present, but the existing 1,329 relevance judgments were generated for the earlier corpus and now require candidate-pool refresh plus human review.
 
 The highest-priority remaining work is:
 
-1. Human-review and freeze the retrieval benchmark.
+1. Refresh the retrieval candidate pool for the expanded corpus, then human-review and freeze the benchmark.
 2. Add BM25 and conventional matched-context RAG baselines.
 3. Evaluate claim entailment, contradiction quality, and hypothesis quality.
 4. Compare scientific NER, embedding, and LLM alternatives under fixed evaluation.

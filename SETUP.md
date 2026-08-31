@@ -13,7 +13,7 @@ PDF ingestion is not part of this setup. The current pipeline uses paper metadat
 - NVIDIA GeForce RTX 3050 Laptop GPU, 4 GB VRAM
 - PyTorch `2.12.1+cu126`
 - Python dependencies pinned in `requirements.txt`
-- Semantic Scholar corpus configuration: 10,000 requested records, 2020-2025, Computer Science
+- Semantic Scholar corpus configuration: 11 CSE topic queries, up to 5,000 records per query, 2020-2025, Computer Science
 - SPECTER embeddings: `allenai-specter`
 - Groq primary model: `openai/gpt-oss-120b`
 - Groq fallback model: `llama-3.1-8b-instant`
@@ -32,7 +32,7 @@ Install these before cloning:
 2. Python 3.11, 64-bit
 3. Neo4j Desktop, Neo4j Community Server, or another local Neo4j installation
 4. A Groq API key
-5. A Semantic Scholar API key for a reliable 10,000-paper ingestion run
+5. A Semantic Scholar API key for reliable multi-topic ingestion
 6. An NVIDIA driver that supports the CUDA 12.6 PyTorch wheel, if using NVIDIA acceleration
 
 The full CUDA Toolkit is not required by the PyTorch wheel, but a compatible NVIDIA driver is required.
@@ -248,7 +248,7 @@ Expected outputs:
 
 `S2_QUERIES` is semicolon-separated. The broad CSE configuration keeps the existing raw corpus, fetches up to 5,000 papers for each configured topic, deduplicates globally by Semantic Scholar paper ID, and saves both the merged raw file and a completed-topic checkpoint after every topic. Rerunning the command resumes completed topics instead of replacing prior data.
 
-The exact retained count can change as Semantic Scholar data changes. The original verified run requested 10,000 graph-neural-network records and retained 8,850 after cleaning; the broad run increases this corpus while preserving those records.
+The exact retained count can change as Semantic Scholar data changes. The August 31, 2026 verified broad run produced 52,822 unique raw records and 47,619 clean records. It preserved every ID from the original 10,000 raw and 8,850 clean records.
 
 Semantic Scholar rate limits make this stage network-bound. Do not launch duplicate ingestion processes. If the API returns `429`, allow the built-in retry delay to continue.
 
@@ -283,7 +283,7 @@ Verify the vector count:
 .\venv\Scripts\python.exe -c "from src.storage.chroma_store import get_collection; print('Chroma vectors:', get_collection().count())"
 ```
 
-The count should match the cleaned-paper count.
+The count should match the cleaned-paper count. The verified broad snapshot reports 47,619.
 
 ### Stage 4: Neo4j Graph
 
@@ -301,7 +301,7 @@ Verify graph counts:
 .\venv\Scripts\python.exe -c "from src.storage.neo4j_store import get_driver; d=get_driver(); s=d.session(); print('Papers:', s.run('MATCH (p:Paper) RETURN count(p) AS c').single()['c']); print('CITES:', s.run('MATCH ()-[r:CITES]->() RETURN count(r) AS c').single()['c']); s.close(); d.close()"
 ```
 
-The paper count should match Chroma. Real `CITES` edges are created only when both the source and referenced target paper exist in the ingested corpus.
+The paper count should match Chroma. The verified broad snapshot reports 47,619 papers, 145,957 authors, 195,252 concepts, and 22,370 real `CITES` edges. Real citation edges are created only when both the source and referenced target paper exist in the ingested corpus.
 
 ## 9. Run Automated Verification
 
@@ -343,7 +343,7 @@ A valid run should report verified papers, at least one accepted claim, valid pa
 
 Retrieval evaluation requires the Chroma index and Neo4j graph. It does not call Groq. The tracked benchmark contains 20 frozen queries with 6 development and 14 held-out test queries.
 
-The current `0.2-draft` labels are machine-assisted and marked `judgments_pending_human_review`. They are suitable for development diagnostics, not final publication claims.
+The current `0.2-draft` labels are machine-assisted, predate the broad-CSE rebuild, and require candidate-pool refresh plus human review. They are historical development diagnostics, not final expanded-corpus results.
 
 Run the tracked judged-draft benchmark on the held-out split:
 

@@ -12,27 +12,32 @@ This file is the source of truth for implemented capabilities, evidence, limitat
 
 NeSy-GraphRAG is an end-to-end research prototype. It ingests scientific-paper metadata and abstracts, extracts concepts, builds Chroma and Neo4j stores, combines neural retrieval with citation-graph expansion, generates passage-cited literature reviews, evaluates contradiction candidates, generates evidence-ranked hypotheses, and exposes these workflows through Streamlit.
 
-Since the core prototype milestone, the repository has gained a separate retrieval-evaluation framework with a frozen 20-query set, development/test splits, method-hidden candidate pooling, 1,329 provisional relevance judgments, standard information-retrieval metrics, vector/graph/hybrid comparisons, and paired significance analysis. Production retrieval now filters weak graph neighbours before fusion.
+Since the core prototype milestone, the repository has gained a separate retrieval-evaluation framework with a frozen 20-query set, development/test splits, method-hidden candidate pooling, 1,329 provisional relevance judgments, standard information-retrieval metrics, vector/graph/hybrid comparisons, and paired significance analysis. Production retrieval now filters weak graph neighbours before fusion. The local corpus has also been expanded from the original graph-neural-network run to 11 CSE topic queries with full ID-preservation checks.
 
-The implementation is working, but the research claims are not final. The current relevance judgments were produced by a fast machine-assisted title-and-abstract pass and require human review. The tuned hybrid result is not statistically better than vector-only retrieval.
+The implementation is working, but the research claims are not final. The current relevance judgments were produced by a fast machine-assisted title-and-abstract pass against the earlier corpus and require regeneration or extension plus human review for the expanded stores. The historical tuned hybrid result was not statistically better than vector-only retrieval.
 
 ## Verified Snapshot
 
 ### Data And Stores
 
-- Semantic Scholar records fetched: 10,000
-- Records retained after cleaning: 8,850
-- NER records processed: 8,850
+- Semantic Scholar unique raw records: 52,822
+- Records retained after cleaning: 47,619
+- NER records processed: 47,619
+- Configured topic queries: 11
+- Clean papers attributed to multiple topic queries: 5,722
 - Chroma collection: `s2_papers`
-- Chroma vectors: 8,850
-- Neo4j papers: 8,850
-- Neo4j authors: 27,655
-- Neo4j real `CITES` relationships: 7,203
+- Chroma vectors: 47,619
+- Neo4j papers: 47,619
+- Neo4j authors: 145,957
+- Neo4j concepts: 195,252
+- Neo4j `AUTHORED_BY` relationships: 190,128
+- Neo4j `RELATED_TO` relationships: 475,121
+- Neo4j real `CITES` relationships: 22,370
 - Simulated `CITES` relationships in the current S2 graph: 0
-- Papers participating in at least one citation edge: 2,989
-- Papers with outgoing real citations: 1,581
+- Papers participating in at least one citation edge: 13,624
+- Papers with outgoing real citations: 5,947
 
-Concept counts differ between recorded graph builds: the earlier CUDA/Python 3.11 build reported 43,581 concepts, while the later Python 3.13 evaluation build reported 42,937. This is a build-version snapshot difference that must be resolved through recorded dataset/model versions before final reporting.
+All 10,000 original raw IDs and all 8,850 original clean/NER/store IDs were present after expansion. The current Python 3.11 rebuild resolves the live snapshot at 195,252 concepts; historical 43,581 and 42,937 counts belong to different 8,850-paper builds.
 
 ### Compute
 
@@ -48,8 +53,9 @@ Concept counts differ between recorded graph builds: the earlier CUDA/Python 3.1
 - 127 pytest cases pass under the current Python 3.11 environment
 - `src`, `app`, and `tests` compile successfully
 - `pip check` reports no broken requirements
-- Chroma currently reports 8,850 vectors
-- Neo4j live verification requires the local service to be running
+- Chroma currently reports 47,619 vectors with exact clean-data ID parity
+- Neo4j currently reports 47,619 papers with exact clean-data ID parity
+- Eleven representative topic queries completed against live Chroma and Neo4j
 - Latest recorded review smoke test: 5/5 claims accepted with valid passage references
 - Latest recorded UI checks completed for review, contradiction, and hypothesis modes
 
@@ -58,7 +64,7 @@ Concept counts differ between recorded graph builds: the earlier CUDA/Python 3.1
 ### Benchmark
 
 - Benchmark version: `0.2-draft`
-- Status: `judgments_pending_human_review`
+- Status: `corpus_expanded_judgments_require_refresh_and_human_review`
 - Frozen queries: 20
 - Development queries: 6
 - Held-out test queries: 14
@@ -68,13 +74,13 @@ Concept counts differ between recorded graph builds: the earlier CUDA/Python 3.1
 - Primary metric: NDCG@10
 - Secondary metric: Recall@10
 
-The query definitions are frozen, but the relevance labels are not publication-ready until humans review and correct them.
+The query definitions are frozen, but the candidate pool and relevance labels predate the corpus expansion. Refresh the pool and judgments, then have humans review and correct them before reporting expanded-corpus results.
 
 ### Evaluation-Only Ablation
 
 The evaluation package compares vector-only, citation-graph-only, and a two-way vector-plus-graph hybrid. The tuned evaluation hybrid uses a 16:1 vector-to-graph weight selected on the development split.
 
-Held-out 14-query test results:
+Historical held-out 14-query test results on the earlier 8,850-paper corpus:
 
 | Method | NDCG@10 | Recall@10 | MAP | MRR |
 |---|---:|---:|---:|---:|
@@ -95,7 +101,7 @@ This result does not establish a statistically significant hybrid advantage.
 
 The application pipeline remains separate from the evaluation-only 16:1 hybrid. Production uses 1:1 reciprocal-rank fusion after filtering graph candidates by stored SPECTER similarity, meaningful query-term coverage, and distinct vector-seed connections.
 
-Held-out comparison recorded after development-only threshold selection:
+Historical held-out comparison recorded after development-only threshold selection on the earlier corpus:
 
 | Production flow | NDCG@10 | Recall@10 | Mean graph papers retained |
 |---|---:|---:|---:|
@@ -192,7 +198,7 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 - Scientific-domain versus general LLM comparison
 - Full controlled ablations across provenance, validation, retrieval depth, and context budget
 - Repeated stochastic model runs with uncertainty reporting
-- Scaling experiments at 10K, 50K, 100K, and larger collections
+- Controlled scaling comparisons at 10K, 50K, 100K, and larger collections; one 47,619-paper operational build is complete but is not a scaling benchmark
 - Indexing throughput, memory, GPU-memory, latency, and API-cost benchmark suite
 - Evaluation comparison dashboard and exports in Streamlit
 - Advanced graph exploration
@@ -205,7 +211,7 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 
 ### Evidence And Data
 
-- The corpus is 8,850 mostly computer-science records, not a multidisciplinary million-scale collection.
+- The corpus is 47,619 records gathered through 11 CSE query strings, not a balanced CSE taxonomy or multidisciplinary million-scale collection.
 - Most evidence is abstract text and metadata.
 - Abstract evidence cannot reliably support detailed methods, tables, appendices, or limitations.
 - A valid passage ID proves traceability, not semantic entailment or scientific correctness.
@@ -213,12 +219,12 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 ### Retrieval Evaluation
 
 - Twenty queries are too few for broad generalization.
-- The topics are concentrated in graph machine learning.
+- The existing judged benchmark is concentrated in graph machine learning and predates the broad-CSE stores.
 - The 1,329 labels are machine-assisted and require human review.
 - The evaluation-only hybrid and production hybrid are different configurations.
 - The tuned hybrid improvement over vector-only is not statistically significant.
 - Graph-only retrieval is materially weaker than vector retrieval on the current benchmark.
-- The graph is sparse, and generic noun chunks introduce noisy concept nodes.
+- The graph remains sparse at 22,370 real citation edges for 47,619 papers, and generic noun chunks introduce noisy concept nodes.
 - Development-selected thresholds need confirmation on a human-reviewed benchmark.
 
 ### Generated Analysis
@@ -233,7 +239,7 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 
 - Most tests use deterministic doubles; live services are not exercised in CI.
 - Direct dependencies are pinned, but transitive dependencies lack hashed lockfiles.
-- Local graph snapshots currently report two different concept counts and need reproducible build metadata.
+- Historical graph snapshots used different corpora/Python environments; reproducible store and model manifests are still needed.
 - Evaluation results are file-based rather than managed by a full experiment tracker.
 - The UI is designed for the application workflow, not benchmark comparison.
 
@@ -241,7 +247,7 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 
 ### Priority 1: Finalize Retrieval Evidence
 
-1. Human-review the method-hidden relevance worksheet.
+1. Regenerate the method-hidden candidate pool against the expanded corpus.
 2. Record reviewer identity, instructions, disagreements, and adjudication.
 3. Freeze benchmark version `1.0` without retuning on the test split.
 4. Rerun vector, graph, evaluation hybrid, and production-filter evaluation.
@@ -280,7 +286,7 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 
 ## Recommended Next Step
 
-Human-review the existing 1,329 method-hidden retrieval judgments before adding or tuning more retrieval logic. Then freeze benchmark `1.0`, add BM25, and rerun the held-out comparison. This gives every later NER, embedding, LLM, graph, and scaling experiment a trustworthy measuring instrument.
+Refresh the candidate pool and relevance judgments against the expanded corpus, then human-review and freeze benchmark `1.0`. Add BM25 and rerun the held-out comparison before tuning retrieval logic. This gives every later NER, embedding, LLM, graph, and scaling experiment a trustworthy measuring instrument.
 
 ## Readiness
 
