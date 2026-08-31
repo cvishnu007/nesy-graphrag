@@ -89,6 +89,8 @@ def insert_papers(driver, df):
                 "source"          : str(row.get("source")) if row.get("source") else DATA_SOURCE,
                 "citationCount"   : int(row.get("citationCount") or 0),
                 "referenceCount"  : int(row.get("referenceCount") or 0),
+                "ingestionQueries": row.get("ingestion_queries")
+                                    if isinstance(row.get("ingestion_queries"), list) else [],
                 "authors"         : _build_authors(row),
                 "concepts"        : [c.lower().strip() for c in row["entities"][:MAX_CONCEPTS] if len(c) > 3]
                                     if isinstance(row["entities"], list) else [],
@@ -106,7 +108,8 @@ def insert_papers(driver, df):
                     paper.category = p.category, paper.abstract = p.abstract,
                     paper.paperId = p.paperId, paper.corpusId = p.corpusId,
                     paper.doi = p.doi, paper.venue = p.venue, paper.source = p.source,
-                    paper.citationCount = p.citationCount, paper.referenceCount = p.referenceCount
+                    paper.citationCount = p.citationCount, paper.referenceCount = p.referenceCount,
+                    paper.ingestionQueries = p.ingestionQueries
                 WITH paper, p
                 UNWIND p.authors AS author
                 MERGE (a:Author {key: author.key})
