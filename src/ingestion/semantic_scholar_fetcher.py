@@ -16,12 +16,16 @@ from src.utils.config import (
     MIN_ABSTRACT_WORDS,
     RAW_FILE,
     S2_BATCH_SIZE,
+    S2_CHECKPOINT_FILE,
     S2_FIELDS_OF_STUDY,
+    S2_INCLUDE_EXISTING,
     S2_LIMIT,
+    S2_LIMIT_PER_QUERY,
     S2_MAX_REFS_PER_PAPER,
     S2_PAGE_SIZE,
     S2_PUBLICATION_TYPES,
     S2_QUERY,
+    S2_QUERIES,
     S2_SORT,
     S2_YEAR,
     SEMANTIC_SCHOLAR_API_KEY,
@@ -142,7 +146,13 @@ def _dedupe_keep_order(items: List[str], max_items: Optional[int] = None) -> Lis
     return out
 
 
-def fetch_seed_papers(client: SemanticScholarClient) -> List[Dict[str, Any]]:
+def fetch_seed_papers(
+    client: SemanticScholarClient,
+    query: Optional[str] = None,
+    limit: Optional[int] = None,
+) -> List[Dict[str, Any]]:
+    query = query or S2_QUERY
+    limit = S2_LIMIT if limit is None else max(1, int(limit))
     page_size = min(max(S2_PAGE_SIZE, 1), 1000)
     fields = ",".join([
         "paperId",
@@ -163,7 +173,7 @@ def fetch_seed_papers(client: SemanticScholarClient) -> List[Dict[str, Any]]:
     ])
 
     params: Dict[str, Any] = {
-        "query": S2_QUERY,
+        "query": query,
         "limit": page_size,
         "fields": fields,
     }
@@ -180,8 +190,8 @@ def fetch_seed_papers(client: SemanticScholarClient) -> List[Dict[str, Any]]:
     seen_ids = set()
     token = None
 
-    print(f"[S2] Fetching up to {S2_LIMIT} papers from /paper/search/bulk...")
-    while len(papers) < S2_LIMIT:
+    print(f"[S2] Query '{query}': fetching up to {limit} papers...")
+    while len(papers) < limit:
         call_params = dict(params)
         if token:
             call_params["token"] = token
@@ -198,15 +208,15 @@ def fetch_seed_papers(client: SemanticScholarClient) -> List[Dict[str, Any]]:
                 continue
             seen_ids.add(paper_id)
             papers.append(paper)
-            if len(papers) >= S2_LIMIT:
+            if len(papers) >= limit:
                 break
 
         token = payload.get("token")
-        print(f"  [S2] Seed papers fetched: {len(papers)}")
+        print(f"  [S2] {query}: {len(papers)}/{limit} seed papers")
         if not token:
             break
 
-    print(f"[S2] Seed fetch complete: {len(papers)} papers")
+    print(f"[S2] Query '{query}' complete: {len(papers)} papers")
     return papers
 
 
@@ -266,7 +276,8 @@ def _build_categories(paper: Dict[str, Any]) -> List[str]:
 
 def normalize_papers(
     raw_papers: List[Dict[str, Any]],
-    reference_map: Dict[str, List[str]]
+    reference_map: Dict[str, List[str]],
+    ingestion_query: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     normalized = []
 
@@ -310,10 +321,108 @@ def normalize_papers(
             "citationCount": int(paper.get("citationCount") or 0),
             "referenceCount": int(paper.get("referenceCount") or 0),
             "references": reference_map.get(paper_id, []),
+            "ingestion_queries": [ingestion_query] if ingestion_query else [],
             "source": "semantic_scholar",
         })
 
     return normalized
+
+
+def _merge_unique(left: Any, right: Any) -> List[Any]:
+    left_items = left if isinstance(left, list) else []
+    right_items = right if isinstance(right, list) else []
+    return list(dict.fromkeys(item for item in left_items + right_items if item))
+
+
+def merge_paper_records(
+    existing: Dict[str, Dict[str, Any]],
+    incoming: List[Dict[str, Any]],
+) -> Dict[str, Dict[str, Any]]:
+    """Merge normalized papers by S2 paper ID without losing topic provenance."""
+    for paper in incoming:
+        paper_id = str(paper.get("id") or paper.get("paperId") or "").strip()
+        if not paper_id:
+            continue
+
+        current = existing.get(paper_id)
+        if current is None:
+            item = dict(paper)
+            item["ingestion_queries"] = _merge_unique(
+                [], item.get("ingestion_queries")
+            )
+            existing[paper_id] = item
+            continue
+
+        current["references"] = _merge_unique(
+            current.get("references"), paper.get("references")
+        )
+        current["categories"] = _merge_unique(
+            current.get("categories"), paper.get("categories")
+        )
+        current["ingestion_queries"] = _merge_unique(
+            current.get("ingestion_queries"), paper.get("ingestion_queries")
+        )
+        current["citationCount"] = max(
+            int(current.get("citationCount") or 0),
+            int(paper.get("citationCount") or 0),
+        )
+        current["referenceCount"] = max(
+            int(current.get("referenceCount") or 0),
+            int(paper.get("referenceCount") or 0),
+        )
+        for field in ("abstract", "title", "doi", "venue", "pdf_url"):
+            if not current.get(field) and paper.get(field):
+                current[field] = paper[field]
+
+    return existing
+
+
+def _atomic_json_write(path: str, value: Any) -> None:
+    directory = os.path.dirname(path) or "."
+    os.makedirs(directory, exist_ok=True)
+    temporary = f"{path}.tmp"
+    with open(temporary, "w", encoding="utf-8") as file:
+        json.dump(value, file, indent=2)
+    os.replace(temporary, path)
+
+
+def _load_existing_records() -> Dict[str, Dict[str, Any]]:
+    if not S2_INCLUDE_EXISTING or not os.path.exists(RAW_FILE):
+        return {}
+    with open(RAW_FILE, "r", encoding="utf-8") as file:
+        payload = json.load(file)
+    if not isinstance(payload, list):
+        raise RuntimeError(f"{RAW_FILE} must contain a JSON list")
+
+    existing: Dict[str, Dict[str, Any]] = {}
+    legacy = []
+    for paper in payload:
+        if not isinstance(paper, dict):
+            continue
+        item = dict(paper)
+        if not item.get("ingestion_queries"):
+            item["ingestion_queries"] = [S2_QUERY]
+            legacy.append(item)
+        merge_paper_records(existing, [item])
+    print(f"[S2] Loaded {len(existing)} existing raw papers for merge")
+    if legacy:
+        print(f"[S2] Added legacy query provenance to {len(legacy)} records")
+    return existing
+
+
+def _load_checkpoint() -> Dict[str, Any]:
+    if not os.path.exists(S2_CHECKPOINT_FILE):
+        return {"completed": []}
+    with open(S2_CHECKPOINT_FILE, "r", encoding="utf-8") as file:
+        checkpoint = json.load(file)
+    if not isinstance(checkpoint, dict):
+        raise RuntimeError(f"{S2_CHECKPOINT_FILE} must contain a JSON object")
+    checkpoint.setdefault("completed", [])
+    return checkpoint
+
+
+def _checkpoint_key(query: str) -> str:
+    return f"{query}|limit={S2_LIMIT_PER_QUERY}|year={S2_YEAR}"
 
 
 def preprocess(papers: List[Dict[str, Any]]) -> pd.DataFrame:
@@ -370,15 +479,76 @@ def run() -> pd.DataFrame:
         print("[S2] Warning: SEMANTIC_SCHOLAR_API_KEY not set. Unauthenticated calls may be heavily limited.")
 
     client = SemanticScholarClient()
-    seed_papers = fetch_seed_papers(client)
-    paper_ids = [p.get("paperId") for p in seed_papers if p.get("paperId")]
-    reference_map = fetch_references_for_papers(client, paper_ids)
+    merged = _load_existing_records()
+    checkpoint = _load_checkpoint()
+    completed = set(checkpoint.get("completed") or [])
+    if completed and not merged:
+        print(
+            "[S2] Checkpoint exists without a reusable raw dataset; "
+            "starting all topics again."
+        )
+        completed.clear()
 
-    normalized = normalize_papers(seed_papers, reference_map)
-    os.makedirs(os.path.dirname(RAW_FILE), exist_ok=True)
-    with open(RAW_FILE, "w", encoding="utf-8") as f:
-        json.dump(normalized, f, indent=2)
-    print(f"[S2] Saved normalized raw dataset ({len(normalized)} records) to {RAW_FILE}")
+    print(
+        f"[S2] Multi-topic plan: {len(S2_QUERIES)} queries, "
+        f"up to {S2_LIMIT_PER_QUERY} papers per query"
+    )
+    for index, query in enumerate(S2_QUERIES, start=1):
+        key = _checkpoint_key(query)
+        if key in completed:
+            print(f"[S2] [{index}/{len(S2_QUERIES)}] Resume: skipping '{query}'")
+            continue
+
+        print(f"\n[S2] [{index}/{len(S2_QUERIES)}] Starting '{query}'")
+        seed_papers = fetch_seed_papers(
+            client,
+            query=query,
+            limit=S2_LIMIT_PER_QUERY,
+        )
+        paper_ids = [
+            paper.get("paperId")
+            for paper in seed_papers
+            if paper.get("paperId")
+        ]
+        reference_map = {
+            paper_id: list(merged[paper_id].get("references") or [])
+            for paper_id in paper_ids
+            if paper_id in merged
+        }
+        new_paper_ids = [paper_id for paper_id in paper_ids if paper_id not in merged]
+        reference_map.update(
+            fetch_references_for_papers(client, new_paper_ids)
+        )
+        normalized = normalize_papers(
+            seed_papers,
+            reference_map,
+            ingestion_query=query,
+        )
+        before = len(merged)
+        merge_paper_records(merged, normalized)
+        added = len(merged) - before
+
+        _atomic_json_write(RAW_FILE, list(merged.values()))
+        completed.add(key)
+        checkpoint = {
+            "completed": sorted(completed),
+            "queries": list(S2_QUERIES),
+            "limit_per_query": S2_LIMIT_PER_QUERY,
+            "year": S2_YEAR,
+            "unique_papers": len(merged),
+        }
+        _atomic_json_write(S2_CHECKPOINT_FILE, checkpoint)
+        print(
+            f"[S2] Saved checkpoint: {len(normalized)} fetched, "
+            f"{added} new, {len(merged)} unique total"
+        )
+
+    normalized = list(merged.values())
+    _atomic_json_write(RAW_FILE, normalized)
+    print(
+        f"[S2] Saved merged raw dataset ({len(normalized)} unique records) "
+        f"to {RAW_FILE}"
+    )
 
     df = preprocess(normalized)
 

@@ -35,6 +35,10 @@ Later retrieval-benchmark work by teammates is documented separately in `devesh.
 - Added safer handling for empty datasets, missing columns, partial Chroma indexes, and invalid source configuration.
 - Added explicit `NEO4J_ALLOW_RESET=true` protection before destructive graph rebuilds.
 - Added placeholder-aware Neo4j, Groq, and Semantic Scholar credential checks.
+- Added resumable broad-CSE ingestion across 11 configured topics.
+- Added global paper-ID deduplication with merged topic and reference provenance.
+- Preserved the existing raw corpus and checkpointed every completed topic atomically.
+- Made NER reuse existing entity output and checkpoint every 5,000 new papers.
 
 ## Compute And Performance
 
@@ -103,7 +107,7 @@ Claim provenance establishes traceability and passage existence. It does not pro
 - Verified Python compilation and `pip check` before commits.
 - Verified live CUDA hybrid retrieval and matching Chroma/Neo4j paper counts before the Phase 3 merge.
 
-After teammate evaluation work was merged, the complete repository reached 123 passing tests. Those additional evaluation tests are not claimed as part of the original 39-test core handoff.
+After teammate evaluation work was merged, the repository reached 123 passing tests. The multi-topic ingestion and resume guards increased the current suite to 127. Those later tests are not claimed as part of the original 39-test core handoff.
 
 ## Key Core Verification Snapshot
 
@@ -113,7 +117,7 @@ After teammate evaluation work was merged, the complete repository reached 123 p
 - Neo4j papers: 8,850
 - Real citation relationships: 7,203
 - Core handoff tests: 39 passed
-- Current merged repository tests: 123 passed
+- Current merged repository tests: 127 passed
 - Latest recorded provenance smoke test: 5/5 accepted claims and 9/9 valid passage references
 
 ## Current Handoff State

@@ -180,7 +180,11 @@ NEO4J_USERNAME=neo4j
 NEO4J_ALLOW_RESET=true
 
 S2_QUERY=graph neural networks
+S2_QUERIES=graph neural networks;artificial intelligence and machine learning;cybersecurity;computer networks;databases;software engineering;cloud computing;natural language processing;computer vision;data science;operating systems
 S2_LIMIT=10000
+S2_LIMIT_PER_QUERY=5000
+S2_INCLUDE_EXISTING=true
+S2_CHECKPOINT_FILE=./data/s2_ingestion_checkpoint.json
 S2_YEAR=2020-2025
 S2_FIELDS_OF_STUDY=Computer Science
 
@@ -242,7 +246,9 @@ Expected outputs:
 - `data/s2_raw.json`
 - `data/s2_clean.json`
 
-The exact retained count can change as Semantic Scholar data changes. The verified run requested 10,000 records and retained 8,850 after cleaning.
+`S2_QUERIES` is semicolon-separated. The broad CSE configuration keeps the existing raw corpus, fetches up to 5,000 papers for each configured topic, deduplicates globally by Semantic Scholar paper ID, and saves both the merged raw file and a completed-topic checkpoint after every topic. Rerunning the command resumes completed topics instead of replacing prior data.
+
+The exact retained count can change as Semantic Scholar data changes. The original verified run requested 10,000 graph-neural-network records and retained 8,850 after cleaning; the broad run increases this corpus while preserving those records.
 
 Semantic Scholar rate limits make this stage network-bound. Do not launch duplicate ingestion processes. If the API returns `429`, allow the built-in retry delay to continue.
 
@@ -256,7 +262,7 @@ Expected output:
 
 - `data/s2_ner.json`
 
-On CPU, the code uses all but one logical processor unless `SPACY_N_PROCESS` is set. On supported spaCy GPU installations, `SPACY_DEVICE=auto` can select the GPU and uses one process.
+NER reuses entity lists already present in `data/s2_ner.json` and checkpoints new work every 5,000 papers. On CPU, the code uses all but one logical processor unless `SPACY_N_PROCESS` is set. On supported spaCy GPU installations, `SPACY_DEVICE=auto` can select the GPU and uses one process.
 
 ### Stage 3: Chroma Index
 
@@ -305,8 +311,9 @@ Run the complete unit suite:
 .\venv\Scripts\python.exe -m pytest
 ```
 
-The current repository collects 123 pytest cases, including production retrieval,
-evaluation, provenance, contradiction, and hypothesis coverage.
+The current repository collects 127 pytest cases, including multi-topic ingestion,
+resume safety, production retrieval, evaluation, provenance, contradiction, and
+hypothesis coverage.
 
 Compile all Python modules:
 

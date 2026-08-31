@@ -25,6 +25,7 @@ See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the single source of truth on imp
 Short version:
 
 - ArXiv and Semantic Scholar ingestion are implemented.
+- Resumable multi-topic Semantic Scholar ingestion preserves existing records, deduplicates globally by paper ID, and checkpoints every completed topic.
 - Local ArXiv and S2 data files exist.
 - ChromaDB indexing is implemented and local collections exist.
 - Neo4j graph loading code is implemented.
@@ -38,7 +39,7 @@ Short version:
 - A provisional 20-query retrieval benchmark, 6/14 dev/test split, 1,329 machine-assisted judgments, IR metrics, graph-only baseline, two-way NeSy ablation, and significance analysis are implemented under `src/evaluation/`.
 - The evaluation-only hybrid scored `0.3676` NDCG@10 versus `0.3643` for vector-only, but the paired randomization p-value is `1.0`; this is not a statistically established improvement.
 - Production graph filtering improved NDCG@10 from `0.2678` to `0.3617`, close to the vector-only reference at `0.3643`.
-- 123 pytest cases cover retrieval, evaluation, claim provenance, metrics, configuration guards, contradiction verdicts, Neo4j failures, and hypothesis validation.
+- 127 pytest cases cover retrieval, multi-topic ingestion, resume safety, evaluation, claim provenance, metrics, configuration guards, contradiction verdicts, Neo4j failures, and hypothesis validation.
 - Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
 - Sentence-level claim provenance is implemented; the latest live check accepted 5/5 claims with 9/9 valid passage citations.
 - Production citation expansion now removes weak graph neighbours before fusion; the evaluation framework remains separate from the application pipeline.
@@ -191,6 +192,10 @@ NEO4J_ALLOW_RESET=true
 
 GROQ_API_KEY=your_groq_key
 SEMANTIC_SCHOLAR_API_KEY=your_semantic_scholar_key
+
+S2_QUERIES=graph neural networks;artificial intelligence and machine learning;cybersecurity;computer networks;databases;software engineering;cloud computing;natural language processing;computer vision;data science;operating systems
+S2_LIMIT_PER_QUERY=5000
+S2_INCLUDE_EXISTING=true
 
 EMBEDDING_MODEL=allenai-specter
 EMBEDDING_DEVICE=auto

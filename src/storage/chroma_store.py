@@ -102,6 +102,8 @@ def build_index():
                     "doi"              : str(row["doi"]) if row["doi"] else "",
                     "paperId"          : str(row["paperId"]) if row.get("paperId") else str(row["id"]),
                     "corpusId"         : str(row["corpusId"]) if row.get("corpusId") else "",
+                    "ingestion_queries" : "; ".join(row.get("ingestion_queries", []))
+                                          if isinstance(row.get("ingestion_queries"), list) else "",
                     "source_dataset"   : DATA_SOURCE
                 }
                 for _, row in batch.iterrows()

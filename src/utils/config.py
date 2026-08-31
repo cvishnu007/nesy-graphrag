@@ -50,6 +50,21 @@ SEMANTIC_SCHOLAR_TIMEOUT_SEC = int(os.getenv("SEMANTIC_SCHOLAR_TIMEOUT_SEC", "45
 SEMANTIC_SCHOLAR_MAX_RETRIES = int(os.getenv("SEMANTIC_SCHOLAR_MAX_RETRIES", "6"))
 S2_QUERY = os.getenv("S2_QUERY", "computer science")
 S2_LIMIT = int(os.getenv("S2_LIMIT", "10000"))
+S2_QUERIES = tuple(
+    dict.fromkeys(
+        query.strip()
+        for query in os.getenv("S2_QUERIES", S2_QUERY).split(";")
+        if query.strip()
+    )
+)
+if not S2_QUERIES:
+    raise ValueError("S2_QUERIES must contain at least one query")
+S2_LIMIT_PER_QUERY = int(os.getenv("S2_LIMIT_PER_QUERY", str(S2_LIMIT)))
+if S2_LIMIT_PER_QUERY <= 0:
+    raise ValueError("S2_LIMIT_PER_QUERY must be greater than zero")
+S2_INCLUDE_EXISTING = os.getenv("S2_INCLUDE_EXISTING", "true").strip().lower() in {
+    "1", "true", "yes", "on"
+}
 S2_PAGE_SIZE = int(os.getenv("S2_PAGE_SIZE", "1000"))
 S2_YEAR = os.getenv("S2_YEAR", "2020-2025")
 S2_FIELDS_OF_STUDY = os.getenv("S2_FIELDS_OF_STUDY", "Computer Science")
@@ -57,6 +72,9 @@ S2_PUBLICATION_TYPES = os.getenv("S2_PUBLICATION_TYPES", "")
 S2_SORT = os.getenv("S2_SORT", "citationCount:desc")
 S2_BATCH_SIZE = int(os.getenv("S2_BATCH_SIZE", "500"))
 S2_MAX_REFS_PER_PAPER = int(os.getenv("S2_MAX_REFS_PER_PAPER", "200"))
+S2_CHECKPOINT_FILE = os.getenv(
+    "S2_CHECKPOINT_FILE", "./data/s2_ingestion_checkpoint.json"
+)
 
 # ── Data paths ────────────────────────────────────────
 CHROMA_DIR = os.getenv("CHROMA_DIR", "./data/chromadb")

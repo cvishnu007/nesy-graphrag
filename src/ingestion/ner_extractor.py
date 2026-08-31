@@ -43,17 +43,50 @@ def filter_entities(entities):
     return cleaned
 
 
+def _atomic_write_frame(df, path):
+    directory = os.path.dirname(path) or "."
+    os.makedirs(directory, exist_ok=True)
+    temporary = f"{path}.tmp"
+    df.to_json(temporary, orient="records", indent=2)
+    os.replace(temporary, path)
+
+
 def run():
     df = pd.read_json(CLEAN_FILE)
     print(f"Loaded {len(df)} papers from {CLEAN_FILE}")
     if df.empty:
-        os.makedirs(os.path.dirname(NER_FILE) or ".", exist_ok=True)
         df["entities"] = pd.Series(dtype=object)
-        df.to_json(NER_FILE, orient="records", indent=2)
+        _atomic_write_frame(df, NER_FILE)
         print(f"No papers to process. Saved empty NER dataset to {NER_FILE}")
         return
     if "clean_abstract" not in df.columns:
         raise RuntimeError(f"{CLEAN_FILE} does not contain a clean_abstract column")
+    if "id" not in df.columns:
+        raise RuntimeError(f"{CLEAN_FILE} does not contain an id column")
+
+    existing_entities = {}
+    if os.path.exists(NER_FILE):
+        existing_df = pd.read_json(NER_FILE)
+        if {"id", "entities"}.issubset(existing_df.columns):
+            existing_entities = {
+                row["id"]: row["entities"]
+                for _, row in existing_df.iterrows()
+                if isinstance(row["entities"], list)
+            }
+    df["entities"] = [existing_entities.get(paper_id) for paper_id in df["id"]]
+    remaining_indices = [
+        index
+        for index, entities in df["entities"].items()
+        if not isinstance(entities, list)
+    ]
+    print(
+        f"NER resume: {len(df) - len(remaining_indices)} reused, "
+        f"{len(remaining_indices)} remaining"
+    )
+    if not remaining_indices:
+        _atomic_write_frame(df, NER_FILE)
+        print(f"All {len(df)} papers already have NER output.")
+        return
 
     spacy_device = os.getenv("SPACY_DEVICE", "auto").strip().lower()
     if spacy_device not in {"auto", "gpu", "cpu"}:
@@ -73,7 +106,11 @@ def run():
     print("Extracting entities...")
     n_process = 1 if gpu_enabled else available_cpu_workers("SPACY_N_PROCESS")
     batch_size = max(1, int(os.getenv("SPACY_BATCH_SIZE", "128")))
-    print(f"spaCy workers: n_process={n_process}, batch_size={batch_size}")
+    checkpoint_size = max(1, int(os.getenv("NER_CHECKPOINT_SIZE", "5000")))
+    print(
+        f"spaCy workers: n_process={n_process}, batch_size={batch_size}, "
+        f"checkpoint_size={checkpoint_size}"
+    )
 
     def extract_from_doc(doc):
         entities = []
@@ -85,20 +122,37 @@ def run():
                 entities.append(chunk.text.lower().strip())
         return list(set(entities))
 
-    texts = [text[:1000] if text else "" for text in df["clean_abstract"].tolist()]
-    df["entities"] = [
-        extract_from_doc(doc)
-        for doc in nlp.pipe(texts, batch_size=batch_size, n_process=n_process)
-    ]
+    processed = 0
+    for start in range(0, len(remaining_indices), checkpoint_size):
+        indices = remaining_indices[start:start + checkpoint_size]
+        texts = [
+            str(df.at[index, "clean_abstract"])[:1000]
+            if df.at[index, "clean_abstract"]
+            else ""
+            for index in indices
+        ]
+        extracted = [
+            filter_entities(extract_from_doc(doc))
+            for doc in nlp.pipe(
+                texts,
+                batch_size=batch_size,
+                n_process=n_process,
+            )
+        ]
+        for index, entities in zip(indices, extracted):
+            df.at[index, "entities"] = entities
 
-    print("Filtering entities...")
-    df["entities"] = df["entities"].apply(filter_entities)
+        processed += len(indices)
+        _atomic_write_frame(df, NER_FILE)
+        print(
+            f"NER checkpoint: {processed}/{len(remaining_indices)} new papers; "
+            f"{len(df) - len(remaining_indices) + processed}/{len(df)} total ready"
+        )
 
     for index in range(min(2, len(df))):
         print(f"\nSample entities from paper {index}:\n{df['entities'].iloc[index][:10]}")
 
-    os.makedirs(os.path.dirname(NER_FILE) or ".", exist_ok=True)
-    df.to_json(NER_FILE, orient="records", indent=2)
+    _atomic_write_frame(df, NER_FILE)
     print(f"\nDone! Saved to {NER_FILE}")
     print(f"Papers with entities: {(df['entities'].str.len() > 0).sum()}")
 

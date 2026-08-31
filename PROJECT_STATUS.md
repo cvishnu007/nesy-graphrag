@@ -45,7 +45,7 @@ Concept counts differ between recorded graph builds: the earlier CUDA/Python 3.1
 
 ### Tests And Live Checks
 
-- 123 pytest cases pass under the current Python 3.11 environment
+- 127 pytest cases pass under the current Python 3.11 environment
 - `src`, `app`, and `tests` compile successfully
 - `pip check` reports no broken requirements
 - Chroma currently reports 8,850 vectors
@@ -110,6 +110,10 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 ### Core Data Pipeline
 
 - ArXiv and Semantic Scholar ingestion
+- Resumable multi-topic S2 ingestion with completed-topic checkpoints
+- Global paper-ID deduplication and merged query/reference provenance
+- Existing raw-corpus preservation during topic expansion
+- Incremental NER reuse and atomic checkpoints every 5,000 new papers
 - Real Semantic Scholar reference IDs
 - Cleaning, filtering, retries, batching, and JSON persistence
 - spaCy entity and noun-chunk extraction
@@ -165,7 +169,7 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 - Streamlit review, contradiction, and hypothesis modes
 - Claim evidence and unsupported-output inspection
 - Retrieval source labels and prototype metrics
-- 123 deterministic pytest cases
+- 127 deterministic pytest cases
 - Pinned direct dependencies
 - Windows setup instructions for local Neo4j, CUDA, and CPU
 - Python 3.11 CUDA and Python 3.13 CPU verification records
