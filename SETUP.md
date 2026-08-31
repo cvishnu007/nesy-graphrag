@@ -1,13 +1,13 @@
 # NeSy-GraphRAG Setup
 
-This guide reproduces the verified local project setup from a fresh clone. The primary instructions target Windows PowerShell, Python 3.11, a local Neo4j database, Semantic Scholar data, and an optional NVIDIA GPU.
+This guide reproduces the verified local project setup from a fresh clone. The primary instructions target Windows PowerShell, Python 3.13, a local Neo4j database, Semantic Scholar data, and an optional NVIDIA GPU.
 
 PDF ingestion is not part of this setup. The current pipeline uses paper metadata and abstracts.
 
 ## Tested Stack
 
 - Windows 10/11
-- Python 3.11.9, 64-bit
+- Python 3.13.14, 64-bit
 - Local Neo4j `2026.07.1` using Bolt at `neo4j://127.0.0.1:7687`
 - NVIDIA GeForce RTX 3050 Laptop GPU, 4 GB VRAM
 - PyTorch `2.12.1+cu126`
@@ -24,7 +24,7 @@ Other hardware can run the project. `EMBEDDING_DEVICE=auto` selects CUDA, then A
 Install these before cloning:
 
 1. Git
-2. Python 3.11, 64-bit
+2. Python 3.13, 64-bit
 3. Neo4j Desktop, Neo4j Community Server, or another local Neo4j installation
 4. A Groq API key
 5. A Semantic Scholar API key for a reliable 10,000-paper ingestion run
@@ -291,7 +291,8 @@ Run the complete unit suite:
 .\venv\Scripts\python.exe -m pytest
 ```
 
-The current repository collects 39 pytest cases after the setup and merge-consistency sweeps.
+The current repository collects 123 pytest cases, including production retrieval,
+evaluation, provenance, contradiction, and hypothesis coverage.
 
 Compile all Python modules:
 
@@ -304,6 +305,10 @@ Run retrieval diagnostics without calling the LLM:
 ```powershell
 .\venv\Scripts\python.exe -m src.pipeline.retrieval "graph neural networks for node classification" --top-k 10
 ```
+
+The diagnostic prints both the raw and retained graph-candidate counts. A low or
+zero retained count is valid: weak citation neighbours are intentionally removed,
+while vector results still provide the requested number of papers.
 
 Run a single live review with Neo4j, Chroma, Hugging Face, and Groq:
 

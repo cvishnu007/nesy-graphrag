@@ -8,6 +8,7 @@ The abstract-based core pipeline is implemented. Current work should focus on be
 
 - Retrieves relevant scientific papers with SPECTER embeddings and ChromaDB.
 - Expands results through a Neo4j citation/concept graph.
+- Filters citation neighbours by query relevance before rank fusion.
 - Validates paper IDs against Neo4j before sending context to the LLM.
 - Generates literature reviews through a configurable Groq-hosted model with deterministic claim-to-passage citations.
 - Blocks claims with missing, malformed, or fabricated passage IDs and retains them for audit.
@@ -34,16 +35,17 @@ Short version:
 - The existing five-query comparison averages `+0.56` NBR and `+0.10` RDI versus the vector baseline, but has no relevance judgments and is not a final benchmark.
 - Retrieval diagnostics explain ranks, citation degree, source mix, and cutoff decisions.
 - Structured contradiction scoring and exact verdict parsing are implemented and tested.
-- Thirty-nine pytest cases cover retrieval, claim provenance, metrics, logging, configuration guards, contradiction verdicts, Neo4j failures, and hypothesis validation.
+- A judged 20-query retrieval benchmark, dev/test split, IR metrics, graph-only baseline, two-way NeSy ablation, and significance analysis are implemented under `src/evaluation/`.
+- 123 pytest cases cover retrieval, evaluation, claim provenance, metrics, configuration guards, contradiction verdicts, Neo4j failures, and hypothesis validation.
 - Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
 - Sentence-level claim provenance is implemented; the latest live check accepted 5/5 claims with 9/9 valid passage citations.
-- The core prototype implementation is complete; the next milestone is the benchmark and evaluation framework.
+- Production citation expansion now removes weak graph neighbours before fusion; the evaluation framework remains separate from the application pipeline.
 
 Not yet implemented or validated:
 
-- judged query sets and frozen evaluation splits
-- standard IR, contradiction, review, and hypothesis metrics
-- BM25, graph-only, standard RAG, and rule-based baselines
+- human review of the current machine-assisted relevance judgments before publication-level claims
+- contradiction, review, and hypothesis benchmark datasets
+- additional lexical, standard RAG, and rule-based comparisons
 - scientific NER, embedding, and LLM comparisons
 - semantic entailment verification for claim/evidence pairs
 - controlled ablations, repeated runs, confidence intervals, and significance tests
@@ -105,7 +107,7 @@ Follow [SETUP.md](SETUP.md) for the verified Windows installation, local Neo4j c
 
 ## Requirements
 
-- Python 3.11, 64-bit
+- Python 3.13, 64-bit (verified with Python 3.13.14)
 - A dedicated local Neo4j database
 - Groq API key
 - Semantic Scholar API key for S2 ingestion
@@ -176,9 +178,26 @@ CONTRADICTION_MIN_CONFIDENCE=0.70
 
 HYPOTHESIS_MIN_SHARED_CONCEPTS=2
 HYPOTHESIS_MIN_QUERY_SUPPORT=2
+
+GRAPH_HIGH_SEMANTIC_THRESHOLD=0.85
+GRAPH_SEMANTIC_FLOOR=0.75
+GRAPH_MIN_QUERY_TERM_COVERAGE=0.75
+GRAPH_STRONG_CONNECTIONS=10
 ```
 
 Useful defaults are defined in `src/utils/config.py`.
+
+Production retrieval follows this flow:
+
+```text
+Vector retrieval -> citation expansion -> graph relevance filter -> RRF fusion -> output
+```
+
+A graph candidate is kept when its stored SPECTER embedding has cosine similarity
+of at least `0.85`, or when it passes the semantic floor, covers at least 75% of
+meaningful query terms, and connects to at least 10 distinct vector seed papers.
+The stricter connection requirement is intentional: two-hop citation paths made
+the earlier value of two too permissive on the development queries.
 
 `NEO4J_ALLOW_RESET=true` is required only for a dedicated project database because graph loading clears the configured database.
 

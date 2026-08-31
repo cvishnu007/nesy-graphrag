@@ -1,10 +1,10 @@
 # NeSy-GraphRAG Project Status
 
-Last updated: August 29, 2026
+Last updated: August 31, 2026
 
-Branch: `phase3`
+Branch: `master` plus the `improve_graph_relevance` review branch
 
-Implementation milestone: claim-level prototype complete
+Implementation milestone: retrieval evaluation and production graph filtering complete
 
 This file is the single source of truth for current capabilities, missing work, limitations, and future priorities. PDF ingestion and full-text section extraction are intentionally outside the current scope.
 
@@ -12,7 +12,11 @@ This file is the single source of truth for current capabilities, missing work, 
 
 NeSy-GraphRAG is an end-to-end working research prototype. It ingests scientific-paper metadata and abstracts, extracts concepts, builds Chroma and Neo4j stores, retrieves through neural and symbolic paths, generates literature reviews with sentence-level provenance, detects contradiction candidates, generates evidence-ranked hypotheses, and exposes the workflow through Streamlit.
 
-The core implementation is sealed for the current scope. The project is not yet a validated research system. The remaining work is primarily experimental: build benchmarks, implement standard metrics and baselines, run controlled ablations, evaluate specialized scientific models, scale under measurement, and improve evaluation reporting.
+The end-to-end prototype and retrieval evaluation framework are implemented. The
+project is not yet a publication-validated research system because the current
+machine-assisted relevance judgments still require human review. Remaining work
+is primarily controlled evaluation, expert review, model comparison, and measured
+scaling.
 
 ## Verified Snapshot
 
@@ -46,7 +50,7 @@ The core implementation is sealed for the current scope. The project is not yet 
 
 ### Tests And Live Checks
 
-- 39 pytest cases pass
+- 123 pytest cases pass
 - `src`, `app`, and `tests` compile successfully
 - Pytest uses strict configuration and registered integration markers
 - Latest claim-provenance smoke test:
@@ -59,6 +63,14 @@ The core implementation is sealed for the current scope. The project is not yet 
   - 1 generation attempt; repair was not needed
 
 ### Existing Retrieval Result
+
+Production retrieval now filters citation neighbours before fusion. On the
+14-query held-out split, the old unfiltered 1:1 vector+graph flow scored `0.2678`
+NDCG@10. The filtered flow scored `0.3617`, close to vector-only at `0.3643`,
+while still allowing strongly relevant graph discoveries. The result is evidence
+that filtering fixes the large relevance loss; it is not a claim that the graph
+always beats vector retrieval. Current judgments require human review before
+publication-level reporting.
 
 The corrected five-query comparison against vector-only retrieval produced these average deltas:
 
