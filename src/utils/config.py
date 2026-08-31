@@ -102,10 +102,32 @@ HOP_DEPTH           = int(os.getenv("HOP_DEPTH",           2))
 RRF_K               = int(os.getenv("RRF_K",               60))
 NEURAL_FUSION_WEIGHT = float(os.getenv("NEURAL_FUSION_WEIGHT", "1.0"))
 GRAPH_FUSION_WEIGHT  = float(os.getenv("GRAPH_FUSION_WEIGHT",  "1.0"))
+GRAPH_HIGH_SEMANTIC_THRESHOLD = float(
+    os.getenv("GRAPH_HIGH_SEMANTIC_THRESHOLD", "0.85")
+)
+GRAPH_SEMANTIC_FLOOR = float(os.getenv("GRAPH_SEMANTIC_FLOOR", "0.75"))
+GRAPH_MIN_QUERY_TERM_COVERAGE = float(
+    os.getenv("GRAPH_MIN_QUERY_TERM_COVERAGE", "0.75")
+)
+GRAPH_STRONG_CONNECTIONS = int(os.getenv("GRAPH_STRONG_CONNECTIONS", "10"))
 CITES_THRESHOLD     = int(os.getenv("CITES_THRESHOLD",     2))
 MAX_AUTHORS         = int(os.getenv("MAX_AUTHORS",         5))
 MAX_CONCEPTS        = int(os.getenv("MAX_CONCEPTS",        10))
 MIN_ABSTRACT_WORDS  = int(os.getenv("MIN_ABSTRACT_WORDS",  30))
+
+for _name, _value in {
+    "GRAPH_HIGH_SEMANTIC_THRESHOLD": GRAPH_HIGH_SEMANTIC_THRESHOLD,
+    "GRAPH_SEMANTIC_FLOOR": GRAPH_SEMANTIC_FLOOR,
+    "GRAPH_MIN_QUERY_TERM_COVERAGE": GRAPH_MIN_QUERY_TERM_COVERAGE,
+}.items():
+    if not 0.0 <= _value <= 1.0:
+        raise ValueError(f"{_name} must be between 0 and 1")
+if GRAPH_SEMANTIC_FLOOR > GRAPH_HIGH_SEMANTIC_THRESHOLD:
+    raise ValueError(
+        "GRAPH_SEMANTIC_FLOOR must not exceed GRAPH_HIGH_SEMANTIC_THRESHOLD"
+    )
+if GRAPH_STRONG_CONNECTIONS < 1:
+    raise ValueError("GRAPH_STRONG_CONNECTIONS must be at least 1")
 EVALUATION_START_YEAR = int(os.getenv("EVALUATION_START_YEAR", "2020"))
 EVALUATION_END_YEAR = int(
     os.getenv("EVALUATION_END_YEAR", "2025" if DATA_SOURCE == "s2" else "2024")

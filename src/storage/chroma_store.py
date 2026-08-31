@@ -1,5 +1,7 @@
+import math
 import os
 import sys
+from functools import lru_cache
 import pandas as pd
 import chromadb
 from sentence_transformers import SentenceTransformer
@@ -42,6 +44,17 @@ def get_embedder():
             _embedder = SentenceTransformer(EMBEDDING_MODEL, device=device)
         print("Model loaded!")
     return _embedder
+
+
+@lru_cache(maxsize=128)
+def encode_query(text):
+    """Encode and briefly cache query text shared by retrieval stages."""
+    embedding = get_embedder().encode(
+        [text],
+        batch_size=EMBEDDING_BATCH_SIZE,
+        show_progress_bar=False,
+    )[0]
+    return tuple(float(value) for value in embedding)
 
 
 def build_index():
@@ -107,12 +120,7 @@ def query(text, top_k=10):
     result_count = min(max(0, int(top_k)), collection.count())
     if result_count == 0:
         return []
-    embedder   = get_embedder()
-    query_vec  = embedder.encode(
-        [text],
-        batch_size=EMBEDDING_BATCH_SIZE,
-        show_progress_bar=False,
-    ).tolist()
+    query_vec = [list(encode_query(text))]
     results    = collection.query(
         query_embeddings=query_vec,
         n_results=result_count,
@@ -134,6 +142,40 @@ def query(text, top_k=10):
             "source"   : "neural"
         })
     return papers
+
+
+def score_papers_against_query(text, paper_ids):
+    """Return cosine similarity between a query and stored paper embeddings.
+
+    This reuses embeddings already stored in ChromaDB, so graph candidates do
+    not need to be encoded again. IDs absent from the collection are omitted.
+    """
+    unique_ids = list(dict.fromkeys(paper_ids))
+    if not text.strip() or not unique_ids:
+        return {}
+
+    stored = get_collection().get(ids=unique_ids, include=["embeddings"])
+    stored_embeddings = stored.get("embeddings")
+    if stored_embeddings is None or len(stored_embeddings) == 0:
+        return {}
+
+    query_embedding = encode_query(text)
+    query_norm = math.sqrt(math.fsum(float(value) ** 2 for value in query_embedding))
+    if query_norm == 0:
+        return {}
+
+    scores = {}
+    for paper_id, embedding in zip(stored["ids"], stored_embeddings):
+        paper_norm = math.sqrt(math.fsum(float(value) ** 2 for value in embedding))
+        if paper_norm == 0:
+            continue
+        dot_product = math.fsum(
+            float(left) * float(right)
+            for left, right in zip(query_embedding, embedding)
+        )
+        similarity = dot_product / (query_norm * paper_norm)
+        scores[paper_id] = round(max(0.0, min(1.0, similarity)), 6)
+    return scores
 
 
 if __name__ == "__main__":

@@ -1,6 +1,9 @@
 from src.pipeline.retrieval import (
     build_retrieval_diagnostics,
+    filter_symbolic_candidates,
     fuse_results,
+    query_term_coverage,
+    relevant_symbolic_expand,
     symbolic_expand,
 )
 
@@ -91,3 +94,100 @@ def test_diagnostics_explain_kept_and_dropped_candidates(paper_factory):
     assert rows["shared"]["citation_degree"] == 4
     assert rows["shared"]["decision"] == "kept in final top-k"
     assert rows["dropped"]["decision"] == "dropped below final cutoff"
+
+
+def test_query_term_coverage_ignores_connector_words(paper_factory):
+    paper = paper_factory("p1")
+    paper["title"] = "Graph neural networks for classification"
+    paper["abstract"] = "A node-level learning method."
+
+    assert query_term_coverage(
+        "graph neural networks for node classification",
+        paper,
+    ) == 1.0
+
+
+def test_filter_keeps_high_semantic_graph_candidate(paper_factory):
+    candidate = {
+        **paper_factory("high-semantic"),
+        "graph_connections": 1,
+    }
+
+    result = filter_symbolic_candidates(
+        "graph neural networks",
+        [candidate],
+        {"high-semantic": 0.86},
+    )
+
+    assert [paper["id"] for paper in result] == ["high-semantic"]
+    assert result[0]["graph_filter_reason"] == "high_semantic_similarity"
+
+
+def test_filter_keeps_well_supported_multi_seed_candidate(paper_factory):
+    candidate = {
+        **paper_factory("supported"),
+        "title": "Graph neural networks",
+        "abstract": "Neural graph learning.",
+        "graph_connections": 10,
+    }
+
+    result = filter_symbolic_candidates(
+        "graph neural networks",
+        [candidate],
+        {"supported": 0.80},
+    )
+
+    assert [paper["id"] for paper in result] == ["supported"]
+    assert result[0]["graph_filter_reason"] == "strong_multi_seed_support"
+
+
+def test_filter_rejects_weak_or_missing_semantic_match(paper_factory):
+    weak = {
+        **paper_factory("weak"),
+        "title": "Graph neural networks",
+        "graph_connections": 2,
+    }
+    missing = {
+        **paper_factory("missing"),
+        "title": "Graph neural networks",
+        "graph_connections": 20,
+    }
+
+    assert filter_symbolic_candidates(
+        "graph neural networks",
+        [weak, missing],
+        {"weak": 0.74},
+    ) == []
+
+
+def test_filter_does_not_mutate_symbolic_candidates(paper_factory):
+    candidate = {
+        **paper_factory("p1"),
+        "graph_connections": 1,
+    }
+
+    filter_symbolic_candidates("graph learning", [candidate], {"p1": 0.90})
+
+    assert "semantic_similarity" not in candidate
+
+
+def test_relevant_symbolic_expand_scores_and_filters_graph_results(
+    monkeypatch,
+    paper_factory,
+):
+    from src.pipeline import retrieval
+
+    candidates = [
+        {**paper_factory("keep"), "graph_connections": 1},
+        {**paper_factory("drop"), "graph_connections": 1},
+    ]
+    monkeypatch.setattr(retrieval, "symbolic_expand", lambda driver, ids: candidates)
+    monkeypatch.setattr(
+        retrieval,
+        "score_papers_against_query",
+        lambda query, ids: {"keep": 0.90, "drop": 0.20},
+    )
+
+    result = relevant_symbolic_expand(object(), "graph learning", ["seed"])
+
+    assert [paper["id"] for paper in result] == ["keep"]

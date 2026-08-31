@@ -1,16 +1,24 @@
 import os
+import re
 import sys
 from collections import Counter
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import (
     GRAPH_FUSION_WEIGHT,
+    GRAPH_HIGH_SEMANTIC_THRESHOLD,
+    GRAPH_MIN_QUERY_TERM_COVERAGE,
+    GRAPH_SEMANTIC_FLOOR,
+    GRAPH_STRONG_CONNECTIONS,
     HOP_DEPTH,
     NEURAL_FUSION_WEIGHT,
     RRF_K,
     TOP_K,
 )
-from src.storage.chroma_store import query as chroma_query
+from src.storage.chroma_store import (
+    query as chroma_query,
+    score_papers_against_query,
+)
 from src.storage.neo4j_store import get_driver
 
 
@@ -64,6 +72,76 @@ def symbolic_expand(driver, paper_ids):
         return expanded
 
 
+_QUERY_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "by", "for", "from",
+    "in", "into", "is", "of", "on", "or", "the", "to", "using", "with",
+}
+
+
+def _content_terms(text):
+    """Extract stable lowercase query terms without connector words."""
+    return {
+        token
+        for token in re.findall(r"[a-z0-9]+", (text or "").lower())
+        if token not in _QUERY_STOPWORDS
+    }
+
+
+def query_term_coverage(query, paper):
+    """Return the fraction of meaningful query terms present in a paper."""
+    query_terms = _content_terms(query)
+    if not query_terms:
+        return 0.0
+    paper_terms = _content_terms(
+        f"{paper.get('title', '')} {paper.get('abstract', '')}"
+    )
+    return len(query_terms & paper_terms) / len(query_terms)
+
+
+def filter_symbolic_candidates(query, symbolic_papers, semantic_scores):
+    """Remove graph neighbours that lack sufficient query relevance.
+
+    A candidate is retained when it is strongly similar to the query, or when
+    it has a reasonable semantic match, high query-term coverage, and links to
+    many distinct neural seed papers. Defaults were selected on development
+    queries and checked once on the held-out benchmark split.
+    """
+    retained = []
+    for paper in symbolic_papers:
+        semantic_similarity = float(semantic_scores.get(paper["id"], 0.0))
+        term_coverage = query_term_coverage(query, paper)
+        connections = int(paper.get("graph_connections", 0))
+        semantic_match = semantic_similarity >= GRAPH_HIGH_SEMANTIC_THRESHOLD
+        supported_match = (
+            semantic_similarity >= GRAPH_SEMANTIC_FLOOR
+            and term_coverage >= GRAPH_MIN_QUERY_TERM_COVERAGE
+            and connections >= GRAPH_STRONG_CONNECTIONS
+        )
+        if not (semantic_match or supported_match):
+            continue
+
+        item = dict(paper)
+        item["semantic_similarity"] = round(semantic_similarity, 6)
+        item["query_term_coverage"] = round(term_coverage, 6)
+        item["graph_filter_reason"] = (
+            "high_semantic_similarity"
+            if semantic_match
+            else "strong_multi_seed_support"
+        )
+        retained.append(item)
+    return retained
+
+
+def relevant_symbolic_expand(driver, query, paper_ids):
+    """Expand through citations and retain only query-relevant neighbours."""
+    candidates = symbolic_expand(driver, paper_ids)
+    scores = score_papers_against_query(
+        query,
+        [paper["id"] for paper in candidates],
+    )
+    return filter_symbolic_candidates(query, candidates, scores)
+
+
 def _rrf_score(rank, weight):
     """Return a rank contribution normalized to 1.0 for rank one."""
     rank_constant = max(0, RRF_K)
@@ -94,6 +172,13 @@ def fuse_results(neural_papers, symbolic_papers, top_k):
             item["graph_rank"] = rank
             item["graph_score"] = paper.get("graph_score", paper.get("score", 0.0))
             item["graph_connections"] = paper.get("graph_connections", 0)
+            for field in (
+                "semantic_similarity",
+                "query_term_coverage",
+                "graph_filter_reason",
+            ):
+                if field in paper:
+                    item[field] = paper[field]
             item["fusion_score"] += contribution
         else:
             item = dict(paper)
@@ -115,7 +200,7 @@ def nesy_retrieve(driver, query, top_k=TOP_K):
     """Full NeSy retrieval — neural + symbolic combined and ranked."""
     neural_papers   = neural_retrieve(query, top_k)
     neural_ids      = [p["id"] for p in neural_papers]
-    symbolic_papers = symbolic_expand(driver, neural_ids)
+    symbolic_papers = relevant_symbolic_expand(driver, query, neural_ids)
 
     return fuse_results(neural_papers, symbolic_papers, top_k)
 
@@ -162,6 +247,9 @@ def build_retrieval_diagnostics(neural_papers, symbolic_papers, final_papers, de
         )
         row["graph_rank"] = rank
         row["graph_connections"] = paper.get("graph_connections", 0)
+        row["semantic_similarity"] = paper.get("semantic_similarity")
+        row["query_term_coverage"] = paper.get("query_term_coverage")
+        row["graph_filter_reason"] = paper.get("graph_filter_reason")
 
     rows = []
     for paper_id, row in candidates.items():
@@ -192,7 +280,19 @@ def build_retrieval_diagnostics(neural_papers, symbolic_papers, final_papers, de
 def diagnose_retrieval(driver, query, top_k=TOP_K):
     """Run each retrieval stage and explain the resulting candidate cutoff."""
     neural_papers = neural_retrieve(query, top_k)
-    symbolic_papers = symbolic_expand(driver, [paper["id"] for paper in neural_papers])
+    raw_symbolic_papers = symbolic_expand(
+        driver,
+        [paper["id"] for paper in neural_papers],
+    )
+    semantic_scores = score_papers_against_query(
+        query,
+        [paper["id"] for paper in raw_symbolic_papers],
+    )
+    symbolic_papers = filter_symbolic_candidates(
+        query,
+        raw_symbolic_papers,
+        semantic_scores,
+    )
     final_papers = fuse_results(neural_papers, symbolic_papers, top_k)
     all_ids = [paper["id"] for paper in neural_papers + symbolic_papers]
     report = build_retrieval_diagnostics(
@@ -205,7 +305,11 @@ def diagnose_retrieval(driver, query, top_k=TOP_K):
         "query": query,
         "top_k": top_k,
         "neural_candidates": len(neural_papers),
+        "raw_symbolic_candidates": len(raw_symbolic_papers),
         "symbolic_candidates": len(symbolic_papers),
+        "symbolic_candidates_filtered": (
+            len(raw_symbolic_papers) - len(symbolic_papers)
+        ),
     })
     return report
 
@@ -214,16 +318,26 @@ def print_retrieval_diagnostics(report):
     """Print a concise terminal report from diagnose_retrieval()."""
     print(f"\nRetrieval diagnostics: {report['query']}")
     print(f"Final sources: {report['source_distribution']}")
-    print("rank source    neural graph links degree score    title")
+    print(
+        "Graph filter: "
+        f"{report['raw_symbolic_candidates']} candidates -> "
+        f"{report['symbolic_candidates']} retained"
+    )
+    print("rank source    neural graph links degree semantic terms score    title")
     for row in report["candidates"]:
         final_rank = row["final_rank"] if row["final_rank"] is not None else "-"
         neural_rank = row["neural_rank"] if row["neural_rank"] is not None else "-"
         graph_rank = row["graph_rank"] if row["graph_rank"] is not None else "-"
         score = f"{row['final_score']:.4f}" if row["final_score"] is not None else "-"
+        semantic = row.get("semantic_similarity")
+        semantic = f"{semantic:.3f}" if semantic is not None else "-"
+        coverage = row.get("query_term_coverage")
+        coverage = f"{coverage:.2f}" if coverage is not None else "-"
         print(
             f"{str(final_rank):>4} {row['source']:<9} {str(neural_rank):>6} "
             f"{str(graph_rank):>5} {row['graph_connections']:>5} "
-            f"{row['citation_degree']:>6} {score:>7}  {row['title'][:70]}"
+            f"{row['citation_degree']:>6} {semantic:>8} {coverage:>5} "
+            f"{score:>7}  {row['title'][:70]}"
         )
 
 
