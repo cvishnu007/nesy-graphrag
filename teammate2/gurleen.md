@@ -1,4 +1,4 @@
-# Gurleen — complete Teammate 2 responsibility record
+
 
 Package source commit: `ddc7fe3`
 Final live-check commit: `ddc7fe3`
