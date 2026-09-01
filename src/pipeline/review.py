@@ -2,7 +2,10 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.utils.config import LLM_MODEL, LLM_MODEL_FALLBACK, GROQ_MAX_RETRIES, TOP_K
+from src.utils.config import (
+    LLM_MODEL, LLM_MODEL_FALLBACK, GROQ_MAX_RETRIES, TOP_K,
+    SEMANTIC_SUPPORT_MIN_CONFIDENCE, SEMANTIC_SUPPORT_MODEL,
+)
 from src.pipeline.retrieval import nesy_retrieve, vector_only_retrieve
 from src.pipeline.validator import validate_citations
 from src.pipeline.prompts import build_review_prompt, build_review_repair_prompt
@@ -13,6 +16,7 @@ from src.pipeline.provenance import (
     render_grounded_review,
     validate_claim_provenance,
 )
+from src.evaluation.semantic_support import build_local_nli_provider, verify_claim_support
 from src.utils.groq_client import groq_chat_with_retry
 
 
@@ -21,7 +25,68 @@ def _console_safe(text):
     return str(text).encode(encoding, errors="replace").decode(encoding)
 
 
-def llm_review(groq_client, driver, query, top_k=TOP_K, *, baseline=False):
+def _apply_semantic_support(
+    claims,
+    passages,
+    *,
+    provider,
+    model,
+    min_confidence,
+):
+    """Evaluate structurally grounded claims without discarding audit records."""
+    passage_index = {passage["id"]: passage for passage in passages}
+    accepted = []
+    rejected = []
+    decisions = []
+    for index, original in enumerate(claims, 1):
+        claim = dict(original)
+        evidence = [
+            passage_index[passage_id]
+            for passage_id in claim.get("cited_passage_ids", [])
+            if passage_id in passage_index
+        ]
+        decision = verify_claim_support(
+            claim.get("text", ""),
+            evidence,
+            provider=provider,
+            claim_id=f"claim-{index:03d}",
+            model=model,
+            min_confidence=min_confidence,
+        )
+        claim["semantic_support"] = decision
+        decisions.append(decision)
+        if decision["valid"] and decision["support_label"] in {
+            "SUPPORTED", "PARTIALLY_SUPPORTED"
+        }:
+            accepted.append(claim)
+        else:
+            rejected.append(claim)
+    return accepted, rejected, {
+        "enabled": True,
+        "annotation_source": "AI-generated semantic support decisions",
+        "human_review": False,
+        "model": model,
+        "min_confidence": min_confidence,
+        "decisions": decisions,
+        "stats": {
+            "evaluated_claims": len(claims),
+            "accepted_claims": len(accepted),
+            "rejected_claims": len(rejected),
+        },
+    }
+
+
+def llm_review(
+    groq_client,
+    driver,
+    query,
+    top_k=TOP_K,
+    *,
+    baseline=False,
+    support_provider=None,
+    support_model=SEMANTIC_SUPPORT_MODEL,
+    support_min_confidence=SEMANTIC_SUPPORT_MIN_CONFIDENCE,
+):
     """Generate a literature review via NeSy retrieval + LLM synthesis.
 
     Parameters
@@ -98,7 +163,30 @@ def llm_review(groq_client, driver, query, top_k=TOP_K, *, baseline=False):
             provenance["parse_errors"].append(f"repair call failed: {exc}")
 
     provenance["stats"]["generation_attempts"] = len(raw_answers)
-    answer = render_grounded_review(provenance["claims"])
+    semantic_unsupported_claims = []
+    semantic_support = {"enabled": False}
+    output_claims = provenance["claims"]
+    provider_error = None
+    semantic_requested = support_provider is not None or support_model != "unconfigured"
+    if support_provider is None and semantic_requested:
+        try:
+            support_provider = build_local_nli_provider(support_model)
+        except Exception as error:
+            provider_error = f"{type(error).__name__}: {error}"
+    if semantic_requested:
+        output_claims, semantic_unsupported_claims, semantic_support = (
+            _apply_semantic_support(
+                provenance["claims"],
+                passages,
+                provider=support_provider,
+                model=support_model,
+                min_confidence=support_min_confidence,
+            )
+        )
+        if provider_error:
+            semantic_support["provider_initialization_error"] = provider_error
+        provenance["semantic_support"] = semantic_support
+    answer = render_grounded_review(output_claims)
     stats = provenance["stats"]
     print(
         "[Provenance] "
@@ -119,7 +207,9 @@ def llm_review(groq_client, driver, query, top_k=TOP_K, *, baseline=False):
         "raw_answers": raw_answers,
         "verified": verified,
         "passages": passages,
-        "claims": provenance["claims"],
+        "claims": output_claims,
         "unsupported_claims": provenance["unsupported_claims"],
+        "semantic_unsupported_claims": semantic_unsupported_claims,
+        "semantic_support": semantic_support,
         "provenance": provenance,
     }

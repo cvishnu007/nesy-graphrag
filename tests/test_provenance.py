@@ -181,3 +181,95 @@ def test_review_repairs_once_when_first_response_has_no_valid_claims(
     assert [claim["text"] for claim in result["claims"]] == ["Repaired claim."]
     assert len(result["raw_answers"]) == 2
     assert result["provenance"]["stats"]["generation_attempts"] == 2
+
+
+def test_review_optionally_filters_claims_using_semantic_support(
+    monkeypatch,
+    verified_papers,
+):
+    papers, verified = verified_papers
+    first_id = passage_id("paper:1", 1)
+    second_id = passage_id("paper:1", 2)
+    raw_answer = (
+        f"CLAIM: Directly supported.\nEVIDENCE: [{first_id}]\n"
+        f"CLAIM: Contradicted claim.\nEVIDENCE: [{second_id}]"
+    )
+
+    monkeypatch.setattr(review, "nesy_retrieve", lambda *args, **kwargs: papers)
+    monkeypatch.setattr(review, "validate_citations", lambda *args, **kwargs: verified)
+    monkeypatch.setattr(
+        review, "groq_chat_with_retry", lambda *args, **kwargs: raw_answer
+    )
+
+    def support_provider(claim, passage):
+        label = "SUPPORTED" if claim == "Directly supported." else "CONTRADICTED"
+        return {"label": label, "confidence": 0.95, "reason": "test decision"}
+
+    result = review.llm_review(
+        object(), object(), "test query", top_k=2,
+        support_provider=support_provider,
+        support_model="test-support-model",
+    )
+
+    assert [claim["text"] for claim in result["claims"]] == ["Directly supported."]
+    assert "Contradicted claim" not in result["answer"]
+    assert result["semantic_support"]["enabled"] is True
+    assert result["semantic_support"]["stats"] == {
+        "evaluated_claims": 2,
+        "accepted_claims": 1,
+        "rejected_claims": 1,
+    }
+    rejected = result["semantic_unsupported_claims"][0]
+    assert rejected["text"] == "Contradicted claim."
+    assert rejected["semantic_support"]["support_label"] == "CONTRADICTED"
+
+
+def test_review_default_does_not_invoke_semantic_support(
+    monkeypatch,
+    verified_papers,
+):
+    papers, verified = verified_papers
+    first_id = passage_id("paper:1", 1)
+    monkeypatch.setattr(review, "nesy_retrieve", lambda *args, **kwargs: papers)
+    monkeypatch.setattr(review, "validate_citations", lambda *args, **kwargs: verified)
+    monkeypatch.setattr(
+        review,
+        "groq_chat_with_retry",
+        lambda *args, **kwargs: f"CLAIM: Structural only.\nEVIDENCE: [{first_id}]",
+    )
+
+    result = review.llm_review(object(), object(), "test query")
+
+    assert [claim["text"] for claim in result["claims"]] == ["Structural only."]
+    assert result["semantic_support"] == {"enabled": False}
+    assert result["semantic_unsupported_claims"] == []
+
+
+def test_review_activates_configured_local_semantic_provider(
+    monkeypatch,
+    verified_papers,
+):
+    papers, verified = verified_papers
+    first_id = passage_id("paper:1", 1)
+    monkeypatch.setattr(review, "nesy_retrieve", lambda *args, **kwargs: papers)
+    monkeypatch.setattr(review, "validate_citations", lambda *args, **kwargs: verified)
+    monkeypatch.setattr(
+        review,
+        "groq_chat_with_retry",
+        lambda *args, **kwargs: f"CLAIM: Auto checked.\nEVIDENCE: [{first_id}]",
+    )
+    monkeypatch.setattr(
+        review,
+        "build_local_nli_provider",
+        lambda model: lambda claim, passage: {
+            "label": "SUPPORTED", "confidence": 0.95, "model": model,
+        },
+    )
+
+    result = review.llm_review(
+        object(), object(), "test query", support_model="local-test-model"
+    )
+
+    assert result["semantic_support"]["enabled"] is True
+    assert result["semantic_support"]["model"] == "local-test-model"
+    assert [claim["text"] for claim in result["claims"]] == ["Auto checked."]
