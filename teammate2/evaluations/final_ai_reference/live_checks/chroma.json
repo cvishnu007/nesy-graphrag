@@ -1,0 +1,12 @@
+{
+  "check": "chroma",
+  "status": "passed",
+  "mutates_state": false,
+  "runtime_seconds": 1.850494999991497,
+  "details": {
+    "path": "./data/chromadb",
+    "collection": "s2_papers",
+    "count": 8850,
+    "read_sample_count": 1
+  }
+}

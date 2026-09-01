@@ -1,0 +1,500 @@
+{"document_id": "8b6a7caa792665e7b383a44188286187270cab20", "concepts": ["contrastive learning", "gnns", "graph neural network", "neural network", "representation learning", "self-supervised learning"]}
+{"document_id": "86614e40a910cc37ed74a04a67e5ccecafb6d26e", "concepts": ["attention mechanism", "knowledge graph", "link prediction", "neural network", "recommendation system"]}
+{"document_id": "68be77fa4ab220b7cae131466ad1883d673d68f6", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "f39026d2344a0797b44490e5a98c318e702e412c", "concepts": ["attention mechanism", "graph convolutional network", "machine learning", "magcnse", "neural network", "representation learning"]}
+{"document_id": "318682feb1e0c8a1f71fd97af9d633740db0dfcc", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "28e6e3498da7e52a0ba984c0a53c74e948678346", "concepts": ["neural network", "transformer"]}
+{"document_id": "8e6d1470e8d52b46b07db84bcdc727963b6bf7dd", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "7a0ceff4e8937c225b4189b6b49d8670941bafbc", "concepts": ["gnns", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "5ddc8f4a155f0ca74d6ebce3f366ad9d68819259", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "eaa458b963e0111616aaa5154f3cf3051fd86dd3", "concepts": ["machine learning", "neural network"]}
+{"document_id": "29918dc941309a2791b47e907fe9e9b28b24c710", "concepts": ["graph classification", "machine learning", "neural network", "qgcn"]}
+{"document_id": "34213c6ba759e2b7ac5ea0cdafbdf78448a0fdfd", "concepts": ["graph classification", "graph neural network", "neural network"]}
+{"document_id": "0255f3cfdeef77e0ddf192a8df426adc6fcb094a", "concepts": ["mrgcn", "neural network"]}
+{"document_id": "32842a656099e34bd68c41b2a90a2d635a4dbaf0", "concepts": ["gnns", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "4b0358f6adbf7654cdff3198059abac42810dabc", "concepts": ["f1 score", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "26532052c9f1eb1a2309f96b33238906942d2a72", "concepts": ["graph attention network", "neural network"]}
+{"document_id": "5e6adf52c971e56e3a50ff8103ee7fe7286617ab", "concepts": ["ahgnnrec", "gnn-based", "gnns", "graph neural network", "hgnn", "neural network", "recommendation system"]}
+{"document_id": "1f7e58950a55e8f310197dfba3e2f118e841e1ba", "concepts": ["contrastive learning", "gnns", "graph neural network", "neural network"]}
+{"document_id": "6ad1607eb66cc1f65cff07134c65184b577e5c11", "concepts": ["gnn-based", "gnns", "graph neural network", "macgnn", "macgnns", "neural network"]}
+{"document_id": "a89cc66d5c615eb350b46eda017ff002aa3123d9", "concepts": ["neural network", "recall"]}
+{"document_id": "2ecf83bfda9de04821036651d989c96ac0bca780", "concepts": ["gnns", "graph classification", "graph neural network", "neural network"]}
+{"document_id": "2ef9c69f05f01d977f25abe6c167292d7f5e1671", "concepts": ["computer vision", "machine learning", "natural language processing", "neural network"]}
+{"document_id": "e2e6d7e28ee7a385e4350d5f9d9b20909906acaf", "concepts": ["neural network"]}
+{"document_id": "6c5d017cc90f489a69529374f51f07a1a9175a37", "concepts": ["neural network"]}
+{"document_id": "54c97c5201b62cbf30bef2c0cb17b4e18f2b2e69", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "b4c3cd0fb49e497fbfe85fb68045378fe4610427", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "4e949d7975866b6d07134b5a549b79236daab56d", "concepts": ["graph convolutional network"]}
+{"document_id": "c491388cdbe2989c07073c92ad427154828145d4", "concepts": ["gcns", "gnnexplainer", "graph convolutional network", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "80544747ac096874fc34632b3f8d6a0fb635867f", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "37cdcca448f16d3d96e704374a89358d6485c080", "concepts": ["gnns", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "22f6f8b5dacb51f168aaf626ef0304142d686fa3", "concepts": ["machine learning", "neural network"]}
+{"document_id": "05f87ca043b0c232a886a78081d422da1fcbf624", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "ac511acd876375cd7b166c646dc8d97a0b9bdfa2", "concepts": ["graph neural network", "machine learning", "neural network", "representation learning"]}
+{"document_id": "78d6512e0feb8a2275aabe6d700dd2ec7b1943d6", "concepts": ["flow2gnn", "gcnii", "gnns", "graph neural network", "h2gcn", "heterophily", "homophily", "message passing", "neural network"]}
+{"document_id": "68b626eb3712d5aa0ba3dd1f47d590351ce0009d", "concepts": ["neural network"]}
+{"document_id": "551207e5d887aca3db7e613ca99fa5627726381c", "concepts": ["gcncmi", "neural network"]}
+{"document_id": "19f2c76be1dbeb8a7ed0db4539f359e7b1764afa", "concepts": ["computer vision", "gnns", "graph convolutional network", "graph neural network", "link prediction", "neural network", "node classification"]}
+{"document_id": "d1423c1891aad6a458ee17238975253435e5bac9", "concepts": ["gnn-based", "graph neural network", "neural network"]}
+{"document_id": "a2aa6f3828c2d07381569310c70543f6624dbc7c", "concepts": ["deep learning", "gnns", "graph neural network", "neural network", "node classification"]}
+{"document_id": "274f65f0f48a6e84e0af4c53a613dcf64efe4178", "concepts": ["graph neural network", "link prediction", "neural network", "representation learning"]}
+{"document_id": "9ee8f774306c0a349b19cdffcaf21d9a1819eedd", "concepts": ["bgcn", "graph convolutional network", "graph neural network", "neural network"]}
+{"document_id": "ece0a1ee6ee9173e83c3cb20b3baefa794ab2c7c", "concepts": ["gnns", "graph neural network", "link prediction", "mv-hetgnn", "neural network", "node classification", "representation learning"]}
+{"document_id": "5e7ec4dfc146410178695966c30ad23fb6866423", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "e50b3f0af244a463c6323f42c7ac3c2e1db3334c", "concepts": ["graph convolutional network"]}
+{"document_id": "c12dff5ce0c189dab6307781ac2133625aff85d6", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "f012baef9f44b83d0b28b1843247004146e128e5", "concepts": ["gnns", "graph neural network", "m2m-gnn", "message passing", "neural network", "oversmoothing"]}
+{"document_id": "15e5a2efd3460d514bf288bdaa0f09cbe1a0a20a", "concepts": ["neural network"]}
+{"document_id": "5503d7f6aa1b357e2f830f7c54380e8fa7a87682", "concepts": ["bert", "f1 score", "knowledge graph", "neural network", "transformers"]}
+{"document_id": "58b6dcb6586f246552a41b63120a53d578e64cf9", "concepts": ["gnns", "graph neural network", "heterophily", "neural network", "representation learning", "text-mgnn"]}
+{"document_id": "b62edbf6e619eeed886c63e51fdff2c3d94f998f", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "d60610a39f4b57928a9a26e7ca06e4291df3e7a1", "concepts": ["graph classification", "neural network"]}
+{"document_id": "5aecf6464d261dbed82168a0a85f32803d2d82fe", "concepts": ["neural network"]}
+{"document_id": "9a86fc7b71107387057e33d95e369e8060a2bec4", "concepts": ["graph attention network", "graph convolutional network"]}
+{"document_id": "b3652914b9e4adcdd745aaa852aec6856a6bcd17", "concepts": ["ada-dygnn", "graph neural network", "neural network"]}
+{"document_id": "aa9c138357654893d4159ff13f75e384c6530f61", "concepts": ["attention mechanism", "graph attention network", "graph neural network", "neural network"]}
+{"document_id": "6ea296e7ee12bd0ac3399e88f45b6500ab300a44", "concepts": ["attention mechanism", "graph convolutional network", "graph neural network", "neural network", "stjgcn"]}
+{"document_id": "5fecaa8cb92d5b21b72d03562774d086c2814997", "concepts": ["gnn-based", "graph neural network", "neural network"]}
+{"document_id": "a58ea096ca7f2cff8b1eee3d713a2106b07b085a", "concepts": ["gnn-based", "gnns", "graph neural network", "neural network", "self-supervised learning"]}
+{"document_id": "bac7030e9e07e2a61335e10bb85f96fa08382431", "concepts": ["collaborative filtering", "gnn-based", "gnns", "graph neural network", "lightgcn", "neural network"]}
+{"document_id": "aa339dc08635486396623300d7ab64d1c8d632f6", "concepts": ["attention mechanism", "gnns", "graph attention network", "graph neural network", "neural network", "node classification"]}
+{"document_id": "c9eba8da86c21df1779f2b1458b9f8e5228b090c", "concepts": ["contrastive learning", "graph neural network", "neural network"]}
+{"document_id": "0b078d9bc69b958ec604e9fd8eab129dfa1a767d", "concepts": ["neural network"]}
+{"document_id": "a86af0c479a2b1a69508524c084683cc4df85b58", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "55518098968253bf7f5f7cbfc27d60170dc7e1ea", "concepts": ["graph neural network", "neural network", "node classification", "representation learning"]}
+{"document_id": "6307feb7f317702da759aca0ac7a77b85eab21d8", "concepts": ["gnns", "graph neural network", "mfgnn", "neural network", "precision"]}
+{"document_id": "5565e4930d1f53c17f4200d0feb2b9b69e95e6c1", "concepts": ["graph convolutional network", "graph neural network", "neural network", "tres2gcn"]}
+{"document_id": "5e49a142f0c1bcfd80c11af68b31f78e04134d49", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "517d18601bee8776f214d87582cb108576dc735e", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "70ab1cf1a332f852c908c63a93b35aaab7df855c", "concepts": ["deep learning", "knowledge graph", "neural network"]}
+{"document_id": "9deffcf068af083f1eb1bf064d7c09d7df5178ef", "concepts": ["neural network"]}
+{"document_id": "642cd1d678a44c2100249a8154890bb066f6a4c0", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "26ebeeb1b9172df34ad21f1000bb6f3c374a222e", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "3661e6bca8ebff0a63f8e5060df60320fbcde842", "concepts": ["neural network"]}
+{"document_id": "c92db66e978b321dc71fdfb331e61e2c02ee9c72", "concepts": ["graph neural network", "hrgcn", "hrgcns", "molecular graph", "neural network"]}
+{"document_id": "4c24519d5c8082f4d5f1397952bb4e4c4fc11b85", "concepts": ["gcns", "gnns", "graph convolutional network", "graph neural network", "neural network", "oversmoothing"]}
+{"document_id": "5ff90e0747199dc8578e5643028b2c4d4750188c", "concepts": ["natural language processing", "neural network", "transformer"]}
+{"document_id": "4e35e87c722a927ccfac12f81085fc25fd4acce4", "concepts": ["graph neural network", "neural network", "precision", "recall"]}
+{"document_id": "625358070b38c3503b29fa7ebd867840ec37aba7", "concepts": ["attention mechanism", "machine learning", "neural network"]}
+{"document_id": "13b564e30e1fce07b9bf89168454159dd9c80d5f", "concepts": ["neural network"]}
+{"document_id": "5edd789ced0d7bcd90b80bf43db1d5dae91161b0", "concepts": ["neural network"]}
+{"document_id": "1b24169304c4e85f60beae5e198e61038cfb3095", "concepts": ["neural network", "social-stgcnn"]}
+{"document_id": "b3f51bb0c3c6154b514c323f78589300a26b851f", "concepts": ["deep learning", "machine learning", "neural network", "representation learning"]}
+{"document_id": "bf1904a84ec5184543acf1791cd8f825e48d80a8", "concepts": ["neural network"]}
+{"document_id": "583afdc9095acb9e8b0f80cb4185c1952314bb32", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631", "concepts": ["graph neural network", "link prediction", "neural network", "node classification"]}
+{"document_id": "476bfb5d80db5952cdfb18880d9dab3ddfce803d", "concepts": ["deep learning", "neural network", "representation learning"]}
+{"document_id": "70e98ada9ee4dc4ca4d24188866a0d717a8c1004", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "41a27d5d68e62523dd9f54efb4679d2188cd116d", "concepts": ["graph neural network", "machine learning", "natural language processing", "neural network", "precision", "recall", "self-supervised learning"]}
+{"document_id": "1f03673d44b92acdc9b825d66fee4e2360d76b32", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "1df8ce9e21c544a8ba0911e3e7825abc752236eb", "concepts": ["graph neural network", "neural network", "transformers"]}
+{"document_id": "1f32677b1a61c30be6c1ba443df0663eee2b19a4", "concepts": ["neural network"]}
+{"document_id": "065a55b5595fa05cb95b2c01ddf4187f3bf275b8", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "d4ce78fd1ad8f5c707ecdbae0a44071665b48cb0", "concepts": ["developedgnn4id", "f1 score", "gnn-based", "graph neural network", "neural network"]}
+{"document_id": "0ba45fbc549ae58abeaf0aad2277c57dbaec7f4f", "concepts": ["gnn-based", "graph neural network", "knowledge graph", "neural network", "se-gnn"]}
+{"document_id": "9e1c3f353a3cd9290d32132633d492fcaaaf5aa2", "concepts": ["attention mechanism", "disen-gnn", "ggnn", "graph neural network", "neural network"]}
+{"document_id": "bcfd9281143145fa603fee600533f1a6a4f2f69b", "concepts": ["deep learning", "graph neural network", "machine learning", "neural network", "rgcn"]}
+{"document_id": "268220bd8554050be752e1f3c1899941a96ed33a", "concepts": []}
+{"document_id": "a7a98cc9ab96e8a9201990f1c71466b7a941d876", "concepts": ["deep learning", "fcgcn", "graph neural network", "neural network", "representation learning"]}
+{"document_id": "802c1793ad5805d179fbbc9d327f6a1640da1f3a", "concepts": ["neural network"]}
+{"document_id": "3f57f297eb80171f9c2a900d087cfcac943c4c1e", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "277797fee15cd21d0db75f00dceb1cf092f83bde", "concepts": ["attention mechanism", "graph neural network", "neural network", "self-supervised learning"]}
+{"document_id": "b84a9730b1833e6a901e14ed1093190f83257b81", "concepts": ["graph neural network", "knowledge graph", "machine learning", "neural network"]}
+{"document_id": "a15d6636868d100531ba07aa38623a9866716583", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "ecd7332cd3d34220a8cf01c30385da123c61dff0", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "8f2c6fea1de5c2c16317f5de690a5ec329c286d8", "concepts": ["attention mechanism", "graph convolutional network", "neural network"]}
+{"document_id": "37ff10e9650e7957f2ee9013eeccfdd6a954de3a", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "509c7f6ec4ae7d33006f9c5e9c174f61a43df598", "concepts": ["attention mechanism", "gnns", "graph neural network", "neural network", "node classification"]}
+{"document_id": "ebb310d60ef8e4e01545709d6dec92438af73cc3", "concepts": ["graph neural network", "neural network", "recall"]}
+{"document_id": "a243ad58c479c45686401d3ad96d2adc08ba370a", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "07d38f062da2f13e3ff532d630aacc3e8dcaccca", "concepts": ["gnns", "graph neural network", "machine learning", "neural network", "representation learning"]}
+{"document_id": "a86eac757a08bab893fcb565a1a94065fc58becd", "concepts": ["contrastive learning", "graph neural network", "knowledge graph", "neural network"]}
+{"document_id": "1fa58a834cabd3c55f7c5b241eab3cfb43eaf3e4", "concepts": ["computer vision"]}
+{"document_id": "049c6ba3c6776e474cd2b60d081f47299f85091a", "concepts": ["gnns", "graph neural network", "molecular graph", "neural network"]}
+{"document_id": "3dc12dadcf6a2015fb3c732e35dfa56ba604ed88", "concepts": ["neural network"]}
+{"document_id": "e2a83369383aff37224170c1ae3d3870d5d9e419", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "0543ecf2b1c299c0e1465b02d887a77604cf4545", "concepts": ["neural network"]}
+{"document_id": "ee7808661d2bce23ca734b979654e206bea99481", "concepts": ["attention mechanism", "cagnn", "graph neural network", "neural network"]}
+{"document_id": "f111cafd18fe5ce4460ab1b47c513c1dfd53c5e6", "concepts": ["gcnn", "gcnns", "neural network", "representation learning"]}
+{"document_id": "f174fe4ee6775ee2267ce7d190ffac63d2785f4b", "concepts": ["deep learning", "graph classification", "graph neural network", "machine learning", "neural network", "precision", "recall"]}
+{"document_id": "9e979667aa81c294062c02ab3a48e87e47c54987", "concepts": ["graph neural network", "knowledge graph", "neural network"]}
+{"document_id": "4a0172077e85b9f1568f643aa7a3117a907f2898", "concepts": ["graph neural network", "neural network", "precision"]}
+{"document_id": "b8d77a0ce1a2d638606161209e14052257a2ee23", "concepts": ["graph neural network", "molecular graph", "neural network", "over-squashing", "representation learning", "transformer", "transformers"]}
+{"document_id": "17473d1c3215510fc145715a5fbdd8630129b303", "concepts": ["deep learning", "fp-gnn", "graph neural network", "machine learning", "molecular graph", "neural network"]}
+{"document_id": "28dca13befd068dfa1cf498bba45020cf22ec16f", "concepts": []}
+{"document_id": "bc3865f09af50d745815861a5856cf6e8b14d4e5", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "780e976ad308f786dbdc91e91353e6a9b719025c", "concepts": ["gnns", "graph neural network", "message passing", "neural network", "representation learning"]}
+{"document_id": "8d9b1bf8bad5fabb11a37e126706fec4371ef7b8", "concepts": ["flowgnn", "gnns", "graph convolutional network", "graph neural network", "i-gcn", "message passing", "neural network"]}
+{"document_id": "01116fdc747a4b2de7fa29ec1313fbdf7d1d6491", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "8558b78b8a2a2e7c87a0fbf97dd9370bbd6ef16b", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "d8daacb809e890742d3e4681cc3bbd5fdb4786a4", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "37110f326905d2451fb3519109453938b679969b", "concepts": ["attention mechanism", "deep learning", "gnnattensurv", "graph neural network", "neural network"]}
+{"document_id": "84ba5bc87d0c0c130e2b343cbd0db0a3545a2b26", "concepts": ["gnns", "graph neural network", "neural network", "qosgnn"]}
+{"document_id": "2c9997fbed327f626a6f29c3aa9739be3d69dd60", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "0d81869fc4c0d1a0da90262cc6ed146e592aba7e", "concepts": ["attention mechanism", "graph neural network", "message passing", "neural network", "relgnn", "representation learning"]}
+{"document_id": "87fd0752c1befaa3710e91b7801f42ea32f98386", "concepts": ["neural network", "st-dgcn"]}
+{"document_id": "bd8a856ca33a39ac3b83e77e3c0a616bced560c6", "concepts": ["neural network"]}
+{"document_id": "7051877b41956fc4bc68e75a6b24914be9fcf768", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "ed7d009d1dacab29ac3403792a5fdba99e8a224c", "concepts": ["emergnn", "gnns", "graph neural network", "knowledge graph", "neural network"]}
+{"document_id": "96ff2e547a134ab9bb2781a9844def12fd0ed24b", "concepts": ["gnns", "graph neural network", "kgcnn", "knowledge graph", "neural network"]}
+{"document_id": "dbf37b53f1268d9759a61bc93b0af809305da7a5", "concepts": ["attention mechanism", "graph neural network", "neural network"]}
+{"document_id": "348d2250b29a3fe9807845a0e4f9a7883ebd3efd", "concepts": ["neural network"]}
+{"document_id": "d311c3d607043e88cfc608617d812b04a35d11a1", "concepts": ["deep learning", "graph convolutional network"]}
+{"document_id": "cd703a1bfa68070f6a8640e7b052c0769aa3593a", "concepts": ["deep learning", "neural network"]}
+{"document_id": "530cc6baebee5ee9005ec2f5e8629764f43c0f02", "concepts": ["gnns", "graph classification", "graph neural network", "neural network", "node classification"]}
+{"document_id": "2f0d83f0454b7b86a00b1be8e39b280c1008a0e6", "concepts": ["graph neural network", "graphsage", "neural network"]}
+{"document_id": "07d8705dcf2ec1ecf35d680c80e6bef519ca967b", "concepts": ["care-gnn", "gnn-based", "gnns", "graph neural network", "neural network", "recall", "rlc-gnn"]}
+{"document_id": "1a9e5a6a4da5f882ef04f8bb936701220a642ec0", "concepts": ["neural network"]}
+{"document_id": "852062d62a84de68e9728c85ac7a2eab0715c8a2", "concepts": ["gcnns", "machine learning", "neural network"]}
+{"document_id": "cd2ddb48ec342c198a7dc66ea20136f1d496de1f", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "708313649324816dde815633e175938f386b954a", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "67d131c852c394bb748759a1b661671aff378aba", "concepts": ["contrastive learning", "knowledge graph", "message passing", "molecular graph", "neural network", "representation learning"]}
+{"document_id": "9ed18174745b0bc7838e7b3a5b3631b59bb674db", "concepts": ["deep learning", "machine learning", "message passing", "neural network"]}
+{"document_id": "1dc2edea1b328c846bd48c59541f7b7c49b9d59e", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "8e85df955707cb7959299d83b6b8c8a28b2b53dd", "concepts": ["graph attention network", "neural network"]}
+{"document_id": "6f80de538b0fadcb46145575893db9b64c7e4810", "concepts": ["graph neural network", "knowledge graph", "neural network"]}
+{"document_id": "422b64b4a00a8364ff17857eb66af687aee14ad0", "concepts": ["gcns", "gnns", "graph attention network", "graph convolutional network", "graph neural network", "message passing", "neural network"]}
+{"document_id": "6ee2dc6ed02c811c508071e64071da4545ff7be3", "concepts": ["graph neural network", "hg-gnn", "hgnn", "neural network"]}
+{"document_id": "7d8cc54215dd8366ce0df47fc069ed8f0a51a44d", "concepts": ["gcns", "knowledge graph", "link prediction", "recommendation system", "rgcn"]}
+{"document_id": "939a46ea4cd00964fd40a8b33a11d5a8de8b805c", "concepts": ["node classification"]}
+{"document_id": "17386f7f186f170358849b477127996266dddcf9", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "16a5e3150652f96dde10852769d3b62d25f3b7c9", "concepts": ["gnns", "graph neural network", "neural network", "node classification"]}
+{"document_id": "24d43d7b5b97fe97a3a4fd704994252cf48f5c62", "concepts": ["deep learning", "machine learning", "neural network"]}
+{"document_id": "ee147399d6ccc5ea39bc94cd4089bc8b7a2182ae", "concepts": ["attention mechanism", "gnns", "graph neural network", "neural network"]}
+{"document_id": "046f6abdbf63fbb80d831102e7889c6801ad3545", "concepts": ["gnn-based", "gnns", "graph neural network", "link prediction", "neural network"]}
+{"document_id": "d1226b7875bd3b035acba3b755d1bc260fc871c0", "concepts": ["attention mechanism", "gcns", "neural network", "representation learning", "transformer", "transformers"]}
+{"document_id": "2a6e359933cf718c9debff2637ea158d8873e850", "concepts": ["gnns", "graph neural network", "lightgnn", "lightgnns", "neural network"]}
+{"document_id": "026f955701579ba6ae0caf972c90729daf5a5e9e", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "6000cda023f9e096f3692df94c3f17a98e0c030b", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "340eb665a6ba9e95c7ce239b054f3ecbfc11eca5", "concepts": ["f1 score", "gnns", "graph neural network", "neural network", "precision", "recall", "representation learning"]}
+{"document_id": "10922b867857aeec9ac6b929dfc290bcd7fc1389", "concepts": ["natural language processing"]}
+{"document_id": "724c786797eac9a92ef6bce88664e2a9320fe844", "concepts": ["graph neural network", "hygcn", "neural network"]}
+{"document_id": "3c9be5b2427717773523912f8b426dc36b4eab0d", "concepts": ["graph convolutional network", "tgcn"]}
+{"document_id": "6a56942ee5ab6ebdc3d8c06092ea148e7fc80f73", "concepts": ["neural network"]}
+{"document_id": "bd101888162b6ea6a0cba0a35d5ca58dbd693845", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "64af8f8f4726a6361e0d4cf3053dbe5ac80399d9", "concepts": ["neural network"]}
+{"document_id": "9a772646ef9ed9c917f45fa592d5f89f7d5f8542", "concepts": ["gnns", "graph neural network", "neural network", "node classification"]}
+{"document_id": "747e48249c2d7f8a5f86ca3ae9d55ea7c9f129d2", "concepts": ["deep learning", "neural network", "transformers"]}
+{"document_id": "648a0d0e588ddcfe2f10bcdfa3f56fd751ce594c", "concepts": ["deep learning", "f1 score", "spacegnn"]}
+{"document_id": "5be7d06ee1647b4b257036e8d1f3b4a0ecb0b05c", "concepts": ["graph neural network", "link prediction", "lsd-gnn", "neural network", "sm-gnn"]}
+{"document_id": "2f158d090ffef32e066e7638655bd85072b9c515", "concepts": ["attention mechanism", "machine learning", "neural network", "transformer", "transformers"]}
+{"document_id": "60bd8274b947a2add899a03e1321e6f34dda3f2b", "concepts": ["gcns", "manifold-gcn", "neural network"]}
+{"document_id": "19f8366278c7f741725d48f457f63b0107fafab6", "concepts": ["neural network"]}
+{"document_id": "38381097a0add12ff685dfaac0191c31c9ae429a", "concepts": ["gnn-based", "graph neural network", "neural network", "transformer"]}
+{"document_id": "cd3beba63f991507ee1e8fb5298eb83c1890caa7", "concepts": ["attention mechanism", "graph convolutional network", "neural network"]}
+{"document_id": "fb680e8f88a1303792b06c92db00a67555fe7d5d", "concepts": ["dlgnn", "graph neural network", "neural network"]}
+{"document_id": "508f83850dc69fdc8e6573c1093777372942bb25", "concepts": ["graph neural network", "neural network", "transformer"]}
+{"document_id": "cd105af7da7712bc761e57ffefccf69ff272806d", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "b679a408acfacc416b021c28ba79a00767fd8543", "concepts": ["deep learning", "dstgcn", "neural network"]}
+{"document_id": "11972f9f5a0226546aa3f21d54efab84e7a8ce01", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "b783f753b16b481d24045a4018325011e440fc40", "concepts": ["neural network"]}
+{"document_id": "3074f2f3a7dbaec548e00d8c2f6522059cbe729c", "concepts": ["neural network", "transformer", "transformers"]}
+{"document_id": "cb962a6f24e01143d5aa2959777841773f26198f", "concepts": ["graph neural network", "graphsage", "machine learning", "neural network"]}
+{"document_id": "745e5ea4223575d460e3c7422b04d7c06ce01b3c", "concepts": ["attention mechanism", "contrastive learning", "graph neural network", "neural network", "representation learning", "self-supervised learning", "selfmgnn"]}
+{"document_id": "ad933a7179f3b6c891e948d02d3ba526873d48ea", "concepts": ["deep learning", "machine learning", "neural network"]}
+{"document_id": "5d0179e965dfb5d8f668c9027e072472778f4d12", "concepts": ["gnns", "graph classification", "graph neural network", "neural network", "node classification", "representation learning", "tri-gnn"]}
+{"document_id": "1bebc1dd68c9da6af394128e04eab737e552ae72", "concepts": ["graph convolutional network", "machine learning", "neural network"]}
+{"document_id": "7d1c01c2362f35220f84299b40590c3f22ef6fd4", "concepts": ["gcns", "graph convolutional network", "neural network"]}
+{"document_id": "c9fe1eb1a1d391c52b6e56ff353e268de3677a8e", "concepts": ["gnns", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "22a800d24ab9bf749928a4784b2c310c54212e19", "concepts": ["neural network"]}
+{"document_id": "3b05f71ae4532aa4e66d6bb6e88a763e4770c2a7", "concepts": ["neural network"]}
+{"document_id": "ff309bcd9e9b28dad0505dd3341236396448ef95", "concepts": []}
+{"document_id": "8b66e8c32d91310384b1e8f3e5bb64c5e378d9df", "concepts": ["deep learning", "gnn-dove", "graph neural network", "neural network"]}
+{"document_id": "424a115b4831da8118a2ca426458d6c0a50537ba", "concepts": ["contrastive learning", "graph neural network", "neural network"]}
+{"document_id": "ad155a500dc2891374945b26f8e90a8097ba409f", "concepts": ["deep learning", "machine learning", "message passing"]}
+{"document_id": "b6948df388eb9eb1d24c70be319dc95e3291458c", "concepts": ["contrastive learning", "gnn-based", "graph neural network", "neural network"]}
+{"document_id": "993f5c6de329f22243db1757d3a2e0b238776558", "concepts": ["computer vision", "graph neural network", "neural network"]}
+{"document_id": "f39b37e87ba907e55bb97a84e739726154a5edca", "concepts": ["deep learning", "neural network"]}
+{"document_id": "64b6fcf3e57d32d8cb14fd87298a8b181eba8a3f", "concepts": ["graph neural network", "knowledge graph", "natural language processing", "neural network", "recommendation system", "transformers"]}
+{"document_id": "1c6d7c1c5269c9c1d47e71394654f4dc81712d2d", "concepts": ["attention mechanism", "graph neural network", "mgnn", "neural network"]}
+{"document_id": "429b848fb6f4a5612f1d7c29d5a7d851ebc701cc", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "549c72ced04087e3442d6a7dc7c727bb83d2984c", "concepts": ["gcns", "neural network"]}
+{"document_id": "d67aee6496766a99c9a11a5981b89b9c4160c315", "concepts": ["gnn-based", "graph neural network", "neural network"]}
+{"document_id": "13e79f7d54aca544640375aec602f33be12a15e3", "concepts": ["attention mechanism", "graph neural network", "neural network"]}
+{"document_id": "8915281c9bfe1c793405994d2b5c9d8ed0cffcc8", "concepts": ["message passing", "neural network"]}
+{"document_id": "69a1943e13863b3273d6d8b37fcf4ac066ae0866", "concepts": ["graph neural network", "neural network", "transformer", "transformers"]}
+{"document_id": "dc3874003319001f276ec752dd427ac338619bf4", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "c77faa8577817b26c1a2e81914f19eecbe13ee1f", "concepts": ["expressgnn", "gnns", "graph neural network", "knowledge graph", "neural network"]}
+{"document_id": "08e0431cbb87549357181e04b71de5169fa3204b", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "198cf3ffe66dc493a489d0016d9ed634e6c85e2e", "concepts": ["bert", "knowledge graph", "neural network"]}
+{"document_id": "229db0006e6f2ea8f45cf266dbdeeb720d38c2b3", "concepts": ["gnns", "graph neural network", "graphsage", "neural network"]}
+{"document_id": "c4f0b281fe885490f7e76a6215b9241e4f3e5117", "concepts": ["attention mechanism", "neural network"]}
+{"document_id": "02de97f44353e0382fa1637301b56eeab1051ffe", "concepts": ["neural network"]}
+{"document_id": "79c194843c48aad06611714b99a4049bf20256d7", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "afc9f84aa66f7f189f664211442dafde6ad6515a", "concepts": ["machine learning", "neural network"]}
+{"document_id": "80f830848b6477aadda5b136d700641008187d73", "concepts": ["neural network", "precision", "recall"]}
+{"document_id": "90962f72c1ffa03aa4a0eb9652c5b111663bcee9", "concepts": ["gnn-based", "gnns", "graph neural network", "machine learning", "neural network", "poisonedgnn"]}
+{"document_id": "85003499f68e7bd559085c56aad8d8b5a846978f", "concepts": ["attention mechanism", "gognn", "neural network"]}
+{"document_id": "06547a615390ba14d37c684136c30a4ac559d610", "concepts": ["graph neural network", "neural network", "transformer"]}
+{"document_id": "c1aa3f1cc473e59fd32420ae856580c81c4c5403", "concepts": ["attention mechanism", "neural network"]}
+{"document_id": "5d22ea54fdb0b4436b16e05d792c932ec7e7e675", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "4d6dae0e12ace5a35c5ac6c668148c944f45bc52", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "cda5b46d897728e42f44bcccb9ade00042f5d77f", "concepts": ["attention mechanism", "graph neural network", "molecular graph", "neural network"]}
+{"document_id": "26eecd675f0f4d64f886762de1a1e2e7bc8af9ec", "concepts": ["computer vision", "deep learning", "graph convolutional network", "neural network", "self-supervised learning"]}
+{"document_id": "04fab348e929c7c0d0f26439ec8d6a451be119ab", "concepts": ["dtd-gnn", "graph attention network", "graph convolutional network", "graph neural network", "neural network", "precision"]}
+{"document_id": "cfbb17ee23b3e2fb0df8f8be298fa4148d2d83a7", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "fe4a2a7a614470a48821bbf29a42a3fad87637c4", "concepts": ["neural network"]}
+{"document_id": "31973825ed0a50413c0963e94cf95ece6c06148f", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "405dfedb03258f36a4a9cdfd467dd6379616d346", "concepts": ["dgnns", "ea-dgnn", "graph neural network", "neural network"]}
+{"document_id": "65b89695d79ca7813d585ced092ba751711abc59", "concepts": ["knowledge graph", "neural network"]}
+{"document_id": "416df0389be3a5df03966a52a69c1d17094070dd", "concepts": ["2s-stgcn", "graph convolutional network", "neural network"]}
+{"document_id": "c95fc872ab908d5b64521b7827578d9afd5b657d", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "5ec6620a09b1f573fc5351d4d4fe2d5e07ef7f47", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "2c2a0534d7da4f7a5d6e009ae73fe352f4ebfe22", "concepts": ["gnns", "graph neural network", "message passing", "n-gnn", "neural network"]}
+{"document_id": "38d503d8ded311c4925aafb6925ef31297b92e66", "concepts": ["neural network"]}
+{"document_id": "47883928702efd21c23a4092e65cbcf9f29970aa", "concepts": ["machine learning", "message passing", "molecular graph", "neural network"]}
+{"document_id": "4f376fce42fbfba23101671fd2d3efe3674a82f0", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "1a9e47b94e1c1fcbefedb75f034dae5fc66adc56", "concepts": ["graph neural network", "machine learning", "neural network", "regnn"]}
+{"document_id": "b62b536538bdf632b6363f2eb93590369529a68a", "concepts": ["deep learning", "graph classification", "graph neural network", "neural network", "node classification"]}
+{"document_id": "4de2118cca6f3a3def73217fbd29ff041ae3f63d", "concepts": ["deep learning", "graph neural network", "machine learning", "neural network", "representation learning"]}
+{"document_id": "3ae83395b9ca551e0efd74fac10551e396974040", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "179fa640e76f5cf4bc2020653e1eb8cd08bdd68a", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "8e4337c2437b5b40a9552a6cc7f441d0aaf457ef", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "77642da62174747dac1b5fbc0cbcdf415cc3a583", "concepts": ["deep learning", "graph convolutional network", "neural network"]}
+{"document_id": "5afc72eaf420b3b1ff47459eb4c77a706b7768b2", "concepts": ["f1 score", "graph classification", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "b010e0a70435b3af0630ac1e81c860328eb0c5bd", "concepts": ["attention mechanism", "gnns", "graph neural network", "message passing", "neural network"]}
+{"document_id": "23747ee40b744b1896844d3d64a4c7093dffb665", "concepts": []}
+{"document_id": "d8c66ea44f98c09a24a1a3920f1dad5755477341", "concepts": ["neural network"]}
+{"document_id": "56209a9198a9badff3fbbbc4db8c3d065fc1de41", "concepts": ["contrastive learning", "gnns", "graph neural network", "neural network"]}
+{"document_id": "3809fba419e2fc908f42540b25fc20a48a692995", "concepts": ["neural network"]}
+{"document_id": "16c70ec328118bee3461f954bfe9f310ba30f48a", "concepts": ["neural network"]}
+{"document_id": "291cd0e1d9825fcd5fdc1ed3b53b335e06264428", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "2d23a740ade86345d53bceda3326952be8659f28", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "7ac576a94b6cd766cb589bb1a43060e7a9a9fdbd", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "aea5facd7526edaaffdc97c24375e22b0c3eee7f", "concepts": ["gnns", "graph neural network", "hgk-gnn", "hgnn", "hgnns", "neural network", "node classification"]}
+{"document_id": "e4baba2a2a63f2c6b600aa0e731265b521e46921", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "94a850730bba06b94276903775dc7e5eb718b4ea", "concepts": ["deep learning", "machine learning", "neural network"]}
+{"document_id": "108c960f7d8dafdbc4c41ab7e23610a5959ae2fc", "concepts": ["ci-gnn", "gnns", "graph neural network", "neural network"]}
+{"document_id": "f39b6b3bd95262793e325ecc56fd6b7a00aa7620", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "b0db26ecc88ed5c375d1683feff1986b152f0022", "concepts": ["deep learning", "neural network", "precision", "recall"]}
+{"document_id": "cccac01e7caf262bc199df0617e4062fafd89367", "concepts": ["tp-gnn"]}
+{"document_id": "03960acfc4f860b3006bd9b7a7e35db3fbea12ab", "concepts": ["gnn-variants", "gnns", "graph neural network", "message passing", "neural network", "representation learning", "unignn"]}
+{"document_id": "72e48f3c71fc749f0b589e02a1ce7a4f0afba07e", "concepts": ["link prediction"]}
+{"document_id": "8e4d43c9a1d96bfa2c8bbe68d1a406e2ad394096", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "2304e9e9fea67f7e8a87c44d9564b2407336f391", "concepts": ["graph convolutional network", "hesgcn", "machine learning", "neural network"]}
+{"document_id": "328f8e648cb7d6cb94cbf83d0e39af51d2b5e914", "concepts": ["egnn", "gnn-based", "gnns", "graph neural network", "mde-gnn", "neural network"]}
+{"document_id": "7bfa528f0643f23adeb8429b77548d566a079023", "concepts": ["d2stgnn", "gcns", "graph neural network", "neural network"]}
+{"document_id": "3f75b8d436a7240189c9ce7a31c9bb3c09f99670", "concepts": ["graph neural network", "message passing", "neural network"]}
+{"document_id": "e047ebbce41ef209223ff311e07222c0698289cb", "concepts": ["neural network", "transformer"]}
+{"document_id": "ab079dbed552cefee1876045a113e84336da2c99", "concepts": ["attention mechanism", "neural network"]}
+{"document_id": "887d11c3fbc1a87a8bfe97bd53cfedab89496f99", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "7608d0273cdd4ae776345a0a9fa8d88f2303f9cf", "concepts": ["deep learning", "graph neural network", "machine learning", "neural network", "transformers"]}
+{"document_id": "99f8dc89ca4f50944970ba39d43c01658ce714db", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "30774c73aeaa896fd7cf870f218bd8be7c151fe1", "concepts": ["contrastive learning", "gnns", "graph neural network", "message passing", "neural network", "representation learning"]}
+{"document_id": "3d9b6638593a079220f603f30a98976105158416", "concepts": ["ggnn", "ggnn-based", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "5b713cf02ae9428a92c1eb97dca8f592e5868b2d", "concepts": ["attention mechanism", "c-gcn", "graph convolutional network", "neural network"]}
+{"document_id": "8a78f2f1ad4afd08e84b72ceca39f272070b7ac7", "concepts": ["neural network"]}
+{"document_id": "d7404f1020142c263e8f7a403e9ef3cbcba972bc", "concepts": ["deep learning", "graph convolutional network", "machine learning"]}
+{"document_id": "0323ed686bfb095935f5ebcdffe2ce33c66e69dd", "concepts": ["deep learning", "egnn", "egnn-based", "graph neural network", "neural network"]}
+{"document_id": "3c174b5d35864a14179b6aec5eb5b22b6cfc4afb", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "77326b6790f7148e83cc833b9314601c85c34fcb", "concepts": ["deep learning", "gnns", "graph neural network", "machine learning", "neural network", "transformer", "transformers"]}
+{"document_id": "6ccf634a948525c85fd5097d265b8bd05b50b208", "concepts": ["deep learning", "knowledge graph", "neural network"]}
+{"document_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8", "concepts": ["machine learning", "representation learning"]}
+{"document_id": "a08beb49d2107851dc9bf8ef267e9905f23c49ec", "concepts": ["bert", "depgcn", "f1 score", "graph convolutional network"]}
+{"document_id": "7f253c959af5f9616870ad690fa6e8b8143f012a", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "205bba8282dc09bbb7c4f2484e6dc5a522d316d6", "concepts": ["graph neural network", "neural network", "representation learning"]}
+{"document_id": "8a1826691dbe283ee8d63248814d4c9f26153b7c", "concepts": ["gnns", "graph neural network", "neural network", "self-supervised learning"]}
+{"document_id": "82fea3ce3bf3c26e691ab66387a65494a9118c07", "concepts": ["contrastive learning", "neural network", "self-supervised learning"]}
+{"document_id": "7e8ff447cf7c5a59476da439f4ecae0e6cff7e53", "concepts": ["deep learning", "gnns", "graph neural network", "neural network"]}
+{"document_id": "0db8ee4c82cb700af1f96df72a8218cb3511c2d9", "concepts": []}
+{"document_id": "3ede97bdd8211ffbfdb5ec348c3f83b11536d5c6", "concepts": ["neural network"]}
+{"document_id": "3e5d6643cfbaa1e38b12b297f72066867e429fa6", "concepts": ["neural network"]}
+{"document_id": "4e649c47486318816f2fb3d0990cd51705e87712", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "2a47973215c6b860181e3b5950746e05fb92761b", "concepts": ["neural network"]}
+{"document_id": "3793d20f1cb3e632ccaa893ed8a388063c977b5c", "concepts": ["gnns", "graph neural network", "neural network", "transformer"]}
+{"document_id": "cd295f42f97290e38c61eb9ab7dc58b417aa5dd7", "concepts": ["deep learning", "neural network"]}
+{"document_id": "91f3d3933ee6131a5982e11b601c4e399e8bd8ed", "concepts": ["neural network", "representation learning"]}
+{"document_id": "e94fb9b025e7af48b7feabbda8f9ee78ea41e47e", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "6aa8d38e271bea8f962a386e08bc41c2e86e6e66", "concepts": ["graph neural network", "neural network", "precision"]}
+{"document_id": "8db32b965c10c7dc9f1e3ab357c5298f37d1b86f", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "462fc00c1f99596e17a08889d74b3ce9eeba7e50", "concepts": ["machine learning", "neural network"]}
+{"document_id": "cdb4ef8d061b7a986436c485111c92497b9c0719", "concepts": ["graph neural network", "hkgnn", "knowledge graph", "neural network", "recommendation system"]}
+{"document_id": "8dab7e2f8955c99c43dcdc46a3f55a1f669a6d44", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "0124aeae9d107027ace7a31a82fd577fe75d04f5", "concepts": ["dgcnn", "gnns", "graph neural network", "neural network"]}
+{"document_id": "99af5fdd94dfd885976efbbff8dd78bacb99d498", "concepts": ["gnns", "graph neural network", "neural network", "node classification"]}
+{"document_id": "ac1e0a8679603e423d8c4b978b3834b8872b89ee", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "7dd88a65d1ad899d7970a7a49d57daf76ad6d0ec", "concepts": ["graph neural network", "mdstgnn", "mdstgnns", "neural network"]}
+{"document_id": "c7a0c1f07f31a6d43a2f5eb57100c5d42312de58", "concepts": ["deep learning", "molecular graph", "neural network", "transformer"]}
+{"document_id": "16cba8ff4726ab3fbff11c877bf86de6c7dde57e", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "b48c7edfa330f85712fa5ace6caf6479db109caf", "concepts": ["gnns", "graph neural network", "neural network", "transformer", "transformers"]}
+{"document_id": "05c133c0b5863db8b8c36b4d37fcdb0d0f000715", "concepts": ["deep learning", "machine learning"]}
+{"document_id": "9beb4394aa712d5aff2369f5312256d7af2ed8ac", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "cebb3f354db8e73d5aa5205610b18c8107587cc8", "concepts": ["bert", "neural network"]}
+{"document_id": "cd36b593ee29a4d3a45432f349c1e70dafe5e185", "concepts": ["graph neural network", "machine learning", "message passing", "neural network"]}
+{"document_id": "6bc4004347cdf76d84597210796f38fcf7a01a80", "concepts": ["gnns", "graph neural network", "message passing", "neural network"]}
+{"document_id": "230308e5630dcf0d25a44b477a33d2da175e903c", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "a76f9a3d2d1103bb4ef4e4edaf63c0b50cac84e3", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "5bf1489b9e881962c25cbbdd3247ae37669d4ceb", "concepts": ["gcn-based", "gcns", "graph convolutional network", "neural network", "oversmoothing"]}
+{"document_id": "475307bf432df9910cd4b504e80dce208e5de146", "concepts": ["graph neural network", "message passing", "neural network", "qgnn"]}
+{"document_id": "9a04c8225b7cd9905b4281dbec0cb5949bfab46b", "concepts": ["graph neural network", "knowledge graph", "neural network"]}
+{"document_id": "016e5d45c8f932e59d8d048bae357469cccf1064", "concepts": ["gnns", "graph neural network", "magnn", "neural network"]}
+{"document_id": "6f39304761801465397553e9cd360eaeb89c01b1", "concepts": ["graph attention network", "neural network"]}
+{"document_id": "3076cfc34ed4cbcea88da074a0faa841cbf82036", "concepts": ["machine learning", "neural network"]}
+{"document_id": "29a7de7c9d5f4918f6f8460129f39973f4a8400d", "concepts": ["knowledge graph", "neural network", "representation learning"]}
+{"document_id": "e3b2f31bbd33e1f59fa2eb83101d288e1159ad2e", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "e8f67038acaf6ebb90a7a1a8ec551a9d35dcf42d", "concepts": ["graph neural network", "neural network", "rgnn"]}
+{"document_id": "c8a1756b5c6599adf24242aed0c00ba0a4b03d3b", "concepts": ["asa-gnn", "graph neural network", "machine learning", "neural network", "oversmoothing"]}
+{"document_id": "17a3b64602bc34654cd35d96fb8bb0a72f9dbe4f", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "f9720fe4c6b6b0012d18e8313c96ad2354eaefe0", "concepts": ["deep learning", "neural network"]}
+{"document_id": "f8bc101842cdd16e687beb69f5799da9a99c409b", "concepts": ["deep learning", "neural network"]}
+{"document_id": "2fbd0140d6845316f9d4ebcd7235eb5a99ec2b57", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "3317bfc69d642c3ed93aa011c2dcd64fad6edbf0", "concepts": ["neural network"]}
+{"document_id": "04566391b5c5f52dff9bb6e3d7498828707165b7", "concepts": ["graph attention network"]}
+{"document_id": "c7a56a3a500a08f28b9816d66d3ac2e9e5ac7445", "concepts": ["gnns", "graph neural network", "message passing", "neural network"]}
+{"document_id": "bf70a83e4ebded974667e4c955209f7a47ffb821", "concepts": ["machine learning", "neural network"]}
+{"document_id": "77822354c3ff9981bc6d8eddbd6e903d1ff306b4", "concepts": ["knowledge graph", "neural network"]}
+{"document_id": "928e90a9c0482dd1b826ddae1b5e48ee5132b9bd", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "c6dadd2f0aa513717d75b59ee1619e2b1da5c37b", "concepts": []}
+{"document_id": "acdf66d5ea44e80ebe6d2029edd0c5077bbe8713", "concepts": ["gnnrai", "gnns", "graph neural network", "knowledge graph", "neural network"]}
+{"document_id": "c7336775cd70d599680041456ae262f834389cf4", "concepts": ["deep learning", "neural network", "pgcnn"]}
+{"document_id": "1196cd4aa938a34105755feb47ce1610b58ea5de", "concepts": ["graph neural network", "molecular graph", "neural network"]}
+{"document_id": "6d722af58c67e939cac2bdf7038f51da2bacd391", "concepts": ["neural network"]}
+{"document_id": "feaae6b90a94d2a7e6a23132fed9c5001773c892", "concepts": ["graph neural network", "machine learning", "message passing", "neural network"]}
+{"document_id": "c76d23247523243be232f0db25546c77d23fe244", "concepts": ["collaborative filtering", "deep learning", "gnn-based", "graph neural network", "lightgcn", "link prediction", "ndcg", "neural network", "recall", "recommendation system"]}
+{"document_id": "765ae85a9e656e9fbc7173b391c5dbfd77242576", "concepts": ["attention mechanism", "graph neural network", "neural network"]}
+{"document_id": "431678fc89c7b1fa267a16252303f0689b70aec1", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "65039a99223af05012f4724fdbca7c796a0c29db", "concepts": ["attention mechanism", "machine learning", "neural network"]}
+{"document_id": "2fce1ef37391cd685fc5459e1cbfcb8490b85242", "concepts": ["gnns", "graph neural network", "neural network", "representation learning"]}
+{"document_id": "063e8774edf63ef67dd58b54feefaece139546f0", "concepts": ["computer vision", "knowledge graph", "neural network"]}
+{"document_id": "5a30cb3badfc5886f80c28dfde513a19922592c7", "concepts": ["deep learning", "dgnn", "graph neural network", "message passing", "neural network", "representation learning"]}
+{"document_id": "67d73eac03858bf3a88a471b1002b29a808dc1fa", "concepts": ["attention mechanism", "deep learning", "neural network"]}
+{"document_id": "908b239c33990760d7b9442cdf85d16b0d999782", "concepts": ["gnns", "graph neural network", "neural network", "ood-gnn"]}
+{"document_id": "2d7d1e8cdecfe7c2ee37ed50f73409edc7ac56a7", "concepts": ["graphsage", "recommendation system"]}
+{"document_id": "14c8a3391cc7f822a8bfce03b6e09c7fec462724", "concepts": ["gnns", "graph neural network", "message passing", "neural network"]}
+{"document_id": "9a484d5f6086962c99473d886b2661fa77f08209", "concepts": ["deep learning", "gnn-based", "graph neural network", "neural network"]}
+{"document_id": "28f6bda5787c798a7c7717cc0f28c1a6b4fd5147", "concepts": []}
+{"document_id": "564bd41471fdfd371d11bbc83b7c4b97fccaf429", "concepts": ["contrastive learning", "gnns", "graph neural network", "neural network", "node classification", "pi-gnn"]}
+{"document_id": "d000931a097cbb6f57ef9ed1ea5b8d18fbe76ada", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "a1ab296b1733d345476ea5fabe93fcbfad0baf40", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "a9c2e7cb0950bd7f922371422ebbc86d48020364", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "544ff0949f3484a17276814fad226420739c0bb7", "concepts": ["deep learning", "graph neural network", "machine learning", "neural network", "tiser-gcn"]}
+{"document_id": "facf11419e149a03bd4a9bffdda2ebb433a59d85", "concepts": ["gnns", "graph neural network", "link prediction", "neural network"]}
+{"document_id": "9f389e3beb4fb913a0d89fa459f0167d9f7190a3", "concepts": ["egcn", "neural network"]}
+{"document_id": "31d4cd6639beb17716265285120355358c266571", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "dcf7fb34ae0be4eb7a838679b6bef0736375bbac", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "8ded24f93cd148b9ed6226288dea9d0d8c688135", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "8cd0c60cdb91b95d25bfee2f211c6d9ec883e31a", "concepts": ["graph neural network", "link prediction", "neural network"]}
+{"document_id": "8af6849656408b30ecb3d7270779212decb6a50e", "concepts": ["attention mechanism", "f1 score", "ggnn", "graph neural network", "neural network", "representation learning"]}
+{"document_id": "993885949975ad6b2dcf4f91840eb5c433d3d85f", "concepts": ["adr-gnn", "gnns", "graph neural network", "neural network", "node classification"]}
+{"document_id": "ab38089bd24b960da4bc9328937059e48143b711", "concepts": ["fuzzygcn", "gnns", "graph convolutional network", "graph neural network", "message passing", "neural network", "node classification", "representation learning"]}
+{"document_id": "631a7565ff91187a03ea4e62d81c8660f49b429a", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "3f2aadbc949c69b8430a6b599c07079338875dea", "concepts": ["f1 score", "gnn-lstm", "graph neural network", "neural network"]}
+{"document_id": "3ff1f2440cd40117d1b24a4918d0dbbd29dfc4cd", "concepts": ["dgcnn", "graph neural network", "graphsage", "neural network", "precision", "recall"]}
+{"document_id": "d1bbc7e97cec624d8470a8c39fd9d1ba48d33620", "concepts": ["deep learning", "graph attention network", "neural network"]}
+{"document_id": "66fd00e4032e316bffee3cb5f68fe2f8d8a00cd6", "concepts": ["knowledge graph", "slgnn"]}
+{"document_id": "42d66c012d9f9327c737e16a3ed9e6d954b93ec9", "concepts": ["graph convolutional network", "knowledge graph", "neural network"]}
+{"document_id": "01f5c59d68245d31b333e706e378129b15404caf", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "48c9cbaa50b1dc3bcca69a57019782a0b599bb21", "concepts": ["deep learning", "neural network"]}
+{"document_id": "10e533cd7c00cd5755855fba23b4cce7da6dadc6", "concepts": ["attention mechanism", "deep learning", "gnns", "graph neural network", "knowledge graph", "neural network", "precision", "recall", "representation learning"]}
+{"document_id": "7bae62eb9b986eef4f143497c314d713f39cc0c3", "concepts": ["computer vision", "gcns", "graph convolutional network", "graph neural network", "neural network"]}
+{"document_id": "bebb458bc95923b61cac1377cf16610e5921b65e", "concepts": ["gnn-rnn"]}
+{"document_id": "3c7b3687bce8877e12b2c47860bd2e22a7b195c4", "concepts": ["graph neural network", "neural network", "transformer"]}
+{"document_id": "ad259211f2de06c8764a5c19a482b06b657010ec", "concepts": ["contrastive learning", "deep learning", "graph neural network", "neural network"]}
+{"document_id": "6c3123c197ae144fce79b6c008ad2de45863af4b", "concepts": ["egnns", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "30593522ef9f4aa9e3c63b43764df1d226ce4e59", "concepts": ["deep learning", "graph convolutional network", "graph neural network", "neural network"]}
+{"document_id": "48f6a7889017dbc07fd5e164777a221f2cefdc91", "concepts": ["machine learning", "neural network", "transformer"]}
+{"document_id": "e15dc237fb2e9c28d1edd69fcf12a0c5f5176190", "concepts": ["machine learning", "neural network"]}
+{"document_id": "5b0448fb65a024128780e0315488813520f4967d", "concepts": ["neural network"]}
+{"document_id": "a9e667de34c553d6f9bb7de2cd1e76f7ae44def1", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "a1ce596ef67f28f433f3de1001774211d00b54f0", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "44a6fbbef0929ecd750b3bc885065e8079ee8f3f", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "34bd7bfc97383e263620c7df89c470e8dedfcd24", "concepts": ["gnn-based", "graph neural network", "neural network"]}
+{"document_id": "9c3fefd3fe877fc9e28968934e55c3cd18031e20", "concepts": ["attention mechanism", "graph neural network", "neural network"]}
+{"document_id": "10985d66060123bb5029f492c40814136edd74d2", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "3444197196d8bc004121eac91af44af69340ddb8", "concepts": ["neural network"]}
+{"document_id": "33dd601b83a493a139186933d9943f7902a1a2ff", "concepts": ["deep learning", "gnns", "graph neural network", "hignn", "message passing", "molecular graph", "neural network"]}
+{"document_id": "a122f77e39fb8bf7d4971928775a096d2c4e6dd3", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "f3662fb4f3ba713c89aa179339bff18462214ff3", "concepts": []}
+{"document_id": "f256904f777fb0a47c23faf2a87a971a461363c7", "concepts": ["neural network"]}
+{"document_id": "25279b8a1f1e5ca2d092c295c5b5d67753916196", "concepts": ["graph neural network", "neural network", "node classification", "sfc-gnn"]}
+{"document_id": "1e0f05a78ad44508628d9b2ff2c2e9fbf48ce7ab", "concepts": ["gnns", "graph neural network", "homophily", "neural network"]}
+{"document_id": "170868ca2558cc8e903a360c8023e66a3f8bafcc", "concepts": ["gnn-based", "gnns", "graph neural network", "neural network"]}
+{"document_id": "8cfaad5d0fc52e24acb75f0f80bd1d482671a553", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "b8ec40e97bced6ce19c78afc2e2eca79cc450659", "concepts": ["neural network"]}
+{"document_id": "e849974acb4fe2b4cdcf02a8888f08fa84fc1617", "concepts": ["graph neural network", "heterophily", "homophily", "neural network", "representation learning"]}
+{"document_id": "d6fdd8fc0c5fc052d040687e72638fb4297661cc", "concepts": ["gnn-based", "graph neural network", "neural network"]}
+{"document_id": "24d0c1679f15a10a5739226bfaed282a89db702a", "concepts": ["gnns", "graph neural network", "htgnn", "neural network", "representation learning"]}
+{"document_id": "c16b52a5a5c1ef11f2a5d10e63ef9392defa32fa", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "79b982b7a7936d9dfb9b78ad2d4a0c05052f5d5e", "concepts": ["graph neural network", "graphsage", "neural network"]}
+{"document_id": "093104209c8992362e43faede49fb416ca9c5976", "concepts": ["cagnn", "graph neural network", "neural network", "representation learning"]}
+{"document_id": "d3fb40fdca4162a5749132317c52d24359f92aba", "concepts": ["cagnns", "gcns", "gnns", "graph attention network", "graph neural network", "heterophily", "homophily", "neural network", "node classification"]}
+{"document_id": "0443c9a0fbb403d5e7d3593f5d286cb74ed0b490", "concepts": ["graph neural network", "neural network", "recall"]}
+{"document_id": "63bb24ca4e675f2d63630e38f1f2f2335ee8a42b", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "03b06d571b56ec7fcd9ff51ddabb536dbffaefc4", "concepts": ["deep learning", "gats", "graph attention network", "neural network", "precision"]}
+{"document_id": "d9173955a32a043a7b08e14665d1147b3837e600", "concepts": []}
+{"document_id": "4462bed1d85f59a7162d0e7001e61ca871459dfd", "concepts": ["deep learning", "gcnn", "gcnns", "machine learning", "neural network"]}
+{"document_id": "810dff7bcc6ec6053fd29a049e0a52fc0511f96d", "concepts": ["gnnexplainermotif", "gnns", "graph neural network", "neural network"]}
+{"document_id": "1c157ea21076fe4e5c8aed9609cf322d47b641a2", "concepts": ["gnns", "graph neural network", "neural network", "sp-gnn"]}
+{"document_id": "b9de002481d5b280ab818b3640510c62f44b95c1", "concepts": ["computer vision", "deep learning", "gnns", "graph neural network", "natural language processing", "neural network"]}
+{"document_id": "900455dc6429bfd0a0551b5521f8500f1d41a600", "concepts": ["gnn-based", "gnns", "graph neural network", "neural network"]}
+{"document_id": "987d43a4e1c3ac781a72f949550160d228d89eb3", "concepts": ["neural network"]}
+{"document_id": "3f0f646bc3ddf700866a60c10aabe5bc986e7b83", "concepts": ["deep learning", "gnns", "graph neural network", "machine learning", "neural network", "skipgnn"]}
+{"document_id": "cd2660962417bce7893e57d25d4b0e03cc7950c0", "concepts": ["attention mechanism", "graph neural network", "neural network"]}
+{"document_id": "f05ed56e53504747641d6f248136a8cbdb0129f3", "concepts": ["gnns", "graph classification", "graph neural network", "neural network"]}
+{"document_id": "bd2aad6aa8c0b257a0ef98404f58dd541e27e774", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "1a2117f7aa7798073799e994031825cdb7d7f28e", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "3933865a11b5bbb22590c711f18c0a3c95415ae4", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "d59a67944f14f043999d3ad96626f868e7a4e7e7", "concepts": ["attention mechanism", "graph neural network", "neural network"]}
+{"document_id": "34f29f0422af0740a484d72fc216d4b89269aefe", "concepts": ["machine learning", "neural network", "precision", "recall"]}
+{"document_id": "58367a57c8aba01df7f962e06b6b5cf827f6ff13", "concepts": ["neural network"]}
+{"document_id": "6d5ebc22992bda8a1267d51a63f1726aac35e597", "concepts": ["e2gnn", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "e9b4c747a747db406b89424c1a0741c2938c33bd", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "d54ef28a8a28429f1d30d5572f39aa472059c743", "concepts": ["neural network"]}
+{"document_id": "b65a47c38c1a1cb9c50e7afdf55857f47a5e6e65", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "e50f792a6462cdea3106139daaab5d6b5e24d9cf", "concepts": ["attention mechanism", "graph neural network", "neural network"]}
+{"document_id": "1db2e7edc571ba4ab9df01b07c5ceff99f10ff3c", "concepts": ["machine learning", "message passing", "neural network"]}
+{"document_id": "835c992ce5beb6f93811e239e7e057b8352e3183", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "2b26cfec49b7b8e531cde69778562b36a0947332", "concepts": ["gnns", "graph neural network", "neural network", "ngnn"]}
+{"document_id": "3c37a5566661b7f7e31b27126704ff519b80dad7", "concepts": ["deep learning", "graph neural network", "neural network", "transformers"]}
+{"document_id": "fc1ad6fbf705bb2e45f0e832fb10325a868d87f9", "concepts": ["graph neural network", "neural network", "node classification"]}
+{"document_id": "a84b33c93222d525abcee154698aa937e110fb77", "concepts": ["graph neural network", "neural network", "transformer", "transformers"]}
+{"document_id": "a88fb1f30045e15810aaa98416963c771be984d0", "concepts": ["machine learning", "neural network"]}
+{"document_id": "7e9da4e609357a6b3e88388f46a7e2c84d36f070", "concepts": []}
+{"document_id": "f1ed1f6566830fa860dbf449e454020323027da7", "concepts": []}
+{"document_id": "64de1401601de35a150a7f5ee3beb80f7f78a436", "concepts": ["deep learning", "neural network", "precision"]}
+{"document_id": "52d2478eedd27e35cef1731687de82448914a19f", "concepts": ["deep learning", "gedgnn", "gnn-based", "graph neural network", "machine learning", "neural network", "precision"]}
+{"document_id": "887256fdeff9700cf4cbe384eea6058f5d29e824", "concepts": []}
+{"document_id": "bc3ce6c73c14342df88a111a91103c0a89cd3957", "concepts": ["attention mechanism", "bert", "gats", "graph attention network", "neural network", "transformers"]}
+{"document_id": "61b1587438510fe2f44be4affc7353816931f633", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "ff85cbe6b374f87027b4445e126bd1a64e9504ac", "concepts": ["gnnadvisor", "gnns", "graph neural network", "maxk-gnn", "neural network"]}
+{"document_id": "12a6ad546d5cbbce026f0d0b2bfb726b6c55f645", "concepts": ["chegcn", "gcns", "graph convolutional network", "neural network"]}
+{"document_id": "df8252d7894e1ec4884e83c1bff9453355153bc5", "concepts": ["contrastive learning", "graph neural network", "neural network", "transformer"]}
+{"document_id": "173ed454d93c75e4d47dff6af1a3f6efed039071", "concepts": ["graph neural network", "link prediction", "neural network", "node classification"]}
+{"document_id": "83c4b8fcef3c214cfae45818a5b4b637372f3083", "concepts": ["gnns", "graph neural network", "knowledge graph", "neural network"]}
+{"document_id": "efe23588638ab2e008185439468e75f5d59dc351", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "cc9719ffd47c5cdac5ce0993b911d1788f81d263", "concepts": ["collaborative filtering", "graph neural network", "message passing", "neural network"]}
+{"document_id": "8bf751a5ad1e9a5bb4ef40b31eb707549ea71f78", "concepts": ["neural network"]}
+{"document_id": "8f92c8d2474f2a193260252e63bdc46b0ef3e08c", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "49270ef379e0803e56cbd7e803cc62bac0890846", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "a42271e50e75cb32d132a3d17efe2ff7650aede8", "concepts": ["gnns", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "469638ad3acb93e8cf9f3a34ee8bf38a55f7da6f", "concepts": ["machine learning", "neural network"]}
+{"document_id": "3291bb300718a83b72d73222623e7afda94c8b86", "concepts": ["aqd-gnn", "driven-gnn", "gnns", "graph neural network", "neural network", "qd-gnn"]}
+{"document_id": "eefe296b823aaea7e46f1813fa4cd9fdabb6ea76", "concepts": ["contrastive learning", "deep learning", "der-gcn", "neural network", "representation learning", "transformer"]}
+{"document_id": "23a610e8f2c7d844f63320b4165ee145ea27fc06", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "3fdc94e409a66c051b99b0fead97c0318212e4d2", "concepts": ["gcns", "graph convolutional network", "neural network", "pathgcn"]}
+{"document_id": "4fb21503b94fc572d4e6f95e04a419511f65c0d5", "concepts": ["neural network"]}
+{"document_id": "9dc7a82f885970352bb7217c6f3de83138dadd8d", "concepts": ["attention mechanism", "computer vision", "gcns", "graph convolutional network", "hyper-gnn", "neural network"]}
+{"document_id": "31476174c2c5133e2bc7e6b6dc1bb61daec90f1c", "concepts": ["gnns", "graph neural network", "message passing", "neural network", "node classification"]}
+{"document_id": "f148351d03df40827699441e7ba13070ce15adee", "concepts": ["graph convolutional network", "graph neural network", "knowledge graph", "link prediction", "neural network"]}
+{"document_id": "9ba916c9cf7a45128f6120a8a246bafdb5b826bf", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "ad143995cd9a82e5b0758e3bffc6df1659766293", "concepts": ["deep learning", "graph neural network", "neural network"]}
+{"document_id": "6f92fb7db3ffaa8abcf6fe2394827dac6113a3ad", "concepts": ["attention mechanism", "machine learning", "neural network", "representation learning"]}
+{"document_id": "e0fe6efa4e0046f6b03d83e5bad4516277c22cee", "concepts": ["gnns", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "3447221678774c8c5e37cb59cf881ad38a264be4", "concepts": ["machine learning", "neural network"]}
+{"document_id": "2fd0e6aaccee819a880a55d9190700c6b754d32d", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "cea911f3a903a03b6333f2211cbde1c4b9ff82e8", "concepts": ["deep learning", "gnns", "graph neural network", "machine learning", "neural network", "representation learning"]}
+{"document_id": "6942bdc5aa70ed1288c49621719de2f699bf83dc", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "6d24e67b7ebff7737858ed31bdf32befa38deaaa", "concepts": ["natural language processing", "neural network"]}
+{"document_id": "8c656fa5fb22f358ab91ed885448603331c09c96", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "b959f7f3e70786d54c79a2151c59e525e21458fe", "concepts": ["machine learning", "neural network"]}
+{"document_id": "1fb90d75ac97242c742c746e9ee045cb42fe2f86", "concepts": ["gnns", "graph neural network", "neural network", "over-squashing"]}
+{"document_id": "615b1a3fe32f27d2a2aa99530e77b588bc6020a9", "concepts": ["gnn-based", "graph neural network", "neural network"]}
+{"document_id": "8bb37e8ae7dd6fa8cab2407f63a61f697152717f", "concepts": ["gnns", "graph neural network", "neural network"]}
+{"document_id": "e9415bd776ded11d411bd595b6f527861a798ce8", "concepts": ["contrastive learning", "deep learning", "neural network"]}
+{"document_id": "e71d1d2d85940dee272c1129f116bdf11914c59f", "concepts": ["deep learning"]}
+{"document_id": "659fe890e963c574c083f1b60754a071d945b5b2", "concepts": []}
+{"document_id": "5ef1bff0a108cf3436a001e41399d9c669efc119", "concepts": ["gcn-based", "gcns", "graph convolutional network", "neural network"]}
+{"document_id": "b0d6319c4b3ed2ba459262d4542a91627c048d05", "concepts": ["graph neural network", "neural network"]}
+{"document_id": "2fb16966229a3097598ccdfcc9797efba0b93bb5", "concepts": ["gnns", "graph convolutional network", "graph neural network", "machine learning", "neural network"]}
+{"document_id": "d4c5a66c7deb4162d2f3e5e29565bf709fd0d0ee", "concepts": ["graph neural network", "machine learning", "neural network"]}
+{"document_id": "3764bab06e65aec249c707abd9cbd4475555c0b3", "concepts": ["attention mechanism", "deep learning", "gnn-based", "graph neural network", "machine learning", "neural network", "sgnn"]}

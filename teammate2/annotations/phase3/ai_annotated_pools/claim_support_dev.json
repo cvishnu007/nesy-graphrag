@@ -1,0 +1,1481 @@
+{
+  "pool_version": "1.0",
+  "task": "support",
+  "fixture_only": false,
+  "blinded": true,
+  "presentation_order_randomized": false,
+  "records": [
+    {
+      "item_id": "S087E626E46FB",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "The heterogeneous graph transformer (HGT) employs node- and edge-type dependent parameters to realize heterogeneous attention, enabling dedicated representations for different node and edge types.",
+      "passage_id": "P7fb7e6ec4bfa706d-S006",
+      "passage_text": "then we develop a novel attention mechanism based on structure context information of graph and node representations.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage mentions a novel attention mechanism based on structure context, but does not address node/edge-type dependent parameters or heterogeneous attention described in the claim.",
+          "timestamp": "2026-09-01T05:13:23.412500Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "UNSUPPORTED",
+          "notes": "The passage mentions developing an attention mechanism based on structure context and node representations, but it does not mention HGT, node/edge-type dependent parameters, or heterogeneous attention specifically.",
+          "timestamp": "2026-09-01T05:43:43.575257Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S0CBC3E664363",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Traditional molecular GNNs typically represent molecules using only interatomic distances and ignore spatial direction, limiting their ability to capture angular potentials.",
+      "passage_id": "P0fed7326de2f7131-S003",
+      "passage_text": "however, directional information plays a central role in empirical potentials for molecules, e.g. in angular potentials.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage highlights the importance of directional information for angular potentials, supporting the claim that ignoring direction limits capture, but it does not state that traditional GNNs ignore spatial direction.",
+          "timestamp": "2026-09-01T05:13:23.412500Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S18757D3D8AB8",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Geometric aggregation schemes such as Geom‑GCN address structural information loss and limited long‑range dependencies in MPNNs, achieving state‑of‑the‑art results on a wide range of graph datasets.",
+      "passage_id": "Paa7910a3a2bb8a9b-S002",
+      "passage_text": "in an autobahn, we decompose the graph into a collection of subgraphs and apply local convolutions that are equivariant to each subgraphs automorphism group.",
+      "paper_id": "062b99a331795a9386721d793c4b80b51b4ee1de",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage describes graph decomposition and equivariant local convolutions, which does not relate to Geom‑GCN, structural information loss, long‑range dependencies, or state‑of‑the‑art performance.",
+          "timestamp": "2026-09-01T05:13:23.412500Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "UNSUPPORTED",
+          "notes": "The passage describes decomposing graphs into subgraphs for local convolutions, which is unrelated to Geom-GCN, structural information loss, or long-range dependencies in MPNNs.",
+          "timestamp": "2026-09-01T05:43:43.575257Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S1F1D254E391B",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Standard message passing GNNs have limited expressive power, being at most as powerful as the 1‑WL test, which can hinder their ability to capture long‑range interactions needed for node classification.",
+      "passage_id": "P1c3c64d6b4535b74-S002",
+      "passage_text": "these problems can be attributed to the strong coupling between the computational graph and the input graph structure.",
+      "paper_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage attributes problems to coupling between computational and input graph structures, without mentioning 1‑WL expressive limits or long‑range interaction issues.",
+          "timestamp": "2026-09-01T05:13:23.412500Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S247E4CD56164",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Because graph neural networks process data represented as graphs, they can be used for recommendation systems that model user‑item interactions as graph structures.",
+      "passage_id": "Pa58870775fab459e-S002",
+      "passage_text": "in this article, an approach to a model which can handle such type of data is elaborated, which is graph neural networks (gnn).",
+      "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage states that GNNs can handle such data, implying suitability for graph‑based recommendation, but does not explicitly discuss recommendation systems.",
+          "timestamp": "2026-09-01T05:13:23.412500Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S25B2E0EA7A5B",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "A unified structure‑learning framework for graph attention networks (SLGAT and SLAGNN) learns dynamic graph structures, introduces a novel attention mechanism based on structural context, and outperforms competing methods on six standard semi‑supervised node classification datasets.",
+      "passage_id": "P3b465d215e72845e-S004",
+      "passage_text": "first, we show that, for deep graph attention networks (gat), gradient explosion appears during training, leading to poor performance of gradient-based training algorithms.",
+      "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage discusses gradient explosion in deep GATs, unrelated to the claimed unified structure‑learning framework, dynamic graphs, or performance improvements.",
+          "timestamp": "2026-09-01T05:13:23.412500Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S2AEAA3C33E49",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Graph neural networks are a popular architecture for many applications, including recommendation systems.",
+      "passage_id": "P0ef8e96d4f98b155-S001",
+      "passage_text": "graph neural networks (gnns) are information processing architectures for signals supported on graphs.",
+      "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage defines GNNs as information processing architectures, supporting the general nature of the claim, but it does not mention popularity or specific applications like recommendation systems.",
+          "timestamp": "2026-09-01T05:43:43.575257Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S35C5D6DFC526",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Graph neural networks are designed to learn representations of nodes and are widely used for node-level prediction tasks.",
+      "passage_id": "P4eaccade96b09d6a-S006",
+      "passage_text": "our work opens new directions for the design of neural architectures and the understanding on neural networks in general.",
+      "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "The passage discusses the broader impact of the work on neural architecture design and understanding, but does not mention node representation learning or node-level prediction tasks.",
+          "timestamp": "2026-09-01T05:43:43.575257Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S35F439A08EFB",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "When provided with proper inputs, the standard graph attention network (GAT) can match or surpass heterogeneous GNNs across diverse scenarios, indicating that simple homogeneous GNNs have been underestimated.",
+      "passage_id": "P7fb7e6ec4bfa706d-S001",
+      "passage_text": "graph neural networks (gnns) have achieved state-of-the-art performance in many elds and attracted a lot of attention in the communit.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage only mentions general GNN performance, lacking any reference to GAT, proper inputs, or heterogeneous GNN comparison.",
+          "timestamp": "2026-09-01T05:13:26.404056Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S3C99C0AB40C4",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Because graph neural networks process data represented as graphs, they can be used for recommendation systems that model user‑item interactions as graph structures.",
+      "passage_id": "P0ef8e96d4f98b155-S001",
+      "passage_text": "graph neural networks (gnns) are information processing architectures for signals supported on graphs.",
+      "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage defines GNNs as architectures for graph signals but does not mention their use in recommendation systems.",
+          "timestamp": "2026-09-01T05:13:26.404056Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S44CDFAE0779A",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "The heterogeneous graph transformer (HGT) employs node- and edge-type dependent parameters to realize heterogeneous attention, enabling dedicated representations for different node and edge types.",
+      "passage_id": "P7cf99418e408e37d-S004",
+      "passage_text": "to model heterogeneity, we design node- and edge-type dependent parameters to characterize the heterogeneous attention over each edge, empowering hgt to maintain dedicated representations for different types of nodes and edges.",
+      "paper_id": "0ca7d8c3250d43d14fdde46bf6fc299654d861ef",
+      "annotations": [
+        {
+          "label": "SUPPORTED",
+          "notes": "Passage explicitly states HGT uses node- and edge-type dependent parameters for heterogeneous attention, providing dedicated representations for different node and edge types.",
+          "timestamp": "2026-09-01T05:13:26.404056Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S44D15DFC0423",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "When provided with proper inputs, the standard graph attention network (GAT) can match or surpass heterogeneous GNNs across diverse scenarios, indicating that simple homogeneous GNNs have been underestimated.",
+      "passage_id": "P59bfe6e634051749-S004",
+      "passage_text": "gat with proper inputs can generally match or outperform all existing hgnns across various scenarios.",
+      "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+      "annotations": [
+        {
+          "label": "SUPPORTED",
+          "notes": "Passage directly claims that GAT with proper inputs can match or outperform all existing heterogeneous GNNs across scenarios.",
+          "timestamp": "2026-09-01T05:13:26.404056Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "SUPPORTED",
+          "notes": "The passage explicitly states that GAT with proper inputs can generally match or outperform all existing HGNNs across various scenarios, which directly entails the claim.",
+          "timestamp": "2026-09-01T05:43:43.575257Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S4E25A9A18F26",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Graph neural networks are applied to recommendation systems.",
+      "passage_id": "P0ef8e96d4f98b155-S009",
+      "passage_text": "concepts are illustrated by the application of gnns to recommendation systems, decentralized collaborative control, and wireless communication networks.",
+      "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+      "annotations": [
+        {
+          "label": "SUPPORTED",
+          "notes": "Passage cites the application of GNNs to recommendation systems, directly supporting the claim.",
+          "timestamp": "2026-09-01T05:13:26.404056Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S4E2B561BD970",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "Enforcing Lipschitz continuity via LipschitzNorm eliminates gradient explosion in deep graph attention networks and substantially improves their performance for 10–30 layer models.",
+      "passage_id": "P7fb7e6ec4bfa706d-S001",
+      "passage_text": "graph neural networks (gnns) have achieved state-of-the-art performance in many elds and attracted a lot of attention in the communit.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "The passage provides a general statement about GNN performance and attention, but does not mention LipschitzNorm, gradient explosion, or specific performance improvements for deep models.",
+          "timestamp": "2026-09-01T05:43:43.575257Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S526CD3EB428F",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "The predictive performance of GNNs correlates with the graph structure of their relational graph, specifically with clustering coefficient and average path length.",
+      "passage_id": "P4eaccade96b09d6a-S005",
+      "passage_text": "using this representation we show that: (1) a sweet spot of relational graphs leads to neural networks with significantly improved predictive performance; (2) neural networks performance is approximately a smooth function of the clustering coefficient and average path length of its relational graph; (3) our findings are consistent across many different tasks and datasets; (4) the sweet spot can be identified efficiently; (5) top-performing neural networks have graph structure surprisingly similar to those of real biological neural networks.",
+      "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+      "annotations": [
+        {
+          "label": "SUPPORTED",
+          "notes": "The passage explicitly states that neural network performance is a smooth function of the clustering coefficient and average path length of its relational graph, directly supporting the claim about the correlation between predictive performance and these graph structural metrics.",
+          "timestamp": "2026-09-01T05:43:57.327189Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S55ECCA5E37C7",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "When provided with proper inputs, the standard graph attention network (GAT) can match or surpass heterogeneous GNNs across diverse scenarios, indicating that simple homogeneous GNNs have been underestimated.",
+      "passage_id": "P59bfe6e634051749-S003",
+      "passage_text": "we find that the simple homogeneous gnns, e.g., gcn and gat, are largely underestimated due to improper settings.",
+      "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage notes that simple homogeneous GNNs (including GAT) are underestimated due to improper settings, supporting the underestimation aspect but not the claim that GAT matches or surpasses heterogeneous GNNs.",
+          "timestamp": "2026-09-01T05:13:26.404056Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S56242C50A4B0",
+      "split": "dev",
+      "query_id": "Q004",
+      "claim": "Simple homogeneous GNNs such as graph convolutional networks (GCN) and graph attention networks (GAT) have been largely underestimated in prior studies due to improper experimental settings.",
+      "passage_id": "P241abf880d66b292-S007",
+      "passage_text": "our approach, graph metanetworks (gmns), generalizes to neural architectures where competing methods struggle, such as multi-head attention layers, normalization layers, convolutional layers, resnet blocks, and group-equivariant linear layers.",
+      "paper_id": "af8df99efea4d4ed6f5cf6f6eaf3a5943f4d75db",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage discusses a general approach (graph metanetworks) and competing methods, but does not mention GCN/GAT being underestimated or experimental settings.",
+          "timestamp": "2026-09-01T05:13:29.882502Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S583E114A6977",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Because graph neural networks process data represented as graphs, they can be used for recommendation systems that model user‑item interactions as graph structures.",
+      "passage_id": "Pa58870775fab459e-S006",
+      "passage_text": "some of the very common application is a social networking site which is on our hands regularly, and another could be the recommendation system which recommends us friends, or the products of our interest based on our pat choices and preferences.",
+      "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage cites recommendation systems as a common application, supporting the idea that GNNs can be used for such tasks, but does not explicitly link GNNs or graph representations to the recommendation use case.",
+          "timestamp": "2026-09-01T05:13:29.884510Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage confirms that recommendation systems are a common application (likely of the discussed graph-based technology), but it does not explicitly state that GNNs process data as graphs or that user-item interactions are modeled as graph structures, which are key parts of the claim.",
+          "timestamp": "2026-09-01T05:43:57.327189Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S5948F7EABF11",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Geometric aggregation schemes such as Geom‑GCN address structural information loss and limited long‑range dependencies in MPNNs, achieving state‑of‑the‑art results on a wide range of graph datasets.",
+      "passage_id": "P9b7a885a124129d9-S002",
+      "passage_text": "however, two fundamental weaknesses of mpnns aggregators limit their ability to represent graph-structured data: losing the structural information of nodes in neighborhoods and lacking the ability to capture long-range dependencies in disassortative graphs.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage only describes weaknesses of MPNN aggregators; it does not mention Geom‑GCN addressing them or achieving state‑of‑the‑art results.",
+          "timestamp": "2026-09-01T05:13:29.884510Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S5FBCB11D19A8",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Standard message passing GNNs have limited expressive power, being at most as powerful as the 1‑WL test, which can hinder their ability to capture long‑range interactions needed for node classification.",
+      "passage_id": "P1c3c64d6b4535b74-S001",
+      "passage_text": "graph neural networks (gnns) are limited in their expressive power, struggle with long-range interactions and lack a principled way to model higher-order structures.",
+      "paper_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports the claim that GNNs are limited in expressive power and struggle with long-range interactions. However, it does not mention the specific comparison to the 1-WL test or the specific context of node classification, so the complete claim is not fully entailed.",
+          "timestamp": "2026-09-01T05:43:57.327189Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S63A635AB4E56",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Extending GNNs with higher‑order structures such as regular cell complexes can increase expressivity beyond the WL test, potentially improving node classification performance.",
+      "passage_id": "P2d449a16ae072b78-S002",
+      "passage_text": "this article summarizes a selection of the emerging theoretical results on approximation and learning properties of widely used message passing gnns and higher-order gnns, focusing on representation, generalization and extrapolation.",
+      "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage mentions higher‑order GNNs in a theoretical overview but provides no evidence about regular cell complexes, expressivity beyond WL, or node classification improvements.",
+          "timestamp": "2026-09-01T05:13:29.884510Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S6996FC4BFC78",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Geometric aggregation schemes such as Geom‑GCN address structural information loss and limited long‑range dependencies in MPNNs, achieving state‑of‑the‑art results on a wide range of graph datasets.",
+      "passage_id": "P9b7a885a124129d9-S004",
+      "passage_text": "from the observations on classical neural network and network geometry, we propose a novel geometric aggregation scheme for graph neural networks to overcome the two weaknesses.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage proposes a novel geometric aggregation scheme to overcome the two identified weaknesses, aligning with the claim that such schemes address structural loss and long‑range dependencies, but does not report state‑of‑the‑art performance.",
+          "timestamp": "2026-09-01T05:13:29.884510Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S69A355089B73",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Graph neural networks are a popular architecture for many applications, including recommendation systems.",
+      "passage_id": "Pa58870775fab459e-S006",
+      "passage_text": "some of the very common application is a social networking site which is on our hands regularly, and another could be the recommendation system which recommends us friends, or the products of our interest based on our pat choices and preferences.",
+      "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage lists recommendation systems as a common application, supporting the latter part of the claim. However, it does not explicitly identify the architecture as 'Graph Neural Networks' or describe them as 'popular' in a general sense, only listing them as common applications in the context of the paper.",
+          "timestamp": "2026-09-01T05:43:57.327189Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S6BDD1A81D3A1",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Geometric aggregation schemes such as Geom‑GCN address structural information loss and limited long‑range dependencies in MPNNs, achieving state‑of‑the‑art results on a wide range of graph datasets.",
+      "passage_id": "P9b7a885a124129d9-S008",
+      "passage_text": "experimental results show the proposed geom-gcn achieved state-of-the-art performance on a wide range of open datasets of graphs.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage reports that Geom‑GCN achieved state‑of‑the‑art performance on many datasets, supporting the performance part of the claim; it does not explicitly state that it addresses structural loss and long‑range dependencies.",
+          "timestamp": "2026-09-01T05:13:29.884510Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports the claim that Geom-GCN achieves state-of-the-art results on a wide range of graph datasets. It does not, however, explicitly state that it addresses structural information loss or limited long-range dependencies in MPNNs, which are specific mechanisms mentioned in the claim.",
+          "timestamp": "2026-09-01T05:43:57.327189Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S6F017D961E19",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Directional message passing, which embeds messages with spatial direction and is rotationally equivariant, improves molecular property prediction performance, with Dimenet outperforming prior GNNs on MD17 and QM9 benchmarks.",
+      "passage_id": "P0fed7326de2f7131-S004",
+      "passage_text": "to alleviate this limitation we propose directional message passing, in which we embed the messages passed between atoms instead of the atoms themselves.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage describes directional message passing embedding messages, but does not mention rotational equivariance, performance improvement, Dimenet, or MD17/QM9 benchmarks.",
+          "timestamp": "2026-09-01T05:13:43.446164Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S71E4B92F2BB2",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Graph neural networks are applied to recommendation systems.",
+      "passage_id": "Pa58870775fab459e-S006",
+      "passage_text": "some of the very common application is a social networking site which is on our hands regularly, and another could be the recommendation system which recommends us friends, or the products of our interest based on our pat choices and preferences.",
+      "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage confirms that recommendation systems are a common application, which supports the idea of application. However, it does not explicitly name 'Graph Neural Networks' as the architecture being applied, leaving the subject of the claim unverified by the text alone.",
+          "timestamp": "2026-09-01T05:43:57.327189Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S7395D7D991B0",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Automorphism‑based GNNs (Autobahn) that decompose molecular graphs into subgraphs achieve performance competitive with state‑of‑the‑art message passing algorithms.",
+      "passage_id": "Paa7910a3a2bb8a9b-S006",
+      "passage_text": "we validate our approach by applying autobahn to molecular graphs, where it achieves results competitive with state-of-the-art message passing algorithms.",
+      "paper_id": "062b99a331795a9386721d793c4b80b51b4ee1de",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage states Autobahn achieves results competitive with state‑of‑the‑art message passing algorithms, but does not mention decomposition into subgraphs.",
+          "timestamp": "2026-09-01T05:13:43.446164Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S75BB6D9C2B7F",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "Enforcing Lipschitz continuity via LipschitzNorm eliminates gradient explosion in deep graph attention networks and substantially improves their performance for 10–30 layer models.",
+      "passage_id": "P3b465d215e72845e-S005",
+      "passage_text": "to address this issue, we derive a theoretical analysis of the lipschitz continuity of attention modules and introduce lipschitznorm, a simple and parameter-free normalization for self-attention mechanisms that enforces the model to be lipschitz continuous.",
+      "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage introduces LipschitzNorm that enforces Lipschitz continuity, yet does not claim elimination of gradient explosion or performance gains for 10–30 layer models.",
+          "timestamp": "2026-09-01T05:13:43.446164Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports the introduction of LipschitzNorm to enforce Lipschitz continuity, but it does not mention eliminating gradient explosion or performance improvements for 10-30 layer models.",
+          "timestamp": "2026-09-01T05:44:10.691199Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S797819B7FAF7",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Standard message passing GNNs have limited expressive power, being at most as powerful as the 1‑WL test, which can hinder their ability to capture long‑range interactions needed for node classification.",
+      "passage_id": "P0fed7326de2f7131-S004",
+      "passage_text": "to alleviate this limitation we propose directional message passing, in which we embed the messages passed between atoms instead of the atoms themselves.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage only proposes directional message passing to address a limitation, without specifying the 1‑WL expressive bound or long‑range interaction issue.",
+          "timestamp": "2026-09-01T05:13:43.446164Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S845E1E67DFC3",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "A unified structure‑learning framework for graph attention networks (SLGAT and SLAGNN) learns dynamic graph structures, introduces a novel attention mechanism based on structural context, and outperforms competing methods on six standard semi‑supervised node classification datasets.",
+      "passage_id": "P7fb7e6ec4bfa706d-S003",
+      "passage_text": "however, many graph structures have noise, or data itself has no graph structures, so learning the dynamic and adaptive graph structures is necessary.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage merely motivates learning dynamic graph structures; it does not describe the SLGAT/SLAGNN framework, novel attention, or empirical superiority.",
+          "timestamp": "2026-09-01T05:13:43.446164Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S849E6C6BB185",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Incorporating directional information into message passing (directional message embeddings) yields rotational equivariance and improves predictive accuracy, suggesting geometric enhancements can benefit node classification.",
+      "passage_id": "P0fed7326de2f7131-S005",
+      "passage_text": "each message is associated with a direction in coordinate space.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage confirms that messages are associated with direction, supporting the 'directional information' part of the claim, but it does not mention rotational equivariance, predictive accuracy improvements, or node classification benefits.",
+          "timestamp": "2026-09-01T05:44:10.691199Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S8AC298ACD367",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Directional message passing, which embeds messages with spatial direction and is rotationally equivariant, improves molecular property prediction performance, with Dimenet outperforming prior GNNs on MD17 and QM9 benchmarks.",
+      "passage_id": "P0fed7326de2f7131-S005",
+      "passage_text": "each message is associated with a direction in coordinate space.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage notes that each message has a direction in coordinate space, but lacks details on rotational equivariance, performance gains, Dimenet, or benchmark results.",
+          "timestamp": "2026-09-01T05:13:43.446164Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S8B3935A4C561",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "The predictive performance of GNNs correlates with the graph structure of their relational graph, specifically with clustering coefficient and average path length.",
+      "passage_id": "P1c3c64d6b4535b74-S002",
+      "passage_text": "these problems can be attributed to the strong coupling between the computational graph and the input graph structure.",
+      "paper_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "The passage mentions a coupling between computational and input graph structure but does not specify clustering coefficient, average path length, or a correlation with predictive performance.",
+          "timestamp": "2026-09-01T05:44:10.691199Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S8E0EB345CB10",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "Enforcing Lipschitz continuity via LipschitzNorm eliminates gradient explosion in deep graph attention networks and substantially improves their performance for 10–30 layer models.",
+      "passage_id": "P3b465d215e72845e-S004",
+      "passage_text": "first, we show that, for deep graph attention networks (gat), gradient explosion appears during training, leading to poor performance of gradient-based training algorithms.",
+      "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage only notes gradient explosion in deep GATs; does not mention LipschitzNorm, its effect, or performance improvements.",
+          "timestamp": "2026-09-01T05:14:00.263042Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports the existence of gradient explosion in deep GATs, but it does not state that LipschitzNorm eliminates this issue or improves performance for 10-30 layer models.",
+          "timestamp": "2026-09-01T05:44:10.691199Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": {
+        "reviewer_id": "reviewer_03",
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms that gradient explosion occurs in deep graph attention networks, which supports the problem context of the claim. However, it does not mention LipschitzNorm, its enforcement of Lipschitz continuity, or any performance improvements for 10-30 layer models, leaving the core solution and outcome of the claim unsupported.",
+        "timestamp": "2026-09-01T05:55:23.030734Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false,
+        "reviewer_ids": [
+          "reviewer_01",
+          "reviewer_02"
+        ],
+        "original_responses": [
+          {
+            "label": "UNSUPPORTED",
+            "notes": "Passage only notes gradient explosion in deep GATs; does not mention LipschitzNorm, its effect, or performance improvements.",
+            "timestamp": "2026-09-01T05:14:00.263042Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false,
+            "reviewer_id": "reviewer_01"
+          },
+          {
+            "label": "PARTIALLY_SUPPORTED",
+            "notes": "The passage supports the existence of gradient explosion in deep GATs, but it does not state that LipschitzNorm eliminates this issue or improves performance for 10-30 layer models.",
+            "timestamp": "2026-09-01T05:44:10.691199Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false,
+            "reviewer_id": "reviewer_02"
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "S8E8949459EAA",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Graph neural networks have achieved great successes in predicting quantum mechanical properties of molecules.",
+      "passage_id": "P171ec77ff5e4a50d-S001",
+      "passage_text": "graph neural networks (gnns) have been widely used for predicting molecular properties, especially for single molecules.",
+      "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage states GNNs are widely used for predicting molecular properties, supporting usage but not the claim of great success on quantum mechanical properties.",
+          "timestamp": "2026-09-01T05:14:00.263042Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S9572A0DE030D",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Traditional molecular GNNs typically represent molecules using only interatomic distances and ignore spatial direction, limiting their ability to capture angular potentials.",
+      "passage_id": "P9b7a885a124129d9-S002",
+      "passage_text": "however, two fundamental weaknesses of mpnns aggregators limit their ability to represent graph-structured data: losing the structural information of nodes in neighborhoods and lacking the ability to capture long-range dependencies in disassortative graphs.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage mentions general limitations of MPNN aggregators (loss of structural info), which aligns partially with claim about ignoring spatial direction, but lacks specifics about distances or angular potentials.",
+          "timestamp": "2026-09-01T05:14:00.263042Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "S95887397EB42",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Directional message passing, which embeds messages with spatial direction and is rotationally equivariant, improves molecular property prediction performance, with Dimenet outperforming prior GNNs on MD17 and QM9 benchmarks.",
+      "passage_id": "P0fed7326de2f7131-S006",
+      "passage_text": "these directional message embeddings are rotationally equivariant since the associated directions rotate with the molecule.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage confirms directional message embeddings are rotationally equivariant, supporting that aspect of the claim but not performance improvements or benchmark results.",
+          "timestamp": "2026-09-01T05:14:00.263042Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports that directional message embeddings are rotationally equivariant, but it does not mention improvements in molecular property prediction or specific benchmark results for Dimenet.",
+          "timestamp": "2026-09-01T05:44:10.691199Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SB6044F827992",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "HGT incorporates a heterogeneous mini-batch graph sampling algorithm (HGSampling) to achieve efficient and scalable training on web‑scale graphs.",
+      "passage_id": "P7fb7e6ec4bfa706d-S006",
+      "passage_text": "then we develop a novel attention mechanism based on structure context information of graph and node representations.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage describes a novel attention mechanism; no mention of HGSampling, efficiency, scalability, or web‑scale graphs.",
+          "timestamp": "2026-09-01T05:14:00.263042Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SB81B114C3F83",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Automorphism‑based GNNs (Autobahn) that decompose molecular graphs into subgraphs achieve performance competitive with state‑of‑the‑art message passing algorithms.",
+      "passage_id": "P9b7a885a124129d9-S008",
+      "passage_text": "experimental results show the proposed geom-gcn achieved state-of-the-art performance on a wide range of open datasets of graphs.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage reports state‑of‑the‑art results for geom‑gcn, not for Autobahn or its subgraph decomposition.",
+          "timestamp": "2026-09-01T05:14:00.263042Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SBC402B389807",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "A unified structure‑learning framework for graph attention networks (SLGAT and SLAGNN) learns dynamic graph structures, introduces a novel attention mechanism based on structural context, and outperforms competing methods on six standard semi‑supervised node classification datasets.",
+      "passage_id": "P7fb7e6ec4bfa706d-S006",
+      "passage_text": "then we develop a novel attention mechanism based on structure context information of graph and node representations.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports the development of a novel attention mechanism based on structure context, but it does not mention the specific frameworks (SLGAT/SLAGNN), dynamic structure learning, or performance on six datasets.",
+          "timestamp": "2026-09-01T05:44:10.691199Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SC0153926273E",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "A unified structure‑learning framework for graph attention networks (SLGAT and SLAGNN) learns dynamic graph structures, introduces a novel attention mechanism based on structural context, and outperforms competing methods on six standard semi‑supervised node classification datasets.",
+      "passage_id": "P7fb7e6ec4bfa706d-S008",
+      "passage_text": "finally, we demonstrate that our approaches outperform competing methods on six standard datasets for the semi-supervised node classication task.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports the claim that the approaches outperform competing methods on six standard datasets, but it does not mention the specific framework names (SLGAT/SLAGNN), the learning of dynamic structures, or the novel attention mechanism.",
+          "timestamp": "2026-09-01T05:44:24.030239Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SC6677DFEA351",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "HGT incorporates a heterogeneous mini-batch graph sampling algorithm (HGSampling) to achieve efficient and scalable training on web‑scale graphs.",
+      "passage_id": "P7cf99418e408e37d-S005",
+      "passage_text": "to handle web-scale graph data, we design the heterogeneous mini-batch graph sampling algorithmhgsamplingfor efficient and scalable training.",
+      "paper_id": "0ca7d8c3250d43d14fdde46bf6fc299654d861ef",
+      "annotations": [
+        {
+          "label": "SUPPORTED",
+          "notes": "Passage states the heterogeneous mini-batch graph sampling algorithm (HGSampling) is designed for efficient and scalable training on web‑scale graphs, directly matching the claim.",
+          "timestamp": "2026-09-01T05:14:16.995464Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "SUPPORTED",
+          "notes": "The passage explicitly states that the heterogeneous mini-batch graph sampling algorithm (HGSampling) is designed for efficient and scalable training on web-scale graph data, which directly entails the claim.",
+          "timestamp": "2026-09-01T05:44:24.030239Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SC69CEFF758B4",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Graph neural networks have achieved great successes in predicting quantum mechanical properties of molecules.",
+      "passage_id": "P0fed7326de2f7131-S001",
+      "passage_text": "graph neural networks have recently achieved great successes in predicting quantum mechanical properties of molecules.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "SUPPORTED",
+          "notes": "Passage explicitly says graph neural networks have achieved great successes in predicting quantum mechanical properties of molecules.",
+          "timestamp": "2026-09-01T05:14:16.995464Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SC9987C75364C",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Graph neural networks are a popular architecture for many applications, including recommendation systems.",
+      "passage_id": "Pa58870775fab459e-S004",
+      "passage_text": "due to its massive success, gnn has made its way into many applications and is a popular architecture to work upon.",
+      "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage confirms GNNs are a popular architecture for many applications, but does not specifically mention recommendation systems.",
+          "timestamp": "2026-09-01T05:14:16.995464Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports that GNNs are a popular architecture for many applications, but it does not specifically mention recommendation systems.",
+          "timestamp": "2026-09-01T05:44:24.030239Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SCE717F3EC281",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "Enforcing Lipschitz continuity via LipschitzNorm eliminates gradient explosion in deep graph attention networks and substantially improves their performance for 10–30 layer models.",
+      "passage_id": "P3b465d215e72845e-S006",
+      "passage_text": "we then apply lipschitznorm to gat and graph transformers and show that their performance is substantially improved in the deep setting (10 to 30 layers).",
+      "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports that applying LipschitzNorm to GAT improves performance in deep settings (10-30 layers), but it does not explicitly state that it eliminates gradient explosion.",
+          "timestamp": "2026-09-01T05:44:24.030239Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SDAF919076586",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Directional message passing, which embeds messages with spatial direction and is rotationally equivariant, improves molecular property prediction performance, with Dimenet outperforming prior GNNs on MD17 and QM9 benchmarks.",
+      "passage_id": "P0fed7326de2f7131-S010",
+      "passage_text": "dimenet outperforms previous gnns on average by 77 on md17 and by 41 on qm9.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage provides performance numbers showing Dimenet outperforms prior GNNs on MD17 and QM9, supporting the performance claim but not the directional/rotational equivariance aspect.",
+          "timestamp": "2026-09-01T05:14:16.995464Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SDF7607AFA0F2",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Extending GNNs with higher‑order structures such as regular cell complexes can increase expressivity beyond the WL test, potentially improving node classification performance.",
+      "passage_id": "P1c3c64d6b4535b74-S005",
+      "passage_text": "in this work, we extend recent theoretical results on scs to regular cell complexes, topological objects that flexibly subsume scs and graphs.",
+      "paper_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "The passage mentions extending theoretical results to regular cell complexes but does not discuss expressivity beyond the WL test or improvements in node classification performance.",
+          "timestamp": "2026-09-01T05:44:24.030239Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SE7454BFBC987",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Incorporating directional information into message passing (directional message embeddings) yields rotational equivariance and improves predictive accuracy, suggesting geometric enhancements can benefit node classification.",
+      "passage_id": "Paa7910a3a2bb8a9b-S003",
+      "passage_text": "specific choices of local neighborhoods and subgraphs recover existing architectures such as message passing neural networks.",
+      "paper_id": "062b99a331795a9386721d793c4b80b51b4ee1de",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "Passage only discusses local neighborhoods and subgraphs recovering existing architectures; it does not address directional message embeddings, rotational equivariance, or predictive improvements.",
+          "timestamp": "2026-09-01T05:14:16.995464Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "UNSUPPORTED",
+          "notes": "The passage discusses recovering existing architectures via local neighborhoods and subgraphs, but does not mention directional information, rotational equivariance, or predictive accuracy improvements.",
+          "timestamp": "2026-09-01T05:44:24.030239Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SE8026F824660",
+      "split": "dev",
+      "query_id": "Q004",
+      "claim": "When provided with proper inputs, GAT can generally match or outperform all existing heterogeneous GNN models across various scenarios",
+      "passage_id": "P59bfe6e634051749-S004",
+      "passage_text": "gat with proper inputs can generally match or outperform all existing hgnns across various scenarios.",
+      "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+      "annotations": [
+        {
+          "label": "SUPPORTED",
+          "notes": "Passage directly states that GAT with proper inputs can generally match or outperform all existing heterogeneous GNNs across various scenarios.",
+          "timestamp": "2026-09-01T05:14:16.995464Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "SUPPORTED",
+          "notes": "The passage explicitly states that GAT with proper inputs can generally match or outperform all existing HGNNs across various scenarios, which directly entails the claim.",
+          "timestamp": "2026-09-01T05:44:35.199549Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SE8377101F2C4",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Graph neural networks are designed to learn representations of nodes and are widely used for node-level prediction tasks.",
+      "passage_id": "P2d449a16ae072b78-S001",
+      "passage_text": "graph neural networks (gnns), neural network architectures targeted to learning representations of graphs, have become a popular learning model for prediction tasks on nodes, graphs and configurations of points, with wide success in practice.",
+      "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage says GNNs learn graph representations and are popular for node prediction, supporting the claim about node-level use but not explicitly stating they are designed to learn node representations.",
+          "timestamp": "2026-09-01T05:14:34.870882Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "SUPPORTED",
+          "notes": "The passage confirms GNNs are targeted to learning representations of graphs and are popular for prediction tasks on nodes, supporting the claim about node-level prediction.",
+          "timestamp": "2026-09-01T05:44:35.199549Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": {
+        "reviewer_id": "reviewer_03",
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage states GNNs learn representations of 'graphs' and are used for 'prediction tasks on nodes', which supports the usage part of the claim. However, the claim specifies learning representations of 'nodes', whereas the passage specifies 'graphs'. While related, the specific object of representation learning differs, preventing full entailment of the complete claim.",
+        "timestamp": "2026-09-01T05:55:28.716593Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false,
+        "reviewer_ids": [
+          "reviewer_01",
+          "reviewer_02"
+        ],
+        "original_responses": [
+          {
+            "label": "PARTIALLY_SUPPORTED",
+            "notes": "Passage says GNNs learn graph representations and are popular for node prediction, supporting the claim about node-level use but not explicitly stating they are designed to learn node representations.",
+            "timestamp": "2026-09-01T05:14:34.870882Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false,
+            "reviewer_id": "reviewer_01"
+          },
+          {
+            "label": "SUPPORTED",
+            "notes": "The passage confirms GNNs are targeted to learning representations of graphs and are popular for prediction tasks on nodes, supporting the claim about node-level prediction.",
+            "timestamp": "2026-09-01T05:44:35.199549Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false,
+            "reviewer_id": "reviewer_02"
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "SE91101D61CFA",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Directional message passing, which embeds messages with spatial direction and is rotationally equivariant, improves molecular property prediction performance, with Dimenet outperforming prior GNNs on MD17 and QM9 benchmarks.",
+      "passage_id": "Paa7910a3a2bb8a9b-S006",
+      "passage_text": "we validate our approach by applying autobahn to molecular graphs, where it achieves results competitive with state-of-the-art message passing algorithms.",
+      "paper_id": "062b99a331795a9386721d793c4b80b51b4ee1de",
+      "annotations": [
+        {
+          "label": "UNSUPPORTED",
+          "notes": "The passage discusses 'autobahn' achieving competitive results, but does not mention 'Dimenet', 'directional message passing', or specific benchmarks like MD17 and QM9, so it does not support the specific claim.",
+          "timestamp": "2026-09-01T05:44:35.199549Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SEA9FD7A4EAEC",
+      "split": "dev",
+      "query_id": "Q004",
+      "claim": "Simple homogeneous GNNs such as graph convolutional networks (GCN) and graph attention networks (GAT) have been largely underestimated in prior studies due to improper experimental settings.",
+      "passage_id": "P59bfe6e634051749-S003",
+      "passage_text": "we find that the simple homogeneous gnns, e.g., gcn and gat, are largely underestimated due to improper settings.",
+      "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+      "annotations": [
+        {
+          "label": "SUPPORTED",
+          "notes": "Passage directly states that simple homogeneous GNNs like GCN and GAT are largely underestimated due to improper settings, matching the claim.",
+          "timestamp": "2026-09-01T05:14:34.870882Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SEB7404D3CFFA",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Incorporating directional information into message passing (directional message embeddings) yields rotational equivariance and improves predictive accuracy, suggesting geometric enhancements can benefit node classification.",
+      "passage_id": "P0fed7326de2f7131-S006",
+      "passage_text": "these directional message embeddings are rotationally equivariant since the associated directions rotate with the molecule.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage confirms directional message embeddings are rotationally equivariant, but does not mention improved predictive accuracy or benefits for node classification.",
+          "timestamp": "2026-09-01T05:14:34.870882Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SEBE9A488CB7B",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Traditional molecular GNNs typically represent molecules using only interatomic distances and ignore spatial direction, limiting their ability to capture angular potentials.",
+      "passage_id": "P0fed7326de2f7131-S002",
+      "passage_text": "these models represent a molecule as a graph using only the distance between atoms (nodes) and not the spatial direction from one atom to another.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage indicates traditional molecular GNNs use only interatomic distances and ignore spatial direction, supporting that part of the claim; it does not discuss the resulting limitation on capturing angular potentials.",
+          "timestamp": "2026-09-01T05:14:34.870882Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SF4BE112C1769",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Extending GNNs with higher‑order structures such as regular cell complexes can increase expressivity beyond the WL test, potentially improving node classification performance.",
+      "passage_id": "P1c3c64d6b4535b74-S007",
+      "passage_text": "the resulting methods, which we collectively call cw networks (cwns), are strictly more powerful than the wl test and not less powerful than the 3-wl test.",
+      "paper_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage shows CW networks are more powerful than the WL test, supporting increased expressivity; it does not mention higher‑order cell complexes or direct impact on node classification performance.",
+          "timestamp": "2026-09-01T05:14:34.870882Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage supports that the methods (CW networks) are strictly more powerful than the WL test, but it does not explicitly mention 'regular cell complexes' or 'node classification performance' improvements, only the theoretical expressivity.",
+          "timestamp": "2026-09-01T05:44:35.199549Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    },
+    {
+      "item_id": "SFB63C6CB3DB2",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "A unified structure‑learning framework for graph attention networks (SLGAT and SLAGNN) learns dynamic graph structures, introduces a novel attention mechanism based on structural context, and outperforms competing methods on six standard semi‑supervised node classification datasets.",
+      "passage_id": "P7fb7e6ec4bfa706d-S007",
+      "passage_text": "further, we devise structure learning graph attention networks (slgat) and structure learning attention-based graph neural networks (slagnn) by using the new attention mechanism on the new graph.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "annotations": [
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "Passage describes SLGAT and SLAGNN with a new attention mechanism, but does not provide evidence of dynamic graph‑structure learning or superior performance on six datasets.",
+          "timestamp": "2026-09-01T05:14:34.870882Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "openai/gpt-oss-120b",
+          "annotation_pass_slot": "reviewer_01",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_01"
+        },
+        {
+          "label": "PARTIALLY_SUPPORTED",
+          "notes": "The passage confirms the existence of SLGAT and SLAGNN using a new attention mechanism, but does not provide evidence that they outperform competing methods on six standard datasets.",
+          "timestamp": "2026-09-01T05:44:35.199549Z",
+          "annotation_source": "AI-generated",
+          "annotation_model": "qwen/qwen3.8-27b",
+          "annotation_pass_slot": "reviewer_02",
+          "independent_human_annotation": false,
+          "reviewer_id": "reviewer_02"
+        }
+      ],
+      "adjudication": null
+    }
+  ],
+  "annotation_provenance": {
+    "annotation_source": "AI-generated",
+    "annotation_models": [
+      "openai/gpt-oss-120b",
+      "openai/gpt-oss-20b",
+      "qwen/qwen3.8-27b"
+    ],
+    "consensus_models": [
+      "qwen/qwen3.8-27b"
+    ],
+    "human_ground_truth": false,
+    "independent_human_review": false,
+    "human_agreement_calculated": false,
+    "human_cohen_kappa_calculated": false,
+    "consensus_source": "AI-generated where AI passes differed",
+    "preexisting_unconfirmed_non_human_response_ids": [
+      "C0C22508E24E7",
+      "C0D27B651D266"
+    ]
+  }
+}

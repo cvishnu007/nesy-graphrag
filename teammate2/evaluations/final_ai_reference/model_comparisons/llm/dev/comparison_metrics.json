@@ -1,0 +1,263 @@
+{
+  "split": "dev",
+  "record_count": 23,
+  "threshold": 0.5,
+  "models": {
+    "model_a": {
+      "model_id": "qwen/qwen3.6-27b",
+      "prompt_hashes": [
+        "9f5dca7c454636e8e0fb50e41a400db2d01f96c9a694d72db4eb438c68d9d080",
+        "f4bd3fb16b676a2b056e182cd920e7b630982eca3cc2ed003ee8e1a92dde655b",
+        "ff3b49f5bb44000c270bff3ca706589b08dc033a7091851f62d7e209be3ef7eb",
+        "5a995c21784a2fb929202913f586a7bec93fdb5fff51d0c462096838c1d5edda",
+        "ddd882bc83e2f7e87b5a2535549e6b927ecbebbba4403edcc841d48cfe3d63d5",
+        "b54bde6b6924a318895ebe7675e9fbd10df951337ef4a273cd40e90111860c93"
+      ],
+      "metrics": {
+        "count": 23,
+        "class_names": [
+          "CONTRADICTION",
+          "AGREEMENT",
+          "DIFFERENT SCOPE",
+          "UNKNOWN"
+        ],
+        "accuracy": 0.782608695652174,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            0
+          ],
+          [
+            0,
+            1,
+            16,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": {
+          "CONTRADICTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "AGREEMENT": {
+            "precision": 0.6666666666666666,
+            "recall": 0.3333333333333333,
+            "f1": 0.4444444444444444,
+            "tp": 2,
+            "fp": 1,
+            "fn": 4
+          },
+          "DIFFERENT SCOPE": {
+            "precision": 0.8,
+            "recall": 0.9411764705882353,
+            "f1": 0.8648648648648648,
+            "tp": 16,
+            "fp": 4,
+            "fn": 1
+          },
+          "UNKNOWN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "macro_precision": 0.48888888888888893,
+        "macro_recall": 0.42483660130718953,
+        "macro_f1": 0.43643643643643637,
+        "contradiction_precision": 0.0,
+        "contradiction_recall": 0.0,
+        "contradiction_f1": 0.0,
+        "uncertain_gold_count": 0,
+        "malformed_count": 0,
+        "rejected_count": 0,
+        "coverage": 1.0,
+        "confidence_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.5,
+            "count": 0,
+            "accuracy": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.7,
+            "count": 0,
+            "accuracy": 0.0
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.9,
+            "count": 1,
+            "accuracy": 1.0
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 22,
+            "accuracy": 0.7727272727272727
+          }
+        ]
+      },
+      "prediction_count": 23,
+      "preserved_prediction_count": 0,
+      "new_api_call_count": 6,
+      "invalid_response_count": 0,
+      "new_runtime_seconds": 72.94003960001282
+    },
+    "model_b": {
+      "model_id": "qwen/qwen3.8-27b",
+      "prompt_hashes": [
+        "9f5dca7c454636e8e0fb50e41a400db2d01f96c9a694d72db4eb438c68d9d080",
+        "f4bd3fb16b676a2b056e182cd920e7b630982eca3cc2ed003ee8e1a92dde655b",
+        "ff3b49f5bb44000c270bff3ca706589b08dc033a7091851f62d7e209be3ef7eb",
+        "5a995c21784a2fb929202913f586a7bec93fdb5fff51d0c462096838c1d5edda",
+        "ddd882bc83e2f7e87b5a2535549e6b927ecbebbba4403edcc841d48cfe3d63d5",
+        "b54bde6b6924a318895ebe7675e9fbd10df951337ef4a273cd40e90111860c93"
+      ],
+      "metrics": {
+        "count": 23,
+        "class_names": [
+          "CONTRADICTION",
+          "AGREEMENT",
+          "DIFFERENT SCOPE",
+          "UNKNOWN"
+        ],
+        "accuracy": 0.6956521739130435,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            0
+          ],
+          [
+            0,
+            3,
+            14,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": {
+          "CONTRADICTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "AGREEMENT": {
+            "precision": 0.4,
+            "recall": 0.3333333333333333,
+            "f1": 0.3636363636363636,
+            "tp": 2,
+            "fp": 3,
+            "fn": 4
+          },
+          "DIFFERENT SCOPE": {
+            "precision": 0.7777777777777778,
+            "recall": 0.8235294117647058,
+            "f1": 0.7999999999999999,
+            "tp": 14,
+            "fp": 4,
+            "fn": 3
+          },
+          "UNKNOWN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "macro_precision": 0.3925925925925926,
+        "macro_recall": 0.3856209150326797,
+        "macro_f1": 0.3878787878787879,
+        "contradiction_precision": 0.0,
+        "contradiction_recall": 0.0,
+        "contradiction_f1": 0.0,
+        "uncertain_gold_count": 0,
+        "malformed_count": 0,
+        "rejected_count": 0,
+        "coverage": 1.0,
+        "confidence_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.5,
+            "count": 0,
+            "accuracy": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.7,
+            "count": 0,
+            "accuracy": 0.0
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.9,
+            "count": 0,
+            "accuracy": 0.0
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 23,
+            "accuracy": 0.6956521739130435
+          }
+        ]
+      },
+      "prediction_count": 23,
+      "preserved_prediction_count": 0,
+      "new_api_call_count": 6,
+      "invalid_response_count": 0,
+      "new_runtime_seconds": 81.798057899985
+    }
+  },
+  "reference_annotation_source": "AI-generated reference annotations",
+  "human_ground_truth": false,
+  "controlled_variables": {
+    "only_changed_component": "llm_model",
+    "identical_records": true,
+    "identical_blinded_prompts": true,
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "reasoning_effort": "none",
+    "max_parse_attempts": 4,
+    "batch_size": 4
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "phase3_status": "complete_ai_reference_annotations",
+  "annotation_source": "AI-generated",
+  "annotation_models": [
+    "openai/gpt-oss-120b",
+    "openai/gpt-oss-20b",
+    "qwen/qwen3.8-27b"
+  ],
+  "consensus_models": [
+    "qwen/qwen3.8-27b"
+  ],
+  "human_ground_truth": false,
+  "independent_human_review": false,
+  "human_agreement_calculated": false,
+  "human_cohen_kappa_calculated": false,
+  "consensus_source": "AI-generated where AI passes differed",
+  "preexisting_unconfirmed_non_human_response_ids": [
+    "C0C22508E24E7",
+    "C0D27B651D266"
+  ],
+  "counts": {
+    "contradiction": 62,
+    "support": 151,
+    "hypothesis": 100
+  }
+}

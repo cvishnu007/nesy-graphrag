@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "created_at_utc": "2026-09-01T10:55:21.890983+00:00",
+  "git_commit": "b9339ab04a65702ac45b12d2c662b5c19bc53aee",
+  "task": "support_baseline_comparison",
+  "split": "test",
+  "benchmark_version": "1.0-ai-reference-frozen",
+  "threshold": 0.0,
+  "threshold_selection_split": "dev",
+  "reference_annotation_source": "AI-generated",
+  "human_ground_truth": false,
+  "failure_count": 0,
+  "reproduction_command": ".\\venv\\Scripts\\python.exe -m src.evaluation.support_baseline_comparison --benchmark evaluation/benchmarks/claim_support.json --semantic-predictions results/reasoning/phase5_ai_reference_baseline/predictions/support_test.jsonl --threshold-report results/reasoning/phase5_ai_reference_baseline/dev/support_threshold_sweep.json --split test --output-dir results/reasoning/final_ai_reference/support_comparison/test"
+}

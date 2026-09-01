@@ -1,0 +1,185 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+PLACEHOLDER_VALUES = {"replace_me", "your_key", "your_api_key", "none"}
+
+
+def is_configured(value, *placeholder_markers):
+    if value is None:
+        return False
+
+    text = str(value).strip()
+    if not text:
+        return False
+
+    lowered = text.lower()
+    if lowered in PLACEHOLDER_VALUES:
+        return False
+
+    return not any(marker.lower() in lowered for marker in placeholder_markers)
+
+
+# ── Source selection ───────────────────────────────────
+DATA_SOURCE = os.getenv("DATA_SOURCE", "s2").strip().lower()
+if DATA_SOURCE not in {"arxiv", "s2"}:
+    raise ValueError("DATA_SOURCE must be 'arxiv' or 's2'")
+
+# ── Neo4j ─────────────────────────────────────────────
+NEO4J_URI      = os.getenv("NEO4J_URI")
+NEO4J_USERNAME = os.getenv("NEO4J_USERNAME")
+NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
+NEO4J_ALLOW_RESET = os.getenv("NEO4J_ALLOW_RESET", "false").strip().lower() in {
+    "1", "true", "yes", "on"
+}
+
+# ── Groq ──────────────────────────────────────────────
+GROQ_API_KEY   = os.getenv("GROQ_API_KEY")
+
+# ── Semantic Scholar ──────────────────────────────────
+SEMANTIC_SCHOLAR_API_KEY  = os.getenv("SEMANTIC_SCHOLAR_API_KEY")
+SEMANTIC_SCHOLAR_BASE_URL = os.getenv(
+    "SEMANTIC_SCHOLAR_BASE_URL",
+    "https://api.semanticscholar.org/graph/v1"
+)
+SEMANTIC_SCHOLAR_MIN_INTERVAL_SEC = float(
+    os.getenv("SEMANTIC_SCHOLAR_MIN_INTERVAL_SEC", "1.05")
+)
+SEMANTIC_SCHOLAR_TIMEOUT_SEC = int(os.getenv("SEMANTIC_SCHOLAR_TIMEOUT_SEC", "45"))
+SEMANTIC_SCHOLAR_MAX_RETRIES = int(os.getenv("SEMANTIC_SCHOLAR_MAX_RETRIES", "6"))
+S2_QUERY = os.getenv("S2_QUERY", "computer science")
+S2_LIMIT = int(os.getenv("S2_LIMIT", "10000"))
+S2_PAGE_SIZE = int(os.getenv("S2_PAGE_SIZE", "1000"))
+S2_YEAR = os.getenv("S2_YEAR", "2020-2025")
+S2_FIELDS_OF_STUDY = os.getenv("S2_FIELDS_OF_STUDY", "Computer Science")
+S2_PUBLICATION_TYPES = os.getenv("S2_PUBLICATION_TYPES", "")
+S2_SORT = os.getenv("S2_SORT", "citationCount:desc")
+S2_BATCH_SIZE = int(os.getenv("S2_BATCH_SIZE", "500"))
+S2_MAX_REFS_PER_PAPER = int(os.getenv("S2_MAX_REFS_PER_PAPER", "200"))
+
+# ── Data paths ────────────────────────────────────────
+CHROMA_DIR = os.getenv("CHROMA_DIR", "./data/chromadb")
+
+ARXIV_RAW_FILE   = os.getenv("ARXIV_RAW_FILE",   "./data/arxiv_raw.json")
+ARXIV_CLEAN_FILE = os.getenv("ARXIV_CLEAN_FILE", "./data/arxiv_clean.json")
+ARXIV_NER_FILE   = os.getenv("ARXIV_NER_FILE",   "./data/arxiv_ner.json")
+
+S2_RAW_FILE   = os.getenv("S2_RAW_FILE",   "./data/s2_raw.json")
+S2_CLEAN_FILE = os.getenv("S2_CLEAN_FILE", "./data/s2_clean.json")
+S2_NER_FILE   = os.getenv("S2_NER_FILE",   "./data/s2_ner.json")
+
+RAW_FILE = os.getenv(
+    "RAW_FILE",
+    S2_RAW_FILE if DATA_SOURCE == "s2" else ARXIV_RAW_FILE
+)
+CLEAN_FILE = os.getenv(
+    "CLEAN_FILE",
+    S2_CLEAN_FILE if DATA_SOURCE == "s2" else ARXIV_CLEAN_FILE
+)
+NER_FILE = os.getenv(
+    "NER_FILE",
+    S2_NER_FILE if DATA_SOURCE == "s2" else ARXIV_NER_FILE
+)
+CHROMA_COLLECTION = os.getenv("CHROMA_COLLECTION", f"{DATA_SOURCE}_papers")
+USE_REAL_CITATIONS = os.getenv(
+    "USE_REAL_CITATIONS",
+    "true" if DATA_SOURCE == "s2" else "false"
+).strip().lower() in {"1", "true", "yes", "on"}
+
+# ── Models ────────────────────────────────────────────
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "allenai-specter")
+EMBEDDING_BATCH_SIZE = int(os.getenv("EMBEDDING_BATCH_SIZE", "16"))
+LLM_MODEL          = os.getenv("LLM_MODEL",          "openai/gpt-oss-120b")
+LLM_MODEL_FALLBACK = os.getenv("LLM_MODEL_FALLBACK", "llama-3.1-8b-instant")
+GROQ_MAX_RETRIES   = int(os.getenv("GROQ_MAX_RETRIES", 4))
+
+# ── Pipeline settings ─────────────────────────────────
+BATCH_SIZE          = int(os.getenv("BATCH_SIZE",          64))
+NEO4J_BATCH_SIZE    = int(os.getenv("NEO4J_BATCH_SIZE",    500))
+TOP_K               = int(os.getenv("TOP_K",               10))
+HOP_DEPTH           = int(os.getenv("HOP_DEPTH",           2))
+RRF_K               = int(os.getenv("RRF_K",               60))
+NEURAL_FUSION_WEIGHT = float(os.getenv("NEURAL_FUSION_WEIGHT", "1.0"))
+GRAPH_FUSION_WEIGHT  = float(os.getenv("GRAPH_FUSION_WEIGHT",  "1.0"))
+HYBRID_BM25_WEIGHT = float(os.getenv("HYBRID_BM25_WEIGHT", "2.0"))
+HYBRID_VECTOR_WEIGHT = float(os.getenv("HYBRID_VECTOR_WEIGHT", "1.0"))
+HYBRID_GRAPH_WEIGHT = float(os.getenv("HYBRID_GRAPH_WEIGHT", "1.0"))
+BM25_K1 = float(os.getenv("BM25_K1", "1.5"))
+BM25_B = float(os.getenv("BM25_B", "0.75"))
+GRAPH_ONLY_CANDIDATE_LIMIT = int(
+    os.getenv("GRAPH_ONLY_CANDIDATE_LIMIT", "100")
+)
+
+if BM25_K1 <= 0:
+    raise ValueError("BM25_K1 must be greater than zero")
+if not 0 <= BM25_B <= 1:
+    raise ValueError("BM25_B must be between zero and one")
+if GRAPH_ONLY_CANDIDATE_LIMIT <= 0:
+    raise ValueError("GRAPH_ONLY_CANDIDATE_LIMIT must be greater than zero")
+if min(HYBRID_BM25_WEIGHT, HYBRID_VECTOR_WEIGHT, HYBRID_GRAPH_WEIGHT) < 0:
+    raise ValueError("Hybrid retrieval weights cannot be negative")
+if HYBRID_BM25_WEIGHT + HYBRID_VECTOR_WEIGHT + HYBRID_GRAPH_WEIGHT <= 0:
+    raise ValueError("At least one hybrid retrieval weight must be positive")
+CITES_THRESHOLD     = int(os.getenv("CITES_THRESHOLD",     2))
+MAX_AUTHORS         = int(os.getenv("MAX_AUTHORS",         5))
+MAX_CONCEPTS        = int(os.getenv("MAX_CONCEPTS",        10))
+MIN_ABSTRACT_WORDS  = int(os.getenv("MIN_ABSTRACT_WORDS",  30))
+EVALUATION_START_YEAR = int(os.getenv("EVALUATION_START_YEAR", "2020"))
+EVALUATION_END_YEAR = int(
+    os.getenv("EVALUATION_END_YEAR", "2025" if DATA_SOURCE == "s2" else "2024")
+)
+if EVALUATION_END_YEAR < EVALUATION_START_YEAR:
+    raise ValueError("EVALUATION_END_YEAR must be greater than or equal to EVALUATION_START_YEAR")
+CONTRADICTION_MIN_SHARED_CONCEPTS = int(
+    os.getenv("CONTRADICTION_MIN_SHARED_CONCEPTS", "2")
+)
+CONTRADICTION_MIN_CONCEPT_JACCARD = float(
+    os.getenv("CONTRADICTION_MIN_CONCEPT_JACCARD", "0.10")
+)
+CONTRADICTION_CANDIDATE_POOL = int(
+    os.getenv("CONTRADICTION_CANDIDATE_POOL", "25")
+)
+CONTRADICTION_MIN_CONFIDENCE = float(
+    os.getenv("CONTRADICTION_MIN_CONFIDENCE", "0.70")
+)
+HYPOTHESIS_MIN_SHARED_CONCEPTS = int(
+    os.getenv("HYPOTHESIS_MIN_SHARED_CONCEPTS", "2")
+)
+HYPOTHESIS_MIN_QUERY_SUPPORT = int(
+    os.getenv("HYPOTHESIS_MIN_QUERY_SUPPORT", "2")
+)
+HYPOTHESIS_CANDIDATE_POOL = int(
+    os.getenv("HYPOTHESIS_CANDIDATE_POOL", "25")
+)
+
+# -- Reasoning evaluation -------------------------------------------------
+CONTRADICTION_BENCHMARK_FILE = os.getenv(
+    "CONTRADICTION_BENCHMARK_FILE",
+    "evaluation/benchmarks/contradiction_pairs.json",
+)
+CLAIM_SUPPORT_BENCHMARK_FILE = os.getenv(
+    "CLAIM_SUPPORT_BENCHMARK_FILE",
+    "evaluation/benchmarks/claim_support.json",
+)
+HYPOTHESIS_BENCHMARK_FILE = os.getenv(
+    "HYPOTHESIS_BENCHMARK_FILE",
+    "evaluation/benchmarks/hypothesis_ratings.json",
+)
+REASONING_RESULTS_DIR = os.getenv("REASONING_RESULTS_DIR", "results/reasoning")
+SEMANTIC_SUPPORT_MODEL = os.getenv("SEMANTIC_SUPPORT_MODEL", "unconfigured")
+SEMANTIC_SUPPORT_MIN_CONFIDENCE = float(
+    os.getenv("SEMANTIC_SUPPORT_MIN_CONFIDENCE", "0.70")
+)
+
+for _name, _value in {
+    "CONTRADICTION_BENCHMARK_FILE": CONTRADICTION_BENCHMARK_FILE,
+    "CLAIM_SUPPORT_BENCHMARK_FILE": CLAIM_SUPPORT_BENCHMARK_FILE,
+    "HYPOTHESIS_BENCHMARK_FILE": HYPOTHESIS_BENCHMARK_FILE,
+    "REASONING_RESULTS_DIR": REASONING_RESULTS_DIR,
+    "SEMANTIC_SUPPORT_MODEL": SEMANTIC_SUPPORT_MODEL,
+}.items():
+    if not str(_value).strip():
+        raise ValueError(f"{_name} must be non-empty")
+if not 0 <= SEMANTIC_SUPPORT_MIN_CONFIDENCE <= 1:
+    raise ValueError("SEMANTIC_SUPPORT_MIN_CONFIDENCE must be between zero and one")

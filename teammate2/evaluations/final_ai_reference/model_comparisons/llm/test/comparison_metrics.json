@@ -1,0 +1,271 @@
+{
+  "split": "test",
+  "record_count": 39,
+  "threshold": 0.5,
+  "models": {
+    "model_a": {
+      "model_id": "qwen/qwen3.6-27b",
+      "prompt_hashes": [
+        "ec351daebc6f9031ce25adc3688449e475b1c14215a4f4c73a8a5dd78fe4015b",
+        "4d3b1c2a5cb905cb761dca580319368aaaa85bb25eb68087dc6384bb29b740fa",
+        "f0dacc9386727a9d1a326a2c45a4d50484fea871e21bc2bd9e70e279078b66a5",
+        "0224bf2e4eeb4e915b6c767407ed92e4b2b04f4d558b7554b673c34b2791fea4",
+        "fb879c728e4c710c925d0535e97882d67649eb7e5ec390429a5faaddbc3b5d4d",
+        "4f7dbd3cf10ffde4217c1faff543e18861563c8e5eb5d0413679b1f2caf0d5a8",
+        "9e1e1249335047ad3403cb73dcb87d21cc7c49d212eb7ef1dd5941a56dcebcf6",
+        "1d68932891a5b563a4c4905572716b61905be73a69d3c8e5545c923e5f3e9f64",
+        "6371fadca4b660ad89d80a5c384839e98c4d5d76f580aa2be0e96ba14aaf7390",
+        "69e14b02cc89690ce05a394be8a466b4282720df7f5580ea99aaaa3259f5c520"
+      ],
+      "metrics": {
+        "count": 39,
+        "class_names": [
+          "CONTRADICTION",
+          "AGREEMENT",
+          "DIFFERENT SCOPE",
+          "UNKNOWN"
+        ],
+        "accuracy": 0.7435897435897436,
+        "confusion_matrix": [
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            9,
+            2,
+            0
+          ],
+          [
+            1,
+            6,
+            20,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": {
+          "CONTRADICTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 1
+          },
+          "AGREEMENT": {
+            "precision": 0.5625,
+            "recall": 0.8181818181818182,
+            "f1": 0.6666666666666666,
+            "tp": 9,
+            "fp": 7,
+            "fn": 2
+          },
+          "DIFFERENT SCOPE": {
+            "precision": 0.9090909090909091,
+            "recall": 0.7407407407407407,
+            "f1": 0.8163265306122449,
+            "tp": 20,
+            "fp": 2,
+            "fn": 7
+          },
+          "UNKNOWN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "macro_precision": 0.49053030303030304,
+        "macro_recall": 0.5196408529741863,
+        "macro_f1": 0.49433106575963714,
+        "contradiction_precision": 0.0,
+        "contradiction_recall": 0.0,
+        "contradiction_f1": 0.0,
+        "uncertain_gold_count": 0,
+        "malformed_count": 0,
+        "rejected_count": 0,
+        "coverage": 1.0,
+        "confidence_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.5,
+            "count": 0,
+            "accuracy": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.7,
+            "count": 0,
+            "accuracy": 0.0
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.9,
+            "count": 4,
+            "accuracy": 0.75
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 35,
+            "accuracy": 0.7428571428571429
+          }
+        ]
+      },
+      "prediction_count": 39,
+      "preserved_prediction_count": 0,
+      "new_api_call_count": 10,
+      "invalid_response_count": 0,
+      "new_runtime_seconds": 163.90933209998184
+    },
+    "model_b": {
+      "model_id": "qwen/qwen3.8-27b",
+      "prompt_hashes": [
+        "ec351daebc6f9031ce25adc3688449e475b1c14215a4f4c73a8a5dd78fe4015b",
+        "4d3b1c2a5cb905cb761dca580319368aaaa85bb25eb68087dc6384bb29b740fa",
+        "f0dacc9386727a9d1a326a2c45a4d50484fea871e21bc2bd9e70e279078b66a5",
+        "0224bf2e4eeb4e915b6c767407ed92e4b2b04f4d558b7554b673c34b2791fea4",
+        "fb879c728e4c710c925d0535e97882d67649eb7e5ec390429a5faaddbc3b5d4d",
+        "4f7dbd3cf10ffde4217c1faff543e18861563c8e5eb5d0413679b1f2caf0d5a8",
+        "9e1e1249335047ad3403cb73dcb87d21cc7c49d212eb7ef1dd5941a56dcebcf6",
+        "1d68932891a5b563a4c4905572716b61905be73a69d3c8e5545c923e5f3e9f64",
+        "6371fadca4b660ad89d80a5c384839e98c4d5d76f580aa2be0e96ba14aaf7390",
+        "69e14b02cc89690ce05a394be8a466b4282720df7f5580ea99aaaa3259f5c520"
+      ],
+      "metrics": {
+        "count": 39,
+        "class_names": [
+          "CONTRADICTION",
+          "AGREEMENT",
+          "DIFFERENT SCOPE",
+          "UNKNOWN"
+        ],
+        "accuracy": 0.717948717948718,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            8,
+            3,
+            0
+          ],
+          [
+            0,
+            7,
+            20,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": {
+          "CONTRADICTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "AGREEMENT": {
+            "precision": 0.5333333333333333,
+            "recall": 0.7272727272727273,
+            "f1": 0.6153846153846153,
+            "tp": 8,
+            "fp": 7,
+            "fn": 3
+          },
+          "DIFFERENT SCOPE": {
+            "precision": 0.8333333333333334,
+            "recall": 0.7407407407407407,
+            "f1": 0.7843137254901961,
+            "tp": 20,
+            "fp": 4,
+            "fn": 7
+          },
+          "UNKNOWN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "macro_precision": 0.45555555555555555,
+        "macro_recall": 0.489337822671156,
+        "macro_f1": 0.4665661136249371,
+        "contradiction_precision": 0.0,
+        "contradiction_recall": 0.0,
+        "contradiction_f1": 0.0,
+        "uncertain_gold_count": 0,
+        "malformed_count": 0,
+        "rejected_count": 0,
+        "coverage": 1.0,
+        "confidence_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.5,
+            "count": 0,
+            "accuracy": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.7,
+            "count": 0,
+            "accuracy": 0.0
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.9,
+            "count": 2,
+            "accuracy": 0.5
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 37,
+            "accuracy": 0.7297297297297297
+          }
+        ]
+      },
+      "prediction_count": 39,
+      "preserved_prediction_count": 0,
+      "new_api_call_count": 10,
+      "invalid_response_count": 0,
+      "new_runtime_seconds": 166.58407050004462
+    }
+  },
+  "reference_annotation_source": "AI-generated reference annotations",
+  "human_ground_truth": false,
+  "controlled_variables": {
+    "only_changed_component": "llm_model",
+    "identical_records": true,
+    "identical_blinded_prompts": true,
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "reasoning_effort": "none",
+    "max_parse_attempts": 4,
+    "batch_size": 4
+  }
+}

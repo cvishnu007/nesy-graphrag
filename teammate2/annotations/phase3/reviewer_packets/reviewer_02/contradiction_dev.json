@@ -1,0 +1,333 @@
+{
+  "packet_version": "1.0",
+  "status": "complete",
+  "blinded": true,
+  "reviewer_id": "reviewer_02",
+  "task": "contradiction",
+  "split": "dev",
+  "response_schema": {
+    "label": [
+      "AGREEMENT",
+      "CONTRADICTION",
+      "DIFFERENT SCOPE",
+      "UNCERTAIN"
+    ],
+    "reason": "required",
+    "timestamp": "ISO-8601"
+  },
+  "records": [
+    {
+      "pair_id": "C027719CD819B",
+      "split": "dev",
+      "paper1_id": "0ca7d8c3250d43d14fdde46bf6fc299654d861ef",
+      "paper1_title": "heterogeneous graph transformer",
+      "paper1_abstract": "recent years have witnessed the emerging success of graph neural networks (gnns) for modeling structured data. however, most gnns are designed for homogeneous graphs, in which all nodes and edges belong to the same types, making it infeasible to represent heterogeneous structures. in this paper, we present the heterogeneous graph transformer (hgt) architecture for modeling web-scale heterogeneous graphs. to model heterogeneity, we design node- and edge-type dependent parameters to characterize the heterogeneous attention over each edge, empowering hgt to maintain dedicated representations for different types of nodes and edges. to handle web-scale graph data, we design the heterogeneous mini-batch graph sampling algorithmhgsamplingfor efficient and scalable training. extensive experiments on the open academic graph of 179 million nodes and 2 billion edges show that the proposed hgt model consistently outperforms all the state-of-the-art gnn baselines by 921 on various downstream tasks. the dataset and source code of hgt are publicly available at",
+      "paper2_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+      "paper2_title": "attention-based graph neural networks: a survey",
+      "paper2_abstract": "graph neural networks (gnns) aim to learn well-trained representations in a lower-dimension space for downstream tasks while preserving the topological structures. in recent years, attention mechanism, which is brilliant in the fields of natural language processing and computer vision, is introduced to gnns to adaptively select the discriminative features and automatically filter the noisy information. to the best of our knowledge, due to the fast-paced advances in this domain, a systematic overview of attention-based gnns is still missing. to fill this gap, this paper aims to provide a comprehensive survey on recent advances in attention-based gnns. firstly, we propose a novel two-level taxonomy for attention-based gnns from the perspective of development history and architectural perspectives. specifically, the upper level reveals the three developmental stages of attention-based gnns, including graph recurrent attention networks, graph attention networks, and graph transformers. the lower level focuses on various typical architectures of each stage. secondly, we review these attention-based methods following the proposed taxonomy in detail and summarize the advantages and disadvantages of various models. a model characteristics table is also provided for a more comprehensive comparison. thirdly, we share our thoughts on some open issues and future directions of attention-based gnns. we hope this survey will provide researchers with an up-to-date reference regarding applications of attention-based gnns. in addition, to cope with the rapid development in this field, we intend to share the relevant latest papers as an open resource at",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "The first paper introduces a specific heterogeneous graph transformer model and reports its performance, while the second paper is a survey of attention‑based GNNs; they address different types of contributions and are not directly comparable.",
+        "timestamp": "2026-09-01T05:18:08.861417Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "C077B8720217C",
+      "split": "dev",
+      "paper1_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+      "paper1_title": "attention-based graph neural networks: a survey",
+      "paper1_abstract": "graph neural networks (gnns) aim to learn well-trained representations in a lower-dimension space for downstream tasks while preserving the topological structures. in recent years, attention mechanism, which is brilliant in the fields of natural language processing and computer vision, is introduced to gnns to adaptively select the discriminative features and automatically filter the noisy information. to the best of our knowledge, due to the fast-paced advances in this domain, a systematic overview of attention-based gnns is still missing. to fill this gap, this paper aims to provide a comprehensive survey on recent advances in attention-based gnns. firstly, we propose a novel two-level taxonomy for attention-based gnns from the perspective of development history and architectural perspectives. specifically, the upper level reveals the three developmental stages of attention-based gnns, including graph recurrent attention networks, graph attention networks, and graph transformers. the lower level focuses on various typical architectures of each stage. secondly, we review these attention-based methods following the proposed taxonomy in detail and summarize the advantages and disadvantages of various models. a model characteristics table is also provided for a more comprehensive comparison. thirdly, we share our thoughts on some open issues and future directions of attention-based gnns. we hope this survey will provide researchers with an up-to-date reference regarding applications of attention-based gnns. in addition, to cope with the rapid development in this field, we intend to share the relevant latest papers as an open resource at",
+      "paper2_id": "df02209677b32692b90e4831d4e5c1c14c13cff8",
+      "paper2_title": "scaling graph neural networks with approximate pagerank",
+      "paper2_abstract": "graph neural networks (gnns) have emerged as a powerful approach for solving many network mining tasks. however, learning on large graphs remains a challenge -- many recently proposed scalable gnn approaches rely on an expensive message-passing procedure to propagate information through the graph. we present the pprgo model which utilizes an efficient approximation of information diffusion in gnns resulting in significant speed gains while maintaining state-of-the-art prediction performance. in addition to being faster, pprgo is inherently scalable, and can be trivially parallelized for large datasets like those found in industry settings. we demonstrate that pprgo outperforms baselines in both distributed and single-machine training environments on a number of commonly used academic graphs. to better analyze the scalability of large-scale graph learning methods, we introduce a novel benchmark graph with 12.4 million nodes, 173 million edges, and 2.8 million node features. we show that training pprgo from scratch and predicting labels for all nodes in this graph takes under 2 minutes on a single machine, far outpacing other baselines on the same graph. we discuss the practical application of pprgo to solve large-scale node classification problems at google.",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "One paper surveys attention‑based GNN methods, whereas the other proposes a scalable GNN using approximate PageRank; the topics and claims do not overlap to allow direct agreement or contradiction.",
+        "timestamp": "2026-09-01T05:18:08.861417Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "C0D27B651D266",
+      "split": "dev",
+      "paper1_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+      "paper1_title": "attention-based graph neural networks: a survey",
+      "paper1_abstract": "graph neural networks (gnns) aim to learn well-trained representations in a lower-dimension space for downstream tasks while preserving the topological structures. in recent years, attention mechanism, which is brilliant in the fields of natural language processing and computer vision, is introduced to gnns to adaptively select the discriminative features and automatically filter the noisy information. to the best of our knowledge, due to the fast-paced advances in this domain, a systematic overview of attention-based gnns is still missing. to fill this gap, this paper aims to provide a comprehensive survey on recent advances in attention-based gnns. firstly, we propose a novel two-level taxonomy for attention-based gnns from the perspective of development history and architectural perspectives. specifically, the upper level reveals the three developmental stages of attention-based gnns, including graph recurrent attention networks, graph attention networks, and graph transformers. the lower level focuses on various typical architectures of each stage. secondly, we review these attention-based methods following the proposed taxonomy in detail and summarize the advantages and disadvantages of various models. a model characteristics table is also provided for a more comprehensive comparison. thirdly, we share our thoughts on some open issues and future directions of attention-based gnns. we hope this survey will provide researchers with an up-to-date reference regarding applications of attention-based gnns. in addition, to cope with the rapid development in this field, we intend to share the relevant latest papers as an open resource at",
+      "paper2_id": "de7ac74b8388d7b5893478b479633af4ed4f97f8",
+      "paper2_title": "sign: scalable inception graph neural networks",
+      "paper2_abstract": "graph representation learning has recently been applied to a broad spectrum of problems ranging from computer graphics and chemistry to high energy physics and social media. the popularity of graph neural networks has sparked interest, both in academia and in industry, in developing methods that scale to very large graphs such as facebook or twitter social networks. in most of these approaches, the computational cost is alleviated by a sampling strategy retaining a subset of node neighbors or subgraphs at training time. in this paper we propose a new, efficient and scalable graph deep learning architecture which sidesteps the need for graph sampling by using graph convolutional filters of different size that are amenable to efficient precomputation, allowing extremely fast training and inference. our architecture allows using different local graph operators (e.g. motif-induced adjacency matrices or personalized page rank diffusion matrix) to best suit the task at hand. we conduct extensive experimental evaluation on various open benchmarks and show that our approach is competitive with other state-of-the-art architectures, while requiring a fraction of the training and inference time.",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper 1 surveys attention-based GNNs, while Paper 2 proposes a scalable GNN architecture without attention; they address different methodological aspects, not directly comparable claims.",
+        "timestamp": "2026-09-01T05:18:23.280470Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "C16C463F74DB4",
+      "split": "dev",
+      "paper1_id": "11ef232ccfb2f69d0de289d07f88e576126f2b44",
+      "paper1_title": "graph neural networks with local graph parameters",
+      "paper1_abstract": "various recent proposals increase the distinguishing power of graph neural networks gnns by propagating features between -tuples of vertices. the distinguishing power of thesehigher-order gnns is known to be bounded by the -dimensional weisfeiler-leman (wl) test, yet their memory requirements limit their applicability. other proposals infuse gnns with local higher-order graph structural information from the start, hereby inheriting the desirable memory requirement from gnns at the cost of a one-time, possibly non-linear, preprocessing step. we propose local graph parameter enabled gnns as a framework for studying the latter kind of approaches and precisely characterize their distinguishing power, in terms of a variant of the wl test, and in terms of the graph structural properties that they can take into account. local graph parameters can be added to any gnn architecture, and are cheap to compute. in terms of expressive power, our proposal lies in the middle of gnns and their higher-order counterparts. further, we propose several techniques to aide in choosing the right local graph parameters. our results connect gnns with deep results in finite model theory and finite variable logics. our experimental evaluation shows that adding local graph parameters often has a positive effect for a variety of gnns, datasets and graph learning tasks.",
+      "paper2_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+      "paper2_title": "leveraging label non-uniformity for node classification in graph neural networks",
+      "paper2_abstract": "in node classification using graph neural networks (gnns), a typical model generates logits for different class labels at each node. a softmax layer often outputs a label prediction based on the largest logit. we demonstrate that it is possible to infer hidden graph structural information from the dataset using these logits. we introduce the key notion of label non-uniformity, which is derived from the wasserstein distance between the softmax distribution of the logits and the uniform distribution. we demonstrate that nodes with small label non-uniformity are harder to classify correctly. we theoretically analyze how the label non-uniformity varies across the graph, which provides insights into boosting the model performance: increasing training samples with high non-uniformity or dropping edges to reduce the maximal cut size of the node set of small non-uniformity. these mechanisms can be easily added to a base gnn model. experimental results demonstrate that our approach improves the performance of many benchmark base models.",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper 1 introduces local graph parameters to enhance GNN expressive power, whereas Paper 2 exploits label non‑uniformity for node classification; the approaches target distinct mechanisms, so their claims are not directly contradictory.",
+        "timestamp": "2026-09-01T05:18:23.280470Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "C30E29164B2EE",
+      "split": "dev",
+      "paper1_id": "454304628bf10f02aba1c2cfc95891e94d09208e",
+      "paper1_title": "graph neural networks with learnable structural and positional representations",
+      "paper1_abstract": "graph neural networks (gnns) have become the standard learning architectures for graphs. gnns have been applied to numerous domains ranging from quantum chemistry, recommender systems to knowledge graphs and natural language processing. a major issue with arbitrary graphs is the absence of canonical positional information of nodes, which decreases the representation power of gnns to distinguish e.g. isomorphic nodes and other graph symmetries. an approach to tackle this issue is to introduce positional encoding (pe) of nodes, and inject it into the input layer, like in transformers. possible graph pe are laplacian eigenvectors. in this work, we propose to decouple structural and positional representations to make easy for the network to learn these two essential properties. we introduce a novel generic architecture which we call lspe (learnable structural and positional encodings). we investigate several sparse and fully-connected (transformer-like) gnns, and observe a performance increase for molecular datasets, from 1.79 up to 64.14 when considering learnable pe for both gnn classes.",
+      "paper2_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "paper2_title": "capturing molecular interactions in graph neural networks: a case study in multi-component phase equilibrium",
+      "paper2_abstract": "graph neural networks (gnns) have been widely used for predicting molecular properties, especially for single molecules. however, when treating multi-component systems, gnns have mostly used simple data representations (concatenation, averaging,...",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper1 focuses on learnable structural/positional encodings for GNNs on molecular datasets, while Paper2 addresses data representations for multi-component phase equilibrium; the claims pertain to distinct aspects and settings, not directly comparable.",
+        "timestamp": "2026-09-01T05:18:35.450902Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "C4B5164DB2A80",
+      "split": "dev",
+      "paper1_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+      "paper1_title": "leveraging label non-uniformity for node classification in graph neural networks",
+      "paper1_abstract": "in node classification using graph neural networks (gnns), a typical model generates logits for different class labels at each node. a softmax layer often outputs a label prediction based on the largest logit. we demonstrate that it is possible to infer hidden graph structural information from the dataset using these logits. we introduce the key notion of label non-uniformity, which is derived from the wasserstein distance between the softmax distribution of the logits and the uniform distribution. we demonstrate that nodes with small label non-uniformity are harder to classify correctly. we theoretically analyze how the label non-uniformity varies across the graph, which provides insights into boosting the model performance: increasing training samples with high non-uniformity or dropping edges to reduce the maximal cut size of the node set of small non-uniformity. these mechanisms can be easily added to a base gnn model. experimental results demonstrate that our approach improves the performance of many benchmark base models.",
+      "paper2_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "paper2_title": "directional message passing for molecular graphs",
+      "paper2_abstract": "graph neural networks have recently achieved great successes in predicting quantum mechanical properties of molecules. these models represent a molecule as a graph using only the distance between atoms (nodes) and not the spatial direction from one atom to another. however, directional information plays a central role in empirical potentials for molecules, e.g. in angular potentials. to alleviate this limitation we propose directional message passing, in which we embed the messages passed between atoms instead of the atoms themselves. each message is associated with a direction in coordinate space. these directional message embeddings are rotationally equivariant since the associated directions rotate with the molecule. we propose a message passing scheme analogous to belief propagation, which uses the directional information by transforming messages based on the angle between them. additionally, we use spherical bessel functions to construct a theoretically well-founded, orthogonal radial basis that achieves better performance than the currently prevalent gaussian radial basis functions while using more than 4x fewer parameters. we leverage these innovations to construct the directional message passing neural network (dimenet). dimenet outperforms previous gnns on average by 77 on md17 and by 41 on qm9.",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper1 improves node classification via label non-uniformity, whereas Paper2 proposes directional message passing for molecular property prediction; the tasks, datasets, and methods differ, so the claims are not directly comparable.",
+        "timestamp": "2026-09-01T05:18:35.450902Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "C5C0166F69B86",
+      "split": "dev",
+      "paper1_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "paper1_title": "weisfeiler and lehman go cellular: cw networks",
+      "paper1_abstract": "graph neural networks (gnns) are limited in their expressive power, struggle with long-range interactions and lack a principled way to model higher-order structures. these problems can be attributed to the strong coupling between the computational graph and the input graph structure. the recently proposed message passing simplicial networks naturally decouple these elements by performing message passing on the clique complex of the graph. nevertheless, these models can be severely constrained by the rigid combinatorial structure of simplicial complexes (scs). in this work, we extend recent theoretical results on scs to regular cell complexes, topological objects that flexibly subsume scs and graphs. we show that this generalisation provides a powerful set of graphliftingtransformations, each leading to a unique hierarchical message passing procedure. the resulting methods, which we collectively call cw networks (cwns), are strictly more powerful than the wl test and not less powerful than the 3-wl test. in particular, we demonstrate the effectiveness of one such scheme, based on rings, when applied to molecular graph problems. the proposed architecture benefits from provably larger expressivity than commonly used gnns, principled modelling of higher-order signals and from compressing the distances between nodes. we demonstrate that our model achieves state-of-the-art results on a variety of molecular datasets.",
+      "paper2_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+      "paper2_title": "leveraging label non-uniformity for node classification in graph neural networks",
+      "paper2_abstract": "in node classification using graph neural networks (gnns), a typical model generates logits for different class labels at each node. a softmax layer often outputs a label prediction based on the largest logit. we demonstrate that it is possible to infer hidden graph structural information from the dataset using these logits. we introduce the key notion of label non-uniformity, which is derived from the wasserstein distance between the softmax distribution of the logits and the uniform distribution. we demonstrate that nodes with small label non-uniformity are harder to classify correctly. we theoretically analyze how the label non-uniformity varies across the graph, which provides insights into boosting the model performance: increasing training samples with high non-uniformity or dropping edges to reduce the maximal cut size of the node set of small non-uniformity. these mechanisms can be easily added to a base gnn model. experimental results demonstrate that our approach improves the performance of many benchmark base models.",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper 1 focuses on expressive power of CW networks for molecular graph tasks, while Paper 2 studies label non-uniformity for node classification, addressing distinct problems and datasets.",
+        "timestamp": "2026-09-01T05:18:49.611201Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "C64CC94134C98",
+      "split": "dev",
+      "paper1_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+      "paper1_title": "graph neural networks: architectures, stability, and transferability",
+      "paper1_abstract": "graph neural networks (gnns) are information processing architectures for signals supported on graphs. they are presented here as generalizations of convolutional neural networks (cnns) in which individual layers contain banks of graph convolutional filters instead of banks of classical convolutional filters. otherwise, gnns operate as cnns. filters are composed of pointwise nonlinearities and stacked in layers. it is shown that gnn architectures exhibit equivariance to permutation and stability to graph deformations. these properties help explain the good performance of gnns that can be observed empirically. it is also shown that if graphs converge to a limit object, a graphon, gnns converge to a corresponding limit object, a graphon neural network. this convergence justifies the transferability of gnns across networks with different numbers of nodes. concepts are illustrated by the application of gnns to recommendation systems, decentralized collaborative control, and wireless communication networks.",
+      "paper2_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "paper2_title": "graph neural network: current state of art, challenges and applications",
+      "paper2_abstract": "abstract several areas in science and engineering have the relationships between their underlying data which can be represented as graphs, for example, molecular chemistry, node prediction, link prediction, computer vision, pattern recognition, social networking and more. in this article, an approach to a model which can handle such type of data is elaborated, which is graph neural networks (gnn). gnn encompasses the neural network technique to process the data which is represented as graphs. due to its massive success, gnn has made its way into many applications and is a popular architecture to work upon. this paper explains the graph neural networks, its area of applications and its day-to-day use in our daily lives. some of the very common application is a social networking site which is on our hands regularly, and another could be the recommendation system which recommends us friends, or the products of our interest based on our pat choices and preferences. this paper also demonstrates the basic challenges encountered while implementing gnn. this paper will be a great help to those researchers who are keen to work in the domain of gnn.",
+      "response": {
+        "label": "AGREEMENT",
+        "reason": "Both papers discuss general properties, challenges, and applications of graph neural networks without presenting conflicting claims.",
+        "timestamp": "2026-09-01T05:18:49.611201Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "C8F3CEAC2F3FF",
+      "split": "dev",
+      "paper1_id": "07c3d4570b98eaa048777638644b8a3a988cd38c",
+      "paper1_title": "how framelets enhance graph neural networks",
+      "paper1_abstract": "this paper presents a new approach for assembling graph neural networks based on framelet transforms. the latter provides a multi-scale representation for graph-structured data. we decompose an input graph into low-pass and high-pass frequencies coefficients for network training, which then defines a framelet-based graph convolution. the framelet decomposition naturally induces a graph pooling strategy by aggregating the graph feature into low-pass and high-pass spectra, which considers both the feature values and geometry of the graph data and conserves the total information. the graph neural networks with the proposed framelet convolution and pooling achieve state-of-the-art performance in many node and graph prediction tasks. moreover, we propose shrinkage as a new activation for the framelet convolution, which thresholds high-frequency information at different scales. compared to relu, shrinkage activation improves model performance on denoising and signal compression: noises in both node and structure can be significantly reduced by accurately cutting off the high-pass coefficients from framelet decomposition, and the signal can be compressed to less than half its original size with well-preserved prediction performance.",
+      "paper2_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+      "paper2_title": "on the bottleneck of graph neural networks and its practical implications",
+      "paper2_abstract": "graph neural networks (gnns) were shown to effectively learn from highly structured data containing elements (nodes) with relationships (edges) between them. gnn variants differ in how each node in the graph absorbs the information flowing from its neighbor nodes. in this paper, we highlight an inherent problem in gnns: the mechanism of propagating information between neighbors creates a bottleneck when every node aggregates messages from its neighbors. this bottleneck causes the over-squashing of exponentially-growing information into fixed-size vectors. as a result, the graph fails to propagate messages flowing from distant nodes and performs poorly when the prediction task depends on long-range information. we demonstrate that the bottleneck hinders popular gnns from fitting the training data. we show that gnns that absorb incoming edges equally, like gcn and gin, are more susceptible to over-squashing than other gnn types. we further show that existing, extensively-tuned, gnn-based models suffer from over-squashing and that breaking the bottleneck improves state-of-the-art results without any hyperparameter tuning or additional weights.",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper1 studies framelet‑based GNNs for denoising and compression, while Paper2 investigates the over‑squashing bottleneck in generic GNNs; the claims address distinct mechanisms and issues, so they are not directly comparable.",
+        "timestamp": "2026-09-01T05:19:02.585207Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "C98BAECD7D4C2",
+      "split": "dev",
+      "paper1_id": "1784a18105dafb85e2c53c86a9736fc7b8b71316",
+      "paper1_title": "expressive power of invariant and equivariant graph neural networks",
+      "paper1_abstract": "various classes of graph neural networks (gnn) have been proposed and shown to be successful in a wide range of applications with graph structured data. in this paper, we propose a theoretical framework able to compare the expressive power of these gnn architectures. the current universality theorems only apply to intractable classes of gnns. here, we prove the first approximation guarantees for practical gnns, paving the way for a better understanding of their generalization. our theoretical results are proved for invariant gnns computing a graph embedding (permutation of the nodes of the input graph does not affect the output) and equivariant gnns computing an embedding of the nodes (permutation of the input permutes the output). we show that folklore graph neural networks (fgnn), which are tensor based gnns augmented with matrix multiplication are the most expressive architectures proposed so far for a given tensor order. we illustrate our results on the quadratic assignment problem (a np-hard combinatorial problem) by showing that fgnns are able to learn how to solve the problem, leading to much better average performances than existing algorithms (based on spectral, sdp or other gnns architectures). on a practical side, we also implement masked tensors to handle batches of graphs of varying sizes.",
+      "paper2_id": "dd5e6e0212ec529fefd7dd8bcfa02d16269a5a7a",
+      "paper2_title": "a general tensor prediction framework based on graph neural networks.",
+      "paper2_abstract": "graph neural networks (gnns) have been shown to be extremely flexible and accurate in predicting the physical properties of molecules and crystals. however, traditional invariant gnns are not compatible with directional properties, which currently limits their usage to the prediction of only invariant scalar properties. to address this issue, here we propose a general framework, i.e., an edge-based tensor prediction graph neural network, in which a tensor is expressed as the linear combination of the local spatial components projected on the edge directions of clusters with varying sizes. this tensor decomposition is rotationally equivariant and exactly satisfies the symmetry of the local structures. the accuracy and universality of our new framework are demonstrated by the successful prediction of various tensor properties from first to third order. the framework proposed in this work will enable gnns to step into the broad field of prediction of directional properties.",
+      "response": {
+        "label": "AGREEMENT",
+        "reason": "Both papers emphasize the power of tensor‑based or edge‑based GNN architectures for handling complex (directional or higher‑order) graph tasks, asserting superior expressive or predictive capability, making their conclusions compatible.",
+        "timestamp": "2026-09-01T05:19:02.585207Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "CA10145B0BC8C",
+      "split": "dev",
+      "paper1_id": "0ee0801ba010a441403f9ed666ef9bf006b3aa07",
+      "paper1_title": "adaptive universal generalized pagerank graph neural network",
+      "paper1_abstract": "in many important graph data processing applications the acquired information includes both node features and observations of the graph topology. graph neural networks (gnns) are designed to exploit both sources of evidence but they do not optimally trade-off their utility and integrate them in a manner that is also universal. here, universality refers to independence on homophily or heterophily graph assumptions. we address these issues by introducing a new generalized pagerank (gpr) gnn architecture that adaptively learns the gpr weights so as to jointly optimize node feature and topological information extraction, regardless of the extent to which the node labels are homophilic or heterophilic. learned gpr weights automatically adjust to the node label pattern, irrelevant on the type of initialization, and thereby guarantee excellent learning performance for label patterns that are usually hard to handle. furthermore, they allow one to avoid feature over-smoothing, a process which renders feature information nondiscriminative, without requiring the network to be shallow. our accompanying theoretical analysis of the gpr-gnn method is facilitated by novel synthetic benchmark datasets generated by the so-called contextual stochastic block model. we also compare the performance of our gnn architecture with that of several state-of-the-art gnns on the problem of node-classification, using well-known benchmark homophilic and heterophilic datasets. the results demonstrate that gpr-gnn offers significant performance improvement compared to existing techniques on both synthetic and benchmark data.",
+      "paper2_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+      "paper2_title": "attention-based graph neural networks: a survey",
+      "paper2_abstract": "graph neural networks (gnns) aim to learn well-trained representations in a lower-dimension space for downstream tasks while preserving the topological structures. in recent years, attention mechanism, which is brilliant in the fields of natural language processing and computer vision, is introduced to gnns to adaptively select the discriminative features and automatically filter the noisy information. to the best of our knowledge, due to the fast-paced advances in this domain, a systematic overview of attention-based gnns is still missing. to fill this gap, this paper aims to provide a comprehensive survey on recent advances in attention-based gnns. firstly, we propose a novel two-level taxonomy for attention-based gnns from the perspective of development history and architectural perspectives. specifically, the upper level reveals the three developmental stages of attention-based gnns, including graph recurrent attention networks, graph attention networks, and graph transformers. the lower level focuses on various typical architectures of each stage. secondly, we review these attention-based methods following the proposed taxonomy in detail and summarize the advantages and disadvantages of various models. a model characteristics table is also provided for a more comprehensive comparison. thirdly, we share our thoughts on some open issues and future directions of attention-based gnns. we hope this survey will provide researchers with an up-to-date reference regarding applications of attention-based gnns. in addition, to cope with the rapid development in this field, we intend to share the relevant latest papers as an open resource at",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper1 introduces a new GPR‑GNN architecture, while Paper2 is a survey of attention‑based GNNs; they address distinct topics and are not directly comparable.",
+        "timestamp": "2026-09-01T05:19:18.359651Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "CA1B115C319E9",
+      "split": "dev",
+      "paper1_id": "2db550467862c3bea38901cef84d86efed31b8d2",
+      "paper1_title": "topological graph neural networks",
+      "paper1_abstract": "graph neural networks (gnns) are a powerful architecture for tackling graph learning tasks, yet have been shown to be oblivious to eminent substructures such as cycles. we present togl, a novel layer that incorporates global topological information of a graph using persistent homology. togl can be easily integrated into any type of gnn and is strictly more expressive (in terms the weisfeiler--lehman graph isomorphism test) than message-passing gnns. augmenting gnns with togl leads to improved predictive performance for graph and node classification tasks, both on synthetic data sets, which can be classified by humans using their topology but not by ordinary gnns, and on real-world data.",
+      "paper2_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+      "paper2_title": "leveraging label non-uniformity for node classification in graph neural networks",
+      "paper2_abstract": "in node classification using graph neural networks (gnns), a typical model generates logits for different class labels at each node. a softmax layer often outputs a label prediction based on the largest logit. we demonstrate that it is possible to infer hidden graph structural information from the dataset using these logits. we introduce the key notion of label non-uniformity, which is derived from the wasserstein distance between the softmax distribution of the logits and the uniform distribution. we demonstrate that nodes with small label non-uniformity are harder to classify correctly. we theoretically analyze how the label non-uniformity varies across the graph, which provides insights into boosting the model performance: increasing training samples with high non-uniformity or dropping edges to reduce the maximal cut size of the node set of small non-uniformity. these mechanisms can be easily added to a base gnn model. experimental results demonstrate that our approach improves the performance of many benchmark base models.",
+      "response": {
+        "label": "AGREEMENT",
+        "reason": "Both papers claim that augmenting GNNs with additional structural information (topological features or label non‑uniformity) improves node/graph classification performance, so their conclusions are compatible.",
+        "timestamp": "2026-09-01T05:19:18.359651Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "CA9C71B43B00D",
+      "split": "dev",
+      "paper1_id": "454304628bf10f02aba1c2cfc95891e94d09208e",
+      "paper1_title": "graph neural networks with learnable structural and positional representations",
+      "paper1_abstract": "graph neural networks (gnns) have become the standard learning architectures for graphs. gnns have been applied to numerous domains ranging from quantum chemistry, recommender systems to knowledge graphs and natural language processing. a major issue with arbitrary graphs is the absence of canonical positional information of nodes, which decreases the representation power of gnns to distinguish e.g. isomorphic nodes and other graph symmetries. an approach to tackle this issue is to introduce positional encoding (pe) of nodes, and inject it into the input layer, like in transformers. possible graph pe are laplacian eigenvectors. in this work, we propose to decouple structural and positional representations to make easy for the network to learn these two essential properties. we introduce a novel generic architecture which we call lspe (learnable structural and positional encodings). we investigate several sparse and fully-connected (transformer-like) gnns, and observe a performance increase for molecular datasets, from 1.79 up to 64.14 when considering learnable pe for both gnn classes.",
+      "paper2_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "paper2_title": "directional message passing for molecular graphs",
+      "paper2_abstract": "graph neural networks have recently achieved great successes in predicting quantum mechanical properties of molecules. these models represent a molecule as a graph using only the distance between atoms (nodes) and not the spatial direction from one atom to another. however, directional information plays a central role in empirical potentials for molecules, e.g. in angular potentials. to alleviate this limitation we propose directional message passing, in which we embed the messages passed between atoms instead of the atoms themselves. each message is associated with a direction in coordinate space. these directional message embeddings are rotationally equivariant since the associated directions rotate with the molecule. we propose a message passing scheme analogous to belief propagation, which uses the directional information by transforming messages based on the angle between them. additionally, we use spherical bessel functions to construct a theoretically well-founded, orthogonal radial basis that achieves better performance than the currently prevalent gaussian radial basis functions while using more than 4x fewer parameters. we leverage these innovations to construct the directional message passing neural network (dimenet). dimenet outperforms previous gnns on average by 77 on md17 and by 41 on qm9.",
+      "response": {
+        "label": "AGREEMENT",
+        "reason": "Both papers report that their proposed GNN enhancements lead to performance improvements on molecular property prediction tasks.",
+        "timestamp": "2026-09-01T05:19:36.284964Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "CC1ECCBE101E1",
+      "split": "dev",
+      "paper1_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+      "paper1_title": "on the bottleneck of graph neural networks and its practical implications",
+      "paper1_abstract": "graph neural networks (gnns) were shown to effectively learn from highly structured data containing elements (nodes) with relationships (edges) between them. gnn variants differ in how each node in the graph absorbs the information flowing from its neighbor nodes. in this paper, we highlight an inherent problem in gnns: the mechanism of propagating information between neighbors creates a bottleneck when every node aggregates messages from its neighbors. this bottleneck causes the over-squashing of exponentially-growing information into fixed-size vectors. as a result, the graph fails to propagate messages flowing from distant nodes and performs poorly when the prediction task depends on long-range information. we demonstrate that the bottleneck hinders popular gnns from fitting the training data. we show that gnns that absorb incoming edges equally, like gcn and gin, are more susceptible to over-squashing than other gnn types. we further show that existing, extensively-tuned, gnn-based models suffer from over-squashing and that breaking the bottleneck improves state-of-the-art results without any hyperparameter tuning or additional weights.",
+      "paper2_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "paper2_title": "graph neural network: current state of art, challenges and applications",
+      "paper2_abstract": "abstract several areas in science and engineering have the relationships between their underlying data which can be represented as graphs, for example, molecular chemistry, node prediction, link prediction, computer vision, pattern recognition, social networking and more. in this article, an approach to a model which can handle such type of data is elaborated, which is graph neural networks (gnn). gnn encompasses the neural network technique to process the data which is represented as graphs. due to its massive success, gnn has made its way into many applications and is a popular architecture to work upon. this paper explains the graph neural networks, its area of applications and its day-to-day use in our daily lives. some of the very common application is a social networking site which is on our hands regularly, and another could be the recommendation system which recommends us friends, or the products of our interest based on our pat choices and preferences. this paper also demonstrates the basic challenges encountered while implementing gnn. this paper will be a great help to those researchers who are keen to work in the domain of gnn.",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper 1 studies a specific over‑squashing bottleneck in GNNs, while Paper 2 is a general survey of GNN applications and challenges; their claims are not directly comparable.",
+        "timestamp": "2026-09-01T05:19:36.284964Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "CCE205A9EC39B",
+      "split": "dev",
+      "paper1_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "paper1_title": "capturing molecular interactions in graph neural networks: a case study in multi-component phase equilibrium",
+      "paper1_abstract": "graph neural networks (gnns) have been widely used for predicting molecular properties, especially for single molecules. however, when treating multi-component systems, gnns have mostly used simple data representations (concatenation, averaging,...",
+      "paper2_id": "f7b550cba2d61b3fb676e72c92c245134363fda1",
+      "paper2_title": "neural message passing on high order paths",
+      "paper2_abstract": "graph neural network have achieved impressive results in predicting molecular properties, but they do not directly account for local and hidden structures in the graph such as functional groups and molecular geometry. at each propagation step, gnns aggregate only over first order neighbours, ignoring important information contained in subsequent neighbours as well as the relationships between those higher order connections. in this work, we generalize graph neural nets to pass messages and aggregate across higher order paths. this allows for information to propagate over various levels and substructures of the graph. we demonstrate our model on a few tasks in molecular property prediction.",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper 1 focuses on GNNs for multi‑component phase equilibrium, whereas Paper 2 introduces higher‑order path message passing for molecular property prediction; the topics address different aspects of GNN usage.",
+        "timestamp": "2026-09-01T05:19:36.284964Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "pair_id": "CD696C0D85306",
+      "split": "dev",
+      "paper1_id": "6667a57c8ffa3f3c0d724b1e8e986758995df2b8",
+      "paper1_title": "equivariant subgraph aggregation networks",
+      "paper1_abstract": "message-passing neural networks (mpnns) are the leading architecture for deep learning on graph-structured data, in large part due to their simplicity and scalability. unfortunately, it was shown that these architectures are limited in their expressive power. this paper proposes a novel framework called equivariant subgraph aggregation networks (esan) to address this issue. our main observation is that while two graphs may not be distinguishable by an mpnn, they often contain distinguishable subgraphs. thus, we propose to represent each graph as a set of subgraphs derived by some predefined policy, and to process it using a suitable equivariant architecture. we develop novel variants of the 1-dimensional weisfeiler-leman (1-wl) test for graph isomorphism, and prove lower bounds on the expressiveness of esan in terms of these new wl variants. we further prove that our approach increases the expressive power of both mpnns and more expressive architectures. moreover, we provide theoretical results that describe how design choices such as the subgraph selection policy and equivariant neural architecture affect our architectures expressive power. to deal with the increased computational cost, we propose a subgraph sampling scheme, which can be viewed as a stochastic version of our framework. a comprehensive set of experiments on real and synthetic datasets demonstrates that our framework improves the expressive power and overall performance of popular gnn architectures.",
+      "paper2_id": "b5bde7463763595d46a35fd36c0aebadfaa9eb17",
+      "paper2_title": "openhgnn: an open source toolkit for heterogeneous graph neural network",
+      "paper2_abstract": "heterogeneous graph neural networks (hgnns), as a kind of powerful graph representation learning methods on heterogeneous graphs, have attracted increasing attention of many researchers. although, several existing libraries have supported hgnns, they just provide the most basic models and operators. building and benchmarking various downstream tasks on hgnns is still painful and time consuming with them. in this paper, we will introduce openhgnn, an open-source toolkit for hgnns. openhgnn defines a unified and standard pipeline for training and testing, which can allow users to run a model on a specific dataset with just one command line. openhgnn has integrated 20 mainstream hgnns and 20 heterogeneous graph datasets, which can be used for various advanced tasks, such as node classification, link prediction, and recommendation. in addition, thanks to the modularized design of openhgnn, it can be extended to meet users customized needs. we also release several novel and useful tools and features, including leaderboard, automl, design space, and visualization, to provide users with better usage experiences. openhgnn is an open-source project, and the source code is available at",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper 1 proposes a new GNN architecture (ESAN) to improve expressive power, while Paper 2 presents a software toolkit for heterogeneous GNNs; the works address different objectives and are not directly comparable.",
+        "timestamp": "2026-09-01T05:19:46.333964Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    }
+  ],
+  "annotation_methodology": {
+    "annotation_source": "AI-generated",
+    "models": [
+      "openai/gpt-oss-120b"
+    ],
+    "independent_human_review": false,
+    "human_ground_truth": false,
+    "preexisting_responses_preserved": []
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "split": "dev",
+  "query_count": 6,
+  "task_output_counts": {
+    "contradiction": 6,
+    "support": 6,
+    "hypothesis": 6
+  },
+  "failure_count": 0
+}

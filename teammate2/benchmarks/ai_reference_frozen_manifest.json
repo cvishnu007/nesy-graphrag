@@ -1,0 +1,51 @@
+{
+  "manifest_version": "1.0",
+  "status": "complete",
+  "frozen_at_utc": "2026-09-01T10:50:53.346356Z",
+  "reference_annotation_source": "AI-generated",
+  "human_ground_truth": false,
+  "benchmarks": {
+    "contradiction": {
+      "path": "evaluation/benchmarks/contradiction_pairs.json",
+      "benchmark_version": "1.0-ai-reference-frozen",
+      "status": "frozen",
+      "count": 62,
+      "split_counts": {
+        "dev": 23,
+        "test": 39
+      },
+      "source_sha256": "8f0da15da3648ba0d14fb63cfe92109347061b6cc3311c82946f5d5634af5b3c",
+      "sha256": "f3393b9aa428ae75c536c11e9ecb89c751d658d8625af6168f372f6e59d7f410",
+      "reference_annotation_source": "AI-generated",
+      "human_ground_truth": false
+    },
+    "support": {
+      "path": "evaluation/benchmarks/claim_support.json",
+      "benchmark_version": "1.0-ai-reference-frozen",
+      "status": "frozen",
+      "count": 151,
+      "split_counts": {
+        "dev": 56,
+        "test": 95
+      },
+      "source_sha256": "67f4605ba5a79bb56f4bd7bd4c7ae742837833556dab1b7a9aa73f896847e55f",
+      "sha256": "4c4f33ceb00003092d779b612a3597599d95d9ccb388179a784f5e4ae48a2469",
+      "reference_annotation_source": "AI-generated",
+      "human_ground_truth": false
+    },
+    "hypothesis": {
+      "path": "evaluation/benchmarks/hypothesis_ratings.json",
+      "benchmark_version": "1.0-ai-reference-frozen",
+      "status": "frozen",
+      "count": 100,
+      "split_counts": {
+        "dev": 30,
+        "test": 70
+      },
+      "source_sha256": "5169d4e1955bf4f91b43dd70db2e64804f4716fd225597155d783551f8072345",
+      "sha256": "4f21088947d2abc1a1425d6143c942372c1dfd6e215a6186280f1cc332002acd",
+      "reference_annotation_source": "AI-generated",
+      "human_ground_truth": false
+    }
+  }
+}

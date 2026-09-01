@@ -1,0 +1,398 @@
+{
+  "read_only": true,
+  "passed": 7,
+  "failed": 0,
+  "not_run": 0,
+  "all_required_passed": true,
+  "checks": [
+    {
+      "check": "chroma",
+      "status": "passed",
+      "mutates_state": false,
+      "runtime_seconds": 1.850494999991497,
+      "details": {
+        "path": "./data/chromadb",
+        "collection": "s2_papers",
+        "count": 8850,
+        "read_sample_count": 1
+      }
+    },
+    {
+      "check": "neo4j",
+      "status": "passed",
+      "mutates_state": false,
+      "runtime_seconds": 3.980911799997557,
+      "details": {
+        "paper_count": 8850,
+        "query": "read-only count"
+      }
+    },
+    {
+      "check": "local_nli",
+      "status": "passed",
+      "mutates_state": false,
+      "runtime_seconds": 9.817960499989567,
+      "details": {
+        "model": "cross-encoder/nli-deberta-v3-small",
+        "production_configuration_overridden": true,
+        "prediction": {
+          "label": "SUPPORTED",
+          "confidence": 0.994755744934082,
+          "valid": true,
+          "reason": "Deterministic mapping from local NLI class probabilities.",
+          "model": "cross-encoder/nli-deberta-v3-small",
+          "nli_scores": {
+            "contradiction": 0.00017443459364585578,
+            "entailment": 0.994755744934082,
+            "neutral": 0.005069846287369728
+          }
+        }
+      }
+    },
+    {
+      "check": "groq",
+      "status": "passed",
+      "mutates_state": false,
+      "runtime_seconds": 0.8314189000229817,
+      "details": {
+        "model_count": 14,
+        "model_ids": [
+          "allam-2-7b",
+          "canopylabs/orpheus-arabic-saudi",
+          "canopylabs/orpheus-v1-english",
+          "groq/compound",
+          "groq/compound-mini",
+          "meta-llama/llama-prompt-guard-2-22m",
+          "meta-llama/llama-prompt-guard-2-86m",
+          "openai/gpt-oss-120b",
+          "openai/gpt-oss-20b",
+          "openai/gpt-oss-safeguard-20b",
+          "qwen/qwen3.6-27b",
+          "qwen/qwen3.8-27b",
+          "whisper-large-v3",
+          "whisper-large-v3-turbo"
+        ]
+      }
+    },
+    {
+      "check": "semantic_review",
+      "status": "passed",
+      "mutates_state": false,
+      "runtime_seconds": 13.270241499994881,
+      "details": {
+        "paper_count": 2,
+        "claim_count": 1,
+        "semantic_support": {
+          "enabled": true,
+          "annotation_source": "AI-generated semantic support decisions",
+          "human_review": false,
+          "model": "cross-encoder/nli-deberta-v3-small",
+          "min_confidence": 0.7,
+          "decisions": [
+            {
+              "claim_id": "claim-001",
+              "passage_ids": [
+                "P0ef8e96d4f98b155-S001",
+                "P0ef8e96d4f98b155-S002"
+              ],
+              "support_label": "SUPPORTED",
+              "confidence": 0.9954262375831604,
+              "per_passage": [
+                {
+                  "passage_id": "P0ef8e96d4f98b155-S001",
+                  "label": "UNSUPPORTED",
+                  "confidence": 0.9947472214698792,
+                  "valid": true,
+                  "model": "cross-encoder/nli-deberta-v3-small",
+                  "reason": "Deterministic mapping from local NLI class probabilities.",
+                  "error": "",
+                  "raw": {
+                    "label": "UNSUPPORTED",
+                    "confidence": 0.9947472214698792,
+                    "valid": true,
+                    "reason": "Deterministic mapping from local NLI class probabilities.",
+                    "model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_scores": {
+                      "contradiction": 0.0033954728860408068,
+                      "entailment": 0.001857272582128644,
+                      "neutral": 0.9947472214698792
+                    }
+                  }
+                },
+                {
+                  "passage_id": "P0ef8e96d4f98b155-S002",
+                  "label": "SUPPORTED",
+                  "confidence": 0.9954262375831604,
+                  "valid": true,
+                  "model": "cross-encoder/nli-deberta-v3-small",
+                  "reason": "Deterministic mapping from local NLI class probabilities.",
+                  "error": "",
+                  "raw": {
+                    "label": "SUPPORTED",
+                    "confidence": 0.9954262375831604,
+                    "valid": true,
+                    "reason": "Deterministic mapping from local NLI class probabilities.",
+                    "model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_scores": {
+                      "contradiction": 0.0003772767377085984,
+                      "entailment": 0.9954262375831604,
+                      "neutral": 0.004196541849523783
+                    }
+                  }
+                }
+              ],
+              "valid": true,
+              "model": "cross-encoder/nli-deberta-v3-small",
+              "audit": {
+                "errors": [],
+                "min_confidence": 0.7,
+                "eligible_passage_count": 2
+              }
+            },
+            {
+              "claim_id": "claim-002",
+              "passage_ids": [
+                "P0ef8e96d4f98b155-S005",
+                "P0ef8e96d4f98b155-S006"
+              ],
+              "support_label": "UNSUPPORTED",
+              "confidence": 0.9995668530464172,
+              "per_passage": [
+                {
+                  "passage_id": "P0ef8e96d4f98b155-S005",
+                  "label": "UNSUPPORTED",
+                  "confidence": 0.9995668530464172,
+                  "valid": true,
+                  "model": "cross-encoder/nli-deberta-v3-small",
+                  "reason": "Deterministic mapping from local NLI class probabilities.",
+                  "error": "",
+                  "raw": {
+                    "label": "UNSUPPORTED",
+                    "confidence": 0.9995668530464172,
+                    "valid": true,
+                    "reason": "Deterministic mapping from local NLI class probabilities.",
+                    "model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_scores": {
+                      "contradiction": 0.00011052784248022363,
+                      "entailment": 0.0003226209955755621,
+                      "neutral": 0.9995668530464172
+                    }
+                  }
+                },
+                {
+                  "passage_id": "P0ef8e96d4f98b155-S006",
+                  "label": "UNSUPPORTED",
+                  "confidence": 0.999419093132019,
+                  "valid": true,
+                  "model": "cross-encoder/nli-deberta-v3-small",
+                  "reason": "Deterministic mapping from local NLI class probabilities.",
+                  "error": "",
+                  "raw": {
+                    "label": "UNSUPPORTED",
+                    "confidence": 0.999419093132019,
+                    "valid": true,
+                    "reason": "Deterministic mapping from local NLI class probabilities.",
+                    "model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_scores": {
+                      "contradiction": 0.0001282705634366721,
+                      "entailment": 0.00045265271910466254,
+                      "neutral": 0.999419093132019
+                    }
+                  }
+                }
+              ],
+              "valid": true,
+              "model": "cross-encoder/nli-deberta-v3-small",
+              "audit": {
+                "errors": [],
+                "min_confidence": 0.7,
+                "eligible_passage_count": 2
+              }
+            },
+            {
+              "claim_id": "claim-003",
+              "passage_ids": [
+                "P0ef8e96d4f98b155-S007",
+                "P0ef8e96d4f98b155-S008"
+              ],
+              "support_label": "UNSUPPORTED",
+              "confidence": 0.997115969657898,
+              "per_passage": [
+                {
+                  "passage_id": "P0ef8e96d4f98b155-S007",
+                  "label": "UNSUPPORTED",
+                  "confidence": 0.997115969657898,
+                  "valid": true,
+                  "model": "cross-encoder/nli-deberta-v3-small",
+                  "reason": "Deterministic mapping from local NLI class probabilities.",
+                  "error": "",
+                  "raw": {
+                    "label": "UNSUPPORTED",
+                    "confidence": 0.997115969657898,
+                    "valid": true,
+                    "reason": "Deterministic mapping from local NLI class probabilities.",
+                    "model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_scores": {
+                      "contradiction": 0.00017732269770931453,
+                      "entailment": 0.002706762170419097,
+                      "neutral": 0.997115969657898
+                    }
+                  }
+                },
+                {
+                  "passage_id": "P0ef8e96d4f98b155-S008",
+                  "label": "PARTIALLY_SUPPORTED",
+                  "confidence": 0.5302997827529907,
+                  "valid": true,
+                  "model": "cross-encoder/nli-deberta-v3-small",
+                  "reason": "Deterministic mapping from local NLI class probabilities.",
+                  "error": "",
+                  "raw": {
+                    "label": "PARTIALLY_SUPPORTED",
+                    "confidence": 0.5302997827529907,
+                    "valid": true,
+                    "reason": "Deterministic mapping from local NLI class probabilities.",
+                    "model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_scores": {
+                      "contradiction": 0.0007611148757860065,
+                      "entailment": 0.46893906593322754,
+                      "neutral": 0.5302997827529907
+                    }
+                  }
+                }
+              ],
+              "valid": true,
+              "model": "cross-encoder/nli-deberta-v3-small",
+              "audit": {
+                "errors": [],
+                "min_confidence": 0.7,
+                "eligible_passage_count": 1
+              }
+            },
+            {
+              "claim_id": "claim-004",
+              "passage_ids": [
+                "P0ef8e96d4f98b155-S009"
+              ],
+              "support_label": "UNSUPPORTED",
+              "confidence": 0.9971453547477722,
+              "per_passage": [
+                {
+                  "passage_id": "P0ef8e96d4f98b155-S009",
+                  "label": "UNSUPPORTED",
+                  "confidence": 0.9971453547477722,
+                  "valid": true,
+                  "model": "cross-encoder/nli-deberta-v3-small",
+                  "reason": "Deterministic mapping from local NLI class probabilities.",
+                  "error": "",
+                  "raw": {
+                    "label": "UNSUPPORTED",
+                    "confidence": 0.9971453547477722,
+                    "valid": true,
+                    "reason": "Deterministic mapping from local NLI class probabilities.",
+                    "model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_scores": {
+                      "contradiction": 4.333952892920934e-05,
+                      "entailment": 0.0028112635482102633,
+                      "neutral": 0.9971453547477722
+                    }
+                  }
+                }
+              ],
+              "valid": true,
+              "model": "cross-encoder/nli-deberta-v3-small",
+              "audit": {
+                "errors": [],
+                "min_confidence": 0.7,
+                "eligible_passage_count": 1
+              }
+            },
+            {
+              "claim_id": "claim-005",
+              "passage_ids": [
+                "P4eaccade96b09d6a-S004",
+                "P4eaccade96b09d6a-S005"
+              ],
+              "support_label": "UNSUPPORTED",
+              "confidence": 0.9994811415672302,
+              "per_passage": [
+                {
+                  "passage_id": "P4eaccade96b09d6a-S004",
+                  "label": "UNSUPPORTED",
+                  "confidence": 0.9994811415672302,
+                  "valid": true,
+                  "model": "cross-encoder/nli-deberta-v3-small",
+                  "reason": "Deterministic mapping from local NLI class probabilities.",
+                  "error": "",
+                  "raw": {
+                    "label": "UNSUPPORTED",
+                    "confidence": 0.9994811415672302,
+                    "valid": true,
+                    "reason": "Deterministic mapping from local NLI class probabilities.",
+                    "model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_scores": {
+                      "contradiction": 0.00016490131383761764,
+                      "entailment": 0.0003539977187756449,
+                      "neutral": 0.9994811415672302
+                    }
+                  }
+                },
+                {
+                  "passage_id": "P4eaccade96b09d6a-S005",
+                  "label": "UNSUPPORTED",
+                  "confidence": 0.9590632915496826,
+                  "valid": true,
+                  "model": "cross-encoder/nli-deberta-v3-small",
+                  "reason": "Deterministic mapping from local NLI class probabilities.",
+                  "error": "",
+                  "raw": {
+                    "label": "UNSUPPORTED",
+                    "confidence": 0.9590632915496826,
+                    "valid": true,
+                    "reason": "Deterministic mapping from local NLI class probabilities.",
+                    "model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_scores": {
+                      "contradiction": 0.0019828861113637686,
+                      "entailment": 0.03895387053489685,
+                      "neutral": 0.9590632915496826
+                    }
+                  }
+                }
+              ],
+              "valid": true,
+              "model": "cross-encoder/nli-deberta-v3-small",
+              "audit": {
+                "errors": [],
+                "min_confidence": 0.7,
+                "eligible_passage_count": 2
+              }
+            }
+          ],
+          "stats": {
+            "evaluated_claims": 5,
+            "accepted_claims": 1,
+            "rejected_claims": 4
+          }
+        }
+      }
+    },
+    {
+      "check": "contradiction_path",
+      "status": "passed",
+      "mutates_state": false,
+      "runtime_seconds": 3.0955850000027567,
+      "details": {
+        "pair_count": 1
+      }
+    },
+    {
+      "check": "hypothesis_path",
+      "status": "passed",
+      "mutates_state": false,
+      "runtime_seconds": 3.795092599990312,
+      "details": {
+        "hypothesis_count": 1
+      }
+    }
+  ]
+}

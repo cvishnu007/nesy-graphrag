@@ -1,0 +1,2652 @@
+{
+  "packet_version": "1.0",
+  "status": "complete",
+  "blinded": true,
+  "reviewer_id": "reviewer_01",
+  "task": "hypothesis",
+  "split": "test",
+  "response_schema": {
+    "scores": {
+      "evidence": [
+        1,
+        3,
+        5
+      ],
+      "novelty": [
+        1,
+        3,
+        5
+      ],
+      "feasibility": [
+        1,
+        3,
+        5
+      ],
+      "specificity": [
+        1,
+        3,
+        5
+      ],
+      "usefulness": [
+        1,
+        3,
+        5
+      ]
+    },
+    "notes": "optional",
+    "timestamp": "ISO-8601"
+  },
+  "records": [
+    {
+      "hypothesis_id": "H815B2AB14ACF",
+      "split": "test",
+      "query_id": "Q014",
+      "hypothesis": "Label‑wise graph convolutional networks designed for heterophilic graphs can improve fraud detection in financial transaction networks by better modeling the connections between fraudsters and legitimate users and mitigating label imbalance.",
+      "evidence": [
+        {
+          "paper_id": "814698078dcc7c342879c0b84b9895665495606a",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks (GNNs), node classification, label imbalance, heterophily, graph inconsistency – as discussed in “ai‑driven fraud detection in financial transactions with graph neural networks” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “label‑wise graph convolutional network for heterophilic graphs” (2021)."
+        },
+        {
+          "paper_id": "748c865ebf0845827ca23fa5874decce9646b226",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks (GNNs), node classification, label imbalance, heterophily, graph inconsistency – as discussed in “ai‑driven fraud detection in financial transactions with graph neural networks” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “label‑wise graph convolutional network for heterophilic graphs” (2021)."
+        },
+        {
+          "paper_id": "730e7be97a16d3b0cb3bb2b089e355b2b54adff2",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks (GNNs), node classification, label imbalance, heterophily, graph inconsistency – as discussed in “ai‑driven fraud detection in financial transactions with graph neural networks” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “label‑wise graph convolutional network for heterophilic graphs” (2021)."
+        },
+        {
+          "paper_id": "fd2c46892ed4d0a147a6f94353167238536b1290",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks (GNNs), node classification, label imbalance, heterophily, graph inconsistency – as discussed in “ai‑driven fraud detection in financial transactions with graph neural networks” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “label‑wise graph convolutional network for heterophilic graphs” (2021)."
+        },
+        {
+          "paper_id": "e4ff791a64e405213c0d189ec6f42a71bf13fc9e",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks (GNNs), node classification, label imbalance, heterophily, graph inconsistency – as discussed in “ai‑driven fraud detection in financial transactions with graph neural networks” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “label‑wise graph convolutional network for heterophilic graphs” (2021)."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Multiple cited papers discuss GNNs, heterophily, label imbalance, and fraud detection, providing clear multi‑paper support; the connection is a reasonable new angle, testable with existing data, well‑specified, and valuable for fraud detection research.",
+        "timestamp": "2026-09-01T05:02:45.252264Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HA41842509093",
+      "split": "test",
+      "query_id": "Q007",
+      "hypothesis": "'a manifold perspective on the statistical generalization of graph neural networks' is an uncited structural hole supported by 5 query papers and 5 shared concepts",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "practice",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "practice",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "practice",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "practice",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "practice",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence only lists shared concepts without explicit support for the structural‑hole claim; the idea is somewhat novel but lacks detail on variables and concrete testability, offering moderate potential usefulness.",
+        "timestamp": "2026-09-01T05:02:45.252264Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H9F3179B75420",
+      "split": "test",
+      "query_id": "Q020",
+      "hypothesis": "Integrating knowledge graph embeddings into dynamic graph spatial‑temporal neural networks will improve traffic flow prediction by incorporating semantic relationships among road segments, traffic events, and external factors.",
+      "evidence": [
+        {
+          "paper_id": "5b53a03186a418d2da94136aa499915ef50f88f7",
+          "shared_concepts": [
+            "graph neural networks",
+            "this problem",
+            "nodes",
+            "relationships",
+            "other models"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, dynamic graphs, spatial‑temporal modeling, representation learning, and embedding appear in the surveys on graph neural networks (2020), heterogeneous network representation learning (2020), knowledge graph embedding (2022), and the traffic flow prediction paper (2023)."
+        },
+        {
+          "paper_id": "4d391dff5371a5ec299d73e5c7dddc3f33eafa80",
+          "shared_concepts": [
+            "graph neural networks",
+            "this problem",
+            "nodes",
+            "relationships",
+            "other models"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, dynamic graphs, spatial‑temporal modeling, representation learning, and embedding appear in the surveys on graph neural networks (2020), heterogeneous network representation learning (2020), knowledge graph embedding (2022), and the traffic flow prediction paper (2023)."
+        },
+        {
+          "paper_id": "f470e11faa6200026cf39e248510070c078e509a",
+          "shared_concepts": [
+            "graph neural networks",
+            "this problem",
+            "nodes",
+            "relationships",
+            "other models"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, dynamic graphs, spatial‑temporal modeling, representation learning, and embedding appear in the surveys on graph neural networks (2020), heterogeneous network representation learning (2020), knowledge graph embedding (2022), and the traffic flow prediction paper (2023)."
+        },
+        {
+          "paper_id": "3f4dff0c50a2edc4d38973669f8459449f114e28",
+          "shared_concepts": [
+            "graph neural networks",
+            "this problem",
+            "nodes",
+            "relationships",
+            "other models"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, dynamic graphs, spatial‑temporal modeling, representation learning, and embedding appear in the surveys on graph neural networks (2020), heterogeneous network representation learning (2020), knowledge graph embedding (2022), and the traffic flow prediction paper (2023)."
+        },
+        {
+          "paper_id": "ded0bf48df10f6c93d8a67f981d1605c43a95fcc",
+          "shared_concepts": [
+            "graph neural networks",
+            "this problem",
+            "nodes",
+            "relationships",
+            "other models"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, dynamic graphs, spatial‑temporal modeling, representation learning, and embedding appear in the surveys on graph neural networks (2020), heterogeneous network representation learning (2020), knowledge graph embedding (2022), and the traffic flow prediction paper (2023)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence shows related concepts across papers but no direct experimental validation; the idea is a plausible, testable extension with clear variables and high potential impact.",
+        "timestamp": "2026-09-01T05:02:47.421752Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HD7FFB128F883",
+      "split": "test",
+      "query_id": "Q015",
+      "hypothesis": "'gnnear: accelerating full-batch training of graph neural networks with near-memory processing' is an uncited structural hole supported by 5 query papers and 4 shared concepts",
+      "evidence": [
+        {
+          "paper_id": "b8da443cf05166cfcc90ab28465048ebe5dc68c8",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "this paper",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "d23ab974eeca5b31e5475204195250476b80b4f8",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "this paper",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "5afca49da59b45d30084b92939cc24d36c0ad02e",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "this paper",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "fd4d2177c7745acd0d3006c5e79abd945890e122",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "this paper",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "9346f54c3f9780edb7274ff8c5b32ce9badf0d10",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "this paper",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "No concrete citation data provided; the claim is moderately novel and testable via citation analysis, but the statement is vague and usefulness is limited.",
+        "timestamp": "2026-09-01T05:02:47.421752Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HBF1FF38AD910",
+      "split": "test",
+      "query_id": "Q020",
+      "hypothesis": "Editing knowledge graphs with graph neural network–based heterogeneous representation learning can substantially improve recommendation accuracy by dynamically capturing evolving relational patterns.",
+      "evidence": [
+        {
+          "paper_id": "5b53a03186a418d2da94136aa499915ef50f88f7",
+          "shared_concepts": [
+            "graph neural networks",
+            "they",
+            "this problem",
+            "knowledge graph",
+            "knowledge graphs"
+          ],
+          "supporting_evidence": "Shared concepts include knowledge graph embedding, heterogeneous network representation learning, graph neural networks, and recommendation; supported by the surveys “graph neural networks: taxonomy, advances, and trends” (2020), “heterogeneous network representation learning” (2020), “a survey on knowledge graph embedding” (2022), and the 2024 paper “editkg: editing knowledge graph for recommendation”."
+        },
+        {
+          "paper_id": "4d391dff5371a5ec299d73e5c7dddc3f33eafa80",
+          "shared_concepts": [
+            "graph neural networks",
+            "they",
+            "this problem",
+            "knowledge graph",
+            "knowledge graphs"
+          ],
+          "supporting_evidence": "Shared concepts include knowledge graph embedding, heterogeneous network representation learning, graph neural networks, and recommendation; supported by the surveys “graph neural networks: taxonomy, advances, and trends” (2020), “heterogeneous network representation learning” (2020), “a survey on knowledge graph embedding” (2022), and the 2024 paper “editkg: editing knowledge graph for recommendation”."
+        },
+        {
+          "paper_id": "f470e11faa6200026cf39e248510070c078e509a",
+          "shared_concepts": [
+            "graph neural networks",
+            "they",
+            "this problem",
+            "knowledge graph",
+            "knowledge graphs"
+          ],
+          "supporting_evidence": "Shared concepts include knowledge graph embedding, heterogeneous network representation learning, graph neural networks, and recommendation; supported by the surveys “graph neural networks: taxonomy, advances, and trends” (2020), “heterogeneous network representation learning” (2020), “a survey on knowledge graph embedding” (2022), and the 2024 paper “editkg: editing knowledge graph for recommendation”."
+        },
+        {
+          "paper_id": "3f4dff0c50a2edc4d38973669f8459449f114e28",
+          "shared_concepts": [
+            "graph neural networks",
+            "they",
+            "this problem",
+            "knowledge graph",
+            "knowledge graphs"
+          ],
+          "supporting_evidence": "Shared concepts include knowledge graph embedding, heterogeneous network representation learning, graph neural networks, and recommendation; supported by the surveys “graph neural networks: taxonomy, advances, and trends” (2020), “heterogeneous network representation learning” (2020), “a survey on knowledge graph embedding” (2022), and the 2024 paper “editkg: editing knowledge graph for recommendation”."
+        },
+        {
+          "paper_id": "ded0bf48df10f6c93d8a67f981d1605c43a95fcc",
+          "shared_concepts": [
+            "graph neural networks",
+            "they",
+            "this problem",
+            "knowledge graph",
+            "knowledge graphs"
+          ],
+          "supporting_evidence": "Shared concepts include knowledge graph embedding, heterogeneous network representation learning, graph neural networks, and recommendation; supported by the surveys “graph neural networks: taxonomy, advances, and trends” (2020), “heterogeneous network representation learning” (2020), “a survey on knowledge graph embedding” (2022), and the 2024 paper “editkg: editing knowledge graph for recommendation”."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence shows related surveys and a 2024 paper on KG editing, giving partial support; the idea is a modest extension, feasible with current GNN tools, clearly defined variables, and valuable for recommendation.",
+        "timestamp": "2026-09-01T05:03:16.701884Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HBB939CF993FD",
+      "split": "test",
+      "query_id": "Q007",
+      "hypothesis": "Progressive graph structure learning can be integrated into graph neural networks to dynamically refine the graph topology during training, thereby enhancing representation learning and predictive performance.",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, representation learning, graph structure learning, neural network architecture—are present"
+        },
+        {
+          "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, representation learning, graph structure learning, neural network architecture—are present"
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, representation learning, graph structure learning, neural network architecture—are present"
+        },
+        {
+          "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, representation learning, graph structure learning, neural network architecture—are present"
+        },
+        {
+          "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, representation learning, graph structure learning, neural network architecture—are present"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence lists papers sharing graph structure learning concepts, offering partial backing; the progressive refinement concept is somewhat new, readily testable, well‑specified, and useful for improving GNN performance.",
+        "timestamp": "2026-09-01T05:03:16.701884Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HD8449964BB05",
+      "split": "test",
+      "query_id": "Q019",
+      "hypothesis": "Applying a variational information bottleneck to graph structure learning in GNNs will enable the automatic discovery of minimal, combinatorially meaningful graph representations that improve performance on extremal combinatorial construction tasks.",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "applications",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks (Theory of GNNs 2022), graph structure learning (Graph Structure of Neural Networks 2020), variational information bottleneck (Graph Structure Learning with VIB 2021), and combinatorial construction via neural"
+        },
+        {
+          "paper_id": "250909ee6b3a6529ff6bb6c4b4894f56c9456799",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "applications",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks (Theory of GNNs 2022), graph structure learning (Graph Structure of Neural Networks 2020), variational information bottleneck (Graph Structure Learning with VIB 2021), and combinatorial construction via neural"
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "applications",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks (Theory of GNNs 2022), graph structure learning (Graph Structure of Neural Networks 2020), variational information bottleneck (Graph Structure Learning with VIB 2021), and combinatorial construction via neural"
+        },
+        {
+          "paper_id": "fc580c211689663a64f42e2ba92c864cb134ba9b",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "applications",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks (Theory of GNNs 2022), graph structure learning (Graph Structure of Neural Networks 2020), variational information bottleneck (Graph Structure Learning with VIB 2021), and combinatorial construction via neural"
+        },
+        {
+          "paper_id": "85cb1d20ae5ba3f547dc76d2cc73677652900d9b",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "applications",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks (Theory of GNNs 2022), graph structure learning (Graph Structure of Neural Networks 2020), variational information bottleneck (Graph Structure Learning with VIB 2021), and combinatorial construction via neural"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence shows related concepts but no direct results; hypothesis links VIB, graph structure learning, and combinatorial tasks in a non‑trivial way; testable with substantial engineering; variables are clearly defined; potential high impact for combinatorial optimization.",
+        "timestamp": "2026-09-01T05:03:35.018460Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HA3F57CF825BD",
+      "split": "test",
+      "query_id": "Q008",
+      "hypothesis": "'model stealing attacks against inductive graph neural networks' is an uncited structural hole supported by 5 query papers and 6 shared concepts",
+      "evidence": [
+        {
+          "paper_id": "395f14afacedbda94f0ee542a40fd0439836fecb",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "machine learning",
+            "graphs"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "machine learning",
+            "graphs"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "1a287764903786a327f45bce25693c7a0da16408",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "machine learning",
+            "graphs"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "machine learning",
+            "graphs"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "machine learning",
+            "graphs"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 1,
+        "usefulness": 3,
+        "notes": "Cited papers only share generic GNN concepts, offering no concrete support; the claim of an uncited structural hole is moderately novel; investigating it is feasible with literature review; hypothesis is vague about measurable variables; identifying a gap has modest research value.",
+        "timestamp": "2026-09-01T05:03:35.018460Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H7E0AD04FEF79",
+      "split": "test",
+      "query_id": "Q017",
+      "hypothesis": "Adversarial defense strategies developed for graph neural networks can be adapted to protect GNN‑based scalable radio resource management systems from topology and demand perturbations that degrade allocation performance.",
+      "evidence": [
+        {
+          "paper_id": "3efa96570a10fecba0f93e0f62e95d41ce7b624b",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "neural networks",
+            "they"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "72ce1f2b6c2f66f548607faf53ffccf1f5a2acd5",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "neural networks",
+            "they"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "28aced1522ac329ad068565f4e3208e23862f221",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "neural networks",
+            "they"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "653985edce7775f40eb1d60ba36d31293d6e4fd9",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "neural networks",
+            "they"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "b93a473dbf7a6a81aa3412c4f47b6bb736959f06",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "neural networks",
+            "they"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence provides generic GNN overlap but no direct link to radio resource management; adapting adversarial defenses to this domain is a reasonable new connection; implementation is plausible though requires significant work; hypothesis specifies defense type, perturbation sources, and performance metric; could greatly benefit scalable wireless systems.",
+        "timestamp": "2026-09-01T05:03:35.018460Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HAEE6DE431381",
+      "split": "test",
+      "query_id": "Q011",
+      "hypothesis": "The automated architecture search framework introduced in Autograph can be extended to incorporate residual connections and normalization layers that have been proven to prevent oversmoothing, thereby enabling the design of deeper GNNs that maintain expressive node representations.",
+      "evidence": [
+        {
+          "paper_id": "8b9f01585a679dffe92261ecdec56425db9ef97f",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "gats",
+            "graph convolutional networks",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts: graph neural networks, oversmoothing, residual connections, normalization, depth, automated architecture search. Papers: “demystifying oversmoothing in attention-based graph neural networks” (2023), “graph neural networks do not always overs"
+        },
+        {
+          "paper_id": "4c24519d5c8082f4d5f1397952bb4e4c4fc11b85",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "gats",
+            "graph convolutional networks",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts: graph neural networks, oversmoothing, residual connections, normalization, depth, automated architecture search. Papers: “demystifying oversmoothing in attention-based graph neural networks” (2023), “graph neural networks do not always overs"
+        },
+        {
+          "paper_id": "6f15512c01c3fb087abd1c842b23663384e27410",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "gats",
+            "graph convolutional networks",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts: graph neural networks, oversmoothing, residual connections, normalization, depth, automated architecture search. Papers: “demystifying oversmoothing in attention-based graph neural networks” (2023), “graph neural networks do not always overs"
+        },
+        {
+          "paper_id": "8c2ef6f027bf5122d43b77cb3383e9118e0b35d2",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "gats",
+            "graph convolutional networks",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts: graph neural networks, oversmoothing, residual connections, normalization, depth, automated architecture search. Papers: “demystifying oversmoothing in attention-based graph neural networks” (2023), “graph neural networks do not always overs"
+        },
+        {
+          "paper_id": "b3a464038b8aad8a7d9475bf8bcc495f1378b0ae",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "gats",
+            "graph convolutional networks",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts: graph neural networks, oversmoothing, residual connections, normalization, depth, automated architecture search. Papers: “demystifying oversmoothing in attention-based graph neural networks” (2023), “graph neural networks do not always overs"
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Multiple papers discuss oversmoothing, residual connections, normalization, and automated architecture search, providing clear support for extending Autograph as proposed.",
+        "timestamp": "2026-09-01T05:04:03.127582Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H38454734D423",
+      "split": "test",
+      "query_id": "Q018",
+      "hypothesis": "The 2023 foundation paper’s novel relational‑inductive‑bias GNN architecture can be integrated with transformer‑style attention mechanisms to produce a scalable model that achieves superior logical generalization on compositional graph tasks.",
+      "evidence": [
+        {
+          "paper_id": "8c24ef76d0a15bae316d1b9e6ab526ea5af93530",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "deep learning",
+            "machine learning"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "20c4882d63558015ed91aec419c18c6af74f699f",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "deep learning",
+            "machine learning"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "deep learning",
+            "machine learning"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "9332dd9afa389d8d273e1713a6e1ca98797c6e5f",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "deep learning",
+            "machine learning"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 5,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "No direct evidence links relational‑inductive‑bias GNNs with transformer‑style attention; the idea is novel but lacks supporting citations.",
+        "timestamp": "2026-09-01T05:04:03.127582Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H9547E5ACD7A5",
+      "split": "test",
+      "query_id": "Q013",
+      "hypothesis": "Curriculum learning strategies designed for graph classification can be adapted to train graph neural networks on multi‑component molecular interaction tasks, leading to faster convergence and higher predictive accuracy.",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "graph data",
+            "graph classification"
+          ],
+          "supporting_evidence": "(1) theory of graph neural networks: representation and learning (2022) – establishes GNNs as powerful representation learners; (2) graph structure of neural networks (2020) – highlights the importance of graph topology in learning; (3) capturing molecular interactions in graph neural networks: a case study in multi (2022) – demonstrates GNNs’ application to multi‑component molecular systems; (4) curgraph: curriculum learning for graph classification (2021) – introduces curriculum learning for graph tasks."
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "graph data",
+            "graph classification"
+          ],
+          "supporting_evidence": "(1) theory of graph neural networks: representation and learning (2022) – establishes GNNs as powerful representation learners; (2) graph structure of neural networks (2020) – highlights the importance of graph topology in learning; (3) capturing molecular interactions in graph neural networks: a case study in multi (2022) – demonstrates GNNs’ application to multi‑component molecular systems; (4) curgraph: curriculum learning for graph classification (2021) – introduces curriculum learning for graph tasks."
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "graph data",
+            "graph classification"
+          ],
+          "supporting_evidence": "(1) theory of graph neural networks: representation and learning (2022) – establishes GNNs as powerful representation learners; (2) graph structure of neural networks (2020) – highlights the importance of graph topology in learning; (3) capturing molecular interactions in graph neural networks: a case study in multi (2022) – demonstrates GNNs’ application to multi‑component molecular systems; (4) curgraph: curriculum learning for graph classification (2021) – introduces curriculum learning for graph tasks."
+        },
+        {
+          "paper_id": "80d7b9180299ed1954dbc3acde4ad4efa8974e0a",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "graph data",
+            "graph classification"
+          ],
+          "supporting_evidence": "(1) theory of graph neural networks: representation and learning (2022) – establishes GNNs as powerful representation learners; (2) graph structure of neural networks (2020) – highlights the importance of graph topology in learning; (3) capturing molecular interactions in graph neural networks: a case study in multi (2022) – demonstrates GNNs’ application to multi‑component molecular systems; (4) curgraph: curriculum learning for graph classification (2021) – introduces curriculum learning for graph tasks."
+        },
+        {
+          "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "graph data",
+            "graph classification"
+          ],
+          "supporting_evidence": "(1) theory of graph neural networks: representation and learning (2022) – establishes GNNs as powerful representation learners; (2) graph structure of neural networks (2020) – highlights the importance of graph topology in learning; (3) capturing molecular interactions in graph neural networks: a case study in multi (2022) – demonstrates GNNs’ application to multi‑component molecular systems; (4) curgraph: curriculum learning for graph classification (2021) – introduces curriculum learning for graph tasks."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Multiple cited papers directly cover curriculum learning for graph classification and GNNs for multi‑component molecular systems, giving clear support; the idea is a non‑trivial extension but testable with existing methods and clearly defined outcomes.",
+        "timestamp": "2026-09-01T05:04:28.706104Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H0709BF27417A",
+      "split": "test",
+      "query_id": "Q020",
+      "hypothesis": "Dual time‑oriented graph attention networks (DuOgat) can be adapted to embed heterogeneous knowledge graphs, enabling accurate, efficient, and explainable anomaly detection in time‑series data.",
+      "evidence": [
+        {
+          "paper_id": "5b53a03186a418d2da94136aa499915ef50f88f7",
+          "shared_concepts": [
+            "graph neural networks",
+            "they",
+            "relationships",
+            "this paper",
+            "limitations",
+            "graphs"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, attention mechanisms, time‑series, anomaly detection, heterogeneous networks, and knowledge graph embeddings. Relevant papers are DuOgat (2023), “Graph Neural Networks: Taxonomy, Advances, and Trends” (2020), “Heterogeneous Network Representation Learning” (2020), and “A Survey on Knowledge Graph Embedding” (2022)."
+        },
+        {
+          "paper_id": "f470e11faa6200026cf39e248510070c078e509a",
+          "shared_concepts": [
+            "graph neural networks",
+            "they",
+            "relationships",
+            "this paper",
+            "limitations",
+            "graphs"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, attention mechanisms, time‑series, anomaly detection, heterogeneous networks, and knowledge graph embeddings. Relevant papers are DuOgat (2023), “Graph Neural Networks: Taxonomy, Advances, and Trends” (2020), “Heterogeneous Network Representation Learning” (2020), and “A Survey on Knowledge Graph Embedding” (2022)."
+        },
+        {
+          "paper_id": "3f4dff0c50a2edc4d38973669f8459449f114e28",
+          "shared_concepts": [
+            "graph neural networks",
+            "they",
+            "relationships",
+            "this paper",
+            "limitations",
+            "graphs"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, attention mechanisms, time‑series, anomaly detection, heterogeneous networks, and knowledge graph embeddings. Relevant papers are DuOgat (2023), “Graph Neural Networks: Taxonomy, Advances, and Trends” (2020), “Heterogeneous Network Representation Learning” (2020), and “A Survey on Knowledge Graph Embedding” (2022)."
+        },
+        {
+          "paper_id": "ded0bf48df10f6c93d8a67f981d1605c43a95fcc",
+          "shared_concepts": [
+            "graph neural networks",
+            "they",
+            "relationships",
+            "this paper",
+            "limitations",
+            "graphs"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, attention mechanisms, time‑series, anomaly detection, heterogeneous networks, and knowledge graph embeddings. Relevant papers are DuOgat (2023), “Graph Neural Networks: Taxonomy, Advances, and Trends” (2020), “Heterogeneous Network Representation Learning” (2020), and “A Survey on Knowledge Graph Embedding” (2022)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence lists relevant concepts and papers but lacks direct demonstration of DuOgat applied to heterogeneous KG or anomaly detection; the proposal is novel yet would require substantial engineering, while the hypothesis is well‑specified and potentially valuable.",
+        "timestamp": "2026-09-01T05:04:28.706104Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H899563A91F21",
+      "split": "test",
+      "query_id": "Q014",
+      "hypothesis": "Reinforced continual learning for graphs can be integrated into graph neural network–based fraud detection systems to continuously adapt to evolving fraud patterns while mitigating graph inconsistency and class imbalance.",
+      "evidence": [
+        {
+          "paper_id": "814698078dcc7c342879c0b84b9895665495606a",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, fraud detection, continual learning, reinforcement learning, graph inconsistency/imbalance; papers – “ai‑driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “reinforced continual learning for graphs” (2022)."
+        },
+        {
+          "paper_id": "748c865ebf0845827ca23fa5874decce9646b226",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, fraud detection, continual learning, reinforcement learning, graph inconsistency/imbalance; papers – “ai‑driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “reinforced continual learning for graphs” (2022)."
+        },
+        {
+          "paper_id": "730e7be97a16d3b0cb3bb2b089e355b2b54adff2",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, fraud detection, continual learning, reinforcement learning, graph inconsistency/imbalance; papers – “ai‑driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “reinforced continual learning for graphs” (2022)."
+        },
+        {
+          "paper_id": "fd2c46892ed4d0a147a6f94353167238536b1290",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, fraud detection, continual learning, reinforcement learning, graph inconsistency/imbalance; papers – “ai‑driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “reinforced continual learning for graphs” (2022)."
+        },
+        {
+          "paper_id": "e4ff791a64e405213c0d189ec6f42a71bf13fc9e",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, fraud detection, continual learning, reinforcement learning, graph inconsistency/imbalance; papers – “ai‑driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual‑resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “reinforced continual learning for graphs” (2022)."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Multiple cited papers cover the core concepts, indicating clear multi‑paper support. The combination of reinforced continual learning with fraud‑detecting GNNs is a non‑trivial connection but plausible to implement and clearly defined, offering strong research value.",
+        "timestamp": "2026-09-01T05:04:50.594404Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H169D2335DD0C",
+      "split": "test",
+      "query_id": "Q007",
+      "hypothesis": "'noise-robust graph learning by estimating and leveraging pairwise interactions' is an uncited structural hole supported by 5 query papers and 4 shared concepts",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 1,
+        "usefulness": 3,
+        "notes": "Evidence consists only of generic shared concepts without explicit support; the idea is moderately novel but described vaguely, making it only potentially valuable and requiring substantial effort to test.",
+        "timestamp": "2026-09-01T05:04:50.594404Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H6496ADAE651C",
+      "split": "test",
+      "query_id": "Q007",
+      "hypothesis": "'learning graph neural networks with positive and unlabeled nodes' is an uncited structural hole supported by 5 query papers and 5 shared concepts",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "this article",
+            "nodes",
+            "graphs",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+          "shared_concepts": [
+            "this article",
+            "nodes",
+            "graphs",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "this article",
+            "nodes",
+            "graphs",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631",
+          "shared_concepts": [
+            "this article",
+            "nodes",
+            "graphs",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+          "shared_concepts": [
+            "this article",
+            "nodes",
+            "graphs",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 1,
+        "usefulness": 3,
+        "notes": "No concrete supporting evidence is provided; the hypothesis presents a moderately new angle yet remains vague, offering possible but undefined research benefit.",
+        "timestamp": "2026-09-01T05:04:50.594404Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H1213BD2351A7",
+      "split": "test",
+      "query_id": "Q011",
+      "hypothesis": "Incorporating motifexplainer’s motif‑based feature extraction into deep attention‑based GNNs can prevent oversmoothing by preserving local subgraph heterogeneity.",
+      "evidence": [
+        {
+          "paper_id": "8b9f01585a679dffe92261ecdec56425db9ef97f",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "methods",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts – attention mechanisms, residual connections, normalization layers, and graph convolution operations – appear in demystifying oversmoothing in attention‑based GNNs (2023), graph neural networks do not always oversmooth (2024), residual connections and normalization can provably prevent oversmoothing (2024), and motifexplainer (2022)."
+        },
+        {
+          "paper_id": "4c24519d5c8082f4d5f1397952bb4e4c4fc11b85",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "methods",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts – attention mechanisms, residual connections, normalization layers, and graph convolution operations – appear in demystifying oversmoothing in attention‑based GNNs (2023), graph neural networks do not always oversmooth (2024), residual connections and normalization can provably prevent oversmoothing (2024), and motifexplainer (2022)."
+        },
+        {
+          "paper_id": "6f15512c01c3fb087abd1c842b23663384e27410",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "methods",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts – attention mechanisms, residual connections, normalization layers, and graph convolution operations – appear in demystifying oversmoothing in attention‑based GNNs (2023), graph neural networks do not always oversmooth (2024), residual connections and normalization can provably prevent oversmoothing (2024), and motifexplainer (2022)."
+        },
+        {
+          "paper_id": "8c2ef6f027bf5122d43b77cb3383e9118e0b35d2",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "methods",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts – attention mechanisms, residual connections, normalization layers, and graph convolution operations – appear in demystifying oversmoothing in attention‑based GNNs (2023), graph neural networks do not always oversmooth (2024), residual connections and normalization can provably prevent oversmoothing (2024), and motifexplainer (2022)."
+        },
+        {
+          "paper_id": "b3a464038b8aad8a7d9475bf8bcc495f1378b0ae",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "methods",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts – attention mechanisms, residual connections, normalization layers, and graph convolution operations – appear in demystifying oversmoothing in attention‑based GNNs (2023), graph neural networks do not always oversmooth (2024), residual connections and normalization can provably prevent oversmoothing (2024), and motifexplainer (2022)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence cites motifexplainer and oversmoothing mitigation techniques but does not directly link them; hypothesis is clear, testable, and likely valuable.",
+        "timestamp": "2026-09-01T05:05:12.377930Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H4789D320F493",
+      "split": "test",
+      "query_id": "Q010",
+      "hypothesis": "Integrating the logic-based formalism from “the logic of graph neural networks” with beltrami flow–based diffusion GNNs will allow the construction of graph neural networks that are both highly expressive for molecular interaction prediction and formally verifiable through logical constraints.",
+      "evidence": [
+        {
+          "paper_id": "af84c6db6b5c41ca628867ff4a27566e9ca3c69e",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "gnns",
+            "deep learning",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, diffusion processes, positional encodings, graph structure analysis, and molecular interaction modeling. Relevant papers are “beltrami flow and neural diffusion on graphs” (2021), “graph structure of neural networks” (2020), “capturing molecular interactions in graph neural networks” (2022), and the"
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "gnns",
+            "deep learning",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, diffusion processes, positional encodings, graph structure analysis, and molecular interaction modeling. Relevant papers are “beltrami flow and neural diffusion on graphs” (2021), “graph structure of neural networks” (2020), “capturing molecular interactions in graph neural networks” (2022), and the"
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "gnns",
+            "deep learning",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, diffusion processes, positional encodings, graph structure analysis, and molecular interaction modeling. Relevant papers are “beltrami flow and neural diffusion on graphs” (2021), “graph structure of neural networks” (2020), “capturing molecular interactions in graph neural networks” (2022), and the"
+        },
+        {
+          "paper_id": "9208290fd7948ed14ebe55718118c401e8396159",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "gnns",
+            "deep learning",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, diffusion processes, positional encodings, graph structure analysis, and molecular interaction modeling. Relevant papers are “beltrami flow and neural diffusion on graphs” (2021), “graph structure of neural networks” (2020), “capturing molecular interactions in graph neural networks” (2022), and the"
+        },
+        {
+          "paper_id": "6d9e9ca2787f8300fae509b2176a430005205ba8",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "gnns",
+            "deep learning",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, diffusion processes, positional encodings, graph structure analysis, and molecular interaction modeling. Relevant papers are “beltrami flow and neural diffusion on graphs” (2021), “graph structure of neural networks” (2020), “capturing molecular interactions in graph neural networks” (2022), and the"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence shows both logic formalism and beltrami diffusion exist but no direct integration; hypothesis is specific and potentially high‑impact yet may need substantial effort.",
+        "timestamp": "2026-09-01T05:05:12.377930Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H8B8C0243CA07",
+      "split": "test",
+      "query_id": "Q009",
+      "hypothesis": "Integrating noise‑robust pairwise interaction estimation into graph neural networks for multi‑component molecular systems can mitigate the bottleneck caused by noisy edge features, thereby improving predictive accuracy.",
+      "evidence": [
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, pairwise interactions, noise robustness, molecular interactions, bottleneck—link the 2021 noise‑robust paper with the"
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, pairwise interactions, noise robustness, molecular interactions, bottleneck—link the 2021 noise‑robust paper with the"
+        },
+        {
+          "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, pairwise interactions, noise robustness, molecular interactions, bottleneck—link the 2021 noise‑robust paper with the"
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, pairwise interactions, noise robustness, molecular interactions, bottleneck—link the 2021 noise‑robust paper with the"
+        },
+        {
+          "paper_id": "9208290fd7948ed14ebe55718118c401e8396159",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "gnns",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, pairwise interactions, noise robustness, molecular interactions, bottleneck—link the 2021 noise‑robust paper with the"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence shows shared concepts across papers but lacks detailed results; hypothesis connects known ideas in a moderately novel way; implementation is plausible with effort; variables and expected effect are clearly stated; improving molecular GNN accuracy is valuable.",
+        "timestamp": "2026-09-01T05:05:32.747966Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H7E661DCFE9FB",
+      "split": "test",
+      "query_id": "Q011",
+      "hypothesis": "Skip connections in graph neural networks simultaneously accelerate training convergence and mitigate oversmoothing, enabling deeper attention‑based GNNs to achieve higher predictive performance.",
+      "evidence": [
+        {
+          "paper_id": "8b9f01585a679dffe92261ecdec56425db9ef97f",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "terms",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts of skip/residual connections, depth, and optimization appear in “optimization of graph neural networks: implicit acceleration by skip connections and more depth” (2021) and the 2023/2024 papers on oversmoothing and residual connections (“demystifying oversmoothing in attention‑based graph neural networks”, “graph neural networks do not always oversmooth”, “residual connections and normalization can provably prevent oversmoothing in GNN”)."
+        },
+        {
+          "paper_id": "4c24519d5c8082f4d5f1397952bb4e4c4fc11b85",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "terms",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts of skip/residual connections, depth, and optimization appear in “optimization of graph neural networks: implicit acceleration by skip connections and more depth” (2021) and the 2023/2024 papers on oversmoothing and residual connections (“demystifying oversmoothing in attention‑based graph neural networks”, “graph neural networks do not always oversmooth”, “residual connections and normalization can provably prevent oversmoothing in GNN”)."
+        },
+        {
+          "paper_id": "6f15512c01c3fb087abd1c842b23663384e27410",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "terms",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts of skip/residual connections, depth, and optimization appear in “optimization of graph neural networks: implicit acceleration by skip connections and more depth” (2021) and the 2023/2024 papers on oversmoothing and residual connections (“demystifying oversmoothing in attention‑based graph neural networks”, “graph neural networks do not always oversmooth”, “residual connections and normalization can provably prevent oversmoothing in GNN”)."
+        },
+        {
+          "paper_id": "8c2ef6f027bf5122d43b77cb3383e9118e0b35d2",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "terms",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts of skip/residual connections, depth, and optimization appear in “optimization of graph neural networks: implicit acceleration by skip connections and more depth” (2021) and the 2023/2024 papers on oversmoothing and residual connections (“demystifying oversmoothing in attention‑based graph neural networks”, “graph neural networks do not always oversmooth”, “residual connections and normalization can provably prevent oversmoothing in GNN”)."
+        },
+        {
+          "paper_id": "b3a464038b8aad8a7d9475bf8bcc495f1378b0ae",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "terms",
+            "deep gnns"
+          ],
+          "supporting_evidence": "Shared concepts of skip/residual connections, depth, and optimization appear in “optimization of graph neural networks: implicit acceleration by skip connections and more depth” (2021) and the 2023/2024 papers on oversmoothing and residual connections (“demystifying oversmoothing in attention‑based graph neural networks”, “graph neural networks do not always oversmooth”, “residual connections and normalization can provably prevent oversmoothing in GNN”)."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Multiple papers directly discuss skip connections, depth, and oversmoothing, providing strong support; the combination is known but still offers a useful framing; easy to test experimentally; hypothesis precisely defines mechanisms and outcomes; deeper, higher‑performing GNNs are of high research interest.",
+        "timestamp": "2026-09-01T05:05:32.747966Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HDDE45C9B0D36",
+      "split": "test",
+      "query_id": "Q012",
+      "hypothesis": "Integrating pairwise interaction estimation from noise‑robust graph learning into graph neural additive networks can simultaneously enhance robustness to noisy graph data and improve the interpretability of the learned representations.",
+      "evidence": [
+        {
+          "paper_id": "bfafae6c6add7f06bd212911de27f75e416c015a",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, pairwise interactions, noise robustness, additive models, representation learning, and explainability; supported by the 2021 paper on noise‑robust graph learning, the 2024 paper on graph neural additive networks, the 2022 comparative study of GNN explainers, and the 2022 theory of GNNs."
+        },
+        {
+          "paper_id": "d6721b9b0c65aca4af9ea0b6063dc72f8558f6c2",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, pairwise interactions, noise robustness, additive models, representation learning, and explainability; supported by the 2021 paper on noise‑robust graph learning, the 2024 paper on graph neural additive networks, the 2022 comparative study of GNN explainers, and the 2022 theory of GNNs."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, pairwise interactions, noise robustness, additive models, representation learning, and explainability; supported by the 2021 paper on noise‑robust graph learning, the 2024 paper on graph neural additive networks, the 2022 comparative study of GNN explainers, and the 2022 theory of GNNs."
+        },
+        {
+          "paper_id": "6db0527528e3509a5296ddf05bcc38b41015ad71",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, pairwise interactions, noise robustness, additive models, representation learning, and explainability; supported by the 2021 paper on noise‑robust graph learning, the 2024 paper on graph neural additive networks, the 2022 comparative study of GNN explainers, and the 2022 theory of GNNs."
+        },
+        {
+          "paper_id": "394d251832bfd841dccabc449c25ef562845dc53",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include graph neural networks, pairwise interactions, noise robustness, additive models, representation learning, and explainability; supported by the 2021 paper on noise‑robust graph learning, the 2024 paper on graph neural additive networks, the 2022 comparative study of GNN explainers, and the 2022 theory of GNNs."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Multiple papers explicitly cover the required concepts, making support strong; the integration is a modestly novel link; implementation is straightforward; hypothesis is well‑specified; potential impact is high.",
+        "timestamp": "2026-09-01T05:05:53.251215Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HD4D7CF6B69D2",
+      "split": "test",
+      "query_id": "Q016",
+      "hypothesis": "'model stealing attacks against inductive graph neural networks' is an uncited structural hole supported by 5 query papers and 4 shared concepts",
+      "evidence": [
+        {
+          "paper_id": "0ea5511cc66906b0142d8154d9a891c29ed22341",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "data",
+            "machine learning"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "822f94dadb65d7cc0ab680efd65301aa26cd09f8",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "data",
+            "machine learning"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "66e6fda1ec579f9a836f318b669520f9dd1a4ef8",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "data",
+            "machine learning"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "9dd97465c4f1ee208173d03171d6df847d5dc9f4",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "data",
+            "machine learning"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "14014c024674991149f3ecf9314c93f7e029ef1a",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "data",
+            "machine learning"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 1,
+        "usefulness": 3,
+        "notes": "Cited papers only share generic GNN concepts, offering no direct support; the claim of an uncited structural hole is somewhat novel but vague; testing would require extensive citation analysis; hypothesis wording is imprecise; usefulness is moderate.",
+        "timestamp": "2026-09-01T05:05:53.251215Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H29666FA615EE",
+      "split": "test",
+      "query_id": "Q013",
+      "hypothesis": "Applying distillation‑enhanced social graph network architectures to multi‑component molecular interaction prediction will improve representation quality and predictive performance compared to standard GNNs.",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "data",
+            "metrics",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, message"
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "data",
+            "metrics",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, message"
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "data",
+            "metrics",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, message"
+        },
+        {
+          "paper_id": "80d7b9180299ed1954dbc3acde4ad4efa8974e0a",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "data",
+            "metrics",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, message"
+        },
+        {
+          "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+          "shared_concepts": [
+            "graphs",
+            "graph neural networks",
+            "data",
+            "metrics",
+            "graph data"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, message"
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence lists generic GNN papers without mention of distillation or molecular tasks; the combination is a new connection; feasible with existing techniques; hypothesis clearly defines methods and expected improvements; likely valuable for molecular prediction.",
+        "timestamp": "2026-09-01T05:05:53.251215Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H2C106C4509AA",
+      "split": "test",
+      "query_id": "Q017",
+      "hypothesis": "Adversarially robust graph neural networks can be adapted to power system applications, improving the reliability of state estimation and fault detection against malicious or noisy perturbations in grid topology and sensor data.",
+      "evidence": [
+        {
+          "paper_id": "3efa96570a10fecba0f93e0f62e95d41ce7b624b",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "deep neural networks",
+            "data"
+          ],
+          "supporting_evidence": "Shared concepts include graph structure, node features, topology perturbation, influence maximization, and Hamiltonian dynamics; the three adversarial robustness papers (2023 “are defenses for graph neural networks robust?”, 2023 “adversarial robustness in graph neural networks: a Hamiltonian approach”, 2021 “adversarial attack on graph neural networks as an influence maximization problem”) provide defense strategies that could be transferred to power system GNNs."
+        },
+        {
+          "paper_id": "72ce1f2b6c2f66f548607faf53ffccf1f5a2acd5",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "deep neural networks",
+            "data"
+          ],
+          "supporting_evidence": "Shared concepts include graph structure, node features, topology perturbation, influence maximization, and Hamiltonian dynamics; the three adversarial robustness papers (2023 “are defenses for graph neural networks robust?”, 2023 “adversarial robustness in graph neural networks: a Hamiltonian approach”, 2021 “adversarial attack on graph neural networks as an influence maximization problem”) provide defense strategies that could be transferred to power system GNNs."
+        },
+        {
+          "paper_id": "28aced1522ac329ad068565f4e3208e23862f221",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "deep neural networks",
+            "data"
+          ],
+          "supporting_evidence": "Shared concepts include graph structure, node features, topology perturbation, influence maximization, and Hamiltonian dynamics; the three adversarial robustness papers (2023 “are defenses for graph neural networks robust?”, 2023 “adversarial robustness in graph neural networks: a Hamiltonian approach”, 2021 “adversarial attack on graph neural networks as an influence maximization problem”) provide defense strategies that could be transferred to power system GNNs."
+        },
+        {
+          "paper_id": "653985edce7775f40eb1d60ba36d31293d6e4fd9",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "deep neural networks",
+            "data"
+          ],
+          "supporting_evidence": "Shared concepts include graph structure, node features, topology perturbation, influence maximization, and Hamiltonian dynamics; the three adversarial robustness papers (2023 “are defenses for graph neural networks robust?”, 2023 “adversarial robustness in graph neural networks: a Hamiltonian approach”, 2021 “adversarial attack on graph neural networks as an influence maximization problem”) provide defense strategies that could be transferred to power system GNNs."
+        },
+        {
+          "paper_id": "b93a473dbf7a6a81aa3412c4f47b6bb736959f06",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "deep neural networks",
+            "data"
+          ],
+          "supporting_evidence": "Shared concepts include graph structure, node features, topology perturbation, influence maximization, and Hamiltonian dynamics; the three adversarial robustness papers (2023 “are defenses for graph neural networks robust?”, 2023 “adversarial robustness in graph neural networks: a Hamiltonian approach”, 2021 “adversarial attack on graph neural networks as an influence maximization problem”) provide defense strategies that could be transferred to power system GNNs."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence shows related adversarial GNN work but no direct power‑system experiments; the idea is a plausible new connection, clearly testable, well‑defined, and valuable for grid reliability.",
+        "timestamp": "2026-09-01T05:06:14.814296Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H00AC180E855D",
+      "split": "test",
+      "query_id": "Q015",
+      "hypothesis": "Federated graph neural networks with differential privacy can be applied to geometric graph representation learning for protein structure prediction, enabling privacy-preserving collaborative modeling of sensitive protein data across institutions.",
+      "evidence": [
+        {
+          "paper_id": "b8da443cf05166cfcc90ab28465048ebe5dc68c8",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "great success",
+            "these challenges"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, differential privacy, and privacy-preserving federated learning appear in subgraph-level federated GNN for recommendation, fedego, sok, and geometric graph representation learning on protein structure prediction. RATION"
+        },
+        {
+          "paper_id": "d23ab974eeca5b31e5475204195250476b80b4f8",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "great success",
+            "these challenges"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, differential privacy, and privacy-preserving federated learning appear in subgraph-level federated GNN for recommendation, fedego, sok, and geometric graph representation learning on protein structure prediction. RATION"
+        },
+        {
+          "paper_id": "5afca49da59b45d30084b92939cc24d36c0ad02e",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "great success",
+            "these challenges"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, differential privacy, and privacy-preserving federated learning appear in subgraph-level federated GNN for recommendation, fedego, sok, and geometric graph representation learning on protein structure prediction. RATION"
+        },
+        {
+          "paper_id": "fd4d2177c7745acd0d3006c5e79abd945890e122",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "great success",
+            "these challenges"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, differential privacy, and privacy-preserving federated learning appear in subgraph-level federated GNN for recommendation, fedego, sok, and geometric graph representation learning on protein structure prediction. RATION"
+        },
+        {
+          "paper_id": "9346f54c3f9780edb7274ff8c5b32ce9badf0d10",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "great success",
+            "these challenges"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, differential privacy, and privacy-preserving federated learning appear in subgraph-level federated GNN for recommendation, fedego, sok, and geometric graph representation learning on protein structure prediction. RATION"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence lists federated/DP GNN concepts but lacks concrete protein‑structure results; the combination is a modestly novel, clearly defined proposal that is feasible with effort and highly useful for privacy‑sensitive bioinformatics.",
+        "timestamp": "2026-09-01T05:06:14.814296Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HEB0E26581A5E",
+      "split": "test",
+      "query_id": "Q019",
+      "hypothesis": "The tree movers distance can be used as a principled graph metric to quantify and improve the stability of graph neural networks when applied to combinatorial construction tasks.",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graphs",
+            "properties",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of “graph neural networks,” “graph metrics,” “stability,” and “combinatorics” appear in the 2022 theory of GNNs paper, the 2021 constructions in combinatorics via neural networks paper, and the 2020 graph structure of neural networks paper."
+        },
+        {
+          "paper_id": "250909ee6b3a6529ff6bb6c4b4894f56c9456799",
+          "shared_concepts": [
+            "graphs",
+            "properties",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of “graph neural networks,” “graph metrics,” “stability,” and “combinatorics” appear in the 2022 theory of GNNs paper, the 2021 constructions in combinatorics via neural networks paper, and the 2020 graph structure of neural networks paper."
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graphs",
+            "properties",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of “graph neural networks,” “graph metrics,” “stability,” and “combinatorics” appear in the 2022 theory of GNNs paper, the 2021 constructions in combinatorics via neural networks paper, and the 2020 graph structure of neural networks paper."
+        },
+        {
+          "paper_id": "fc580c211689663a64f42e2ba92c864cb134ba9b",
+          "shared_concepts": [
+            "graphs",
+            "properties",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of “graph neural networks,” “graph metrics,” “stability,” and “combinatorics” appear in the 2022 theory of GNNs paper, the 2021 constructions in combinatorics via neural networks paper, and the 2020 graph structure of neural networks paper."
+        },
+        {
+          "paper_id": "85cb1d20ae5ba3f547dc76d2cc73677652900d9b",
+          "shared_concepts": [
+            "graphs",
+            "properties",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of “graph neural networks,” “graph metrics,” “stability,” and “combinatorics” appear in the 2022 theory of GNNs paper, the 2021 constructions in combinatorics via neural networks paper, and the 2020 graph structure of neural networks paper."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence shows overlapping concepts across papers but no direct validation; the idea links tree mover distance to GNN stability, a non‑obvious but plausible connection; implementation would require substantial engineering; hypothesis clearly defines metric, stability, and task; improving GNN stability for combinatorial construction is potentially high impact.",
+        "timestamp": "2026-09-01T05:06:33.329340Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H500C97F6DA32",
+      "split": "test",
+      "query_id": "Q012",
+      "hypothesis": "Integrating the label‑wise graph convolutional network for heterophilic graphs into explainable GNN frameworks (such as graph neural additive networks) will yield more accurate and interpretable node‑classification models on heterophilic datasets.",
+      "evidence": [
+        {
+          "paper_id": "bfafae6c6add7f06bd212911de27f75e416c015a",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph convolution, node classification, heterophily, explainability, additive models, label‑wise propagation – appear in the 2021 label‑wise GCN paper, the 2022 “explaining the explainers in graph neural networks” study, the 2024 “graph neural additive networks” paper, and the 2022 “theory of graph neural networks” review."
+        },
+        {
+          "paper_id": "d6721b9b0c65aca4af9ea0b6063dc72f8558f6c2",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph convolution, node classification, heterophily, explainability, additive models, label‑wise propagation – appear in the 2021 label‑wise GCN paper, the 2022 “explaining the explainers in graph neural networks” study, the 2024 “graph neural additive networks” paper, and the 2022 “theory of graph neural networks” review."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph convolution, node classification, heterophily, explainability, additive models, label‑wise propagation – appear in the 2021 label‑wise GCN paper, the 2022 “explaining the explainers in graph neural networks” study, the 2024 “graph neural additive networks” paper, and the 2022 “theory of graph neural networks” review."
+        },
+        {
+          "paper_id": "6db0527528e3509a5296ddf05bcc38b41015ad71",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph convolution, node classification, heterophily, explainability, additive models, label‑wise propagation – appear in the 2021 label‑wise GCN paper, the 2022 “explaining the explainers in graph neural networks” study, the 2024 “graph neural additive networks” paper, and the 2022 “theory of graph neural networks” review."
+        },
+        {
+          "paper_id": "394d251832bfd841dccabc449c25ef562845dc53",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph convolution, node classification, heterophily, explainability, additive models, label‑wise propagation – appear in the 2021 label‑wise GCN paper, the 2022 “explaining the explainers in graph neural networks” study, the 2024 “graph neural additive networks” paper, and the 2022 “theory of graph neural networks” review."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence lists shared concepts across several works, offering partial support; combining label‑wise GCN with explainable additive GNNs is a novel integration; the integration can be experimentally realized with standard datasets and metrics; hypothesis specifies models, datasets, and expected improvements in accuracy and interpretability; such improvements would be valuable for heterophilic graph learning.",
+        "timestamp": "2026-09-01T05:06:33.329340Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HE787AA43974F",
+      "split": "test",
+      "query_id": "Q014",
+      "hypothesis": "Heterophily-aware graph neural networks can significantly improve fraud detection accuracy in financial transaction graphs by better modeling the atypical connections between fraudsters and legitimate users.",
+      "evidence": [
+        {
+          "paper_id": "814698078dcc7c342879c0b84b9895665495606a",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, heterophily, fraud detection, financial transactions, node classification; Papers – “ai-driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual-resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “understanding heterophily for graph neural networks” (2024)."
+        },
+        {
+          "paper_id": "748c865ebf0845827ca23fa5874decce9646b226",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, heterophily, fraud detection, financial transactions, node classification; Papers – “ai-driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual-resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “understanding heterophily for graph neural networks” (2024)."
+        },
+        {
+          "paper_id": "730e7be97a16d3b0cb3bb2b089e355b2b54adff2",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, heterophily, fraud detection, financial transactions, node classification; Papers – “ai-driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual-resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “understanding heterophily for graph neural networks” (2024)."
+        },
+        {
+          "paper_id": "fd2c46892ed4d0a147a6f94353167238536b1290",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, heterophily, fraud detection, financial transactions, node classification; Papers – “ai-driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual-resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “understanding heterophily for graph neural networks” (2024)."
+        },
+        {
+          "paper_id": "e4ff791a64e405213c0d189ec6f42a71bf13fc9e",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "this paper",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, heterophily, fraud detection, financial transactions, node classification; Papers – “ai-driven fraud detection in financial transactions with graph neural networks a” (2024), “fraudre: fraud detection dual-resistant to graph inconsistency and imbalance” (2021), “graph neural networks for financial fraud detection: a review” (2024), and “understanding heterophily for graph neural networks” (2024)."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 3,
+        "usefulness": 5,
+        "notes": "Multiple listed papers directly discuss heterophily‑aware GNNs for fraud detection, giving clear support; the claim is a modest extension, feasible to test, moderately specific, and valuable for security.",
+        "timestamp": "2026-09-01T05:06:56.034347Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H87F5838BF2D1",
+      "split": "test",
+      "query_id": "Q010",
+      "hypothesis": "Integrating the gated bi‑kernel architecture of Gbk‑GNN with Beltrami‑flow based diffusion and positional encodings will enable a single graph neural network to simultaneously capture homophilic and heterophilic interactions in molecular graphs, improving multi‑component property predictions.",
+      "evidence": [
+        {
+          "paper_id": "af84c6db6b5c41ca628867ff4a27566e9ca3c69e",
+          "shared_concepts": [
+            "graph neural networks",
+            "node features",
+            "graphs",
+            "gnns",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, non‑Euclidean diffusion, positional encodings, homophily/heteroph"
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graph neural networks",
+            "node features",
+            "graphs",
+            "gnns",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, non‑Euclidean diffusion, positional encodings, homophily/heteroph"
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graph neural networks",
+            "node features",
+            "graphs",
+            "gnns",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, non‑Euclidean diffusion, positional encodings, homophily/heteroph"
+        },
+        {
+          "paper_id": "9208290fd7948ed14ebe55718118c401e8396159",
+          "shared_concepts": [
+            "graph neural networks",
+            "node features",
+            "graphs",
+            "gnns",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, non‑Euclidean diffusion, positional encodings, homophily/heteroph"
+        },
+        {
+          "paper_id": "6d9e9ca2787f8300fae509b2176a430005205ba8",
+          "shared_concepts": [
+            "graph neural networks",
+            "node features",
+            "graphs",
+            "gnns",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts—graph neural networks, non‑Euclidean diffusion, positional encodings, homophily/heteroph"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 5,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 5,
+        "notes": "Evidence shows related components (gated bi‑kernel, Beltrami‑flow diffusion, positional encodings) but not their combined use; the integration idea is novel, requires substantial engineering, is reasonably specific, and could greatly aid molecular property prediction.",
+        "timestamp": "2026-09-01T05:06:56.034347Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H0B6277271182",
+      "split": "test",
+      "query_id": "Q007",
+      "hypothesis": "'understanding heterophily for graph neural networks' is an uncited structural hole supported by 5 query papers and 4 shared concepts",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "this paper",
+            "graph neural networks"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 5,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "The listed papers share concepts with the target work, partially supporting the structural‑hole claim; identifying uncited influential papers is novel, straightforward to evaluate, precisely defined, and useful for citation analysis.",
+        "timestamp": "2026-09-01T05:06:56.034347Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H6AC994B2E668",
+      "split": "test",
+      "query_id": "Q008",
+      "hypothesis": "Integrating multiple graph kernel learning with scalable graph neural network training will yield a hybrid model that achieves higher classification accuracy on large graph datasets than either approach alone.",
+      "evidence": [
+        {
+          "paper_id": "395f14afacedbda94f0ee542a40fd0439836fecb",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "graphs"
+          ],
+          "supporting_evidence": "Multiple graph kernel learning based on GMDH‑type neural network (2021) – shows effectiveness of kernel combinations; tudataset (2020) – provides large, diverse graph benchmarks; atlas for the aspiring network scientist (2021) – contextualizes graph kernels and GNNs within network science; scalable graph neural network training (2021) – offers scalable training techniques. Shared concepts: graph kernels, graph neural networks, scalability, benchmark datasets, network science"
+        },
+        {
+          "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "graphs"
+          ],
+          "supporting_evidence": "Multiple graph kernel learning based on GMDH‑type neural network (2021) – shows effectiveness of kernel combinations; tudataset (2020) – provides large, diverse graph benchmarks; atlas for the aspiring network scientist (2021) – contextualizes graph kernels and GNNs within network science; scalable graph neural network training (2021) – offers scalable training techniques. Shared concepts: graph kernels, graph neural networks, scalability, benchmark datasets, network science"
+        },
+        {
+          "paper_id": "1a287764903786a327f45bce25693c7a0da16408",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "graphs"
+          ],
+          "supporting_evidence": "Multiple graph kernel learning based on GMDH‑type neural network (2021) – shows effectiveness of kernel combinations; tudataset (2020) – provides large, diverse graph benchmarks; atlas for the aspiring network scientist (2021) – contextualizes graph kernels and GNNs within network science; scalable graph neural network training (2021) – offers scalable training techniques. Shared concepts: graph kernels, graph neural networks, scalability, benchmark datasets, network science"
+        },
+        {
+          "paper_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "graphs"
+          ],
+          "supporting_evidence": "Multiple graph kernel learning based on GMDH‑type neural network (2021) – shows effectiveness of kernel combinations; tudataset (2020) – provides large, diverse graph benchmarks; atlas for the aspiring network scientist (2021) – contextualizes graph kernels and GNNs within network science; scalable graph neural network training (2021) – offers scalable training techniques. Shared concepts: graph kernels, graph neural networks, scalability, benchmark datasets, network science"
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "this paper",
+            "data",
+            "graph data",
+            "graph neural networks",
+            "graphs"
+          ],
+          "supporting_evidence": "Multiple graph kernel learning based on GMDH‑type neural network (2021) – shows effectiveness of kernel combinations; tudataset (2020) – provides large, diverse graph benchmarks; atlas for the aspiring network scientist (2021) – contextualizes graph kernels and GNNs within network science; scalable graph neural network training (2021) – offers scalable training techniques. Shared concepts: graph kernels, graph neural networks, scalability, benchmark datasets, network science"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence shows components work separately but not their integration; hypothesis connects them in a plausible yet untested way, clearly defines expected accuracy gain on large graph benchmarks.",
+        "timestamp": "2026-09-01T05:07:08.647652Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H7EAED92B1935",
+      "split": "test",
+      "query_id": "Q016",
+      "hypothesis": "Dualgraph’s dual contrastive learning framework can be theoretically grounded and empirically enhanced by integrating the message‑passing dynamics of contrastive learning and representational similarity metrics, leading to superior semi‑supervised graph classification performance.",
+      "evidence": [
+        {
+          "paper_id": "0ea5511cc66906b0142d8154d9a891c29ed22341",
+          "shared_concepts": [
+            "this paper",
+            "contrastive learning",
+            "graph neural networks",
+            "machine learning"
+          ],
+          "supporting_evidence": "The shared concepts—contrastive learning, graph representation learning, message‑passing mechanisms, and representational similarity—are present in all four papers: “Message Passing Perspective on Learning Dynamics of Contrastive Learning” (2023), “RESI: A Comprehensive Benchmark for Representational Similarity Measures” (2024), “GraphCL: Contrastive Self‑Supervised Learning of Graph Representations” (2020), and “DualGraph: Improving Semi‑Supervised Graph Classification via Dual Contrastive Learning” (2022)."
+        },
+        {
+          "paper_id": "822f94dadb65d7cc0ab680efd65301aa26cd09f8",
+          "shared_concepts": [
+            "this paper",
+            "contrastive learning",
+            "graph neural networks",
+            "machine learning"
+          ],
+          "supporting_evidence": "The shared concepts—contrastive learning, graph representation learning, message‑passing mechanisms, and representational similarity—are present in all four papers: “Message Passing Perspective on Learning Dynamics of Contrastive Learning” (2023), “RESI: A Comprehensive Benchmark for Representational Similarity Measures” (2024), “GraphCL: Contrastive Self‑Supervised Learning of Graph Representations” (2020), and “DualGraph: Improving Semi‑Supervised Graph Classification via Dual Contrastive Learning” (2022)."
+        },
+        {
+          "paper_id": "66e6fda1ec579f9a836f318b669520f9dd1a4ef8",
+          "shared_concepts": [
+            "this paper",
+            "contrastive learning",
+            "graph neural networks",
+            "machine learning"
+          ],
+          "supporting_evidence": "The shared concepts—contrastive learning, graph representation learning, message‑passing mechanisms, and representational similarity—are present in all four papers: “Message Passing Perspective on Learning Dynamics of Contrastive Learning” (2023), “RESI: A Comprehensive Benchmark for Representational Similarity Measures” (2024), “GraphCL: Contrastive Self‑Supervised Learning of Graph Representations” (2020), and “DualGraph: Improving Semi‑Supervised Graph Classification via Dual Contrastive Learning” (2022)."
+        },
+        {
+          "paper_id": "9dd97465c4f1ee208173d03171d6df847d5dc9f4",
+          "shared_concepts": [
+            "this paper",
+            "contrastive learning",
+            "graph neural networks",
+            "machine learning"
+          ],
+          "supporting_evidence": "The shared concepts—contrastive learning, graph representation learning, message‑passing mechanisms, and representational similarity—are present in all four papers: “Message Passing Perspective on Learning Dynamics of Contrastive Learning” (2023), “RESI: A Comprehensive Benchmark for Representational Similarity Measures” (2024), “GraphCL: Contrastive Self‑Supervised Learning of Graph Representations” (2020), and “DualGraph: Improving Semi‑Supervised Graph Classification via Dual Contrastive Learning” (2022)."
+        },
+        {
+          "paper_id": "14014c024674991149f3ecf9314c93f7e029ef1a",
+          "shared_concepts": [
+            "this paper",
+            "contrastive learning",
+            "graph neural networks",
+            "machine learning"
+          ],
+          "supporting_evidence": "The shared concepts—contrastive learning, graph representation learning, message‑passing mechanisms, and representational similarity—are present in all four papers: “Message Passing Perspective on Learning Dynamics of Contrastive Learning” (2023), “RESI: A Comprehensive Benchmark for Representational Similarity Measures” (2024), “GraphCL: Contrastive Self‑Supervised Learning of Graph Representations” (2020), and “DualGraph: Improving Semi‑Supervised Graph Classification via Dual Contrastive Learning” (2022)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "The cited papers share relevant concepts, offering partial support for the proposed integration, but do not directly demonstrate it; the idea is a modestly novel combination, plausibly testable with effort, moderately defined, and potentially valuable for semi‑supervised graph classification.",
+        "timestamp": "2026-09-01T05:07:24.201488Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HD3CB4ACF3D10",
+      "split": "test",
+      "query_id": "Q019",
+      "hypothesis": "Generative adversarial graph networks that learn imbalanced embeddings can be integrated into graph neural networks to improve the discovery of explicit combinatorial constructions by better representing rare graph configurations.",
+      "evidence": [
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, generative adversarial networks, network embedding, combinatorial construction via neural networks, reinforcement learning, and graph structure analysis are present in the theory of graph neural networks (2022), constructions in combinatorics via neural networks (2021), graph structure of neural networks"
+        },
+        {
+          "paper_id": "250909ee6b3a6529ff6bb6c4b4894f56c9456799",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, generative adversarial networks, network embedding, combinatorial construction via neural networks, reinforcement learning, and graph structure analysis are present in the theory of graph neural networks (2022), constructions in combinatorics via neural networks (2021), graph structure of neural networks"
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, generative adversarial networks, network embedding, combinatorial construction via neural networks, reinforcement learning, and graph structure analysis are present in the theory of graph neural networks (2022), constructions in combinatorics via neural networks (2021), graph structure of neural networks"
+        },
+        {
+          "paper_id": "fc580c211689663a64f42e2ba92c864cb134ba9b",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, generative adversarial networks, network embedding, combinatorial construction via neural networks, reinforcement learning, and graph structure analysis are present in the theory of graph neural networks (2022), constructions in combinatorics via neural networks (2021), graph structure of neural networks"
+        },
+        {
+          "paper_id": "85cb1d20ae5ba3f547dc76d2cc73677652900d9b",
+          "shared_concepts": [
+            "nodes",
+            "graphs",
+            "classification",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts of graph neural networks, representation learning, generative adversarial networks, network embedding, combinatorial construction via neural networks, reinforcement learning, and graph structure analysis are present in the theory of graph neural networks (2022), constructions in combinatorics via neural networks (2021), graph structure of neural networks"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence lists related concepts across several papers but does not directly demonstrate the proposed integration; the idea connects existing topics in a non‑trivial way, is plausibly testable with substantial engineering, is fairly well defined, and could have high impact if successful.",
+        "timestamp": "2026-09-01T05:07:44.271238Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H006EC99364F2",
+      "split": "test",
+      "query_id": "Q015",
+      "hypothesis": "Integrating lifelong learning",
+      "evidence": [
+        {
+          "paper_id": "b8da443cf05166cfcc90ab28465048ebe5dc68c8",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "graph-structured data",
+            "gnns",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "d23ab974eeca5b31e5475204195250476b80b4f8",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "graph-structured data",
+            "gnns",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "5afca49da59b45d30084b92939cc24d36c0ad02e",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "graph-structured data",
+            "gnns",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "fd4d2177c7745acd0d3006c5e79abd945890e122",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "graph-structured data",
+            "gnns",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        },
+        {
+          "paper_id": "9346f54c3f9780edb7274ff8c5b32ce9badf0d10",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "graph-structured data",
+            "gnns",
+            "these challenges"
+          ],
+          "supporting_evidence": ""
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 1,
+        "feasibility": 1,
+        "specificity": 1,
+        "usefulness": 1,
+        "notes": "Hypothesis is an incomplete phrase with no concrete claim; evidence provides no supporting details, making the proposal vague, untestable, and of unclear value.",
+        "timestamp": "2026-09-01T05:07:44.271238Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H864DDF15C655",
+      "split": "test",
+      "query_id": "Q012",
+      "hypothesis": "Integrating reinforcement‑driven continual learning mechanisms into explainable graph neural additive networks will enable adaptive, interpretable models that maintain performance on evolving graph data without catastrophic forgetting.",
+      "evidence": [
+        {
+          "paper_id": "bfafae6c6add7f06bd212911de27f75e416c015a",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, representation learning, explainability, continual learning, reinforcement learning, graph structure. Papers – “explaining the explainers in graph neural networks”, “the intelligible and effective graph neural additive networks”, “"
+        },
+        {
+          "paper_id": "d6721b9b0c65aca4af9ea0b6063dc72f8558f6c2",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, representation learning, explainability, continual learning, reinforcement learning, graph structure. Papers – “explaining the explainers in graph neural networks”, “the intelligible and effective graph neural additive networks”, “"
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, representation learning, explainability, continual learning, reinforcement learning, graph structure. Papers – “explaining the explainers in graph neural networks”, “the intelligible and effective graph neural additive networks”, “"
+        },
+        {
+          "paper_id": "6db0527528e3509a5296ddf05bcc38b41015ad71",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, representation learning, explainability, continual learning, reinforcement learning, graph structure. Papers – “explaining the explainers in graph neural networks”, “the intelligible and effective graph neural additive networks”, “"
+        },
+        {
+          "paper_id": "394d251832bfd841dccabc449c25ef562845dc53",
+          "shared_concepts": [
+            "graph neural networks",
+            "this paper",
+            "nodes",
+            "graphs",
+            "they",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, representation learning, explainability, continual learning, reinforcement learning, graph structure. Papers – “explaining the explainers in graph neural networks”, “the intelligible and effective graph neural additive networks”, “"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence shows papers covering each component (reinforcement learning, continual learning, explainable GNN additive models) but not their combined use; the combination is a novel direction, moderately feasible with significant work, clearly specifies mechanisms and expected outcome, and promises strong research value.",
+        "timestamp": "2026-09-01T05:07:44.271238Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "openai/gpt-oss-120b",
+        "annotation_pass_slot": "reviewer_01",
+        "independent_human_annotation": false
+      }
+    }
+  ],
+  "annotation_methodology": {
+    "annotation_source": "AI-generated",
+    "models": [
+      "openai/gpt-oss-120b"
+    ],
+    "independent_human_review": false,
+    "human_ground_truth": false,
+    "preexisting_responses_preserved": []
+  }
+}

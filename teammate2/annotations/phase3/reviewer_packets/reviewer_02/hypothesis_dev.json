@@ -1,0 +1,1597 @@
+{
+  "packet_version": "1.0",
+  "status": "complete",
+  "blinded": true,
+  "reviewer_id": "reviewer_02",
+  "task": "hypothesis",
+  "split": "dev",
+  "response_schema": {
+    "scores": {
+      "evidence": [
+        1,
+        3,
+        5
+      ],
+      "novelty": [
+        1,
+        3,
+        5
+      ],
+      "feasibility": [
+        1,
+        3,
+        5
+      ],
+      "specificity": [
+        1,
+        3,
+        5
+      ],
+      "usefulness": [
+        1,
+        3,
+        5
+      ]
+    },
+    "notes": "optional",
+    "timestamp": "ISO-8601"
+  },
+  "records": [
+    {
+      "hypothesis_id": "H970DEC9C86E4",
+      "split": "dev",
+      "query_id": "Q001",
+      "hypothesis": "Incorporating explicit heterophily measures derived from the underlying graph structure into GNN architectures will improve node classification accuracy on graphs with non‑uniform label distributions.",
+      "evidence": [
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) provides analysis of connectivity patterns; theory of graph neural networks: representation and learning (2022) offers a formal framework for GNN representations; leveraging label non‑uniformity for node classification in GNNs (2023) demonstrates the impact of label imbalance; understanding heterophily for graph neural networks (2024) introduces heterophily as a key factor."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) provides analysis of connectivity patterns; theory of graph neural networks: representation and learning (2022) offers a formal framework for GNN representations; leveraging label non‑uniformity for node classification in GNNs (2023) demonstrates the impact of label imbalance; understanding heterophily for graph neural networks (2024) introduces heterophily as a key factor."
+        },
+        {
+          "paper_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) provides analysis of connectivity patterns; theory of graph neural networks: representation and learning (2022) offers a formal framework for GNN representations; leveraging label non‑uniformity for node classification in GNNs (2023) demonstrates the impact of label imbalance; understanding heterophily for graph neural networks (2024) introduces heterophily as a key factor."
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) provides analysis of connectivity patterns; theory of graph neural networks: representation and learning (2022) offers a formal framework for GNN representations; leveraging label non‑uniformity for node classification in GNNs (2023) demonstrates the impact of label imbalance; understanding heterophily for graph neural networks (2024) introduces heterophily as a key factor."
+        },
+        {
+          "paper_id": "2db550467862c3bea38901cef84d86efed31b8d2",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) provides analysis of connectivity patterns; theory of graph neural networks: representation and learning (2022) offers a formal framework for GNN representations; leveraging label non‑uniformity for node classification in GNNs (2023) demonstrates the impact of label imbalance; understanding heterophily for graph neural networks (2024) introduces heterophily as a key factor."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports the relevance of heterophily and label non-uniformity, but does not explicitly confirm that incorporating explicit measures improves accuracy. The hypothesis is a standard extension of known GNN challenges, making it moderately novel and feasible to test.",
+        "timestamp": "2026-09-01T05:31:48.614604Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H84E993085D00",
+      "split": "dev",
+      "query_id": "Q006",
+      "hypothesis": "Incorporating the size‑shift regularization (sizeshiftreg) into graph neural networks will improve their ability to generalize across molecular systems of varying sizes, especially for multi‑component and high‑order interaction tasks.",
+      "evidence": [
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this issue"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, molecular property prediction, message passing, high‑order graph structures, and regularization; papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022), “graph structure of neural networks” (2020), “neural message passing on high order paths” (2020)."
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this issue"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, molecular property prediction, message passing, high‑order graph structures, and regularization; papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022), “graph structure of neural networks” (2020), “neural message passing on high order paths” (2020)."
+        },
+        {
+          "paper_id": "f7b550cba2d61b3fb676e72c92c245134363fda1",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this issue"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, molecular property prediction, message passing, high‑order graph structures, and regularization; papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022), “graph structure of neural networks” (2020), “neural message passing on high order paths” (2020)."
+        },
+        {
+          "paper_id": "dd5e6e0212ec529fefd7dd8bcfa02d16269a5a7a",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this issue"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, molecular property prediction, message passing, high‑order graph structures, and regularization; papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022), “graph structure of neural networks” (2020), “neural message passing on high order paths” (2020)."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this issue"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, molecular property prediction, message passing, high‑order graph structures, and regularization; papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022), “graph structure of neural networks” (2020), “neural message passing on high order paths” (2020)."
+        }
+      ],
+      "response": {
+        "evidence": 1,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "The provided evidence lists general concepts like 'regularization' and 'high-order paths' but does not mention 'size-shift regularization' or 'sizeshiftreg'. Therefore, there is no direct support for this specific mechanism in the visible records.",
+        "timestamp": "2026-09-01T05:31:48.614604Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H491B6A408459",
+      "split": "dev",
+      "query_id": "Q003",
+      "hypothesis": "Integrating transformer-based attention mechanisms into heterogeneous graph neural networks will enhance propagation-based fake news detection by jointly modeling structural diffusion and contextual semantics.",
+      "evidence": [
+        {
+          "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "users",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, propagation dynamics, heterogeneous graph structures, transformer attention, misinformation detection. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021) (covers GNN applications and propagation), “graph neural networks: architectures, stability, and transferability” (2020) (details GNN architectures and stability), “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022) (provides heterogeneous GNN implementations)."
+        },
+        {
+          "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "users",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, propagation dynamics, heterogeneous graph structures, transformer attention, misinformation detection. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021) (covers GNN applications and propagation), “graph neural networks: architectures, stability, and transferability” (2020) (details GNN architectures and stability), “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022) (provides heterogeneous GNN implementations)."
+        },
+        {
+          "paper_id": "b5bde7463763595d46a35fd36c0aebadfaa9eb17",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "users",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, propagation dynamics, heterogeneous graph structures, transformer attention, misinformation detection. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021) (covers GNN applications and propagation), “graph neural networks: architectures, stability, and transferability” (2020) (details GNN architectures and stability), “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022) (provides heterogeneous GNN implementations)."
+        },
+        {
+          "paper_id": "4fa31616b834c377c4995c346a2b17464f25692a",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "users",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, propagation dynamics, heterogeneous graph structures, transformer attention, misinformation detection. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021) (covers GNN applications and propagation), “graph neural networks: architectures, stability, and transferability” (2020) (details GNN architectures and stability), “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022) (provides heterogeneous GNN implementations)."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "users",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, propagation dynamics, heterogeneous graph structures, transformer attention, misinformation detection. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021) (covers GNN applications and propagation), “graph neural networks: architectures, stability, and transferability” (2020) (details GNN architectures and stability), “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022) (provides heterogeneous GNN implementations)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "The hypothesis proposes a standard architectural integration (transformers into HGNs) for a known task. Evidence is partial, citing general GNN and HGN toolkits rather than specific studies on this exact integration for fake news. Feasibility is moderate as it requires significant engineering to combine these architectures effectively.",
+        "timestamp": "2026-09-01T05:31:59.430790Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H2C4AFC3A7514",
+      "split": "dev",
+      "query_id": "Q003",
+      "hypothesis": "Incorporating positive‑and‑unlabeled (PU) learning strategies into heterogeneous graph neural network (HGNN) architectures will significantly improve node classification performance when labeled data are scarce.",
+      "evidence": [
+        {
+          "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+          "shared_concepts": [
+            "graph neural networks",
+            "applications",
+            "graphs",
+            "users",
+            "this article",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, node prediction/classification, semi‑supervised learning, label scarcity, heterogeneous graphs, transferability. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021); “graph neural networks: architectures, stability, and transferability” (2020); “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022); and “learning graph neural networks with positive and unlabeled nodes” (2021)."
+        },
+        {
+          "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+          "shared_concepts": [
+            "graph neural networks",
+            "applications",
+            "graphs",
+            "users",
+            "this article",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, node prediction/classification, semi‑supervised learning, label scarcity, heterogeneous graphs, transferability. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021); “graph neural networks: architectures, stability, and transferability” (2020); “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022); and “learning graph neural networks with positive and unlabeled nodes” (2021)."
+        },
+        {
+          "paper_id": "b5bde7463763595d46a35fd36c0aebadfaa9eb17",
+          "shared_concepts": [
+            "graph neural networks",
+            "applications",
+            "graphs",
+            "users",
+            "this article",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, node prediction/classification, semi‑supervised learning, label scarcity, heterogeneous graphs, transferability. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021); “graph neural networks: architectures, stability, and transferability” (2020); “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022); and “learning graph neural networks with positive and unlabeled nodes” (2021)."
+        },
+        {
+          "paper_id": "4fa31616b834c377c4995c346a2b17464f25692a",
+          "shared_concepts": [
+            "graph neural networks",
+            "applications",
+            "graphs",
+            "users",
+            "this article",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, node prediction/classification, semi‑supervised learning, label scarcity, heterogeneous graphs, transferability. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021); “graph neural networks: architectures, stability, and transferability” (2020); “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022); and “learning graph neural networks with positive and unlabeled nodes” (2021)."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graph neural networks",
+            "applications",
+            "graphs",
+            "users",
+            "this article",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, node prediction/classification, semi‑supervised learning, label scarcity, heterogeneous graphs, transferability. Relevant papers – “graph neural network: current state of art, challenges and applications” (2021); “graph neural networks: architectures, stability, and transferability” (2020); “openhgnn: an open source toolkit for heterogeneous graph neural network” (2022); and “learning graph neural networks with positive and unlabeled nodes” (2021)."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 3,
+        "usefulness": 5,
+        "notes": "Strong support from multiple papers on PU learning and HGNNs. The combination is a logical extension of existing semi-supervised methods, making it feasible and useful, though the specific integration mechanism is not detailed.",
+        "timestamp": "2026-09-01T05:32:17.602623Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HC1F7C24B7337",
+      "split": "dev",
+      "query_id": "Q004",
+      "hypothesis": "Reinforced continual learning combined with Lipschitz‑normalized self‑attention and graph meta‑network architectures will significantly improve stability and performance of heterogeneous GNNs on sequential and evolving graph tasks.",
+      "evidence": [
+        {
+          "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+          "shared_concepts": [
+            "graph",
+            "graph neural networks",
+            "graphs",
+            "they",
+            "nodes",
+            "gnns",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, self‑attention, Lipschitz normalization, meta‑network adaptation, heterogeneous graphs, benchmarking, continual learning. Relevant papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021); “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021)."
+        },
+        {
+          "paper_id": "af8df99efea4d4ed6f5cf6f6eaf3a5943f4d75db",
+          "shared_concepts": [
+            "graph",
+            "graph neural networks",
+            "graphs",
+            "they",
+            "nodes",
+            "gnns",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, self‑attention, Lipschitz normalization, meta‑network adaptation, heterogeneous graphs, benchmarking, continual learning. Relevant papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021); “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021)."
+        },
+        {
+          "paper_id": "aa339dc08635486396623300d7ab64d1c8d632f6",
+          "shared_concepts": [
+            "graph",
+            "graph neural networks",
+            "graphs",
+            "they",
+            "nodes",
+            "gnns",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, self‑attention, Lipschitz normalization, meta‑network adaptation, heterogeneous graphs, benchmarking, continual learning. Relevant papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021); “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021)."
+        },
+        {
+          "paper_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+          "shared_concepts": [
+            "graph",
+            "graph neural networks",
+            "graphs",
+            "they",
+            "nodes",
+            "gnns",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, self‑attention, Lipschitz normalization, meta‑network adaptation, heterogeneous graphs, benchmarking, continual learning. Relevant papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021); “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 5,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports the individual components (Lipschitz, Meta-Nets, Hetero-GNNs) but not their specific combination with reinforced continual learning. The hypothesis is highly novel but complex to test, requiring significant engineering to integrate these distinct architectures.",
+        "timestamp": "2026-09-01T05:32:17.602623Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H04E063C8B135",
+      "split": "dev",
+      "query_id": "Q005",
+      "hypothesis": "Integrating the comprehensive theoretical framework from “graph neural networks: foundation, frontiers and applications” with the benchmark datasets of TU‑Dataset and the geometric deep learning principles will yield GNN models that achieve superior generalization across diverse graph domains.",
+      "evidence": [
+        {
+          "paper_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8",
+          "shared_concepts": [
+            "machine learning",
+            "graphs",
+            "graph neural networks",
+            "applications",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, geometric deep learning, benchmark datasets, representation learning, graph structures – are present in “everything is connected: graph neural networks” (2023), “TU‑Dataset: a collection of benchmark datasets for learning with graphs” (2020), and “Geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021)."
+        },
+        {
+          "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+          "shared_concepts": [
+            "machine learning",
+            "graphs",
+            "graph neural networks",
+            "applications",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, geometric deep learning, benchmark datasets, representation learning, graph structures – are present in “everything is connected: graph neural networks” (2023), “TU‑Dataset: a collection of benchmark datasets for learning with graphs” (2020), and “Geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021)."
+        },
+        {
+          "paper_id": "14014c024674991149f3ecf9314c93f7e029ef1a",
+          "shared_concepts": [
+            "machine learning",
+            "graphs",
+            "graph neural networks",
+            "applications",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, geometric deep learning, benchmark datasets, representation learning, graph structures – are present in “everything is connected: graph neural networks” (2023), “TU‑Dataset: a collection of benchmark datasets for learning with graphs” (2020), and “Geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021)."
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "machine learning",
+            "graphs",
+            "graph neural networks",
+            "applications",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, geometric deep learning, benchmark datasets, representation learning, graph structures – are present in “everything is connected: graph neural networks” (2023), “TU‑Dataset: a collection of benchmark datasets for learning with graphs” (2020), and “Geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 1,
+        "feasibility": 3,
+        "specificity": 1,
+        "usefulness": 3,
+        "notes": "The hypothesis is a generic combination of existing GNN frameworks and datasets. The evidence only confirms the existence of shared concepts, not the specific claim of superior generalization. The lack of defined variables (e.g., which specific GNN, which metrics) makes it vague and low-novelty.",
+        "timestamp": "2026-09-01T05:32:32.845186Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HB5580358053E",
+      "split": "dev",
+      "query_id": "Q005",
+      "hypothesis": "Meta‑learning can automatically configure graph neural network architectures and training hyper‑parameters to achieve rapid adaptation and superior performance on previously unseen graph domains.",
+      "evidence": [
+        {
+          "paper_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8",
+          "shared_concepts": [
+            "machine learning",
+            "drug discovery",
+            "graph data",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, benchmark datasets, geometric deep learning, representation learning, transfer learning – appear in “everything is connected: graph neural networks” (2023), “TU‑Dataset: a collection of benchmark datasets for learning with graphs” (2020), “geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021), and the uncovered “metalearning with graph neural networks” (2021)."
+        },
+        {
+          "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+          "shared_concepts": [
+            "machine learning",
+            "drug discovery",
+            "graph data",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, benchmark datasets, geometric deep learning, representation learning, transfer learning – appear in “everything is connected: graph neural networks” (2023), “TU‑Dataset: a collection of benchmark datasets for learning with graphs” (2020), “geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021), and the uncovered “metalearning with graph neural networks” (2021)."
+        },
+        {
+          "paper_id": "14014c024674991149f3ecf9314c93f7e029ef1a",
+          "shared_concepts": [
+            "machine learning",
+            "drug discovery",
+            "graph data",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, benchmark datasets, geometric deep learning, representation learning, transfer learning – appear in “everything is connected: graph neural networks” (2023), “TU‑Dataset: a collection of benchmark datasets for learning with graphs” (2020), “geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021), and the uncovered “metalearning with graph neural networks” (2021)."
+        },
+        {
+          "paper_id": "e7b666c5ff82321cd35cfe5af3deb026ea0d3059",
+          "shared_concepts": [
+            "machine learning",
+            "drug discovery",
+            "graph data",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, benchmark datasets, geometric deep learning, representation learning, transfer learning – appear in “everything is connected: graph neural networks” (2023), “TU‑Dataset: a collection of benchmark datasets for learning with graphs” (2020), “geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021), and the uncovered “metalearning with graph neural networks” (2021)."
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "machine learning",
+            "drug discovery",
+            "graph data",
+            "graph neural networks",
+            "applications"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, benchmark datasets, geometric deep learning, representation learning, transfer learning – appear in “everything is connected: graph neural networks” (2023), “TU‑Dataset: a collection of benchmark datasets for learning with graphs” (2020), “geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021), and the uncovered “metalearning with graph neural networks” (2021)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "The hypothesis proposes applying meta-learning to GNNs, which is a known but active area. Evidence supports the presence of relevant concepts including a specific paper on meta-learning with GNNs. However, the hypothesis lacks specific details on the meta-learning algorithm or the definition of 'unseen domains', making it moderately specific and feasible.",
+        "timestamp": "2026-09-01T05:32:32.845186Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HEACDB24E1EB3",
+      "split": "dev",
+      "query_id": "Q006",
+      "hypothesis": "Incorporating neural tree architectures into graph neural networks will enhance the representation of hierarchical and multi‑component molecular interactions, leading to improved prediction of properties for molecular complexes.",
+      "evidence": [
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this work",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, high‑order paths, functional groups, multi‑component systems, graph structure of neural networks. Relevant papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022); “neural message passing on high order paths” (2020); “graph structure of neural networks” (2020); and “neural trees for learning on graphs” (2021)."
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this work",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, high‑order paths, functional groups, multi‑component systems, graph structure of neural networks. Relevant papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022); “neural message passing on high order paths” (2020); “graph structure of neural networks” (2020); and “neural trees for learning on graphs” (2021)."
+        },
+        {
+          "paper_id": "f7b550cba2d61b3fb676e72c92c245134363fda1",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this work",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, high‑order paths, functional groups, multi‑component systems, graph structure of neural networks. Relevant papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022); “neural message passing on high order paths” (2020); “graph structure of neural networks” (2020); and “neural trees for learning on graphs” (2021)."
+        },
+        {
+          "paper_id": "dd5e6e0212ec529fefd7dd8bcfa02d16269a5a7a",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this work",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, high‑order paths, functional groups, multi‑component systems, graph structure of neural networks. Relevant papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022); “neural message passing on high order paths” (2020); “graph structure of neural networks” (2020); and “neural trees for learning on graphs” (2021)."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graph neural networks",
+            "gnns",
+            "graphs",
+            "they",
+            "this work",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, high‑order paths, functional groups, multi‑component systems, graph structure of neural networks. Relevant papers – “capturing molecular interactions in graph neural networks: a case study in multi” (2022); “neural message passing on high order paths” (2020); “graph structure of neural networks” (2020); and “neural trees for learning on graphs” (2021)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence lists relevant papers on neural trees and GNNs but does not explicitly confirm the integration or the specific outcome for molecular complexes. The hypothesis is a plausible extension of existing work but lacks specific experimental details or defined metrics.",
+        "timestamp": "2026-09-01T05:32:53.039209Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H398B38D6E484",
+      "split": "dev",
+      "query_id": "Q001",
+      "hypothesis": "Incorporating hierarchical global‑based residual connections into graph neural networks will improve the alignment between learned representations and the underlying graph structure, thereby mitigating label non‑uniformity effects in node classification.",
+      "evidence": [
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "properties",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure analysis, representation learning, node classification, residual connections – appear in “graph structure of neural networks” (2020), “theory of graph neural networks: representation and learning” (2022), “leveraging label non‑uniformity for node classification in GNNs” (2023), and “augmented graph neural network with hierarchical global‑based residual connections” (2022)."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "properties",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure analysis, representation learning, node classification, residual connections – appear in “graph structure of neural networks” (2020), “theory of graph neural networks: representation and learning” (2022), “leveraging label non‑uniformity for node classification in GNNs” (2023), and “augmented graph neural network with hierarchical global‑based residual connections” (2022)."
+        },
+        {
+          "paper_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "properties",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure analysis, representation learning, node classification, residual connections – appear in “graph structure of neural networks” (2020), “theory of graph neural networks: representation and learning” (2022), “leveraging label non‑uniformity for node classification in GNNs” (2023), and “augmented graph neural network with hierarchical global‑based residual connections” (2022)."
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "properties",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure analysis, representation learning, node classification, residual connections – appear in “graph structure of neural networks” (2020), “theory of graph neural networks: representation and learning” (2022), “leveraging label non‑uniformity for node classification in GNNs” (2023), and “augmented graph neural network with hierarchical global‑based residual connections” (2022)."
+        },
+        {
+          "paper_id": "2db550467862c3bea38901cef84d86efed31b8d2",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "properties",
+            "graph neural networks"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure analysis, representation learning, node classification, residual connections – appear in “graph structure of neural networks” (2020), “theory of graph neural networks: representation and learning” (2022), “leveraging label non‑uniformity for node classification in GNNs” (2023), and “augmented graph neural network with hierarchical global‑based residual connections” (2022)."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence directly cites a paper titled 'augmented graph neural network with hierarchical global‑based residual connections' (2022) and another on 'leveraging label non‑uniformity', providing clear multi-paper support for the specific mechanism and problem addressed. The hypothesis is specific, testable, and addresses a known limitation in GNNs.",
+        "timestamp": "2026-09-01T05:32:53.039209Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H2E61FFCBA364",
+      "split": "dev",
+      "query_id": "Q005",
+      "hypothesis": "Integrating the advanced graph‑based deep learning architectures used for molecular property prediction into general‑purpose graph neural network frameworks will substantially improve performance on heterogeneous benchmark datasets.",
+      "evidence": [
+        {
+          "paper_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8",
+          "shared_concepts": [
+            "data",
+            "drug discovery",
+            "graph neural networks",
+            "deep learning methods",
+            "molecular properties"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, representation learning, supervised learning, benchmark datasets, geometric deep learning. Relevant papers – “everything is connected: graph neural networks” (2023), “TUdataset: a collection of benchmark datasets for learning with graphs” (2020), “Geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021), and “Advanced deep learning methods for molecular property prediction” (2023)."
+        },
+        {
+          "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+          "shared_concepts": [
+            "data",
+            "drug discovery",
+            "graph neural networks",
+            "deep learning methods",
+            "molecular properties"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, representation learning, supervised learning, benchmark datasets, geometric deep learning. Relevant papers – “everything is connected: graph neural networks” (2023), “TUdataset: a collection of benchmark datasets for learning with graphs” (2020), “Geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021), and “Advanced deep learning methods for molecular property prediction” (2023)."
+        },
+        {
+          "paper_id": "14014c024674991149f3ecf9314c93f7e029ef1a",
+          "shared_concepts": [
+            "data",
+            "drug discovery",
+            "graph neural networks",
+            "deep learning methods",
+            "molecular properties"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, representation learning, supervised learning, benchmark datasets, geometric deep learning. Relevant papers – “everything is connected: graph neural networks” (2023), “TUdataset: a collection of benchmark datasets for learning with graphs” (2020), “Geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021), and “Advanced deep learning methods for molecular property prediction” (2023)."
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "data",
+            "drug discovery",
+            "graph neural networks",
+            "deep learning methods",
+            "molecular properties"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, representation learning, supervised learning, benchmark datasets, geometric deep learning. Relevant papers – “everything is connected: graph neural networks” (2023), “TUdataset: a collection of benchmark datasets for learning with graphs” (2020), “Geometric deep learning: grids, groups, graphs, geodesics, and gauges” (2021), and “Advanced deep learning methods for molecular property prediction” (2023)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence lists relevant papers but does not explicitly support the claim that molecular-specific architectures improve general heterogeneous benchmarks. The hypothesis is a broad generalization with vague metrics ('substantially improve') and undefined integration methods.",
+        "timestamp": "2026-09-01T05:33:11.229245Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H2E542FE10514",
+      "split": "dev",
+      "query_id": "Q002",
+      "hypothesis": "Incorporating Lipschitz normalization into heterogeneous graph attention networks will improve training stability and performance as depth increases.",
+      "evidence": [
+        {
+          "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+          "shared_concepts": [
+            "applications",
+            "graph-structured data",
+            "graph neural networks",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include “graph attention networks”, “heterogeneous graphs”, “layer depth stability”, “normalization techniques”, and “benchmarking”; papers: “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021), and the 2024 “Survey on Graph Neural Networks”."
+        },
+        {
+          "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+          "shared_concepts": [
+            "applications",
+            "graph-structured data",
+            "graph neural networks",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include “graph attention networks”, “heterogeneous graphs”, “layer depth stability”, “normalization techniques”, and “benchmarking”; papers: “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021), and the 2024 “Survey on Graph Neural Networks”."
+        },
+        {
+          "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+          "shared_concepts": [
+            "applications",
+            "graph-structured data",
+            "graph neural networks",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include “graph attention networks”, “heterogeneous graphs”, “layer depth stability”, “normalization techniques”, and “benchmarking”; papers: “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021), and the 2024 “Survey on Graph Neural Networks”."
+        },
+        {
+          "paper_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+          "shared_concepts": [
+            "applications",
+            "graph-structured data",
+            "graph neural networks",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include “graph attention networks”, “heterogeneous graphs”, “layer depth stability”, “normalization techniques”, and “benchmarking”; papers: “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021), and the 2024 “Survey on Graph Neural Networks”."
+        },
+        {
+          "paper_id": "aa339dc08635486396623300d7ab64d1c8d632f6",
+          "shared_concepts": [
+            "applications",
+            "graph-structured data",
+            "graph neural networks",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts include “graph attention networks”, “heterogeneous graphs”, “layer depth stability”, “normalization techniques”, and “benchmarking”; papers: “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021), and the 2024 “Survey on Graph Neural Networks”."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Strong support from specific papers on Lipschitz normalization and heterogeneous GNNs. The hypothesis clearly defines the intervention (Lipschitz normalization), target (heterogeneous GATs), and expected outcome (stability/performance with depth), making it highly testable and valuable.",
+        "timestamp": "2026-09-01T05:33:11.229245Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H3F9ADF9D2EDD",
+      "split": "dev",
+      "query_id": "Q001",
+      "hypothesis": "Integrating dynamic message‑passing schemes that adapt to the intrinsic graph structure and exploit label‑non‑uniformity will enhance node‑classification accuracy in graph neural networks.",
+      "evidence": [
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) (graph topology), theory of graph neural networks: representation and learning (2022) (message‑passing framework), leveraging label non‑uniformity for node classification in GNNs (2023) (label distribution bias), towards dynamic message passing on graphs (2024) (adaptive message‑passing)."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) (graph topology), theory of graph neural networks: representation and learning (2022) (message‑passing framework), leveraging label non‑uniformity for node classification in GNNs (2023) (label distribution bias), towards dynamic message passing on graphs (2024) (adaptive message‑passing)."
+        },
+        {
+          "paper_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) (graph topology), theory of graph neural networks: representation and learning (2022) (message‑passing framework), leveraging label non‑uniformity for node classification in GNNs (2023) (label distribution bias), towards dynamic message passing on graphs (2024) (adaptive message‑passing)."
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) (graph topology), theory of graph neural networks: representation and learning (2022) (message‑passing framework), leveraging label non‑uniformity for node classification in GNNs (2023) (label distribution bias), towards dynamic message passing on graphs (2024) (adaptive message‑passing)."
+        },
+        {
+          "paper_id": "2db550467862c3bea38901cef84d86efed31b8d2",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph structure of neural networks (2020) (graph topology), theory of graph neural networks: representation and learning (2022) (message‑passing framework), leveraging label non‑uniformity for node classification in GNNs (2023) (label distribution bias), towards dynamic message passing on graphs (2024) (adaptive message‑passing)."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 3,
+        "usefulness": 5,
+        "notes": "Strong support from multiple papers on dynamic message passing and label non-uniformity. The combination is a logical extension of existing GNN improvements, making it feasible and useful, though the specific mechanism for 'intrinsic graph structure' adaptation is not fully detailed.",
+        "timestamp": "2026-09-01T05:33:28.324997Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H177B2ABCC57B",
+      "split": "dev",
+      "query_id": "Q006",
+      "hypothesis": "Adding hierarchical global‑based residual connections to graph neural networks will enhance the prediction of intermolecular interaction properties in multi‑component molecular systems by jointly capturing local functional‑group patterns and global structural context.",
+      "evidence": [
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "they",
+            "nodes",
+            "properties"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, hierarchical structures, residual connections, multi‑component molecular modeling; cited papers – “capturing molecular interactions in graph neural networks: a case study in multi (2022)”, “neural message passing on high order paths (2020)”, “graph structure of neural networks (2020)”, and the undiscovered “augmented graph neural network with hierarchical global‑based residual connections (2022)”."
+        },
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "they",
+            "nodes",
+            "properties"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, hierarchical structures, residual connections, multi‑component molecular modeling; cited papers – “capturing molecular interactions in graph neural networks: a case study in multi (2022)”, “neural message passing on high order paths (2020)”, “graph structure of neural networks (2020)”, and the undiscovered “augmented graph neural network with hierarchical global‑based residual connections (2022)”."
+        },
+        {
+          "paper_id": "f7b550cba2d61b3fb676e72c92c245134363fda1",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "they",
+            "nodes",
+            "properties"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, hierarchical structures, residual connections, multi‑component molecular modeling; cited papers – “capturing molecular interactions in graph neural networks: a case study in multi (2022)”, “neural message passing on high order paths (2020)”, “graph structure of neural networks (2020)”, and the undiscovered “augmented graph neural network with hierarchical global‑based residual connections (2022)”."
+        },
+        {
+          "paper_id": "dd5e6e0212ec529fefd7dd8bcfa02d16269a5a7a",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "they",
+            "nodes",
+            "properties"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, hierarchical structures, residual connections, multi‑component molecular modeling; cited papers – “capturing molecular interactions in graph neural networks: a case study in multi (2022)”, “neural message passing on high order paths (2020)”, “graph structure of neural networks (2020)”, and the undiscovered “augmented graph neural network with hierarchical global‑based residual connections (2022)”."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "they",
+            "nodes",
+            "properties"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, message passing, hierarchical structures, residual connections, multi‑component molecular modeling; cited papers – “capturing molecular interactions in graph neural networks: a case study in multi (2022)”, “neural message passing on high order paths (2020)”, “graph structure of neural networks (2020)”, and the undiscovered “augmented graph neural network with hierarchical global‑based residual connections (2022)”."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence cites a specific 'undiscovered' paper, which limits the strength of the support to conceptual alignment rather than empirical proof. The hypothesis connects hierarchical residuals to molecular properties, which is a reasonable but somewhat standard architectural improvement in GNNs.",
+        "timestamp": "2026-09-01T05:33:28.324997Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H5EEC9DF75A8C",
+      "split": "dev",
+      "query_id": "Q003",
+      "hypothesis": "Contrastive pre-training can improve the stability and transferability of heterogeneous graph neural networks, enabling more robust node and link prediction across diverse domains.",
+      "evidence": [
+        {
+          "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "they",
+            "heterogeneous graphs",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts include heterogeneous graphs, graph neural network architectures, stability, transferability, and pre‑training; supported by “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), and “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022)."
+        },
+        {
+          "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "they",
+            "heterogeneous graphs",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts include heterogeneous graphs, graph neural network architectures, stability, transferability, and pre‑training; supported by “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), and “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022)."
+        },
+        {
+          "paper_id": "b5bde7463763595d46a35fd36c0aebadfaa9eb17",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "they",
+            "heterogeneous graphs",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts include heterogeneous graphs, graph neural network architectures, stability, transferability, and pre‑training; supported by “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), and “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022)."
+        },
+        {
+          "paper_id": "4fa31616b834c377c4995c346a2b17464f25692a",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "they",
+            "heterogeneous graphs",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts include heterogeneous graphs, graph neural network architectures, stability, transferability, and pre‑training; supported by “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), and “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022)."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "graphs",
+            "they",
+            "heterogeneous graphs",
+            "nodes"
+          ],
+          "supporting_evidence": "Shared concepts include heterogeneous graphs, graph neural network architectures, stability, transferability, and pre‑training; supported by “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), and “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence cites general GNN and Heterogeneous GNN papers but lacks specific data on contrastive pre-training effects. The hypothesis is a broad generalization of existing trends rather than a specific, novel mechanism. Feasibility is moderate as it requires defining specific contrastive objectives and transfer benchmarks.",
+        "timestamp": "2026-09-01T05:33:45.469287Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HD44D564FBB9D",
+      "split": "dev",
+      "query_id": "Q004",
+      "hypothesis": "Integrating neural‑tree architectures with Lipschitz‑normalized self‑attention and graph meta‑network representations will enable deeper, more stable graph neural networks that handle heterogeneous graph structures effectively.",
+      "evidence": [
+        {
+          "paper_id": "af8df99efea4d4ed6f5cf6f6eaf3a5943f4d75db",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "they",
+            "nodes",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, normalization techniques, heterogeneous graph processing, meta‑learning of architectures, depth scalability. Relevant papers: “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021); “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs”"
+        },
+        {
+          "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "they",
+            "nodes",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, normalization techniques, heterogeneous graph processing, meta‑learning of architectures, depth scalability. Relevant papers: “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021); “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs”"
+        },
+        {
+          "paper_id": "aa339dc08635486396623300d7ab64d1c8d632f6",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "they",
+            "nodes",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, normalization techniques, heterogeneous graph processing, meta‑learning of architectures, depth scalability. Relevant papers: “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021); “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs”"
+        },
+        {
+          "paper_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+          "shared_concepts": [
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "they",
+            "nodes",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, normalization techniques, heterogeneous graph processing, meta‑learning of architectures, depth scalability. Relevant papers: “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021); “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs”"
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 5,
+        "feasibility": 1,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "The combination of neural-trees, Lipschitz-normalized attention, and graph meta-networks is a highly non-trivial and novel architectural proposal. However, the evidence only lists relevant papers without demonstrating that this specific integration works or is feasible. The hypothesis is vague on how these components interact, making it difficult to test practically without significant design work.",
+        "timestamp": "2026-09-01T05:33:45.469287Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H2F702952148F",
+      "split": "dev",
+      "query_id": "Q002",
+      "hypothesis": "Incorporating Lipschitz‑normalized self‑attention and unified structure‑learning mechanisms into heterogeneous graph attention networks will significantly improve performance on knowledge‑graph completion tasks.",
+      "evidence": [
+        {
+          "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+          "shared_concepts": [
+            "poor performance",
+            "graph neural networks",
+            "datasets",
+            "downstream tasks"
+          ],
+          "supporting_evidence": "Shared concepts – graph attention networks, heterogeneous graphs, structure learning, and benchmarking – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), and “Are We Really Making Much Progress?” (2021); the 2020 survey provides a comprehensive list of KG completion models and datasets."
+        },
+        {
+          "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+          "shared_concepts": [
+            "poor performance",
+            "graph neural networks",
+            "datasets",
+            "downstream tasks"
+          ],
+          "supporting_evidence": "Shared concepts – graph attention networks, heterogeneous graphs, structure learning, and benchmarking – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), and “Are We Really Making Much Progress?” (2021); the 2020 survey provides a comprehensive list of KG completion models and datasets."
+        },
+        {
+          "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+          "shared_concepts": [
+            "poor performance",
+            "graph neural networks",
+            "datasets",
+            "downstream tasks"
+          ],
+          "supporting_evidence": "Shared concepts – graph attention networks, heterogeneous graphs, structure learning, and benchmarking – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), and “Are We Really Making Much Progress?” (2021); the 2020 survey provides a comprehensive list of KG completion models and datasets."
+        },
+        {
+          "paper_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+          "shared_concepts": [
+            "poor performance",
+            "graph neural networks",
+            "datasets",
+            "downstream tasks"
+          ],
+          "supporting_evidence": "Shared concepts – graph attention networks, heterogeneous graphs, structure learning, and benchmarking – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), and “Are We Really Making Much Progress?” (2021); the 2020 survey provides a comprehensive list of KG completion models and datasets."
+        },
+        {
+          "paper_id": "aa339dc08635486396623300d7ab64d1c8d632f6",
+          "shared_concepts": [
+            "poor performance",
+            "graph neural networks",
+            "datasets",
+            "downstream tasks"
+          ],
+          "supporting_evidence": "Shared concepts – graph attention networks, heterogeneous graphs, structure learning, and benchmarking – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “A Unified Structure Learning Framework for Graph Attention Networks” (2022), and “Are We Really Making Much Progress?” (2021); the 2020 survey provides a comprehensive list of KG completion models and datasets."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports the existence of the components (Lipschitz normalization, structure learning) and the task (KG completion), but does not demonstrate their combined efficacy. The hypothesis is a standard architectural combination, making it moderately novel and feasible but lacking specific variable definitions.",
+        "timestamp": "2026-09-01T05:34:03.790750Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H4AA200245E50",
+      "split": "dev",
+      "query_id": "Q001",
+      "hypothesis": "Incorporating neural tree architectures into graph neural networks can exploit hierarchical graph structure to improve node classification performance, especially under label non‑uniformity.",
+      "evidence": [
+        {
+          "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts of graph representation (graph structure of neural networks, 2020), hierarchical architecture (neural trees for learning on graphs, 2021), node classification (leveraging label non‑uniformity for node classification in GNNs, 2023), and representation learning theory (theory of graph neural networks, 2022)."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts of graph representation (graph structure of neural networks, 2020), hierarchical architecture (neural trees for learning on graphs, 2021), node classification (leveraging label non‑uniformity for node classification in GNNs, 2023), and representation learning theory (theory of graph neural networks, 2022)."
+        },
+        {
+          "paper_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts of graph representation (graph structure of neural networks, 2020), hierarchical architecture (neural trees for learning on graphs, 2021), node classification (leveraging label non‑uniformity for node classification in GNNs, 2023), and representation learning theory (theory of graph neural networks, 2022)."
+        },
+        {
+          "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts of graph representation (graph structure of neural networks, 2020), hierarchical architecture (neural trees for learning on graphs, 2021), node classification (leveraging label non‑uniformity for node classification in GNNs, 2023), and representation learning theory (theory of graph neural networks, 2022)."
+        },
+        {
+          "paper_id": "2db550467862c3bea38901cef84d86efed31b8d2",
+          "shared_concepts": [
+            "graphs",
+            "nodes",
+            "graph neural networks",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts of graph representation (graph structure of neural networks, 2020), hierarchical architecture (neural trees for learning on graphs, 2021), node classification (leveraging label non‑uniformity for node classification in GNNs, 2023), and representation learning theory (theory of graph neural networks, 2022)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence confirms the relevance of neural trees, GNNs, and label non-uniformity, but does not directly support the specific integration of neural trees into GNNs for this purpose. The connection is plausible but not clearly established by the provided snippets, and the hypothesis lacks specific metrics or dataset details.",
+        "timestamp": "2026-09-01T05:34:03.790750Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HBB5F850486DF",
+      "split": "dev",
+      "query_id": "Q003",
+      "hypothesis": "Integrating hypergraph attention mechanisms into heterogeneous graph neural network architectures will enhance inductive text classification performance on multi-relational corpora.",
+      "evidence": [
+        {
+          "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "they",
+            "increasing attention",
+            "practice"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, inductive learning, heterogeneous/heterophilic graphs, text classification; papers – “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022), and “Be more with less: hypergraph attention networks for inductive text classification” (2020)."
+        },
+        {
+          "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "they",
+            "increasing attention",
+            "practice"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, inductive learning, heterogeneous/heterophilic graphs, text classification; papers – “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022), and “Be more with less: hypergraph attention networks for inductive text classification” (2020)."
+        },
+        {
+          "paper_id": "b5bde7463763595d46a35fd36c0aebadfaa9eb17",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "they",
+            "increasing attention",
+            "practice"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, inductive learning, heterogeneous/heterophilic graphs, text classification; papers – “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022), and “Be more with less: hypergraph attention networks for inductive text classification” (2020)."
+        },
+        {
+          "paper_id": "4fa31616b834c377c4995c346a2b17464f25692a",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "they",
+            "increasing attention",
+            "practice"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, inductive learning, heterogeneous/heterophilic graphs, text classification; papers – “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022), and “Be more with less: hypergraph attention networks for inductive text classification” (2020)."
+        },
+        {
+          "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+          "shared_concepts": [
+            "this paper",
+            "graph neural networks",
+            "they",
+            "increasing attention",
+            "practice"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, inductive learning, heterogeneous/heterophilic graphs, text classification; papers – “graph neural network: current state of art, challenges and applications” (2021), “graph neural networks: architectures, stability, and transferability” (2020), “OpenHGNN: an open source toolkit for heterogeneous graph neural network” (2022), and “Be more with less: hypergraph attention networks for inductive text classification” (2020)."
+        }
+      ],
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence is strong due to the direct citation of 'Be more with less: hypergraph attention networks for inductive text classification' and related GNN papers. However, the hypothesis is a direct restatement of the cited work's title/conclusion, making novelty low. Specificity is moderate as it lacks defined metrics or specific architectural details beyond the general mechanism.",
+        "timestamp": "2026-09-01T05:34:14.622159Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "HB15E0C067B66",
+      "split": "dev",
+      "query_id": "Q004",
+      "hypothesis": "Incorporating locality‑aware graph rewiring into deep GNNs that use Lipschitz‑normalized self‑attention and meta‑network architecture encoders will improve stability and performance on heterogeneous graph benchmarks.",
+      "evidence": [
+        {
+          "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+          "shared_concepts": [
+            "this issue",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, normalization techniques, heterogeneous graph processing, meta‑learning of architectures; papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Metanetworks for Processing Diverse Neural Architectures” (2023), “Are We Really Making Much Progress?: Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021)."
+        },
+        {
+          "paper_id": "af8df99efea4d4ed6f5cf6f6eaf3a5943f4d75db",
+          "shared_concepts": [
+            "this issue",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, normalization techniques, heterogeneous graph processing, meta‑learning of architectures; papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Metanetworks for Processing Diverse Neural Architectures” (2023), “Are We Really Making Much Progress?: Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021)."
+        },
+        {
+          "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+          "shared_concepts": [
+            "this issue",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, normalization techniques, heterogeneous graph processing, meta‑learning of architectures; papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Metanetworks for Processing Diverse Neural Architectures” (2023), “Are We Really Making Much Progress?: Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021)."
+        },
+        {
+          "paper_id": "aa339dc08635486396623300d7ab64d1c8d632f6",
+          "shared_concepts": [
+            "this issue",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, normalization techniques, heterogeneous graph processing, meta‑learning of architectures; papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Metanetworks for Processing Diverse Neural Architectures” (2023), “Are We Really Making Much Progress?: Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021)."
+        },
+        {
+          "paper_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+          "shared_concepts": [
+            "this issue",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, attention mechanisms, normalization techniques, heterogeneous graph processing, meta‑learning of architectures; papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Metanetworks for Processing Diverse Neural Architectures” (2023), “Are We Really Making Much Progress?: Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports the individual components (Lipschitz normalization, meta-networks, heterogeneous GNNs) but does not directly support the specific combination with 'locality-aware graph rewiring'. The hypothesis is a plausible engineering combination but lacks specific metrics or defined rewiring strategies.",
+        "timestamp": "2026-09-01T05:34:32.807868Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H002CC913665F",
+      "split": "dev",
+      "query_id": "Q004",
+      "hypothesis": "Incorporating Lipschitz‑normalized self‑attention into graph neural convection‑diffusion models will enhance their stability and expressive power on heterophilic graphs while enabling meta‑learning across diverse GNN architectures.",
+      "evidence": [
+        {
+          "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+          "shared_concepts": [
+            "poor performance",
+            "graph neural networks",
+            "they",
+            "nodes",
+            "node classification tasks",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, heterophily, diffusion processes, self‑attention, normalization techniques, meta‑learning across architectures. Relevant papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural” (2021); “Graph Metanetworks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress?: Revisiting, Benchmarking and Refining Heterophilic GNNs” (2021); and the undiscovered “Graph Neural Convection‑Diffusion with Heterophily” (2023)."
+        },
+        {
+          "paper_id": "af8df99efea4d4ed6f5cf6f6eaf3a5943f4d75db",
+          "shared_concepts": [
+            "poor performance",
+            "graph neural networks",
+            "they",
+            "nodes",
+            "node classification tasks",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, heterophily, diffusion processes, self‑attention, normalization techniques, meta‑learning across architectures. Relevant papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural” (2021); “Graph Metanetworks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress?: Revisiting, Benchmarking and Refining Heterophilic GNNs” (2021); and the undiscovered “Graph Neural Convection‑Diffusion with Heterophily” (2023)."
+        },
+        {
+          "paper_id": "aa339dc08635486396623300d7ab64d1c8d632f6",
+          "shared_concepts": [
+            "poor performance",
+            "graph neural networks",
+            "they",
+            "nodes",
+            "node classification tasks",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, heterophily, diffusion processes, self‑attention, normalization techniques, meta‑learning across architectures. Relevant papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural” (2021); “Graph Metanetworks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress?: Revisiting, Benchmarking and Refining Heterophilic GNNs” (2021); and the undiscovered “Graph Neural Convection‑Diffusion with Heterophily” (2023)."
+        },
+        {
+          "paper_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+          "shared_concepts": [
+            "poor performance",
+            "graph neural networks",
+            "they",
+            "nodes",
+            "node classification tasks",
+            "this paper"
+          ],
+          "supporting_evidence": "Shared concepts – graph neural networks, heterophily, diffusion processes, self‑attention, normalization techniques, meta‑learning across architectures. Relevant papers – “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural” (2021); “Graph Metanetworks for Processing Diverse Neural Architectures” (2023); “Are We Really Making Much Progress?: Revisiting, Benchmarking and Refining Heterophilic GNNs” (2021); and the undiscovered “Graph Neural Convection‑Diffusion with Heterophily” (2023)."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence cites relevant papers on Lipschitz normalization and heterophily, but the specific application to 'convection-diffusion models' is not explicitly supported by the listed evidence, which focuses on standard GNNs. The hypothesis combines multiple complex concepts without clear experimental design.",
+        "timestamp": "2026-09-01T05:34:32.807868Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "hypothesis_id": "H22CC264BD1F4",
+      "split": "dev",
+      "query_id": "Q004",
+      "hypothesis": "Incorporating Lipschitz-normalized self‑attention mechanisms into heterogeneous graph meta‑networks, as surveyed in the 2024 GNN review, will improve the depth scalability and transferability of heterogeneous GNNs.",
+      "evidence": [
+        {
+          "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+          "shared_concepts": [
+            "applications",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – self‑attention, Lipschitz normalization, heterogeneous graphs, meta‑learning, scalability – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023), and “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021). The 2024 survey on graph neural networks also covers all five concepts."
+        },
+        {
+          "paper_id": "af8df99efea4d4ed6f5cf6f6eaf3a5943f4d75db",
+          "shared_concepts": [
+            "applications",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – self‑attention, Lipschitz normalization, heterogeneous graphs, meta‑learning, scalability – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023), and “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021). The 2024 survey on graph neural networks also covers all five concepts."
+        },
+        {
+          "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+          "shared_concepts": [
+            "applications",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – self‑attention, Lipschitz normalization, heterogeneous graphs, meta‑learning, scalability – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023), and “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021). The 2024 survey on graph neural networks also covers all five concepts."
+        },
+        {
+          "paper_id": "aa339dc08635486396623300d7ab64d1c8d632f6",
+          "shared_concepts": [
+            "applications",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – self‑attention, Lipschitz normalization, heterogeneous graphs, meta‑learning, scalability – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023), and “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021). The 2024 survey on graph neural networks also covers all five concepts."
+        },
+        {
+          "paper_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+          "shared_concepts": [
+            "applications",
+            "graph neural networks",
+            "graphs",
+            "this work",
+            "gnns"
+          ],
+          "supporting_evidence": "Shared concepts – self‑attention, Lipschitz normalization, heterogeneous graphs, meta‑learning, scalability – appear in “Lipschitz Normalization for Self‑Attention Layers with Application to Graph Neural Networks” (2021), “Graph Meta‑Networks for Processing Diverse Neural Architectures” (2023), and “Are We Really Making Much Progress? Revisiting, Benchmarking and Refining Heterogeneous GNNs” (2021). The 2024 survey on graph neural networks also covers all five concepts."
+        }
+      ],
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence is partial as it relies on shared concepts across papers rather than direct experimental proof of the combined mechanism. The hypothesis connects distinct areas (Lipschitz attention, meta-networks, heterogeneous GNNs) which offers some novelty, but the specific integration is not fully defined, making feasibility and specificity moderate.",
+        "timestamp": "2026-09-01T05:34:44.619643Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    }
+  ],
+  "annotation_methodology": {
+    "annotation_source": "AI-generated",
+    "models": [
+      "qwen/qwen3.8-27b"
+    ],
+    "independent_human_review": false,
+    "human_ground_truth": false,
+    "preexisting_responses_preserved": []
+  }
+}

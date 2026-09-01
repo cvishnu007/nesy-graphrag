@@ -1,0 +1,10 @@
+{
+  "check": "neo4j",
+  "status": "passed",
+  "mutates_state": false,
+  "runtime_seconds": 3.980911799997557,
+  "details": {
+    "paper_count": 8850,
+    "query": "read-only count"
+  }
+}

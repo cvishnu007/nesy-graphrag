@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "created_at_utc": "2026-09-01T11:01:18.637708+00:00",
+  "git_commit": "d044bd4b2361170bb537dffb2228fa94c3cd2291",
+  "input": "data/s2_clean.json",
+  "input_sha256": "16bb235f4a16d6d0f3c07f69461274ea89f2a9cdf69194664220d997bb5deecf",
+  "baseline": "en_core_web_sm entities plus noun chunks",
+  "baseline_version": "3.8.0",
+  "alternative": "fixed scientific term and model-token patterns",
+  "sample_size": 500,
+  "seed": "ner-comparison-v1",
+  "failure_count": 0,
+  "reproduction_command": ".\\venv\\Scripts\\python.exe -m src.evaluation.ner_comparison --input data/s2_clean.json --sample-size 500 --seed ner-comparison-v1 --output-dir results/reasoning/final_ai_reference/model_comparisons/ner",
+  "controlled_variables": {
+    "only_changed_component": "concept_extractor",
+    "identical_documents": true,
+    "identical_text_field": true,
+    "production_graph_modified": false
+  }
+}

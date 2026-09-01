@@ -1,0 +1,9 @@
+{
+  "check": "hypothesis_path",
+  "status": "passed",
+  "mutates_state": false,
+  "runtime_seconds": 3.795092599990312,
+  "details": {
+    "hypothesis_count": 1
+  }
+}

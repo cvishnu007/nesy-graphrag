@@ -1,0 +1,14 @@
+{
+  "split": "test",
+  "query_count": 14,
+  "task_output_counts": {
+    "contradiction": 14
+  },
+  "failure_count": 0,
+  "generation_configuration": {
+    "primary": "openai/gpt-oss-20b",
+    "fallback": "openai/gpt-oss-20b",
+    "configuration_label": "phase2-test-revised-gpt-oss-20b",
+    "revised_configuration": true
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "manifest_version": "1.0",
+  "verification_status": "verified",
+  "created_at_utc": "2026-08-30T19:41:35.896676+00:00",
+  "git_commit": "6560e0cc06b666d1d15a24a3832e7232a325251e",
+  "read_only_verification": true,
+  "corpus": {
+    "status": "verified",
+    "path": "data\\s2_clean.json",
+    "sha256": "16bb235f4a16d6d0f3c07f69461274ea89f2a9cdf69194664220d997bb5deecf",
+    "bytes": 41582389,
+    "paper_count": 8850,
+    "nonempty_id_count": 8850,
+    "unique_id_count": 8850,
+    "year_min": 2020,
+    "year_max": 2025
+  },
+  "chroma": {
+    "path": "data\\chromadb",
+    "file_count": 20,
+    "total_bytes": 353984662,
+    "sha256_manifest": "c0f01253f0b74a8cd74aa1ba53eba429ddc07f024ae9a6728758452cce90f6eb",
+    "status": "verified",
+    "collections": [
+      {
+        "name": "arxiv_papers",
+        "count": 9990,
+        "metadata": {
+          "hnsw:space": "cosine"
+        }
+      },
+      {
+        "name": "s2_papers",
+        "count": 8850,
+        "metadata": {
+          "hnsw:space": "cosine"
+        }
+      }
+    ]
+  },
+  "neo4j": {
+    "status": "verified",
+    "uri": "neo4j://127.0.0.1:7687",
+    "counts": {
+      "paper": 8850,
+      "author": 27655,
+      "concept": 43013,
+      "cites": 7203
+    }
+  },
+  "query_benchmark": {
+    "status": "verified",
+    "path": "evaluation\\benchmarks\\retrieval_queries_judged.json",
+    "sha256": "204bd998786f1b368e3a191fe6ff955f7f325879f42497d46e274cacbf599874",
+    "benchmark_version": "0.2-draft",
+    "benchmark_status": "judgments_pending_human_review",
+    "query_count": 20,
+    "splits": {
+      "dev": 6,
+      "test": 14
+    },
+    "corpus_declaration": {
+      "source": "s2",
+      "paper_count": 8850,
+      "years": "2020-2025",
+      "collection": "s2_papers",
+      "neo4j_concept_count": 42937,
+      "neo4j_citation_count": 7203
+    }
+  },
+  "consistency": {
+    "corpus_matches_configured_chroma": true,
+    "corpus_matches_query_declaration": true
+  },
+  "models": {
+    "ner": {
+      "model": "en_core_web_sm",
+      "version": "3.8.0"
+    },
+    "embedding": "allenai-specter",
+    "llm_primary": "openai/gpt-oss-120b",
+    "llm_fallback": "llama-3.1-8b-instant",
+    "semantic_support": "unconfigured"
+  },
+  "configuration": {
+    "data_source": "s2",
+    "chroma_collection": "s2_papers",
+    "contradiction_min_shared_concepts": 2,
+    "contradiction_min_concept_jaccard": 0.1,
+    "contradiction_candidate_pool": 25,
+    "contradiction_min_confidence": 0.7,
+    "hypothesis_min_shared_concepts": 2,
+    "hypothesis_min_query_support": 2,
+    "hypothesis_candidate_pool": 25,
+    "semantic_support_min_confidence": 0.7
+  },
+  "prompts": {
+    "path": "src\\pipeline\\prompts.py",
+    "sha256": "a9b30941a6e7b7c21898313dc1e1ce2b880aafbe3bbd9a51d69c1c6f429d95c7"
+  }
+}

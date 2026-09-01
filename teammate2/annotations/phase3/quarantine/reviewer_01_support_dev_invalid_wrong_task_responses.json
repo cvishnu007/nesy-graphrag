@@ -1,0 +1,608 @@
+{
+  "packet_version": "1.0",
+  "status": "unstarted",
+  "blinded": true,
+  "reviewer_id": "reviewer_01",
+  "task": "support",
+  "split": "dev",
+  "response_schema": {
+    "label": [
+      "CONTRADICTED",
+      "PARTIALLY_SUPPORTED",
+      "SUPPORTED",
+      "UNSUPPORTED"
+    ],
+    "notes": "optional",
+    "timestamp": "ISO-8601"
+  },
+  "records": [
+    {
+      "item_id": "S087E626E46FB",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "The heterogeneous graph transformer (HGT) employs node- and edge-type dependent parameters to realize heterogeneous attention, enabling dedicated representations for different node and edge types.",
+      "passage_id": "P7fb7e6ec4bfa706d-S006",
+      "passage_text": "then we develop a novel attention mechanism based on structure context information of graph and node representations.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S0CBC3E664363",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Traditional molecular GNNs typically represent molecules using only interatomic distances and ignore spatial direction, limiting their ability to capture angular potentials.",
+      "passage_id": "P0fed7326de2f7131-S003",
+      "passage_text": "however, directional information plays a central role in empirical potentials for molecules, e.g. in angular potentials.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both concern GNNs, but the first studies theoretical expressive/generalization limits, while the second applies GNNs to molecular interactions and phase equilibrium. No conflicting claims are presented.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S18757D3D8AB8",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Geometric aggregation schemes such as Geom‑GCN address structural information loss and limited long‑range dependencies in MPNNs, achieving state‑of‑the‑art results on a wide range of graph datasets.",
+      "passage_id": "Paa7910a3a2bb8a9b-S002",
+      "passage_text": "in an autobahn, we decompose the graph into a collection of subgraphs and apply local convolutions that are equivariant to each subgraphs automorphism group.",
+      "paper_id": "062b99a331795a9386721d793c4b80b51b4ee1de",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S1F1D254E391B",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Standard message passing GNNs have limited expressive power, being at most as powerful as the 1‑WL test, which can hinder their ability to capture long‑range interactions needed for node classification.",
+      "passage_id": "P1c3c64d6b4535b74-S002",
+      "passage_text": "these problems can be attributed to the strong coupling between the computational graph and the input graph structure.",
+      "paper_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S247E4CD56164",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Because graph neural networks process data represented as graphs, they can be used for recommendation systems that model user‑item interactions as graph structures.",
+      "passage_id": "Pa58870775fab459e-S002",
+      "passage_text": "in this article, an approach to a model which can handle such type of data is elaborated, which is graph neural networks (gnn).",
+      "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S25B2E0EA7A5B",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "A unified structure‑learning framework for graph attention networks (SLGAT and SLAGNN) learns dynamic graph structures, introduces a novel attention mechanism based on structural context, and outperforms competing methods on six standard semi‑supervised node classification datasets.",
+      "passage_id": "P3b465d215e72845e-S004",
+      "passage_text": "first, we show that, for deep graph attention networks (gat), gradient explosion appears during training, leading to poor performance of gradient-based training algorithms.",
+      "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S35F439A08EFB",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "When provided with proper inputs, the standard graph attention network (GAT) can match or surpass heterogeneous GNNs across diverse scenarios, indicating that simple homogeneous GNNs have been underestimated.",
+      "passage_id": "P7fb7e6ec4bfa706d-S001",
+      "passage_text": "graph neural networks (gnns) have achieved state-of-the-art performance in many elds and attracted a lot of attention in the communit.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S3C99C0AB40C4",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Because graph neural networks process data represented as graphs, they can be used for recommendation systems that model user‑item interactions as graph structures.",
+      "passage_id": "P0ef8e96d4f98b155-S001",
+      "passage_text": "graph neural networks (gnns) are information processing architectures for signals supported on graphs.",
+      "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S44CDFAE0779A",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "The heterogeneous graph transformer (HGT) employs node- and edge-type dependent parameters to realize heterogeneous attention, enabling dedicated representations for different node and edge types.",
+      "passage_id": "P7cf99418e408e37d-S004",
+      "passage_text": "to model heterogeneity, we design node- and edge-type dependent parameters to characterize the heterogeneous attention over each edge, empowering hgt to maintain dedicated representations for different types of nodes and edges.",
+      "paper_id": "0ca7d8c3250d43d14fdde46bf6fc299654d861ef",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S44D15DFC0423",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "When provided with proper inputs, the standard graph attention network (GAT) can match or surpass heterogeneous GNNs across diverse scenarios, indicating that simple homogeneous GNNs have been underestimated.",
+      "passage_id": "P59bfe6e634051749-S004",
+      "passage_text": "gat with proper inputs can generally match or outperform all existing hgnns across various scenarios.",
+      "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S4E25A9A18F26",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Graph neural networks are applied to recommendation systems.",
+      "passage_id": "P0ef8e96d4f98b155-S009",
+      "passage_text": "concepts are illustrated by the application of gnns to recommendation systems, decentralized collaborative control, and wireless communication networks.",
+      "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S55ECCA5E37C7",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "When provided with proper inputs, the standard graph attention network (GAT) can match or surpass heterogeneous GNNs across diverse scenarios, indicating that simple homogeneous GNNs have been underestimated.",
+      "passage_id": "P59bfe6e634051749-S003",
+      "passage_text": "we find that the simple homogeneous gnns, e.g., gcn and gat, are largely underestimated due to improper settings.",
+      "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S56242C50A4B0",
+      "split": "dev",
+      "query_id": "Q004",
+      "claim": "Simple homogeneous GNNs such as graph convolutional networks (GCN) and graph attention networks (GAT) have been largely underestimated in prior studies due to improper experimental settings.",
+      "passage_id": "P241abf880d66b292-S007",
+      "passage_text": "our approach, graph metanetworks (gmns), generalizes to neural architectures where competing methods struggle, such as multi-head attention layers, normalization layers, convolutional layers, resnet blocks, and group-equivariant linear layers.",
+      "paper_id": "af8df99efea4d4ed6f5cf6f6eaf3a5943f4d75db",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S583E114A6977",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Because graph neural networks process data represented as graphs, they can be used for recommendation systems that model user‑item interactions as graph structures.",
+      "passage_id": "Pa58870775fab459e-S006",
+      "passage_text": "some of the very common application is a social networking site which is on our hands regularly, and another could be the recommendation system which recommends us friends, or the products of our interest based on our pat choices and preferences.",
+      "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S5948F7EABF11",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Geometric aggregation schemes such as Geom‑GCN address structural information loss and limited long‑range dependencies in MPNNs, achieving state‑of‑the‑art results on a wide range of graph datasets.",
+      "passage_id": "P9b7a885a124129d9-S002",
+      "passage_text": "however, two fundamental weaknesses of mpnns aggregators limit their ability to represent graph-structured data: losing the structural information of nodes in neighborhoods and lacking the ability to capture long-range dependencies in disassortative graphs.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S63A635AB4E56",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Extending GNNs with higher‑order structures such as regular cell complexes can increase expressivity beyond the WL test, potentially improving node classification performance.",
+      "passage_id": "P2d449a16ae072b78-S002",
+      "passage_text": "this article summarizes a selection of the emerging theoretical results on approximation and learning properties of widely used message passing gnns and higher-order gnns, focusing on representation, generalization and extrapolation.",
+      "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+     "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S6996FC4BFC78",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Geometric aggregation schemes such as Geom‑GCN address structural information loss and limited long‑range dependencies in MPNNs, achieving state‑of‑the‑art results on a wide range of graph datasets.",
+      "passage_id": "P9b7a885a124129d9-S004",
+      "passage_text": "from the observations on classical neural network and network geometry, we propose a novel geometric aggregation scheme for graph neural networks to overcome the two weaknesses.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S6BDD1A81D3A1",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Geometric aggregation schemes such as Geom‑GCN address structural information loss and limited long‑range dependencies in MPNNs, achieving state‑of‑the‑art results on a wide range of graph datasets.",
+      "passage_id": "P9b7a885a124129d9-S008",
+      "passage_text": "experimental results show the proposed geom-gcn achieved state-of-the-art performance on a wide range of open datasets of graphs.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S6F017D961E19",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Directional message passing, which embeds messages with spatial direction and is rotationally equivariant, improves molecular property prediction performance, with Dimenet outperforming prior GNNs on MD17 and QM9 benchmarks.",
+      "passage_id": "P0fed7326de2f7131-S004",
+      "passage_text": "to alleviate this limitation we propose directional message passing, in which we embed the messages passed between atoms instead of the atoms themselves.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S7395D7D991B0",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Automorphism‑based GNNs (Autobahn) that decompose molecular graphs into subgraphs achieve performance competitive with state‑of‑the‑art message passing algorithms.",
+      "passage_id": "Paa7910a3a2bb8a9b-S006",
+      "passage_text": "we validate our approach by applying autobahn to molecular graphs, where it achieves results competitive with state-of-the-art message passing algorithms.",
+      "paper_id": "062b99a331795a9386721d793c4b80b51b4ee1de",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S75BB6D9C2B7F",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "Enforcing Lipschitz continuity via LipschitzNorm eliminates gradient explosion in deep graph attention networks and substantially improves their performance for 10–30 layer models.",
+      "passage_id": "P3b465d215e72845e-S005",
+      "passage_text": "to address this issue, we derive a theoretical analysis of the lipschitz continuity of attention modules and introduce lipschitznorm, a simple and parameter-free normalization for self-attention mechanisms that enforces the model to be lipschitz continuous.",
+      "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S797819B7FAF7",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Standard message passing GNNs have limited expressive power, being at most as powerful as the 1‑WL test, which can hinder their ability to capture long‑range interactions needed for node classification.",
+      "passage_id": "P0fed7326de2f7131-S004",
+      "passage_text": "to alleviate this limitation we propose directional message passing, in which we embed the messages passed between atoms instead of the atoms themselves.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S845E1E67DFC3",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "A unified structure‑learning framework for graph attention networks (SLGAT and SLAGNN) learns dynamic graph structures, introduces a novel attention mechanism based on structural context, and outperforms competing methods on six standard semi‑supervised node classification datasets.",
+      "passage_id": "P7fb7e6ec4bfa706d-S003",
+      "passage_text": "however, many graph structures have noise, or data itself has no graph structures, so learning the dynamic and adaptive graph structures is necessary.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S8AC298ACD367",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Directional message passing, which embeds messages with spatial direction and is rotationally equivariant, improves molecular property prediction performance, with Dimenet outperforming prior GNNs on MD17 and QM9 benchmarks.",
+      "passage_id": "P0fed7326de2f7131-S005",
+      "passage_text": "each message is associated with a direction in coordinate space.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S8E0EB345CB10",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "Enforcing Lipschitz continuity via LipschitzNorm eliminates gradient explosion in deep graph attention networks and substantially improves their performance for 10–30 layer models.",
+      "passage_id": "P3b465d215e72845e-S004",
+      "passage_text": "first, we show that, for deep graph attention networks (gat), gradient explosion appears during training, leading to poor performance of gradient-based training algorithms.",
+      "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S8E8949459EAA",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Graph neural networks have achieved great successes in predicting quantum mechanical properties of molecules.",
+      "passage_id": "P171ec77ff5e4a50d-S001",
+      "passage_text": "graph neural networks (gnns) have been widely used for predicting molecular properties, especially for single molecules.",
+      "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+     "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S9572A0DE030D",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Traditional molecular GNNs typically represent molecules using only interatomic distances and ignore spatial direction, limiting their ability to capture angular potentials.",
+      "passage_id": "P9b7a885a124129d9-S002",
+      "passage_text": "however, two fundamental weaknesses of mpnns aggregators limit their ability to represent graph-structured data: losing the structural information of nodes in neighborhoods and lacking the ability to capture long-range dependencies in disassortative graphs.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "S95887397EB42",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Directional message passing, which embeds messages with spatial direction and is rotationally equivariant, improves molecular property prediction performance, with Dimenet outperforming prior GNNs on MD17 and QM9 benchmarks.",
+      "passage_id": "P0fed7326de2f7131-S006",
+      "passage_text": "these directional message embeddings are rotationally equivariant since the associated directions rotate with the molecule.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SB6044F827992",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "HGT incorporates a heterogeneous mini-batch graph sampling algorithm (HGSampling) to achieve efficient and scalable training on web‑scale graphs.",
+      "passage_id": "P7fb7e6ec4bfa706d-S006",
+      "passage_text": "then we develop a novel attention mechanism based on structure context information of graph and node representations.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SB81B114C3F83",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Automorphism‑based GNNs (Autobahn) that decompose molecular graphs into subgraphs achieve performance competitive with state‑of‑the‑art message passing algorithms.",
+      "passage_id": "P9b7a885a124129d9-S008",
+      "passage_text": "experimental results show the proposed geom-gcn achieved state-of-the-art performance on a wide range of open datasets of graphs.",
+      "paper_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SC6677DFEA351",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "HGT incorporates a heterogeneous mini-batch graph sampling algorithm (HGSampling) to achieve efficient and scalable training on web‑scale graphs.",
+      "passage_id": "P7cf99418e408e37d-S005",
+      "passage_text": "to handle web-scale graph data, we design the heterogeneous mini-batch graph sampling algorithmhgsamplingfor efficient and scalable training.",
+      "paper_id": "0ca7d8c3250d43d14fdde46bf6fc299654d861ef",
+     "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SC69CEFF758B4",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Graph neural networks have achieved great successes in predicting quantum mechanical properties of molecules.",
+      "passage_id": "P0fed7326de2f7131-S001",
+      "passage_text": "graph neural networks have recently achieved great successes in predicting quantum mechanical properties of molecules.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SC9987C75364C",
+      "split": "dev",
+      "query_id": "Q003",
+      "claim": "Graph neural networks are a popular architecture for many applications, including recommendation systems.",
+      "passage_id": "Pa58870775fab459e-S004",
+      "passage_text": "due to its massive success, gnn has made its way into many applications and is a popular architecture to work upon.",
+      "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SDAF919076586",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Directional message passing, which embeds messages with spatial direction and is rotationally equivariant, improves molecular property prediction performance, with Dimenet outperforming prior GNNs on MD17 and QM9 benchmarks.",
+      "passage_id": "P0fed7326de2f7131-S010",
+      "passage_text": "dimenet outperforms previous gnns on average by 77 on md17 and by 41 on qm9.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SE7454BFBC987",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Incorporating directional information into message passing (directional message embeddings) yields rotational equivariance and improves predictive accuracy, suggesting geometric enhancements can benefit node classification.",
+      "passage_id": "Paa7910a3a2bb8a9b-S003",
+      "passage_text": "specific choices of local neighborhoods and subgraphs recover existing architectures such as message passing neural networks.",
+      "paper_id": "062b99a331795a9386721d793c4b80b51b4ee1de",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SE8026F824660",
+      "split": "dev",
+      "query_id": "Q004",
+      "claim": "When provided with proper inputs, GAT can generally match or outperform all existing heterogeneous GNN models across various scenarios",
+      "passage_id": "P59bfe6e634051749-S004",
+      "passage_text": "gat with proper inputs can generally match or outperform all existing hgnns across various scenarios.",
+      "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SE8377101F2C4",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Graph neural networks are designed to learn representations of nodes and are widely used for node-level prediction tasks.",
+      "passage_id": "P2d449a16ae072b78-S001",
+      "passage_text": "graph neural networks (gnns), neural network architectures targeted to learning representations of graphs, have become a popular learning model for prediction tasks on nodes, graphs and configurations of points, with wide success in practice.",
+      "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SEA9FD7A4EAEC",
+      "split": "dev",
+      "query_id": "Q004",
+      "claim": "Simple homogeneous GNNs such as graph convolutional networks (GCN) and graph attention networks (GAT) have been largely underestimated in prior studies due to improper experimental settings.",
+      "passage_id": "P59bfe6e634051749-S003",
+      "passage_text": "we find that the simple homogeneous gnns, e.g., gcn and gat, are largely underestimated due to improper settings.",
+      "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SEB7404D3CFFA",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Incorporating directional information into message passing (directional message embeddings) yields rotational equivariance and improves predictive accuracy, suggesting geometric enhancements can benefit node classification.",
+      "passage_id": "P0fed7326de2f7131-S006",
+      "passage_text": "these directional message embeddings are rotationally equivariant since the associated directions rotate with the molecule.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+     "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SEBE9A488CB7B",
+      "split": "dev",
+      "query_id": "Q006",
+      "claim": "Traditional molecular GNNs typically represent molecules using only interatomic distances and ignore spatial direction, limiting their ability to capture angular potentials.",
+      "passage_id": "P0fed7326de2f7131-S002",
+      "passage_text": "these models represent a molecule as a graph using only the distance between atoms (nodes) and not the spatial direction from one atom to another.",
+      "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SF4BE112C1769",
+      "split": "dev",
+      "query_id": "Q001",
+      "claim": "Extending GNNs with higher‑order structures such as regular cell complexes can increase expressivity beyond the WL test, potentially improving node classification performance.",
+      "passage_id": "P1c3c64d6b4535b74-S007",
+      "passage_text": "the resulting methods, which we collectively call cw networks (cwns), are strictly more powerful than the wl test and not less powerful than the 3-wl test.",
+      "paper_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    },
+    {
+      "item_id": "SFB63C6CB3DB2",
+      "split": "dev",
+      "query_id": "Q002",
+      "claim": "A unified structure‑learning framework for graph attention networks (SLGAT and SLAGNN) learns dynamic graph structures, introduces a novel attention mechanism based on structural context, and outperforms competing methods on six standard semi‑supervised node classification datasets.",
+      "passage_id": "P7fb7e6ec4bfa706d-S007",
+      "passage_text": "further, we devise structure learning graph attention networks (slgat) and structure learning attention-based graph neural networks (slagnn) by using the new attention mechanism on the new graph.",
+      "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8",
+      "response": {
+  "label": "DIFFERENT SCOPE",
+  "reason": "Both papers are about GNNs, but the first is a broad overview of GNNs and applications, while the second focuses specifically on an open-source toolkit for heterogeneous GNNs. They do not make opposing claims.",
+  "timestamp": "2026-08-31T22:00:00+05:30"
+}
+    }
+  ]
+}

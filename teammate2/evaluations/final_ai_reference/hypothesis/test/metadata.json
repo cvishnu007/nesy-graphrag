@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "created_at_utc": "2026-09-01T10:56:49.956709+00:00",
+  "git_commit": "0b9b9c71b3ee4a2be7d4951290abc58138accfd8",
+  "tasks": [
+    "hypothesis"
+  ],
+  "split": "test",
+  "benchmark_versions": {
+    "hypothesis": "1.0-ai-reference-frozen"
+  },
+  "fixture_only_by_task": {
+    "hypothesis": false
+  },
+  "reference_provenance_by_task": {
+    "hypothesis": {
+      "reference_annotation_source": "AI-generated",
+      "human_ground_truth": false,
+      "independent_human_review": false
+    }
+  },
+  "test_fixture_only": false,
+  "semantic_support_model": "unconfigured",
+  "semantic_support_min_confidence": 0.7,
+  "prerequisites": {
+    "frozen_corpus_present": true,
+    "chroma_directory_present": true,
+    "neo4j_configured": true,
+    "groq_configured": true,
+    "semantic_support_provider_configured": false
+  },
+  "failure_count": 0,
+  "offline_only": true
+}

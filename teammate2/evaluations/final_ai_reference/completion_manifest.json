@@ -1,0 +1,71 @@
+{
+  "manifest_version": "1.0",
+  "created_at": "2026-09-01",
+  "methodology": "AI-generated reference annotations",
+  "human_ground_truth": false,
+  "human_review": false,
+  "human_agreement_claimed": false,
+  "human_cohen_kappa_claimed": false,
+  "benchmark_version": "1.0-ai-reference-frozen",
+  "benchmarks": {
+    "contradiction": {
+      "count": 62,
+      "dev": 23,
+      "test": 39,
+      "sha256": "f3393b9aa428ae75c536c11e9ecb89c751d658d8625af6168f372f6e59d7f410"
+    },
+    "support": {
+      "count": 151,
+      "dev": 56,
+      "test": 95,
+      "sha256": "4c4f33ceb00003092d779b612a3597599d95d9ccb388179a784f5e4ae48a2469"
+    },
+    "hypothesis": {
+      "count": 100,
+      "dev": 30,
+      "test": 70,
+      "sha256": "4f21088947d2abc1a1425d6143c942372c1dfd6e215a6186280f1cc332002acd"
+    }
+  },
+  "phase3_integrity": {
+    "packet_count": 12,
+    "unique_item_count": 313,
+    "required_assignment_count": 392,
+    "populated_assignment_count": 392,
+    "null_response_count": 0,
+    "disagreement_count": 33,
+    "ai_consensus_count": 33,
+    "protected_response_hashes_match": true
+  },
+  "requirements": {
+    "frozen_ai_reference_benchmarks": "complete",
+    "candidate_and_verdict_metrics": "complete",
+    "semantic_support_and_existence_comparison": "complete",
+    "auditable_unsupported_and_contradicted_claims": "complete",
+    "hypothesis_ai_reference_reporting": "complete_with_insufficient_paired_relationship_data_reported",
+    "controlled_ner_comparison": "complete",
+    "controlled_embedding_comparison": "complete",
+    "controlled_llm_comparison": "complete",
+    "dev_only_selection": "complete",
+    "saved_outputs_failures_metadata": "complete",
+    "automated_suite": "complete_247_passed",
+    "live_integration": "complete_all_required_passed"
+  },
+  "live_checks": {
+    "passed": 7,
+    "failed": 0,
+    "not_run": 0,
+    "all_required_passed": true,
+    "failure_cause": null
+  },
+  "scoped_commits": [
+    "834f5d3",
+    "05da19c",
+    "b9339ab",
+    "0b9b9c7",
+    "d044bd4",
+    "c9a25d1",
+    "3355a48",
+    "2916aaa"
+  ]
+}

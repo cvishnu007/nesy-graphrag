@@ -1,0 +1,17 @@
+{
+  "benchmark_version": "fixture-1.0",
+  "status": "frozen",
+  "fixture_only": true,
+  "pairs": [
+    {
+      "pair_id": "FIX-C001",
+      "split": "dev",
+      "paper1_id": "fixture-paper-a",
+      "paper2_id": "fixture-paper-b",
+      "label": "CONTRADICTION",
+      "reason": "Synthetic fixture label for software verification only",
+      "annotators": ["FIXTURE-R1"],
+      "adjudicated": false
+    }
+  ]
+}

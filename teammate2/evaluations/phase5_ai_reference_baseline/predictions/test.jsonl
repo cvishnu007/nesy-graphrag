@@ -1,0 +1,39 @@
+{"pair_id": "C05DC54626BB8", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C0CCB172F7506", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C159A1C57678E", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C2B6477EF7775", "prediction": "DIFFERENT SCOPE", "confidence": 0.99, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C2D84FD7088B6", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C2E31222E3143", "prediction": "AGREEMENT", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C2FFC7437E0E2", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C32A4191AAB45", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C3CBDE8E7371C", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C43D78CFDDBC8", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C4475EA93F606", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C4845D59D7D30", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C4E8117A6D5CF", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C51D8CC46E15C", "prediction": "AGREEMENT", "confidence": 0.92, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C532DB2B51F69", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C7A5067AB0843", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C7F33A70CB30F", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C8244FAE6BF1C", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C83738F261716", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C8683DC41C80E", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "C8C72415EE433", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C93774A86D6D1", "prediction": "DIFFERENT SCOPE", "confidence": 0.99, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "C940AFC023A7B", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CA8AD5993B3C9", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "CB2EC2BB4FB7B", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "CB4DD9623C30F", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "CB6F6A1F98640", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CBC32825D13E2", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CC5DC1D4F97CC", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CC7B7523ACB96", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "CCB25533E1285", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "CD357DB180568", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CD9E4C57205EF", "prediction": "UNKNOWN", "confidence": null, "verdict_valid": false, "source": "protected_phase2_sidecar"}
+{"pair_id": "CDCB3AD358DA0", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CDF7AD4550413", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CEEE025FCB24F", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CF4519B8C39FA", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CF51660EF51B0", "prediction": "DIFFERENT SCOPE", "confidence": 0.95, "verdict_valid": true, "source": "protected_phase2_sidecar"}
+{"pair_id": "CFADA58955A99", "prediction": "DIFFERENT SCOPE", "confidence": 0.99, "verdict_valid": true, "source": "protected_phase2_sidecar"}

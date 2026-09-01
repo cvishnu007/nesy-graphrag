@@ -1,0 +1,1825 @@
+{
+  "version": "1.0-ai-reference",
+  "status": "ai_consensus_complete",
+  "annotation_source": "AI-generated",
+  "human_adjudication": false,
+  "models": [
+    "qwen/qwen3.8-27b"
+  ],
+  "records": [
+    {
+      "item_id": "C0D27B651D266",
+      "task": "contradiction",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "label": "AGREEMENT",
+            "reason": "The papers do not make conflicting claims. The first paper surveys attention-based GNN architectures, while the second proposes a scalable GNN architecture focused on efficient training and inference. Their claims are compatible rather than contradictory.",
+            "timestamp": "2026-08-31T22:35:00+05:30"
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "label": "DIFFERENT SCOPE",
+            "reason": "Paper 1 surveys attention-based GNNs, while Paper 2 proposes a scalable GNN architecture without attention; they address different methodological aspects, not directly comparable claims.",
+            "timestamp": "2026-09-01T05:18:23.280470Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper 1 is a survey of attention-based GNNs, while Paper 2 proposes a scalable GNN architecture (SIGN) that explicitly sidesteps graph sampling and does not focus on attention mechanisms. The papers address different methodological aspects and populations (attention-based vs. scalable convolutional), making them not directly comparable for contradiction.",
+        "timestamp": "2026-09-01T05:48:43.241135Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "C2E31222E3143",
+      "task": "contradiction",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "label": "DIFFERENT SCOPE",
+            "reason": "One is a survey on explainability; the other proposes a new GNN architecture with interpretability; scopes differ.",
+            "timestamp": "2026-09-01T04:12:30.764063Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "label": "AGREEMENT",
+            "reason": "Both papers address GNN interpretability; the survey reviews methods while the NC-GNN paper proposes an inherently interpretable method, which is compatible with the surveyed approaches.",
+            "timestamp": "2026-09-01T05:20:32.729835Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "label": "DIFFERENT SCOPE",
+        "reason": "Paper 1 is a survey evaluating existing GNN explainability methods, while Paper 2 proposes a specific new GNN architecture (NC-GNN) for node classification that claims inherent interpretability. The tasks (survey/evaluation vs. architecture proposal) and primary outcomes (metric comparison vs. classification performance) are not directly comparable.",
+        "timestamp": "2026-09-01T05:48:43.865136Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H04E063C8B135",
+      "task": "hypothesis",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence indicates components exist but integration outcome is not proven; hypothesis is specific and testable.",
+            "timestamp": "2026-09-01T04:16:39.263540Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 1,
+            "feasibility": 3,
+            "specificity": 1,
+            "usefulness": 3,
+            "notes": "The hypothesis is a generic combination of existing GNN frameworks and datasets. The evidence only confirms the existence of shared concepts, not the specific claim of superior generalization. The lack of defined variables (e.g., which specific GNN, which metrics) makes it vague and low-novelty.",
+            "timestamp": "2026-09-01T05:32:32.845186Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 1,
+        "feasibility": 3,
+        "specificity": 1,
+        "usefulness": 3,
+        "notes": "Evidence supports component existence but not the integration claim. The hypothesis is a generic combination of known frameworks and datasets without specific variables or metrics, making it vague and low-novelty.",
+        "timestamp": "2026-09-01T05:48:44.560419Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H177B2ABCC57B",
+      "task": "hypothesis",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence indicates hierarchical structures and residual connections exist in GNN literature, but does not directly confirm performance gains for multi‑component systems. The proposal is testable, well‑specified, and addresses a valuable prediction problem.",
+            "timestamp": "2026-09-01T04:27:05.910900Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence cites a specific 'undiscovered' paper, which limits the strength of the support to conceptual alignment rather than empirical proof. The hypothesis connects hierarchical residuals to molecular properties, which is a reasonable but somewhat standard architectural improvement in GNNs.",
+            "timestamp": "2026-09-01T05:33:28.324997Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence provides conceptual alignment with GNN literature but lacks direct empirical proof for the specific architectural improvement. The hypothesis is a reasonable but standard architectural extension, making it feasible with significant implementation work rather than immediately testable.",
+        "timestamp": "2026-09-01T05:48:46.154438Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H2C4AFC3A7514",
+      "task": "hypothesis",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence supports PU learning in heterogeneous GNNs; hypothesis is well‑defined and testable.",
+            "timestamp": "2026-09-01T04:16:39.263540Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 5,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 3,
+            "usefulness": 5,
+            "notes": "Strong support from multiple papers on PU learning and HGNNs. The combination is a logical extension of existing semi-supervised methods, making it feasible and useful, though the specific integration mechanism is not detailed.",
+            "timestamp": "2026-09-01T05:32:17.602623Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 3,
+        "usefulness": 5,
+        "notes": "Evidence supports the components (PU learning, HGNNs) but lacks direct multi-paper support for the specific combined architecture. The hypothesis is a logical extension, making it feasible and useful, though the specific integration mechanism is not detailed.",
+        "timestamp": "2026-09-01T05:49:08.854121Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H2E542FE10514",
+      "task": "hypothesis",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence covers Lipschitz normalization and depth stability; hypothesis is specific and experimentally feasible.",
+            "timestamp": "2026-09-01T04:16:39.263540Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 5,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Strong support from specific papers on Lipschitz normalization and heterogeneous GNNs. The hypothesis clearly defines the intervention (Lipschitz normalization), target (heterogeneous GATs), and expected outcome (stability/performance with depth), making it highly testable and valuable.",
+            "timestamp": "2026-09-01T05:33:11.229245Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence supports the components (Lipschitz norm, Hetero-GNNs) but lacks direct proof of the combined effect on depth stability. The hypothesis is specific, feasible, and valuable for addressing over-smoothing in deep heterogeneous graphs.",
+        "timestamp": "2026-09-01T05:49:32.789923Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H2E61FFCBA364",
+      "task": "hypothesis",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence supports components; hypothesis is concrete and testable.",
+            "timestamp": "2026-09-01T04:16:39.263540Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence lists relevant papers but does not explicitly support the claim that molecular-specific architectures improve general heterogeneous benchmarks. The hypothesis is a broad generalization with vague metrics ('substantially improve') and undefined integration methods.",
+            "timestamp": "2026-09-01T05:33:11.229245Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports the existence of the components (GNNs, molecular prediction) but does not directly validate the specific claim of cross-domain transfer to heterogeneous benchmarks. The hypothesis is a plausible but broad generalization lacking specific metrics or integration methods, making it moderately novel and feasible but vague in definition.",
+        "timestamp": "2026-09-01T05:49:33.524802Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H2F702952148F",
+      "task": "hypothesis",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 5,
+            "notes": "Evidence indicates related components but no direct performance claim; hypothesis is somewhat novel and feasible; specificity is partial; strong potential value.",
+            "timestamp": "2026-09-01T04:30:23.445951Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence supports the existence of the components (Lipschitz normalization, structure learning) and the task (KG completion), but does not demonstrate their combined efficacy. The hypothesis is a standard architectural combination, making it moderately novel and feasible but lacking specific variable definitions.",
+            "timestamp": "2026-09-01T05:34:03.790750Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence confirms the existence of individual components (Lipschitz normalization, structure learning) and the target task (KG completion) across multiple papers, but does not support the specific claim that their combination improves performance. The hypothesis represents a standard architectural combination with moderate novelty. Feasibility is high as the components are established, but the hypothesis lacks specific variable definitions and expected metrics, resulting in partial specificity. The potential value is moderate, as it addresses a known area without a clear, novel mechanism for improvement.",
+        "timestamp": "2026-09-01T05:49:56.455824Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H5EEC9DF75A8C",
+      "task": "hypothesis",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence indicates related concepts but not direct evidence of contrastive pre‑training improving stability/transferability; novelty and feasibility moderate; specificity and usefulness high.",
+            "timestamp": "2026-09-01T04:27:40.014928Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence cites general GNN and Heterogeneous GNN papers but lacks specific data on contrastive pre-training effects. The hypothesis is a broad generalization of existing trends rather than a specific, novel mechanism. Feasibility is moderate as it requires defining specific contrastive objectives and transfer benchmarks.",
+            "timestamp": "2026-09-01T05:33:45.469287Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports general GNN/HGNN concepts but lacks direct proof for contrastive pre-training's specific impact on stability/transferability. The hypothesis is a plausible extension of existing trends but remains broad, requiring specific definitions of contrastive objectives and benchmarks for rigorous testing.",
+        "timestamp": "2026-09-01T05:49:59.237613Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H970DEC9C86E4",
+      "task": "hypothesis",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence suggests heterophily matters but does not directly confirm explicit measures improve accuracy; hypothesis is moderately specific and testable.",
+            "timestamp": "2026-09-01T04:16:39.263540Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence supports the relevance of heterophily and label non-uniformity, but does not explicitly confirm that incorporating explicit measures improves accuracy. The hypothesis is a standard extension of known GNN challenges, making it moderately novel and feasible to test.",
+            "timestamp": "2026-09-01T05:31:48.614604Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports the relevance of heterophily and label non-uniformity, but does not explicitly confirm that incorporating explicit measures improves accuracy. The hypothesis is a standard extension of known GNN challenges, making it moderately novel and feasible to test.",
+        "timestamp": "2026-09-01T05:50:33.921289Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "HB15E0C067B66",
+      "task": "hypothesis",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 5,
+            "notes": "Evidence supports components but not the locality‑aware rewiring; hypothesis is moderately novel and feasible with major work; specificity is clear but not fully quantified; strong research value.",
+            "timestamp": "2026-09-01T04:30:59.777675Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-20b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence supports the individual components (Lipschitz normalization, meta-networks, heterogeneous GNNs) but does not directly support the specific combination with 'locality-aware graph rewiring'. The hypothesis is a plausible engineering combination but lacks specific metrics or defined rewiring strategies.",
+            "timestamp": "2026-09-01T05:34:32.807868Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports individual components (Lipschitz normalization, meta-networks, heterogeneous GNNs) but not the specific combination with locality-aware rewiring. The hypothesis is a plausible engineering combination but lacks specific metrics or defined rewiring strategies, limiting its immediate testability and specificity.",
+        "timestamp": "2026-09-01T05:51:00.604059Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H00AC180E855D",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence lists federated/DP GNN concepts but lacks concrete protein‑structure results; the combination is a modestly novel, clearly defined proposal that is feasible with effort and highly useful for privacy‑sensitive bioinformatics.",
+            "timestamp": "2026-09-01T05:06:14.814296Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence cites papers on federated GNNs, differential privacy, and protein structure prediction. The combination is a logical intersection of existing fields. Feasibility is moderate due to the complexity of implementing DP in geometric graph learning for proteins.",
+            "timestamp": "2026-09-01T05:40:56.942061Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports the individual components (federated GNNs, DP, protein structure) but lacks direct proof of their integration. The hypothesis is a logical combination of existing fields with moderate feasibility and potential value, but lacks specific experimental details.",
+        "timestamp": "2026-09-01T05:51:01.287384Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H0709BF27417A",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence lists relevant concepts and papers but lacks direct demonstration of DuOgat applied to heterogeneous KG or anomaly detection; the proposal is novel yet would require substantial engineering, while the hypothesis is well‑specified and potentially valuable.",
+            "timestamp": "2026-09-01T05:04:28.706104Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence cites relevant papers (DuOgat, KG embeddings) but does not provide direct support for the specific adaptation to anomaly detection. The hypothesis is specific in naming the model but vague on the mechanism of adaptation and expected outcomes.",
+            "timestamp": "2026-09-01T05:36:20.787463Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence provides conceptual links but lacks direct empirical support for the specific adaptation. The hypothesis is a plausible extension of existing GNN work but lacks detailed mechanism definitions, making it moderately specific and feasible with significant engineering effort.",
+        "timestamp": "2026-09-01T05:51:22.110183Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H0B6277271182",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 5,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "The listed papers share concepts with the target work, partially supporting the structural‑hole claim; identifying uncited influential papers is novel, straightforward to evaluate, precisely defined, and useful for citation analysis.",
+            "timestamp": "2026-09-01T05:06:56.034347Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 1,
+            "novelty": 1,
+            "feasibility": 1,
+            "specificity": 1,
+            "usefulness": 1,
+            "notes": "This is a metadata observation about citation structure, not a scientific hypothesis. It is not testable and lacks research value.",
+            "timestamp": "2026-09-01T05:42:20.641902Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 1,
+        "novelty": 1,
+        "feasibility": 1,
+        "specificity": 1,
+        "usefulness": 1,
+        "notes": "The hypothesis is a metadata assertion about citation structure, not a testable scientific claim. The provided evidence consists of generic shared concepts with empty supporting text, offering no substantive support for the 'structural hole' claim. It lacks research value and testability.",
+        "timestamp": "2026-09-01T05:51:30.906148Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H29666FA615EE",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 1,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence lists generic GNN papers without mention of distillation or molecular tasks; the combination is a new connection; feasible with existing techniques; hypothesis clearly defines methods and expected improvements; likely valuable for molecular prediction.",
+            "timestamp": "2026-09-01T05:05:53.251215Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 1,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence provides only general GNN shared concepts; there is no visible support for 'distillation-enhanced social graph network architectures' or their application to molecular interactions.",
+            "timestamp": "2026-09-01T05:40:25.792121Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 1,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence consists solely of generic GNN concepts with no specific support for distillation or molecular application. The hypothesis combines distinct fields (social graphs, distillation, molecular prediction) creating a novel but vague connection. Feasibility and specificity are moderate due to the lack of defined variables and the complexity of adapting social graph architectures to molecular domains.",
+        "timestamp": "2026-09-01T05:51:31.653395Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H4789D320F493",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence shows both logic formalism and beltrami diffusion exist but no direct integration; hypothesis is specific and potentially high‑impact yet may need substantial effort.",
+            "timestamp": "2026-09-01T05:05:12.377930Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence lists relevant papers (Beltrami flow, logic GNNs) but lacks specific details on integration. The combination of logical formalism and Beltrami flow is a non-trivial connection, but the hypothesis is broad and lacks specific variables for testing.",
+            "timestamp": "2026-09-01T05:39:30.312936Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports the existence of both components (logic GNNs, Beltrami flow) but not their integration. The hypothesis proposes a non-trivial connection but lacks specific variables or testable mechanisms, making it moderately specific and feasible with significant effort.",
+        "timestamp": "2026-09-01T05:51:52.651861Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H6AC994B2E668",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence shows components work separately but not their integration; hypothesis connects them in a plausible yet untested way, clearly defines expected accuracy gain on large graph benchmarks.",
+            "timestamp": "2026-09-01T05:07:08.647652Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence supports the existence of components (kernels, GNNs, benchmarks) but does not demonstrate the specific hybrid integration or the claimed accuracy improvement. The hypothesis is a standard combination of known techniques with moderate novelty and feasibility, lacking specific architectural details.",
+            "timestamp": "2026-09-01T05:42:32.491755Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports the existence of individual components (kernels, GNNs, benchmarks) but not their specific hybrid integration or the claimed accuracy gain. The hypothesis is a plausible but standard combination of known techniques, lacking specific architectural details for a clear testable protocol.",
+        "timestamp": "2026-09-01T05:51:54.419509Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H7E0AD04FEF79",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence provides generic GNN overlap but no direct link to radio resource management; adapting adversarial defenses to this domain is a reasonable new connection; implementation is plausible though requires significant work; hypothesis specifies defense type, perturbation sources, and performance metric; could greatly benefit scalable wireless systems.",
+            "timestamp": "2026-09-01T05:03:35.018460Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 1,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence fields are empty, providing no support. The hypothesis connects adversarial defense to radio resource management, which is a plausible but non-trivial application. Feasibility is moderate as it requires adapting specific defense mechanisms to a new domain.",
+            "timestamp": "2026-09-01T05:36:02.636688Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence shows generic GNN overlap but lacks direct support for radio resource management; the connection is plausible but not clearly established in the visible record.",
+        "timestamp": "2026-09-01T05:52:14.869776Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H7E661DCFE9FB",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 5,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Multiple papers directly discuss skip connections, depth, and oversmoothing, providing strong support; the combination is known but still offers a useful framing; easy to test experimentally; hypothesis precisely defines mechanisms and outcomes; deeper, higher‑performing GNNs are of high research interest.",
+            "timestamp": "2026-09-01T05:05:32.747966Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 5,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 3,
+            "usefulness": 5,
+            "notes": "Strong multi-paper support for both convergence acceleration and oversmoothing mitigation via skip connections. The hypothesis combines two well-established benefits, making it somewhat obvious but highly useful and testable.",
+            "timestamp": "2026-09-01T05:40:06.459469Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 3,
+        "usefulness": 5,
+        "notes": "Strong multi-paper support for both convergence acceleration and oversmoothing mitigation via skip connections. The hypothesis combines two well-established benefits, making it somewhat obvious but highly useful and testable.",
+        "timestamp": "2026-09-01T05:52:39.479208Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H864DDF15C655",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence shows papers covering each component (reinforcement learning, continual learning, explainable GNN additive models) but not their combined use; the combination is a novel direction, moderately feasible with significant work, clearly specifies mechanisms and expected outcome, and promises strong research value.",
+            "timestamp": "2026-09-01T05:07:44.271238Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "The hypothesis combines established concepts (GNNs, RL, Continual Learning) in a plausible but non-trivial way. The provided evidence is repetitive and generic, listing shared concepts without specific experimental results or detailed mechanisms, leading to partial support. Feasibility is moderate as integrating RL into additive GNNs for continual learning is complex but possible. Specificity is limited by the lack of defined metrics or specific graph types.",
+            "timestamp": "2026-09-01T05:43:32.207720Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence provides partial support via shared concepts but lacks specific experimental validation for the combined mechanism. The integration of RL, continual learning, and explainable GNNs is a non-trivial connection. Feasibility is moderate due to the complexity of integrating these distinct fields. Specificity is limited as the hypothesis lacks defined metrics or specific graph types. Usefulness is potential, offering a direction for adaptive interpretable models.",
+        "timestamp": "2026-09-01T05:52:50.354372Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H87F5838BF2D1",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 5,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 5,
+            "notes": "Evidence shows related components (gated bi‑kernel, Beltrami‑flow diffusion, positional encodings) but not their combined use; the integration idea is novel, requires substantial engineering, is reasonably specific, and could greatly aid molecular property prediction.",
+            "timestamp": "2026-09-01T05:06:56.034347Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 5,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence supports the components (Gbk-GNN, Beltrami-flow, positional encodings). The integration is a non-trivial combination. Specific variables and expected outcome (multi-component property prediction) are clear.",
+            "timestamp": "2026-09-01T05:41:42.941983Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 5,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 5,
+        "notes": "Evidence supports individual components but not their integration; the combination is novel and valuable for molecular property prediction, though specific implementation details are not fully defined.",
+        "timestamp": "2026-09-01T05:53:20.969461Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H899563A91F21",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 5,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Multiple cited papers cover the core concepts, indicating clear multi‑paper support. The combination of reinforced continual learning with fraud‑detecting GNNs is a non‑trivial connection but plausible to implement and clearly defined, offering strong research value.",
+            "timestamp": "2026-09-01T05:04:50.594404Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 5,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 5,
+            "notes": "Strong multi-paper support for the components (RL, CL, GNN, fraud), but the integration mechanism is not fully specified.",
+            "timestamp": "2026-09-01T05:39:00.842796Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 5,
+        "notes": "Consensus indicates strong multi-paper support for the constituent components (GNNs, RL, CL, fraud detection). While the combination is a logical extension with high utility, the hypothesis lacks specific architectural details or integration mechanisms, limiting specificity and feasibility to moderate levels.",
+        "timestamp": "2026-09-01T05:53:23.742237Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "H8B8C0243CA07",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence shows shared concepts across papers but lacks detailed results; hypothesis connects known ideas in a moderately novel way; implementation is plausible with effort; variables and expected effect are clearly stated; improving molecular GNN accuracy is valuable.",
+            "timestamp": "2026-09-01T05:05:32.747966Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Evidence explicitly links noise-robust pairwise estimation with GNNs and molecular interactions. The hypothesis addresses a specific bottleneck (noisy edge features) but remains somewhat general in its proposed mechanism.",
+            "timestamp": "2026-09-01T05:39:30.312936Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence provides partial support via shared concepts but lacks detailed results. The hypothesis connects known ideas in a moderately novel way. Implementation is plausible but requires significant work. Specificity is moderate as the mechanism is defined but general. Improving molecular GNN accuracy has potential research value.",
+        "timestamp": "2026-09-01T05:53:59.618705Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "HAEE6DE431381",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 5,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Multiple papers discuss oversmoothing, residual connections, normalization, and automated architecture search, providing clear support for extending Autograph as proposed.",
+            "timestamp": "2026-09-01T05:04:03.127582Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence explicitly mentions oversmoothing, residual connections, and automated architecture search. The hypothesis is specific (extending Autograph with residual/normalization layers) and practically testable. High value for improving deep GNNs.",
+            "timestamp": "2026-09-01T05:36:02.636688Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 5,
+        "specificity": 5,
+        "usefulness": 5,
+        "notes": "Evidence supports the components (oversmoothing, residual connections) but the specific integration into Autograph is a logical extension rather than directly proven in the cited snippets. The hypothesis is specific, feasible, and highly useful for deep GNN research.",
+        "timestamp": "2026-09-01T05:54:10.635445Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "HBB939CF993FD",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence lists papers sharing graph structure learning concepts, offering partial backing; the progressive refinement concept is somewhat new, readily testable, well‑specified, and useful for improving GNN performance.",
+            "timestamp": "2026-09-01T05:03:16.701884Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "Concepts of dynamic graph structure learning in GNNs are well-established in the literature, making the hypothesis a refinement of existing work rather than a novel discovery. Feasibility is high as methods exist, but the specific 'progressive' aspect needs clearer definition.",
+            "timestamp": "2026-09-01T05:35:40.937591Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence provides partial support via shared concepts. The hypothesis refines existing GNN structure learning work, offering moderate novelty. Feasibility is possible but requires significant work to define the 'progressive' mechanism. Specificity is limited by vague definitions of the dynamic refinement process. Usefulness is moderate as it addresses a known area of improvement.",
+        "timestamp": "2026-09-01T05:54:29.723573Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "HD8449964BB05",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 3,
+            "novelty": 3,
+            "feasibility": 3,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Evidence shows related concepts but no direct results; hypothesis links VIB, graph structure learning, and combinatorial tasks in a non‑trivial way; testable with substantial engineering; variables are clearly defined; potential high impact for combinatorial optimization.",
+            "timestamp": "2026-09-01T05:03:35.018460Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 3,
+            "novelty": 5,
+            "feasibility": 1,
+            "specificity": 3,
+            "usefulness": 3,
+            "notes": "The application of VIB to graph structure learning for 'extremal combinatorial construction' is a highly specific and non-trivial connection. However, the feasibility is low due to the lack of clear benchmarks or testable protocols for 'combinatorially meaningful' representations in this context.",
+            "timestamp": "2026-09-01T05:35:40.937591Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 3,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 3,
+        "notes": "Evidence supports component concepts but lacks direct multi-paper validation of the specific combination. The connection between VIB and extremal combinatorial tasks is novel but not clearly non-trivial without further theoretical grounding. Feasibility is moderate due to the complexity of defining 'combinatorially meaningful' representations and the lack of established benchmarks for this specific niche. Specificity is partial as 'extremal combinatorial construction tasks' is broad. Usefulness is potential, as it could bridge information theory and combinatorial optimization if successfully implemented.",
+        "timestamp": "2026-09-01T05:54:52.631371Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "HDDE45C9B0D36",
+      "task": "hypothesis",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "evidence": 5,
+            "novelty": 3,
+            "feasibility": 5,
+            "specificity": 5,
+            "usefulness": 5,
+            "notes": "Multiple papers explicitly cover the required concepts, making support strong; the integration is a modestly novel link; implementation is straightforward; hypothesis is well‑specified; potential impact is high.",
+            "timestamp": "2026-09-01T05:05:53.251215Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "evidence": 5,
+            "novelty": 5,
+            "feasibility": 3,
+            "specificity": 3,
+            "usefulness": 5,
+            "notes": "Clear multi-paper support for the components (noise-robust learning, GNN additive networks, explainability). The integration is a non-trivial connection. Feasibility is moderate due to the complexity of combining specific estimation methods with additive architectures.",
+            "timestamp": "2026-09-01T05:40:06.459469Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "evidence": 5,
+        "novelty": 3,
+        "feasibility": 3,
+        "specificity": 3,
+        "usefulness": 5,
+        "notes": "Strong multi-paper support for components. Integration is a reasonable but not entirely novel connection. Feasibility and specificity are moderate due to architectural complexity and lack of defined metrics.",
+        "timestamp": "2026-09-01T05:55:17.389150Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "S8E0EB345CB10",
+      "task": "support",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "label": "UNSUPPORTED",
+            "notes": "Passage only notes gradient explosion in deep GATs; does not mention LipschitzNorm, its effect, or performance improvements.",
+            "timestamp": "2026-09-01T05:14:00.263042Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "label": "PARTIALLY_SUPPORTED",
+            "notes": "The passage supports the existence of gradient explosion in deep GATs, but it does not state that LipschitzNorm eliminates this issue or improves performance for 10-30 layer models.",
+            "timestamp": "2026-09-01T05:44:10.691199Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms that gradient explosion occurs in deep graph attention networks, which supports the problem context of the claim. However, it does not mention LipschitzNorm, its enforcement of Lipschitz continuity, or any performance improvements for 10-30 layer models, leaving the core solution and outcome of the claim unsupported.",
+        "timestamp": "2026-09-01T05:55:23.030734Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "SE8377101F2C4",
+      "task": "support",
+      "split": "dev",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "label": "PARTIALLY_SUPPORTED",
+            "notes": "Passage says GNNs learn graph representations and are popular for node prediction, supporting the claim about node-level use but not explicitly stating they are designed to learn node representations.",
+            "timestamp": "2026-09-01T05:14:34.870882Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "label": "SUPPORTED",
+            "notes": "The passage confirms GNNs are targeted to learning representations of graphs and are popular for prediction tasks on nodes, supporting the claim about node-level prediction.",
+            "timestamp": "2026-09-01T05:44:35.199549Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage states GNNs learn representations of 'graphs' and are used for 'prediction tasks on nodes', which supports the usage part of the claim. However, the claim specifies learning representations of 'nodes', whereas the passage specifies 'graphs'. While related, the specific object of representation learning differs, preventing full entailment of the complete claim.",
+        "timestamp": "2026-09-01T05:55:28.716593Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "S8B2D9ED684A8",
+      "task": "support",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "label": "CONTRADICTED",
+            "notes": "Passage states GNNs are vulnerable to adversarial attacks, contradicting the claim of substantially higher robustness.",
+            "timestamp": "2026-09-01T05:16:19.908643Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "label": "UNSUPPORTED",
+            "notes": "The passage only states that GNNs are vulnerable to adversarial attacks; it does not mention conservative Hamiltonian neural flows, Lyapunov stability, or specific robustness comparisons.",
+            "timestamp": "2026-09-01T05:45:53.413624Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage states that GNNs are vulnerable to adversarial attacks but does not mention conservative Hamiltonian neural flows, Lyapunov stability, or any comparison of robustness between different types of GNNs. Therefore, it does not support the specific claim.",
+        "timestamp": "2026-09-01T05:55:33.351597Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "SA78440B65889",
+      "task": "support",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "label": "SUPPORTED",
+            "notes": "Passage explicitly describes a systematic experimental study testing 12 explainers on eight message‑passing GNN architectures across six graph and node‑classification datasets, matching the claim.",
+            "timestamp": "2026-09-01T05:16:38.128009Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "label": "PARTIALLY_SUPPORTED",
+            "notes": "The passage directly supports the core experimental setup: testing 12 explainers on eight message-passing architectures using six graph and node classification datasets. However, the passage does not explicitly mention the specific outcomes regarding 'insights into explainer choice,' 'key components for usability,' or 'recommendations to avoid interpretation pitfalls,' which are part of the complete claim.",
+            "timestamp": "2026-09-01T05:46:06.189912Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage explicitly supports the experimental setup (12 explainers, 8 architectures, 6 datasets) but does not contain the text regarding the specific insights, usability components, or recommendations mentioned in the latter part of the claim.",
+        "timestamp": "2026-09-01T05:55:40.218977Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "SB1C94DF8E8B5",
+      "task": "support",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "label": "PARTIALLY_SUPPORTED",
+            "notes": "Passage notes GNNs show good performance on relational data classification, supporting general effectiveness but not the specific fraud‑pattern claim.",
+            "timestamp": "2026-09-01T05:16:55.480051Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "label": "UNSUPPORTED",
+            "notes": "The passage states that GNNs show good performance in relational data classification. It does not specifically mention 'fraud patterns,' 'transaction graphs,' or 'fraud detection,' so it does not justify the specific claim made.",
+            "timestamp": "2026-09-01T05:46:06.189912Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the general capability of GNNs in relational data classification, which is a material part of the claim, but it does not provide evidence for the specific application to fraud detection or transaction graphs.",
+        "timestamp": "2026-09-01T05:55:45.822474Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    },
+    {
+      "item_id": "SC1124FAB4E23",
+      "task": "support",
+      "split": "test",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "responses": [
+        {
+          "slot": "reviewer_01",
+          "response": {
+            "label": "PARTIALLY_SUPPORTED",
+            "notes": "Passage confirms earlier works did not explain why architectures differ or which explainer to prefer, matching part of the claim, but does not mention evaluation using various metrics.",
+            "timestamp": "2026-09-01T05:17:14.447285Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "openai/gpt-oss-120b",
+            "annotation_pass_slot": "reviewer_01",
+            "independent_human_annotation": false
+          }
+        },
+        {
+          "slot": "reviewer_02",
+          "response": {
+            "label": "SUPPORTED",
+            "notes": "The passage explicitly states that earlier works make no attempts to provide insights into why different GNN architectures are more or less explainable or which explainer should be preferred, directly supporting the claim.",
+            "timestamp": "2026-09-01T05:46:21.658468Z",
+            "annotation_source": "AI-generated",
+            "annotation_model": "qwen/qwen3.8-27b",
+            "annotation_pass_slot": "reviewer_02",
+            "independent_human_annotation": false
+          }
+        }
+      ],
+      "adjudicator_id": "reviewer_03",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage explicitly supports the second part of the claim (that prior works did not address why architectures are more explainable or which explainer is best). However, the passage does not contain information confirming that prior studies 'evaluated GNN explainers using various explainability metrics,' which is the first part of the claim. Therefore, the complete claim is not fully entailed by the visible text.",
+        "timestamp": "2026-09-01T05:56:00.601857Z",
+        "annotation_source": "AI-generated consensus",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_03",
+        "independent_human_annotation": false
+      },
+      "is_human_adjudication": false
+    }
+  ]
+}

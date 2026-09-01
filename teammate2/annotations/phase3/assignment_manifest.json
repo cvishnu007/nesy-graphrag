@@ -1,0 +1,2938 @@
+{
+  "phase3_version": "1.0-draft",
+  "status": "annotation_ready",
+  "seed": "phase3-double-annotation-v1",
+  "double_annotation_fraction_requested": 0.25,
+  "reviewer_slots": [
+    {
+      "reviewer_id": "reviewer_01",
+      "role": "reviewer",
+      "assigned_person": null
+    },
+    {
+      "reviewer_id": "reviewer_02",
+      "role": "reviewer",
+      "assigned_person": null
+    },
+    {
+      "reviewer_id": "reviewer_03",
+      "role": "adjudicator",
+      "assigned_person": null
+    }
+  ],
+  "task_counts": {
+    "contradiction": {
+      "total": 62,
+      "double_annotated": 16,
+      "double_fraction_actual": 0.258065
+    },
+    "support": {
+      "total": 151,
+      "double_annotated": 38,
+      "double_fraction_actual": 0.251656
+    },
+    "hypothesis": {
+      "total": 100,
+      "double_annotated": 25,
+      "double_fraction_actual": 0.25
+    }
+  },
+  "assignments": [
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C027719CD819B",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C077B8720217C",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C0C22508E24E7",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C0D27B651D266",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C16C463F74DB4",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C2AA5695ABBBD",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C30E29164B2EE",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C4B5164DB2A80",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C5C0166F69B86",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C64CC94134C98",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C670B0F1D9D37",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C80CB96056752",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C871A35CF8A4C",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C8F3CEAC2F3FF",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "C98BAECD7D4C2",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "CA10145B0BC8C",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "CA1B115C319E9",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "CA9C71B43B00D",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "CAEA34D53BF53",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "CC1ECCBE101E1",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "CCE205A9EC39B",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "CD696C0D85306",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "dev",
+      "item_id": "CDB01DF450112",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C05DC54626BB8",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C0CCB172F7506",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C159A1C57678E",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C2B6477EF7775",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C2D84FD7088B6",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C2E31222E3143",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C2FFC7437E0E2",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C32A4191AAB45",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C3CBDE8E7371C",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C43D78CFDDBC8",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C4475EA93F606",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C4845D59D7D30",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C4E8117A6D5CF",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C51D8CC46E15C",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C532DB2B51F69",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C7A5067AB0843",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C7F33A70CB30F",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C8244FAE6BF1C",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C83738F261716",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C8683DC41C80E",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C8C72415EE433",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C93774A86D6D1",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "C940AFC023A7B",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CA8AD5993B3C9",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CB2EC2BB4FB7B",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CB4DD9623C30F",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CB6F6A1F98640",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CBC32825D13E2",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CC5DC1D4F97CC",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CC7B7523ACB96",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CCB25533E1285",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CD357DB180568",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CD9E4C57205EF",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CDCB3AD358DA0",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CDF7AD4550413",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CEEE025FCB24F",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CF4519B8C39FA",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CF51660EF51B0",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "contradiction",
+      "split": "test",
+      "item_id": "CFADA58955A99",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H002CC913665F",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H04E063C8B135",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H177B2ABCC57B",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H22CC264BD1F4",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H2C4AFC3A7514",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H2E542FE10514",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H2E61FFCBA364",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H2F702952148F",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H33B65FA04F9D",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H398B38D6E484",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H3F9ADF9D2EDD",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H491B6A408459",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H4AA200245E50",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H59051619F705",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H5EEC9DF75A8C",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H84E993085D00",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H8F1D0FC4679F",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H970DEC9C86E4",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "H9B59115A5A62",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HB15E0C067B66",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HB5580358053E",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HBB5F850486DF",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HC1D94A86BBEF",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HC1F7C24B7337",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HD24372E6E3B9",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HD44D564FBB9D",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HEACDB24E1EB3",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HEFDC7C666117",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HF1ED274287EC",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "dev",
+      "item_id": "HFEE9DFA7E6BF",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H006EC99364F2",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H00AC180E855D",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H01FF8B5B3ED2",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H0709BF27417A",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H083701A5DF43",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H0B6277271182",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H1213BD2351A7",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H169D2335DD0C",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H29666FA615EE",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H2BEC330B8947",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H2C106C4509AA",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H382B87DC7863",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H38454734D423",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H3B73E216DD79",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H3E9358CB7598",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H42EC00245E9D",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H446695E9B363",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H45D0198CF490",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H4789D320F493",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H49346CC14F46",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H500C97F6DA32",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H51D58FA7ABB4",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H51FA66674EA9",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H57B412F1CA9F",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H58A092BD5619",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H62B5FB28E3C5",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H6496ADAE651C",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H654A5B61BEAC",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H6AC994B2E668",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H7D7E0B45B89A",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H7E0AD04FEF79",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H7E661DCFE9FB",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H7EAED92B1935",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H80077F290543",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H815B2AB14ACF",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H864DDF15C655",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H87F5838BF2D1",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H899563A91F21",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H8B8C0243CA07",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H8FB028044D33",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H9547E5ACD7A5",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H99F766B35936",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H9E94190B18CC",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "H9F3179B75420",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HA3F57CF825BD",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HA41842509093",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HA61B714B8332",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HAEE6DE431381",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HB5120DD00496",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HB748A6A748CA",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HB85B33061D77",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HBB1FFB3FD9C9",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HBB939CF993FD",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HBD312E521DBF",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HBF1FF38AD910",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HC83AE62D28AF",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HD3CB4ACF3D10",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HD4D7CF6B69D2",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HD7FFB128F883",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HD8449964BB05",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HDD8C5CFAD869",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HDDE45C9B0D36",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HDFFF8BD426F5",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HE325B0DAB892",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HE787AA43974F",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HEB0E26581A5E",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HEE03AC3BD10B",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HF7FAD67FCF5D",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HFA077558D85B",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "hypothesis",
+      "split": "test",
+      "item_id": "HFB05EE922C83",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S087E626E46FB",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S0CBC3E664363",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S18757D3D8AB8",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S1F1D254E391B",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S247E4CD56164",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S25B2E0EA7A5B",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S2AEAA3C33E49",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S35C5D6DFC526",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S35F439A08EFB",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S3C99C0AB40C4",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S44CDFAE0779A",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S44D15DFC0423",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S4E25A9A18F26",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S4E2B561BD970",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S526CD3EB428F",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S55ECCA5E37C7",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S56242C50A4B0",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S583E114A6977",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S5948F7EABF11",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S5FBCB11D19A8",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S63A635AB4E56",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S6996FC4BFC78",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S69A355089B73",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S6BDD1A81D3A1",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S6F017D961E19",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S71E4B92F2BB2",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S7395D7D991B0",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S75BB6D9C2B7F",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S797819B7FAF7",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S845E1E67DFC3",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S849E6C6BB185",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S8AC298ACD367",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S8B3935A4C561",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S8E0EB345CB10",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S8E8949459EAA",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S9572A0DE030D",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "S95887397EB42",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SB6044F827992",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SB81B114C3F83",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SBC402B389807",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SC0153926273E",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SC6677DFEA351",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SC69CEFF758B4",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SC9987C75364C",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SCE717F3EC281",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SDAF919076586",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SDF7607AFA0F2",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SE7454BFBC987",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SE8026F824660",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SE8377101F2C4",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SE91101D61CFA",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SEA9FD7A4EAEC",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SEB7404D3CFFA",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SEBE9A488CB7B",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SF4BE112C1769",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "dev",
+      "item_id": "SFB63C6CB3DB2",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S0141DDF1AFC1",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S0379FAEFD910",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S0CEBAB9421BD",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S0D9BCA2E1B0F",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S0DFD4F42B8F3",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S0E673CB47C02",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S12632CC7838F",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S14A4069AF888",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S1508AE7672E3",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S162476A07AAB",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S19EC584ECDBF",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S1AD69ACAFA2C",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S1D8CA1084272",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S1F0AD619FDC3",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S1F64057E880C",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S212DB4BBCCB3",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S2242BA88025A",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S247DB4089E01",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S25774C5CFEEA",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S2893D8FA235D",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S2940EB2A5FFC",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S2E092BA6E875",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S362B51C9E589",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S37F398DD9BC5",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S397B33711B67",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S3BF0A4ECA175",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S3C313E31CBCA",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S3E043A2A9FB4",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S3E33ED212298",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S3F627DBCE01E",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S40412EEB02CC",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S41C1F42D4969",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S477D7E5ABD7B",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S47FCDE0AFF6A",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S498F59EF03A9",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S4B2A29DCD91B",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S4CED39CA0193",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S4D0B2D1F9EFD",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S4D84DFDDCFD6",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S520AE0A11C41",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S559C4CF550EB",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S59A73483BC33",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S63438528ECB7",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S69BB94ABBF4D",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S6A03829FBC70",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S6A4C5DF6C4B8",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S6BAD05998DBA",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S753ED8927B9F",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S77161BFB07D4",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S78313C8B1BC1",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S7ECB7E4859D0",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S823F03C3BC77",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S864F98066349",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S866AEEE19281",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S8950B36DF8D3",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S8B2D9ED684A8",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S8B39362D83B9",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S8BE7A6BF30BD",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S8E2A5ECBE7C8",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S96C102C7B5C3",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S978C81CE1E59",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "S98BF9E8D7F93",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SA280D1E63C0D",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SA5422DBFD072",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SA78440B65889",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SA85BF0DD7B3E",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SA9719FD0E067",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SB0A8BE35669F",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SB1C94DF8E8B5",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SB3AC04482AE6",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SB70DB77D9C59",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SB79F7D9BBCB4",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SBEF70034B72B",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SC1124FAB4E23",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SC25EF3F3BB76",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SC38427BA3360",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SC4D54FC36A65",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SC8F2018C338A",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SCB306057007F",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SCC3F23153707",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SCD36D0CD061B",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SCDFB80EBF439",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SD1C2FC387525",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SD23A41209483",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SD4601DD01AA7",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SD54B6BC31878",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SD573B7AD1C20",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SD8C7400A0DF0",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SD97FB105CE73",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SDD8C30528900",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SEA1DE44DB440",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SEC86EE24504A",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SF545D8DA0DD1",
+      "reviewer_ids": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "double_annotation": true
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SF9C7D5C221E7",
+      "reviewer_ids": [
+        "reviewer_02"
+      ],
+      "double_annotation": false
+    },
+    {
+      "task": "support",
+      "split": "test",
+      "item_id": "SFADA5CDBA6EE",
+      "reviewer_ids": [
+        "reviewer_01"
+      ],
+      "double_annotation": false
+    }
+  ]
+}

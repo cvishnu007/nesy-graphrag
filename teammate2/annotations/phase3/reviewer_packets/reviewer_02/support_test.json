@@ -1,0 +1,1001 @@
+{
+  "packet_version": "1.0",
+  "status": "complete",
+  "blinded": true,
+  "reviewer_id": "reviewer_02",
+  "task": "support",
+  "split": "test",
+  "response_schema": {
+    "label": [
+      "CONTRADICTED",
+      "PARTIALLY_SUPPORTED",
+      "SUPPORTED",
+      "UNSUPPORTED"
+    ],
+    "notes": "optional",
+    "timestamp": "ISO-8601"
+  },
+  "records": [
+    {
+      "item_id": "S0141DDF1AFC1",
+      "split": "test",
+      "query_id": "Q015",
+      "claim": "Incorporating SGX for subgraph exchange and local differential privacy for node embeddings provides secure parameter sharing and defends against malicious servers in federated GNNs.",
+      "passage_id": "Pa37f3188c2318f47-S009",
+      "passage_text": "we leverage sgx and local differential privacy for secure parameter sharing and defense against malicious servers.",
+      "paper_id": "b8da443cf05166cfcc90ab28465048ebe5dc68c8",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the use of SGX and local differential privacy for secure parameter sharing and defense against malicious servers, but it does not specify the application to 'subgraph exchange' and 'node embeddings' or the context of 'federated GNNs' as stated in the claim.",
+        "timestamp": "2026-09-01T05:44:46.718432Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S0CEBAB9421BD",
+      "split": "test",
+      "query_id": "Q015",
+      "claim": "Incorporating SGX for subgraph exchange and local differential privacy for node embeddings provides secure parameter sharing and defends against malicious servers in federated GNNs.",
+      "passage_id": "Pa37f3188c2318f47-S006",
+      "passage_text": "sgx computes node intersections for subgraph exchange and expansion, while local differential privacy ensures privacy.",
+      "paper_id": "b8da443cf05166cfcc90ab28465048ebe5dc68c8",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the use of SGX for subgraph exchange and local differential privacy for privacy, but it does not explicitly mention 'node embeddings' or the goal of 'secure parameter sharing' and 'defense against malicious servers' in the same combined manner as the claim.",
+        "timestamp": "2026-09-01T05:44:46.718432Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S0DFD4F42B8F3",
+      "split": "test",
+      "query_id": "Q008",
+      "claim": "The tudataset collection provides over 120 benchmark datasets for graph classification and regression, supporting standardized evaluation procedures.",
+      "passage_id": "P8ffd796949a6330e-S007",
+      "passage_text": "we then use a hybrid graph kernel in the h 1 -space for mgkl in combination with the gmdh-nn.",
+      "paper_id": "395f14afacedbda94f0ee542a40fd0439836fecb",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage discusses a hybrid graph kernel and GMDH-NN, which is unrelated to the claim about the tudataset collection providing over 120 benchmark datasets.",
+        "timestamp": "2026-09-01T05:44:46.718432Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S14A4069AF888",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "Graph neural networks are vulnerable to carefully crafted perturbations that can easily fool predictions for downstream tasks.",
+      "passage_id": "P1fe12473d8810e43-S002",
+      "passage_text": "however, recent studies show that gnns are vulnerable to carefully-crafted perturbations, called adversarial attacks.",
+      "paper_id": "2d615707481030d271f2c888b13267b1681f4aa2",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms that GNNs are vulnerable to carefully-crafted perturbations (adversarial attacks), but it does not explicitly state that these perturbations 'easily fool predictions for downstream tasks'.",
+        "timestamp": "2026-09-01T05:44:46.718432Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S1508AE7672E3",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Residual connections and batch normalization can provably prevent oversmoothing by preserving initial features and preventing collapse to a one‑dimensional subspace.",
+      "passage_id": "Pb034a46191c774d7-S004",
+      "passage_text": "we establish that (a) for residual connections, the incorporation of the initial features at each layer can prevent the signal from becoming too smooth, and determines the subspace of possible node representations; (b) batch normalization prevents a complete collapse of the output embedding space to a one-dimensional subspace through the individual rescaling of each column of the feature matrix.",
+      "paper_id": "6f15512c01c3fb087abd1c842b23663384e27410",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage directly states that residual connections prevent the signal from becoming too smooth (oversmoothing) and batch normalization prevents collapse to a one-dimensional subspace, which entails the claim.",
+        "timestamp": "2026-09-01T05:44:46.718432Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S162476A07AAB",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "Most existing GNN defenses show little or no improvement when evaluated against adaptive attacks, indicating that non‑adaptive evaluation overestimates robustness.",
+      "passage_id": "P81781aec39200c92-S005",
+      "passage_text": "we advocate using custom adaptive attacks as a gold standard and we outline the lessons we learned from successfully designing such attacks.",
+      "paper_id": "3efa96570a10fecba0f93e0f62e95d41ce7b624b",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage advocates for using adaptive attacks as a gold standard but does not provide evidence that 'most existing GNN defenses show little or no improvement' or that 'non-adaptive evaluation overestimates robustness'.",
+        "timestamp": "2026-09-01T05:44:46.718432Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S1D8CA1084272",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Adding edges to the message‑passing graph can cause oversmoothing, but a spectral rewiring algorithm that adds edges based on spectral expansion can prevent oversmoothing while preserving the original graph structure.",
+      "passage_id": "P40ea3e6320a111f0-S006",
+      "passage_text": "we combine this with a relational architecture, which lets the gnn preserve the original graph structure and provably prevents oversmoothing.",
+      "paper_id": "b3a464038b8aad8a7d9475bf8bcc495f1378b0ae",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports that the method preserves original graph structure and prevents oversmoothing, but it does not mention adding edges or spectral rewiring, which are key parts of the claim.",
+        "timestamp": "2026-09-01T05:45:00.334257Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S1F0AD619FDC3",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "Attacking GNNs by perturbing features of a small set of nodes without model access can be formulated as an influence‑maximization problem, and the resulting strategies significantly degrade the performance of popular GNN models.",
+      "passage_id": "P2c520e5c3dbdc8c4-S001",
+      "passage_text": "we study the black-box attacks on graph neural networks (gnns) under a novel and realistic constraint: attackers have access to only a subset of nodes in the network, and they can only attack a small number of them.",
+      "paper_id": "2e5bcdf9c9f6dbd9a1f2e0e1a748da8081b79e87",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the constraint of attacking a small subset of nodes in a black-box setting, but it does not mention formulating it as an influence-maximization problem or the specific performance degradation results.",
+        "timestamp": "2026-09-01T05:45:00.334257Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S212DB4BBCCB3",
+      "split": "test",
+      "query_id": "Q014",
+      "claim": "The Fraudre model, built on graph neural networks, is dual‑resistant to graph inconsistency and class imbalance, and outperforms eight contemporary baselines on Amazon and YelpChi datasets.",
+      "passage_id": "P49276f92afdea441-S010",
+      "passage_text": "extensive experiments comparing eight up-to-date baselines on two real-world datasets, amazon and yelpchi, demonstrate the superiority of fraudre.",
+      "paper_id": "748c865ebf0845827ca23fa5874decce9646b226",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the comparison against eight baselines on Amazon and YelpChi datasets and the superiority of Fraudre, but it does not mention the model's dual-resistance to graph inconsistency and class imbalance.",
+        "timestamp": "2026-09-01T05:45:00.334257Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S247DB4089E01",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "Black‑box attacks that exploit the link between GNN gradients and random walks can increase loss but may not raise misclassification rates; a greedy correction procedure that accounts for diminishing returns significantly boosts misclassification rates without requiring model parameters or predictions.",
+      "passage_id": "P1fe12473d8810e43-S013",
+      "passage_text": "we release the implementation of pro-gnn to our deeprobust repository for adversarial attacks and defenses.",
+      "paper_id": "2d615707481030d271f2c888b13267b1681f4aa2",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage only mentions releasing the implementation of Pro-GNN and does not contain information about the specific attack mechanism, loss vs. misclassification trade-offs, or the greedy correction procedure described in the claim.",
+        "timestamp": "2026-09-01T05:45:00.334257Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S2893D8FA235D",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "A joint learning framework that simultaneously reconstructs a clean graph structure and trains a robust GNN (Pro‑GNN) achieves significantly better robustness than state‑of‑the‑art defenses, even under heavy perturbations.",
+      "passage_id": "P1fe12473d8810e43-S006",
+      "passage_text": "a natural idea to defend adversarial attacks is to clean the perturbed graph.",
+      "paper_id": "2d615707481030d271f2c888b13267b1681f4aa2",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage mentions the general idea of cleaning perturbed graphs but does not describe the specific joint learning framework (Pro-GNN) or provide evidence for its superior robustness compared to state-of-the-art defenses.",
+        "timestamp": "2026-09-01T05:45:00.334257Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S2E092BA6E875",
+      "split": "test",
+      "query_id": "Q014",
+      "claim": "Combining graph neural networks with anomaly detection techniques yields a fraud detection framework that achieves a detection rate of 95% with a false positive rate of 2%, surpassing state‑of‑the‑art gradient boosting classifiers by 10%.",
+      "passage_id": "Pa36b057fbeec2d8f-S006",
+      "passage_text": "experimentation on the widely used credit card fraud detection dataset, comprising transactions made by european cardholders, showcases substantial advancements over baseline methods.",
+      "paper_id": "814698078dcc7c342879c0b84b9895665495606a",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage mentions advancements over baselines on a credit card fraud dataset but does not provide the specific metrics (95% detection rate, 2% false positive rate) or the specific comparison to gradient boosting classifiers by 10%.",
+        "timestamp": "2026-09-01T05:45:00.334257Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S362B51C9E589",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "GNNs constructed with conservative Hamiltonian neural flows and Lyapunov stability exhibit substantially higher robustness to adversarial perturbations compared to other neural flow GNNs.",
+      "passage_id": "P6969b967ea1623f6-S004",
+      "passage_text": "inspired by physics principles, we advocate for the use of conservative hamiltonian neural flows to construct gnns that are robust to adversarial attacks.",
+      "paper_id": "72ce1f2b6c2f66f548607faf53ffccf1f5a2acd5",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the use of conservative Hamiltonian neural flows for robustness to adversarial attacks, but it does not mention Lyapunov stability or provide a comparison showing 'substantially higher' robustness compared to other neural flow GNNs.",
+        "timestamp": "2026-09-01T05:45:13.804949Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S3BF0A4ECA175",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "Most existing GNN defenses show little or no improvement when evaluated against adaptive attacks, indicating that non‑adaptive evaluation overestimates robustness.",
+      "passage_id": "P1fe12473d8810e43-S002",
+      "passage_text": "however, recent studies show that gnns are vulnerable to carefully-crafted perturbations, called adversarial attacks.",
+      "paper_id": "2d615707481030d271f2c888b13267b1681f4aa2",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage states that GNNs are vulnerable to adversarial attacks, but it does not discuss the performance of existing defenses against adaptive attacks or the overestimation of robustness in non-adaptive evaluations.",
+        "timestamp": "2026-09-01T05:45:13.804949Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S3C313E31CBCA",
+      "split": "test",
+      "query_id": "Q008",
+      "claim": "The GMDH neural network automatically seeks interrelatedness in data, selects an optimal model structure, and enhances the accuracy of existing algorithms, enabling its application to graph classification tasks.",
+      "passage_id": "P8ffd796949a6330e-S003",
+      "passage_text": "it can automatically seek interrelatedness in data, select an optimal structure for the model or network, and enhance the accuracy of existing algorithms.",
+      "paper_id": "395f14afacedbda94f0ee542a40fd0439836fecb",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms that the method seeks interrelatedness, selects optimal structure, and enhances accuracy, but it does not explicitly state that this enables application to graph classification tasks.",
+        "timestamp": "2026-09-01T05:45:13.804949Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S3E33ED212298",
+      "split": "test",
+      "query_id": "Q010",
+      "claim": "The Beltrami flow-based graph neural network generalises many popular graph neural network architectures and achieves state-of-the-art results on several benchmarks.",
+      "passage_id": "Pfde3a02ba9d08d59-S003",
+      "passage_text": "the resulting model generalises many popular graph neural networks and achieves state-of-the-art results on several benchmarks.",
+      "paper_id": "af84c6db6b5c41ca628867ff4a27566e9ca3c69e",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage directly states that the resulting model (implied to be the Beltrami flow-based GNN from the claim context) generalizes many popular GNNs and achieves state-of-the-art results on several benchmarks.",
+        "timestamp": "2026-09-01T05:45:13.804949Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S40412EEB02CC",
+      "split": "test",
+      "query_id": "Q012",
+      "claim": "Prior benchmarking studies have evaluated GNN explainers using various explainability metrics, but have not addressed why certain architectures are more explainable or which explainer is best for a given setting.",
+      "passage_id": "P216b362527827d7b-S003",
+      "passage_text": "to sort out this plethora of alternative approaches, several studies have benchmarked the performance of different explainers in terms of various explainability metrics.",
+      "paper_id": "bfafae6c6add7f06bd212911de27f75e416c015a",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the claim that prior studies benchmarked explainers using various metrics, but it does not address the specific gap regarding why certain architectures are more explainable or which explainer is best for a given setting.",
+        "timestamp": "2026-09-01T05:45:13.804949Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S477D7E5ABD7B",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Residual connections and batch normalization can provably prevent oversmoothing by preserving initial features and preventing collapse to a one‑dimensional subspace.",
+      "passage_id": "P40ea3e6320a111f0-S004",
+      "passage_text": "on the other hand, adding edges to the message-passing graph can lead to increasingly similar node representations and a problem known as oversmoothing.",
+      "paper_id": "b3a464038b8aad8a7d9475bf8bcc495f1378b0ae",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage defines oversmoothing as a problem caused by adding edges, but it does not mention residual connections, batch normalization, or their ability to prevent oversmoothing.",
+        "timestamp": "2026-09-01T05:45:13.804949Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S47FCDE0AFF6A",
+      "split": "test",
+      "query_id": "Q012",
+      "claim": "Prior benchmarking studies have evaluated GNN explainers using various explainability metrics, but have not addressed why certain architectures are more explainable or which explainer is best for a given setting.",
+      "passage_id": "P698644158c43b211-S006",
+      "passage_text": "however, industry use-cases are not perfectly aligned with hep and much work needs to be done to best match unique gnn capabilities to unique hep obstacles.",
+      "paper_id": "261472c8e9b7569f0872386f163c4a5661809e40",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage discusses the misalignment between industry use-cases and HEP (High Energy Physics) and the need to match GNN capabilities to obstacles. It does not mention benchmarking studies, explainability metrics, or the specific gap regarding why certain architectures are more explainable.",
+        "timestamp": "2026-09-01T05:45:26.460069Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S498F59EF03A9",
+      "split": "test",
+      "query_id": "Q008",
+      "claim": "The tudataset offers datasets from a wide range of applications, facilitating diverse graph classification research.",
+      "passage_id": "P68319719924f5d0e-S004",
+      "passage_text": "the collection consists of over 120 datasets of varying sizes from a wide range of applications.",
+      "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms the collection consists of over 120 datasets from a wide range of applications, supporting the 'wide range of applications' part of the claim. However, it does not explicitly identify the collection as 'tudataset' nor does it explicitly state that it facilitates 'diverse graph classification research' (though implied by the context of a dataset collection, the specific name and research domain are not in the text).",
+        "timestamp": "2026-09-01T05:45:26.460069Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S4B2A29DCD91B",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Learnable edge sampling reduces oversmoothing and preserves core spectral features, enabling deeper GNNs.",
+      "passage_id": "P39c45a859db1a803-S007",
+      "passage_text": "an edge-sampling mechanism that selects a particular number of edges through a learning parameter before training reduces oversmoothing, and the issue of information loss is alleviated using a line graph technique that converts the original graph into a similar line graph.",
+      "paper_id": "8c2ef6f027bf5122d43b77cb3383e9118e0b35d2",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports that the edge-sampling mechanism reduces oversmoothing. However, it does not mention preserving 'core spectral features' or explicitly enabling 'deeper GNNs' as a direct result, nor does it specify the mechanism is 'learnable' in the sense of a parameter (though it mentions a 'learning parameter', the spectral feature claim is absent).",
+        "timestamp": "2026-09-01T05:45:26.460069Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S4D84DFDDCFD6",
+      "split": "test",
+      "query_id": "Q014",
+      "claim": "Combining graph neural networks with anomaly detection techniques yields a fraud detection framework that achieves a detection rate of 95% with a false positive rate of 2%, surpassing state‑of‑the‑art gradient boosting classifiers by 10%.",
+      "passage_id": "Pa36b057fbeec2d8f-S003",
+      "passage_text": "we propose a pioneering framework combining graph neural networks (gnns) with anomaly detection techniques to enhance fraud detection.",
+      "paper_id": "814698078dcc7c342879c0b84b9895665495606a",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the claim that a framework combining GNNs with anomaly detection is proposed for fraud detection. However, it does not provide the specific performance metrics (95% detection rate, 2% false positive rate) or the comparison to gradient boosting classifiers (surpassing by 10%).",
+        "timestamp": "2026-09-01T05:45:26.460069Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S520AE0A11C41",
+      "split": "test",
+      "query_id": "Q015",
+      "claim": "Federated GNN frameworks enable privacy-preserving recommendation by training local GNNs on user data and aggregating gradients without exposing raw data.",
+      "passage_id": "Pa37f3188c2318f47-S003",
+      "passage_text": "this framework allows distributed training of gnn models using local user data.",
+      "paper_id": "b8da443cf05166cfcc90ab28465048ebe5dc68c8",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports that the framework allows distributed training of GNN models using local user data. It does not explicitly mention 'privacy-preserving recommendation', 'aggregating gradients', or 'without exposing raw data', although these are common implications of such frameworks, they are not stated in the text.",
+        "timestamp": "2026-09-01T05:45:26.460069Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S559C4CF550EB",
+      "split": "test",
+      "query_id": "Q016",
+      "claim": "GraphCL incorporates four distinct types of graph augmentations to embed prior knowledge into the learning process.",
+      "passage_id": "P0573d2fc1cf43aa0-S006",
+      "passage_text": "we factorize the likelihood of graph generation into two components: 1) attribute generation and 2) edge generation.",
+      "paper_id": "04faf433934486c41d082e8d75ccfe5dc2f69fef",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage discusses factorizing the likelihood of graph generation into attribute and edge generation. It does not mention GraphCL, graph augmentations, or embedding prior knowledge.",
+        "timestamp": "2026-09-01T05:45:26.460069Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S69BB94ABBF4D",
+      "split": "test",
+      "query_id": "Q015",
+      "claim": "Personalized federated learning using prototype networks and MAML enhances encoding and rapid adaptation to heterogeneous client graphs while preserving privacy.",
+      "passage_id": "Pa37f3188c2318f47-S007",
+      "passage_text": "additionally, we introduce a personalized approach with prototype networks (pn) and model-agnostic meta-learning (maml) to handle data heterogeneity.",
+      "paper_id": "b8da443cf05166cfcc90ab28465048ebe5dc68c8",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the use of prototype networks and MAML for a personalized approach to handle data heterogeneity, but it does not mention federated learning, client graphs, encoding enhancement, or privacy preservation.",
+        "timestamp": "2026-09-01T05:45:40.025869Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S6A03829FBC70",
+      "split": "test",
+      "query_id": "Q016",
+      "claim": "GraphCL incorporates four distinct types of graph augmentations to embed prior knowledge into the learning process.",
+      "passage_id": "Pd8e8c76f2c21e98a-S004",
+      "passage_text": "we first design four types of graph augmentations to incorporate various priors.",
+      "paper_id": "76c124786ccf4263e6403a15a8e350ac28be4e65",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage explicitly states that four types of graph augmentations are designed to incorporate various priors, which directly entails the claim.",
+        "timestamp": "2026-09-01T05:45:40.025869Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S6BAD05998DBA",
+      "split": "test",
+      "query_id": "Q016",
+      "claim": "GraphCL is a framework that learns unsupervised representations of graph data.",
+      "passage_id": "Pd8e8c76f2c21e98a-S003",
+      "passage_text": "in this paper, we propose a graph contrastive learning (graphcl) framework for learning unsupervised representations of graph data.",
+      "paper_id": "76c124786ccf4263e6403a15a8e350ac28be4e65",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage explicitly defines GraphCL as a framework for learning unsupervised representations of graph data, matching the claim.",
+        "timestamp": "2026-09-01T05:45:40.025869Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S753ED8927B9F",
+      "split": "test",
+      "query_id": "Q008",
+      "claim": "The tudataset collection provides over 120 benchmark datasets for graph classification and regression, supporting standardized evaluation procedures.",
+      "passage_id": "P68319719924f5d0e-S004",
+      "passage_text": "the collection consists of over 120 datasets of varying sizes from a wide range of applications.",
+      "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms the collection consists of over 120 datasets, but it does not specify that they are for graph classification/regression or that they support standardized evaluation procedures.",
+        "timestamp": "2026-09-01T05:45:40.025869Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S7ECB7E4859D0",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "Black‑box attacks that exploit the link between GNN gradients and random walks can increase loss but may not raise misclassification rates; a greedy correction procedure that accounts for diminishing returns significantly boosts misclassification rates without requiring model parameters or predictions.",
+      "passage_id": "P2c520e5c3dbdc8c4-S007",
+      "passage_text": "therefore, we propose a greedy procedure to correct the importance score that takes into account of the diminishing-return pattern.",
+      "paper_id": "2e5bcdf9c9f6dbd9a1f2e0e1a748da8081b79e87",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the existence of a greedy procedure to correct importance scores considering diminishing returns, but it does not mention black-box attacks, GNN gradients, random walks, or the specific effects on loss and misclassification rates.",
+        "timestamp": "2026-09-01T05:45:40.025869Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S823F03C3BC77",
+      "split": "test",
+      "query_id": "Q008",
+      "claim": "The tudataset includes Python-based data loaders, kernel and graph neural network baseline implementations, and evaluation tools, enabling reproducible graph classification experiments.",
+      "passage_id": "P8ffd796949a6330e-S002",
+      "passage_text": "the group method of data handling neural network (gmdh-nn) has been applied in many fields of optimization, data mining, and pattern recognition.",
+      "paper_id": "395f14afacedbda94f0ee542a40fd0439836fecb",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage discusses the Group Method of Data Handling Neural Network (GMDH-NN) and its applications, which is unrelated to the TUDataset collection, its data loaders, or baseline implementations.",
+        "timestamp": "2026-09-01T05:45:40.025869Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S864F98066349",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "Attacking GNNs by perturbing features of a small set of nodes without model access can be formulated as an influence‑maximization problem, and the resulting strategies significantly degrade the performance of popular GNN models.",
+      "passage_id": "P634046fd1ecf9fec-S003",
+      "passage_text": "in this work, we study the problem of attacking gnns in a restricted and realistic setup, by perturbing the features of a small set of nodes, with no access to model parameters and model predictions.",
+      "paper_id": "28aced1522ac329ad068565f4e3208e23862f221",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the setup of attacking GNNs by perturbing features of a small set of nodes without model access, but it does not mention formulating it as an influence-maximization problem or the resulting degradation of performance.",
+        "timestamp": "2026-09-01T05:45:53.413624Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S866AEEE19281",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Adding edges to the message‑passing graph can cause oversmoothing, but a spectral rewiring algorithm that adds edges based on spectral expansion can prevent oversmoothing while preserving the original graph structure.",
+      "passage_id": "P40ea3e6320a111f0-S004",
+      "passage_text": "on the other hand, adding edges to the message-passing graph can lead to increasingly similar node representations and a problem known as oversmoothing.",
+      "paper_id": "b3a464038b8aad8a7d9475bf8bcc495f1378b0ae",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the claim that adding edges can lead to oversmoothing, but it does not mention a spectral rewiring algorithm or its ability to prevent oversmoothing while preserving structure.",
+        "timestamp": "2026-09-01T05:45:53.413624Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S8950B36DF8D3",
+      "split": "test",
+      "query_id": "Q008",
+      "claim": "The multiple graph kernel learning (MGKL) method based on a GMDH neural network improves the classification accuracy of graph kernel support vector machines.",
+      "passage_id": "P8ffd796949a6330e-S004",
+      "passage_text": "we can utilize the advantages of the gmdh-nn to build a multiple graph kernel learning (mgkl) method and enhance the categorization performance of graph kernel svms.",
+      "paper_id": "395f14afacedbda94f0ee542a40fd0439836fecb",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage explicitly states that the MGKL method based on GMDH-NN is used to enhance the categorization performance (classification accuracy) of graph kernel SVMs.",
+        "timestamp": "2026-09-01T05:45:53.413624Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S8B2D9ED684A8",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "GNNs constructed with conservative Hamiltonian neural flows and Lyapunov stability exhibit substantially higher robustness to adversarial perturbations compared to other neural flow GNNs.",
+      "passage_id": "P1fe12473d8810e43-S002",
+      "passage_text": "however, recent studies show that gnns are vulnerable to carefully-crafted perturbations, called adversarial attacks.",
+      "paper_id": "2d615707481030d271f2c888b13267b1681f4aa2",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage only states that GNNs are vulnerable to adversarial attacks; it does not mention conservative Hamiltonian neural flows, Lyapunov stability, or specific robustness comparisons.",
+        "timestamp": "2026-09-01T05:45:53.413624Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S8E2A5ECBE7C8",
+      "split": "test",
+      "query_id": "Q008",
+      "claim": "The tudataset includes Python-based data loaders, kernel and graph neural network baseline implementations, and evaluation tools, enabling reproducible graph classification experiments.",
+      "passage_id": "P68319719924f5d0e-S005",
+      "passage_text": "we provide python-based data loaders, kernel and graph neural network baseline implementations, and evaluation tools.",
+      "paper_id": "3302081b8878de505b69900e22b8137c5d931be7",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms the provision of Python-based data loaders, baseline implementations, and evaluation tools, but does not explicitly name the 'tudataset' or claim it enables reproducible experiments.",
+        "timestamp": "2026-09-01T05:45:53.413624Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "S98BF9E8D7F93",
+      "split": "test",
+      "query_id": "Q015",
+      "claim": "Federated GNN frameworks enable privacy-preserving recommendation by training local GNNs on user data and aggregating gradients without exposing raw data.",
+      "passage_id": "P52d9b0b02a40d610-S003",
+      "passage_text": "hence, federated graph neural networks are proposed to address such data silo issues while preserving each partys privacy (or client).",
+      "paper_id": "d23ab974eeca5b31e5475204195250476b80b4f8",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports that federated GNNs address data silo issues while preserving privacy, but it does not specify the mechanism of training local GNNs and aggregating gradients, nor does it explicitly link this to recommendation systems.",
+        "timestamp": "2026-09-01T05:45:53.413624Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SA280D1E63C0D",
+      "split": "test",
+      "query_id": "Q015",
+      "claim": "Incorporating SGX for subgraph exchange and local differential privacy for node embeddings provides secure parameter sharing and defends against malicious servers in federated GNNs.",
+      "passage_id": "Pa37f3188c2318f47-S005",
+      "passage_text": "to overcome limited data, we propose expanding local graphs using software guard extension (sgx) and local differential privacy (ldp).",
+      "paper_id": "b8da443cf05166cfcc90ab28465048ebe5dc68c8",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms the use of SGX and LDP to expand local graphs, which aligns with the technical components mentioned in the claim. However, the passage does not explicitly state that this provides 'secure parameter sharing' or 'defends against malicious servers,' nor does it explicitly link these methods to 'subgraph exchange' and 'node embeddings' in the specific manner described in the claim.",
+        "timestamp": "2026-09-01T05:46:06.189912Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SA78440B65889",
+      "split": "test",
+      "query_id": "Q012",
+      "claim": "A systematic experimental study tested 12 explainers across eight message‑passing GNN architectures on six graph and node‑classification datasets, yielding insights into explainer choice, key components for usability, and recommendations to avoid interpretation pitfalls.",
+      "passage_id": "P216b362527827d7b-S005",
+      "passage_text": "in this survey we fill these gaps by devising a systematic experimental study, which tests 12 explainers on eight representative message-passing architectures trained on six carefully designed graph and node classification datasets.",
+      "paper_id": "bfafae6c6add7f06bd212911de27f75e416c015a",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage directly supports the core experimental setup: testing 12 explainers on eight message-passing architectures using six graph and node classification datasets. However, the passage does not explicitly mention the specific outcomes regarding 'insights into explainer choice,' 'key components for usability,' or 'recommendations to avoid interpretation pitfalls,' which are part of the complete claim.",
+        "timestamp": "2026-09-01T05:46:06.189912Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SA85BF0DD7B3E",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Graph attention mechanisms do not mitigate oversmoothing and lose expressive power exponentially.",
+      "passage_id": "Pb034a46191c774d7-S001",
+      "passage_text": "residual connections and normalization layers have become standard design choices for graph neural networks (gnns), and were proposed as solutions to the mitigate the oversmoothing problem in gnns.",
+      "paper_id": "6f15512c01c3fb087abd1c842b23663384e27410",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage discusses residual connections and normalization layers as solutions to oversmoothing. It does not mention graph attention mechanisms, nor does it make any claims about them failing to mitigate oversmoothing or losing expressive power exponentially.",
+        "timestamp": "2026-09-01T05:46:06.189912Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SB0A8BE35669F",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "A joint learning framework that simultaneously reconstructs a clean graph structure and trains a robust GNN (Pro‑GNN) achieves significantly better robustness than state‑of‑the‑art defenses, even under heavy perturbations.",
+      "passage_id": "P1fe12473d8810e43-S011",
+      "passage_text": "in particular, we propose a general framework pro-gnn, which can jointly learn a structural graph and a robust graph neural network model from the perturbed graph guided by these properties.",
+      "paper_id": "2d615707481030d271f2c888b13267b1681f4aa2",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms the existence of the Pro-GNN framework which jointly learns a structural graph and a robust GNN model. However, it does not contain the performance comparison claiming it achieves 'significantly better robustness than state-of-the-art defenses' or specify performance 'under heavy perturbations'.",
+        "timestamp": "2026-09-01T05:46:06.189912Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SB1C94DF8E8B5",
+      "split": "test",
+      "query_id": "Q014",
+      "claim": "Graph neural networks can capture intricate fraud patterns in transaction graphs, enabling effective fraud detection.",
+      "passage_id": "P62a2543d84e18caf-S001",
+      "passage_text": "graph neural networks (gnn) show good performance in relational data classification.",
+      "paper_id": "05eba5c8543551f090486c68bf4e9e5e2b27cb53",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage states that GNNs show good performance in relational data classification. It does not specifically mention 'fraud patterns,' 'transaction graphs,' or 'fraud detection,' so it does not justify the specific claim made.",
+        "timestamp": "2026-09-01T05:46:06.189912Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SB3AC04482AE6",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "Attacking GNNs by perturbing features of a small set of nodes without model access can be formulated as an influence‑maximization problem, and the resulting strategies significantly degrade the performance of popular GNN models.",
+      "passage_id": "P634046fd1ecf9fec-S004",
+      "passage_text": "our formal analysis draws a connection between this type of attacks and an influence maximization problem on the graph.",
+      "paper_id": "28aced1522ac329ad068565f4e3208e23862f221",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the formulation of the attack as an influence maximization problem. However, it does not explicitly confirm the specific constraints of 'perturbing features of a small set of nodes without model access' nor does it provide evidence that the strategies 'significantly degrade the performance' of popular GNN models.",
+        "timestamp": "2026-09-01T05:46:06.189912Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SB79F7D9BBCB4",
+      "split": "test",
+      "query_id": "Q015",
+      "claim": "Incorporating SGX for subgraph exchange and local differential privacy for node embeddings provides secure parameter sharing and defends against malicious servers in federated GNNs.",
+      "passage_id": "Pc816b25e3e861384-S001",
+      "passage_text": "in this paper, we study the problem of learning graph neural networks (gnns) with differential privacy (dp).",
+      "paper_id": "c1fca46e51ef3f9e49877ccb75fc31fd70bc60e7",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage only states that the paper studies GNNs with differential privacy. It does not mention SGX, subgraph exchange, local differential privacy for node embeddings, or malicious servers, which are key parts of the claim.",
+        "timestamp": "2026-09-01T05:46:21.658468Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SBEF70034B72B",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Adding edges to the message‑passing graph can cause oversmoothing, but a spectral rewiring algorithm that adds edges based on spectral expansion can prevent oversmoothing while preserving the original graph structure.",
+      "passage_id": "P75b8edefd90c9225-S004",
+      "passage_text": "we establish that, contrary to popular belief, the graph attention mechanism cannot prevent oversmoothing and loses expressive power exponentially.",
+      "paper_id": "8b9f01585a679dffe92261ecdec56425db9ef97f",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage discusses graph attention mechanisms and oversmoothing but does not mention adding edges, spectral rewiring, or spectral expansion, which are central to the claim.",
+        "timestamp": "2026-09-01T05:46:21.658468Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SC1124FAB4E23",
+      "split": "test",
+      "query_id": "Q012",
+      "claim": "Prior benchmarking studies have evaluated GNN explainers using various explainability metrics, but have not addressed why certain architectures are more explainable or which explainer is best for a given setting.",
+      "passage_id": "P216b362527827d7b-S004",
+      "passage_text": "however, these earlier works make no attempts at providing insights into why different gnn architectures are more or less explainable or which explainer should be preferred in a given setting.",
+      "paper_id": "bfafae6c6add7f06bd212911de27f75e416c015a",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage explicitly states that earlier works make no attempts to provide insights into why different GNN architectures are more or less explainable or which explainer should be preferred, directly supporting the claim.",
+        "timestamp": "2026-09-01T05:46:21.658468Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SC4D54FC36A65",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Oversmoothing can be avoided in GCNs by initializing weights with sufficiently large variance, leading to a non‑oversmoothing phase where node features remain informative even at large depth.",
+      "passage_id": "P9b51643b7c0c519c-S005",
+      "passage_text": "the theory, however, allows us to identify a new, non-oversmoothing phase: if the initial weights of the network have sufficiently large variance, gcns do not oversmooth, and node features remain informative even at large depth.",
+      "paper_id": "4c24519d5c8082f4d5f1397952bb4e4c4fc11b85",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage directly states that if initial weights have sufficiently large variance, GCNs do not oversmooth and node features remain informative at large depth, which entails the claim.",
+        "timestamp": "2026-09-01T05:46:21.658468Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SCB306057007F",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "GNNs constructed with conservative Hamiltonian neural flows and Lyapunov stability exhibit substantially higher robustness to adversarial perturbations compared to other neural flow GNNs.",
+      "passage_id": "P6969b967ea1623f6-S006",
+      "passage_text": "extensive numerical experiments demonstrate that gnns leveraging conservative hamiltonian flows with lyapunov stability substantially improve robustness against adversarial perturbations.",
+      "paper_id": "72ce1f2b6c2f66f548607faf53ffccf1f5a2acd5",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage states that GNNs leveraging conservative Hamiltonian flows with Lyapunov stability substantially improve robustness against adversarial perturbations, which supports the claim.",
+        "timestamp": "2026-09-01T05:46:21.658468Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SD1C2FC387525",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "Black‑box attacks that exploit the link between GNN gradients and random walks can increase loss but may not raise misclassification rates; a greedy correction procedure that accounts for diminishing returns significantly boosts misclassification rates without requiring model parameters or predictions.",
+      "passage_id": "P2c520e5c3dbdc8c4-S008",
+      "passage_text": "experimental results show that the proposed procedure can significantly increase the mis-classification rate of common gnns on real-world data without access to model parameters nor predictions.",
+      "paper_id": "2e5bcdf9c9f6dbd9a1f2e0e1a748da8081b79e87",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage supports the part of the claim that the procedure increases misclassification rates without access to model parameters or predictions. However, it does not mention the specific mechanism (greedy correction, diminishing returns) or the context of black-box attacks exploiting gradients and random walks.",
+        "timestamp": "2026-09-01T05:46:21.658468Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SD23A41209483",
+      "split": "test",
+      "query_id": "Q012",
+      "claim": "A diverse set of GNN explainers, including both novel and adapted methods, has emerged in recent years.",
+      "passage_id": "P15b6acf9eb05fe46-S007",
+      "passage_text": "we demonstrate the intelligibility of gnans in a series of examples on different tasks and datasets.",
+      "paper_id": "d6721b9b0c65aca4af9ea0b6063dc72f8558f6c2",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage discusses demonstrating the intelligibility of GNNs on examples, which does not support the claim about the emergence of a diverse set of GNN explainers.",
+        "timestamp": "2026-09-01T05:46:33.159698Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SD54B6BC31878",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Oversmoothing causes node representations to converge to a homogeneous vector as depth increases.",
+      "passage_id": "P40ea3e6320a111f0-S004",
+      "passage_text": "on the other hand, adding edges to the message-passing graph can lead to increasingly similar node representations and a problem known as oversmoothing.",
+      "paper_id": "b3a464038b8aad8a7d9475bf8bcc495f1378b0ae",
+      "response": {
+        "label": "PARTIALLY_SUPPORTED",
+        "notes": "The passage confirms that oversmoothing leads to increasingly similar node representations, but it does not explicitly state that they converge to a homogeneous vector or specify the relationship with increasing depth.",
+        "timestamp": "2026-09-01T05:46:33.159698Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SD573B7AD1C20",
+      "split": "test",
+      "query_id": "Q012",
+      "claim": "A diverse set of GNN explainers, including both novel and adapted methods, has emerged in recent years.",
+      "passage_id": "P216b362527827d7b-S002",
+      "passage_text": "gnn explainers have started to emerge in recent years, with a multitude of methods both novel or adapted from other domains.",
+      "paper_id": "bfafae6c6add7f06bd212911de27f75e416c015a",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage directly states that GNN explainers have emerged in recent years with a multitude of methods that are novel or adapted from other domains, which entails the claim.",
+        "timestamp": "2026-09-01T05:46:33.159698Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SD97FB105CE73",
+      "split": "test",
+      "query_id": "Q017",
+      "claim": "A joint learning framework that simultaneously reconstructs a clean graph structure and trains a robust GNN (Pro‑GNN) achieves significantly better robustness than state‑of‑the‑art defenses, even under heavy perturbations.",
+      "passage_id": "P634046fd1ecf9fec-S006",
+      "passage_text": "our experiments verify that the proposed attack strategies significantly degrade the performance of three popular gnn models and outperform baseline adversarial attack strategies.",
+      "paper_id": "28aced1522ac329ad068565f4e3208e23862f221",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage discusses attack strategies degrading GNN performance, whereas the claim is about a defense framework (Pro-GNN) achieving better robustness. The passage does not support the claim about the defense.",
+        "timestamp": "2026-09-01T05:46:33.159698Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SF545D8DA0DD1",
+      "split": "test",
+      "query_id": "Q016",
+      "claim": "The effectiveness of GraphCL is demonstrated across semi‑supervised, unsupervised, transfer learning, and adversarial attack settings.",
+      "passage_id": "P05aba558f02ebe96-S001",
+      "passage_text": "measuring the similarity of different representations of neural architectures is a fundamental task and an open research challenge for the machine learning community.",
+      "paper_id": "822f94dadb65d7cc0ab680efd65301aa26cd09f8",
+      "response": {
+        "label": "UNSUPPORTED",
+        "notes": "The passage discusses measuring similarity of neural architecture representations, which is unrelated to the claim about GraphCL's effectiveness in specific learning settings.",
+        "timestamp": "2026-09-01T05:46:33.159698Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    },
+    {
+      "item_id": "SF9C7D5C221E7",
+      "split": "test",
+      "query_id": "Q011",
+      "claim": "Graph attention mechanisms do not mitigate oversmoothing and lose expressive power exponentially.",
+      "passage_id": "P75b8edefd90c9225-S004",
+      "passage_text": "we establish that, contrary to popular belief, the graph attention mechanism cannot prevent oversmoothing and loses expressive power exponentially.",
+      "paper_id": "8b9f01585a679dffe92261ecdec56425db9ef97f",
+      "response": {
+        "label": "SUPPORTED",
+        "notes": "The passage explicitly states that the graph attention mechanism cannot prevent oversmoothing and loses expressive power exponentially, directly supporting the claim.",
+        "timestamp": "2026-09-01T05:46:33.159698Z",
+        "annotation_source": "AI-generated",
+        "annotation_model": "qwen/qwen3.8-27b",
+        "annotation_pass_slot": "reviewer_02",
+        "independent_human_annotation": false
+      }
+    }
+  ],
+  "annotation_methodology": {
+    "annotation_source": "AI-generated",
+    "models": [
+      "qwen/qwen3.8-27b"
+    ],
+    "independent_human_review": false,
+    "human_ground_truth": false,
+    "preexisting_responses_preserved": []
+  }
+}

@@ -1,0 +1,795 @@
+{
+  "benchmark_version": "1.0-ai-reference-frozen",
+  "status": "frozen",
+  "fixture_only": false,
+  "pairs": [
+    {
+      "pair_id": "C027719CD819B",
+      "split": "dev",
+      "paper1_id": "0ca7d8c3250d43d14fdde46bf6fc299654d861ef",
+      "paper2_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+      "label": "DIFFERENT SCOPE",
+      "reason": "The first paper introduces a specific heterogeneous graph transformer model and reports its performance, while the second paper is a survey of attention‑based GNNs; they address different types of contributions and are not directly comparable.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C077B8720217C",
+      "split": "dev",
+      "paper1_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+      "paper2_id": "df02209677b32692b90e4831d4e5c1c14c13cff8",
+      "label": "DIFFERENT SCOPE",
+      "reason": "One paper surveys attention‑based GNN methods, whereas the other proposes a scalable GNN using approximate PageRank; the topics and claims do not overlap to allow direct agreement or contradiction.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C0C22508E24E7",
+      "split": "dev",
+      "paper1_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+      "paper2_id": "aa339dc08635486396623300d7ab64d1c8d632f6",
+      "label": "AGREEMENT",
+      "reason": "The papers are consistent: the survey discusses attention-based graph neural networks broadly, while the second paper proposes a specific method for making attention-based GNNs more efficient. Neither paper makes a claim that contradicts the other.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C0D27B651D266",
+      "split": "dev",
+      "paper1_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+      "paper2_id": "de7ac74b8388d7b5893478b479633af4ed4f97f8",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 is a survey of attention-based GNNs, while Paper 2 proposes a scalable GNN architecture (SIGN) that explicitly sidesteps graph sampling and does not focus on attention mechanisms. The papers address different methodological aspects and populations (attention-based vs. scalable convolutional), making them not directly comparable for contradiction.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": true
+    },
+    {
+      "pair_id": "C16C463F74DB4",
+      "split": "dev",
+      "paper1_id": "11ef232ccfb2f69d0de289d07f88e576126f2b44",
+      "paper2_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 introduces local graph parameters to enhance GNN expressive power, whereas Paper 2 exploits label non‑uniformity for node classification; the approaches target distinct mechanisms, so their claims are not directly contradictory.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C2AA5695ABBBD",
+      "split": "dev",
+      "paper1_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "paper2_id": "b5bde7463763595d46a35fd36c0aebadfaa9eb17",
+      "label": "AGREEMENT",
+      "reason": "Both papers discuss graph neural networks and their applications; no conflicting claims are made.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C30E29164B2EE",
+      "split": "dev",
+      "paper1_id": "454304628bf10f02aba1c2cfc95891e94d09208e",
+      "paper2_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper1 focuses on learnable structural/positional encodings for GNNs on molecular datasets, while Paper2 addresses data representations for multi-component phase equilibrium; the claims pertain to distinct aspects and settings, not directly comparable.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C4B5164DB2A80",
+      "split": "dev",
+      "paper1_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+      "paper2_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper1 improves node classification via label non-uniformity, whereas Paper2 proposes directional message passing for molecular property prediction; the tasks, datasets, and methods differ, so the claims are not directly comparable.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C5C0166F69B86",
+      "split": "dev",
+      "paper1_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "paper2_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 focuses on expressive power of CW networks for molecular graph tasks, while Paper 2 studies label non-uniformity for node classification, addressing distinct problems and datasets.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C64CC94134C98",
+      "split": "dev",
+      "paper1_id": "2fb6672c9f296507885b98dc4675f9f6758b983e",
+      "paper2_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "label": "AGREEMENT",
+      "reason": "Both papers discuss general properties, challenges, and applications of graph neural networks without presenting conflicting claims.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C670B0F1D9D37",
+      "split": "dev",
+      "paper1_id": "3a5af4545ee3ac3f413841c10c7605a1cefeb9e5",
+      "paper2_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 addresses theoretical limits of GNNs on graph properties, while Paper 2 focuses on molecular property prediction; the topics are distinct and not directly comparable.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C80CB96056752",
+      "split": "dev",
+      "paper1_id": "3a5af4545ee3ac3f413841c10c7605a1cefeb9e5",
+      "paper2_id": "dd5e6e0212ec529fefd7dd8bcfa02d16269a5a7a",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 discusses representational limits for graph properties, whereas Paper 2 proposes a tensor prediction framework; the scopes differ and no contradiction exists.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C871A35CF8A4C",
+      "split": "dev",
+      "paper1_id": "283616a044937f517cfb14be3a42dbe9506db401",
+      "paper2_id": "454304628bf10f02aba1c2cfc95891e94d09208e",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 proposes a hop‑interaction paradigm for scalability, while Paper 2 introduces learnable positional encodings; the claims are about different aspects of GNN design and are not contradictory.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C8F3CEAC2F3FF",
+      "split": "dev",
+      "paper1_id": "07c3d4570b98eaa048777638644b8a3a988cd38c",
+      "paper2_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 proposes a new framelet‑based GNN architecture that achieves state‑of‑the‑art performance, while Paper 2 identifies an over‑squashing bottleneck in GNNs and shows that breaking it improves results. The two papers address distinct aspects of GNN design and performance and do not contradict each other.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C98BAECD7D4C2",
+      "split": "dev",
+      "paper1_id": "1784a18105dafb85e2c53c86a9736fc7b8b71316",
+      "paper2_id": "dd5e6e0212ec529fefd7dd8bcfa02d16269a5a7a",
+      "label": "AGREEMENT",
+      "reason": "Both papers emphasize the power of tensor‑based or edge‑based GNN architectures for handling complex (directional or higher‑order) graph tasks, asserting superior expressive or predictive capability, making their conclusions compatible.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CA10145B0BC8C",
+      "split": "dev",
+      "paper1_id": "0ee0801ba010a441403f9ed666ef9bf006b3aa07",
+      "paper2_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper1 introduces a new GPR‑GNN architecture, while Paper2 is a survey of attention‑based GNNs; they address distinct topics and are not directly comparable.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CA1B115C319E9",
+      "split": "dev",
+      "paper1_id": "2db550467862c3bea38901cef84d86efed31b8d2",
+      "paper2_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc",
+      "label": "AGREEMENT",
+      "reason": "Both papers claim that augmenting GNNs with additional structural information (topological features or label non‑uniformity) improves node/graph classification performance, so their conclusions are compatible.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CA9C71B43B00D",
+      "split": "dev",
+      "paper1_id": "454304628bf10f02aba1c2cfc95891e94d09208e",
+      "paper2_id": "6bc4004347cdf76d84597210796f38fcf7a01a80",
+      "label": "AGREEMENT",
+      "reason": "Both papers report that their proposed GNN enhancements lead to performance improvements on molecular property prediction tasks.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CAEA34D53BF53",
+      "split": "dev",
+      "paper1_id": "093bd7a7dd31a8eb4da371d012da5fd272bb96ca",
+      "paper2_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 presents CW networks that are more expressive than the WL test and achieve state‑of‑the‑art on molecular datasets, whereas Paper 2 discusses the limitations of GNNs for multi‑component molecular systems. The claims concern different problems and are not contradictory.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CC1ECCBE101E1",
+      "split": "dev",
+      "paper1_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+      "paper2_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 focuses on the over‑squashing bottleneck in GNNs and how to mitigate it, while Paper 2 provides a general overview of GNNs, their applications, and challenges. The two papers cover different topics and do not conflict.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CCE205A9EC39B",
+      "split": "dev",
+      "paper1_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "paper2_id": "f7b550cba2d61b3fb676e72c92c245134363fda1",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 focuses on GNNs for multi‑component phase equilibrium, whereas Paper 2 introduces higher‑order path message passing for molecular property prediction; the topics address different aspects of GNN usage.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CD696C0D85306",
+      "split": "dev",
+      "paper1_id": "6667a57c8ffa3f3c0d724b1e8e986758995df2b8",
+      "paper2_id": "b5bde7463763595d46a35fd36c0aebadfaa9eb17",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 introduces ESAN to increase GNN expressiveness and improve performance, whereas Paper 2 describes an open‑source toolkit for heterogeneous GNNs. The papers address separate aspects of GNN research and are not contradictory.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CDB01DF450112",
+      "split": "dev",
+      "paper1_id": "1784a18105dafb85e2c53c86a9736fc7b8b71316",
+      "paper2_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 focuses on theoretical expressive power of invariant/equivariant GNNs and their application to a combinatorial problem, while Paper 2 applies GNNs to model molecular interactions in multi-component phase equilibrium. The populations, tasks, and outcomes are distinct and not directly comparable.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C05DC54626BB8",
+      "split": "test",
+      "paper1_id": "025e509122cd0d8108d73ea7ef615af638871103",
+      "paper2_id": "4c24519d5c8082f4d5f1397952bb4e4c4fc11b85",
+      "label": "AGREEMENT",
+      "reason": "Both papers discuss deep GNNs and show that with proper design or initialization, deep GNNs can avoid oversmoothing and achieve good performance, so no contradiction.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C0CCB172F7506",
+      "split": "test",
+      "paper1_id": "261472c8e9b7569f0872386f163c4a5661809e40",
+      "paper2_id": "9d6039c022cdab1ea78a562aedd3b5e6a7b67eb6",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper1 is a survey of GNN applications in particle physics, while Paper2 introduces a specific capsule-based GNN architecture for general node classification; the topics and objectives differ, making direct comparison inappropriate.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C159A1C57678E",
+      "split": "test",
+      "paper1_id": "6360aaece0d6bf153183b9ecd075f42f7b127cc9",
+      "paper2_id": "9208290fd7948ed14ebe55718118c401e8396159",
+      "label": "DIFFERENT SCOPE",
+      "reason": "One paper proposes a new expressive GNN architecture; the other is a survey summarizing GNNs; they cover different scopes, no direct conflict.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C2B6477EF7775",
+      "split": "test",
+      "paper1_id": "1784a18105dafb85e2c53c86a9736fc7b8b71316",
+      "paper2_id": "d08a0eb7024dff5c4fabd58144a38031633d4e1a",
+      "label": "DIFFERENT SCOPE",
+      "reason": "One provides theoretical expressiveness analysis; the other provides benchmarking; scopes differ.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C2D84FD7088B6",
+      "split": "test",
+      "paper1_id": "163d9fe4c45d38e31a53464b5af7638d70839a9b",
+      "paper2_id": "fd4d2177c7745acd0d3006c5e79abd945890e122",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper1 presents an attack (LinkTeller) exposing weaknesses of existing DP GCN mechanisms, whereas Paper2 proposes a new DP GNN training method (DPAR) with improved privacy‑utility trade‑off; the works focus on different sides (attack vs defense) and do not make conflicting claims.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C2E31222E3143",
+      "split": "test",
+      "paper1_id": "394d251832bfd841dccabc449c25ef562845dc53",
+      "paper2_id": "9d6039c022cdab1ea78a562aedd3b5e6a7b67eb6",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 is a survey evaluating existing GNN explainability methods, while Paper 2 proposes a specific new GNN architecture (NC-GNN) for node classification that claims inherent interpretability. The tasks (survey/evaluation vs. architecture proposal) and primary outcomes (metric comparison vs. classification performance) are not directly comparable.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": true
+    },
+    {
+      "pair_id": "C2FFC7437E0E2",
+      "split": "test",
+      "paper1_id": "6360aaece0d6bf153183b9ecd075f42f7b127cc9",
+      "paper2_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "label": "DIFFERENT SCOPE",
+      "reason": "The first paper focuses on enhancing GNN expressive power via subgraph isomorphism counting for general graph classification/regression, whereas the second targets molecular interaction modeling in multi-component phase equilibrium, a distinct application domain and task.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C32A4191AAB45",
+      "split": "test",
+      "paper1_id": "2e5bcdf9c9f6dbd9a1f2e0e1a748da8081b79e87",
+      "paper2_id": "3efa96570a10fecba0f93e0f62e95d41ce7b624b",
+      "label": "AGREEMENT",
+      "reason": "Both papers discuss the robustness of GNNs under attacks; paper1 shows effective black-box attacks while paper2 finds most defenses provide little improvement, indicating attacks remain potent and defenses weak, which are compatible conclusions.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C3CBDE8E7371C",
+      "split": "test",
+      "paper1_id": "163d9fe4c45d38e31a53464b5af7638d70839a9b",
+      "paper2_id": "f3872ef3743b744736da813249745545a9c1877f",
+      "label": "CONTRADICTION",
+      "reason": "Paper1 reports that differential privacy mechanisms for GCNs are not always resilient against its edge-recovery attack, whereas paper2 claims that applying differential privacy prevents potential information leakage, directly opposing each other.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C43D78CFDDBC8",
+      "split": "test",
+      "paper1_id": "28aced1522ac329ad068565f4e3208e23862f221",
+      "paper2_id": "2e5bcdf9c9f6dbd9a1f2e0e1a748da8081b79e87",
+      "label": "AGREEMENT",
+      "reason": "Both papers propose improved adversarial attack strategies for GNNs under realistic black‑box constraints and report increased attack effectiveness; their claims are compatible.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C4475EA93F606",
+      "split": "test",
+      "paper1_id": "11ef232ccfb2f69d0de289d07f88e576126f2b44",
+      "paper2_id": "1784a18105dafb85e2c53c86a9736fc7b8b71316",
+      "label": "AGREEMENT",
+      "reason": "Both papers analyze the expressive power of GNN variants and conclude that augmenting GNNs (with local graph parameters or tensor‑based operations) can increase their distinguishing ability, providing compatible rather than contradictory findings.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C4845D59D7D30",
+      "split": "test",
+      "paper1_id": "11ef232ccfb2f69d0de289d07f88e576126f2b44",
+      "paper2_id": "9208290fd7948ed14ebe55718118c401e8396159",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper1 reports performance gains from adding local graph parameters, while Paper2 is a general survey of GNNs and does not make claims about such methods, so the topics are not directly comparable.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C4E8117A6D5CF",
+      "split": "test",
+      "paper1_id": "11ef232ccfb2f69d0de289d07f88e576126f2b44",
+      "paper2_id": "14d52d4ec14eba80c267e39f2b28442c726046c0",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper1 focuses on local graph parameters improving GNN performance, whereas Paper2 introduces a regularization technique for size‑generalization; both report improvements but address distinct methods, so they are not contradictory.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C51D8CC46E15C",
+      "split": "test",
+      "paper1_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+      "paper2_id": "96d2ac139c1d305d597fb6533db893f2231fecc6",
+      "label": "AGREEMENT",
+      "reason": "Both papers identify the message-passing bottleneck that hampers long-range communication in GNNs and propose methods to alleviate it, showing compatible conclusions.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C532DB2B51F69",
+      "split": "test",
+      "paper1_id": "2a85846fd827a157b624ee012e75cbe37344281c",
+      "paper2_id": "9d6039c022cdab1ea78a562aedd3b5e6a7b67eb6",
+      "label": "DIFFERENT SCOPE",
+      "reason": "The first paper provides a theoretical overview of GNN representation and learning, while the second introduces a specific node-level capsule architecture to address oversmoothing, focusing on a concrete method rather than theory.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C7A5067AB0843",
+      "split": "test",
+      "paper1_id": "04319217b303156f5aa1c58b13de33d49fe8a3a8",
+      "paper2_id": "8b9f01585a679dffe92261ecdec56425db9ef97f",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper1 attributes performance degradation to unstable feature transformation and proposes orthogonal transformations, while Paper2 analyzes oversmoothing in attention GNNs and claims attention cannot prevent it; the claims address distinct mechanisms and are not directly comparable.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C7F33A70CB30F",
+      "split": "test",
+      "paper1_id": "04319217b303156f5aa1c58b13de33d49fe8a3a8",
+      "paper2_id": "6f15512c01c3fb087abd1c842b23663384e27410",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper1 focuses on orthogonal feature transformations to stabilize training, whereas Paper2 studies residual connections and normalization as theoretical solutions to oversmoothing; the studies target different aspects of GNN design and do not present mutually exclusive conclusions.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C8244FAE6BF1C",
+      "split": "test",
+      "paper1_id": "28aced1522ac329ad068565f4e3208e23862f221",
+      "paper2_id": "3efa96570a10fecba0f93e0f62e95d41ce7b624b",
+      "label": "AGREEMENT",
+      "reason": "Paper 1 presents attack methods that degrade GNN performance, while Paper 2 evaluates defenses and finds them largely ineffective; the two sets of findings do not contradict each other.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C83738F261716",
+      "split": "test",
+      "paper1_id": "3328a42bdc552fbfba5dbd5b6c16b8aff26fea18",
+      "paper2_id": "b0ca941fd8aa7345e8aba84c067a795f65c38382",
+      "label": "AGREEMENT",
+      "reason": "Paper 1 introduces sparsity‑aware optimization attacks and a robust aggregation defense, whereas Paper 2 proposes node‑injection attacks; both describe complementary attack techniques without conflicting claims.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C8683DC41C80E",
+      "split": "test",
+      "paper1_id": "11ef232ccfb2f69d0de289d07f88e576126f2b44",
+      "paper2_id": "1b95e5c134d56a43f362f607406aa11e3bd55569",
+      "label": "AGREEMENT",
+      "reason": "Both papers propose extensions to GNN expressiveness—Paper 1 via local graph parameters and Paper 2 via a progressively‑expressive (k,c)-set GNN—and report positive empirical results, which are compatible.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C8C72415EE433",
+      "split": "test",
+      "paper1_id": "0ee0801ba010a441403f9ed666ef9bf006b3aa07",
+      "paper2_id": "6f15512c01c3fb087abd1c842b23663384e27410",
+      "label": "AGREEMENT",
+      "reason": "Both papers address the oversmoothing problem in GNNs and propose architectural modifications to mitigate it. Paper 1 introduces adaptive GPR weights to avoid feature over-smoothing, while Paper 2 analyzes and modifies residual connections and normalization layers to prevent signal collapse. Both approaches aim to preserve discriminative power in node representations and report improved performance, representing compatible solutions to the same problem.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C93774A86D6D1",
+      "split": "test",
+      "paper1_id": "14d52d4ec14eba80c267e39f2b28442c726046c0",
+      "paper2_id": "3302081b8878de505b69900e22b8137c5d931be7",
+      "label": "DIFFERENT SCOPE",
+      "reason": "The first paper proposes a regularization technique for size generalization in GNNs, while the second provides a collection of benchmark datasets; they address distinct aspects of GNN research.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "C940AFC023A7B",
+      "split": "test",
+      "paper1_id": "25c5773487991366766d53501463fe31652c590a",
+      "paper2_id": "5afca49da59b45d30084b92939cc24d36c0ad02e",
+      "label": "DIFFERENT SCOPE",
+      "reason": "One paper discusses federated graph learning frameworks, the other surveys differential privacy formulations for graph data; the claims concern different problems and are not directly comparable.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CA8AD5993B3C9",
+      "split": "test",
+      "paper1_id": "1784a18105dafb85e2c53c86a9736fc7b8b71316",
+      "paper2_id": "24b292dd65e5a876c31602736807b475b453c370",
+      "label": "DIFFERENT SCOPE",
+      "reason": "The first paper studies theoretical expressiveness of invariant/equivariant GNNs, whereas the second proposes a new aggregator design; they focus on different aspects of GNN architecture.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CB2EC2BB4FB7B",
+      "split": "test",
+      "paper1_id": "8c24ef76d0a15bae316d1b9e6ab526ea5af93530",
+      "paper2_id": "d08a0eb7024dff5c4fabd58144a38031633d4e1a",
+      "label": "DIFFERENT SCOPE",
+      "reason": "The first is a comprehensive survey of GNN methods and applications, the second introduces a benchmarking framework; the two works cover distinct scopes.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CB4DD9623C30F",
+      "split": "test",
+      "paper1_id": "1a287764903786a327f45bce25693c7a0da16408",
+      "paper2_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 discusses a general atlas of network science, while Paper 2 surveys graph neural networks; the topics are related but not directly comparable and contain no conflicting claims.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CB6F6A1F98640",
+      "split": "test",
+      "paper1_id": "123139463809b5acf98b95d4c8e958be334a32b5",
+      "paper2_id": "261472c8e9b7569f0872386f163c4a5661809e40",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 proposes a subgraph‑based explanation method for GNNs, whereas Paper 2 reviews GNN applications in particle physics; the scopes differ and no contradiction is present.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CBC32825D13E2",
+      "split": "test",
+      "paper1_id": "04f3203f1214063436d81ce0c2ad7623204da488",
+      "paper2_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 introduces a geometric aggregation scheme for GNNs, while Paper 2 provides a broad overview of GNNs; the claims are about distinct aspects and are not contradictory.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CC5DC1D4F97CC",
+      "split": "test",
+      "paper1_id": "261472c8e9b7569f0872386f163c4a5661809e40",
+      "paper2_id": "6db0527528e3509a5296ddf05bcc38b41015ad71",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 focuses on GNNs in particle physics, whereas Paper 2 presents a contrastive explanation technique for GNNs; the scopes differ and no conflict is evident.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CC7B7523ACB96",
+      "split": "test",
+      "paper1_id": "11ef232ccfb2f69d0de289d07f88e576126f2b44",
+      "paper2_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Both papers discuss GNNs but one focuses on adding local graph parameters to improve expressive power, while the other applies GNNs to molecular interaction prediction in multi‑component systems. The scopes (methodological enhancement vs. application domain) differ and no contradictory claims are made.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CCB25533E1285",
+      "split": "test",
+      "paper1_id": "66e6fda1ec579f9a836f318b669520f9dd1a4ef8",
+      "paper2_id": "9dd97465c4f1ee208173d03171d6df847d5dc9f4",
+      "label": "AGREEMENT",
+      "reason": "Both papers describe the GraphCL framework for self-supervised node representation learning using contrastive losses on perturbed graphs. Both abstracts claim that the approach significantly outperforms state-of-the-art unsupervised learning on node classification benchmarks in transductive and inductive setups.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CD357DB180568",
+      "split": "test",
+      "paper1_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7",
+      "paper2_id": "d08a0eb7024dff5c4fabd58144a38031633d4e1a",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 addresses the over‑squashing bottleneck in GNNs and proposes solutions, whereas Paper 2 presents a benchmarking framework comparing various GNN architectures. The topics are distinct (theoretical bottleneck vs. empirical benchmarking) and no conflict is evident.",
+      "annotators": [
+        "reviewer_01"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CD9E4C57205EF",
+      "split": "test",
+      "paper1_id": "0ee0801ba010a441403f9ed666ef9bf006b3aa07",
+      "paper2_id": "8b9f01585a679dffe92261ecdec56425db9ef97f",
+      "label": "AGREEMENT",
+      "reason": "Both papers address the issue of oversmoothing in Graph Neural Networks. Paper 1 proposes a GPR-GNN architecture that avoids feature over-smoothing, while Paper 2 provides a theoretical analysis showing that standard attention mechanisms fail to prevent it. These are compatible conclusions as they identify the problem and offer different solutions (architectural change vs. theoretical limitation of existing attention), without making incompatible claims about the same specific model's behavior.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CDCB3AD358DA0",
+      "split": "test",
+      "paper1_id": "9208290fd7948ed14ebe55718118c401e8396159",
+      "paper2_id": "b140f5eff026439e0dfdf0ca3439f945c1656748",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 is a general survey on Graph Neural Networks covering broad applications and methods, while Paper 2 is a specific case study applying GNNs to multi-component phase equilibrium in molecular systems. The tasks, datasets, and specific research questions are not directly comparable.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CDF7AD4550413",
+      "split": "test",
+      "paper1_id": "3a5af4545ee3ac3f413841c10c7605a1cefeb9e5",
+      "paper2_id": "9208290fd7948ed14ebe55718118c401e8396159",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 provides theoretical limits and generalization bounds for message‑passing GNNs, while Paper 2 is a survey summarizing GNN concepts and datasets. The scopes (theoretical analysis vs. survey overview) are different and no contradictory statements appear.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CEEE025FCB24F",
+      "split": "test",
+      "paper1_id": "062b99a331795a9386721d793c4b80b51b4ee1de",
+      "paper2_id": "80d7b9180299ed1954dbc3acde4ad4efa8974e0a",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 introduces a specific GNN architecture (Autobahn) for molecular graphs, while Paper 2 applies GNNs to global weather forecasting. The tasks, datasets, and application domains are entirely different and not directly comparable.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CF4519B8C39FA",
+      "split": "test",
+      "paper1_id": "20c4882d63558015ed91aec419c18c6af74f699f",
+      "paper2_id": "8c24ef76d0a15bae316d1b9e6ab526ea5af93530",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 establishes a theoretical connection between Transformers and GNNs, arguing Transformers are a specific type of GNN operating on fully connected graphs. Paper 2 is a comprehensive survey of GNN methods, applications, and challenges across various learning settings. They address different aspects of the field (theoretical architecture comparison vs. general survey) and do not make conflicting claims about the same specific outcome.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CF51660EF51B0",
+      "split": "test",
+      "paper1_id": "28aced1522ac329ad068565f4e3208e23862f221",
+      "paper2_id": "b0ca941fd8aa7345e8aba84c067a795f65c38382",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 studies feature‑perturbation attacks framed as influence maximization, whereas Paper 2 investigates node‑injection attacks using reinforcement learning. The attack strategies differ, and the papers do not contradict each other.",
+      "annotators": [
+        "reviewer_01",
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    },
+    {
+      "pair_id": "CFADA58955A99",
+      "split": "test",
+      "paper1_id": "1784a18105dafb85e2c53c86a9736fc7b8b71316",
+      "paper2_id": "9208290fd7948ed14ebe55718118c401e8396159",
+      "label": "DIFFERENT SCOPE",
+      "reason": "Paper 1 presents a specific theoretical framework and approximation guarantees for the expressive power of invariant and equivariant GNNs, while Paper 2 is a general survey introducing common GNN architectures, learning methods, and datasets. The two papers address different aspects of the field (theoretical analysis vs. broad overview) and do not make directly comparable claims about the same specific outcome.",
+      "annotators": [
+        "reviewer_02"
+      ],
+      "adjudicated": false
+    }
+  ],
+  "annotation_provenance": {
+    "annotation_source": "AI-generated",
+    "annotation_models": [
+      "openai/gpt-oss-120b",
+      "openai/gpt-oss-20b",
+      "qwen/qwen3.8-27b"
+    ],
+    "consensus_models": [
+      "qwen/qwen3.8-27b"
+    ],
+    "human_ground_truth": false,
+    "independent_human_review": false,
+    "human_agreement_calculated": false,
+    "human_cohen_kappa_calculated": false,
+    "consensus_source": "AI-generated where AI passes differed",
+    "preexisting_unconfirmed_non_human_response_ids": [
+      "C0C22508E24E7",
+      "C0D27B651D266"
+    ]
+  },
+  "freeze_metadata": {
+    "frozen_at_utc": "2026-09-01T10:50:53.346356Z",
+    "source_benchmark_version": "1.0-ai-reference-draft",
+    "source_sha256": "8f0da15da3648ba0d14fb63cfe92109347061b6cc3311c82946f5d5634af5b3c",
+    "labels_changed_during_freeze": false,
+    "reference_annotation_source": "AI-generated",
+    "human_ground_truth": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "frozen_after_development_run",
+  "models": {
+    "specter": "sentence-transformers/allenai-specter",
+    "minilm": "sentence-transformers/all-MiniLM-L6-v2"
+  },
+  "similarity": "cosine",
+  "top_k": 20,
+  "k_values": [
+    5,
+    10,
+    20
+  ],
+  "candidate_universe": "union of judged paper IDs for the split",
+  "test_specific_selection": false
+}

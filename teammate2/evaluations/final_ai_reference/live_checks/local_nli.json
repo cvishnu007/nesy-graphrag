@@ -1,0 +1,22 @@
+{
+  "check": "local_nli",
+  "status": "passed",
+  "mutates_state": false,
+  "runtime_seconds": 9.817960499989567,
+  "details": {
+    "model": "cross-encoder/nli-deberta-v3-small",
+    "production_configuration_overridden": true,
+    "prediction": {
+      "label": "SUPPORTED",
+      "confidence": 0.994755744934082,
+      "valid": true,
+      "reason": "Deterministic mapping from local NLI class probabilities.",
+      "model": "cross-encoder/nli-deberta-v3-small",
+      "nli_scores": {
+        "contradiction": 0.00017443459364585578,
+        "entailment": 0.994755744934082,
+        "neutral": 0.005069846287369728
+      }
+    }
+  }
+}

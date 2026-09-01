@@ -1,0 +1,18 @@
+{
+  "reference_count": 23,
+  "candidate_count": 23,
+  "recovered_count": 23,
+  "missing_count": 0,
+  "missing_reference_ids": [],
+  "full_pool_recall": 1.0,
+  "recall@1": 0.043478260869565216,
+  "recall@5": 0.21739130434782608,
+  "recall@10": 0.43478260869565216,
+  "recall@20": 0.8695652173913043,
+  "recall@50": 1.0,
+  "recall@100": 1.0,
+  "split": "dev",
+  "benchmark_version": "1.0-ai-reference-frozen",
+  "reference_annotation_source": "AI-generated",
+  "human_ground_truth": false
+}

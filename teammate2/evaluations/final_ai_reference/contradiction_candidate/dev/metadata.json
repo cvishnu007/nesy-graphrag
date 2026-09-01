@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "created_at_utc": "2026-09-01T10:53:21.643385+00:00",
+  "git_commit": "05da19cb6a3ab53ab23c54eaf22f9890d33661fb",
+  "task": "contradiction_candidate_recall",
+  "split": "dev",
+  "benchmark": "evaluation\\benchmarks\\contradiction_pairs.json",
+  "benchmark_version": "1.0-ai-reference-frozen",
+  "candidates": "results\\reasoning\\candidates\\contradiction_dev.jsonl",
+  "reference_annotation_source": "AI-generated",
+  "human_ground_truth": false,
+  "failure_count": 0,
+  "reproduction_command": ".\\venv\\Scripts\\python.exe -m src.evaluation.contradiction_candidate_evaluator --benchmark evaluation/benchmarks/contradiction_pairs.json --candidates results/reasoning/candidates/contradiction_dev.jsonl --split dev --output-dir results/reasoning/final_ai_reference/contradiction_candidate/dev"
+}

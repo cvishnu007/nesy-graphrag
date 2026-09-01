@@ -1,0 +1,9 @@
+{
+  "check": "contradiction_path",
+  "status": "passed",
+  "mutates_state": false,
+  "runtime_seconds": 3.0955850000027567,
+  "details": {
+    "pair_count": 1
+  }
+}

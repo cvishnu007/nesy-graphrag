@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "created_at_utc": "2026-09-01T15:14:54.038597+00:00",
+  "git_commit": "64c786afc4f13ede35de37bf7b736239fba2a263",
+  "external_authorized": true,
+  "credentials_saved": false,
+  "read_only": true,
+  "reproduction_command": ".\\venv\\Scripts\\python.exe -m src.evaluation.live_completion_checks --output-dir results/reasoning/final_ai_reference/live_checks --external-authorized"
+}

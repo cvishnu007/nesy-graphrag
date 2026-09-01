@@ -1,0 +1,8 @@
+{
+  "split": "test",
+  "query_count": 14,
+  "task_output_counts": {
+    "contradiction": 14
+  },
+  "failure_count": 0
+}
