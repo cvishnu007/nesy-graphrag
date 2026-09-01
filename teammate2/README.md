@@ -1,4 +1,4 @@
-# Teammate 2 deliverables
+# Deliverables
 
 This folder is a focused, self-contained evidence package for Gurleen's
 Teammate 2 responsibilities in NeSy-GraphRAG. It contains only the implemented
