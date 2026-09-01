@@ -1,0 +1,31 @@
+{
+  "benchmark_version": "fixture-1.0",
+  "status": "frozen",
+  "fixture_only": true,
+  "hypotheses": [
+    {
+      "hypothesis_id": "FIX-H001",
+      "split": "dev",
+      "query_id": "FIX-Q001",
+      "hypothesis": "Synthetic fixture hypothesis one",
+      "model_feasibility": "MEDIUM",
+      "hns": 0.2,
+      "ratings": [
+        {"reviewer_id":"FIX-R1","evidence":3,"novelty":1,"feasibility":3,"specificity":3,"usefulness":3},
+        {"reviewer_id":"FIX-R2","evidence":3,"novelty":1,"feasibility":3,"specificity":3,"usefulness":3}
+      ]
+    },
+    {
+      "hypothesis_id": "FIX-H002",
+      "split": "dev",
+      "query_id": "FIX-Q002",
+      "hypothesis": "Synthetic fixture hypothesis two",
+      "model_feasibility": "HIGH",
+      "hns": 0.8,
+      "ratings": [
+        {"reviewer_id":"FIX-R1","evidence":5,"novelty":5,"feasibility":5,"specificity":5,"usefulness":5},
+        {"reviewer_id":"FIX-R2","evidence":5,"novelty":5,"feasibility":5,"specificity":5,"usefulness":5}
+      ]
+    }
+  ]
+}

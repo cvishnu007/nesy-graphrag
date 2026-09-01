@@ -1,0 +1,18 @@
+{
+  "benchmark_version": "fixture-1.0",
+  "status": "frozen",
+  "fixture_only": true,
+  "items": [
+    {
+      "item_id": "FIX-S001",
+      "split": "dev",
+      "query_id": "FIX-Q001",
+      "claim": "Synthetic fixture claim",
+      "passage_id": "FIX-P001-S001",
+      "passage_text": "Synthetic fixture passage used only for automated tests.",
+      "paper_id": "fixture-paper-a",
+      "label": "SUPPORTED",
+      "notes": "Synthetic fixture label for software verification only"
+    }
+  ]
+}

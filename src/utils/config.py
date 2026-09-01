@@ -173,3 +173,34 @@ HYPOTHESIS_MIN_QUERY_SUPPORT = int(
 HYPOTHESIS_CANDIDATE_POOL = int(
     os.getenv("HYPOTHESIS_CANDIDATE_POOL", "25")
 )
+
+# -- Reasoning evaluation -------------------------------------------------
+CONTRADICTION_BENCHMARK_FILE = os.getenv(
+    "CONTRADICTION_BENCHMARK_FILE",
+    "evaluation/benchmarks/contradiction_pairs.json",
+)
+CLAIM_SUPPORT_BENCHMARK_FILE = os.getenv(
+    "CLAIM_SUPPORT_BENCHMARK_FILE",
+    "evaluation/benchmarks/claim_support.json",
+)
+HYPOTHESIS_BENCHMARK_FILE = os.getenv(
+    "HYPOTHESIS_BENCHMARK_FILE",
+    "evaluation/benchmarks/hypothesis_ratings.json",
+)
+REASONING_RESULTS_DIR = os.getenv("REASONING_RESULTS_DIR", "results/reasoning")
+SEMANTIC_SUPPORT_MODEL = os.getenv("SEMANTIC_SUPPORT_MODEL", "unconfigured")
+SEMANTIC_SUPPORT_MIN_CONFIDENCE = float(
+    os.getenv("SEMANTIC_SUPPORT_MIN_CONFIDENCE", "0.70")
+)
+
+for _name, _value in {
+    "CONTRADICTION_BENCHMARK_FILE": CONTRADICTION_BENCHMARK_FILE,
+    "CLAIM_SUPPORT_BENCHMARK_FILE": CLAIM_SUPPORT_BENCHMARK_FILE,
+    "HYPOTHESIS_BENCHMARK_FILE": HYPOTHESIS_BENCHMARK_FILE,
+    "REASONING_RESULTS_DIR": REASONING_RESULTS_DIR,
+    "SEMANTIC_SUPPORT_MODEL": SEMANTIC_SUPPORT_MODEL,
+}.items():
+    if not str(_value).strip():
+        raise ValueError(f"{_name} must be non-empty")
+if not 0 <= SEMANTIC_SUPPORT_MIN_CONFIDENCE <= 1:
+    raise ValueError("SEMANTIC_SUPPORT_MIN_CONFIDENCE must be between zero and one")

@@ -37,6 +37,7 @@ def groq_chat_with_retry(
     max_tokens: int = _DEFAULT_MAX_TOKENS,
     temperature: float = _DEFAULT_TEMPERATURE,
     max_retries: int = _DEFAULT_MAX_RETRIES,
+    reasoning_effort: Optional[str] = None,
 ) -> str:
     """Send a chat completion with automatic retry and model fallback.
 
@@ -67,12 +68,15 @@ def groq_chat_with_retry(
     for current_model in models_to_try:
         for attempt in range(max_retries):
             try:
-                response = client.chat.completions.create(
+                request = dict(
                     model=current_model,
                     messages=[{"role": "user", "content": prompt}],
                     max_tokens=max_tokens,
                     temperature=temperature,
                 )
+                if reasoning_effort is not None:
+                    request["reasoning_effort"] = reasoning_effort
+                response = client.chat.completions.create(**request)
                 return response.choices[0].message.content
 
             except Exception as exc:
