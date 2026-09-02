@@ -311,9 +311,9 @@ Run the complete unit suite:
 .\venv\Scripts\python.exe -m pytest
 ```
 
-The current repository collects 127 pytest cases, including multi-topic ingestion,
-resume safety, production retrieval, evaluation, provenance, contradiction, and
-hypothesis coverage.
+The current repository collects 249 pytest cases, including multi-topic ingestion,
+resume safety, production retrieval, annotation tooling, provenance, semantic
+support, model comparisons, contradiction, and hypothesis coverage.
 
 Compile all Python modules:
 
@@ -377,6 +377,33 @@ To revise the benchmark correctly:
 6. Run the fourteen test queries once after configuration is frozen.
 
 The current evaluation-only hybrid uses a 16:1 vector-to-graph weight. Production retrieval uses a separate filtered 1:1 flow; do not report the two configurations as the same system.
+
+### Reasoning Evaluation Added By The Teammate Integration
+
+Run the self-contained teammate verification package:
+
+```powershell
+.\teammate2\reproduce.ps1
+```
+
+Run authorized read-only live checks with Neo4j running and network access enabled:
+
+```powershell
+.\venv\Scripts\python.exe -m src.evaluation.live_completion_checks `
+  --output-dir results/reasoning/local_live_checks `
+  --external-authorized
+```
+
+The integration adds AI-reference contradiction, claim-support, and hypothesis
+benchmarks; annotation/freeze tooling; semantic NLI; and NER, embedding, and LLM
+comparisons. These are engineering baselines, not human ground truth. The imported
+live evidence used 8,850-paper stores, while the current local stores contain
+47,619 papers. Do not report the imported results as expanded-corpus results.
+
+The source defaults expect reasoning benchmark files under
+`evaluation/benchmarks/`, but the merged evidence copies currently live under
+`teammate2/benchmarks/`. Use explicit benchmark paths until canonical root
+artifacts are intentionally integrated.
 
 ## 11. Start The Streamlit App
 

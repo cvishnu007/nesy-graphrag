@@ -50,7 +50,7 @@ All 10,000 original raw IDs and all 8,850 original clean/NER/store IDs were pres
 
 ### Tests And Live Checks
 
-- 127 pytest cases pass under the current Python 3.11 environment
+- 249 pytest cases pass under the current Python 3.11 environment
 - `src`, `app`, and `tests` compile successfully
 - `pip check` reports no broken requirements
 - Chroma currently reports 47,619 vectors with exact clean-data ID parity
@@ -142,8 +142,10 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 - Deterministic sentence passage IDs
 - Strict claim-to-passage provenance parsing
 - Blocking and audit retention for malformed or fabricated passage references
+- Optional local NLI support verification after structural passage validation
+- Audit retention for semantically unsupported or contradicted review claims
 - Structured literature-review rendering
-- Groq retry and fallback behavior
+- Groq retry, fallback, and optional reasoning-effort forwarding
 
 ### Contradictions And Hypotheses
 
@@ -167,6 +169,11 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 - Per-query rankings and metrics exports
 - Bootstrap intervals and exact paired randomization testing
 - Production graph-filter held-out comparison
+- AI-reference contradiction, claim-support, and hypothesis benchmark tooling
+- Blinded annotation pools, reviewer packets, repeated AI passes, consensus records, and frozen artifact manifests
+- Contradiction classification/candidate, claim-support, semantic-support, and hypothesis-quality metrics
+- Controlled NER, embedding, and Groq LLM comparison runners
+- Read-only Chroma, Neo4j, local-NLI, Groq, review, contradiction, and hypothesis checks
 - Prototype TS, NBR, ATD, RDI, and HNS diagnostics
 - Versioned provenance-aware CSV logging
 
@@ -175,7 +182,7 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 - Streamlit review, contradiction, and hypothesis modes
 - Claim evidence and unsupported-output inspection
 - Retrieval source labels and prototype metrics
-- 127 deterministic pytest cases
+- 249 deterministic pytest cases
 - Pinned direct dependencies
 - Windows setup instructions for local Neo4j, CUDA, and CPU
 - Python 3.11 CUDA and Python 3.13 CPU verification records
@@ -187,22 +194,22 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 - BM25 lexical baseline in the current evaluation package
 - Conventional non-graph RAG with the same generator and context budget
 - Rule-based contradiction baseline
-- Labeled scientific contradiction benchmark
-- Contradiction precision, recall, F1, confusion matrix, and calibration evaluation
-- Semantic entailment scoring for each review claim and cited passage
-- Claim-support, citation precision/recall, and review-completeness benchmark
-- Human-reviewed hypothesis samples and expert scoring rubric
+- Human-reviewed scientific contradiction benchmark; the current frozen set contains 62 AI-reference records
+- Human-validated contradiction precision, recall, F1, confusion matrix, and calibration; current metrics use sparse AI references
+- Human validation of the implemented semantic entailment scoring for review claims and passages
+- Human-reviewed claim-support, citation precision/recall, and review-completeness benchmark; the current claim-support set contains 151 AI-reference records
+- Human-reviewed hypothesis samples and expert scoring rubric; the current hypothesis set contains 100 AI-reference records
 - Scientific novelty and feasibility validation for hypotheses
-- scispaCy or another scientific NER comparison
-- SPECTER2 or other scientific embedding comparisons
-- Scientific-domain versus general LLM comparison
+- Production adoption testing for scientific NER alternatives; current comparison tooling uses a fixed experimental extractor
+- SPECTER2 and additional scientific embedding comparisons on a refreshed retrieval benchmark
+- Scientific-domain versus general LLM comparison using human-reviewed references
 - Full controlled ablations across provenance, validation, retrieval depth, and context budget
 - Repeated stochastic model runs with uncertainty reporting
 - Controlled scaling comparisons at 10K, 50K, 100K, and larger collections; one 47,619-paper operational build is complete but is not a scaling benchmark
 - Indexing throughput, memory, GPU-memory, latency, and API-cost benchmark suite
 - Evaluation comparison dashboard and exports in Streamlit
 - Advanced graph exploration
-- Continuous integration and live Neo4j/Chroma/Groq integration tests
+- Continuous integration for the implemented read-only Neo4j/Chroma/Groq/NLI checks
 - Platform-specific dependency lockfiles with hashes
 - Production deployment, authentication, monitoring, and multi-user isolation
 - Full-text/PDF ingestion and section-level provenance
@@ -226,6 +233,15 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 - Graph-only retrieval is materially weaker than vector retrieval on the current benchmark.
 - The graph remains sparse at 22,370 real citation edges for 47,619 papers, and generic noun chunks introduce noisy concept nodes.
 - Development-selected thresholds need confirmation on a human-reviewed benchmark.
+
+### AI-Reference Reasoning Evaluation
+
+- The frozen reasoning sets contain 62 contradiction, 151 claim-support, and 100 hypothesis records.
+- All labels and consensus records are AI-generated and were not human reviewed.
+- The imported live-check evidence reports 8,850 Chroma/Neo4j papers and therefore predates the 47,619-paper rebuild.
+- The new source modules default to root reasoning benchmark/result paths, while the merged evidence files currently live under `teammate2/`; canonical root artifacts still need an explicit integration decision.
+- The contradiction test references contain only one contradiction, so contradiction-class F1 and model selection are unstable.
+- Local NLI improved over existence-only support checking but recorded partial-support F1 of zero.
 
 ### Generated Analysis
 

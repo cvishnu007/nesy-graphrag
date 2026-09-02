@@ -113,7 +113,7 @@ Claim provenance establishes traceability and passage existence. It does not pro
 - Verified Python compilation and `pip check` before commits.
 - Verified live CUDA hybrid retrieval and matching Chroma/Neo4j paper counts before the Phase 3 merge.
 
-After teammate evaluation work was merged, the repository reached 123 passing tests. The multi-topic ingestion and resume guards increased the current suite to 127. Those later tests are not claimed as part of the original 39-test core handoff.
+After teammate evaluation work was merged, the repository reached 123 passing tests. The multi-topic ingestion and resume guards increased that suite to 127. The later canonical reasoning-evaluation integration increased the current root suite to 249 passing tests. Those later tests are not claimed as part of the original 39-test core handoff.
 
 ## Verification Snapshots
 
@@ -134,12 +134,12 @@ Current broad-CSE build:
 - Neo4j concepts: 195,252
 - Real citation relationships: 22,370
 - Missing original IDs after expansion: 0
-- Current merged repository tests: 127 passed
+- Current merged repository tests: 249 passed
 - Latest recorded provenance smoke test: 5/5 accepted claims and 9/9 valid passage references
 
 ## Current Handoff State
 
-The abstract-based product implementation is complete enough for a working capstone demo. The retrieval-evaluation infrastructure is also present, but the existing 1,329 relevance judgments were generated for the earlier corpus and now require candidate-pool refresh plus human review.
+The abstract-based product implementation is complete enough for a working capstone demo. Retrieval and reasoning evaluation infrastructure is present, including semantic NLI and AI-reference contradiction, support, hypothesis, NER, embedding, and LLM experiments. The existing retrieval judgments and imported reasoning live checks predate the broad corpus, and the reasoning labels are AI-generated rather than human ground truth.
 
 The highest-priority remaining work is:
 
