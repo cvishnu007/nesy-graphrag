@@ -136,15 +136,11 @@ if run and query:
             driver=driver,
         )
         st.markdown("### 📊 Evaluation Metrics")
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2 = st.columns(2)
         col1.metric("TS (Trustworthiness)", f"{metrics['ts']['ts']:.3f}",
                     help="Prototype passage-citation integrity and claim-coverage diagnostic")
-        col2.metric("NBR (NeSy Boost)", f"{metrics['nbr']['nbr']:.3f}",
-                    help="Fraction of final results that include graph retrieval")
-        col3.metric("ATD (Temporal Range)", f"{metrics['atd']['atd']:.3f}",
+        col2.metric("ATD (Temporal Range)", f"{metrics['atd']['atd']:.3f}",
                     help=f"1.0 means all {metrics['atd']['span_size']} configured years are represented")
-        col4.metric("RDI (Reasoning Depth)", f"{metrics['rdi']['rdi']:.3f}",
-                    help="Prototype cross-document and contradiction diagnostic")
 
         # ── Flag missing years explicitly ──
         missing_years = metrics["atd"].get("missing_years", [])

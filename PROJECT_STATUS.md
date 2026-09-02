@@ -181,7 +181,7 @@ Filtering removes the large relevance loss caused by weak graph neighbours. It d
 
 - Streamlit review, contradiction, and hypothesis modes
 - Claim evidence and unsupported-output inspection
-- Retrieval source labels and prototype metrics
+- Retrieval source labels plus review-appropriate `TS` and `ATD` diagnostics
 - 249 deterministic pytest cases
 - Pinned direct dependencies
 - Windows setup instructions for local Neo4j, CUDA, and CPU

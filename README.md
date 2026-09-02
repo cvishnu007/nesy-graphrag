@@ -317,6 +317,10 @@ Implemented in `src/pipeline/metrics.py`:
 
 These are prototype diagnostics, not established scientific benchmarks. TS uses valid passage citations and claim coverage, NBR measures graph participation rather than relevance, and HNS measures normalized graph-path distance rather than expert-assessed novelty. See `PROJECT_STATUS.md` for limitations.
 
+The review UI displays only `TS` and `ATD`, which are computed from that review
+run. `NBR`, `RDI`, and `HNS` remain backend diagnostics for retrieval analysis
+or combined review/contradiction/hypothesis experiments.
+
 ## Scope Boundaries
 
 - The current corpus is 47,619 cleaned Semantic Scholar records collected through 11 broad CSE topic queries, primarily abstracts and metadata. It is not a balanced taxonomy, a relevance-labeled corpus, or the million-scale full-text corpus proposed in the Phase 1 report.

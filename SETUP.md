@@ -418,7 +418,7 @@ The app provides:
 - literature review with claim-level passage evidence
 - contradiction candidate evaluation
 - evidence-ranked hypothesis generation
-- prototype metrics and graph/store counts
+- review-appropriate `TS` and `ATD` diagnostics plus graph/store counts
 
 Stop the app with `Ctrl+C`.
 
