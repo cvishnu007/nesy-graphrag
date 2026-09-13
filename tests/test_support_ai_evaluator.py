@@ -2,6 +2,7 @@ import json
 
 import pytest
 
+from src.evaluation import support_ai_evaluator
 from src.evaluation.support_ai_evaluator import (
     SupportAIEvaluationError,
     build_support_prompt,
@@ -9,6 +10,19 @@ from src.evaluation.support_ai_evaluator import (
     nli_scores_to_prediction,
     select_confidence_threshold,
 )
+
+
+class FakeLLMClient:
+    provider = "ollama"
+    model = "qwen2.5:3b-instruct"
+
+    def __init__(self, response):
+        self.response = response
+        self.calls = []
+
+    def complete(self, prompt, **options):
+        self.calls.append({"prompt": prompt, **options})
+        return self.response
 
 
 def fixture_item(**overrides):
@@ -82,3 +96,14 @@ def test_local_nli_mapping_is_explicit(scores, expected):
     result = nli_scores_to_prediction(scores, partial_entailment_floor=0.2)
     assert result["label"] == expected
     assert result["valid"] is True
+
+
+def test_general_support_judge_uses_configured_llm_client_contract():
+    client = FakeLLMClient('{"annotations": []}')
+
+    judge = support_ai_evaluator._configured_llm_judge(client)
+
+    assert judge("support prompt") == '{"annotations": []}'
+    assert client.calls == [
+        {"prompt": "support prompt", "max_tokens": 2000, "temperature": 0.0}
+    ]

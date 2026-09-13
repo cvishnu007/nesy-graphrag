@@ -1,11 +1,25 @@
 import pytest
 
+from src.pipeline import hypothesis
 from src.pipeline.metrics import compute_hns
 from src.pipeline.hypothesis import (
     parse_hypothesis_response,
     partition_validated_hypotheses,
     score_hypothesis_candidate,
 )
+
+
+class FakeLLMClient:
+    provider = "test"
+    model = "fixture"
+
+    def __init__(self, responses):
+        self.responses = iter(responses)
+        self.calls = []
+
+    def complete(self, prompt, **options):
+        self.calls.append({"prompt": prompt, **options})
+        return next(self.responses)
 
 
 class PathResult:
@@ -116,3 +130,49 @@ def test_hns_rewards_longer_measured_graph_paths():
 
     assert result["individual_scores"] == pytest.approx([1 / 3, 1.0], abs=0.0001)
     assert result["hns"] == pytest.approx(2 / 3, abs=0.0001)
+
+
+def test_hypothesis_generation_uses_generic_client_contract(monkeypatch):
+    candidate = {
+        "id": "candidate-1",
+        "title": "Candidate Paper",
+        "year": 2024,
+        "category": "Computer Science",
+        "shared_concepts": 2,
+        "shared_concept_names": ["graphs", "reasoning"],
+        "supporting_paper_ids": ["query-1", "query-2"],
+        "supporting_papers": 2,
+        "concept_overlap": 0.5,
+        "query_support_ratio": 1.0,
+        "evidence_score": 0.7,
+        "hypothesis": "Candidate structural hole",
+    }
+    monkeypatch.setattr(
+        hypothesis,
+        "generate_hypotheses",
+        lambda *args, **kwargs: [candidate],
+    )
+    monkeypatch.setattr(
+        hypothesis,
+        "neural_retrieve",
+        lambda *args, **kwargs: [
+            {"title": "Query Paper", "year": 2023, "abstract": "Prior evidence"}
+        ],
+    )
+    client = FakeLLMClient(
+        [
+            "HYPOTHESIS: Combine graph and reasoning methods.\n"
+            "FEASIBILITY: HIGH\n"
+            "SUPPORTING EVIDENCE: Both methods share concepts.\n"
+            "MISSING EVIDENCE: A controlled experiment.\n"
+            "RATIONALE: Complementary mechanisms.\n"
+            "POTENTIAL IMPACT: Better results."
+        ]
+    )
+
+    result = hypothesis.llm_hypothesis(client, object(), "query", top_k=1)
+
+    assert len(result["hypotheses"]) == 1
+    assert client.calls[0]["max_tokens"] == 700
+    assert client.calls[0]["temperature"] == 0.0
+    assert "Candidate Paper" in client.calls[0]["prompt"]

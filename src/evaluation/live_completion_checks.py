@@ -15,7 +15,7 @@ CHECKS = {
     "chroma": {"mutates_state": False, "external": False},
     "neo4j": {"mutates_state": False, "external": True},
     "local_nli": {"mutates_state": False, "external": False},
-    "groq": {"mutates_state": False, "external": True},
+    "llm": {"mutates_state": False, "external": True},
     "semantic_review": {"mutates_state": False, "external": True},
     "contradiction_path": {"mutates_state": False, "external": True},
     "hypothesis_path": {"mutates_state": False, "external": True},
@@ -97,19 +97,51 @@ def _local_nli_check() -> dict:
 
 
 def _clients():
-    from groq import Groq
     from src.storage.neo4j_store import get_driver
-    from src.utils.config import GROQ_API_KEY
+    from src.utils.llm_client import create_llm_client
 
-    return Groq(api_key=GROQ_API_KEY), get_driver()
+    return create_llm_client(), get_driver()
 
 
-def _groq_check() -> dict:
-    from groq import Groq
-    from src.utils.config import GROQ_API_KEY
+def _llm_check(*, client_factory=None, metadata_provider=None) -> dict:
+    if client_factory is None or metadata_provider is None:
+        from src.utils.llm_client import create_llm_client, llm_runtime_metadata
 
-    models = Groq(api_key=GROQ_API_KEY).models.list().data
-    return {"model_count": len(models), "model_ids": sorted(model.id for model in models)}
+        client_factory = client_factory or create_llm_client
+        metadata_provider = metadata_provider or llm_runtime_metadata
+    client = client_factory()
+    completion = client.complete(
+        "Reply with exactly: ready",
+        max_tokens=16,
+        temperature=0.0,
+    )
+    return {**metadata_provider(), "model": client.model, "completion": completion.strip()}
+
+
+def pipeline_evidence(mode: str, result: dict) -> dict:
+    """Require actual structured output while retaining rejection counts."""
+    if mode == 'review':
+        support = result['semantic_support']
+        if support.get('provider_initialization_error'):
+            raise RuntimeError(support['provider_initialization_error'])
+        if not support.get('stats', {}).get('evaluated_claims'):
+            raise RuntimeError('Semantic review produced no evaluated claims')
+        return {'paper_count': len(result['papers']), 'claim_count': len(result['claims']),
+                'semantic_support': support}
+    if mode == 'contradiction':
+        pairs = result['contradictions']
+        valid = sum(bool(p.get('verdict_valid')) for p in pairs)
+        if not valid:
+            raise RuntimeError('Contradiction path produced no valid verdict')
+        return {'pair_count': len(pairs), 'valid_verdict_count': valid,
+                'accepted_contradiction_count': sum(bool(p.get('accepted_contradiction')) for p in pairs)}
+    accepted = result['hypotheses']
+    rejected = result.get('rejected_hypotheses', [])
+    valid = sum(bool(p.get('validation_valid')) for p in accepted + rejected)
+    if not valid:
+        raise RuntimeError('Hypothesis path produced no valid structured generation')
+    return {'hypothesis_count': len(accepted), 'rejected_count': len(rejected),
+            'valid_generation_count': valid}
 
 
 def _pipeline_check(mode: str) -> dict:
@@ -124,13 +156,11 @@ def _pipeline_check(mode: str) -> dict:
         if mode == "review":
             support_model = EVALUATION_NLI_MODEL if SEMANTIC_SUPPORT_MODEL == "unconfigured" else SEMANTIC_SUPPORT_MODEL
             result = llm_review(client, driver, query, top_k=2, support_model=support_model)
-            return {"paper_count": len(result["papers"]), "claim_count": len(result["claims"]),
-                    "semantic_support": result["semantic_support"]}
-        if mode == "contradiction":
+        elif mode == "contradiction":
             result = llm_contradict(client, driver, query, top_k=1)
-            return {"pair_count": len(result["contradictions"])}
-        result = llm_hypothesis(client, driver, query, top_k=1)
-        return {"hypothesis_count": len(result["hypotheses"])}
+        else:
+            result = llm_hypothesis(client, driver, query, top_k=1)
+        return {"provider": client.provider, "model": client.model, **pipeline_evidence(mode, result)}
     finally:
         driver.close()
 
@@ -140,7 +170,7 @@ def execute_checks(*, external_authorized: bool) -> list[dict]:
         "chroma": _chroma_check,
         "neo4j": _neo4j_check,
         "local_nli": _local_nli_check,
-        "groq": _groq_check,
+        "llm": _llm_check,
         "semantic_review": lambda: _pipeline_check("review"),
         "contradiction_path": lambda: _pipeline_check("contradiction"),
         "hypothesis_path": lambda: _pipeline_check("hypothesis"),

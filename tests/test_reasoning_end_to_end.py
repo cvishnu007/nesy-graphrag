@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+from src.evaluation import reasoning_runner
 from src.evaluation.reasoning_runner import _reference_metadata, run_reasoning_evaluation
 
 
@@ -57,4 +58,24 @@ def test_reference_metadata_preserves_explicit_ai_non_human_provenance():
         "reference_annotation_source": "AI-generated",
         "human_ground_truth": False,
         "independent_human_review": False,
+    }
+
+
+def test_prerequisites_report_selected_ollama_without_requiring_groq(monkeypatch):
+    monkeypatch.setattr(reasoning_runner.config, "LLM_PROVIDER", "ollama", raising=False)
+    monkeypatch.setattr(
+        reasoning_runner.config,
+        "OLLAMA_MODEL",
+        "qwen2.5:3b-instruct",
+        raising=False,
+    )
+    monkeypatch.setattr(reasoning_runner.config, "OLLAMA_BASE_URL", "http://127.0.0.1:11434", raising=False)
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+
+    result = reasoning_runner.prerequisite_status()
+
+    assert result["llm"] == {
+        "provider": "ollama",
+        "model": "qwen2.5:3b-instruct",
+        "configured": True,
     }

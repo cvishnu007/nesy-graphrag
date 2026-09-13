@@ -3,13 +3,14 @@ import sys
 import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-from src.pipeline.orchestrator import get_neo4j, get_groq
+from src.pipeline.orchestrator import get_neo4j, get_llm
 from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
 from src.pipeline.verdicts import contradiction_verdict
 from src.pipeline.hypothesis import llm_hypothesis
 from src.storage.chroma_store import get_collection
-from src.utils.config import CHROMA_COLLECTION, DATA_SOURCE, LLM_MODEL
+from src.utils.config import CHROMA_COLLECTION, DATA_SOURCE
+from src.utils.llm_client import llm_runtime_metadata
 from src.pipeline.metrics import compute_all_metrics
 
 # ════════════════════════════════════════════════════
@@ -17,12 +18,13 @@ from src.pipeline.metrics import compute_all_metrics
 # ════════════════════════════════════════════════════
 @st.cache_resource
 def load_resources():
-    driver      = get_neo4j()
-    groq_client = get_groq()
-    collection  = get_collection()
-    return driver, groq_client, collection
+    driver     = get_neo4j()
+    llm_client = get_llm()
+    collection = get_collection()
+    return driver, llm_client, collection
 
-driver, groq_client, collection = load_resources()
+driver, llm_client, collection = load_resources()
+llm_metadata = llm_runtime_metadata()
 
 
 def graph_stats(driver):
@@ -60,7 +62,7 @@ with st.sidebar:
     st.markdown(f"- Source: `{DATA_SOURCE}`")
     st.markdown(f"- Chroma collection: `{CHROMA_COLLECTION}` ({collection.count()} vectors)")
     st.markdown(f"- Neo4j: {paper_nodes} papers, {cites_edges} CITES edges")
-    st.markdown(f"- LLM: `{LLM_MODEL}`")
+    st.markdown(f"- LLM: `{llm_metadata['provider']} / {llm_metadata['model']}`")
 
 # ── Main ─────────────────────────────────────────────
 query = st.text_input(
@@ -75,7 +77,7 @@ if run and query:
     # ── REVIEW MODE ──────────────────────────────────
     if "review" in mode.lower():
         with st.spinner("Running NeSy retrieval + LLM synthesis..."):
-            result = llm_review(groq_client, driver, query, top_k=top_k)
+            result = llm_review(llm_client, driver, query, top_k=top_k)
 
         papers   = result["papers"]
         answer   = result["answer"]
@@ -154,7 +156,7 @@ if run and query:
     # ── CONTRADICTION MODE ────────────────────────────
     elif "contradiction" in mode.lower():
         with st.spinner("Running contradiction detection pipeline..."):
-            result = llm_contradict(groq_client, driver, query, top_k=top_k)
+            result = llm_contradict(llm_client, driver, query, top_k=top_k)
 
         contradictions = result.get("contradictions", [])
         st.info(f"Evaluated {len(contradictions)} contradiction candidate pairs")
@@ -184,7 +186,7 @@ if run and query:
     # ── HYPOTHESIS MODE ───────────────────────────────
     elif "hypothesis" in mode.lower():
         with st.spinner("Running hypothesis generation pipeline..."):
-            result = llm_hypothesis(groq_client, driver, query, top_k=top_k)
+            result = llm_hypothesis(llm_client, driver, query, top_k=top_k)
 
         hypotheses = result.get("hypotheses", [])
         st.info(f"Generated {len(hypotheses)} research hypotheses")

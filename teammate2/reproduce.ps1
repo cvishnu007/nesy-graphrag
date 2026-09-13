@@ -1,19 +1,18 @@
-# Run from the NeSy-GraphRAG repository root.
-# Benchmarks and reasoning annotations are AI-generated references, not human ground truth.
-
-.\venv\Scripts\python.exe -m pytest teammate2/tests -q
-.\venv\Scripts\python.exe -m pytest -q
-.\venv\Scripts\python.exe -m compileall -q src tests
-.\venv\Scripts\python.exe -m pip check
-
-# Validate the completed reviewer packets without changing them.
-Get-ChildItem evaluation/phase3/reviewer_packets -Recurse -Filter *.json |
-    ForEach-Object {
-        .\venv\Scripts\python.exe -m src.evaluation.phase3_annotation `
-            validate-packet --packet $_.FullName --require-complete
-    }
-
-# Authorized read-only live integration gate. Requires configured Groq and a running Neo4j database.
-.\venv\Scripts\python.exe -m src.evaluation.live_completion_checks `
-    --output-dir results/reasoning/final_ai_reference/live_checks `
-    --external-authorized
+# Run from any directory. Outputs are new, timestamped, and remain separate
+# from the historical package. Frozen annotations are AI references.
+$ErrorActionPreference = "Stop"
+$RepositoryRoot = Split-Path $PSScriptRoot -Parent
+$PythonExe = Join-Path $RepositoryRoot "venv/Scripts/python.exe"
+if (-not (Test-Path $PythonExe)) {
+    $PythonExe = Join-Path $RepositoryRoot "venv/bin/python"
+}
+$OutputDirectory = Join-Path $RepositoryRoot ("results/reasoning/package_reproduction_" + (Get-Date -Format "yyyyMMdd_HHmmss"))
+Push-Location $RepositoryRoot
+try {
+    & $PythonExe -m src.evaluation.packaged_reproduction --output-dir $OutputDirectory
+    if ($LASTEXITCODE -ne 0) { throw "Packaged reasoning reproduction failed ($LASTEXITCODE)" }
+} finally {
+    Pop-Location
+}
+# For live checks, separately run src.evaluation.live_completion_checks with
+# --external-authorized and a fresh --output-dir after configuring local stores.

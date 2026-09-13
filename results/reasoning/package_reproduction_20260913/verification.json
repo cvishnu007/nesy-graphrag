@@ -1,0 +1,972 @@
+{
+  "benchmarks": {
+    "contradiction": {
+      "count": 62,
+      "split_counts": {
+        "dev": 23,
+        "test": 39
+      },
+      "hash_match": "line_endings_only",
+      "checkout_sha256": "f8c9be9b069f7b4d4a5c3893bfdfe1330d3ef142338cda9ce675311ccb38ad9c"
+    },
+    "support": {
+      "count": 151,
+      "split_counts": {
+        "dev": 56,
+        "test": 95
+      },
+      "hash_match": "line_endings_only",
+      "checkout_sha256": "453b528c575499692f1a3102c490b8f90db4cdd0831061bcc7fd3a3ee69edad2"
+    },
+    "hypothesis": {
+      "count": 100,
+      "split_counts": {
+        "dev": 30,
+        "test": 70
+      },
+      "hash_match": "line_endings_only",
+      "checkout_sha256": "4cf0ac0dcac81993c1f1427320c613a479b705d7da7f76002256457e8f76cdab"
+    }
+  },
+  "unique_annotation_items": 313,
+  "annotation_assignments": 392,
+  "offline_only": true,
+  "human_ground_truth": false,
+  "reference_source": "AI-generated",
+  "failure_count": 0,
+  "historical_package_manifest_audit": [
+    {
+      "path": "annotations/blinded_pools/claim_support_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/blinded_pools/claim_support_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/blinded_pools/contradiction_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/blinded_pools/contradiction_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/blinded_pools/hypothesis_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/blinded_pools/hypothesis_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/guidelines/annotation_workflow.md",
+      "status": "exact"
+    },
+    {
+      "path": "annotations/guidelines/claim_support_annotation.md",
+      "status": "exact"
+    },
+    {
+      "path": "annotations/guidelines/contradiction_annotation.md",
+      "status": "exact"
+    },
+    {
+      "path": "annotations/guidelines/hypothesis_annotation.md",
+      "status": "exact"
+    },
+    {
+      "path": "annotations/phase3/adjudication_template.json",
+      "status": "changed_or_missing_since_packaging"
+    },
+    {
+      "path": "annotations/phase3/ai_annotated_pools/annotation_metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/ai_annotated_pools/claim_support_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/ai_annotated_pools/claim_support_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/ai_annotated_pools/contradiction_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/ai_annotated_pools/contradiction_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/ai_annotated_pools/hypothesis_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/ai_annotated_pools/hypothesis_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/ai_consensus.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/assignment_manifest.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/quarantine/README.md",
+      "status": "exact"
+    },
+    {
+      "path": "annotations/phase3/quarantine/reviewer_01_support_dev_invalid_wrong_task_responses.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/README.md",
+      "status": "exact"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_01/contradiction_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_01/contradiction_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_01/hypothesis_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_01/hypothesis_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_01/support_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_01/support_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_02/contradiction_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_02/contradiction_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_02/hypothesis_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_02/hypothesis_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_02/support_dev.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "annotations/phase3/reviewer_packets/reviewer_02/support_test.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "benchmarks/ai_reference_frozen_manifest.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "benchmarks/claim_support.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "benchmarks/contradiction_pairs.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "benchmarks/hypothesis_ratings.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "benchmarks/README.md",
+      "status": "exact"
+    },
+    {
+      "path": "benchmarks/retrieval_queries_judged.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "build_manifest.ps1",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/annotation_sidecars/claim_support_dev.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/annotation_sidecars/claim_support_test.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/annotation_sidecars/contradiction_dev.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/annotation_sidecars/contradiction_test.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/annotation_sidecars/hypothesis_dev.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/annotation_sidecars/hypothesis_test.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/candidates/claim_support_dev.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/candidates/claim_support_test.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/candidates/contradiction_dev.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/candidates/contradiction_test.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/candidates/contradiction_test_revised_gpt_oss_20b.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/candidates/hypothesis_dev.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/candidates/hypothesis_test.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/completion_manifest.json",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/contradiction_candidate/dev/candidate_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/contradiction_candidate/dev/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/contradiction_candidate/dev/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/contradiction_candidate/dev/missing_pairs.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/contradiction_candidate/test/candidate_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/contradiction_candidate/test/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/contradiction_candidate/test/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/contradiction_candidate/test/missing_pairs.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/hypothesis/dev/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/hypothesis/dev/hypothesis_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/hypothesis/dev/hypothesis_ratings.csv",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/hypothesis/dev/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/hypothesis/test/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/hypothesis/test/hypothesis_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/hypothesis/test/hypothesis_ratings.csv",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/hypothesis/test/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/chroma.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/contradiction_path.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/groq.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/hypothesis_path.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/local_nli.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/neo4j.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/reproduce.ps1",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/semantic_review.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/live_checks/summary.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/embeddings/dev/comparison_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/embeddings/dev/comparison_protocol.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/embeddings/dev/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/embeddings/dev/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/embeddings/dev/rankings.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/embeddings/test/comparison_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/embeddings/test/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/embeddings/test/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/embeddings/test/rankings.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/dev/comparison_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/dev/failures.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/dev/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/dev/model_a_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/dev/model_b_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/test/comparison_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/test/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/test/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/test/model_a_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/llm/test/model_b_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/ner/alternative_concepts.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/ner/baseline_concepts.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/ner/comparison_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/ner/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/model_comparisons/ner/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/reproduce.ps1",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/dev/comparison_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/dev/existence_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/dev/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/dev/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/dev/semantic_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/dev/semantic_rejection_audit.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/test/comparison_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/test/existence_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/test/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/test/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/test/semantic_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/final_ai_reference/support_comparison/test/semantic_rejection_audit.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase1_verified/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/dev/collection_summary.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/dev/contradiction_pipeline_outputs.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/dev/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase2_raw/dev/hypothesis_pipeline_outputs.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/dev/support_pipeline_outputs.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/test/collection_summary.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/test/contradiction_graph_only_sidecar.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/test/contradiction_pipeline_outputs.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/test/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase2_raw/test_contradiction_llm/collection_summary.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/test_contradiction_llm/contradiction_pipeline_outputs.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/test_contradiction_llm/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase2_raw/test_model/collection_summary.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/test_model/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase2_raw/test_model/hypothesis_pipeline_outputs.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase2_raw/test_model/support_pipeline_outputs.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/dev/contradiction_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/dev/contradiction_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/dev/contradiction_threshold_sweep.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/dev/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/dev/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/dev/support_threshold_sweep.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/hypothesis_dev/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/hypothesis_dev/hypothesis_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/hypothesis_dev/hypothesis_ratings.csv",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/hypothesis_dev/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/hypothesis_test/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/hypothesis_test/hypothesis_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/hypothesis_test/hypothesis_ratings.csv",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/hypothesis_test/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/predictions/dev.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/predictions/support_dev.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/predictions/support_test.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/predictions/test.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/support_dev/claim_support_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/support_dev/claim_support_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/support_dev/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/support_dev/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/support_test/claim_support_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/support_test/claim_support_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/support_test/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/support_test/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/test/contradiction_metrics.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/test/contradiction_metrics_frozen_threshold.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/test/contradiction_predictions.jsonl",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/test/failures.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "evaluations/phase5_ai_reference_baseline/test/metadata.json",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "gurleen.md",
+      "status": "changed_or_missing_since_packaging"
+    },
+    {
+      "path": "README.md",
+      "status": "changed_or_missing_since_packaging"
+    },
+    {
+      "path": "reports/PHASE1_PHASE2_ARTIFACT_STATUS_AND_RUNBOOK.md",
+      "status": "exact"
+    },
+    {
+      "path": "reports/PHASE2_COMPLETION_REPORT.md",
+      "status": "exact"
+    },
+    {
+      "path": "reports/PHASE3_AI_REFERENCE_FINALIZATION_REPORT.md",
+      "status": "exact"
+    },
+    {
+      "path": "reports/PHASE3_ANNOTATION_READINESS_REPORT.md",
+      "status": "exact"
+    },
+    {
+      "path": "reports/PHASE5_AI_REFERENCE_EVALUATION_REPORT.md",
+      "status": "exact"
+    },
+    {
+      "path": "reports/PROJECT_STATUS.md",
+      "status": "changed_or_missing_since_packaging"
+    },
+    {
+      "path": "reports/TEAMMATE2_FINAL_COMPLETION_REPORT.md",
+      "status": "exact"
+    },
+    {
+      "path": "reports/TEAMMATE2_REMAINING_IMPLEMENTATION_PLAN.md",
+      "status": "exact"
+    },
+    {
+      "path": "reports/TEAMMATE2_SETUP_BASELINE_AUDIT.md",
+      "status": "exact"
+    },
+    {
+      "path": "reproduce.ps1",
+      "status": "exact"
+    },
+    {
+      "path": "tests/conftest.py",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "tests/fixtures/reasoning/claim_support_benchmark.json",
+      "status": "exact"
+    },
+    {
+      "path": "tests/fixtures/reasoning/claim_support_predictions.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "tests/fixtures/reasoning/contradiction_benchmark.json",
+      "status": "exact"
+    },
+    {
+      "path": "tests/fixtures/reasoning/contradiction_predictions.jsonl",
+      "status": "exact"
+    },
+    {
+      "path": "tests/fixtures/reasoning/hypothesis_benchmark.json",
+      "status": "exact"
+    },
+    {
+      "path": "tests/fixtures/reasoning/README.md",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_annotation_pool.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_classification_metrics.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_contradiction_candidate_evaluator.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_embedding_comparison.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_freeze_ai_reference_benchmarks.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_groq_client.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_hypothesis_metrics.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_live_completion_checks.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_llm_comparison.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_ner_comparison.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_phase1_phase2_tooling.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_phase3_ai_annotation.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_phase3_annotation.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_provenance.py",
+      "status": "changed_or_missing_since_packaging"
+    },
+    {
+      "path": "tests/test_reasoning_benchmarks.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_reasoning_end_to_end.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_semantic_support.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_support_ai_evaluator.py",
+      "status": "exact"
+    },
+    {
+      "path": "tests/test_support_baseline_comparison.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/__init__.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/annotation_pool.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/artifact_manifest.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/benchmark_io.py",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "tooling/evaluation/claim_support_metrics.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/classification_metrics.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/collect_reasoning_outputs.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/contradiction_candidate_evaluator.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/contradiction_runner.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/embedding_comparison.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/freeze_ai_reference_benchmarks.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/hypothesis_metrics.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/ir_metrics.py",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "tooling/evaluation/live_completion_checks.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/llm_comparison.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/ner_comparison.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/phase3_ai_annotation.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/phase3_annotation.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/reasoning_benchmark_io.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/reasoning_candidate_export.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/reasoning_runner.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/semantic_support.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/support_ai_evaluator.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/evaluation/support_baseline_comparison.py",
+      "status": "exact"
+    },
+    {
+      "path": "tooling/pipeline/review.py",
+      "status": "changed_or_missing_since_packaging"
+    },
+    {
+      "path": "tooling/utils/config.py",
+      "status": "changed_or_missing_since_packaging"
+    },
+    {
+      "path": "tooling/utils/groq_client.py",
+      "status": "changed_or_missing_since_packaging"
+    }
+  ],
+  "note": "The package manifest predates some committed edits; report drift separately from frozen benchmark integrity."
+}

@@ -1,0 +1,205 @@
+{
+  "test_sha256": "01d383c65e6abaa41c0b99dc5210c925438065bf3fb16ddd94cfe14747bf7f27",
+  "test_count": 95,
+  "selected_floor": 0.005,
+  "human_ground_truth": false,
+  "reference_annotation_source": "AI-generated",
+  "reports": {
+    "original": {
+      "count": 95,
+      "class_names": [
+        "SUPPORTED",
+        "PARTIALLY_SUPPORTED",
+        "UNSUPPORTED",
+        "CONTRADICTED",
+        "UNKNOWN"
+      ],
+      "accuracy": 0.3684210526315789,
+      "confusion_matrix": [
+        [
+          11,
+          1,
+          10,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          35,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          24,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "per_class": {
+        "SUPPORTED": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "tp": 11,
+          "fp": 0,
+          "fn": 11
+        },
+        "PARTIALLY_SUPPORTED": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 1,
+          "fn": 41
+        },
+        "UNSUPPORTED": {
+          "precision": 0.34782608695652173,
+          "recall": 0.75,
+          "f1": 0.4752475247524752,
+          "tp": 24,
+          "fp": 45,
+          "fn": 8
+        },
+        "CONTRADICTED": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 14,
+          "fn": 0
+        },
+        "UNKNOWN": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "macro_precision": 0.33695652173913043,
+      "macro_recall": 0.3125,
+      "macro_f1": 0.28547854785478544,
+      "supported_claim_rate": 0.11578947368421053,
+      "supported_gold_count": 22,
+      "unsupported_claim_rejection_rate": 1.0,
+      "false_acceptance_rate": 0.0,
+      "coverage": 1.0
+    },
+    "dev_calibrated": {
+      "count": 95,
+      "class_names": [
+        "SUPPORTED",
+        "PARTIALLY_SUPPORTED",
+        "UNSUPPORTED",
+        "CONTRADICTED",
+        "UNKNOWN"
+      ],
+      "accuracy": 0.3894736842105263,
+      "confusion_matrix": [
+        [
+          11,
+          3,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          32,
+          6,
+          0
+        ],
+        [
+          0,
+          1,
+          23,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "per_class": {
+        "SUPPORTED": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "tp": 11,
+          "fp": 0,
+          "fn": 11
+        },
+        "PARTIALLY_SUPPORTED": {
+          "precision": 0.42857142857142855,
+          "recall": 0.07317073170731707,
+          "f1": 0.125,
+          "tp": 3,
+          "fp": 4,
+          "fn": 38
+        },
+        "UNSUPPORTED": {
+          "precision": 0.36507936507936506,
+          "recall": 0.71875,
+          "f1": 0.4842105263157895,
+          "tp": 23,
+          "fp": 40,
+          "fn": 9
+        },
+        "CONTRADICTED": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 14,
+          "fn": 0
+        },
+        "UNKNOWN": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "macro_precision": 0.4484126984126984,
+      "macro_recall": 0.3229801829268293,
+      "macro_f1": 0.31896929824561404,
+      "supported_claim_rate": 0.11578947368421053,
+      "supported_gold_count": 22,
+      "unsupported_claim_rejection_rate": 0.96875,
+      "false_acceptance_rate": 0.03125,
+      "coverage": 1.0
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "sha256": "6e15fea230d9bc9f8695eaea989537e066ac9ec2bd7324e3180aba3a02a63b34",
+  "note": "Offline scoring of saved predictions; model identity is declared, not verified by rerunning inference."
+}

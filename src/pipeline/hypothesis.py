@@ -6,14 +6,10 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.pipeline.prompts import build_hypothesis_prompt
 from src.pipeline.retrieval import neural_retrieve
 from src.utils.config import (
-    GROQ_MAX_RETRIES,
     HYPOTHESIS_CANDIDATE_POOL,
     HYPOTHESIS_MIN_QUERY_SUPPORT,
     HYPOTHESIS_MIN_SHARED_CONCEPTS,
-    LLM_MODEL,
-    LLM_MODEL_FALLBACK,
 )
-from src.utils.groq_client import groq_chat_with_retry
 
 
 def score_hypothesis_candidate(
@@ -149,7 +145,7 @@ def generate_hypotheses(driver, query, top_k=5):
     )[:top_k]
 
 
-def llm_hypothesis(groq_client, driver, query, top_k=5):
+def llm_hypothesis(llm_client, driver, query, top_k=5):
     print(f"\n{'=' * 60}")
     print(f"[HYPOTHESIS MODE] {query}")
     print(f"{'=' * 60}")
@@ -169,14 +165,10 @@ def llm_hypothesis(groq_client, driver, query, top_k=5):
     for index, hypothesis in enumerate(hypotheses, 1):
         print(f"[LLM] Generating hypothesis {index}/{len(hypotheses)}...")
         try:
-            response = groq_chat_with_retry(
-                groq_client,
+            response = llm_client.complete(
                 build_hypothesis_prompt(query_context, hypothesis),
-                model=LLM_MODEL,
-                fallback_model=LLM_MODEL_FALLBACK,
                 max_tokens=700,
                 temperature=0.0,
-                max_retries=GROQ_MAX_RETRIES,
             )
         except Exception as error:
             response = f"LLM call failed: {error}"

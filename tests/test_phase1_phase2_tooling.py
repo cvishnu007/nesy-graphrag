@@ -2,6 +2,7 @@ import json
 
 import pytest
 
+from src.evaluation import artifact_manifest, collect_reasoning_outputs
 from src.evaluation.artifact_manifest import (
     directory_fingerprint,
     inspect_corpus,
@@ -76,6 +77,83 @@ def test_collect_outputs_rejects_caught_llm_failures():
     assert all(not records for records in outputs.values())
     assert len(failures) == 3
     assert all("private" not in failure["message"] for failure in failures)
+
+
+def test_collection_functions_pass_selected_llm_to_general_generation_paths():
+    client = object()
+    driver = object()
+    received = []
+
+    def record(name):
+        def operation(llm_client, graph_driver, query, *, top_k):
+            received.append((name, llm_client, graph_driver, query, top_k))
+            return {"query": query}
+
+        return operation
+
+    functions = collect_reasoning_outputs.build_pipeline_functions(
+        driver=driver,
+        llm_client=client,
+        contradiction_mode="llm",
+        detect_contradictions=lambda *args, **kwargs: [],
+        llm_contradict=record("contradiction"),
+        llm_review=record("support"),
+        llm_hypothesis=record("hypothesis"),
+    )
+
+    for task in ("contradiction", "support", "hypothesis"):
+        functions[task]("query", 3)
+
+    assert received == [
+        ("contradiction", client, driver, "query", 3),
+        ("support", client, driver, "query", 3),
+        ("hypothesis", client, driver, "query", 3),
+    ]
+
+
+def test_artifact_manifest_labels_selected_llm_runtime(monkeypatch):
+    monkeypatch.setattr(
+        artifact_manifest,
+        "llm_runtime_metadata",
+        lambda: {
+            "provider": "ollama",
+            "model": "qwen2.5:3b-instruct",
+            "base_url": "http://127.0.0.1:11434",
+            "timeout_sec": 300,
+            "max_retries": 3,
+        },
+        raising=False,
+    )
+    monkeypatch.setattr(
+        artifact_manifest,
+        "inspect_corpus",
+        lambda path: {"status": "unavailable", "path": str(path)},
+    )
+    monkeypatch.setattr(
+        artifact_manifest,
+        "inspect_chroma",
+        lambda path: {"status": "unavailable", "path": str(path)},
+    )
+    monkeypatch.setattr(
+        artifact_manifest,
+        "inspect_neo4j",
+        lambda: {"status": "unavailable"},
+    )
+    monkeypatch.setattr(
+        artifact_manifest,
+        "inspect_query_benchmark",
+        lambda path: {"status": "unavailable", "path": str(path)},
+    )
+
+    manifest = artifact_manifest.create_artifact_manifest()
+
+    assert manifest["models"]["llm"] == {
+        "provider": "ollama",
+        "model": "qwen2.5:3b-instruct",
+        "base_url": "http://127.0.0.1:11434",
+        "timeout_sec": 300,
+        "max_retries": 3,
+    }
 
 
 def test_export_contradictions_deduplicates_reversed_pairs_without_labels():

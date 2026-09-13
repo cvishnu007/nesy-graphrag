@@ -64,7 +64,10 @@ def insert_papers(driver, df):
         )
     print("Clearing existing data...")
     with driver.session() as session:
-        session.run("MATCH (n) DETACH DELETE n")
+        session.run("""
+            MATCH (n)
+            CALL (n) { DETACH DELETE n } IN TRANSACTIONS OF 1000 ROWS
+        """).consume()
         print("Cleared!")
         drop_legacy_constraints(session)
         session.run("CREATE CONSTRAINT IF NOT EXISTS FOR (p:Paper) REQUIRE p.id IS UNIQUE")

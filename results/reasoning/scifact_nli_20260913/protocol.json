@@ -1,0 +1,13 @@
+{
+  "benchmark_sha256": "c6c6d79f557764a66de6fefbe558f10b69b36ab519206ea889c434abc98818bc",
+  "source": "https://github.com/allenai/scifact",
+  "source_split": "official dev",
+  "local_split": "test",
+  "model": "cross-encoder/nli-deberta-v3-small",
+  "model_revision": "fa2804872c3b4bd748f38c0185cc85775361e735",
+  "partial_entailment_floor": 0.2,
+  "selection": "predeclared existing default; no tuning on SciFact test labels",
+  "task": "claim/evidence classification, not paper-pair contradiction",
+  "reference_source": "published SciFact expert annotations; no project-team relabeling",
+  "count": 338
+}

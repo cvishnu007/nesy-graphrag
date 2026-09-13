@@ -10,11 +10,7 @@ from src.utils.config import (
     CONTRADICTION_MIN_CONFIDENCE,
     CONTRADICTION_MIN_CONCEPT_JACCARD,
     CONTRADICTION_MIN_SHARED_CONCEPTS,
-    GROQ_MAX_RETRIES,
-    LLM_MODEL,
-    LLM_MODEL_FALLBACK,
 )
-from src.utils.groq_client import groq_chat_with_retry
 
 
 def score_contradiction_candidate(shared_count, concepts1, concepts2, year1, year2):
@@ -101,7 +97,7 @@ def detect_contradictions(driver, query, top_k=5):
     )[:top_k]
 
 
-def llm_contradict(groq_client, driver, query, top_k=5):
+def llm_contradict(llm_client, driver, query, top_k=5):
     print(f"\n{'=' * 60}")
     print(f"[CONTRADICTION MODE] {query}")
     print(f"{'=' * 60}")
@@ -120,14 +116,10 @@ def llm_contradict(groq_client, driver, query, top_k=5):
         print(f"[LLM] Checking pair {index}/{len(candidates)}...")
 
         try:
-            analysis = groq_chat_with_retry(
-                groq_client,
+            analysis = llm_client.complete(
                 prompt,
-                model=LLM_MODEL,
-                fallback_model=LLM_MODEL_FALLBACK,
                 max_tokens=300,
                 temperature=0.0,
-                max_retries=GROQ_MAX_RETRIES,
             )
         except Exception as error:
             analysis = f"LLM call failed: {error}"

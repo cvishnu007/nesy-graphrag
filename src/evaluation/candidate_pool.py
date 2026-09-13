@@ -76,9 +76,9 @@ def _method_hidden_sort_key(
     ).hexdigest()
 
 
-def build_retrievers(driver) -> dict[str, Callable]:
+def build_retrievers(driver, *, include_bm25=False, include_production=False, corpus_path=None) -> dict[str, Callable]:
     """Create the three NeSy ablation retrievers."""
-    return {
+    retrievers = {
         "vector": lambda query, top_k: vector_only_retrieve(
             query,
             top_k=top_k,
@@ -94,6 +94,14 @@ def build_retrievers(driver) -> dict[str, Callable]:
             top_k=top_k,
         ),
     }
+    if include_bm25:
+        from src.evaluation.retrievers.bm25_retrieval import BM25Retriever
+        from src.utils.config import CLEAN_FILE
+        retrievers["bm25"] = BM25Retriever.from_json(corpus_path or CLEAN_FILE).retrieve
+    if include_production:
+        from src.pipeline.retrieval import nesy_retrieve
+        retrievers["production"] = lambda query, top_k: nesy_retrieve(driver, query, top_k=top_k)
+    return retrievers
 
 
 def pool_query(
@@ -117,6 +125,7 @@ def pool_query(
                 f"Missing retriever: {method}"
             )
 
+    for method in retrievers:
         try:
             results = list(
                 retrievers[method](
@@ -212,7 +221,7 @@ def pool_query(
                 ),
                 "ranks": {
                     method: candidate["ranks"][method]
-                    for method in METHOD_NAMES
+                    for method in retrievers
                     if method in candidate["ranks"]
                 },
             }
@@ -279,7 +288,7 @@ def pool_benchmark(
     summary = {
         "benchmark_version": benchmark_version,
         "pool_depth": pool_depth,
-        "methods": list(METHOD_NAMES),
+        "methods": list(retrievers),
         "query_count": total_queries,
         "candidate_count": len(all_method_hidden),
         "queries": query_summaries,
@@ -420,6 +429,8 @@ def main() -> None:
             "Never use after manual grading starts."
         ),
     )
+    parser.add_argument("--include-bm25", action="store_true")
+    parser.add_argument("--include-production", action="store_true")
     arguments = parser.parse_args()
 
     benchmark = load_benchmark(
@@ -439,7 +450,7 @@ def main() -> None:
     driver = get_driver()
 
     try:
-        retrievers = build_retrievers(driver)
+        retrievers = build_retrievers(driver, include_bm25=arguments.include_bm25, include_production=arguments.include_production)
         method_hidden, audit, summary = pool_benchmark(
             benchmark,
             retrievers,

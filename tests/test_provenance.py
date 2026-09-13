@@ -13,6 +13,19 @@ from src.pipeline.provenance import (
 )
 
 
+class FakeLLMClient:
+    provider = "test"
+    model = "fixture"
+
+    def __init__(self, responses):
+        self.responses = iter(responses)
+        self.calls = []
+
+    def complete(self, prompt, **options):
+        self.calls.append({"prompt": prompt, **options})
+        return next(self.responses)
+
+
 @pytest.fixture
 def verified_papers():
     papers = [
@@ -132,21 +145,16 @@ def test_review_returns_only_claims_with_valid_passage_ids(
         f"CLAIM: Supported by the abstract.\nEVIDENCE: [{real_id}]\n"
         "CLAIM: Fabricated support.\nEVIDENCE: [PFAKE-S001]"
     )
-    captured_prompt = {}
-
     monkeypatch.setattr(review, "nesy_retrieve", lambda *args, **kwargs: papers)
     monkeypatch.setattr(review, "validate_citations", lambda *args, **kwargs: verified)
+    client = FakeLLMClient([raw_answer])
 
-    def fake_chat(client, prompt, **kwargs):
-        captured_prompt["value"] = prompt
-        return raw_answer
+    result = review.llm_review(client, object(), "test query", top_k=2)
 
-    monkeypatch.setattr(review, "groq_chat_with_retry", fake_chat)
-
-    result = review.llm_review(object(), object(), "test query", top_k=2)
-
-    assert real_id in captured_prompt["value"]
-    assert "Unverified Paper" not in captured_prompt["value"]
+    assert real_id in client.calls[0]["prompt"]
+    assert "Unverified Paper" not in client.calls[0]["prompt"]
+    assert client.calls[0]["max_tokens"] == 1400
+    assert client.calls[0]["temperature"] == 0.0
     assert [claim["text"] for claim in result["claims"]] == [
         "Supported by the abstract."
     ]
@@ -161,26 +169,23 @@ def test_review_repairs_once_when_first_response_has_no_valid_claims(
 ):
     papers, verified = verified_papers
     real_id = passage_id("paper:1", 1)
-    responses = iter(
+    responses = [
         [
             "An unstructured response.",
             f"CLAIM: Repaired claim.\nEVIDENCE: [{real_id}]",
         ]
-    )
+    ][0]
 
     monkeypatch.setattr(review, "nesy_retrieve", lambda *args, **kwargs: papers)
     monkeypatch.setattr(review, "validate_citations", lambda *args, **kwargs: verified)
-    monkeypatch.setattr(
-        review,
-        "groq_chat_with_retry",
-        lambda *args, **kwargs: next(responses),
-    )
+    client = FakeLLMClient(responses)
 
-    result = review.llm_review(object(), object(), "test query", top_k=2)
+    result = review.llm_review(client, object(), "test query", top_k=2)
 
     assert [claim["text"] for claim in result["claims"]] == ["Repaired claim."]
     assert len(result["raw_answers"]) == 2
     assert result["provenance"]["stats"]["generation_attempts"] == 2
+    assert [call["max_tokens"] for call in client.calls] == [1400, 1400]
 
 
 def test_review_optionally_filters_claims_using_semantic_support(
@@ -197,16 +202,14 @@ def test_review_optionally_filters_claims_using_semantic_support(
 
     monkeypatch.setattr(review, "nesy_retrieve", lambda *args, **kwargs: papers)
     monkeypatch.setattr(review, "validate_citations", lambda *args, **kwargs: verified)
-    monkeypatch.setattr(
-        review, "groq_chat_with_retry", lambda *args, **kwargs: raw_answer
-    )
+    client = FakeLLMClient([raw_answer])
 
     def support_provider(claim, passage):
         label = "SUPPORTED" if claim == "Directly supported." else "CONTRADICTED"
         return {"label": label, "confidence": 0.95, "reason": "test decision"}
 
     result = review.llm_review(
-        object(), object(), "test query", top_k=2,
+        client, object(), "test query", top_k=2,
         support_provider=support_provider,
         support_model="test-support-model",
     )
@@ -232,13 +235,11 @@ def test_review_default_does_not_invoke_semantic_support(
     first_id = passage_id("paper:1", 1)
     monkeypatch.setattr(review, "nesy_retrieve", lambda *args, **kwargs: papers)
     monkeypatch.setattr(review, "validate_citations", lambda *args, **kwargs: verified)
-    monkeypatch.setattr(
-        review,
-        "groq_chat_with_retry",
-        lambda *args, **kwargs: f"CLAIM: Structural only.\nEVIDENCE: [{first_id}]",
+    client = FakeLLMClient(
+        [f"CLAIM: Structural only.\nEVIDENCE: [{first_id}]"]
     )
 
-    result = review.llm_review(object(), object(), "test query")
+    result = review.llm_review(client, object(), "test query")
 
     assert [claim["text"] for claim in result["claims"]] == ["Structural only."]
     assert result["semantic_support"] == {"enabled": False}
@@ -253,11 +254,7 @@ def test_review_activates_configured_local_semantic_provider(
     first_id = passage_id("paper:1", 1)
     monkeypatch.setattr(review, "nesy_retrieve", lambda *args, **kwargs: papers)
     monkeypatch.setattr(review, "validate_citations", lambda *args, **kwargs: verified)
-    monkeypatch.setattr(
-        review,
-        "groq_chat_with_retry",
-        lambda *args, **kwargs: f"CLAIM: Auto checked.\nEVIDENCE: [{first_id}]",
-    )
+    client = FakeLLMClient([f"CLAIM: Auto checked.\nEVIDENCE: [{first_id}]"])
     monkeypatch.setattr(
         review,
         "build_local_nli_provider",
@@ -267,7 +264,7 @@ def test_review_activates_configured_local_semantic_provider(
     )
 
     result = review.llm_review(
-        object(), object(), "test query", support_model="local-test-model"
+        client, object(), "test query", support_model="local-test-model"
     )
 
     assert result["semantic_support"]["enabled"] is True

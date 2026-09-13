@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -112,6 +113,38 @@ LLM_MODEL          = os.getenv("LLM_MODEL",          "openai/gpt-oss-120b")
 LLM_MODEL_FALLBACK = os.getenv("LLM_MODEL_FALLBACK", "llama-3.1-8b-instant")
 GROQ_MAX_RETRIES   = int(os.getenv("GROQ_MAX_RETRIES", 4))
 
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama").strip().lower()
+if LLM_PROVIDER not in {"ollama", "groq"}:
+    raise ValueError("LLM_PROVIDER must be 'ollama' or 'groq'")
+
+
+def _positive_llm_int(name, default):
+    raw_value = os.getenv(name, str(default))
+    try:
+        value = int(raw_value)
+    except (TypeError, ValueError) as error:
+        raise ValueError(f"{name} must be a positive integer") from error
+    if value <= 0:
+        raise ValueError(f"{name} must be greater than zero")
+    return value
+
+
+LLM_MAX_RETRIES = _positive_llm_int("LLM_MAX_RETRIES", GROQ_MAX_RETRIES)
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434").rstrip("/")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:3b-instruct").strip()
+OLLAMA_FALLBACK_MODEL = os.getenv("OLLAMA_FALLBACK_MODEL", "").strip()
+OLLAMA_TIMEOUT_SEC = _positive_llm_int("OLLAMA_TIMEOUT_SEC", 300)
+OLLAMA_KEEP_ALIVE = os.getenv("OLLAMA_KEEP_ALIVE", "10m").strip()
+OLLAMA_CONTEXT_LENGTH = _positive_llm_int("OLLAMA_CONTEXT_LENGTH", 8192)
+
+for _name, _value in {
+    "OLLAMA_BASE_URL": OLLAMA_BASE_URL,
+    "OLLAMA_MODEL": OLLAMA_MODEL,
+    "OLLAMA_KEEP_ALIVE": OLLAMA_KEEP_ALIVE,
+}.items():
+    if not _value:
+        raise ValueError(f"{_name} must be non-empty")
+
 # ── Pipeline settings ─────────────────────────────────
 BATCH_SIZE          = int(os.getenv("BATCH_SIZE",          64))
 NEO4J_BATCH_SIZE    = int(os.getenv("NEO4J_BATCH_SIZE",    500))
@@ -177,15 +210,15 @@ HYPOTHESIS_CANDIDATE_POOL = int(
 # -- Reasoning evaluation -------------------------------------------------
 CONTRADICTION_BENCHMARK_FILE = os.getenv(
     "CONTRADICTION_BENCHMARK_FILE",
-    "evaluation/benchmarks/contradiction_pairs.json",
+    str(Path(__file__).resolve().parents[2] / "teammate2/benchmarks/contradiction_pairs.json"),
 )
 CLAIM_SUPPORT_BENCHMARK_FILE = os.getenv(
     "CLAIM_SUPPORT_BENCHMARK_FILE",
-    "evaluation/benchmarks/claim_support.json",
+    str(Path(__file__).resolve().parents[2] / "teammate2/benchmarks/claim_support.json"),
 )
 HYPOTHESIS_BENCHMARK_FILE = os.getenv(
     "HYPOTHESIS_BENCHMARK_FILE",
-    "evaluation/benchmarks/hypothesis_ratings.json",
+    str(Path(__file__).resolve().parents[2] / "teammate2/benchmarks/hypothesis_ratings.json"),
 )
 REASONING_RESULTS_DIR = os.getenv("REASONING_RESULTS_DIR", "results/reasoning")
 SEMANTIC_SUPPORT_MODEL = os.getenv("SEMANTIC_SUPPORT_MODEL", "unconfigured")

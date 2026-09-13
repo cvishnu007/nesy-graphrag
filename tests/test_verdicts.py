@@ -1,11 +1,25 @@
 import pytest
 
+from src.pipeline import contradiction
 from src.pipeline.contradiction import score_contradiction_candidate
 from src.pipeline.verdicts import (
     contradiction_verdict,
     is_confident_contradiction,
     parse_contradiction_response,
 )
+
+
+class FakeLLMClient:
+    provider = "test"
+    model = "fixture"
+
+    def __init__(self, responses):
+        self.responses = iter(responses)
+        self.calls = []
+
+    def complete(self, prompt, **options):
+        self.calls.append({"prompt": prompt, **options})
+        return next(self.responses)
 
 
 def test_parses_exact_structured_verdict_and_confidence():
@@ -71,3 +85,29 @@ def test_contradiction_requires_minimum_confidence(confidence, expected):
     item = {"verdict": "CONTRADICTION", "confidence": confidence}
 
     assert is_confident_contradiction(item, 0.70) is expected
+
+
+def test_contradiction_generation_uses_generic_client_contract(monkeypatch):
+    pair = {
+        "paper1": {"title": "Paper A", "year": 2020, "abstract": "Finding A"},
+        "paper2": {"title": "Paper B", "year": 2024, "abstract": "Finding B"},
+        "shared_concepts": 2,
+        "shared_concept_names": ["graphs", "reasoning"],
+        "concept_jaccard": 0.4,
+        "candidate_score": 0.55,
+    }
+    monkeypatch.setattr(
+        contradiction,
+        "detect_contradictions",
+        lambda *args, **kwargs: [pair],
+    )
+    client = FakeLLMClient(
+        ["VERDICT: CONTRADICTION\nCONFIDENCE: 0.91\nREASON: Opposed findings."]
+    )
+
+    result = contradiction.llm_contradict(client, object(), "query", top_k=1)
+
+    assert result["contradictions"][0]["accepted_contradiction"] is True
+    assert client.calls[0]["max_tokens"] == 300
+    assert client.calls[0]["temperature"] == 0.0
+    assert "Paper A" in client.calls[0]["prompt"]

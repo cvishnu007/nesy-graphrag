@@ -18,6 +18,7 @@ from src.evaluation.reasoning_benchmark_io import (
     load_reasoning_benchmark,
     records_for_split,
 )
+from src.utils import config
 from src.utils.config import (
     CLAIM_SUPPORT_BENCHMARK_FILE,
     CONTRADICTION_BENCHMARK_FILE,
@@ -55,6 +56,15 @@ def _git_commit() -> str | None:
 
 def prerequisite_status() -> dict:
     """Describe live resources without connecting to or mutating them."""
+    if config.LLM_PROVIDER == "ollama":
+        llm_model = config.OLLAMA_MODEL
+        llm_configured = all(
+            is_configured(value)
+            for value in (config.OLLAMA_BASE_URL, config.OLLAMA_MODEL)
+        )
+    else:
+        llm_model = config.LLM_MODEL
+        llm_configured = is_configured(os.getenv("GROQ_API_KEY"))
     return {
         "frozen_corpus_present": Path("data/s2_clean.json").exists(),
         "chroma_directory_present": Path("data/chromadb").is_dir(),
@@ -62,7 +72,11 @@ def prerequisite_status() -> dict:
             is_configured(os.getenv(name), "YOUR_INSTANCE")
             for name in ("NEO4J_URI", "NEO4J_USERNAME", "NEO4J_PASSWORD")
         ),
-        "groq_configured": is_configured(os.getenv("GROQ_API_KEY")),
+        "llm": {
+            "provider": config.LLM_PROVIDER,
+            "model": llm_model,
+            "configured": llm_configured,
+        },
         "semantic_support_provider_configured": SEMANTIC_SUPPORT_MODEL != "unconfigured",
     }
 

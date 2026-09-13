@@ -1,8 +1,8 @@
 """Collect real frozen-query pipeline outputs for Phase 2 annotation pools.
 
 Contradiction collection can use graph candidates alone or the existing blinded
-LLM prediction path. Support and hypothesis collection use the existing production
-review/hypothesis functions and therefore require configured Groq access.
+LLM prediction path. Support and hypothesis collection use the configured
+provider-neutral production client.
 """
 
 from __future__ import annotations
@@ -81,6 +81,32 @@ def collect_with_functions(
     return outputs, failures
 
 
+def build_pipeline_functions(
+    *,
+    driver,
+    llm_client,
+    contradiction_mode,
+    detect_contradictions,
+    llm_contradict,
+    llm_review,
+    llm_hypothesis,
+):
+    """Bind production pipelines to one selected LLM client."""
+    return {
+        "contradiction": lambda query, top_k: (
+            llm_contradict(llm_client, driver, query, top_k=top_k)
+            if contradiction_mode == "llm"
+            else detect_contradictions(driver, query, top_k=top_k)
+        ),
+        "support": lambda query, top_k: llm_review(
+            llm_client, driver, query, top_k=top_k
+        ),
+        "hypothesis": lambda query, top_k: llm_hypothesis(
+            llm_client, driver, query, top_k=top_k
+        ),
+    }
+
+
 def _write_jsonl(path: Path, records: list[dict]) -> None:
     with path.open("w", encoding="utf-8") as file:
         for record in records:
@@ -113,10 +139,20 @@ def main(argv=None) -> int:
         parser.error("--configuration-label is required with an LLM model override")
     if arguments.configuration_label and not has_override:
         parser.error("--configuration-label requires an LLM model override")
+    # Load provider selection before applying CLI overrides and importing config.
+    from dotenv import load_dotenv
+    load_dotenv()
+    selected_provider = os.getenv("LLM_PROVIDER", "ollama").strip().lower()
+    model_variable = "OLLAMA_MODEL" if selected_provider == "ollama" else "LLM_MODEL"
+    fallback_variable = (
+        "OLLAMA_FALLBACK_MODEL"
+        if selected_provider == "ollama"
+        else "LLM_MODEL_FALLBACK"
+    )
     if arguments.llm_model_override:
-        os.environ["LLM_MODEL"] = arguments.llm_model_override
+        os.environ[model_variable] = arguments.llm_model_override
     if arguments.llm_fallback_override:
-        os.environ["LLM_MODEL_FALLBACK"] = arguments.llm_fallback_override
+        os.environ[fallback_variable] = arguments.llm_fallback_override
     directory = Path(arguments.output_dir)
     if directory.exists() and any(directory.iterdir()) and not arguments.overwrite:
         raise FileExistsError(f"Refusing to overwrite non-empty output directory: {directory}")
@@ -129,41 +165,44 @@ def main(argv=None) -> int:
     from src.pipeline.hypothesis import llm_hypothesis
     from src.pipeline.review import llm_review
     from src.storage.neo4j_store import get_driver
+    from src.utils import config
+    from src.utils.llm_client import create_llm_client, llm_runtime_metadata
 
     driver = get_driver()
-    groq_client = None
+    llm_client = None
+    runtime_metadata = None
+    needs_llm = any(task in {"support", "hypothesis"} for task in arguments.tasks) or (
+        "contradiction" in arguments.tasks and arguments.contradiction_mode == "llm"
+    )
     try:
-        needs_groq = any(task in {"support", "hypothesis"} for task in arguments.tasks) or (
-            "contradiction" in arguments.tasks and arguments.contradiction_mode == "llm"
+        if needs_llm:
+            llm_client = create_llm_client()
+            runtime_metadata = llm_runtime_metadata()
+        functions = build_pipeline_functions(
+            driver=driver,
+            llm_client=llm_client,
+            contradiction_mode=arguments.contradiction_mode,
+            detect_contradictions=detect_contradictions,
+            llm_contradict=llm_contradict,
+            llm_review=llm_review,
+            llm_hypothesis=llm_hypothesis,
         )
-        if needs_groq:
-            from groq import Groq
-            from src.utils.config import (
-                GROQ_API_KEY, LLM_MODEL, LLM_MODEL_FALLBACK, is_configured,
-            )
-
-            if not is_configured(GROQ_API_KEY):
-                raise RuntimeError("Groq is required for support/hypothesis collection but is not configured")
-            groq_client = Groq(api_key=GROQ_API_KEY)
-        functions = {
-            "contradiction": lambda query, top_k: (
-                llm_contradict(groq_client, driver, query, top_k=top_k)
-                if arguments.contradiction_mode == "llm"
-                else detect_contradictions(driver, query, top_k=top_k)
-            ),
-            "support": lambda query, top_k: llm_review(groq_client, driver, query, top_k=top_k),
-            "hypothesis": lambda query, top_k: llm_hypothesis(groq_client, driver, query, top_k=top_k),
-        }
         outputs, failures = collect_with_functions(
             queries, arguments.tasks, functions, top_k=arguments.top_k
         )
     finally:
         driver.close()
 
-    if needs_groq:
+    if needs_llm:
+        fallback_model = (
+            config.OLLAMA_FALLBACK_MODEL
+            if runtime_metadata["provider"] == "ollama"
+            else config.LLM_MODEL_FALLBACK
+        )
         model_configuration = {
-            "primary": LLM_MODEL,
-            "fallback": LLM_MODEL_FALLBACK,
+            **runtime_metadata,
+            "primary": runtime_metadata["model"],
+            "fallback": fallback_model,
             "configuration_label": arguments.configuration_label or "phase1-frozen",
             "revised_configuration": has_override,
         }

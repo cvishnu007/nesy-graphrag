@@ -1,4 +1,41 @@
-# Chinmay - Phase 3 Work Log
+# Chinmay — Local generation and evaluation work log
+
+Updated: September 13, 2026. Branch: `feat/local-evaluation`, based on the latest `origin/phase3` (`880d76e`); local `master` was already current at `ee27d00`.
+
+The user requested all five follow-up workstreams and asked that every change be recorded here. The August 27 handoff is preserved below as history; its Neo4j/Groq blockers no longer describe the current local setup.
+
+## Changes made in this continuation
+
+- Read the repository Markdown handoffs, status files, annotation guidance, reports, and the September 2 Ollama specification/plan. Created an isolated worktree and recorded the execution checklist in `docs/superpowers/plans/2026-09-13-local-evaluation-completion.md`.
+- Added `src/utils/llm_client.py`: common text completion interface, local Ollama default, native non-streaming chat API, installed-model check, bounded transport/server retries, clear failures, explicit installed-model fallback, and optional Groq adapter. Preserved Groq reasoning-effort forwarding; Ollama neither imports Groq nor requires its key.
+- Migrated review, contradiction, hypothesis, orchestrator, baseline harness, Streamlit, general output collection, support evaluation, manifests, and live checks to the selected provider. Preserved provenance validation, structured-output repair, and task-specific verdict/feasibility gates. Provider-specific historical annotation/model-comparison scripts remain explicit Groq experiments.
+- Added provider configuration and updated `.env.example`, including a default-false graph-reset guard. Fixed output-collector `.env` loading before model overrides and added tests for both provider routes.
+- Installed Ollama 0.33.3, qwen2.5:3b-instruct, Neo4j 2026.07.1 and Java dependencies on this Mac. Created a dedicated loopback Neo4j instance under ignored `data/neo4j-local/`, with a generated password stored only in ignored `.env`. A real local completion returned `OLLAMA_OK` without a Groq key.
+- Backed up original JSON data and `.env` under ignored `data/pre-expansion-20260913/`. Resumed the 11-topic Semantic Scholar fetch after a transient network failure. Finished **52,820 raw / 47,627 clean papers**, retaining all original 10,000 raw / 8,850 clean IDs. The teammate's 47,619-paper snapshot was unavailable and describes a different fetch.
+- Finished incremental NER and SPECTER/Chroma indexing: **47,627 entity-bearing papers and 47,627 vectors**. NER used two CPU workers because GPU NER competed with MPS indexing on the 8 GB Mac. Expanded Neo4j rebuild completed with **47,627 papers / 146,157 authors / 196,616 concepts / 22,514 real CITES edges**. A read-only audit verified exact IDs and title/abstract equality across clean, NER, Chroma and Neo4j, with zero missing, extra, duplicate or stale-text records (`results/local/store_audit_20260913.json`).
+- Fixed canonical reasoning benchmark defaults to `teammate2/benchmarks/`. Added cross-platform `packaged_reproduction.py` and repaired `teammate2/reproduce.ps1`. Verified frozen benchmark hashes, including line-ending normalization, 313 unique annotation items and 392 assignments, and reproduced both splits with zero task failures. Historical package-manifest drift is reported separately rather than rewriting old evidence.
+- Added deterministic BM25 and optional production-filtered fusion to retrieval pooling/scoring. Added `refresh_retrieval.py` to freeze rankings/configuration before AI grading, verify artifact hashes, retain raw/checkpointed method-hidden judgments, export human-review CSV, and score saved development/test ranks without retuning.
+- Added `matched_rag.py` for vector RAG versus GraphRAG with the same model, prompt, evidence/output budgets and no repair retries. It stores evidence, raw outputs, hashes and provenance; independent answer-quality labels remain separate work.
+- Added development-only partial-support calibration over saved NLI probabilities. Test partial-support F1 increased **0 → 0.125**, macro F1 **0.2855 → 0.3190**, but false acceptance increased **0 → 0.03125**. This experimental threshold was not adopted in production.
+- Added a separate, licensed SciFact claim/evidence benchmark and reproducible evaluation CLI. It preserves complete rationale sets and separates official train/local development (955 items) from official dev/local test (338 items, 122 contradicted). The fixed NLI model achieved contradiction F1 **0.6286**, two-gold-class macro F1 **0.5143**, and overall accuracy **0.3580**. It evaluates biomedical entailment, not graph paper-pair detection. The frozen in-domain paper-pair benchmark still has one positive test contradiction.
+- Added and extended automated tests for provider selection/retries/fallbacks, pipeline routing, BM25, frozen-pool integrity, matched contexts, packaged paths/hashes, development-only calibration, SciFact conversion and label-blinded evaluation. The current full suite passes **304 tests**; compile, dependency consistency and diff-whitespace checks also pass. One upstream spaCy/Click deprecation warning remains.
+- Added `docs/LOCAL_EVALUATION.md` and updated README/setup instructions with local startup, safe rebuilds, portable reproduction and interpretation limits. Tightened live checks so empty or invalid structured generations cannot silently count as successful pipeline evidence.
+
+- Fixed the live expanded-graph rebuild failure: the previous single-transaction `DETACH DELETE` exceeded Neo4j's transaction-memory limit. Rebuilds now delete in 1,000-node transactions and consume the result before reporting success (Neo4j 5.23+ syntax). The dedicated-database reset guard remains required.
+- Corrected expanded retrieval protocol capture to read fusion weights from the evaluation configuration module and record graph limits, hop depth and production weights; added a regression check. Matched RAG records the same retrieval settings.
+
+- Added `store_audit.py` and a stale-evidence regression test; the audit checks all titles/abstracts as well as paper-ID parity and NER completion.
+
+## Still running or pending
+
+1. Freeze the expanded five-method retrieval pool, grade provisional AI references, evaluate held-out rankings and paired significance.
+2. Run matched RAG and all three local application modes, then verify Streamlit startup.
+3. Complete local code review and final test/compile/dependency checks, update this log and project status with the actual results, and retain the changes on the local feature branch.
+
+A separate review agent hit its service usage limit; review continues in the primary session. No code or results have been pushed. Independent human judgment review, stronger in-domain contradiction coverage, and expert hypothesis/answer evaluation remain research limitations rather than completed validation.
+
+## Historical August 27 handoff
+
 
 Date: August 27, 2026
 Branch: `chinmay-phase3-s2-work`

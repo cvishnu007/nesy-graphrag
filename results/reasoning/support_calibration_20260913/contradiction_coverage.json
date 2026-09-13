@@ -1,0 +1,28 @@
+{
+  "counts": {
+    "dev": {
+      "DIFFERENT SCOPE": 17,
+      "AGREEMENT": 6
+    },
+    "test": {
+      "AGREEMENT": 11,
+      "DIFFERENT SCOPE": 27,
+      "CONTRADICTION": 1
+    }
+  },
+  "minimum_per_class": 10,
+  "additional_required": {
+    "dev": {
+      "CONTRADICTION": 10,
+      "AGREEMENT": 4,
+      "DIFFERENT SCOPE": 0
+    },
+    "test": {
+      "CONTRADICTION": 9,
+      "AGREEMENT": 0,
+      "DIFFERENT SCOPE": 0
+    }
+  },
+  "ready_for_class_comparison": false,
+  "interpretation": "Engineering coverage threshold, not a statistical power guarantee; add a new independent benchmark, never insert examples into a frozen test set."
+}

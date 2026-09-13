@@ -3,8 +3,7 @@ import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import (
-    LLM_MODEL, LLM_MODEL_FALLBACK, GROQ_MAX_RETRIES, TOP_K,
-    SEMANTIC_SUPPORT_MIN_CONFIDENCE, SEMANTIC_SUPPORT_MODEL,
+    TOP_K, SEMANTIC_SUPPORT_MIN_CONFIDENCE, SEMANTIC_SUPPORT_MODEL,
 )
 from src.pipeline.retrieval import nesy_retrieve, vector_only_retrieve
 from src.pipeline.validator import validate_citations
@@ -17,7 +16,6 @@ from src.pipeline.provenance import (
     validate_claim_provenance,
 )
 from src.evaluation.semantic_support import build_local_nli_provider, verify_claim_support
-from src.utils.groq_client import groq_chat_with_retry
 
 
 def _console_safe(text):
@@ -77,7 +75,7 @@ def _apply_semantic_support(
 
 
 def llm_review(
-    groq_client,
+    llm_client,
     driver,
     query,
     top_k=TOP_K,
@@ -91,7 +89,7 @@ def llm_review(
 
     Parameters
     ----------
-    groq_client : groq.Groq instance
+    llm_client  : provider-neutral LLM client
     driver      : Neo4j driver
     query       : str — research query
     top_k       : int — papers to retrieve
@@ -116,13 +114,10 @@ def llm_review(
 
     print("[LLM] Generating answer...")
     try:
-        raw_answer = groq_chat_with_retry(
-            groq_client, prompt,
-            model=LLM_MODEL,
-            fallback_model=LLM_MODEL_FALLBACK,
+        raw_answer = llm_client.complete(
+            prompt,
             max_tokens=1400,
             temperature=0.0,
-            max_retries=GROQ_MAX_RETRIES,
         )
     except Exception as e:
         raw_answer = f"LLM call failed: {e}"
@@ -142,14 +137,10 @@ def llm_review(
         print("[Provenance] No valid claims; attempting one structured-output repair...")
         repair_prompt = build_review_repair_prompt(prompt, raw_answer, parse_errors)
         try:
-            repaired_answer = groq_chat_with_retry(
-                groq_client,
+            repaired_answer = llm_client.complete(
                 repair_prompt,
-                model=LLM_MODEL,
-                fallback_model=LLM_MODEL_FALLBACK,
                 max_tokens=1400,
                 temperature=0.0,
-                max_retries=GROQ_MAX_RETRIES,
             )
             raw_answers.append(repaired_answer)
             repaired_claims, repair_errors = parse_review_claims(repaired_answer)

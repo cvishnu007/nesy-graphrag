@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "created_at_utc": "2026-09-13T05:25:29.339021+00:00",
+  "git_commit": "880d76e256be91e0dd002086007be52b30bb9ba5",
+  "tasks": [
+    "contradiction",
+    "support",
+    "hypothesis"
+  ],
+  "split": "dev",
+  "benchmark_versions": {
+    "contradiction": "1.0-ai-reference-frozen",
+    "support": "1.0-ai-reference-frozen",
+    "hypothesis": "1.0-ai-reference-frozen"
+  },
+  "fixture_only_by_task": {
+    "contradiction": false,
+    "support": false,
+    "hypothesis": false
+  },
+  "reference_provenance_by_task": {
+    "contradiction": {
+      "reference_annotation_source": "AI-generated",
+      "human_ground_truth": false,
+      "independent_human_review": false
+    },
+    "support": {
+      "reference_annotation_source": "AI-generated",
+      "human_ground_truth": false,
+      "independent_human_review": false
+    },
+    "hypothesis": {
+      "reference_annotation_source": "AI-generated",
+      "human_ground_truth": false,
+      "independent_human_review": false
+    }
+  },
+  "test_fixture_only": false,
+  "semantic_support_model": "unconfigured",
+  "semantic_support_min_confidence": 0.7,
+  "prerequisites": {
+    "frozen_corpus_present": true,
+    "chroma_directory_present": true,
+    "neo4j_configured": true,
+    "groq_configured": false,
+    "semantic_support_provider_configured": false
+  },
+  "failure_count": 0,
+  "offline_only": true
+}

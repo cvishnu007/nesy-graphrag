@@ -18,12 +18,19 @@ from src.evaluation.reasoning_benchmark_io import (
     records_for_split,
 )
 from src.evaluation.semantic_support import nli_scores_to_prediction, parse_support_decision
-from src.utils.config import GROQ_API_KEY
-from src.utils.groq_client import groq_chat_with_retry
 
 
 class SupportAIEvaluationError(ValueError):
     pass
+
+
+def _configured_llm_judge(client):
+    """Adapt the common completion interface to the checkpointed judge callback."""
+    return lambda prompt: client.complete(
+        prompt,
+        max_tokens=2000,
+        temperature=0.0,
+    )
 
 
 def _now() -> str:
@@ -97,6 +104,7 @@ def generate_local_nli_predictions(
     model_name: str = "cross-encoder/nli-deberta-v3-small",
     batch_size: int = 16,
     partial_entailment_floor: float = 0.20,
+    model_revision: str | None = None,
 ) -> list[dict]:
     """Run a cached pretrained NLI model without network access."""
     import torch
@@ -105,6 +113,7 @@ def generate_local_nli_predictions(
     model = CrossEncoder(
         model_name,
         local_files_only=True,
+        revision=model_revision,
         device="cuda" if torch.cuda.is_available() else "cpu",
     )
     probabilities = model.predict(
@@ -222,12 +231,15 @@ def select_confidence_threshold(rows: list[dict], *, thresholds=None) -> dict:
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--benchmark", default="evaluation/benchmarks/claim_support.json")
+    from src.utils.config import CLAIM_SUPPORT_BENCHMARK_FILE
+    parser.add_argument("--benchmark", default=CLAIM_SUPPORT_BENCHMARK_FILE)
     parser.add_argument("--split", choices=("dev", "test"), required=True)
     parser.add_argument("--output", required=True)
-    parser.add_argument("--model", default="qwen/qwen3.6-27b")
+    parser.add_argument("--model")
     parser.add_argument("--batch-size", type=int, default=6)
-    parser.add_argument("--provider", choices=("local-nli", "groq"), default="local-nli")
+    parser.add_argument(
+        "--provider", choices=("local-nli", "llm", "groq"), default="local-nli"
+    )
     parser.add_argument("--partial-entailment-floor", type=float, default=0.20)
     parser.add_argument("--confidence-threshold", type=float)
     parser.add_argument("--threshold-report")
@@ -235,23 +247,26 @@ def main(argv=None) -> int:
     benchmark = load_reasoning_benchmark(args.benchmark, "support")
     items = records_for_split(benchmark, "support", args.split)
     if args.provider == "local-nli":
-        model = (
-            args.model if args.model != "qwen/qwen3.6-27b"
-            else "cross-encoder/nli-deberta-v3-small"
-        )
+        model = args.model or "cross-encoder/nli-deberta-v3-small"
         rows = generate_local_nli_predictions(
             items, args.output, model_name=model, batch_size=args.batch_size,
             partial_entailment_floor=args.partial_entailment_floor,
         )
     else:
-        from groq import Groq
-        client = Groq(api_key=GROQ_API_KEY)
-        judge = lambda prompt: groq_chat_with_retry(
-            client, prompt, model=args.model, max_tokens=2000,
-            temperature=0.0, max_retries=6,
-        )
+        from src.utils.llm_client import create_llm_client
+
+        client = create_llm_client()
+        if args.provider == "groq" and client.provider != "groq":
+            raise SupportAIEvaluationError(
+                "--provider groq requires LLM_PROVIDER=groq; use --provider llm"
+            )
+        if args.model and args.model != client.model:
+            raise SupportAIEvaluationError(
+                f"--model must match the configured provider model ({client.model})"
+            )
+        judge = _configured_llm_judge(client)
         rows = generate_predictions(
-            items, args.output, judge, model=args.model, batch_size=args.batch_size
+            items, args.output, judge, model=client.model, batch_size=args.batch_size
         )
     if args.split == "dev" and args.threshold_report:
         gold = {item["item_id"]: item["label"] for item in items}

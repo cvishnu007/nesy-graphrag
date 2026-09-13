@@ -68,7 +68,7 @@ def evaluate_benchmark(
         judgments = query["judgments"]
         print(f"[{query_index}/{len(queries)}] {query_id}: {query_text}")
 
-        for method in METHOD_NAMES:
+        for method in retrievers:
             started = perf_counter()
             try:
                 results = list(retrievers[method](query_text, top_k))
@@ -108,10 +108,10 @@ def evaluate_benchmark(
         grouped[row["method"]].append(row)
     methods = {
         method: aggregate_query_metrics(grouped[method])
-        for method in METHOD_NAMES
+        for method in retrievers
     }
     winner = max(
-        METHOD_NAMES,
+        tuple(retrievers),
         key=lambda method: (
             methods[method]["metrics"]["ndcg@10"]["mean"],
             methods[method]["metrics"]["recall@10"]["mean"],
@@ -177,12 +177,14 @@ def main() -> None:
     parser.add_argument("--top-k", type=int, default=20)
     parser.add_argument("--output-dir", default="results/retrieval/evaluation")
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--include-bm25", action="store_true")
+    parser.add_argument("--include-production", action="store_true")
     arguments = parser.parse_args()
 
     benchmark = load_benchmark(arguments.benchmark, require_judgments=True)
     driver = get_driver()
     try:
-        retrievers = build_retrievers(driver)
+        retrievers = build_retrievers(driver, include_bm25=arguments.include_bm25, include_production=arguments.include_production)
         rows, rankings, summary = evaluate_benchmark(
             benchmark,
             retrievers,

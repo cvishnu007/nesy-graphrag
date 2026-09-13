@@ -25,7 +25,7 @@ import os
 from collections import Counter
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.pipeline.orchestrator import get_groq, get_neo4j
+from src.pipeline.orchestrator import get_llm, get_neo4j
 from src.pipeline.review import llm_review
 from src.pipeline.metrics import compute_all_metrics
 from src.pipeline.results_logger import log_result
@@ -59,7 +59,7 @@ def run_baseline_comparison(
     """
     queries = queries or DEFAULT_QUERIES
     driver  = get_neo4j()
-    groq    = get_groq()
+    llm     = get_llm()
 
     results = []
 
@@ -70,12 +70,12 @@ def run_baseline_comparison(
 
         # ── NeSy path ──
         print("\n  Running NeSy (full) path...")
-        nesy_result = llm_review(groq, driver, query, top_k=top_k, baseline=False)
+        nesy_result = llm_review(llm, driver, query, top_k=top_k, baseline=False)
         nesy_metrics = compute_all_metrics(nesy_result, driver=driver)
 
         # ── Baseline path ──
         print("\n  Running Baseline (vector-only) path...")
-        base_result = llm_review(groq, driver, query, top_k=top_k, baseline=True)
+        base_result = llm_review(llm, driver, query, top_k=top_k, baseline=True)
         base_metrics = compute_all_metrics(base_result, driver=driver)
 
         # ── Delta ──

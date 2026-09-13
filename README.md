@@ -2,7 +2,7 @@
 
 NeSy-GraphRAG is a research-assistant prototype for automated literature review and hypothesis generation. It combines neural retrieval with symbolic graph validation and sentence-level provenance so generated review claims remain traceable to verified abstract evidence.
 
-The abstract-based core pipeline and provisional retrieval-evaluation framework are implemented. Current work should focus on human validation of the retrieval judgments, missing baselines, generated-output evaluation, controlled model experiments, and measured scaling. PDF ingestion is not part of the current scope.
+Local Ollama generation, BM25, matched-context RAG comparison, and portable reasoning reproduction are implemented. See the [local evaluation runbook](docs/LOCAL_EVALUATION.md) for the September 13 work and reproducible commands. Current research work focuses on independent judgment review, generated-output evaluation, controlled experiments, and measured scaling. PDF ingestion is not part of the current scope.
 
 ## What It Does
 
@@ -10,7 +10,7 @@ The abstract-based core pipeline and provisional retrieval-evaluation framework 
 - Expands results through a Neo4j citation/concept graph.
 - Filters citation neighbours by query relevance before rank fusion.
 - Validates paper IDs against Neo4j before sending context to the LLM.
-- Generates literature reviews through a configurable Groq-hosted model with deterministic claim-to-passage citations.
+- Generates literature reviews through local Ollama (default) or configurable Groq hosting with deterministic claim-to-passage citations.
 - Blocks claims with missing, malformed, or fabricated passage IDs and retains them for audit.
 - Optionally applies local NLI after passage-ID validation and retains semantically rejected claims for audit.
 - Ranks contradiction candidates by normalized concept overlap and parses structured, confidence-gated verdicts.
@@ -31,7 +31,7 @@ Short version:
 - ChromaDB indexing is implemented and local collections exist.
 - Neo4j graph loading code is implemented.
 - Literature review, contradiction, hypothesis, metrics, and baseline comparison modules exist.
-- The verified broad-CSE run contains 52,822 unique raw records and 47,619 papers in the clean, NER, ChromaDB, and Neo4j stores.
+- The teammate’s August 31 snapshot contains 47,619 clean papers. The September 13 Mac fetch produced 52,820 raw / 47,627 clean papers; see the current status report for store verification.
 - Hybrid rank fusion is implemented and returns neural, symbolic, and overlapping results.
 - Automatic CUDA/MPS/CPU selection and CPU worker controls are implemented.
 - CUDA embedding inference is verified on the local RTX 3050 with PyTorch `2.12.1+cu126`.
@@ -41,7 +41,7 @@ Short version:
 - The evaluation-only hybrid scored `0.3676` NDCG@10 versus `0.3643` for vector-only, but the paired randomization p-value is `1.0`; this is not a statistically established improvement.
 - Production graph filtering improved NDCG@10 from `0.2678` to `0.3617`, close to the vector-only reference at `0.3643`.
 - AI-reference reasoning benchmarks, annotation tooling, semantic-support evaluation, and controlled NER/embedding/LLM comparison runners are integrated. Their labels are not human ground truth.
-- 249 pytest cases cover retrieval, multi-topic ingestion, resume safety, evaluation, claim provenance, semantic support, model comparisons, configuration guards, contradiction verdicts, Neo4j failures, and hypothesis validation.
+- The automated pytest suite covers retrieval, multi-topic ingestion, resume safety, evaluation, claim provenance, semantic support, model comparisons, configuration guards, contradiction verdicts, Neo4j failures, and hypothesis validation.
 - Evidence-ranked hypothesis validation is implemented; weak/invalid generations are retained separately for audit.
 - Sentence-level claim provenance is implemented; the latest live check accepted 5/5 claims with 9/9 valid passage citations.
 - Production citation expansion now removes weak graph neighbours before fusion; the evaluation framework remains separate from the application pipeline.
@@ -53,7 +53,6 @@ Not yet implemented or validated:
 - rule-based contradiction and other task-specific baselines
 - validated scientific NER, embedding, and LLM comparisons on refreshed human-reviewed references
 - human validation and calibration of semantic entailment decisions
-- BM25 and conventional matched-context RAG baselines
 - broader component ablations and repeated stochastic model runs
 - controlled 10K/50K/100K scaling benchmarks and evaluation-focused UI reporting
 
@@ -143,7 +142,7 @@ Follow [SETUP.md](SETUP.md) for the verified Windows installation, local Neo4j c
 - Python 3.11, 64-bit for the primary CUDA setup
 - Python 3.13.14 also verified for the CPU evaluation environment
 - A dedicated local Neo4j database
-- Groq API key
+- Ollama with an installed model, or a Groq API key for hosted generation
 - Semantic Scholar API key for S2 ingestion
 
 Dependencies are pinned to the tested environment. From the repository root:
@@ -194,7 +193,10 @@ NEO4J_USERNAME=neo4j
 NEO4J_PASSWORD=your_password
 NEO4J_ALLOW_RESET=true
 
-GROQ_API_KEY=your_groq_key
+LLM_PROVIDER=ollama
+OLLAMA_BASE_URL=http://127.0.0.1:11434
+OLLAMA_MODEL=qwen2.5:3b-instruct
+# GROQ_API_KEY is needed only for LLM_PROVIDER=groq
 SEMANTIC_SCHOLAR_API_KEY=your_semantic_scholar_key
 
 S2_QUERIES=graph neural networks;artificial intelligence and machine learning;cybersecurity;computer networks;databases;software engineering;cloud computing;natural language processing;computer vision;data science;operating systems
@@ -274,7 +276,7 @@ Explain a hybrid retrieval result without calling the LLM:
 
 ## Retrieval Evaluation
 
-The retrieval benchmark is version `0.2-draft` and contains 20 frozen queries, split into 6 development and 14 test queries. Its 1,329 relevance labels are provisional, were created against the earlier 8,850-paper corpus, and must be regenerated or extended for the 47,619-paper corpus before new scores are reported.
+The historical retrieval benchmark is version `0.2-draft` and contains 20 frozen queries, split into 6 development and 14 test queries. Its 1,329 relevance labels are provisional, were created against the earlier 8,850-paper corpus, and must be regenerated or extended for each expanded corpus before new scores are reported. Use the frozen-pool workflow in [docs/LOCAL_EVALUATION.md](docs/LOCAL_EVALUATION.md).
 
 Run the vector, graph-only, and evaluation-only hybrid comparison with Neo4j and Chroma available:
 
@@ -323,9 +325,9 @@ or combined review/contradiction/hypothesis experiments.
 
 ## Scope Boundaries
 
-- The current corpus is 47,619 cleaned Semantic Scholar records collected through 11 broad CSE topic queries, primarily abstracts and metadata. It is not a balanced taxonomy, a relevance-labeled corpus, or the million-scale full-text corpus proposed in the Phase 1 report.
-- The expanded graph has 22,370 real citation edges across 47,619 papers. Topic smoke tests found useful vector results, but strict graph filtering retained a result for only one of 11 representative queries; scaling alone has not solved sparse graph contribution.
-- The project uses pretrained SPECTER embeddings and the configurable Groq model `openai/gpt-oss-120b`; it does not train or fine-tune a local reasoning model.
+- The September 13 corpus is 47,627 cleaned Semantic Scholar records collected through 11 broad CSE topic queries, primarily abstracts and metadata. It is not a balanced taxonomy, a relevance-labeled corpus, or the million-scale full-text corpus proposed in the Phase 1 report.
+- The teammate’s historical expanded graph had 22,370 real citation edges across 47,619 papers. Topic smoke tests found useful vector results, but strict graph filtering retained a result for only one of 11 representative queries; scaling alone has not solved sparse graph contribution.
+- The project uses pretrained SPECTER embeddings and local Ollama `qwen2.5:3b-instruct` by default, with optional Groq hosting; it does not train or fine-tune a local reasoning model.
 - Review claims are traceable to deterministic sentence IDs from verified abstracts. Passage existence is enforced; semantic entailment quality is not yet benchmarked.
 - PDF ingestion and full-text section provenance remain intentionally deferred for this phase.
 

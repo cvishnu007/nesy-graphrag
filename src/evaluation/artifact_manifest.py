@@ -13,6 +13,7 @@ from pathlib import Path
 import chromadb
 
 from src.utils import config
+from src.utils.llm_client import llm_runtime_metadata
 
 
 def sha256_file(path: str | Path) -> str:
@@ -172,6 +173,12 @@ def create_artifact_manifest(
     except importlib.metadata.PackageNotFoundError:
         spacy_model_version = None
     prompts_path = Path("src/pipeline/prompts.py")
+    llm_metadata = llm_runtime_metadata()
+    llm_fallback = (
+        config.OLLAMA_FALLBACK_MODEL
+        if llm_metadata["provider"] == "ollama"
+        else config.LLM_MODEL_FALLBACK
+    )
     return {
         "manifest_version": "1.0",
         "verification_status": overall,
@@ -186,8 +193,9 @@ def create_artifact_manifest(
         "models": {
             "ner": {"model": "en_core_web_sm", "version": spacy_model_version},
             "embedding": config.EMBEDDING_MODEL,
-            "llm_primary": config.LLM_MODEL,
-            "llm_fallback": config.LLM_MODEL_FALLBACK,
+            "llm": llm_metadata,
+            "llm_primary": llm_metadata["model"],
+            "llm_fallback": llm_fallback,
             "semantic_support": config.SEMANTIC_SUPPORT_MODEL,
         },
         "configuration": {

@@ -2,9 +2,8 @@ import sys
 import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
-from groq import Groq
-from src.utils.config import GROQ_API_KEY, is_configured
 from src.storage.neo4j_store import get_driver
+from src.utils.llm_client import create_llm_client
 from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
 from src.pipeline.hypothesis import llm_hypothesis
@@ -13,16 +12,22 @@ from src.pipeline.results_logger import log_result
 
 # ── Shared clients — init once ─────────────────────────
 _driver      = None
-_groq_client = None
+_llm_client  = None
+
+
+def get_llm():
+    global _llm_client
+    if _llm_client is None:
+        _llm_client = create_llm_client()
+    return _llm_client
 
 
 def get_groq():
-    global _groq_client
-    if _groq_client is None:
-        if not is_configured(GROQ_API_KEY):
-            raise RuntimeError("Missing real GROQ_API_KEY in .env")
-        _groq_client = Groq(api_key=GROQ_API_KEY)
-    return _groq_client
+    """Compatibility accessor for callers explicitly requiring Groq."""
+    client = get_llm()
+    if client.provider != "groq":
+        raise RuntimeError("get_groq() requires LLM_PROVIDER=groq; use get_llm()")
+    return client
 
 
 def get_neo4j():
@@ -37,11 +42,11 @@ def graphrag_query(query: str, mode: str = "review", top_k: int = 10) -> dict:
     Master query function.
     mode: "review" | "contradict" | "hypothesis"
     """
-    driver      = get_neo4j()
-    groq_client = get_groq()
+    driver     = get_neo4j()
+    llm_client = get_llm()
 
     if mode == "review":
-        result = llm_review(groq_client, driver, query, top_k=top_k)
+        result = llm_review(llm_client, driver, query, top_k=top_k)
         # compute_all_metrics needs result to exist first — called AFTER llm_review()
         if result.get("papers"):
             result["metrics"] = compute_all_metrics(result, driver=driver)
@@ -49,12 +54,12 @@ def graphrag_query(query: str, mode: str = "review", top_k: int = 10) -> dict:
         return result
 
     elif mode == "contradict":
-        result = llm_contradict(groq_client, driver, query, top_k=top_k)
+        result = llm_contradict(llm_client, driver, query, top_k=top_k)
         log_result(query, mode, {})
         return result
 
     elif mode == "hypothesis":
-        result = llm_hypothesis(groq_client, driver, query, top_k=top_k)
+        result = llm_hypothesis(llm_client, driver, query, top_k=top_k)
         log_result(query, mode, {})
         return result
 

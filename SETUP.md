@@ -1,5 +1,7 @@
 # NeSy-GraphRAG Setup
 
+For the September 13 macOS/Ollama setup and current evaluation commands, start with [docs/LOCAL_EVALUATION.md](docs/LOCAL_EVALUATION.md). The Windows hardware counts below describe the teammate’s August 31 snapshot.
+
 This guide reproduces the verified local project setup from a fresh clone. The primary instructions target Windows PowerShell, Python 3.11, a local Neo4j database, Semantic Scholar data, and an optional NVIDIA GPU.
 
 PDF ingestion is not part of this setup. The current pipeline uses paper metadata and abstracts.
@@ -31,7 +33,7 @@ Install these before cloning:
 1. Git
 2. Python 3.11, 64-bit
 3. Neo4j Desktop, Neo4j Community Server, or another local Neo4j installation
-4. A Groq API key
+4. Ollama with `qwen2.5:3b-instruct` installed (`ollama pull qwen2.5:3b-instruct`), or a Groq API key for hosted generation
 5. A Semantic Scholar API key for reliable multi-topic ingestion
 6. An NVIDIA driver that supports the CUDA 12.6 PyTorch wheel, if using NVIDIA acceleration
 
@@ -167,7 +169,9 @@ Edit `.env` and replace these values:
 
 ```env
 NEO4J_PASSWORD=your_local_neo4j_password
-GROQ_API_KEY=your_groq_api_key
+LLM_PROVIDER=ollama
+OLLAMA_MODEL=qwen2.5:3b-instruct
+# Set GROQ_API_KEY only when selecting LLM_PROVIDER=groq
 SEMANTIC_SCHOLAR_API_KEY=your_semantic_scholar_api_key
 ```
 
@@ -177,7 +181,7 @@ The template already matches the verified project configuration:
 DATA_SOURCE=s2
 NEO4J_URI=neo4j://127.0.0.1:7687
 NEO4J_USERNAME=neo4j
-NEO4J_ALLOW_RESET=true
+NEO4J_ALLOW_RESET=false
 
 S2_QUERY=graph neural networks
 S2_QUERIES=graph neural networks;artificial intelligence and machine learning;cybersecurity;computer networks;databases;software engineering;cloud computing;natural language processing;computer vision;data science;operating systems
@@ -195,6 +199,9 @@ EMBEDDING_MODEL=allenai-specter
 EMBEDDING_DEVICE=auto
 EMBEDDING_BATCH_SIZE=16
 
+LLM_PROVIDER=ollama
+OLLAMA_MODEL=qwen2.5:3b-instruct
+# Hosted provider settings:
 LLM_MODEL=openai/gpt-oss-120b
 LLM_MODEL_FALLBACK=llama-3.1-8b-instant
 
@@ -218,7 +225,7 @@ Do not commit `.env`. It is ignored by Git.
 Verify non-secret configuration values:
 
 ```powershell
-.\venv\Scripts\python.exe -c "from src.utils import config; print(config.DATA_SOURCE, config.NEO4J_URI, config.CHROMA_COLLECTION, config.EMBEDDING_MODEL, config.LLM_MODEL)"
+.\venv\Scripts\python.exe -c "from src.utils import config; print(config.DATA_SOURCE, config.NEO4J_URI, config.CHROMA_COLLECTION, config.EMBEDDING_MODEL, config.LLM_PROVIDER)"
 ```
 
 ## 7. Verify Neo4j Connectivity
@@ -290,7 +297,9 @@ The count should match the cleaned-paper count. The verified broad snapshot repo
 Ensure Neo4j is running and `.env` contains `NEO4J_ALLOW_RESET=true`.
 
 ```powershell
+$env:NEO4J_ALLOW_RESET = "true"
 .\venv\Scripts\python.exe -m src.storage.neo4j_store
+Remove-Item Env:NEO4J_ALLOW_RESET
 ```
 
 This stage clears the configured Neo4j database and rebuilds papers, authors, concepts, and citation edges from `data/s2_ner.json`.
@@ -311,7 +320,7 @@ Run the complete unit suite:
 .\venv\Scripts\python.exe -m pytest
 ```
 
-The current repository collects 249 pytest cases, including multi-topic ingestion,
+The historical August 31 repository collected 249 pytest cases, including multi-topic ingestion,
 resume safety, production retrieval, annotation tooling, provenance, semantic
 support, model comparisons, contradiction, and hypothesis coverage.
 
@@ -331,7 +340,7 @@ The diagnostic prints both the raw and retained graph-candidate counts. A low or
 zero retained count is valid: weak citation neighbours are intentionally removed,
 while vector results still provide the requested number of papers.
 
-Run a single live review with Neo4j, Chroma, Hugging Face, and Groq:
+Run a single live review with Neo4j, Chroma, cached embeddings, and the selected LLM provider:
 
 ```powershell
 .\venv\Scripts\python.exe -c "from src.pipeline.orchestrator import graphrag_query; r=graphrag_query('graph neural networks for node classification', mode='review', top_k=5); print(r['provenance']['stats'])"
@@ -341,7 +350,7 @@ A valid run should report verified papers, at least one accepted claim, valid pa
 
 ## 10. Run Retrieval Evaluation
 
-Retrieval evaluation requires the Chroma index and Neo4j graph. It does not call Groq. The tracked benchmark contains 20 frozen queries with 6 development and 14 held-out test queries.
+Retrieval evaluation requires the Chroma index and Neo4j graph. It does not call a generation provider. The tracked benchmark contains 20 frozen queries with 6 development and 14 held-out test queries.
 
 The current `0.2-draft` labels are machine-assisted, predate the broad-CSE rebuild, and require candidate-pool refresh plus human review. They are historical development diagnostics, not final expanded-corpus results.
 
@@ -500,6 +509,10 @@ Do not enable offline mode before the first successful model download.
 ### Chroma Count Does Not Match The Clean Dataset
 
 The collection may contain stale data from an older run. Follow the clean rebuild procedure, then rebuild Chroma before rebuilding Neo4j.
+
+### Ollama Model Failure
+
+Check `ollama list`, start the local service, and run `ollama pull qwen2.5:3b-instruct` if the configured model is absent. Confirm `OLLAMA_BASE_URL` and `LLM_PROVIDER=ollama`. A real Groq key is unnecessary for this provider. See the [local runbook](docs/LOCAL_EVALUATION.md) for timeout and memory settings.
 
 ### Groq Model Failure
 

@@ -1,0 +1,48 @@
+{
+  "paper_count": 47627,
+  "paper_ids_sha256": "7b9ddafb9a63c125739eb35d71e5e93c73016d36ba21c408bb13b9fae4f6df16",
+  "ner": {
+    "count": 47627,
+    "missing_count": 0,
+    "extra_count": 0,
+    "duplicate_count": 0,
+    "text_mismatch_count": 0,
+    "text_mismatch_sample": [],
+    "unfinished_count": 0
+  },
+  "chroma": {
+    "count": 47627,
+    "missing_count": 0,
+    "extra_count": 0,
+    "duplicate_count": 0,
+    "text_mismatch_count": 0,
+    "text_mismatch_sample": [],
+    "unfinished_count": 0
+  },
+  "neo4j": {
+    "count": 47627,
+    "missing_count": 0,
+    "extra_count": 0,
+    "duplicate_count": 0,
+    "text_mismatch_count": 0,
+    "text_mismatch_sample": [],
+    "unfinished_count": 0
+  },
+  "consistent": true,
+  "graph_nodes": {
+    "Paper": 47627,
+    "Author": 146157,
+    "Concept": 196616
+  },
+  "graph_relationships": {
+    "AUTHORED_BY": 190284,
+    "RELATED_TO": 475199,
+    "CITES": 22514
+  },
+  "clean_sha256": "85b3783e4b2bf091cc216c464f47222759e408aeb0e225738e0fa4fb49d03e0a",
+  "ner_sha256": "a7284d22b63b5e007e2284f74bde37db5f741c4262394f24ebc4ca2fcb711914",
+  "raw_sha256": "d1592340873f780a0ecee544b7667b0c2acf0757bfc6f50ba7c6d0b16d69a165",
+  "collection": "s2_papers",
+  "embedding_model": "allenai-specter",
+  "scope": "Exact IDs and title/abstract equality; does not re-encode or verify individual vector values."
+}

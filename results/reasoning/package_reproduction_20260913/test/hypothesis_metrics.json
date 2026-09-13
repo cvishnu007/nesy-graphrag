@@ -1,0 +1,87 @@
+{
+  "rating_count": 86,
+  "dimensions": {
+    "evidence": {
+      "count": 86,
+      "mean": 2.7674418604651163,
+      "std": 1.4115340377203274
+    },
+    "novelty": {
+      "count": 86,
+      "mean": 3.046511627906977,
+      "std": 0.9138084978785349
+    },
+    "feasibility": {
+      "count": 86,
+      "mean": 3.2325581395348837,
+      "std": 1.1172476418106339
+    },
+    "specificity": {
+      "count": 86,
+      "mean": 3.4186046511627906,
+      "std": 1.3335135987750186
+    },
+    "usefulness": {
+      "count": 86,
+      "mean": 3.744186046511628,
+      "std": 1.2956640257845693
+    }
+  },
+  "aggregate_score_mean": 3.2418604651162792,
+  "aggregate_score_std": 0.9803256597349002,
+  "acceptance_rate": 0.6744186046511628,
+  "hypothesis_count": 70,
+  "rated_hypothesis_count": 70,
+  "hypothesis_acceptance_rate": 0.6142857142857143,
+  "reference_model_feasibility_agreement": {
+    "pair_count": 0,
+    "observed_agreement": null,
+    "weighted_kappa": null,
+    "status": "insufficient_data"
+  },
+  "annotation_pass_agreement": {
+    "status": "available",
+    "reviewer_pairs": [
+      {
+        "reviewers": [
+          "reviewer_01",
+          "reviewer_02"
+        ],
+        "dimensions": {
+          "evidence": {
+            "shared_count": 16,
+            "observed_agreement": 0.8125,
+            "weighted_kappa": 0.7272727272727273
+          },
+          "novelty": {
+            "shared_count": 16,
+            "observed_agreement": 0.8125,
+            "weighted_kappa": -0.09090909090909083
+          },
+          "feasibility": {
+            "shared_count": 16,
+            "observed_agreement": 0.6875,
+            "weighted_kappa": 0.19999999999999996
+          },
+          "specificity": {
+            "shared_count": 16,
+            "observed_agreement": 0.0625,
+            "weighted_kappa": -0.11627906976744184
+          },
+          "usefulness": {
+            "shared_count": 16,
+            "observed_agreement": 0.3125,
+            "weighted_kappa": 0.0
+          }
+        }
+      }
+    ]
+  },
+  "hns_reference_novelty": {
+    "pair_count": 0,
+    "pearson_correlation": null,
+    "status": "insufficient_data"
+  },
+  "reference_annotation_source": "AI-generated",
+  "human_ground_truth": false
+}
