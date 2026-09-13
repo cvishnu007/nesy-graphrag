@@ -18,21 +18,26 @@ The user requested all five follow-up workstreams and asked that every change be
 - Added `matched_rag.py` for vector RAG versus GraphRAG with the same model, prompt, evidence/output budgets and no repair retries. It stores evidence, raw outputs, hashes and provenance; independent answer-quality labels remain separate work.
 - Added development-only partial-support calibration over saved NLI probabilities. Test partial-support F1 increased **0 → 0.125**, macro F1 **0.2855 → 0.3190**, but false acceptance increased **0 → 0.03125**. This experimental threshold was not adopted in production.
 - Added a separate, licensed SciFact claim/evidence benchmark and reproducible evaluation CLI. It preserves complete rationale sets and separates official train/local development (955 items) from official dev/local test (338 items, 122 contradicted). The fixed NLI model achieved contradiction F1 **0.6286**, two-gold-class macro F1 **0.5143**, and overall accuracy **0.3580**. It evaluates biomedical entailment, not graph paper-pair detection. The frozen in-domain paper-pair benchmark still has one positive test contradiction.
-- Added and extended automated tests for provider selection/retries/fallbacks, pipeline routing, BM25, frozen-pool integrity, matched contexts, packaged paths/hashes, development-only calibration, SciFact conversion and label-blinded evaluation. The current full suite passes **304 tests**; compile, dependency consistency and diff-whitespace checks also pass. One upstream spaCy/Click deprecation warning remains.
-- Added `docs/LOCAL_EVALUATION.md` and updated README/setup instructions with local startup, safe rebuilds, portable reproduction and interpretation limits. Tightened live checks so empty or invalid structured generations cannot silently count as successful pipeline evidence.
+- Added and extended automated tests for provider selection/retries/fallbacks, pipeline routing, BM25, frozen-pool integrity, matched contexts, packaged paths/hashes, development-only calibration, SciFact conversion and label-blinded evaluation. The current full suite passes **306 tests**; compile, dependency consistency and diff-whitespace checks also pass. One upstream spaCy/Click deprecation warning remains.
+- Added `docs/LOCAL_EVALUATION.md`, refreshed `PROJECT_STATUS.md`, and updated README/setup instructions with local startup, safe rebuilds, portable reproduction and interpretation limits. Tightened live checks so empty or invalid structured generations cannot silently count as successful pipeline evidence.
 
 - Fixed the live expanded-graph rebuild failure: the previous single-transaction `DETACH DELETE` exceeded Neo4j's transaction-memory limit. Rebuilds now delete in 1,000-node transactions and consume the result before reporting success (Neo4j 5.23+ syntax). The dedicated-database reset guard remains required.
 - Corrected expanded retrieval protocol capture to read fusion weights from the evaluation configuration module and record graph limits, hop depth and production weights; added a regression check. Matched RAG records the same retrieval settings.
 
 - Added `store_audit.py` and a stale-evidence regression test; the audit checks all titles/abstracts as well as paper-ID parity and NER completion.
 
+- The first grading attempt stopped on malformed JSON after eight development-only judgments. Preserved it under `abandoned_dev_format_v1`; added schema-constrained Ollama output, bounded batch length/grades, and a regression test. A second development-only trial confirmed schema validity but spent most generation time repeating IDs/prose. Preserved and discarded its 24 dev labels too. Final protocol 1.2 returns ordered integer grades mapped to saved batch IDs; no rationale is requested or invented. All protocol changes preceded test-query grading, and no retrieval settings changed.
+- Streamlit startup and its three-mode selector passed the live AppTest with no exceptions; the loopback demo is running at `http://127.0.0.1:8501`. Application-mode generation checks remain pending.
+
+- Added a rank-only overlap diagnostic: production fusion returns the same ordered top 20 as vector retrieval for 15 of 20 queries. No labels were used and no retrieval settings were changed after this check.
+
 ## Still running or pending
 
-1. Freeze the expanded five-method retrieval pool, grade provisional AI references, evaluate held-out rankings and paired significance.
+1. Expanded five-method rankings (1,145 query-paper candidates) are frozen for all 20 queries in `results/retrieval/expanded_20260913/`. Checkpointed local AI grading is running; held-out scoring and paired significance follow without parameter changes.
 2. Run matched RAG and all three local application modes, then verify Streamlit startup.
 3. Complete local code review and final test/compile/dependency checks, update this log and project status with the actual results, and retain the changes on the local feature branch.
 
-A separate review agent hit its service usage limit; review continues in the primary session. No code or results have been pushed. Independent human judgment review, stronger in-domain contradiction coverage, and expert hypothesis/answer evaluation remain research limitations rather than completed validation.
+A separate review agent hit its service usage limit; review continues in the primary session. Implementation checkpoint committed locally as `579de55` and the feature branch is now checked out in the main IDE workspace. No code or results have been pushed. Independent human judgment review, stronger in-domain contradiction coverage, and expert hypothesis/answer evaluation remain research limitations rather than completed validation.
 
 ## Historical August 27 handoff
 

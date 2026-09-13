@@ -49,3 +49,13 @@ def test_runtime_protocol_records_actual_evaluation_and_production_settings():
     settings=runtime_retrieval_settings()
     assert settings['evaluation_hybrid_weights']==[config.HYBRID_VECTOR_WEIGHT,config.HYBRID_GRAPH_WEIGHT]
     assert settings['production']['hop_depth']>0
+
+
+def test_compact_schema_maps_ordered_grades_to_exact_candidate_ids(tmp_path):
+    rows=[{'query_id':'Q1','query':'q','paper_id':p,'title':'t','abstract':'a'} for p in ['a','b']]
+    class Judge:
+        def complete(self,prompt,**kwargs):
+            assert kwargs['json_schema']['properties']['grades']['minItems']==2
+            return '{"grades":[2,0]}'
+    grades=grade_candidates(rows,Judge(),tmp_path/'compact.json',structured=True)
+    assert grades['Q1/a']['grade']==2 and grades['Q1/b']['grade']==0

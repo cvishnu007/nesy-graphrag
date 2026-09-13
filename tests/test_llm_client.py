@@ -293,3 +293,11 @@ def test_groq_adapter_preserves_explicit_experiment_parameters(monkeypatch):
     client=llm_client.GroqLLMClient(object(),model='primary',fallback_model='fallback',max_retries=4)
     assert client.complete('q',max_tokens=17,temperature=0.0,reasoning_effort='none') == 'hosted answer'
     assert calls == [{'model':'primary','fallback_model':'fallback','max_tokens':17,'temperature':0.0,'max_retries':4,'reasoning_effort':'none'}]
+
+
+def test_ollama_can_constrain_evaluation_output_to_json_schema():
+    session=FakeSession(gets=[FakeResponse({'models':[{'name':'model'}]})],posts=[FakeResponse({'message':{'content':'{"grade":2}'}})])
+    client=llm_client.OllamaLLMClient(base_url='http://localhost:11434',model='model',timeout_sec=20,keep_alive='2m',context_length=1024,max_retries=1,session=session)
+    schema={'type':'object','properties':{'grade':{'type':'integer','enum':[0,1,2]}},'required':['grade']}
+    assert client.complete('grade',max_tokens=100,temperature=0,json_schema=schema)=='{"grade":2}'
+    assert session.post_calls[0]['json']['format']==schema

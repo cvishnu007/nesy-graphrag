@@ -192,6 +192,7 @@ class OllamaLLMClient:
         max_tokens: int,
         temperature: float,
         reasoning_effort: str | None = None,
+        json_schema: dict | None = None,
     ) -> str:
         self._verify_model()
         payload = {
@@ -205,6 +206,8 @@ class OllamaLLMClient:
                 "num_ctx": self.context_length,
             },
         }
+        if json_schema is not None:
+            payload["format"] = json_schema
         response = self._request("post", "/api/chat", json=payload)
         try:
             content = response.json()["message"]["content"]

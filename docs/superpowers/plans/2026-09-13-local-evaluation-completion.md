@@ -9,14 +9,14 @@ Design: reuse the September 2 provider-neutral LLM specification, preserve froze
 - [x] Install Ollama and Neo4j, create a dedicated project database, configure ignored `.env`.
 - [x] Download local qwen2.5:3b-instruct and verify real completion.
 - [x] Preserve original JSON artifacts; finish 11-topic ingestion: 52,820 raw / 47,627 clean, all original IDs retained.
-- [ ] Finish incremental NER and Chroma indexing; rebuild only dedicated Neo4j and verify exact ID parity.
+- [x] Finish incremental NER and Chroma indexing; rebuild only dedicated Neo4j and verify exact ID parity.
 - [x] Fix default reasoning benchmark paths and add offline cross-platform package reproduction.
 - [x] Add deterministic BM25 and production-filtered retrieval to optional pool/evaluation methods.
 - [x] Add matched-budget vector/graph RAG comparison with raw output, provenance, context hashes, and frozen protocol.
 - [ ] Freeze expanded method-hidden candidate pool; produce explicitly AI-generated reference judgments; evaluate cached dev/test rankings and paired significance.
 - [x] Run development-only partial-support calibration using saved NLI scores; retain both improvements and false-acceptance tradeoff.
 - [x] Import a separate SciFact rationale benchmark, with source train -> local dev and source dev -> local test, preserving full rationale sets and excluding duplicate content.
-- [ ] Evaluate fixed NLI on SciFact and record contradiction-class metrics separately from paper-pair detection.
+- [x] Evaluate fixed NLI on SciFact and record contradiction-class metrics separately from paper-pair detection.
 - [ ] Run all local application modes and matched RAG comparison; start Streamlit.
 - [ ] Review changes, run full tests/compile/pip/diff checks, update authoritative status/setup docs, commit locally and expose branch in original workspace.
 
