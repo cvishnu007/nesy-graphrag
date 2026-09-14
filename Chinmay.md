@@ -1,6 +1,6 @@
 # Chinmay — Local generation and evaluation work log
 
-Updated: September 14, 2026. **Paused at the user’s request; partial checkpoint retained for delivery.** Branch: `feat/local-evaluation`, based on the latest `origin/phase3` (`880d76e`); local `master` was already current at `ee27d00`.
+Updated: September 14, 2026. **Paused at the user’s request; partial checkpoint pushed.** Branch: `feat/local-evaluation`, based on the latest `origin/phase3` (`880d76e`); local `master` was already current at `ee27d00`.
 
 The user requested all five follow-up workstreams and asked that every change be recorded here. The August 27 handoff is preserved below as history; its Neo4j/Groq blockers no longer describe the current local setup.
 
@@ -50,7 +50,7 @@ Cleanup performed:
 - Restored a compact Chroma collection with exactly the original **8,850 IDs, documents and metadata**, reusing the original vectors without model inference. Chroma cosine reinsertion causes small float32 renormalization differences; all vectors were checked within absolute tolerance `1e-6` (maximum observed `9.54e-7`). Removed the expanded index, expanded JSON corpus, expansion checkpoint and now-redundant temporary backup.
 - Preserved the pre-existing Python virtual environment and SPECTER model cache. Existing shared Homebrew libraries that were upgraded during installation were retained to avoid breaking other software; their names are recorded in `results/local/runtime_cleanup_20260914.json`.
 - Preserved small diagnostic logs and the completed evaluation evidence in Git. The 47,627-paper store audit describes the verified September 13 snapshot, **not the laptop’s state after cleanup**. The demo is now stopped and its services/models are uninstalled.
-- Updated README, project status, the local runbook, and the execution checklist to show the pause and cleanup. After cleanup, **306 tests passed** (one upstream spaCy/Click warning); compilation and `pip check` passed. Checks confirmed all seven installed formulae and the model directories absent, ports 11434/7687/8501 closed, and exact 8,850-ID parity across the restored clean/NER/Chroma data. Push target: `origin/feat/local-evaluation`.
+- Updated README, project status, the local runbook, and the execution checklist to show the pause and cleanup. After cleanup, **306 tests passed** (one upstream spaCy/Click warning); compilation and `pip check` passed. Checks confirmed all seven installed formulae and the model directories absent, ports 11434/7687/8501 closed, and exact 8,850-ID parity across the restored clean/NER/Chroma data. Delivery verified: checkpoint commit **`4b434e0`** was successfully pushed to **`origin/feat/local-evaluation`** on September 14. The committed pool blobs match all four frozen input hashes, so the partial grading checkpoint remains resumable. This documentation follow-up is included on the same branch.
 
 ## Resume later
 
