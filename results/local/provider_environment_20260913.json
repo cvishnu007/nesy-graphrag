@@ -1,0 +1,39 @@
+{
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "llm": {
+    "provider": "ollama",
+    "model": "qwen2.5:3b-instruct",
+    "base_url": "http://127.0.0.1:11434",
+    "timeout_sec": 300,
+    "max_retries": 4,
+    "context_length": 8192,
+    "keep_alive": "2m"
+  },
+  "installed_models": [
+    {
+      "name": "qwen2.5:3b-instruct",
+      "model": "qwen2.5:3b-instruct",
+      "modified_at": "2026-09-13T10:57:45.992271333+05:30",
+      "size": 1929912432,
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 2048
+      },
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    }
+  ],
+  "source_commit": "579de55499f636312b7c4059079cc4d33dd262e0"
+}

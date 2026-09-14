@@ -1,0 +1,31 @@
+Judged 4/1145
+Judged 8/1145
+Traceback (most recent call last):
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/evaluation/refresh_retrieval.py", line 72, in grade_candidates
+    parsed=json.loads(text)['judgments']
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 354, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 2 column 671 (char 672)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/evaluation/refresh_retrieval.py", line 192, in <module>
+    if __name__=='__main__': raise SystemExit(main())
+                                              ^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/evaluation/refresh_retrieval.py", line 162, in main
+    grades=grade_candidates(rows,create_llm_client(),directory/'judgments_checkpoint.json',batch_size=args.batch_size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/evaluation/refresh_retrieval.py", line 81, in grade_candidates
+    raise ValueError(f'Invalid AI judgments for {query_id}; raw output saved') from last_error
+ValueError: Invalid AI judgments for Q001; raw output saved

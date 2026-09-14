@@ -1,0 +1,1 @@
+Development-only verbose schema trial. Valid output, but repeated long paper IDs and prose dominated local inference time. Preserved and discarded all 24 dev judgments. Version 1.2 requests an ordered integer-grade array mapped to the saved batch IDs, with the same relevance criteria and retrieval pool. No test query was processed before this change; no old labels are reused.

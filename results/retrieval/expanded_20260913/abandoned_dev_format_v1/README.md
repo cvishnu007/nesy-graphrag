@@ -1,0 +1,1 @@
+Development-only attempt abandoned after malformed JSON on Q001. Eight provisional dev judgments were created, no test query was judged. No labels from this attempt are reused. Pool rankings and retrieval settings remain unchanged; version 1.1 adds native JSON-schema output constraints before a fresh grading run.

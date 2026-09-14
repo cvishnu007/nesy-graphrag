@@ -1,0 +1,19 @@
+{
+  "exceptions": [],
+  "title": [
+    "\ud83d\udd2c NeSy-GraphRAG \u2014 Research Assistant"
+  ],
+  "modes": [
+    "\ud83d\udcda Literature Review",
+    "\u26a1 Contradiction Detection",
+    "\ud83d\udca1 Hypothesis Generation"
+  ],
+  "sidebar": [
+    "---",
+    "**Pipeline:**",
+    "- Source: `s2`",
+    "- Chroma collection: `s2_papers` (47627 vectors)",
+    "- Neo4j: 47627 papers, 22514 CITES edges",
+    "- LLM: `ollama / qwen2.5:3b-instruct`"
+  ]
+}

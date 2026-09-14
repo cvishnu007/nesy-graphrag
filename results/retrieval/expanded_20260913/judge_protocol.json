@@ -1,0 +1,14 @@
+{
+  "provider": "ollama",
+  "model": "qwen2.5:3b-instruct",
+  "base_url": "http://127.0.0.1:11434",
+  "timeout_sec": 300,
+  "max_retries": 4,
+  "context_length": 8192,
+  "keep_alive": "2m",
+  "prompt_version": "blinded-title-abstract-1.2-ordered-grades",
+  "batch_size": 4,
+  "temperature": 0.0,
+  "max_tokens": 64,
+  "structured_output": "Ollama JSON schema; ordered integer grades bound to saved batch paper IDs"
+}

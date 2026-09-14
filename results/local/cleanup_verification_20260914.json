@@ -1,0 +1,25 @@
+{
+  "formulae_absent": [
+    "cypher-shell",
+    "little-cms2",
+    "mlx",
+    "mlx-c",
+    "neo4j",
+    "ollama",
+    "openjdk@21"
+  ],
+  "ports_open": {
+    "11434": false,
+    "7687": false,
+    "8501": false
+  },
+  "resources_absent": {
+    "/Users/chinmaydwivedi/.ollama": true,
+    "/Users/chinmaydwivedi/.cache/huggingface/hub/models--cross-encoder--nli-deberta-v3-small": true,
+    "data/neo4j-local": true,
+    "data/scifact": true
+  },
+  "restored_clean_ner_chroma_id_count": 8850,
+  "original_virtualenv_preserved": true,
+  "preexisting_specter_cache_preserved": true
+}

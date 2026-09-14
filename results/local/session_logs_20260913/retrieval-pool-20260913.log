@@ -1,0 +1,45 @@
+Connected to Neo4j!
+[1/20] Q001: graph neural networks for node classification
+Embedding device: mps (Apple Metal)
+Loading embedding model: allenai-specter
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5573.03it/s]
+Model loaded!
+  Vector=20 Graph=20 Hybrid=20 Unique=58
+[2/20] Q002: graph attention network methods
+  Vector=20 Graph=20 Hybrid=20 Unique=60
+[3/20] Q003: graph neural networks for recommendation systems
+  Vector=20 Graph=20 Hybrid=20 Unique=56
+[4/20] Q004: graph convolutional networks compared with graph attention networks
+  Vector=20 Graph=20 Hybrid=20 Unique=59
+[5/20] Q005: self-supervised graph representation learning
+  Vector=20 Graph=20 Hybrid=20 Unique=62
+[6/20] Q006: graph neural networks for molecular property prediction
+  Vector=20 Graph=20 Hybrid=20 Unique=52
+[7/20] Q007: link prediction using graph neural networks
+  Vector=20 Graph=20 Hybrid=20 Unique=55
+[8/20] Q008: graph classification methods
+  Vector=20 Graph=20 Hybrid=20 Unique=59
+[9/20] Q009: heterogeneous graph neural networks
+  Vector=20 Graph=20 Hybrid=20 Unique=55
+[10/20] Q010: dynamic graph neural networks
+  Vector=20 Graph=20 Hybrid=20 Unique=60
+[11/20] Q011: oversmoothing in deep graph neural networks
+  Vector=20 Graph=20 Hybrid=20 Unique=54
+[12/20] Q012: explainable graph neural network methods
+  Vector=20 Graph=20 Hybrid=20 Unique=58
+[13/20] Q013: graph neural networks for traffic forecasting
+  Vector=20 Graph=20 Hybrid=20 Unique=54
+[14/20] Q014: graph neural networks for fraud detection
+  Vector=20 Graph=20 Hybrid=20 Unique=51
+[15/20] Q015: privacy-preserving federated graph learning
+  Vector=20 Graph=20 Hybrid=20 Unique=58
+[16/20] Q016: contrastive learning for graph representations
+  Vector=20 Graph=20 Hybrid=20 Unique=58
+[17/20] Q017: adversarial attacks and robustness in graph neural networks
+  Vector=20 Graph=20 Hybrid=20 Unique=56
+[18/20] Q018: transformer architectures for graph learning
+  Vector=20 Graph=20 Hybrid=20 Unique=60
+[19/20] Q019: reinforcement learning with graph neural networks
+  Vector=20 Graph=20 Hybrid=20 Unique=60
+[20/20] Q020: knowledge graph embeddings compared with graph neural networks
+  Vector=20 Graph=20 Hybrid=20 Unique=60

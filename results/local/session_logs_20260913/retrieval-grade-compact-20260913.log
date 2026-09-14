@@ -1,0 +1,284 @@
+Judged 4/1145
+Judged 8/1145
+Judged 12/1145
+Judged 16/1145
+Judged 20/1145
+Judged 24/1145
+Judged 28/1145
+Judged 32/1145
+Judged 36/1145
+Judged 40/1145
+Judged 44/1145
+Judged 48/1145
+Judged 52/1145
+Judged 56/1145
+Judged 58/1145
+Judged 62/1145
+Judged 66/1145
+Judged 70/1145
+Judged 74/1145
+Judged 78/1145
+Judged 82/1145
+Judged 86/1145
+Judged 90/1145
+Judged 94/1145
+Judged 98/1145
+Judged 102/1145
+Judged 106/1145
+Judged 110/1145
+Judged 114/1145
+Judged 118/1145
+Judged 122/1145
+Judged 126/1145
+Judged 130/1145
+Judged 134/1145
+Judged 138/1145
+Judged 142/1145
+Judged 146/1145
+Judged 150/1145
+Judged 154/1145
+Judged 158/1145
+Judged 162/1145
+Judged 166/1145
+Judged 170/1145
+Judged 174/1145
+Judged 178/1145
+Judged 182/1145
+Judged 186/1145
+Judged 190/1145
+Judged 194/1145
+Judged 198/1145
+Judged 202/1145
+Judged 206/1145
+Judged 210/1145
+Judged 214/1145
+Judged 218/1145
+Judged 222/1145
+Judged 226/1145
+Judged 230/1145
+Judged 233/1145
+Judged 237/1145
+Judged 241/1145
+Judged 245/1145
+Judged 249/1145
+Judged 253/1145
+Judged 257/1145
+Judged 261/1145
+Judged 265/1145
+Judged 269/1145
+Judged 273/1145
+Judged 277/1145
+Judged 281/1145
+Judged 285/1145
+Judged 289/1145
+Judged 293/1145
+Judged 295/1145
+Judged 299/1145
+Judged 303/1145
+Judged 307/1145
+Judged 311/1145
+Judged 315/1145
+Judged 319/1145
+Judged 323/1145
+Judged 327/1145
+Judged 331/1145
+Judged 335/1145
+Judged 339/1145
+Judged 343/1145
+Judged 347/1145
+Judged 351/1145
+Judged 355/1145
+Judged 359/1145
+Judged 363/1145
+Judged 367/1145
+Judged 371/1145
+Judged 375/1145
+Judged 379/1145
+Judged 383/1145
+Judged 387/1145
+Judged 391/1145
+Judged 395/1145
+Judged 399/1145
+Judged 402/1145
+Judged 406/1145
+Judged 410/1145
+Judged 414/1145
+Judged 418/1145
+Judged 422/1145
+Judged 426/1145
+Judged 430/1145
+Judged 434/1145
+Judged 438/1145
+Judged 442/1145
+Judged 446/1145
+Judged 450/1145
+Judged 454/1145
+Judged 458/1145
+Judged 461/1145
+Judged 465/1145
+Judged 469/1145
+Judged 473/1145
+Judged 477/1145
+Judged 481/1145
+Judged 485/1145
+Judged 489/1145
+Judged 493/1145
+Judged 497/1145
+Judged 501/1145
+Judged 505/1145
+Judged 509/1145
+Judged 513/1145
+Judged 516/1145
+Judged 520/1145
+Judged 524/1145
+Judged 528/1145
+Judged 532/1145
+Judged 536/1145
+Judged 540/1145
+Judged 544/1145
+Judged 548/1145
+Judged 552/1145
+Judged 556/1145
+Judged 560/1145
+Judged 564/1145
+Judged 568/1145
+Judged 572/1145
+Judged 576/1145
+Judged 580/1145
+Judged 584/1145
+Judged 588/1145
+Judged 592/1145
+Judged 596/1145
+Judged 600/1145
+Judged 604/1145
+Judged 608/1145
+Judged 612/1145
+Judged 616/1145
+Judged 620/1145
+Judged 624/1145
+Judged 628/1145
+Judged 630/1145
+Judged 634/1145
+Judged 638/1145
+Judged 642/1145
+Judged 646/1145
+Judged 650/1145
+Judged 654/1145
+Judged 658/1145
+Judged 662/1145
+Judged 666/1145
+Judged 670/1145
+Judged 674/1145
+Judged 678/1145
+Judged 682/1145
+Judged 686/1145
+Judged 688/1145
+Judged 692/1145
+Judged 696/1145
+Judged 700/1145
+Judged 704/1145
+Judged 708/1145
+Judged 712/1145
+Judged 716/1145
+Judged 720/1145
+Judged 724/1145
+Judged 728/1145
+Judged 732/1145
+Judged 736/1145
+Judged 740/1145
+Judged 742/1145
+Judged 746/1145
+Judged 750/1145
+Judged 754/1145
+Judged 758/1145
+Judged 762/1145
+Judged 766/1145
+Judged 770/1145
+Judged 774/1145
+Judged 778/1145
+Traceback (most recent call last):
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1353, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1113, in _send_output
+    self.send(msg)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1057, in send
+    self.connect()
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='127.0.0.1', port=11434): Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=11434): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/utils/llm_client.py", line 120, in _request
+    response = getattr(self._session, method)(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/requests/sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=11434): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/evaluation/refresh_retrieval.py", line 217, in <module>
+    if __name__=='__main__': raise SystemExit(main())
+                                              ^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/evaluation/refresh_retrieval.py", line 187, in main
+    grades=grade_candidates(rows,create_llm_client(),directory/'judgments_checkpoint.json',batch_size=args.batch_size,structured=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/evaluation/refresh_retrieval.py", line 80, in grade_candidates
+    raw=client.complete(prompt,max_tokens=token_limit,temperature=0.0,**options)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/utils/llm_client.py", line 211, in complete
+    response = self._request("post", "/api/chat", json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/src/utils/llm_client.py", line 154, in _request
+    raise RuntimeError(
+RuntimeError: Cannot connect to Ollama at http://127.0.0.1:11434. Start Ollama and check OLLAMA_BASE_URL.

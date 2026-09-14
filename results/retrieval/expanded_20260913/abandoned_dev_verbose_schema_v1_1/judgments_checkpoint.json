@@ -1,0 +1,187 @@
+{
+  "input_sha256": "c462832b1604b38ee62abb59fa749a64a0bbc7a559e225ea858b264bf91db87e",
+  "judgments": {
+    "Q001/0e8edb00c2e822bddccba8fc34c662ce19d6133d": {
+      "paper_id": "0e8edb00c2e822bddccba8fc34c662ce19d6133d",
+      "grade": 2,
+      "notes": "The paper directly addresses the use of Graph Neural Networks for robust node classification under topological perturbations."
+    },
+    "Q001/78167a0578e995148dac629768e9495113c8babd": {
+      "paper_id": "78167a0578e995148dac629768e9495113c8babd",
+      "grade": 1,
+      "notes": "The paper discusses KAGNNs, which are related to Graph Neural Networks but focuses on a different aspect of graph learning."
+    },
+    "Q001/8ca3be8e47289aef296d3e5804dc22b37dc1f635": {
+      "paper_id": "8ca3be8e47289aef296d3e5804dc22b37dc1f635",
+      "grade": 0,
+      "notes": "The paper is about data processing using artificial neural networks and does not directly relate to Graph Neural Networks for node classification."
+    },
+    "Q001/1948c13b4842b2abdcc3dd0cf9a95cd721d8a01d": {
+      "paper_id": "1948c13b4842b2abdcc3dd0cf9a95cd721d8a01d",
+      "grade": 1,
+      "notes": "The paper discusses learning theory for graph neural networks and provides insights into their generalization properties."
+    },
+    "Q001/dccec422c1efeb1c18bfc6270ce794259a451708": {
+      "paper_id": "dccec422c1efeb1c18bfc6270ce794259a451708",
+      "grade": 2,
+      "notes": "The paper directly addresses graph neural networks for node classification, proposing a multi-task architecture that combines node classification with graph classification."
+    },
+    "Q001/2b6a8ebce832815f2959bb048d23cc38b458ad4c": {
+      "paper_id": "2b6a8ebce832815f2959bb048d23cc38b458ad4c",
+      "grade": 1,
+      "notes": "The paper discusses the use of artificial node features for graph neural networks, which is related but not central to the main query about node classification."
+    },
+    "Q001/6f671493afa201970f0f19201c420c05edccfb87": {
+      "paper_id": "6f671493afa201970f0f19201c420c05edccfb87",
+      "grade": 1,
+      "notes": "The paper focuses on high-order pooling for graph neural networks, which is related but not central to the main query about node classification."
+    },
+    "Q001/d2c34737e20d005820abe6f1b82bd191205a87f2": {
+      "paper_id": "d2c34737e20d005820abe6f1b82bd191205a87f2",
+      "grade": 2,
+      "notes": "The paper proposes a framework for enhancing graph neural networks via auxiliary training for semi-supervised node classification, directly addressing the main query."
+    },
+    "Q001/31476174c2c5133e2bc7e6b6dc1bb61daec90f1c": {
+      "paper_id": "31476174c2c5133e2bc7e6b6dc1bb61daec90f1c",
+      "grade": 2,
+      "notes": "The paper directly addresses graph neural networks for semi-supervised node classification, using a novel neural tree architecture."
+    },
+    "Q001/2b1eae2cceb377cb9267b2c96294228d5e583136": {
+      "paper_id": "2b1eae2cceb377cb9267b2c96294228d5e583136",
+      "grade": 1,
+      "notes": "The paper discusses graph neural networks for imbalanced node classification, which is related but not central to the main query."
+    },
+    "Q001/8dd90b0648da4cb0e1f18ba1f00b158a157d3631": {
+      "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631",
+      "grade": 1,
+      "notes": "The paper presents a dataset for benchmarking graph neural networks, which is related but not central to the main query."
+    },
+    "Q001/01de6d0c00e7e77050a90945246b2b4acde497a2": {
+      "paper_id": "01de6d0c00e7e77050a90945246b2b4acde497a2",
+      "grade": 1,
+      "notes": "The paper introduces a scalable graph structure learning transformer for node classification, which is related but not central to the main query."
+    },
+    "Q001/4a253cd63110da07bb17074f6ac14717afd2f3f1": {
+      "paper_id": "4a253cd63110da07bb17074f6ac14717afd2f3f1",
+      "grade": 2,
+      "notes": "Directly addresses graph neural networks for dynamic networks classification."
+    },
+    "Q001/1e375c77c232ed7391c0e41ce87991cb46b3df21": {
+      "paper_id": "1e375c77c232ed7391c0e41ce87991cb46b3df21",
+      "grade": 0,
+      "notes": "Title and abstract are unrelated to dynamic graph neural networks for node classification."
+    },
+    "Q001/10f27ac4ff35522e64199b973089c6d461d4c5f4": {
+      "paper_id": "10f27ac4ff35522e64199b973089c6d461d4c5f4",
+      "grade": 1,
+      "notes": "Addresses imbalanced graph data but not specifically for dynamic graph neural networks for node classification."
+    },
+    "Q001/9bcb3fd2aede34560b20f44620dd7cd30021e65a": {
+      "paper_id": "9bcb3fd2aede34560b20f44620dd7cd30021e65a",
+      "grade": 0,
+      "notes": "Focuses on unsupervised graph neural networks for clustering and embedding, not node classification."
+    },
+    "Q001/b0ca941fd8aa7345e8aba84c067a795f65c38382": {
+      "paper_id": "b0ca941fd8aa7345e8aba84c067a795f65c38382",
+      "grade": 2,
+      "notes": "The paper directly addresses node classification in graph neural networks (GNNs) and proposes a novel reinforcement learning method for node injection poisoning attacks."
+    },
+    "Q001/c1fca46e51ef3f9e49877ccb75fc31fd70bc60e7": {
+      "paper_id": "c1fca46e51ef3f9e49877ccb75fc31fd70bc60e7",
+      "grade": 2,
+      "notes": "The paper directly addresses node classification in graph neural networks (GNNs) and proposes a differentially private GNN based on aggregation perturbation."
+    },
+    "Q001/f913cf807a3ac731548a4d924ba99fcc6ede1cdb": {
+      "paper_id": "f913cf807a3ac731548a4d924ba99fcc6ede1cdb",
+      "grade": 2,
+      "notes": "The paper directly addresses node classification in graph neural networks (GNNs) and proposes a domain adaptive graph infomax method."
+    },
+    "Q001/d60610a39f4b57928a9a26e7ca06e4291df3e7a1": {
+      "paper_id": "d60610a39f4b57928a9a26e7ca06e4291df3e7a1",
+      "grade": 1,
+      "notes": "The paper indirectly addresses node classification in graph neural networks (GNNs) by introducing a family of multilayer graph kernels and establishing new links between graph convolutional neural (GC"
+    },
+    "Q001/617237ffa9636e3eb789674cf6a002204bb8a8a3": {
+      "paper_id": "617237ffa9636e3eb789674cf6a002204bb8a8a3",
+      "grade": 2,
+      "notes": "The paper directly addresses graph neural networks for semi-supervised node classification and introduces a novel architecture to overcome the over-smoothing problem."
+    },
+    "Q001/39cedaac6ef78686a83e716aa14efb96547281d2": {
+      "paper_id": "39cedaac6ef78686a83e716aa14efb96547281d2",
+      "grade": 2,
+      "notes": "The paper directly addresses the use of graph neural networks for k-nearest neighbor learning and demonstrates its effectiveness on various benchmark datasets."
+    },
+    "Q001/ccbd7f5f7aaa7a50e35ff3de41f718861de790c4": {
+      "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+      "grade": 1,
+      "notes": "The paper discusses the relationship between the graph structure of neural networks and their predictive performance, but does not directly address graph neural networks for node classification."
+    },
+    "Q001/28c64dde8a9231cba2d9fd7b49a19a53dc400009": {
+      "paper_id": "28c64dde8a9231cba2d9fd7b49a19a53dc400009",
+      "grade": 0,
+      "notes": "The paper is about machine learning and artificial neural networks in general, not specifically related to graph neural networks for node classification."
+    }
+  },
+  "raw_batches": [
+    {
+      "query_id": "Q001",
+      "paper_ids": [
+        "0e8edb00c2e822bddccba8fc34c662ce19d6133d",
+        "78167a0578e995148dac629768e9495113c8babd",
+        "8ca3be8e47289aef296d3e5804dc22b37dc1f635",
+        "1948c13b4842b2abdcc3dd0cf9a95cd721d8a01d"
+      ],
+      "raw": "{\n    \"judgments\": [\n        {\n            \"paper_id\": \"0e8edb00c2e822bddccba8fc34c662ce19d6133d\",\n            \"grade\": 2,\n            \"notes\": \"The paper directly addresses the use of Graph Neural Networks for robust node classification under topological perturbations.\"\n        },\n        {\n            \"paper_id\": \"78167a0578e995148dac629768e9495113c8babd\",\n            \"grade\": 1,\n            \"notes\": \"The paper discusses KAGNNs, which are related to Graph Neural Networks but focuses on a different aspect of graph learning.\"\n        },\n        {\n            \"paper_id\": \"8ca3be8e47289aef296d3e5804dc22b37dc1f635\",\n            \"grade\": 0,\n            \"notes\": \"The paper is about data processing using artificial neural networks and does not directly relate to Graph Neural Networks for node classification.\"\n        },\n        {\n            \"paper_id\": \"1948c13b4842b2abdcc3dd0cf9a95cd721d8a01d\",\n            \"grade\": 1,\n            \"notes\": \"The paper discusses learning theory for graph neural networks and provides insights into their generalization properties.\"\n        }\n    ]\n}"
+    },
+    {
+      "query_id": "Q001",
+      "paper_ids": [
+        "dccec422c1efeb1c18bfc6270ce794259a451708",
+        "2b6a8ebce832815f2959bb048d23cc38b458ad4c",
+        "6f671493afa201970f0f19201c420c05edccfb87",
+        "d2c34737e20d005820abe6f1b82bd191205a87f2"
+      ],
+      "raw": "{\n    \"judgments\": [\n        {\n            \"paper_id\": \"dccec422c1efeb1c18bfc6270ce794259a451708\",\n            \"grade\": 2,\n            \"notes\": \"The paper directly addresses graph neural networks for node classification, proposing a multi-task architecture that combines node classification with graph classification.\"\n        },\n        {\n            \"paper_id\": \"2b6a8ebce832815f2959bb048d23cc38b458ad4c\",\n            \"grade\": 1,\n            \"notes\": \"The paper discusses the use of artificial node features for graph neural networks, which is related but not central to the main query about node classification.\"\n        },\n        {\n            \"paper_id\": \"6f671493afa201970f0f19201c420c05edccfb87\",\n            \"grade\": 1,\n            \"notes\": \"The paper focuses on high-order pooling for graph neural networks, which is related but not central to the main query about node classification.\"\n        },\n        {\n            \"paper_id\": \"d2c34737e20d005820abe6f1b82bd191205a87f2\",\n            \"grade\": 2,\n            \"notes\": \"The paper proposes a framework for enhancing graph neural networks via auxiliary training for semi-supervised node classification, directly addressing the main query.\"\n        }\n    ]\n}"
+    },
+    {
+      "query_id": "Q001",
+      "paper_ids": [
+        "31476174c2c5133e2bc7e6b6dc1bb61daec90f1c",
+        "2b1eae2cceb377cb9267b2c96294228d5e583136",
+        "8dd90b0648da4cb0e1f18ba1f00b158a157d3631",
+        "01de6d0c00e7e77050a90945246b2b4acde497a2"
+      ],
+      "raw": "{\n    \"judgments\": [\n        {\n            \"paper_id\": \"31476174c2c5133e2bc7e6b6dc1bb61daec90f1c\",\n            \"grade\": 2,\n            \"notes\": \"The paper directly addresses graph neural networks for semi-supervised node classification, using a novel neural tree architecture.\"\n        },\n        {\n            \"paper_id\": \"2b1eae2cceb377cb9267b2c96294228d5e583136\",\n            \"grade\": 1,\n            \"notes\": \"The paper discusses graph neural networks for imbalanced node classification, which is related but not central to the main query.\"\n        },\n        {\n            \"paper_id\": \"8dd90b0648da4cb0e1f18ba1f00b158a157d3631\",\n            \"grade\": 1,\n            \"notes\": \"The paper presents a dataset for benchmarking graph neural networks, which is related but not central to the main query.\"\n        },\n        {\n            \"paper_id\": \"01de6d0c00e7e77050a90945246b2b4acde497a2\",\n            \"grade\": 1,\n            \"notes\": \"The paper introduces a scalable graph structure learning transformer for node classification, which is related but not central to the main query.\"\n        }\n    ]\n}"
+    },
+    {
+      "query_id": "Q001",
+      "paper_ids": [
+        "4a253cd63110da07bb17074f6ac14717afd2f3f1",
+        "1e375c77c232ed7391c0e41ce87991cb46b3df21",
+        "10f27ac4ff35522e64199b973089c6d461d4c5f4",
+        "9bcb3fd2aede34560b20f44620dd7cd30021e65a"
+      ],
+      "raw": "{\n    \"judgments\": [\n        {\n            \"paper_id\": \"4a253cd63110da07bb17074f6ac14717afd2f3f1\",\n            \"grade\": 2,\n            \"notes\": \"Directly addresses graph neural networks for dynamic networks classification.\"\n        },\n        {\n            \"paper_id\": \"1e375c77c232ed7391c0e41ce87991cb46b3df21\",\n            \"grade\": 0,\n            \"notes\": \"Title and abstract are unrelated to dynamic graph neural networks for node classification.\"\n        },\n        {\n            \"paper_id\": \"10f27ac4ff35522e64199b973089c6d461d4c5f4\",\n            \"grade\": 1,\n            \"notes\": \"Addresses imbalanced graph data but not specifically for dynamic graph neural networks for node classification.\"\n        },\n        {\n            \"paper_id\": \"9bcb3fd2aede34560b20f44620dd7cd30021e65a\",\n            \"grade\": 0,\n            \"notes\": \"Focuses on unsupervised graph neural networks for clustering and embedding, not node classification.\"\n        }\n    ]}"
+    },
+    {
+      "query_id": "Q001",
+      "paper_ids": [
+        "b0ca941fd8aa7345e8aba84c067a795f65c38382",
+        "c1fca46e51ef3f9e49877ccb75fc31fd70bc60e7",
+        "f913cf807a3ac731548a4d924ba99fcc6ede1cdb",
+        "d60610a39f4b57928a9a26e7ca06e4291df3e7a1"
+      ],
+      "raw": "{\n    \"judgments\": [\n        {\n            \"paper_id\": \"b0ca941fd8aa7345e8aba84c067a795f65c38382\",\n            \"grade\": 2,\n            \"notes\": \"The paper directly addresses node classification in graph neural networks (GNNs) and proposes a novel reinforcement learning method for node injection poisoning attacks.\"\n        },\n        {\n            \"paper_id\": \"c1fca46e51ef3f9e49877ccb75fc31fd70bc60e7\",\n            \"grade\": 2,\n            \"notes\": \"The paper directly addresses node classification in graph neural networks (GNNs) and proposes a differentially private GNN based on aggregation perturbation.\"\n        },\n        {\n            \"paper_id\": \"f913cf807a3ac731548a4d924ba99fcc6ede1cdb\",\n            \"grade\": 2,\n            \"notes\": \"The paper directly addresses node classification in graph neural networks (GNNs) and proposes a domain adaptive graph infomax method.\"\n        },\n        {\n            \"paper_id\": \"d60610a39f4b57928a9a26e7ca06e4291df3e7a1\",\n            \"grade\": 1,\n            \"notes\": \"The paper indirectly addresses node classification in graph neural networks (GNNs) by introducing a family of multilayer graph kernels and establishing new links between graph convolutional neural (GC\" } ]}"
+    },
+    {
+      "query_id": "Q001",
+      "paper_ids": [
+        "617237ffa9636e3eb789674cf6a002204bb8a8a3",
+        "39cedaac6ef78686a83e716aa14efb96547281d2",
+        "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4",
+        "28c64dde8a9231cba2d9fd7b49a19a53dc400009"
+      ],
+      "raw": "{\n  \"judgments\": [\n    {\n      \"paper_id\": \"617237ffa9636e3eb789674cf6a002204bb8a8a3\",\n      \"grade\": 2,\n      \"notes\": \"The paper directly addresses graph neural networks for semi-supervised node classification and introduces a novel architecture to overcome the over-smoothing problem.\"\n    },\n    {\n      \"paper_id\": \"39cedaac6ef78686a83e716aa14efb96547281d2\",\n      \"grade\": 2,\n      \"notes\": \"The paper directly addresses the use of graph neural networks for k-nearest neighbor learning and demonstrates its effectiveness on various benchmark datasets.\"\n    },\n    {\n      \"paper_id\": \"ccbd7f5f7aaa7a50e35ff3de41f718861de790c4\",\n      \"grade\": 1,\n      \"notes\": \"The paper discusses the relationship between the graph structure of neural networks and their predictive performance, but does not directly address graph neural networks for node classification.\"\n    },\n    {\n      \"paper_id\": \"28c64dde8a9231cba2d9fd7b49a19a53dc400009\",\n      \"grade\": 0,\n      \"notes\": \"The paper is about machine learning and artificial neural networks in general, not specifically related to graph neural networks for node classification.\"\n    }\n  ]\n}"
+    }
+  ]
+}

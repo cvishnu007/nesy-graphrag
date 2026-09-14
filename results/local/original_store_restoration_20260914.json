@@ -1,0 +1,7 @@
+{
+  "restored_papers": 8850,
+  "ids_documents_metadata_exact": true,
+  "original_embeddings_reused": true,
+  "max_absolute_embedding_difference": 9.5367431640625e-07,
+  "embedding_note": "Reinsertion into the compact cosine index may re-normalize float32 vectors; checked absolute tolerance 1e-6. No model inference or new downloads."
+}

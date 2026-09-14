@@ -1,0 +1,255 @@
+{
+  "benchmark_version": "0.3-expanded-ai-reference",
+  "candidate_count": 1145,
+  "methods": [
+    "vector",
+    "graph",
+    "hybrid",
+    "bm25",
+    "production"
+  ],
+  "pool_depth": 20,
+  "queries": [
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q001",
+      "split": "dev",
+      "unique_candidates": 58
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q002",
+      "split": "dev",
+      "unique_candidates": 60
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q003",
+      "split": "dev",
+      "unique_candidates": 56
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q004",
+      "split": "dev",
+      "unique_candidates": 59
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q005",
+      "split": "dev",
+      "unique_candidates": 62
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q006",
+      "split": "dev",
+      "unique_candidates": 52
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q007",
+      "split": "test",
+      "unique_candidates": 55
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q008",
+      "split": "test",
+      "unique_candidates": 59
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q009",
+      "split": "test",
+      "unique_candidates": 55
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q010",
+      "split": "test",
+      "unique_candidates": 60
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q011",
+      "split": "test",
+      "unique_candidates": 54
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q012",
+      "split": "test",
+      "unique_candidates": 58
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q013",
+      "split": "test",
+      "unique_candidates": 54
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q014",
+      "split": "test",
+      "unique_candidates": 51
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q015",
+      "split": "test",
+      "unique_candidates": 58
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q016",
+      "split": "test",
+      "unique_candidates": 58
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q017",
+      "split": "test",
+      "unique_candidates": 56
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q018",
+      "split": "test",
+      "unique_candidates": 60
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q019",
+      "split": "test",
+      "unique_candidates": 60
+    },
+    {
+      "method_counts": {
+        "bm25": 20,
+        "graph": 20,
+        "hybrid": 20,
+        "production": 20,
+        "vector": 20
+      },
+      "query_id": "Q020",
+      "split": "test",
+      "unique_candidates": 60
+    }
+  ],
+  "query_count": 20
+}

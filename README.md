@@ -21,6 +21,9 @@ Local Ollama generation, BM25, matched-context RAG comparison, and portable reas
 
 ## Current Status
 
+**September 14 pause:** partial work is retained on `feat/local-evaluation`. Laptop-only services/models and expanded stores were removed at the user's request; original 8,850-paper data was restored. Retrieval grading is 778/1,145 complete; final expanded scoring and matched-RAG runs remain unfinished. See [Chinmay.md](Chinmay.md) for the full handoff.
+
+
 See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the single source of truth on implemented capabilities, missing work, limitations, and future priorities.
 
 Short version:

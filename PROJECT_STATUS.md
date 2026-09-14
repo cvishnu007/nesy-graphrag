@@ -1,6 +1,12 @@
 # NeSy-GraphRAG Project Status
 
-Last updated: September 13, 2026. Working branch: `feat/local-evaluation`, based on the latest `origin/phase3`. Changes and verification are recorded in [Chinmay.md](Chinmay.md); operational commands are in [docs/LOCAL_EVALUATION.md](docs/LOCAL_EVALUATION.md).
+Last updated: September 14, 2026. **Paused; partial implementation retained, laptop runtime additions removed at the user’s request.** Working branch: `feat/local-evaluation`, based on the latest `origin/phase3`. Changes and verification are recorded in [Chinmay.md](Chinmay.md); operational commands are in [docs/LOCAL_EVALUATION.md](docs/LOCAL_EVALUATION.md).
+
+## Current laptop and pause state
+
+The local demo is stopped. Ollama, Neo4j and the session-downloaded generation/NLI models were removed. Original `.env` and 10,000 raw / 8,850 clean / 8,850 NER papers were restored, with an 8,850-paper Chroma index using the original vectors. The pre-existing virtual environment and SPECTER cache remain. See the [cleanup record](results/local/runtime_cleanup_20260914.json).
+
+Retrieval grading stopped at **778 / 1,145 candidates** after losing the Ollama connection; **367 remain**. All development candidates and part of the test pool have labels. No final expanded retrieval scores, significance results, matched-RAG outputs, or live backend-generation checks were produced. The [partial checkpoint](results/retrieval/expanded_20260913/PAUSED.json) and all frozen inputs are retained for a later continuation.
 
 ## Current implementation
 
@@ -11,12 +17,12 @@ The five follow-up workstreams have produced:
 | Workstream | Current evidence |
 |---|---|
 | Ollama integration | Common completion client and migrated production/general evaluation consumers; real local completion succeeded without Groq credentials. |
-| Local demo and matching stores | Dedicated Neo4j plus 47,627-paper corpus, completed NER and Chroma, exact ID and title/abstract parity verified. Streamlit startup and mode selector passed without exceptions; application-mode generation checks are being completed. |
+| Local demo and matching stores | Dedicated Neo4j plus 47,627-paper corpus, completed NER and Chroma, exact ID and title/abstract parity verified. Streamlit startup passed; backend generation checks remain unfinished. Runtime resources were subsequently removed. |
 | Benchmark paths/reproduction | Defaults resolve to the merged `teammate2/` package; offline reproduction verifies hashes and all 392 annotation assignments with zero task failures. |
-| Retrieval baselines and refresh | BM25, production-fusion comparison, immutable ranking pools, checkpointed AI judgments and matched-budget RAG implemented. Expanded rankings frozen for all 20 queries; grading and held-out runs are in progress. |
+| Retrieval baselines and refresh | BM25, production-fusion comparison, immutable ranking pools, checkpointed AI judgments and matched-budget RAG implemented. Expanded rankings frozen for all 20 queries; grading paused at 778/1,145, held-out scoring and matched-RAG not run. |
 | Reasoning evaluation | Dev-only partial-support calibration and a separate published SciFact claim/evidence benchmark evaluated; improvements and failure tradeoffs recorded below. |
 
-## Verified local corpus and stores
+## Verified September 13 snapshot — subsequently removed locally
 
 The user did not have the teammate's expanded artifacts. This Mac regenerated the corpus from the existing 8,850-paper dataset and resumed the 11-topic Semantic Scholar download. Counts differ slightly from the teammate's August 31 snapshot because the upstream fetch differs.
 
@@ -49,7 +55,7 @@ Judgments are local Ollama AI references from method-hidden title/abstract evide
 
 The controlled RAG comparison uses the same generator, prompt, temperature 0, top 5 papers, 6,000 formatted Unicode characters of evidence, 600 output tokens, and zero repairs for vector RAG and GraphRAG. Both validate IDs against the clean corpus. Evidence and raw outputs remain available for audit. Passage-ID validity measures traceability; it does not prove semantic correctness or answer quality.
 
-Expanded retrieval scores and matched-RAG output statistics will be added after their runs complete. No new test-set tuning is being performed.
+Expanded retrieval scores and matched-RAG output statistics are unavailable because the runs are incomplete and paused. No retrieval settings were tuned on the new test judgments.
 
 Historical 8,850-paper test results are retained only for context: evaluation hybrid NDCG@10 **0.3676**, vector-only **0.3643**, paired randomization **p=1.0**. They did not establish a significant hybrid advantage and are not expanded-corpus results.
 
@@ -65,7 +71,7 @@ Development-only calibration of saved NLI probabilities produced these results o
 | Four-class macro F1 | 0.2855 | 0.3190 |
 | False acceptance rate | 0.0000 | 0.03125 |
 
-This is a post-hoc baseline experiment, not an independent replication or a production-model improvement. The chosen threshold was saved before opening test predictions and has **not been adopted in production**. [Selection and metrics](results/reasoning/support_calibration_20260913/test_metrics.json) retain the tradeoff.
+This is a post-hoc baseline experiment, not an independent replication or a production-model improvement. Prior test weakness motivated it, so a fresh untouched test set is needed for confirmatory claims. The chosen threshold was saved before opening test predictions and has **not been adopted in production**. [Selection and metrics](results/reasoning/support_calibration_20260913/test_metrics.json) retain the tradeoff.
 
 The separate [SciFact rationale benchmark](evaluation/benchmarks/scifact_support_v1.json) imports published expert labels, preserves complete rationale sets, and excludes duplicate content across partitions. Official train is local development (955 items); official dev is local test (338 items: 216 supported, 122 contradicted). Official test labels are unavailable. Source claims/labels are CC BY 4.0 and abstracts ODC-By 1.0.
 
@@ -84,10 +90,10 @@ All four prediction labels remain in the confusion matrix; macro F1 averages onl
 
 ## Verification and remaining limits
 
-- Current automated suite: **306 passed**, one upstream spaCy/Click deprecation warning.
+- After laptop cleanup: **306 tests passed**, one upstream spaCy/Click deprecation warning. Original 8,850-ID clean/NER/Chroma parity and closed service ports were also verified.
 - `src`, `app`, and tests compile; `pip check` reports no broken requirements.
 - Store identity/evidence-text audit passed; provider model metadata and source hashes are saved.
 - The independent review agent hit its service usage limit; code review continued locally.
-- Streamlit is running at `http://127.0.0.1:8501`; live startup AppTest found no exceptions. Pipeline-generation evidence and final checks are still being completed for this expanded snapshot.
+- Streamlit startup AppTest found no exceptions on September 13. The server is now stopped and uninstalled dependencies must be restored before using the demo. Pipeline-generation checks remain unfinished.
 
 Remaining research work is independent review of retrieval judgments and generated answers, a better-covered in-domain paper-pair contradiction benchmark, expert hypothesis evaluation, and semantic-support validation that addresses false acceptance. Broader model/component comparisons and controlled scaling tests should use fixed development/test protocols. The corpus is not balanced across all computer science, the graph is sparse, generic noun chunks are noisy, and a single operational rebuild is not a scaling benchmark.

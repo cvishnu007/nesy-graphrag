@@ -1,5 +1,7 @@
 # Local demo and evaluation completion
 
+**Paused September 14 at the user’s request.** Push partial work; remove session-installed runtime resources and restore the original laptop data. Completed snapshot checks below remain historical evidence. Retrieval grading stopped at 778/1,145; scoring, matched RAG and backend generation checks remain undone. See `Chinmay.md`.
+
 User approved the five recommended workstreams on September 13, 2026 and requested continuation.
 
 Design: reuse the September 2 provider-neutral LLM specification, preserve frozen historical evidence, prepare new corpus-specific retrieval pools before grading, and score saved rankings without test tuning. Add BM25 and a conventional corpus-validated vector RAG arm using the same generator, prompt, and explicit character/output budgets as GraphRAG. Keep AI-reference conclusions separate from external published labels and new human review.

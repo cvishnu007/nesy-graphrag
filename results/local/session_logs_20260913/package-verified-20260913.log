@@ -1,0 +1,38 @@
+{
+  "benchmarks": {
+    "contradiction": {
+      "count": 62,
+      "split_counts": {
+        "dev": 23,
+        "test": 39
+      },
+      "hash_match": "line_endings_only",
+      "checkout_sha256": "f8c9be9b069f7b4d4a5c3893bfdfe1330d3ef142338cda9ce675311ccb38ad9c"
+    },
+    "support": {
+      "count": 151,
+      "split_counts": {
+        "dev": 56,
+        "test": 95
+      },
+      "hash_match": "line_endings_only",
+      "checkout_sha256": "453b528c575499692f1a3102c490b8f90db4cdd0831061bcc7fd3a3ee69edad2"
+    },
+    "hypothesis": {
+      "count": 100,
+      "split_counts": {
+        "dev": 30,
+        "test": 70
+      },
+      "hash_match": "line_endings_only",
+      "checkout_sha256": "4cf0ac0dcac81993c1f1427320c613a479b705d7da7f76002256457e8f76cdab"
+    }
+  },
+  "unique_annotation_items": 313,
+  "annotation_assignments": 392,
+  "offline_only": true,
+  "human_ground_truth": false,
+  "reference_source": "AI-generated",
+  "failure_count": 0,
+  "note": "The package manifest predates some committed edits; report drift separately from frozen benchmark integrity."
+}

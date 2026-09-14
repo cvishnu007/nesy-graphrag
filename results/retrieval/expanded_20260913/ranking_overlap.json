@@ -1,0 +1,147 @@
+{
+  "note": "Rank-only diagnostic; no relevance labels used; no parameter changes follow this diagnostic.",
+  "production_identical_queries": 15,
+  "query_count": 20,
+  "queries": [
+    {
+      "query_id": "Q001",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q002",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q003",
+      "production_identical_order": false,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 3,
+      "graph_overlap_with_vector": 1
+    },
+    {
+      "query_id": "Q004",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q005",
+      "production_identical_order": false,
+      "production_new_ids_vs_vector": 2,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q006",
+      "production_identical_order": false,
+      "production_new_ids_vs_vector": 1,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q007",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 2,
+      "graph_overlap_with_vector": 2
+    },
+    {
+      "query_id": "Q008",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 1
+    },
+    {
+      "query_id": "Q009",
+      "production_identical_order": false,
+      "production_new_ids_vs_vector": 2,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 1
+    },
+    {
+      "query_id": "Q010",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q011",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 6,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q012",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 2,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q013",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 1,
+      "graph_overlap_with_vector": 1
+    },
+    {
+      "query_id": "Q014",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 7,
+      "graph_overlap_with_vector": 1
+    },
+    {
+      "query_id": "Q015",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 2,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q016",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q017",
+      "production_identical_order": false,
+      "production_new_ids_vs_vector": 3,
+      "bm25_overlap_with_vector": 6,
+      "graph_overlap_with_vector": 1
+    },
+    {
+      "query_id": "Q018",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q019",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    },
+    {
+      "query_id": "Q020",
+      "production_identical_order": true,
+      "production_new_ids_vs_vector": 0,
+      "bm25_overlap_with_vector": 0,
+      "graph_overlap_with_vector": 0
+    }
+  ]
+}

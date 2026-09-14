@@ -1,0 +1,305 @@
+DATA_SOURCE=s2: running Semantic Scholar ingestion
+=== Semantic Scholar ingestion ===
+[S2] Loaded 10005 existing raw papers for merge
+[S2] Multi-topic plan: 11 queries, up to 5000 papers per query
+[S2] [1/11] Resume: skipping 'graph neural networks'
+
+[S2] [2/11] Starting 'artificial intelligence and machine learning'
+[S2] Query 'artificial intelligence and machine learning': fetching up to 5000 papers...
+  [S2] artificial intelligence and machine learning: 1000/5000 seed papers
+  [S2] artificial intelligence and machine learning: 2000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] artificial intelligence and machine learning: 3000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] artificial intelligence and machine learning: 4000/5000 seed papers
+  [S2] artificial intelligence and machine learning: 5000/5000 seed papers
+[S2] Query 'artificial intelligence and machine learning' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 500/4954
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 1000/4954
+  [S2] Reference batches: 1500/4954
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 2000/4954
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 2500/4954
+  [S2] Reference batches: 3000/4954
+  [S2] Reference batches: 3500/4954
+  [S2] Reference batches: 4000/4954
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 4500/4954
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 4954/4954
+[S2] Saved checkpoint: 5000 fetched, 4954 new, 14959 unique total
+
+[S2] [3/11] Starting 'cybersecurity'
+[S2] Query 'cybersecurity': fetching up to 5000 papers...
+  [S2] cybersecurity: 1000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] cybersecurity: 2000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] cybersecurity: 3000/5000 seed papers
+  [S2] cybersecurity: 4000/5000 seed papers
+  [S2] cybersecurity: 5000/5000 seed papers
+[S2] Query 'cybersecurity' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 500/4833
+  [S2] Reference batches: 1000/4833
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 1500/4833
+  [S2] Reference batches: 2000/4833
+  [S2] Reference batches: 2500/4833
+  [S2] Reference batches: 3000/4833
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 3500/4833
+  [S2] Reference batches: 4000/4833
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 4500/4833
+  [S2] Reference batches: 4833/4833
+[S2] Saved checkpoint: 5000 fetched, 4833 new, 19792 unique total
+
+[S2] [4/11] Starting 'computer networks'
+[S2] Query 'computer networks': fetching up to 5000 papers...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] computer networks: 1000/5000 seed papers
+  [S2] computer networks: 2000/5000 seed papers
+  [S2] computer networks: 3000/5000 seed papers
+  [S2] computer networks: 4000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] computer networks: 5000/5000 seed papers
+[S2] Query 'computer networks' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+  [S2] Reference batches: 500/4545
+  [S2] Reference batches: 1000/4545
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 1500/4545
+  [S2] Reference batches: 2000/4545
+  [S2] Reference batches: 2500/4545
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 3000/4545
+  [S2] Reference batches: 3500/4545
+  [S2] Reference batches: 4000/4545
+  [S2] Reference batches: 4500/4545
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 4545/4545
+[S2] Saved checkpoint: 5000 fetched, 4545 new, 24337 unique total
+
+[S2] [5/11] Starting 'databases'
+[S2] Query 'databases': fetching up to 5000 papers...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] databases: 1000/5000 seed papers
+  [S2] databases: 2000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] databases: 3000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] databases: 4000/5000 seed papers
+  [S2] databases: 5000/5000 seed papers
+[S2] Query 'databases' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+  [S2] Reference batches: 500/4506
+  [S2] Reference batches: 1000/4506
+  [S2] Reference batches: 1500/4506
+  [S2] Reference batches: 2000/4506
+  [S2] Reference batches: 2500/4506
+  [S2] Reference batches: 3000/4506
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 3500/4506
+  [S2] Reference batches: 4000/4506
+  [S2] Reference batches: 4500/4506
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 4506/4506
+[S2] Saved checkpoint: 5000 fetched, 4506 new, 28843 unique total
+
+[S2] [6/11] Starting 'software engineering'
+[S2] Query 'software engineering': fetching up to 5000 papers...
+  [S2] software engineering: 1000/5000 seed papers
+  [S2] software engineering: 2000/5000 seed papers
+  [S2] software engineering: 3000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] software engineering: 4000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] software engineering: 5000/5000 seed papers
+[S2] Query 'software engineering' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 500/4833
+  [S2] Reference batches: 1000/4833
+  [S2] Reference batches: 1500/4833
+  [S2] Reference batches: 2000/4833
+  [S2] Reference batches: 2500/4833
+  [S2] Reference batches: 3000/4833
+  [S2] Reference batches: 3500/4833
+  [S2] Reference batches: 4000/4833
+  [S2] Reference batches: 4500/4833
+  [S2] Reference batches: 4833/4833
+[S2] Saved checkpoint: 5000 fetched, 4833 new, 33676 unique total
+
+[S2] [7/11] Starting 'cloud computing'
+[S2] Query 'cloud computing': fetching up to 5000 papers...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] cloud computing: 1000/5000 seed papers
+  [S2] cloud computing: 2000/5000 seed papers
+  [S2] cloud computing: 3000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] cloud computing: 4000/5000 seed papers
+  [S2] cloud computing: 5000/5000 seed papers
+[S2] Query 'cloud computing' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+  [S2] Reference batches: 500/4589
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 1000/4589
+  [S2] Reference batches: 1500/4589
+  [S2] Reference batches: 2000/4589
+  [S2] Reference batches: 2500/4589
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 3000/4589
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 3500/4589
+  [S2] Reference batches: 4000/4589
+  [S2] Reference batches: 4500/4589
+  [S2] Reference batches: 4589/4589
+[S2] Saved checkpoint: 5000 fetched, 4589 new, 38265 unique total
+
+[S2] [8/11] Starting 'natural language processing'
+[S2] Query 'natural language processing': fetching up to 5000 papers...
+  [S2] natural language processing: 1000/5000 seed papers
+  [S2] natural language processing: 2000/5000 seed papers
+  [S2] natural language processing: 3000/5000 seed papers
+  [S2] natural language processing: 4000/5000 seed papers
+  [S2] natural language processing: 5000/5000 seed papers
+[S2] Query 'natural language processing' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+  [S2] Reference batches: 500/4160
+  [S2] Reference batches: 1000/4160
+  [S2] Reference batches: 1500/4160
+  [S2] Reference batches: 2000/4160
+  [S2] Reference batches: 2500/4160
+  [S2] Reference batches: 3000/4160
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 3500/4160
+  [S2] Reference batches: 4000/4160
+  [S2] Reference batches: 4160/4160
+[S2] Saved checkpoint: 5000 fetched, 4160 new, 42425 unique total
+
+[S2] [9/11] Starting 'computer vision'
+[S2] Query 'computer vision': fetching up to 5000 papers...
+  [S2] computer vision: 1000/5000 seed papers
+  [S2] computer vision: 2000/5000 seed papers
+  [S2] computer vision: 3000/5000 seed papers
+  [S2] computer vision: 4000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] computer vision: 5000/5000 seed papers
+[S2] Query 'computer vision' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+  [S2] Reference batches: 500/2178
+  [S2] Reference batches: 1000/2178
+  [S2] Reference batches: 1500/2178
+  [S2] Reference batches: 2000/2178
+  [S2] Reference batches: 2178/2178
+[S2] Saved checkpoint: 5000 fetched, 2178 new, 44603 unique total
+
+[S2] [10/11] Starting 'data science'
+[S2] Query 'data science': fetching up to 5000 papers...
+  [S2] data science: 1000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] data science: 2000/5000 seed papers
+  [S2] data science: 3000/5000 seed papers
+  [S2] data science: 4000/5000 seed papers
+  [S2] data science: 5000/5000 seed papers
+[S2] Query 'data science' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+  [S2] Reference batches: 500/3761
+  [S2] Reference batches: 1000/3761
+  [S2] Reference batches: 1500/3761
+  [S2] Reference batches: 2000/3761
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 2500/3761
+  [S2] Reference batches: 3000/3761
+  [S2] Reference batches: 3500/3761
+  [S2] Reference batches: 3761/3761
+[S2] Saved checkpoint: 5000 fetched, 3761 new, 48364 unique total
+
+[S2] [11/11] Starting 'operating systems'
+[S2] Query 'operating systems': fetching up to 5000 papers...
+  [S2] operating systems: 1000/5000 seed papers
+  [S2] operating systems: 2000/5000 seed papers
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] operating systems: 3000/5000 seed papers
+  [S2] operating systems: 4000/5000 seed papers
+  [S2] operating systems: 5000/5000 seed papers
+[S2] Query 'operating systems' complete: 5000 papers
+[S2] Enriching papers with references via /paper/batch...
+  [S2] Reference batches: 500/4456
+  [S2] Reference batches: 1000/4456
+  [S2] Reference batches: 1500/4456
+  [S2] Reference batches: 2000/4456
+  [S2] Reference batches: 2500/4456
+[S2] 429 rate-limited. sleeping 2.0s...
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 3000/4456
+  [S2] Reference batches: 3500/4456
+[S2] 429 rate-limited. sleeping 2.0s...
+  [S2] Reference batches: 4000/4456
+  [S2] Reference batches: 4456/4456
+[S2] Saved checkpoint: 5000 fetched, 4456 new, 52820 unique total
+[S2] Saved merged raw dataset (52820 unique records) to ./data/s2_raw.json
+Before cleaning : 52820 papers
+After cleaning  : 47627 papers
+Saved to ./data/s2_clean.json
+
+=== Sanity Check ===
+Shape          : (47627, 23)
+
+Top categories :
+ primary_category
+Computer Science         34903
+Medicine                  8272
+Engineering               1103
+Physics                    607
+Business                   543
+Environmental Science      462
+Biology                    347
+Psychology                 232
+Materials Science          194
+Education                  194
+Name: count, dtype: int64
+
+Papers per year:
+ year
+2020    13065
+2021    10751
+2022     8107
+2023     7618
+2024     5922
+2025     2164
+Name: count, dtype: int64
+
+Sample title   : LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation

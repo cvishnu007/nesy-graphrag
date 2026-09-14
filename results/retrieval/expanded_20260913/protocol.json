@@ -1,0 +1,36 @@
+{
+  "corpus_sha256": "85b3783e4b2bf091cc216c464f47222759e408aeb0e225738e0fa4fb49d03e0a",
+  "paper_count": 47627,
+  "methods": [
+    "vector",
+    "graph",
+    "hybrid",
+    "bm25",
+    "production"
+  ],
+  "pool_depth": 20,
+  "selection": "existing settings frozen before labels; no test tuning",
+  "bm25": {
+    "k1": 1.5,
+    "b": 0.75,
+    "text": "clean title plus abstract"
+  },
+  "embedding_model": "allenai-specter",
+  "evaluation_hybrid_weights": [
+    16.0,
+    1.0
+  ],
+  "graph_only_candidate_limit": 100,
+  "rrf_k": 60,
+  "production": {
+    "hop_depth": 2,
+    "neural_weight": 1.0,
+    "graph_weight": 1.0
+  },
+  "graph_filter": {
+    "GRAPH_HIGH_SEMANTIC_THRESHOLD": 0.85,
+    "GRAPH_SEMANTIC_FLOOR": 0.75,
+    "GRAPH_MIN_QUERY_TERM_COVERAGE": 0.75,
+    "GRAPH_STRONG_CONNECTIONS": 10
+  }
+}

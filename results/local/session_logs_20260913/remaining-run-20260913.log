@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/data/run_remaining_local_20260913.py", line 16, in <module>
+    try:os.kill(grade_pid,0)
+        ^^^^^^^^^^^^^^^^^^^^
+ProcessLookupError: [Errno 3] No such process
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/data/run_remaining_local_20260913.py", line 17, in <module>
+    except ProcessLookupError:raise RuntimeError('Grading exited without a complete benchmark')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Grading exited without a complete benchmark

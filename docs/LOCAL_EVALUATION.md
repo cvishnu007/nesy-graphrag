@@ -1,5 +1,7 @@
 # Local demo and evaluation runbook
 
+**Paused September 14:** runtime services/models and expanded local stores described below were removed at the user’s request. The laptop is back to its original 8,850-paper data and `.env`. These are reinstall/rebuild and reproduction instructions, not a claim that the demo is currently running. See [Chinmay.md](../Chinmay.md) for cleanup and the 778/1,145 grading checkpoint.
+
 This work uses a fresh Semantic Scholar download: **52,820 raw / 47,627 clean papers**, preserving all original 10,000 raw and 8,850 clean IDs. The teammate's 47,619-paper snapshot describes a different fetch. Abstracts and generated stores remain ignored by Git.
 
 Run commands from the repository root. Activate the existing environment with `source venv/bin/activate` on macOS/Linux, or `.\venv\Scripts\Activate.ps1` on Windows, then use `python` below. Install `requirements.txt` and `en_core_web_sm` for a fresh environment. Do not recreate an existing environment.
@@ -14,7 +16,7 @@ ollama serve
 ollama pull qwen2.5:3b-instruct
 ```
 
-On this Mac, `brew services start ollama` already manages the service; a second `ollama serve` is unnecessary. The verified installation is Ollama 0.33.3. Set these values in the ignored `.env`:
+After reinstalling on macOS, `brew services start ollama` can manage the service; a second `ollama serve` is unnecessary. The verified installation is Ollama 0.33.3. Set these values in the ignored `.env`:
 
 ```dotenv
 LLM_PROVIDER=ollama
@@ -32,13 +34,13 @@ For hosted generation, set `LLM_PROVIDER=groq`, a real `GROQ_API_KEY`, `LLM_MODE
 
 ## Dedicated Neo4j and store rebuild
 
-Use a dedicated Neo4j database and put its real connection credentials in `.env`. On this Mac, Neo4j 2026.07.1 stores its configuration/data/logs under `data/neo4j-local/`; start the existing instance with:
+Use a dedicated Neo4j database and put its real connection credentials in `.env`. The September 13 Neo4j 2026.07.1 instance stored its configuration/data/logs under `data/neo4j-local/`. Those files were removed during cleanup. If recreating that layout, its start command is:
 
 ```sh
 NEO4J_CONF="$PWD/data/neo4j-local/conf" neo4j start
 ```
 
-The generated configuration uses loopback Bolt 7687 and HTTP 7474, a 512 MB maximum heap, and a 128 MB page cache. Its password is stored only in `.env`; the original environment and input JSON files are backed up under `data/pre-expansion-20260913/`.
+The removed configuration used loopback Bolt 7687 and HTTP 7474, a 512 MB maximum heap, and a 128 MB page cache. Its generated password was removed when the original `.env` was restored. The pre-session backup was removed after byte-exact restoration of the original environment and JSON files.
 
 On a new machine, create a dedicated database using Neo4j Desktop or the server setup instructions in [SETUP.md](../SETUP.md). Do not copy this Mac's absolute paths into another installation.
 
@@ -100,7 +102,7 @@ python -m src.evaluation.support_calibration --output-dir results/reasoning/supp
 python -m src.evaluation.scifact_evaluation --output-dir results/reasoning/scifact_nli_new
 ```
 
-Calibration chooses a partial-entailment threshold using saved development probabilities only, persists the choice, then opens the disjoint test file. The historical AI-reference test improved partial-support F1 from 0 to 0.125, but false acceptance increased from 0 to 0.03125. This experimental threshold has **not** been adopted in production.
+Calibration chooses a partial-entailment threshold using saved development probabilities only, persists the choice, then opens the disjoint test file. The historical AI-reference test improved partial-support F1 from 0 to 0.125, but false acceptance increased from 0 to 0.03125. This experimental threshold has **not** been adopted in production. Because previously observed test weakness motivated this experiment, a fresh untouched test set is needed for a confirmatory improvement claim.
 
 The separate [SciFact](https://github.com/allenai/scifact) benchmark imports published expert annotations, keeps complete evidence rationales together, and excludes duplicate content across partitions. Official train becomes local development (955 items); official dev becomes local test (338 items, including 122 contradicted). It evaluates biomedical claim/evidence classification; it does not validate graph discovery or paper-to-paper contradiction and contains no partial/unsupported gold classes. The old frozen graph-pair benchmark still has only one positive test contradiction.
 

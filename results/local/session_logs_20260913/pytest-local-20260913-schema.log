@@ -1,0 +1,12 @@
+........................................................................ [ 23%]
+........................................................................ [ 47%]
+........................................................................ [ 70%]
+........................................................................ [ 94%]
+..................                                                       [100%]
+=============================== warnings summary ===============================
+venv/lib/python3.12/site-packages/spacy/cli/_util.py:23
+  /Users/chinmaydwivedi/Documents/Capstone/nesy-graphrag/venv/lib/python3.12/site-packages/spacy/cli/_util.py:23: DeprecationWarning: Importing 'parser.split_arg_string' is deprecated, it will only be available in 'shell_completion' in Click 9.0.
+    from click.parser import split_arg_string
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+306 passed, 1 warning in 14.09s

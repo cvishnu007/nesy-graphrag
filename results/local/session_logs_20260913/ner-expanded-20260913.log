@@ -1,0 +1,5 @@
+Loaded 47627 papers from ./data/s2_clean.json
+NER resume: 8850 reused, 38777 remaining
+spaCy model loaded on gpu!
+Extracting entities...
+spaCy workers: n_process=1, batch_size=128, checkpoint_size=5000

@@ -1,0 +1,1145 @@
+{"methods": ["graph"], "paper_id": "0e8edb00c2e822bddccba8fc34c662ce19d6133d", "query_id": "Q001", "ranks": {"graph": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "78167a0578e995148dac629768e9495113c8babd", "query_id": "Q001", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8ca3be8e47289aef296d3e5804dc22b37dc1f635", "query_id": "Q001", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["graph"], "paper_id": "1948c13b4842b2abdcc3dd0cf9a95cd721d8a01d", "query_id": "Q001", "ranks": {"graph": 1}}
+{"methods": ["bm25"], "paper_id": "dccec422c1efeb1c18bfc6270ce794259a451708", "query_id": "Q001", "ranks": {"bm25": 11}}
+{"methods": ["bm25"], "paper_id": "2b6a8ebce832815f2959bb048d23cc38b458ad4c", "query_id": "Q001", "ranks": {"bm25": 3}}
+{"methods": ["bm25"], "paper_id": "6f671493afa201970f0f19201c420c05edccfb87", "query_id": "Q001", "ranks": {"bm25": 5}}
+{"methods": ["bm25"], "paper_id": "d2c34737e20d005820abe6f1b82bd191205a87f2", "query_id": "Q001", "ranks": {"bm25": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "31476174c2c5133e2bc7e6b6dc1bb61daec90f1c", "query_id": "Q001", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["graph"], "paper_id": "2b1eae2cceb377cb9267b2c96294228d5e583136", "query_id": "Q001", "ranks": {"graph": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631", "query_id": "Q001", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "01de6d0c00e7e77050a90945246b2b4acde497a2", "query_id": "Q001", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "4a253cd63110da07bb17074f6ac14717afd2f3f1", "query_id": "Q001", "ranks": {"graph": 3}}
+{"methods": ["graph"], "paper_id": "1e375c77c232ed7391c0e41ce87991cb46b3df21", "query_id": "Q001", "ranks": {"graph": 17}}
+{"methods": ["bm25"], "paper_id": "10f27ac4ff35522e64199b973089c6d461d4c5f4", "query_id": "Q001", "ranks": {"bm25": 15}}
+{"methods": ["graph"], "paper_id": "9bcb3fd2aede34560b20f44620dd7cd30021e65a", "query_id": "Q001", "ranks": {"graph": 4}}
+{"methods": ["graph"], "paper_id": "b0ca941fd8aa7345e8aba84c067a795f65c38382", "query_id": "Q001", "ranks": {"graph": 20}}
+{"methods": ["graph"], "paper_id": "c1fca46e51ef3f9e49877ccb75fc31fd70bc60e7", "query_id": "Q001", "ranks": {"graph": 7}}
+{"methods": ["bm25"], "paper_id": "f913cf807a3ac731548a4d924ba99fcc6ede1cdb", "query_id": "Q001", "ranks": {"bm25": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d60610a39f4b57928a9a26e7ca06e4291df3e7a1", "query_id": "Q001", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["bm25"], "paper_id": "617237ffa9636e3eb789674cf6a002204bb8a8a3", "query_id": "Q001", "ranks": {"bm25": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "39cedaac6ef78686a83e716aa14efb96547281d2", "query_id": "Q001", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q001", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "28c64dde8a9231cba2d9fd7b49a19a53dc400009", "query_id": "Q001", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "e31423dbbc729feb9d8e41a5ca04e0ef7e7f9fa9", "query_id": "Q001", "ranks": {"bm25": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5aa40518f2a3df8d628bbc5c02ff1bb9b72740cc", "query_id": "Q001", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["graph"], "paper_id": "2ba34c7e3c15fbd1daa7d3e24e4345fdc1df045d", "query_id": "Q001", "ranks": {"graph": 2}}
+{"methods": ["graph"], "paper_id": "94f0823f8db5360972a7a68b453e28ddf9c4e992", "query_id": "Q001", "ranks": {"graph": 16}}
+{"methods": ["bm25"], "paper_id": "13a56604f8d48e005194006c5c610c8f459a573b", "query_id": "Q001", "ranks": {"bm25": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2db550467862c3bea38901cef84d86efed31b8d2", "query_id": "Q001", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "27d5be9322d71b6fd2faa8a6b87250127a12c0cf", "query_id": "Q001", "ranks": {"graph": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "510fcc5d909702177a8a48c3543a37dcde5cfde3", "query_id": "Q001", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc", "query_id": "Q001", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["graph"], "paper_id": "8018a561d2ed821cfb4be7ce04993cabf9932c2f", "query_id": "Q001", "ranks": {"graph": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q001", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["bm25", "graph"], "paper_id": "48299646b03df5ed39a3e83a5bbd5c103b2591c4", "query_id": "Q001", "ranks": {"bm25": 2, "graph": 12}}
+{"methods": ["graph"], "paper_id": "9a772646ef9ed9c917f45fa592d5f89f7d5f8542", "query_id": "Q001", "ranks": {"graph": 19}}
+{"methods": ["bm25"], "paper_id": "772a4221eb8fcb30ba89d3f0d35be0b2d8824bd3", "query_id": "Q001", "ranks": {"bm25": 8}}
+{"methods": ["bm25"], "paper_id": "69864ed10af6a63ac453f2eed5c3accb7e8712e4", "query_id": "Q001", "ranks": {"bm25": 18}}
+{"methods": ["bm25"], "paper_id": "9bdc589ab07f75126a6a005d99107ab1b03bc4a2", "query_id": "Q001", "ranks": {"bm25": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7", "query_id": "Q001", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3302081b8878de505b69900e22b8137c5d931be7", "query_id": "Q001", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3cc4823ce339ba27299241c8a7d639e8722f81c1", "query_id": "Q001", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["bm25"], "paper_id": "969a7ae7a0dbb573e0daad54b60d0c68a74d288c", "query_id": "Q001", "ranks": {"bm25": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2", "query_id": "Q001", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["bm25"], "paper_id": "e88282221e3809e5e859d605fae38afe54362c2f", "query_id": "Q001", "ranks": {"bm25": 20}}
+{"methods": ["graph"], "paper_id": "13a2ee8292908a8064abc2f43835a8dd5b11d695", "query_id": "Q001", "ranks": {"graph": 14}}
+{"methods": ["graph"], "paper_id": "e33a00c58b7edc1e7be1832a0ae62fb5e861b4e0", "query_id": "Q001", "ranks": {"graph": 11}}
+{"methods": ["bm25"], "paper_id": "892e54c360e3ab5c7d6043f29b779effc4d92ee3", "query_id": "Q001", "ranks": {"bm25": 1}}
+{"methods": ["bm25"], "paper_id": "ac4bc41e4cb774f30ebe9e16d9ba2c0ba69375d1", "query_id": "Q001", "ranks": {"bm25": 6}}
+{"methods": ["graph"], "paper_id": "91fb815361fdbf80ff15ce4d783a41846bd99232", "query_id": "Q001", "ranks": {"graph": 6}}
+{"methods": ["graph"], "paper_id": "b62b536538bdf632b6363f2eb93590369529a68a", "query_id": "Q001", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "2de30e1c07d89edbdec3bc9f4a724de9f8f41179", "query_id": "Q001", "ranks": {"bm25": 19}}
+{"methods": ["graph"], "paper_id": "8a1e3d41ea3d730e562d8c19b2bdb50a23208842", "query_id": "Q001", "ranks": {"graph": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748", "query_id": "Q001", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["bm25", "graph"], "paper_id": "5327c0830833187b87c80c6c671a2763a99be268", "query_id": "Q001", "ranks": {"bm25": 4, "graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5f23f00cd2e3884790818da25dd230f04a624679", "query_id": "Q001", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["bm25"], "paper_id": "a53fb6d6e39d4a17cb12de880f4567f9076edbaf", "query_id": "Q001", "ranks": {"bm25": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "56a882a6c68cda9693622256d7ab72ad6a4af445", "query_id": "Q002", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "aa339dc08635486396623300d7ab64d1c8d632f6", "query_id": "Q002", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["bm25"], "paper_id": "f1ac8d67939c9de373472312a7ba8939401d04ca", "query_id": "Q002", "ranks": {"bm25": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1", "query_id": "Q002", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["bm25"], "paper_id": "627f07b49f9a68cfb26561f83758f5b788041580", "query_id": "Q002", "ranks": {"bm25": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "a6337d9ebb0b7de84588806110157806f9c0383b", "query_id": "Q002", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ce82cf4677564279b2eadbf9160a294dccbb715a", "query_id": "Q002", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["bm25"], "paper_id": "765ae85a9e656e9fbc7173b391c5dbfd77242576", "query_id": "Q002", "ranks": {"bm25": 1}}
+{"methods": ["graph"], "paper_id": "04afa0417dc2a4555c15243a69e6a54ce44ecf63", "query_id": "Q002", "ranks": {"graph": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "88504211538e43beca2064ef8be1669fbc7bcd4f", "query_id": "Q002", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1114d604da30ac242fa30178cd08bcc4452073e6", "query_id": "Q002", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5b53a03186a418d2da94136aa499915ef50f88f7", "query_id": "Q002", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["graph"], "paper_id": "8af925f4edf45131b5b6fed8aa655089d58692fa", "query_id": "Q002", "ranks": {"graph": 15}}
+{"methods": ["graph"], "paper_id": "cd551790992d16148fe2e5ff2cc76861195e2191", "query_id": "Q002", "ranks": {"graph": 12}}
+{"methods": ["bm25"], "paper_id": "0a5d5b7e6ff605d2e8cf0c0cc7dec82c99580474", "query_id": "Q002", "ranks": {"bm25": 7}}
+{"methods": ["bm25"], "paper_id": "47e4b83a663b240a79943e1e4ae6f652189aee2d", "query_id": "Q002", "ranks": {"bm25": 13}}
+{"methods": ["bm25"], "paper_id": "722a41f71df0b7bc3d02bcfbffe09bc24432e702", "query_id": "Q002", "ranks": {"bm25": 3}}
+{"methods": ["graph"], "paper_id": "d27669c82faf78ea08cceaa0a171b540cccc304d", "query_id": "Q002", "ranks": {"graph": 14}}
+{"methods": ["bm25"], "paper_id": "834120e7fce9aa9781f3ddec89ba6e2de251e1bc", "query_id": "Q002", "ranks": {"bm25": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47", "query_id": "Q002", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["bm25"], "paper_id": "d18326766e4768cb1abf889f5f09e6ed9f6138ed", "query_id": "Q002", "ranks": {"bm25": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "00971cfdf54c7ad204719262ded5c53f195c7bfa", "query_id": "Q002", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["bm25"], "paper_id": "cb6e39ac3acee631d6c9220b65065733e0904b55", "query_id": "Q002", "ranks": {"bm25": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "95306883b35fc2373f26afbb0896c9f63a66d035", "query_id": "Q002", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1a6b9ba1d380e97b2279e9f3c1eca0f78282e69d", "query_id": "Q002", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["graph"], "paper_id": "eaa9b7d5be41f5dbd62042f716751f6040628ec0", "query_id": "Q002", "ranks": {"graph": 3}}
+{"methods": ["graph"], "paper_id": "3deb95d8dc4bd543eb61acde418fdcc5e88c9eec", "query_id": "Q002", "ranks": {"graph": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "88c7b8e5a5044d7eb35811aa2d84d2b2ac634027", "query_id": "Q002", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["graph"], "paper_id": "5523039b06bf0b1f49be4489a30616bcfa4c41dc", "query_id": "Q002", "ranks": {"graph": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "cc827043e6c5be8337df4edb155096f9d0006020", "query_id": "Q002", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "319bcf95ec041d2030abed8a4812b8a635630d6b", "query_id": "Q002", "ranks": {"bm25": 20}}
+{"methods": ["bm25"], "paper_id": "a983f9c99f2fc0beae9aeb3d7fd5f91e2b215f12", "query_id": "Q002", "ranks": {"bm25": 8}}
+{"methods": ["bm25"], "paper_id": "c68dc5d7b1d511f3084d48f233748822ccb7c5c4", "query_id": "Q002", "ranks": {"bm25": 2}}
+{"methods": ["bm25"], "paper_id": "a5508d47dcb3f4c05f99be9b9f9acc30095bb050", "query_id": "Q002", "ranks": {"bm25": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2e1ba42f9b6c33b93a401ffb3b315b24386b97b8", "query_id": "Q002", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["graph"], "paper_id": "0ca89c22fed80b3eec8314cc95cca36079cb2427", "query_id": "Q002", "ranks": {"graph": 1}}
+{"methods": ["graph"], "paper_id": "49f202fb16bb2897d4866844d4d8624a4dfa506d", "query_id": "Q002", "ranks": {"graph": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4d41c2fa74dd018e39ddb3cbbfead1b42615612c", "query_id": "Q002", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["graph"], "paper_id": "442e4aa36c75b375831230f757898622399ce214", "query_id": "Q002", "ranks": {"graph": 17}}
+{"methods": ["graph"], "paper_id": "a81434e08ea760cc364c5a9d8aa8cdc09fcbc9f1", "query_id": "Q002", "ranks": {"graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "af8df99efea4d4ed6f5cf6f6eaf3a5943f4d75db", "query_id": "Q002", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["graph"], "paper_id": "f8fcd8c8610601dadcbb3f4594fff24e83ff583b", "query_id": "Q002", "ranks": {"graph": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76", "query_id": "Q002", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["graph"], "paper_id": "268d347e8a55b5eb82fb5e7d2f800e33c75ab18a", "query_id": "Q002", "ranks": {"graph": 6}}
+{"methods": ["bm25"], "paper_id": "74e2b8e1d3f265be1f204ca089879f0c6dff0339", "query_id": "Q002", "ranks": {"bm25": 6}}
+{"methods": ["graph"], "paper_id": "83e89d56d0d0e1dfd8b52213e6cc2e191aaaf34b", "query_id": "Q002", "ranks": {"graph": 9}}
+{"methods": ["graph"], "paper_id": "cb7738a3b0a7df34d4febee9295b08d835f98e10", "query_id": "Q002", "ranks": {"graph": 2}}
+{"methods": ["bm25"], "paper_id": "342d8deaf6aeee1ce788d9a2ead062551796d55a", "query_id": "Q002", "ranks": {"bm25": 12}}
+{"methods": ["bm25"], "paper_id": "35d5c1dd4d51e885a9e5a0e794adadf13920a39b", "query_id": "Q002", "ranks": {"bm25": 16}}
+{"methods": ["bm25"], "paper_id": "e07093f22c1689c6a6ffeebab65db7538b18547d", "query_id": "Q002", "ranks": {"bm25": 19}}
+{"methods": ["graph"], "paper_id": "bb6c2a64ecb6e4c9f3f5720d53cca76a2c37505d", "query_id": "Q002", "ranks": {"graph": 18}}
+{"methods": ["bm25"], "paper_id": "0b74ab1ecff2b05c5d376d07a47ad9b94986683e", "query_id": "Q002", "ranks": {"bm25": 11}}
+{"methods": ["graph"], "paper_id": "a26a7a74f1e5fd562be95c3611a0680759fbdf84", "query_id": "Q002", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "97c1c78940c30179c2e4bb2855f6a1dc14de7d2f", "query_id": "Q002", "ranks": {"bm25": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ec754ef1c319938d9ed80d43bc5cc628c558ce1b", "query_id": "Q002", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["bm25"], "paper_id": "ebedaa59ee753fe44b31389c7602008677dac6b5", "query_id": "Q002", "ranks": {"bm25": 15}}
+{"methods": ["graph"], "paper_id": "ad7ddcc14984caae308c397f1a589aae75d4ab71", "query_id": "Q002", "ranks": {"graph": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6cbd02f98a565e7af8f8ad4cf7a3264fea4e2671", "query_id": "Q002", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["graph"], "paper_id": "f0c27af6c330d5c3b0a8eb376a69ce92c85badd7", "query_id": "Q002", "ranks": {"graph": 11}}
+{"methods": ["graph"], "paper_id": "300fa071d990d5c48385da39dccea6b7b280edec", "query_id": "Q002", "ranks": {"graph": 16}}
+{"methods": ["bm25"], "paper_id": "f94ed1d23c49d6dfd807df4e3d5dccb96b4746a9", "query_id": "Q003", "ranks": {"bm25": 8}}
+{"methods": ["graph"], "paper_id": "ece57b93c36325d909723564044f06986e5553ff", "query_id": "Q003", "ranks": {"graph": 11}}
+{"methods": ["bm25"], "paper_id": "04c63ded1bd875bcc991573919c0c5e3c726f9e8", "query_id": "Q003", "ranks": {"bm25": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b5bde7463763595d46a35fd36c0aebadfaa9eb17", "query_id": "Q003", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["graph"], "paper_id": "83e89d56d0d0e1dfd8b52213e6cc2e191aaaf34b", "query_id": "Q003", "ranks": {"graph": 3}}
+{"methods": ["bm25"], "paper_id": "59c26e26921a7babb7c41f8187aae2ec23f83669", "query_id": "Q003", "ranks": {"bm25": 6}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "24ed7399decc08acbe38cd02b29b0bd3c7e4200b", "query_id": "Q003", "ranks": {"bm25": 1, "hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "cd551790992d16148fe2e5ff2cc76861195e2191", "query_id": "Q003", "ranks": {"graph": 5}}
+{"methods": ["graph"], "paper_id": "0ca89c22fed80b3eec8314cc95cca36079cb2427", "query_id": "Q003", "ranks": {"graph": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "250e1fa7d898f5e6db8138ad7c9e1aa004707fcc", "query_id": "Q003", "ranks": {"hybrid": 15, "production": 14, "vector": 14}}
+{"methods": ["graph"], "paper_id": "2c91e6312bc002bcf5f01db3ad728bb6a47b1317", "query_id": "Q003", "ranks": {"graph": 8}}
+{"methods": ["graph"], "paper_id": "680f454be60d79126c54eb2216bd1a1392249e79", "query_id": "Q003", "ranks": {"graph": 2}}
+{"methods": ["graph"], "paper_id": "84497899d8bf19fc392174f80a2256fdf5c2e00f", "query_id": "Q003", "ranks": {"graph": 20}}
+{"methods": ["graph"], "paper_id": "e6976d0cf8ea07b9699a30b89282386cc1b5f3ca", "query_id": "Q003", "ranks": {"graph": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2", "query_id": "Q003", "ranks": {"hybrid": 2, "production": 2, "vector": 1}}
+{"methods": ["bm25"], "paper_id": "b070546c7bcd299fff0f41ade3169f2c0d7108b2", "query_id": "Q003", "ranks": {"bm25": 3}}
+{"methods": ["graph", "hybrid", "production", "vector"], "paper_id": "3443efc855cebd17d1512d1a703b6e9ee2e4da8b", "query_id": "Q003", "ranks": {"graph": 4, "hybrid": 13, "production": 12, "vector": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "315af5157d21522a8fa8cb6a0c56d5cc5e5de1e6", "query_id": "Q003", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["graph"], "paper_id": "5523039b06bf0b1f49be4489a30616bcfa4c41dc", "query_id": "Q003", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "a5cf25d93f24f9490f3fbf124f996be6ed56d757", "query_id": "Q003", "ranks": {"bm25": 16}}
+{"methods": ["bm25"], "paper_id": "5e6adf52c971e56e3a50ff8103ee7fe7286617ab", "query_id": "Q003", "ranks": {"bm25": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b60fe198f704bba3d3199c4dedcc134a3fa575f3", "query_id": "Q003", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["graph"], "paper_id": "49f202fb16bb2897d4866844d4d8624a4dfa506d", "query_id": "Q003", "ranks": {"graph": 9}}
+{"methods": ["graph"], "paper_id": "cd2ddb48ec342c198a7dc66ea20136f1d496de1f", "query_id": "Q003", "ranks": {"graph": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q003", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "f5ec998b44beb4bd743204e77f564a62e9df46b2", "query_id": "Q003", "ranks": {"hybrid": 14, "production": 13, "vector": 13}}
+{"methods": ["graph"], "paper_id": "1948c13b4842b2abdcc3dd0cf9a95cd721d8a01d", "query_id": "Q003", "ranks": {"graph": 7}}
+{"methods": ["graph"], "paper_id": "062b99a331795a9386721d793c4b80b51b4ee1de", "query_id": "Q003", "ranks": {"graph": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631", "query_id": "Q003", "ranks": {"hybrid": 16, "production": 15, "vector": 15}}
+{"methods": ["bm25"], "paper_id": "6ad1607eb66cc1f65cff07134c65184b577e5c11", "query_id": "Q003", "ranks": {"bm25": 18}}
+{"methods": ["bm25"], "paper_id": "d1845f20fddb34e6334c97ffa35533cc88020269", "query_id": "Q003", "ranks": {"bm25": 15}}
+{"methods": ["bm25"], "paper_id": "b961583250d1a3150ad7499e160447e79c46d26a", "query_id": "Q003", "ranks": {"bm25": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d4745f8e80d0cf75ae80c33ab5833b467704d46e", "query_id": "Q003", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["graph"], "paper_id": "2ba34c7e3c15fbd1daa7d3e24e4345fdc1df045d", "query_id": "Q003", "ranks": {"graph": 19}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "796453db982b6b47cb0a1823290befae73bf7d37", "query_id": "Q003", "ranks": {"bm25": 10, "hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["bm25"], "paper_id": "4db22f69d5047659dc5f9c96be0b86a110bd4562", "query_id": "Q003", "ranks": {"bm25": 20}}
+{"methods": ["bm25"], "paper_id": "59eaad8543d120f18f5cd413b898cab959a15c82", "query_id": "Q003", "ranks": {"bm25": 19}}
+{"methods": ["bm25"], "paper_id": "e38a0ec359d51a66a8c41dae4b25065659e8bda9", "query_id": "Q003", "ranks": {"bm25": 13}}
+{"methods": ["bm25"], "paper_id": "58e70b4a3a1144fe6c3444764b6988abbc57ffd4", "query_id": "Q003", "ranks": {"bm25": 7}}
+{"methods": ["bm25"], "paper_id": "ced8d7253c00b07b836f76c30ea496fd880b8f65", "query_id": "Q003", "ranks": {"bm25": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5583528147b2bef03595d2a730a153a559bfa57d", "query_id": "Q003", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7", "query_id": "Q003", "ranks": {"hybrid": 12, "production": 16, "vector": 16}}
+{"methods": ["graph"], "paper_id": "7244122d7a8039c7d35f431b581b1894725dc79c", "query_id": "Q003", "ranks": {"graph": 14}}
+{"methods": ["graph"], "paper_id": "55518098968253bf7f5f7cbfc27d60170dc7e1ea", "query_id": "Q003", "ranks": {"graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2fb6672c9f296507885b98dc4675f9f6758b983e", "query_id": "Q003", "ranks": {"hybrid": 1, "production": 1, "vector": 2}}
+{"methods": ["graph"], "paper_id": "939680487a049e02ad617042f07b9529b2e5bb2d", "query_id": "Q003", "ranks": {"graph": 12}}
+{"methods": ["bm25"], "paper_id": "7950fbb7233ca22773522338fc80f590584bf43a", "query_id": "Q003", "ranks": {"bm25": 14}}
+{"methods": ["bm25"], "paper_id": "e43b1f4f8e20cb90e4437e5aef3f3323417eac11", "query_id": "Q003", "ranks": {"bm25": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8e6f0800badceddde92ca062a4f6b107ee6ab744", "query_id": "Q003", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3302081b8878de505b69900e22b8137c5d931be7", "query_id": "Q003", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["graph"], "paper_id": "80bcfee1766e56a01e6feeaa3cb47d3291acdcdf", "query_id": "Q003", "ranks": {"graph": 1}}
+{"methods": ["graph"], "paper_id": "ab86f5a743cbff4dbb004b76fc81ff10845327f4", "query_id": "Q003", "ranks": {"graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "f1caab91c000da3d6e8aa9800527ab0fae41c4e1", "query_id": "Q003", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "4fa31616b834c377c4995c346a2b17464f25692a", "query_id": "Q003", "ranks": {"bm25": 2, "hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["bm25"], "paper_id": "6b65f02a0b4826b5b26ea0ed5fdefebeda76c597", "query_id": "Q003", "ranks": {"bm25": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q003", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["graph"], "paper_id": "1225bc8902daa95f0df8d6a84b3cfdd4a1cca31d", "query_id": "Q004", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "7301b2a1c8156d7072c7eddbc780f45091004168", "query_id": "Q004", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["bm25"], "paper_id": "6827a46b59672e2d9fa4163e62216915fc8e8b8b", "query_id": "Q004", "ranks": {"bm25": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "af8df99efea4d4ed6f5cf6f6eaf3a5943f4d75db", "query_id": "Q004", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["bm25"], "paper_id": "ba610a5aa3b1b4e431baa9a005b9fee36f91fa00", "query_id": "Q004", "ranks": {"bm25": 6}}
+{"methods": ["graph"], "paper_id": "472b19ad85fc637e572f529d449c1eb3cfabe98b", "query_id": "Q004", "ranks": {"graph": 13}}
+{"methods": ["graph"], "paper_id": "3443efc855cebd17d1512d1a703b6e9ee2e4da8b", "query_id": "Q004", "ranks": {"graph": 20}}
+{"methods": ["graph"], "paper_id": "268d347e8a55b5eb82fb5e7d2f800e33c75ab18a", "query_id": "Q004", "ranks": {"graph": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "91e8117e7ebc966bc76de2cb52ec717d2acdb1a4", "query_id": "Q004", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["bm25"], "paper_id": "ee7d7a3732360144aa635058e5870db6028625cb", "query_id": "Q004", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "aa339dc08635486396623300d7ab64d1c8d632f6", "query_id": "Q004", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["bm25"], "paper_id": "76fecac5b9e884bc894cfa9f8af706ef315a423e", "query_id": "Q004", "ranks": {"bm25": 12}}
+{"methods": ["graph"], "paper_id": "99e2cc23389922f6bbb881fae124497ab7b7f4b9", "query_id": "Q004", "ranks": {"graph": 9}}
+{"methods": ["bm25"], "paper_id": "e6801a0eec1fe03b72e74bf0c64f763df1b2ec30", "query_id": "Q004", "ranks": {"bm25": 14}}
+{"methods": ["graph"], "paper_id": "0cc13ac0d3dfde407829537e2da0ea33e6a88e4a", "query_id": "Q004", "ranks": {"graph": 8}}
+{"methods": ["bm25"], "paper_id": "ded113f82755f449a62851e368cebf53707b4f99", "query_id": "Q004", "ranks": {"bm25": 1}}
+{"methods": ["bm25"], "paper_id": "01b2979248d1af00633d0f7a8a9f44b25891e278", "query_id": "Q004", "ranks": {"bm25": 5}}
+{"methods": ["bm25"], "paper_id": "d90bb080f6cc2622f1800cc82095a3ec127ea520", "query_id": "Q004", "ranks": {"bm25": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "10c5c61ffb34b32bb945a07985bc6af176fdb421", "query_id": "Q004", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "33e738b6ca2a6e0c5020a3ea87c1ebd2a3c7497a", "query_id": "Q004", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "cb7738a3b0a7df34d4febee9295b08d835f98e10", "query_id": "Q004", "ranks": {"graph": 11}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q004", "ranks": {"graph": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "a96caf574843658541c12dbed4386f0d0dd69a47", "query_id": "Q004", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["bm25"], "paper_id": "fe38a74aac3e0bc9e36d76796e4fb927291d37c0", "query_id": "Q004", "ranks": {"bm25": 17}}
+{"methods": ["graph"], "paper_id": "83e89d56d0d0e1dfd8b52213e6cc2e191aaaf34b", "query_id": "Q004", "ranks": {"graph": 15}}
+{"methods": ["graph"], "paper_id": "72c78b97173bb31fb4b1dc4c05af877cde55ed2e", "query_id": "Q004", "ranks": {"graph": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1de68f12db136526116c6ac7064fd13965f2c966", "query_id": "Q004", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["bm25"], "paper_id": "8cc6add89dc1670540b50ee34a3de61acecbc4c6", "query_id": "Q004", "ranks": {"bm25": 16}}
+{"methods": ["graph"], "paper_id": "7e92efec706cbbf6e84c3c99360aea3fae3a28dd", "query_id": "Q004", "ranks": {"graph": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ce82cf4677564279b2eadbf9160a294dccbb715a", "query_id": "Q004", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["bm25"], "paper_id": "cb6e39ac3acee631d6c9220b65065733e0904b55", "query_id": "Q004", "ranks": {"bm25": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d9cc66d6825a7054e6f56fc9530236e1460395a5", "query_id": "Q004", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["bm25"], "paper_id": "a983f9c99f2fc0beae9aeb3d7fd5f91e2b215f12", "query_id": "Q004", "ranks": {"bm25": 13}}
+{"methods": ["graph"], "paper_id": "ef310b0e7f5d2fd7ccbeb62c73063864b0afa4ea", "query_id": "Q004", "ranks": {"graph": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4d41c2fa74dd018e39ddb3cbbfead1b42615612c", "query_id": "Q004", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "7a39dd9db0f7f7f69ced60425d0bcc92e78afeee", "query_id": "Q004", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["bm25"], "paper_id": "633a7666982de710d309a28e5a42a29ebd85bcaf", "query_id": "Q004", "ranks": {"bm25": 4}}
+{"methods": ["graph"], "paper_id": "c9a13a066ab57978e8b5a19d5c81ecf7ec74e56a", "query_id": "Q004", "ranks": {"graph": 4}}
+{"methods": ["bm25"], "paper_id": "eb14b24b329a6cc80747644616e15491ef49596f", "query_id": "Q004", "ranks": {"bm25": 3}}
+{"methods": ["bm25"], "paper_id": "722a41f71df0b7bc3d02bcfbffe09bc24432e702", "query_id": "Q004", "ranks": {"bm25": 2}}
+{"methods": ["bm25"], "paper_id": "c2306e47ae26d902626d4e7c4b59c0894c6acab5", "query_id": "Q004", "ranks": {"bm25": 8}}
+{"methods": ["graph"], "paper_id": "20c27659690854435c020b8b5ba8dee0683920cd", "query_id": "Q004", "ranks": {"graph": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "67571d29190faea9fbd104acd16274f8c4edf254", "query_id": "Q004", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["graph"], "paper_id": "0ca89c22fed80b3eec8314cc95cca36079cb2427", "query_id": "Q004", "ranks": {"graph": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d28d81bbc6665b107e1e6dabab4f1a42c7988302", "query_id": "Q004", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6b66447a6039acd79c6810ff07bb378c3e79b8c6", "query_id": "Q004", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q004", "ranks": {"graph": 19}}
+{"methods": ["graph"], "paper_id": "1d41090ba8e597380e7353b6b1f42d6a7d9f83b4", "query_id": "Q004", "ranks": {"graph": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9f4b69762ffb1ba42b573fd4ced996f3153e21c0", "query_id": "Q004", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["bm25"], "paper_id": "eadc5212c6bca2ba57570557a844fa27a159484c", "query_id": "Q004", "ranks": {"bm25": 19}}
+{"methods": ["bm25"], "paper_id": "85a596314446cbeeea058d343321cd186fbc5325", "query_id": "Q004", "ranks": {"bm25": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76", "query_id": "Q004", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "786fcef60a62dc94b3541e4d3104ec62fff4edf4", "query_id": "Q004", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["graph"], "paper_id": "157c2fd3a56f843005936dd464001a3823db9abc", "query_id": "Q004", "ranks": {"graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9a671c37e83dbbf8428a1638a8274ed7ed756fc1", "query_id": "Q004", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "af04a53668817026de8a21c1160005d49d21351b", "query_id": "Q004", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "96a2e10310ac4a0abd1b9feba0d9097abe3227f0", "query_id": "Q004", "ranks": {"graph": 3}}
+{"methods": ["bm25"], "paper_id": "e39afdbd832bd8fd0fb4f4f7df3722dc5f5cab2a", "query_id": "Q004", "ranks": {"bm25": 9}}
+{"methods": ["bm25", "graph"], "paper_id": "01d866763702b5bf71802c8d8d3a1d6f809098f7", "query_id": "Q004", "ranks": {"bm25": 7, "graph": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1533d07a38d16bf36d0b570468d18ba177d54d72", "query_id": "Q005", "ranks": {"hybrid": 16, "production": 18, "vector": 16}}
+{"methods": ["bm25"], "paper_id": "7244122d7a8039c7d35f431b581b1894725dc79c", "query_id": "Q005", "ranks": {"bm25": 7}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q005", "ranks": {"graph": 9}}
+{"methods": ["graph"], "paper_id": "3eedfc92689a99f468c562e41e8b7ee6e19e673d", "query_id": "Q005", "ranks": {"graph": 4}}
+{"methods": ["bm25"], "paper_id": "745e5ea4223575d460e3c7422b04d7c06ce01b3c", "query_id": "Q005", "ranks": {"bm25": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "07ca0917e74df0461b1b4c926f3e66e05adeec22", "query_id": "Q005", "ranks": {"hybrid": 14, "production": 16, "vector": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3302081b8878de505b69900e22b8137c5d931be7", "query_id": "Q005", "ranks": {"hybrid": 9, "production": 11, "vector": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "0b2134e5ae6f62d66686d5ca9bbbaadc1ddce61e", "query_id": "Q005", "ranks": {"hybrid": 5, "production": 7, "vector": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "02355c3258110f390ecc7c36d460da5a1d113282", "query_id": "Q005", "ranks": {"hybrid": 7, "production": 9, "vector": 7}}
+{"methods": ["graph"], "paper_id": "40df59e86d1effc21f470251dd10401cdd29cb12", "query_id": "Q005", "ranks": {"graph": 12}}
+{"methods": ["graph"], "paper_id": "5125acded23e5ccdb7d01a433191426e313e8ac0", "query_id": "Q005", "ranks": {"graph": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9e04e50f67ea086d6dac4b580e483183a7ddd536", "query_id": "Q005", "ranks": {"hybrid": 11, "production": 13, "vector": 11}}
+{"methods": ["bm25"], "paper_id": "2a47759c48bf8d14d2caa54bcc4bd03c1eee6135", "query_id": "Q005", "ranks": {"bm25": 8}}
+{"methods": ["bm25"], "paper_id": "d28c1f7d8d26670890a822daaed55e90f956b903", "query_id": "Q005", "ranks": {"bm25": 16}}
+{"methods": ["hybrid", "vector"], "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748", "query_id": "Q005", "ranks": {"hybrid": 19, "vector": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "cfadda944bc436377e183f1e0974110e77226c47", "query_id": "Q005", "ranks": {"hybrid": 3, "production": 5, "vector": 3}}
+{"methods": ["bm25"], "paper_id": "76d10a049d39267a4ff79a38e30555d3a5a525c4", "query_id": "Q005", "ranks": {"bm25": 2}}
+{"methods": ["graph"], "paper_id": "a9a6002324dad6c9788105efb66a7101d72a1388", "query_id": "Q005", "ranks": {"graph": 8}}
+{"methods": ["bm25"], "paper_id": "76d2a53b3e6c8db7a0139e0e4da671f5b0846bf4", "query_id": "Q005", "ranks": {"bm25": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "0ff29677d9d14e7d512219b08f561cad989befbc", "query_id": "Q005", "ranks": {"hybrid": 8, "production": 10, "vector": 8}}
+{"methods": ["graph"], "paper_id": "8a7250697ad953befc3a382876a161c5355b2d51", "query_id": "Q005", "ranks": {"graph": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "71a7ba06ef16fa00d1e5638f4231957f2a90c1ef", "query_id": "Q005", "ranks": {"hybrid": 1, "production": 2, "vector": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4d46f806f332b02bdd17b06aad5a63f716f4249e", "query_id": "Q005", "ranks": {"hybrid": 12, "production": 14, "vector": 12}}
+{"methods": ["bm25"], "paper_id": "c4180d09c80b131f378c55592437aef774b1d678", "query_id": "Q005", "ranks": {"bm25": 1}}
+{"methods": ["graph"], "paper_id": "1d41090ba8e597380e7353b6b1f42d6a7d9f83b4", "query_id": "Q005", "ranks": {"graph": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "14014c024674991149f3ecf9314c93f7e029ef1a", "query_id": "Q005", "ranks": {"hybrid": 10, "production": 12, "vector": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2132bafd540e13bb190a588f60a85ae8fb1f8fb8", "query_id": "Q005", "ranks": {"hybrid": 17, "production": 19, "vector": 17}}
+{"methods": ["bm25"], "paper_id": "ea7e48e1c877aee481b3af40872d7f2b6cd159f7", "query_id": "Q005", "ranks": {"bm25": 13}}
+{"methods": ["graph"], "paper_id": "b9631936ab9e41511f0eb85adb0fc7b8efb7983e", "query_id": "Q005", "ranks": {"graph": 17}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q005", "ranks": {"graph": 13}}
+{"methods": ["bm25"], "paper_id": "3e1478cae8208d746ce1910e86308f5dd6ef59f8", "query_id": "Q005", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8", "query_id": "Q005", "ranks": {"hybrid": 2, "production": 3, "vector": 2}}
+{"methods": ["graph"], "paper_id": "13a2df532131d48f29c72cb07cb5812d6980baff", "query_id": "Q005", "ranks": {"graph": 15}}
+{"methods": ["bm25"], "paper_id": "5b02b05bdce1b0814d1c74e827a7e69ca92f52ab", "query_id": "Q005", "ranks": {"bm25": 20}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q005", "ranks": {"graph": 16}}
+{"methods": ["graph"], "paper_id": "2504ffea9c60007e07efed26021c5924be8714da", "query_id": "Q005", "ranks": {"graph": 19}}
+{"methods": ["graph"], "paper_id": "c6c534398c462a0d71abfeeebb6db8599ea36649", "query_id": "Q005", "ranks": {"graph": 5}}
+{"methods": ["bm25"], "paper_id": "bca0a6cfc2eaec5dec10fb91a33a849c213dabf3", "query_id": "Q005", "ranks": {"bm25": 18}}
+{"methods": ["graph"], "paper_id": "6c2477434cf72fde3fabe28f9d957e72108e65f8", "query_id": "Q005", "ranks": {"graph": 2}}
+{"methods": ["bm25"], "paper_id": "ab0aa315f5c7a00334516927fb161577952ad697", "query_id": "Q005", "ranks": {"bm25": 12}}
+{"methods": ["graph"], "paper_id": "c36571ac50808c75fa8a5d37f1041af22e89e6ee", "query_id": "Q005", "ranks": {"graph": 14}}
+{"methods": ["bm25"], "paper_id": "a34d52c39c0a49dbcccbae8ac525365458e04000", "query_id": "Q005", "ranks": {"bm25": 3}}
+{"methods": ["bm25"], "paper_id": "706f756b71f0bf51fc78d98f52c358b1a3aeef8e", "query_id": "Q005", "ranks": {"bm25": 6}}
+{"methods": ["bm25"], "paper_id": "cee548c11ce518f96ca220672c682bc3313acbac", "query_id": "Q005", "ranks": {"bm25": 9}}
+{"methods": ["hybrid", "vector"], "paper_id": "ea4e957987c2df030208353ffca8ac4e2e615fbb", "query_id": "Q005", "ranks": {"hybrid": 20, "vector": 20}}
+{"methods": ["production"], "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7", "query_id": "Q005", "ranks": {"production": 1}}
+{"methods": ["bm25"], "paper_id": "461dc8d03b29b7bab1d04a23092333461db08e46", "query_id": "Q005", "ranks": {"bm25": 17}}
+{"methods": ["graph"], "paper_id": "cf0b4eba5424fd0302c2f7c9ac3b4a4120a29dbe", "query_id": "Q005", "ranks": {"graph": 18}}
+{"methods": ["bm25"], "paper_id": "b4b6a8fc75da4f933be945bf359708487b0e11ca", "query_id": "Q005", "ranks": {"bm25": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "31d7e9d7534b667f77fe605ff94b747964c068a8", "query_id": "Q005", "ranks": {"hybrid": 13, "production": 15, "vector": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "78c7179c1cb014e121adc59fb7117b213270dc93", "query_id": "Q005", "ranks": {"hybrid": 4, "production": 6, "vector": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "db0b29edcc920385ea4a89cee46d55c95563b80c", "query_id": "Q005", "ranks": {"hybrid": 6, "production": 8, "vector": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5aa40518f2a3df8d628bbc5c02ff1bb9b72740cc", "query_id": "Q005", "ranks": {"hybrid": 18, "production": 20, "vector": 18}}
+{"methods": ["production"], "paper_id": "8a9d84d86ac0d76e63914802f9738325c3bece9c", "query_id": "Q005", "ranks": {"production": 4}}
+{"methods": ["bm25"], "paper_id": "9dabc93f744c4c42841ca2ca4e3b4270cebf8c92", "query_id": "Q005", "ranks": {"bm25": 11}}
+{"methods": ["graph"], "paper_id": "aeea29ad352a04e74b6a4459e7328aa6e904486d", "query_id": "Q005", "ranks": {"graph": 20}}
+{"methods": ["bm25"], "paper_id": "b9213fcaa1f68e1e67c0f0a7fe7aa0a4259c153f", "query_id": "Q005", "ranks": {"bm25": 19}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q005", "ranks": {"graph": 7}}
+{"methods": ["bm25"], "paper_id": "33cace81d084851c0393292e276e1510744f5e65", "query_id": "Q005", "ranks": {"bm25": 4}}
+{"methods": ["graph"], "paper_id": "b905a4452b9eb53ec5bdec44381dcb1c458e186f", "query_id": "Q005", "ranks": {"graph": 11}}
+{"methods": ["graph"], "paper_id": "cc839c6f78cbc305efc846472045a6371986587d", "query_id": "Q005", "ranks": {"graph": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "e7b666c5ff82321cd35cfe5af3deb026ea0d3059", "query_id": "Q005", "ranks": {"hybrid": 15, "production": 17, "vector": 15}}
+{"methods": ["bm25", "graph"], "paper_id": "e944a9dcc580d0c68c7d42c6049ff3cdbb1e2fc4", "query_id": "Q006", "ranks": {"bm25": 13, "graph": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "dc746e2bb810d8fbfbd7fd84b2204f5b241617d0", "query_id": "Q006", "ranks": {"hybrid": 7, "production": 8, "vector": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "f7b550cba2d61b3fb676e72c92c245134363fda1", "query_id": "Q006", "ranks": {"hybrid": 4, "production": 5, "vector": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q006", "ranks": {"hybrid": 2, "production": 4, "vector": 2}}
+{"methods": ["hybrid", "vector"], "paper_id": "8ea9cb53779a8c1bb0e53764f88669bd7edf38f0", "query_id": "Q006", "ranks": {"hybrid": 20, "vector": 20}}
+{"methods": ["bm25"], "paper_id": "f996f2521078b0ff376cecaad9575e59d89f884b", "query_id": "Q006", "ranks": {"bm25": 20}}
+{"methods": ["bm25"], "paper_id": "6b969b1e40ac6f51c66f2b38365a692aeb057b64", "query_id": "Q006", "ranks": {"bm25": 19}}
+{"methods": ["graph"], "paper_id": "83e89d56d0d0e1dfd8b52213e6cc2e191aaaf34b", "query_id": "Q006", "ranks": {"graph": 18}}
+{"methods": ["bm25"], "paper_id": "1f47d68fe87d0b1317b34a71f98548df3f5da5ff", "query_id": "Q006", "ranks": {"bm25": 7}}
+{"methods": ["graph"], "paper_id": "17473d1c3215510fc145715a5fbdd8630129b303", "query_id": "Q006", "ranks": {"graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q006", "ranks": {"hybrid": 6, "production": 7, "vector": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "dd5e6e0212ec529fefd7dd8bcfa02d16269a5a7a", "query_id": "Q006", "ranks": {"hybrid": 5, "production": 6, "vector": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5f23f00cd2e3884790818da25dd230f04a624679", "query_id": "Q006", "ranks": {"hybrid": 3, "production": 1, "vector": 6}}
+{"methods": ["graph"], "paper_id": "08257eb1faa19c29ddcc31d7d749c9bd262213c5", "query_id": "Q006", "ranks": {"graph": 7}}
+{"methods": ["bm25", "graph"], "paper_id": "2a47759c48bf8d14d2caa54bcc4bd03c1eee6135", "query_id": "Q006", "ranks": {"bm25": 14, "graph": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "73bc990757d54f2161eceacd330e0aeb189393bf", "query_id": "Q006", "ranks": {"hybrid": 18, "production": 19, "vector": 18}}
+{"methods": ["bm25", "graph"], "paper_id": "0af5b63c7976864fefb1ea8d50875997d614b9a0", "query_id": "Q006", "ranks": {"bm25": 9, "graph": 12}}
+{"methods": ["graph"], "paper_id": "09bd598fbfddb2f1de60912647ffe8f6e7c0cf53", "query_id": "Q006", "ranks": {"graph": 10}}
+{"methods": ["graph"], "paper_id": "3bec8b4017541b9be679eb75836de9c713968e22", "query_id": "Q006", "ranks": {"graph": 11}}
+{"methods": ["bm25"], "paper_id": "d3aa52176612279d6e0a0416dd1fb7e48c29f557", "query_id": "Q006", "ranks": {"bm25": 5}}
+{"methods": ["graph"], "paper_id": "e069e23409d887b205e93aa9b8d09b94bdc4feb4", "query_id": "Q006", "ranks": {"graph": 6}}
+{"methods": ["bm25"], "paper_id": "f1848943900378a3f1f60610676724008cdb2e04", "query_id": "Q006", "ranks": {"bm25": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2", "query_id": "Q006", "ranks": {"hybrid": 9, "production": 10, "vector": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "e213aa9e3e27eaf927b5c1540b13d538c919332d", "query_id": "Q006", "ranks": {"hybrid": 15, "production": 16, "vector": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "47f01fd4f0c9c77058a966d3f17dbc09cf7ef42a", "query_id": "Q006", "ranks": {"hybrid": 14, "production": 15, "vector": 14}}
+{"methods": ["graph"], "paper_id": "09a29e71929e0667ba814eee507515409c0db1c3", "query_id": "Q006", "ranks": {"graph": 19}}
+{"methods": ["bm25"], "paper_id": "8495965cf4ff5eb8010c7f126690106c135f23ab", "query_id": "Q006", "ranks": {"bm25": 6}}
+{"methods": ["graph"], "paper_id": "680f454be60d79126c54eb2216bd1a1392249e79", "query_id": "Q006", "ranks": {"graph": 17}}
+{"methods": ["bm25", "graph"], "paper_id": "7dd0d56c3a8bcc84fce4194b04cd1ea0025a6958", "query_id": "Q006", "ranks": {"bm25": 2, "graph": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3651205c9e5a11ae32ffcbea3eaec6238e6e094b", "query_id": "Q006", "ranks": {"hybrid": 19, "production": 20, "vector": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "c4365bbca85615138b7de0e89b86a33deffbfa3a", "query_id": "Q006", "ranks": {"hybrid": 12, "production": 13, "vector": 12}}
+{"methods": ["bm25"], "paper_id": "d90d12b7bc3d3efe37641474301b2d7893932707", "query_id": "Q006", "ranks": {"bm25": 15}}
+{"methods": ["bm25", "graph"], "paper_id": "735a09c41f493a5af88a52f2ede5bbdfc5d0b973", "query_id": "Q006", "ranks": {"bm25": 12, "graph": 4}}
+{"methods": ["bm25"], "paper_id": "33dd601b83a493a139186933d9943f7902a1a2ff", "query_id": "Q006", "ranks": {"bm25": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748", "query_id": "Q006", "ranks": {"hybrid": 1, "production": 3, "vector": 1}}
+{"methods": ["graph"], "paper_id": "0cd87100a992967737709cbccb6db3a8a24b3603", "query_id": "Q006", "ranks": {"graph": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "99f319ab72ae43f0ac94fe7ff1891be524611483", "query_id": "Q006", "ranks": {"hybrid": 8, "production": 9, "vector": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2db550467862c3bea38901cef84d86efed31b8d2", "query_id": "Q006", "ranks": {"hybrid": 11, "production": 12, "vector": 11}}
+{"methods": ["bm25"], "paper_id": "6ef72d80f95c8d29ea1e91cda81717b563e34c1a", "query_id": "Q006", "ranks": {"bm25": 10}}
+{"methods": ["graph"], "paper_id": "31aa73656e97e8f8cddf0c599e18bd45dbaaeb07", "query_id": "Q006", "ranks": {"graph": 20}}
+{"methods": ["bm25", "graph"], "paper_id": "0a3764d605a317c5618a8cc4e83589d87bfff3b9", "query_id": "Q006", "ranks": {"bm25": 11, "graph": 1}}
+{"methods": ["bm25", "graph"], "paper_id": "3a9dcb0e38413611301358648ffe39c7f831a632", "query_id": "Q006", "ranks": {"bm25": 1, "graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1ef87f32cb9f2753755173856f035ab6af9e6f8e", "query_id": "Q006", "ranks": {"hybrid": 17, "production": 18, "vector": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "049c6ba3c6776e474cd2b60d081f47299f85091a", "query_id": "Q006", "ranks": {"hybrid": 13, "production": 14, "vector": 13}}
+{"methods": ["bm25", "graph"], "paper_id": "eb8dba325534da472170293b054596a17558c7f2", "query_id": "Q006", "ranks": {"bm25": 3, "graph": 5}}
+{"methods": ["production"], "paper_id": "6bc4004347cdf76d84597210796f38fcf7a01a80", "query_id": "Q006", "ranks": {"production": 2}}
+{"methods": ["bm25"], "paper_id": "c4180d09c80b131f378c55592437aef774b1d678", "query_id": "Q006", "ranks": {"bm25": 4}}
+{"methods": ["bm25"], "paper_id": "b5c0096fb17e04bd4be6cf810f7609eeca6aaca3", "query_id": "Q006", "ranks": {"bm25": 8}}
+{"methods": ["bm25", "graph"], "paper_id": "ee75d0675c7adedded789e38500cc0b32b9fb4ae", "query_id": "Q006", "ranks": {"bm25": 16, "graph": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5e6db511e736f77f844bbeebaa2b177427abada1", "query_id": "Q006", "ranks": {"hybrid": 16, "production": 17, "vector": 16}}
+{"methods": ["graph"], "paper_id": "4356021020028647e889bbcc5a7a2cf491172e02", "query_id": "Q006", "ranks": {"graph": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "dc08220b483bcbe72f09d342cf20bfc739ed540a", "query_id": "Q006", "ranks": {"hybrid": 10, "production": 11, "vector": 10}}
+{"methods": ["bm25"], "paper_id": "ab9e30123e0914ab5a97c36b9f9dda618cb1647c", "query_id": "Q007", "ranks": {"bm25": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "e579da7dad9ccf34c8e2203487be9c457e66d6c6", "query_id": "Q007", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7", "query_id": "Q007", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "6bcf623dbe595101a553f573e95f64a456a9baa5", "query_id": "Q007", "ranks": {"graph": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "48bfd1f82938036ecf680cf17ff2b882191a3ea0", "query_id": "Q007", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["bm25"], "paper_id": "a721b908b5802e12d4bb86c8d5a4c3b1d6341629", "query_id": "Q007", "ranks": {"bm25": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q007", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["graph"], "paper_id": "df02209677b32692b90e4831d4e5c1c14c13cff8", "query_id": "Q007", "ranks": {"graph": 2}}
+{"methods": ["graph"], "paper_id": "65f6640dd5ff9ccd5bee859f624a91399afdac8d", "query_id": "Q007", "ranks": {"graph": 18}}
+{"methods": ["bm25"], "paper_id": "c058754dae7e9db722ae5aa697a6a1f1d9cdb4f9", "query_id": "Q007", "ranks": {"bm25": 2}}
+{"methods": ["graph"], "paper_id": "85f5d9f87747555c588067f2a5f12516698f6808", "query_id": "Q007", "ranks": {"graph": 14}}
+{"methods": ["bm25"], "paper_id": "1b7088aaeb317976b2881b835aecff2314c33f9e", "query_id": "Q007", "ranks": {"bm25": 9}}
+{"methods": ["bm25"], "paper_id": "ad720ec891fd143090de390a2e800eb8e9e6eb4d", "query_id": "Q007", "ranks": {"bm25": 19}}
+{"methods": ["bm25"], "paper_id": "e3e68a4bd8b892321833c63a9607e406454dd4e8", "query_id": "Q007", "ranks": {"bm25": 1}}
+{"methods": ["graph"], "paper_id": "7e6dccb67a11d24e40a5063ef6825d6aef13d126", "query_id": "Q007", "ranks": {"graph": 16}}
+{"methods": ["graph"], "paper_id": "bfd7f03c26cdf1324fe56700d7e15688f7b5b1d2", "query_id": "Q007", "ranks": {"graph": 15}}
+{"methods": ["graph"], "paper_id": "4a253cd63110da07bb17074f6ac14717afd2f3f1", "query_id": "Q007", "ranks": {"graph": 4}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "32c9b457e0b79df270e4e96205ed52b260e5948d", "query_id": "Q007", "ranks": {"bm25": 6, "hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["bm25"], "paper_id": "ded48034e055a11bd96e7af8c592531db7aa9a52", "query_id": "Q007", "ranks": {"bm25": 3}}
+{"methods": ["bm25"], "paper_id": "b249198cf6e3c63a1d25bce5ba7661f6d5ac78e8", "query_id": "Q007", "ranks": {"bm25": 13}}
+{"methods": ["bm25"], "paper_id": "610621a8ac941ae6c6781250a3cdb705616c983c", "query_id": "Q007", "ranks": {"bm25": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631", "query_id": "Q007", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2", "query_id": "Q007", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b5bde7463763595d46a35fd36c0aebadfaa9eb17", "query_id": "Q007", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["graph"], "paper_id": "1ff858576af755583559fdfcd366bd16002da297", "query_id": "Q007", "ranks": {"graph": 11}}
+{"methods": ["bm25"], "paper_id": "ee7d7a3732360144aa635058e5870db6028625cb", "query_id": "Q007", "ranks": {"bm25": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3dd80563756363f45b42d997b9d4111a74ebbdf8", "query_id": "Q007", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["graph"], "paper_id": "f0567d091f7e8cd5e6e72d0399f2527113f8021c", "query_id": "Q007", "ranks": {"graph": 20}}
+{"methods": ["bm25"], "paper_id": "38e320f860d54e4071d68955c774b3e4a091bfe0", "query_id": "Q007", "ranks": {"bm25": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ce82880f5527b26fdb12cd1fa13d4cbc45c9e012", "query_id": "Q007", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "eb02e05ba0a9b953524f3fce782160a56fdf1885", "query_id": "Q007", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["graph"], "paper_id": "3633f23a879c22698357acd0d183b85342b9d8a1", "query_id": "Q007", "ranks": {"graph": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3f4dff0c50a2edc4d38973669f8459449f114e28", "query_id": "Q007", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["bm25"], "paper_id": "225d571f97f9097be436626f225cff572007aaf4", "query_id": "Q007", "ranks": {"bm25": 7}}
+{"methods": ["bm25"], "paper_id": "94143a3c364f17d294a55e453fd2cf36e9f7c7de", "query_id": "Q007", "ranks": {"bm25": 17}}
+{"methods": ["bm25"], "paper_id": "37c25819241675efb81f82736121d5f7d0da84b9", "query_id": "Q007", "ranks": {"bm25": 5}}
+{"methods": ["bm25"], "paper_id": "101d7d2fb721071e12e379b4ff822de61ef8a2f5", "query_id": "Q007", "ranks": {"bm25": 20}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "4987c7590d30827ab8e7b2b441816060e2e1e12d", "query_id": "Q007", "ranks": {"bm25": 8, "hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["graph"], "paper_id": "b0e870b0ac63b97f1328ff3eeda14edd99dde109", "query_id": "Q007", "ranks": {"graph": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "78167a0578e995148dac629768e9495113c8babd", "query_id": "Q007", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["bm25", "graph"], "paper_id": "8ad8a29861f0bdb829bed960f068a37fbc5ff11d", "query_id": "Q007", "ranks": {"bm25": 14, "graph": 19}}
+{"methods": ["graph"], "paper_id": "61a4fb1b9a20550f389c48ec4099f2b266b72fdf", "query_id": "Q007", "ranks": {"graph": 13}}
+{"methods": ["bm25"], "paper_id": "ddc50b4d191b428a9c6942e9633a9aa41c6d453b", "query_id": "Q007", "ranks": {"bm25": 10}}
+{"methods": ["bm25"], "paper_id": "0b404cbe9941640248c52736e62c038d36ccf8d7", "query_id": "Q007", "ranks": {"bm25": 15}}
+{"methods": ["graph"], "paper_id": "93c87199bd8be99f64c8ee4f74ba4366b22cc117", "query_id": "Q007", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "f442378ead6282024cf5b9046daa10422fe9fc5f", "query_id": "Q007", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748", "query_id": "Q007", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["graph"], "paper_id": "d3aa52176612279d6e0a0416dd1fb7e48c29f557", "query_id": "Q007", "ranks": {"graph": 9}}
+{"methods": ["graph", "hybrid", "production", "vector"], "paper_id": "37cdcca448f16d3d96e704374a89358d6485c080", "query_id": "Q007", "ranks": {"graph": 7, "hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "32c7f2ac81fdab35bbebf1c5b243eef9628147dc", "query_id": "Q007", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["graph", "hybrid", "production", "vector"], "paper_id": "2be6804469b99d9c336ef0fe146f9a9ffaa75282", "query_id": "Q007", "ranks": {"graph": 10, "hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q007", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["graph"], "paper_id": "8018a561d2ed821cfb4be7ce04993cabf9932c2f", "query_id": "Q007", "ranks": {"graph": 6}}
+{"methods": ["graph"], "paper_id": "4878686f9b126a1fdcbdb374a4c98855a4961ca8", "query_id": "Q007", "ranks": {"graph": 3}}
+{"methods": ["graph"], "paper_id": "046f6abdbf63fbb80d831102e7889c6801ad3545", "query_id": "Q007", "ranks": {"graph": 1}}
+{"methods": ["bm25"], "paper_id": "63ac93c042ab20a9f94e56414c8d1d07e322518a", "query_id": "Q008", "ranks": {"bm25": 12}}
+{"methods": ["bm25"], "paper_id": "edee9e5fbb939c829ba5de06acf238db8f352bef", "query_id": "Q008", "ranks": {"bm25": 16}}
+{"methods": ["bm25"], "paper_id": "ad720ec891fd143090de390a2e800eb8e9e6eb4d", "query_id": "Q008", "ranks": {"bm25": 13}}
+{"methods": ["bm25"], "paper_id": "c24e93543e5e072be97f3b9ef7b0960bf3b81ad6", "query_id": "Q008", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2132bafd540e13bb190a588f60a85ae8fb1f8fb8", "query_id": "Q008", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "e07093f22c1689c6a6ffeebab65db7538b18547d", "query_id": "Q008", "ranks": {"graph": 20}}
+{"methods": ["graph"], "paper_id": "555067e0bf04cd964d7af25c281fc4277cda7b7d", "query_id": "Q008", "ranks": {"graph": 13}}
+{"methods": ["bm25"], "paper_id": "086d0a5648e5d59a052f797534a933bd157df9ac", "query_id": "Q008", "ranks": {"bm25": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "69e624d1f56992c42192f485d6313a28f1887119", "query_id": "Q008", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "f06ea790d9dcda0e3a5311095cd593d30ee5cba8", "query_id": "Q008", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "07ca0917e74df0461b1b4c926f3e66e05adeec22", "query_id": "Q008", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["bm25"], "paper_id": "db3567966c22e86f44273dc5a6d379273452ac06", "query_id": "Q008", "ranks": {"bm25": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "395f14afacedbda94f0ee542a40fd0439836fecb", "query_id": "Q008", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["bm25"], "paper_id": "0b5502d3a49f2caf5db3ffded87ab1d071ccdf35", "query_id": "Q008", "ranks": {"bm25": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ea4e957987c2df030208353ffca8ac4e2e615fbb", "query_id": "Q008", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1a70366b2133dc44a90d3b8c3542733ad5a67f27", "query_id": "Q008", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["graph"], "paper_id": "91e6c33c19cfdc7b42c1920534c848d39f56274f", "query_id": "Q008", "ranks": {"graph": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "7073e1eb3b28ef4bb30ce26c3f7d6d45ccf67b0d", "query_id": "Q008", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["bm25"], "paper_id": "849563f192e957954c85cc8144a974de17a6b179", "query_id": "Q008", "ranks": {"bm25": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "0cbb2d233319a635fc79aec12fc955bf33297605", "query_id": "Q008", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["bm25"], "paper_id": "48299646b03df5ed39a3e83a5bbd5c103b2591c4", "query_id": "Q008", "ranks": {"bm25": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "28c64dde8a9231cba2d9fd7b49a19a53dc400009", "query_id": "Q008", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["bm25"], "paper_id": "90fd8d41c5e19d11aa64870b0252923ec8da3e70", "query_id": "Q008", "ranks": {"bm25": 1}}
+{"methods": ["graph"], "paper_id": "defb443060f269e0f0eb3630afe42e7928c6ee1d", "query_id": "Q008", "ranks": {"graph": 19}}
+{"methods": ["bm25"], "paper_id": "dccec422c1efeb1c18bfc6270ce794259a451708", "query_id": "Q008", "ranks": {"bm25": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8415e9c4fe9b923b437dfa078c3dbc7116c4f60c", "query_id": "Q008", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["graph"], "paper_id": "9f68b42b8a2315486614e80b9024f2d8382891c8", "query_id": "Q008", "ranks": {"graph": 5}}
+{"methods": ["graph"], "paper_id": "61598046fe8dbdd58b40989f2eb1822e7a160c16", "query_id": "Q008", "ranks": {"graph": 10}}
+{"methods": ["graph"], "paper_id": "e00cb98551b112c0617ba396739bc68c40080389", "query_id": "Q008", "ranks": {"graph": 7}}
+{"methods": ["graph"], "paper_id": "3db15a5534050ab2cfc1d09dd772d032395515e1", "query_id": "Q008", "ranks": {"graph": 1}}
+{"methods": ["bm25"], "paper_id": "5327c0830833187b87c80c6c671a2763a99be268", "query_id": "Q008", "ranks": {"bm25": 14}}
+{"methods": ["bm25"], "paper_id": "72c78b97173bb31fb4b1dc4c05af877cde55ed2e", "query_id": "Q008", "ranks": {"bm25": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1a287764903786a327f45bce25693c7a0da16408", "query_id": "Q008", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["bm25"], "paper_id": "03d1fd385dc204e4e7445c5204ed15bd5e96a99d", "query_id": "Q008", "ranks": {"bm25": 8}}
+{"methods": ["bm25"], "paper_id": "a33c38c108d024dda2ea3df760e3284224d6ef40", "query_id": "Q008", "ranks": {"bm25": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "88053e5c116dd74debacbab03de076847669371c", "query_id": "Q008", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["bm25"], "paper_id": "3c9be5b2427717773523912f8b426dc36b4eab0d", "query_id": "Q008", "ranks": {"bm25": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ae503b3f824e5e237801705a313702ccef970600", "query_id": "Q008", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "8a63df8ef523c4a3e48f40519ed025905e876f1f", "query_id": "Q008", "ranks": {"bm25": 11}}
+{"methods": ["graph"], "paper_id": "f8fcd8c8610601dadcbb3f4594fff24e83ff583b", "query_id": "Q008", "ranks": {"graph": 8}}
+{"methods": ["graph"], "paper_id": "5110e7cdff7a237f2fcbc5e8663dbb76e9d4edcb", "query_id": "Q008", "ranks": {"graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4bb365834ba03be1987e50e1466e4ec38446e3ed", "query_id": "Q008", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["graph"], "paper_id": "158ad31b67186a9099e329f67c6aaf4a6dd18706", "query_id": "Q008", "ranks": {"graph": 4}}
+{"methods": ["graph"], "paper_id": "b171059e097c203de074ee960c3a2cbb599aed0d", "query_id": "Q008", "ranks": {"graph": 3}}
+{"methods": ["graph"], "paper_id": "92e90abf29441f6fde5b8b83710e4fb55abf091e", "query_id": "Q008", "ranks": {"graph": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "bd25d9b2aaa672dba6b12430c91cfb0e45224fac", "query_id": "Q008", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["graph"], "paper_id": "74c33ba82e46c8529c29d4ce7900739d6e56e8ea", "query_id": "Q008", "ranks": {"graph": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "153e6ae85cefa12ba345a2a99e38f5b3d77955f5", "query_id": "Q008", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["graph"], "paper_id": "5f136146767f65f61fe0cfadcf0f7aaa6424f44e", "query_id": "Q008", "ranks": {"graph": 17}}
+{"methods": ["bm25"], "paper_id": "0b74ab1ecff2b05c5d376d07a47ad9b94986683e", "query_id": "Q008", "ranks": {"bm25": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "611544418ca53cdad254df444addc7814abcfddc", "query_id": "Q008", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["graph"], "paper_id": "b1f692f7a5d120499cf513db19a9aa9ceee676f2", "query_id": "Q008", "ranks": {"graph": 6}}
+{"methods": ["graph", "hybrid", "production", "vector"], "paper_id": "3302081b8878de505b69900e22b8137c5d931be7", "query_id": "Q008", "ranks": {"graph": 15, "hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["bm25"], "paper_id": "cb6e39ac3acee631d6c9220b65065733e0904b55", "query_id": "Q008", "ranks": {"bm25": 9}}
+{"methods": ["bm25"], "paper_id": "aa77c967794c059347e8947cb1096a5ffb971632", "query_id": "Q008", "ranks": {"bm25": 20}}
+{"methods": ["graph"], "paper_id": "13d1f71036278249ad476eda58d38db48d881db9", "query_id": "Q008", "ranks": {"graph": 9}}
+{"methods": ["graph"], "paper_id": "91fb815361fdbf80ff15ce4d783a41846bd99232", "query_id": "Q008", "ranks": {"graph": 12}}
+{"methods": ["graph"], "paper_id": "74e1545e86661332729b6b0ae2b0330f48c79954", "query_id": "Q008", "ranks": {"graph": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4d46f806f332b02bdd17b06aad5a63f716f4249e", "query_id": "Q008", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["bm25"], "paper_id": "5c92b13def1ff7a27839cd2f26b5c794d814158a", "query_id": "Q009", "ranks": {"bm25": 12}}
+{"methods": ["production"], "paper_id": "19c0d004bd0e42a6449d8b7717cbda4431a67e65", "query_id": "Q009", "ranks": {"production": 3}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q009", "ranks": {"graph": 4}}
+{"methods": ["bm25"], "paper_id": "5b50b1a9834f562548b5bc0c5fb97e53ba57bb86", "query_id": "Q009", "ranks": {"bm25": 14}}
+{"methods": ["graph"], "paper_id": "87e77ac0c054abddfef9cd8e579f10c8559217c9", "query_id": "Q009", "ranks": {"graph": 17}}
+{"methods": ["bm25"], "paper_id": "72cfb845df72f714da0f83598b007e5c041cdf41", "query_id": "Q009", "ranks": {"bm25": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9208290fd7948ed14ebe55718118c401e8396159", "query_id": "Q009", "ranks": {"hybrid": 5, "production": 7, "vector": 5}}
+{"methods": ["graph"], "paper_id": "7ef730e97d3fffd7603fc008431b4c35e06fea8f", "query_id": "Q009", "ranks": {"graph": 11}}
+{"methods": ["bm25"], "paper_id": "e31423dbbc729feb9d8e41a5ca04e0ef7e7f9fa9", "query_id": "Q009", "ranks": {"bm25": 4}}
+{"methods": ["bm25"], "paper_id": "d3a9d61559b1f51ced9c41939266ec60c70f2259", "query_id": "Q009", "ranks": {"bm25": 13}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q009", "ranks": {"graph": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5b53a03186a418d2da94136aa499915ef50f88f7", "query_id": "Q009", "ranks": {"hybrid": 11, "production": 13, "vector": 11}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q009", "ranks": {"graph": 3}}
+{"methods": ["bm25"], "paper_id": "21dce0407d0ee3bec185b0361593d73bb26a532e", "query_id": "Q009", "ranks": {"bm25": 5}}
+{"methods": ["bm25", "graph"], "paper_id": "9346f54c3f9780edb7274ff8c5b32ce9badf0d10", "query_id": "Q009", "ranks": {"bm25": 10, "graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "af84c6db6b5c41ca628867ff4a27566e9ca3c69e", "query_id": "Q009", "ranks": {"hybrid": 18, "production": 20, "vector": 18}}
+{"methods": ["hybrid", "vector"], "paper_id": "6295bb29725c02dd7c55df462616e83036f0694c", "query_id": "Q009", "ranks": {"hybrid": 19, "vector": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8c24ef76d0a15bae316d1b9e6ab526ea5af93530", "query_id": "Q009", "ranks": {"hybrid": 12, "production": 14, "vector": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5f23f00cd2e3884790818da25dd230f04a624679", "query_id": "Q009", "ranks": {"hybrid": 8, "production": 10, "vector": 8}}
+{"methods": ["bm25", "graph"], "paper_id": "5aac1e6f4d711fd35d88970ca12b98c72ce4b68c", "query_id": "Q009", "ranks": {"bm25": 9, "graph": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8dd90b0648da4cb0e1f18ba1f00b158a157d3631", "query_id": "Q009", "ranks": {"hybrid": 9, "production": 11, "vector": 9}}
+{"methods": ["bm25"], "paper_id": "aea5facd7526edaaffdc97c24375e22b0c3eee7f", "query_id": "Q009", "ranks": {"bm25": 2}}
+{"methods": ["bm25"], "paper_id": "d010dfbaf82068f8e24ef2fe3897472cdede9998", "query_id": "Q009", "ranks": {"bm25": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "48bfd1f82938036ecf680cf17ff2b882191a3ea0", "query_id": "Q009", "ranks": {"hybrid": 7, "production": 9, "vector": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7", "query_id": "Q009", "ranks": {"hybrid": 3, "production": 5, "vector": 3}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q009", "ranks": {"graph": 20}}
+{"methods": ["bm25"], "paper_id": "aa77c967794c059347e8947cb1096a5ffb971632", "query_id": "Q009", "ranks": {"bm25": 16}}
+{"methods": ["bm25"], "paper_id": "fcca9239676257d595cc155243f3b983aaaa3f40", "query_id": "Q009", "ranks": {"bm25": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "28a22bea3d98b326715bcede9b0216d3f788e1b8", "query_id": "Q009", "ranks": {"hybrid": 13, "production": 15, "vector": 13}}
+{"methods": ["bm25"], "paper_id": "b713093906ce80530f1937fc4ab1998a72ce90a6", "query_id": "Q009", "ranks": {"bm25": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8ca3be8e47289aef296d3e5804dc22b37dc1f635", "query_id": "Q009", "ranks": {"hybrid": 17, "production": 19, "vector": 17}}
+{"methods": ["hybrid", "vector"], "paper_id": "ded0bf48df10f6c93d8a67f981d1605c43a95fcc", "query_id": "Q009", "ranks": {"hybrid": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "0e9063c34165868df384f1d602afc1fea9857a1e", "query_id": "Q009", "ranks": {"graph": 7}}
+{"methods": ["bm25"], "paper_id": "e2aa88f95f98d720f200a5aeef0405143f84a83c", "query_id": "Q009", "ranks": {"bm25": 18}}
+{"methods": ["bm25", "graph"], "paper_id": "2418999de1496738ac60c16ef26aaced56313e0d", "query_id": "Q009", "ranks": {"bm25": 6, "graph": 1}}
+{"methods": ["graph", "hybrid", "production", "vector"], "paper_id": "cda969fd7362bdf21aa1f3398078982dcb350d76", "query_id": "Q009", "ranks": {"graph": 18, "hybrid": 6, "production": 8, "vector": 6}}
+{"methods": ["graph"], "paper_id": "13a2df532131d48f29c72cb07cb5812d6980baff", "query_id": "Q009", "ranks": {"graph": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q009", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "db99875c38f18e1e8d34578400a157369c91f22d", "query_id": "Q009", "ranks": {"hybrid": 10, "production": 12, "vector": 10}}
+{"methods": ["graph"], "paper_id": "96a21ab57b483325c5f67d26bac7b2884ae2b104", "query_id": "Q009", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q009", "ranks": {"hybrid": 4, "production": 6, "vector": 4}}
+{"methods": ["graph"], "paper_id": "c36571ac50808c75fa8a5d37f1041af22e89e6ee", "query_id": "Q009", "ranks": {"graph": 15}}
+{"methods": ["graph"], "paper_id": "78acc67c6cfb1020b9bf2b2c2f841815e9417f9d", "query_id": "Q009", "ranks": {"graph": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2db550467862c3bea38901cef84d86efed31b8d2", "query_id": "Q009", "ranks": {"hybrid": 15, "production": 17, "vector": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "a33ba107d5d6c46c747a8d377f536bf06c278eb7", "query_id": "Q009", "ranks": {"hybrid": 16, "production": 18, "vector": 16}}
+{"methods": ["bm25"], "paper_id": "409c0a96af63ff0bfc13f4bf64ed5c3e78100f48", "query_id": "Q009", "ranks": {"bm25": 17}}
+{"methods": ["production"], "paper_id": "d08a0eb7024dff5c4fabd58144a38031633d4e1a", "query_id": "Q009", "ranks": {"production": 2}}
+{"methods": ["bm25", "graph"], "paper_id": "4a88bc5ce66b72e24e8c494d0588bb4dd0d3565e", "query_id": "Q009", "ranks": {"bm25": 11, "graph": 6}}
+{"methods": ["bm25", "graph"], "paper_id": "6e2bfca21d3c2bacb578b288148c3c1795b8c205", "query_id": "Q009", "ranks": {"bm25": 3, "graph": 13}}
+{"methods": ["bm25"], "paper_id": "8dd0869fd671682fa2d8e5f5f0ef14ecef04df0d", "query_id": "Q009", "ranks": {"bm25": 15}}
+{"methods": ["graph"], "paper_id": "e70930b8a8c7ba7af5f3df13ecf7b60364a4c189", "query_id": "Q009", "ranks": {"graph": 5}}
+{"methods": ["graph"], "paper_id": "6a3f743f6e2b396363c5acf72f4c30e4f43af7cf", "query_id": "Q009", "ranks": {"graph": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748", "query_id": "Q009", "ranks": {"hybrid": 2, "production": 4, "vector": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3dabeabde4cd635448d67a171e8c106d1ba5694c", "query_id": "Q009", "ranks": {"hybrid": 14, "production": 16, "vector": 14}}
+{"methods": ["bm25", "graph"], "paper_id": "193c8c476e818298459133381086ea9b4633a21a", "query_id": "Q009", "ranks": {"bm25": 1, "graph": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "894d61c709ec6f61899703458d90b09c663d7b11", "query_id": "Q010", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["bm25"], "paper_id": "5f68069bd99ae7413e6db72d2a2906f732a66916", "query_id": "Q010", "ranks": {"bm25": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "246c97ebe5ebd13603be168515cd5f5a347e7e0a", "query_id": "Q010", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748", "query_id": "Q010", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["graph"], "paper_id": "e07093f22c1689c6a6ffeebab65db7538b18547d", "query_id": "Q010", "ranks": {"graph": 20}}
+{"methods": ["bm25"], "paper_id": "4a253cd63110da07bb17074f6ac14717afd2f3f1", "query_id": "Q010", "ranks": {"bm25": 1}}
+{"methods": ["bm25"], "paper_id": "34d58238ca6b9b12f9bfb4a0f665736634165f80", "query_id": "Q010", "ranks": {"bm25": 5}}
+{"methods": ["bm25"], "paper_id": "148b836a0b46c0b24ae33df3fc5743838c1017ce", "query_id": "Q010", "ranks": {"bm25": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2db550467862c3bea38901cef84d86efed31b8d2", "query_id": "Q010", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["graph"], "paper_id": "74e1545e86661332729b6b0ae2b0330f48c79954", "query_id": "Q010", "ranks": {"graph": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8c24ef76d0a15bae316d1b9e6ab526ea5af93530", "query_id": "Q010", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "54c97c5201b62cbf30bef2c0cb17b4e18f2b2e69", "query_id": "Q010", "ranks": {"bm25": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6d9e9ca2787f8300fae509b2176a430005205ba8", "query_id": "Q010", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "a788b829395c780ea5cb4fef6cc64c7bc331d739", "query_id": "Q010", "ranks": {"graph": 19}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q010", "ranks": {"graph": 1}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q010", "ranks": {"graph": 2}}
+{"methods": ["bm25"], "paper_id": "286d2e0f3d882a37f486623c716d8a54a4a58fdc", "query_id": "Q010", "ranks": {"bm25": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "48bfd1f82938036ecf680cf17ff2b882191a3ea0", "query_id": "Q010", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["bm25"], "paper_id": "45ece02ea82f79c4c678c8de8e95cd0dfbe5a37d", "query_id": "Q010", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q010", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "af84c6db6b5c41ca628867ff4a27566e9ca3c69e", "query_id": "Q010", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["graph"], "paper_id": "c36571ac50808c75fa8a5d37f1041af22e89e6ee", "query_id": "Q010", "ranks": {"graph": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8ea9cb53779a8c1bb0e53764f88669bd7edf38f0", "query_id": "Q010", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["bm25"], "paper_id": "51a9788509a4c5da56214db36289cc48a862bd18", "query_id": "Q010", "ranks": {"bm25": 2}}
+{"methods": ["bm25"], "paper_id": "ba7592b6052ad470eb75bd47659e27b58ed81631", "query_id": "Q010", "ranks": {"bm25": 19}}
+{"methods": ["bm25"], "paper_id": "41f6badfeacdfb596276e973bb12b3ebf7335b70", "query_id": "Q010", "ranks": {"bm25": 11}}
+{"methods": ["bm25"], "paper_id": "b3652914b9e4adcdd745aaa852aec6856a6bcd17", "query_id": "Q010", "ranks": {"bm25": 17}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q010", "ranks": {"graph": 5}}
+{"methods": ["bm25"], "paper_id": "c84ec868d4ad2da31f0d73ed179ae503cedb1e21", "query_id": "Q010", "ranks": {"bm25": 16}}
+{"methods": ["bm25"], "paper_id": "ebf774622c5761bf67a84c87c9c2f71b5ee754ac", "query_id": "Q010", "ranks": {"bm25": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9208290fd7948ed14ebe55718118c401e8396159", "query_id": "Q010", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["graph"], "paper_id": "0ca89c22fed80b3eec8314cc95cca36079cb2427", "query_id": "Q010", "ranks": {"graph": 3}}
+{"methods": ["graph"], "paper_id": "cf0b4eba5424fd0302c2f7c9ac3b4a4120a29dbe", "query_id": "Q010", "ranks": {"graph": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "db99875c38f18e1e8d34578400a157369c91f22d", "query_id": "Q010", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["graph"], "paper_id": "57bc933e06ffbbccd68134e2e2f172c61f0e6566", "query_id": "Q010", "ranks": {"graph": 17}}
+{"methods": ["bm25"], "paper_id": "39a269b1639963a62ef30435d9fa4f095bab429b", "query_id": "Q010", "ranks": {"bm25": 8}}
+{"methods": ["bm25"], "paper_id": "80de62cae808b5e5c8329810c8dc47aca0b4b66e", "query_id": "Q010", "ranks": {"bm25": 9}}
+{"methods": ["graph"], "paper_id": "ab9e30123e0914ab5a97c36b9f9dda618cb1647c", "query_id": "Q010", "ranks": {"graph": 15}}
+{"methods": ["bm25"], "paper_id": "5b3c1f48229f779fc3c9d35ae67bf568cfdc3e2a", "query_id": "Q010", "ranks": {"bm25": 14}}
+{"methods": ["graph"], "paper_id": "108eea36fc140fc0aeb2b6024925b28a7125c2ca", "query_id": "Q010", "ranks": {"graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "a33ba107d5d6c46c747a8d377f536bf06c278eb7", "query_id": "Q010", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["bm25"], "paper_id": "65f6640dd5ff9ccd5bee859f624a91399afdac8d", "query_id": "Q010", "ranks": {"bm25": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "fc580c211689663a64f42e2ba92c864cb134ba9b", "query_id": "Q010", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["bm25"], "paper_id": "bd33de22ad932ded0eae82b5551181ac2c74bc00", "query_id": "Q010", "ranks": {"bm25": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b88f456daaf29860d2b59c621be3bd878a581a59", "query_id": "Q010", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "b9631936ab9e41511f0eb85adb0fc7b8efb7983e", "query_id": "Q010", "ranks": {"graph": 10}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q010", "ranks": {"graph": 8}}
+{"methods": ["graph"], "paper_id": "13d1f71036278249ad476eda58d38db48d881db9", "query_id": "Q010", "ranks": {"graph": 14}}
+{"methods": ["graph"], "paper_id": "96a21ab57b483325c5f67d26bac7b2884ae2b104", "query_id": "Q010", "ranks": {"graph": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3dabeabde4cd635448d67a171e8c106d1ba5694c", "query_id": "Q010", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q010", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["graph"], "paper_id": "83e89d56d0d0e1dfd8b52213e6cc2e191aaaf34b", "query_id": "Q010", "ranks": {"graph": 18}}
+{"methods": ["bm25"], "paper_id": "2e88edd226d535b62b039700316abb3f639dfe25", "query_id": "Q010", "ranks": {"bm25": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5b53a03186a418d2da94136aa499915ef50f88f7", "query_id": "Q010", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1ef87f32cb9f2753755173856f035ab6af9e6f8e", "query_id": "Q010", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "98acd455490871e64699244dbcec155b2c67a0cb", "query_id": "Q010", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["bm25"], "paper_id": "a27d661f77b200cbf7098716932cde608eb01e8b", "query_id": "Q010", "ranks": {"bm25": 10}}
+{"methods": ["graph"], "paper_id": "aeea29ad352a04e74b6a4459e7328aa6e904486d", "query_id": "Q010", "ranks": {"graph": 12}}
+{"methods": ["graph"], "paper_id": "13a2df532131d48f29c72cb07cb5812d6980baff", "query_id": "Q010", "ranks": {"graph": 7}}
+{"methods": ["graph"], "paper_id": "02a3452a5f7fe42ba32bbf30af28b7845b2d6857", "query_id": "Q010", "ranks": {"graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3302081b8878de505b69900e22b8137c5d931be7", "query_id": "Q011", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "35bfd3eaa9760f04af07199faab4972f42b0fde4", "query_id": "Q011", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6f15512c01c3fb087abd1c842b23663384e27410", "query_id": "Q011", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["graph"], "paper_id": "00ffcf266403ba1ce8e28bff0fa025f62f9c3dde", "query_id": "Q011", "ranks": {"graph": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8692be22df1d041ddf3903767955e257b40a0e41", "query_id": "Q011", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "519193aa26820af205e6040d4595ca30ebcebcb0", "query_id": "Q011", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "a50a2a191c98dfe045ac2139495ee80ff1338e47", "query_id": "Q011", "ranks": {"bm25": 10}}
+{"methods": ["graph"], "paper_id": "b9631936ab9e41511f0eb85adb0fc7b8efb7983e", "query_id": "Q011", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "9bcb3fd2aede34560b20f44620dd7cd30021e65a", "query_id": "Q011", "ranks": {"bm25": 9}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "4c24519d5c8082f4d5f1397952bb4e4c4fc11b85", "query_id": "Q011", "ranks": {"bm25": 1, "hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "b3a464038b8aad8a7d9475bf8bcc495f1378b0ae", "query_id": "Q011", "ranks": {"bm25": 19, "hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "108eea36fc140fc0aeb2b6024925b28a7125c2ca", "query_id": "Q011", "ranks": {"graph": 13}}
+{"methods": ["bm25"], "paper_id": "4daccf6ae1d638b54e654f775790315175c450f9", "query_id": "Q011", "ranks": {"bm25": 12}}
+{"methods": ["bm25"], "paper_id": "71395e0be94802971611ec88130af780d4ba90d0", "query_id": "Q011", "ranks": {"bm25": 20}}
+{"methods": ["bm25"], "paper_id": "76352fbaaaff9892ddf576fa7556697ac9e87dda", "query_id": "Q011", "ranks": {"bm25": 6}}
+{"methods": ["bm25"], "paper_id": "67dee251b7406f5ca888532649f545be17e14df6", "query_id": "Q011", "ranks": {"bm25": 15}}
+{"methods": ["graph"], "paper_id": "74e1545e86661332729b6b0ae2b0330f48c79954", "query_id": "Q011", "ranks": {"graph": 9}}
+{"methods": ["bm25"], "paper_id": "8ad64183b0d49ba90bdb09803c777524b8fe545b", "query_id": "Q011", "ranks": {"bm25": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q011", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["bm25"], "paper_id": "409c0a96af63ff0bfc13f4bf64ed5c3e78100f48", "query_id": "Q011", "ranks": {"bm25": 16}}
+{"methods": ["graph"], "paper_id": "13a2df532131d48f29c72cb07cb5812d6980baff", "query_id": "Q011", "ranks": {"graph": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2afb4cacbfa6b374f72accc37e779afc593ba843", "query_id": "Q011", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d22bfbd0c8d671567c8e3d3f21628fcf2ab8f5dd", "query_id": "Q011", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1ea568f3881b81c376fc4cdee423cc11740acb4b", "query_id": "Q011", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["graph"], "paper_id": "02a3452a5f7fe42ba32bbf30af28b7845b2d6857", "query_id": "Q011", "ranks": {"graph": 16}}
+{"methods": ["graph"], "paper_id": "ab9e30123e0914ab5a97c36b9f9dda618cb1647c", "query_id": "Q011", "ranks": {"graph": 15}}
+{"methods": ["graph"], "paper_id": "a788b829395c780ea5cb4fef6cc64c7bc331d739", "query_id": "Q011", "ranks": {"graph": 18}}
+{"methods": ["graph"], "paper_id": "aeea29ad352a04e74b6a4459e7328aa6e904486d", "query_id": "Q011", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8c2ef6f027bf5122d43b77cb3383e9118e0b35d2", "query_id": "Q011", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["graph"], "paper_id": "57bc933e06ffbbccd68134e2e2f172c61f0e6566", "query_id": "Q011", "ranks": {"graph": 17}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q011", "ranks": {"graph": 2}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "7717e17df9e6f83fb17f3dbcd6189a4cbeb359b7", "query_id": "Q011", "ranks": {"bm25": 14, "hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["bm25"], "paper_id": "f5c4336cbd7ad2b8b15be7a1a0abbd27322704ec", "query_id": "Q011", "ranks": {"bm25": 3}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q011", "ranks": {"graph": 1}}
+{"methods": ["graph"], "paper_id": "c36571ac50808c75fa8a5d37f1041af22e89e6ee", "query_id": "Q011", "ranks": {"graph": 4}}
+{"methods": ["bm25"], "paper_id": "95eee51c1cb1771e96cd182f47c90a7877461530", "query_id": "Q011", "ranks": {"bm25": 18}}
+{"methods": ["graph"], "paper_id": "e07093f22c1689c6a6ffeebab65db7538b18547d", "query_id": "Q011", "ranks": {"graph": 19}}
+{"methods": ["graph"], "paper_id": "a93b62bdc8b8e64aec7f7900d0193358134f1677", "query_id": "Q011", "ranks": {"graph": 8}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "b59b7670d6873a8d4ccf99c4d0d21b6a2a281100", "query_id": "Q011", "ranks": {"bm25": 7, "hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["bm25"], "paper_id": "90d5d1a65b6d0fbaea549587370de5f5eeaf72c2", "query_id": "Q011", "ranks": {"bm25": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "fcdd4300f937cef11af297329ed4bd2b611871e7", "query_id": "Q011", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["bm25"], "paper_id": "5b1ce73eee6d80a3897bb03468b067f6583fdba8", "query_id": "Q011", "ranks": {"bm25": 13}}
+{"methods": ["graph"], "paper_id": "13d1f71036278249ad476eda58d38db48d881db9", "query_id": "Q011", "ranks": {"graph": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "c6d550c3fcecf27b979be84c4cd444cc1c72bf47", "query_id": "Q011", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1af6780be8155fc43aefb75c4e443d46d85bda63", "query_id": "Q011", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["bm25"], "paper_id": "2f2d4ce7ca8ed125e3ee5ecd97bd638eabadd2e1", "query_id": "Q011", "ranks": {"bm25": 5}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "b4895de425a02af87713bd78ed1a29fe425753af", "query_id": "Q011", "ranks": {"bm25": 17, "hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q011", "ranks": {"graph": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "35f209f3644be4b8d40a1ae91b0c9f2c82eb9f3f", "query_id": "Q011", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q011", "ranks": {"graph": 7}}
+{"methods": ["bm25"], "paper_id": "a7837c185ac6bbb1be68fec73e81b3cf771f6191", "query_id": "Q011", "ranks": {"bm25": 11}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "8b9f01585a679dffe92261ecdec56425db9ef97f", "query_id": "Q011", "ranks": {"bm25": 4, "hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["graph"], "paper_id": "cf0b4eba5424fd0302c2f7c9ac3b4a4120a29dbe", "query_id": "Q011", "ranks": {"graph": 11}}
+{"methods": ["graph"], "paper_id": "96a21ab57b483325c5f67d26bac7b2884ae2b104", "query_id": "Q011", "ranks": {"graph": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8c24ef76d0a15bae316d1b9e6ab526ea5af93530", "query_id": "Q012", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["graph"], "paper_id": "2697af18c849eeeaeebdf6be79448938042e019b", "query_id": "Q012", "ranks": {"graph": 11}}
+{"methods": ["bm25"], "paper_id": "acc638622fe342a8a44c0120913ffa807d35c86c", "query_id": "Q012", "ranks": {"bm25": 8}}
+{"methods": ["graph"], "paper_id": "cd551790992d16148fe2e5ff2cc76861195e2191", "query_id": "Q012", "ranks": {"graph": 3}}
+{"methods": ["bm25"], "paper_id": "9248b112a93108321b795822345c0a96488644cd", "query_id": "Q012", "ranks": {"bm25": 7}}
+{"methods": ["graph"], "paper_id": "5523039b06bf0b1f49be4489a30616bcfa4c41dc", "query_id": "Q012", "ranks": {"graph": 8}}
+{"methods": ["bm25"], "paper_id": "a0e0b032c29d71507b132caa0da77749c9b0ba01", "query_id": "Q012", "ranks": {"bm25": 18}}
+{"methods": ["bm25"], "paper_id": "cab8ddc42cefbedc7ef8579888c2475e9609a5d7", "query_id": "Q012", "ranks": {"bm25": 6}}
+{"methods": ["bm25"], "paper_id": "e46aa831aac38520249dff35916937f0d094f32e", "query_id": "Q012", "ranks": {"bm25": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9208290fd7948ed14ebe55718118c401e8396159", "query_id": "Q012", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "394d251832bfd841dccabc449c25ef562845dc53", "query_id": "Q012", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["bm25"], "paper_id": "ee96bb31193ae5707a59d55c3c589dfe947fa438", "query_id": "Q012", "ranks": {"bm25": 14}}
+{"methods": ["bm25"], "paper_id": "e07ef2214db63a4ca53068f78ddd93f77cd140ec", "query_id": "Q012", "ranks": {"bm25": 5}}
+{"methods": ["bm25"], "paper_id": "ef5bc7c78ec114c46053f168744ced4a4ee68c50", "query_id": "Q012", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "bfafae6c6add7f06bd212911de27f75e416c015a", "query_id": "Q012", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["graph"], "paper_id": "55518098968253bf7f5f7cbfc27d60170dc7e1ea", "query_id": "Q012", "ranks": {"graph": 16}}
+{"methods": ["bm25"], "paper_id": "58fd3609571d4c49478c9c8d260e272aab31f960", "query_id": "Q012", "ranks": {"bm25": 13}}
+{"methods": ["bm25"], "paper_id": "8e8697f01e983a6d9170c604ce249a81e0586285", "query_id": "Q012", "ranks": {"bm25": 19}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q012", "ranks": {"graph": 5}}
+{"methods": ["graph"], "paper_id": "7244122d7a8039c7d35f431b581b1894725dc79c", "query_id": "Q012", "ranks": {"graph": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q012", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "0ca9a5ef7695fdaa65325761164c70e56739a902", "query_id": "Q012", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["bm25"], "paper_id": "a2aa6f3828c2d07381569310c70543f6624dbc7c", "query_id": "Q012", "ranks": {"bm25": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9e707dd89bba25a3dd22c96f43bd72b9b3ab94bb", "query_id": "Q012", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["bm25"], "paper_id": "2a11c1b920d6c694be20ef4cb31deddbb929c72a", "query_id": "Q012", "ranks": {"bm25": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d6721b9b0c65aca4af9ea0b6063dc72f8558f6c2", "query_id": "Q012", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "eb02e05ba0a9b953524f3fce782160a56fdf1885", "query_id": "Q012", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["graph"], "paper_id": "0a5d5b7e6ff605d2e8cf0c0cc7dec82c99580474", "query_id": "Q012", "ranks": {"graph": 10}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q012", "ranks": {"graph": 6}}
+{"methods": ["graph"], "paper_id": "8a7250697ad953befc3a382876a161c5355b2d51", "query_id": "Q012", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748", "query_id": "Q012", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6fb8b967dad742eb390a3090f094a12f2d909538", "query_id": "Q012", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["graph"], "paper_id": "49f202fb16bb2897d4866844d4d8624a4dfa506d", "query_id": "Q012", "ranks": {"graph": 7}}
+{"methods": ["graph"], "paper_id": "13d1f71036278249ad476eda58d38db48d881db9", "query_id": "Q012", "ranks": {"graph": 15}}
+{"methods": ["graph"], "paper_id": "e6976d0cf8ea07b9699a30b89282386cc1b5f3ca", "query_id": "Q012", "ranks": {"graph": 19}}
+{"methods": ["bm25"], "paper_id": "7675fc907efe86a45f3259784d644897dc95af1b", "query_id": "Q012", "ranks": {"bm25": 20}}
+{"methods": ["graph"], "paper_id": "ece57b93c36325d909723564044f06986e5553ff", "query_id": "Q012", "ranks": {"graph": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ded0bf48df10f6c93d8a67f981d1605c43a95fcc", "query_id": "Q012", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["graph"], "paper_id": "83e89d56d0d0e1dfd8b52213e6cc2e191aaaf34b", "query_id": "Q012", "ranks": {"graph": 2}}
+{"methods": ["graph"], "paper_id": "0ca89c22fed80b3eec8314cc95cca36079cb2427", "query_id": "Q012", "ranks": {"graph": 1}}
+{"methods": ["graph"], "paper_id": "939680487a049e02ad617042f07b9529b2e5bb2d", "query_id": "Q012", "ranks": {"graph": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "28a22bea3d98b326715bcede9b0216d3f788e1b8", "query_id": "Q012", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["bm25"], "paper_id": "5eb6f8dd095040d48905a8a1dbd8c2cfc7d0c7f2", "query_id": "Q012", "ranks": {"bm25": 11}}
+{"methods": ["bm25"], "paper_id": "ebb78bc07d80010c493b177b2b7d5e2d8a8574b6", "query_id": "Q012", "ranks": {"bm25": 2}}
+{"methods": ["bm25"], "paper_id": "f53d774e5455acac979f0aff5c2e9626e8fb86ff", "query_id": "Q012", "ranks": {"bm25": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "0bff78ef88c6f1bbbf2fb77de4439f7d2168d8e9", "query_id": "Q012", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["bm25"], "paper_id": "d9eae9e045af98753452d75ed73abfd51301a983", "query_id": "Q012", "ranks": {"bm25": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "f4f6bf7c3d708102359e86730df15e514e201854", "query_id": "Q012", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6db0527528e3509a5296ddf05bcc38b41015ad71", "query_id": "Q012", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "549c682b49fcd29f7404ecfb11fb36467131d3ec", "query_id": "Q012", "ranks": {"graph": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q012", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "47296c2c4fbb00ecb4894b20efb12fb9087ec6de", "query_id": "Q012", "ranks": {"bm25": 10, "hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "8f13afe3ce7391873ce92807fe3938851bafd079", "query_id": "Q012", "ranks": {"bm25": 4, "hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1fb5cd122affeb0385e2a087d14be4bac103460e", "query_id": "Q012", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["graph"], "paper_id": "ab86f5a743cbff4dbb004b76fc81ff10845327f4", "query_id": "Q012", "ranks": {"graph": 18}}
+{"methods": ["bm25"], "paper_id": "a0d9ecc6562d4070afa81bd7f746184e13646b0e", "query_id": "Q012", "ranks": {"bm25": 16}}
+{"methods": ["graph"], "paper_id": "8b3f76a9e8f61585114c4fd2b2d8a9909198897b", "query_id": "Q012", "ranks": {"graph": 13}}
+{"methods": ["graph"], "paper_id": "02a3452a5f7fe42ba32bbf30af28b7845b2d6857", "query_id": "Q012", "ranks": {"graph": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6fb8b967dad742eb390a3090f094a12f2d909538", "query_id": "Q013", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "0ca89c22fed80b3eec8314cc95cca36079cb2427", "query_id": "Q013", "ranks": {"graph": 11}}
+{"methods": ["graph"], "paper_id": "311171c54d9c8e2c412e4ac79773166b19dc706d", "query_id": "Q013", "ranks": {"graph": 15}}
+{"methods": ["graph"], "paper_id": "83e89d56d0d0e1dfd8b52213e6cc2e191aaaf34b", "query_id": "Q013", "ranks": {"graph": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9208290fd7948ed14ebe55718118c401e8396159", "query_id": "Q013", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "10267df58122e8183d1ed151c574e3ccf33764c8", "query_id": "Q013", "ranks": {"bm25": 12}}
+{"methods": ["graph"], "paper_id": "680f454be60d79126c54eb2216bd1a1392249e79", "query_id": "Q013", "ranks": {"graph": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q013", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["bm25", "graph", "hybrid", "production", "vector"], "paper_id": "7b73df0cca79ab9df917b7b59ba5934a1431d7ff", "query_id": "Q013", "ranks": {"bm25": 2, "graph": 2, "hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "e577a7fb5fb306b4d56e7886d921c6d521d6942f", "query_id": "Q013", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7", "query_id": "Q013", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["bm25"], "paper_id": "d0f4f8fff2bcca4fc8283f2acc7c3c52e8889625", "query_id": "Q013", "ranks": {"bm25": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q013", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["bm25"], "paper_id": "3deb95d8dc4bd543eb61acde418fdcc5e88c9eec", "query_id": "Q013", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2db550467862c3bea38901cef84d86efed31b8d2", "query_id": "Q013", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3302081b8878de505b69900e22b8137c5d931be7", "query_id": "Q013", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["graph"], "paper_id": "116c1eab038d7c5d3f2ff3d1103cdd1fefdd2ef8", "query_id": "Q013", "ranks": {"graph": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5aa40518f2a3df8d628bbc5c02ff1bb9b72740cc", "query_id": "Q013", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["bm25"], "paper_id": "3d42a02840664979e2a8cb912bbe0634caecc3da", "query_id": "Q013", "ranks": {"bm25": 17}}
+{"methods": ["bm25"], "paper_id": "14db0dbc6d701ccb4e4c66e1e7b1740ae5b9952f", "query_id": "Q013", "ranks": {"bm25": 6}}
+{"methods": ["graph"], "paper_id": "35c970fc96b86f719a303b1e02d63c52ec67b3ca", "query_id": "Q013", "ranks": {"graph": 6}}
+{"methods": ["graph"], "paper_id": "9743f44ed6ca96aeb89358bcbb99aebe65113262", "query_id": "Q013", "ranks": {"graph": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b0bd84c5d7bbd7a07b6ce161552d35bd2ad0d4b2", "query_id": "Q013", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6856624ea327bbac0d5608e1ae707b0fde52affe", "query_id": "Q013", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["graph"], "paper_id": "24b50f529a69aca17f2729dc3a9f8c7ada1a7d02", "query_id": "Q013", "ranks": {"graph": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "28c64dde8a9231cba2d9fd7b49a19a53dc400009", "query_id": "Q013", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "af22ad6c7eca792a0c3a06044747c9c3ba374f69", "query_id": "Q013", "ranks": {"graph": 20}}
+{"methods": ["graph"], "paper_id": "1ff858576af755583559fdfcd366bd16002da297", "query_id": "Q013", "ranks": {"graph": 7}}
+{"methods": ["bm25", "graph"], "paper_id": "1fe76161da277bf970a0dc95fb677f1b85c65675", "query_id": "Q013", "ranks": {"bm25": 19, "graph": 4}}
+{"methods": ["bm25"], "paper_id": "edeb764cca569ff2b37f64f7d92be865b6a7c77b", "query_id": "Q013", "ranks": {"bm25": 10}}
+{"methods": ["bm25"], "paper_id": "19f8366278c7f741725d48f457f63b0107fafab6", "query_id": "Q013", "ranks": {"bm25": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8c24ef76d0a15bae316d1b9e6ab526ea5af93530", "query_id": "Q013", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["graph"], "paper_id": "cd551790992d16148fe2e5ff2cc76861195e2191", "query_id": "Q013", "ranks": {"graph": 14}}
+{"methods": ["bm25"], "paper_id": "fd62591e93e31f2d32c305aa40e392d2729a3c26", "query_id": "Q013", "ranks": {"bm25": 11}}
+{"methods": ["graph"], "paper_id": "1948c13b4842b2abdcc3dd0cf9a95cd721d8a01d", "query_id": "Q013", "ranks": {"graph": 12}}
+{"methods": ["graph"], "paper_id": "6ea296e7ee12bd0ac3399e88f45b6500ab300a44", "query_id": "Q013", "ranks": {"graph": 16}}
+{"methods": ["bm25"], "paper_id": "8d174903f8c79cabe4d8c49a56380be03eba44ef", "query_id": "Q013", "ranks": {"bm25": 13}}
+{"methods": ["bm25"], "paper_id": "5565891de0ced582346d644ad6c95fc0e7ecd021", "query_id": "Q013", "ranks": {"bm25": 9}}
+{"methods": ["bm25"], "paper_id": "acedb9042b687efccf67b33d7e2d0af1341a09bb", "query_id": "Q013", "ranks": {"bm25": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "80d7b9180299ed1954dbc3acde4ad4efa8974e0a", "query_id": "Q013", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "48bfd1f82938036ecf680cf17ff2b882191a3ea0", "query_id": "Q013", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["bm25", "graph"], "paper_id": "aeea29ad352a04e74b6a4459e7328aa6e904486d", "query_id": "Q013", "ranks": {"bm25": 7, "graph": 1}}
+{"methods": ["bm25", "graph"], "paper_id": "bad3534cc797606d1fe3cb09713407783e77cac4", "query_id": "Q013", "ranks": {"bm25": 1, "graph": 3}}
+{"methods": ["bm25"], "paper_id": "7bfa528f0643f23adeb8429b77548d566a079023", "query_id": "Q013", "ranks": {"bm25": 4}}
+{"methods": ["bm25"], "paper_id": "063b4577d2a6eefc4551267e948ed7d8f747868c", "query_id": "Q013", "ranks": {"bm25": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b64be4caa953a519e215e9ac1db86940a7e2d173", "query_id": "Q013", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d9916caa8da69496ecc8e0b1c229c73a60d6f861", "query_id": "Q013", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["bm25", "graph"], "paper_id": "6851eca0bf16929e1e02f6681e636a17dd80a534", "query_id": "Q013", "ranks": {"bm25": 14, "graph": 18}}
+{"methods": ["bm25"], "paper_id": "98f2105a2c3a2ab65070296cca8fdbda2aa61694", "query_id": "Q013", "ranks": {"bm25": 18}}
+{"methods": ["graph"], "paper_id": "2c91e6312bc002bcf5f01db3ad728bb6a47b1317", "query_id": "Q013", "ranks": {"graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3cc4823ce339ba27299241c8a7d639e8722f81c1", "query_id": "Q013", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b140f5eff026439e0dfdf0ca3439f945c1656748", "query_id": "Q013", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["graph"], "paper_id": "3443efc855cebd17d1512d1a703b6e9ee2e4da8b", "query_id": "Q013", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "ed0e41161b376c100c827e0d696f16af793dd3a8", "query_id": "Q013", "ranks": {"bm25": 20}}
+{"methods": ["graph"], "paper_id": "ac0236df3d3e7ea0e2cf05d75d3d515e5f022fc0", "query_id": "Q014", "ranks": {"graph": 4}}
+{"methods": ["graph"], "paper_id": "83e89d56d0d0e1dfd8b52213e6cc2e191aaaf34b", "query_id": "Q014", "ranks": {"graph": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6c5a38a529a09962880dfa03c06e76292f9a5864", "query_id": "Q014", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "730e7be97a16d3b0cb3bb2b089e355b2b54adff2", "query_id": "Q014", "ranks": {"bm25": 7, "hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["bm25"], "paper_id": "29323f1001b339b9380374709b71b91a71b7f8c1", "query_id": "Q014", "ranks": {"bm25": 20}}
+{"methods": ["bm25"], "paper_id": "810dff7bcc6ec6053fd29a049e0a52fc0511f96d", "query_id": "Q014", "ranks": {"bm25": 16}}
+{"methods": ["graph"], "paper_id": "ece57b93c36325d909723564044f06986e5553ff", "query_id": "Q014", "ranks": {"graph": 16}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "3f8016980c6e6133d988604cdef3ee2c53126720", "query_id": "Q014", "ranks": {"bm25": 2, "hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "c5469887971d5f475b0dfc6b152aa3e277de24b0", "query_id": "Q014", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["bm25"], "paper_id": "b17d29f643e5bd03616b1fe3fa7f67d06ac9c905", "query_id": "Q014", "ranks": {"bm25": 19}}
+{"methods": ["bm25"], "paper_id": "0105ea52b7b26da000082549e25c47ebbf4ddf12", "query_id": "Q014", "ranks": {"bm25": 13}}
+{"methods": ["graph"], "paper_id": "5b91a2384e08433da2f2bafd2e4574ba8ecaecc4", "query_id": "Q014", "ranks": {"graph": 13}}
+{"methods": ["bm25"], "paper_id": "7bede3c92e5f3d35fff3b4812b5da302ffd99a67", "query_id": "Q014", "ranks": {"bm25": 8}}
+{"methods": ["bm25"], "paper_id": "3f1e83f4eb83ebd52ec352e68e313e8a0e45dfcf", "query_id": "Q014", "ranks": {"bm25": 4}}
+{"methods": ["graph"], "paper_id": "1948c13b4842b2abdcc3dd0cf9a95cd721d8a01d", "query_id": "Q014", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "164c1e810726530c20b3baf684459d787a536eab", "query_id": "Q014", "ranks": {"bm25": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d4f9e25632c6e2cbc8d6c1a8ddf75be7c1948536", "query_id": "Q014", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "44edaffe440d3174bfe7c8aa630b944f5e71cf36", "query_id": "Q014", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "c8a1756b5c6599adf24242aed0c00ba0a4b03d3b", "query_id": "Q014", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["bm25"], "paper_id": "24522799d6575470c3d60b87be777f97ab652e95", "query_id": "Q014", "ranks": {"bm25": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q014", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3d56986c6dc13543273f29e4026f047718b2024c", "query_id": "Q014", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "07d8705dcf2ec1ecf35d680c80e6bef519ca967b", "query_id": "Q014", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["graph"], "paper_id": "55518098968253bf7f5f7cbfc27d60170dc7e1ea", "query_id": "Q014", "ranks": {"graph": 18}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "49ee41ee3b0528ce799d6270b6a8c2120ecc3029", "query_id": "Q014", "ranks": {"bm25": 17, "hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["graph"], "paper_id": "7244122d7a8039c7d35f431b581b1894725dc79c", "query_id": "Q014", "ranks": {"graph": 19}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "27a030b1a014fd1458320eaf836f3cfc93966158", "query_id": "Q014", "ranks": {"bm25": 6, "hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["graph"], "paper_id": "062b99a331795a9386721d793c4b80b51b4ee1de", "query_id": "Q014", "ranks": {"graph": 20}}
+{"methods": ["graph"], "paper_id": "3443efc855cebd17d1512d1a703b6e9ee2e4da8b", "query_id": "Q014", "ranks": {"graph": 7}}
+{"methods": ["graph"], "paper_id": "0ca89c22fed80b3eec8314cc95cca36079cb2427", "query_id": "Q014", "ranks": {"graph": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "264661e140161b3176cf612cf0d27829bf8778c6", "query_id": "Q014", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["graph"], "paper_id": "4666999499a1973796afb9de8e811fd87917975b", "query_id": "Q014", "ranks": {"graph": 1}}
+{"methods": ["graph"], "paper_id": "2c91e6312bc002bcf5f01db3ad728bb6a47b1317", "query_id": "Q014", "ranks": {"graph": 11}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "814698078dcc7c342879c0b84b9895665495606a", "query_id": "Q014", "ranks": {"bm25": 5, "hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "84d85df95ee022efbc2a7cad07aa444dfb2eb5d4", "query_id": "Q014", "ranks": {"bm25": 1, "hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["graph"], "paper_id": "939680487a049e02ad617042f07b9529b2e5bb2d", "query_id": "Q014", "ranks": {"graph": 17}}
+{"methods": ["graph"], "paper_id": "680f454be60d79126c54eb2216bd1a1392249e79", "query_id": "Q014", "ranks": {"graph": 2}}
+{"methods": ["graph"], "paper_id": "5523039b06bf0b1f49be4489a30616bcfa4c41dc", "query_id": "Q014", "ranks": {"graph": 15}}
+{"methods": ["bm25", "graph"], "paper_id": "76fecac5b9e884bc894cfa9f8af706ef315a423e", "query_id": "Q014", "ranks": {"bm25": 15, "graph": 3}}
+{"methods": ["graph"], "paper_id": "cd551790992d16148fe2e5ff2cc76861195e2191", "query_id": "Q014", "ranks": {"graph": 8}}
+{"methods": ["graph"], "paper_id": "49f202fb16bb2897d4866844d4d8624a4dfa506d", "query_id": "Q014", "ranks": {"graph": 14}}
+{"methods": ["bm25", "graph", "hybrid", "production", "vector"], "paper_id": "e4ff791a64e405213c0d189ec6f42a71bf13fc9e", "query_id": "Q014", "ranks": {"bm25": 3, "graph": 5, "hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "651986c4fd780db2cb866d2f9286254eab90adbb", "query_id": "Q014", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "fd2c46892ed4d0a147a6f94353167238536b1290", "query_id": "Q014", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4adb91d19b755be137fba14ffe92635bb2c22041", "query_id": "Q014", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "748c865ebf0845827ca23fa5874decce9646b226", "query_id": "Q014", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d0e7618c3c43194abf2e02eb41ea3bc8bebaabaf", "query_id": "Q014", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["bm25"], "paper_id": "5b50aa69dc0eddc552aa43f7e96504479651275b", "query_id": "Q014", "ranks": {"bm25": 18}}
+{"methods": ["bm25"], "paper_id": "b2856810b6780ae433aff7df0d4ed8b2a071088b", "query_id": "Q014", "ranks": {"bm25": 12}}
+{"methods": ["bm25"], "paper_id": "6955237f5d604251e6156562da1e43fb7332430a", "query_id": "Q014", "ranks": {"bm25": 14}}
+{"methods": ["bm25"], "paper_id": "ca2bc1ca078250372d673b47f3b6786eef4cf7fb", "query_id": "Q014", "ranks": {"bm25": 11}}
+{"methods": ["bm25"], "paper_id": "5dc3aa3dd97662f2086a5aff24fae9b24acbc186", "query_id": "Q015", "ranks": {"bm25": 14}}
+{"methods": ["graph"], "paper_id": "1d41090ba8e597380e7353b6b1f42d6a7d9f83b4", "query_id": "Q015", "ranks": {"graph": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccc0c140abed03b094531b52f9587e334540aeaa", "query_id": "Q015", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2b7943e9be4573c52bed866d9015f64b189c1fe3", "query_id": "Q015", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "70c83f075d88ff84384aa6c6bfb38f6353ea0415", "query_id": "Q015", "ranks": {"graph": 9}}
+{"methods": ["graph"], "paper_id": "cf0b4eba5424fd0302c2f7c9ac3b4a4120a29dbe", "query_id": "Q015", "ranks": {"graph": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ee15f2afe29f48a8bc455c909e873cc2f601b646", "query_id": "Q015", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "f796583ba09513dee16a32adb48327bffbb27c57", "query_id": "Q015", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["graph"], "paper_id": "0d77d3db4a7633b35698e4849d3c145158a0c7b4", "query_id": "Q015", "ranks": {"graph": 1}}
+{"methods": ["bm25"], "paper_id": "f3872ef3743b744736da813249745545a9c1877f", "query_id": "Q015", "ranks": {"bm25": 13}}
+{"methods": ["graph"], "paper_id": "78167a0578e995148dac629768e9495113c8babd", "query_id": "Q015", "ranks": {"graph": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4dcbb5a19fad66275100674de209408b37a699f0", "query_id": "Q015", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["graph"], "paper_id": "6ff259ec6f8ddef591b59b9e44872c34185c1718", "query_id": "Q015", "ranks": {"graph": 6}}
+{"methods": ["graph"], "paper_id": "13a2df532131d48f29c72cb07cb5812d6980baff", "query_id": "Q015", "ranks": {"graph": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6cdc6eebdec0e5c1ba47db4a0d0c4381cc82d0ed", "query_id": "Q015", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9346f54c3f9780edb7274ff8c5b32ce9badf0d10", "query_id": "Q015", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["graph"], "paper_id": "8a7250697ad953befc3a382876a161c5355b2d51", "query_id": "Q015", "ranks": {"graph": 5}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q015", "ranks": {"graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "e5674b066578a690da65d81769c66db78d533929", "query_id": "Q015", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["graph"], "paper_id": "b9631936ab9e41511f0eb85adb0fc7b8efb7983e", "query_id": "Q015", "ranks": {"graph": 19}}
+{"methods": ["bm25"], "paper_id": "9dd120419d053bfcc084be74866d1876bde11ad1", "query_id": "Q015", "ranks": {"bm25": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "481dd25896ac531707870c9b8c179cce20013401", "query_id": "Q015", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["bm25"], "paper_id": "3dd96c2b0894729ec0665a5c02860037083917b5", "query_id": "Q015", "ranks": {"bm25": 15}}
+{"methods": ["bm25"], "paper_id": "8150aa3aa209963d0cb7be1ff53634216b0fa1c9", "query_id": "Q015", "ranks": {"bm25": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "25c5773487991366766d53501463fe31652c590a", "query_id": "Q015", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "5bf57b615bfce122792295fd7a4e89d230787ccc", "query_id": "Q015", "ranks": {"bm25": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "e5da8360b38ae1f06d403f56d09da2c10c119a31", "query_id": "Q015", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "422d3cede35208487985b84fb7c3dc690a9c5172", "query_id": "Q015", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "b8da443cf05166cfcc90ab28465048ebe5dc68c8", "query_id": "Q015", "ranks": {"bm25": 3, "hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q015", "ranks": {"graph": 18}}
+{"methods": ["bm25"], "paper_id": "423d041626cc83ac610a909d59ea89185d78736f", "query_id": "Q015", "ranks": {"bm25": 11}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "d23ab974eeca5b31e5475204195250476b80b4f8", "query_id": "Q015", "ranks": {"bm25": 8, "hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["bm25"], "paper_id": "00c88680b708a98be1f6f8fab882aa399eb69877", "query_id": "Q015", "ranks": {"bm25": 5}}
+{"methods": ["graph"], "paper_id": "c36571ac50808c75fa8a5d37f1041af22e89e6ee", "query_id": "Q015", "ranks": {"graph": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "bda290f54791e4719917e44a7e6441d000c43ab3", "query_id": "Q015", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5afca49da59b45d30084b92939cc24d36c0ad02e", "query_id": "Q015", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["bm25"], "paper_id": "f7833d272af3614923e300bfedc51ace83587428", "query_id": "Q015", "ranks": {"bm25": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "fd4d2177c7745acd0d3006c5e79abd945890e122", "query_id": "Q015", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["graph"], "paper_id": "84a7c798f6a0dff73402d1f753ff47123219e1a3", "query_id": "Q015", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "f59093c03a4c78b84a023b22b346ffdb48f16836", "query_id": "Q015", "ranks": {"bm25": 4}}
+{"methods": ["graph"], "paper_id": "86e2c0db88820fab2e06cb469a8e326ffd8d643f", "query_id": "Q015", "ranks": {"graph": 16}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q015", "ranks": {"graph": 8}}
+{"methods": ["graph"], "paper_id": "b905a4452b9eb53ec5bdec44381dcb1c458e186f", "query_id": "Q015", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "fb3376d53a57b4e45d35d93434928fcac23cf564", "query_id": "Q015", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["bm25"], "paper_id": "58d4bcee792b3ec02b07cb52ae4cb63e2443af9b", "query_id": "Q015", "ranks": {"bm25": 17}}
+{"methods": ["graph"], "paper_id": "7b0933cb29eceb26f1985b5b00fa63b92a605aa7", "query_id": "Q015", "ranks": {"graph": 15}}
+{"methods": ["graph"], "paper_id": "3b70a95535f3541ab608a1d7521c162016941279", "query_id": "Q015", "ranks": {"graph": 2}}
+{"methods": ["bm25"], "paper_id": "9335a77d15c154d56ab5fd7b289f5dd553d19ffd", "query_id": "Q015", "ranks": {"bm25": 10}}
+{"methods": ["bm25"], "paper_id": "6c009005516ddbf57cc3a116805ec635b595c0ae", "query_id": "Q015", "ranks": {"bm25": 12}}
+{"methods": ["graph"], "paper_id": "516a4a733283e7ff9f318de2d00e9462127dc1e6", "query_id": "Q015", "ranks": {"graph": 3}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q015", "ranks": {"graph": 7}}
+{"methods": ["bm25"], "paper_id": "0cc144da0fdbdc0f96715fd25bf088d7ae7c1cb2", "query_id": "Q015", "ranks": {"bm25": 2}}
+{"methods": ["bm25"], "paper_id": "b08aa064ebb86f95139b3ffc08369d524fdeea16", "query_id": "Q015", "ranks": {"bm25": 7}}
+{"methods": ["bm25"], "paper_id": "30b8fcd5c72f495f092af2c3f7303f657ad80996", "query_id": "Q015", "ranks": {"bm25": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "c077e8f9ab701270dec08ad8934901474a46ecf1", "query_id": "Q015", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5bb91d9b4ac92e6ca81dbf83e23b32aea22ad0c6", "query_id": "Q015", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["bm25"], "paper_id": "45f470b31f55f57a4b5a50952cb4029ebf34ffba", "query_id": "Q015", "ranks": {"bm25": 16}}
+{"methods": ["bm25"], "paper_id": "e213e521df50dfd90e11235cb55530113c314bf8", "query_id": "Q015", "ranks": {"bm25": 20}}
+{"methods": ["graph"], "paper_id": "aeea29ad352a04e74b6a4459e7328aa6e904486d", "query_id": "Q016", "ranks": {"graph": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3302081b8878de505b69900e22b8137c5d931be7", "query_id": "Q016", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["graph"], "paper_id": "2504ffea9c60007e07efed26021c5924be8714da", "query_id": "Q016", "ranks": {"graph": 19}}
+{"methods": ["bm25"], "paper_id": "c41941acc9aa3315774e86d69c5908795a3dbb8f", "query_id": "Q016", "ranks": {"bm25": 18}}
+{"methods": ["bm25"], "paper_id": "fb9a8d6969c14a8a6dc0daffd16ff8f161e7e4bd", "query_id": "Q016", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "f06ea790d9dcda0e3a5311095cd593d30ee5cba8", "query_id": "Q016", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "168583cc1dacd92a62cce476b7902dfc041ed452", "query_id": "Q016", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "e5e10bd5b694099c88e649d9502adecd0acd52f7", "query_id": "Q016", "ranks": {"bm25": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "822f94dadb65d7cc0ab680efd65301aa26cd09f8", "query_id": "Q016", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3dabeabde4cd635448d67a171e8c106d1ba5694c", "query_id": "Q016", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["bm25"], "paper_id": "66e6fda1ec579f9a836f318b669520f9dd1a4ef8", "query_id": "Q016", "ranks": {"bm25": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "1b2ed5f5fb007507d7150b00d36c910a49eb2ba3", "query_id": "Q016", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "71a7ba06ef16fa00d1e5638f4231957f2a90c1ef", "query_id": "Q016", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["graph"], "paper_id": "f8fcd8c8610601dadcbb3f4594fff24e83ff583b", "query_id": "Q016", "ranks": {"graph": 6}}
+{"methods": ["graph"], "paper_id": "13a2df532131d48f29c72cb07cb5812d6980baff", "query_id": "Q016", "ranks": {"graph": 15}}
+{"methods": ["bm25"], "paper_id": "8cdd97dee6073673c7f4f444ab090b62c61b4673", "query_id": "Q016", "ranks": {"bm25": 4}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q016", "ranks": {"graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "14014c024674991149f3ecf9314c93f7e029ef1a", "query_id": "Q016", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "1d41090ba8e597380e7353b6b1f42d6a7d9f83b4", "query_id": "Q016", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "e52726a84f5b8937b69d788c7d4bda239efd44ac", "query_id": "Q016", "ranks": {"bm25": 6}}
+{"methods": ["graph"], "paper_id": "e0064da8393a8745b4cb0ad51da3b83c99758e82", "query_id": "Q016", "ranks": {"graph": 5}}
+{"methods": ["graph"], "paper_id": "40df59e86d1effc21f470251dd10401cdd29cb12", "query_id": "Q016", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "a8d741914c3fbeb2df1ffc5113ae39c28baf40a8", "query_id": "Q016", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["graph"], "paper_id": "b9631936ab9e41511f0eb85adb0fc7b8efb7983e", "query_id": "Q016", "ranks": {"graph": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "841211b55852488147a3291f567511b82aa80e09", "query_id": "Q016", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["bm25"], "paper_id": "dcb17372a0233719d84aca856c6147a01e2ba34f", "query_id": "Q016", "ranks": {"bm25": 3}}
+{"methods": ["bm25"], "paper_id": "70f091c93721bdb384f7488a7d3e68228d2bd69f", "query_id": "Q016", "ranks": {"bm25": 17}}
+{"methods": ["graph"], "paper_id": "be6161dd5eaa1b1ecc4e62348b43e52f134ed3f5", "query_id": "Q016", "ranks": {"graph": 1}}
+{"methods": ["graph"], "paper_id": "9765db741e4137b320c587057e0a56d0c88dee98", "query_id": "Q016", "ranks": {"graph": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "78c7179c1cb014e121adc59fb7117b213270dc93", "query_id": "Q016", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "fb762e3e3db1e9c06395e04d2452bf27ce499ff7", "query_id": "Q016", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "0ea5511cc66906b0142d8154d9a891c29ed22341", "query_id": "Q016", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["bm25"], "paper_id": "d9782a972b63964cac1a6bc733def8a53589c6ca", "query_id": "Q016", "ranks": {"bm25": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4f0a8cad6d6a8d0397ad1bd35acce6458aa7164c", "query_id": "Q016", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["bm25"], "paper_id": "fc1c61fe8adb549b53c3cd515de193a4a7a27353", "query_id": "Q016", "ranks": {"bm25": 5}}
+{"methods": ["bm25"], "paper_id": "01c32c563dbf823708c706f9abe9753d54aeed28", "query_id": "Q016", "ranks": {"bm25": 16}}
+{"methods": ["bm25"], "paper_id": "6a7e657c47d8e3d24c0679e733d6f83e51c21d6c", "query_id": "Q016", "ranks": {"bm25": 7}}
+{"methods": ["bm25"], "paper_id": "452dac53963afe5599c484136e200498763f750b", "query_id": "Q016", "ranks": {"bm25": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "10827fb697b6f426b0d6f4905053aafa51a8786f", "query_id": "Q016", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["bm25"], "paper_id": "8644ee295d7cc57ecdef7a719dc59874141cc78e", "query_id": "Q016", "ranks": {"bm25": 19}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q016", "ranks": {"graph": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "e83816c0e7ed01ee48d579568ba97db72931d979", "query_id": "Q016", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["graph"], "paper_id": "84d186562804b49bf1c8a6f05f0521be6b3e5859", "query_id": "Q016", "ranks": {"graph": 7}}
+{"methods": ["bm25", "graph"], "paper_id": "a1fd9d031c77b7476c3bcb26ec169977584857f7", "query_id": "Q016", "ranks": {"bm25": 20, "graph": 2}}
+{"methods": ["bm25", "graph"], "paper_id": "9dd97465c4f1ee208173d03171d6df847d5dc9f4", "query_id": "Q016", "ranks": {"bm25": 1, "graph": 3}}
+{"methods": ["bm25"], "paper_id": "b0e870b0ac63b97f1328ff3eeda14edd99dde109", "query_id": "Q016", "ranks": {"bm25": 13}}
+{"methods": ["graph"], "paper_id": "b905a4452b9eb53ec5bdec44381dcb1c458e186f", "query_id": "Q016", "ranks": {"graph": 11}}
+{"methods": ["bm25"], "paper_id": "0b72be2425ffb29c60cefcca0237e18b792fd558", "query_id": "Q016", "ranks": {"bm25": 11}}
+{"methods": ["bm25"], "paper_id": "6f6bc619a58bbf6f71a046b2302b973b479f3a17", "query_id": "Q016", "ranks": {"bm25": 12}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q016", "ranks": {"graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "31d7e9d7534b667f77fe605ff94b747964c068a8", "query_id": "Q016", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "0bde1c92e1786f95a1de5ddf77a34e68ec9b9414", "query_id": "Q016", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["graph"], "paper_id": "cf0b4eba5424fd0302c2f7c9ac3b4a4120a29dbe", "query_id": "Q016", "ranks": {"graph": 18}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q016", "ranks": {"graph": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "79e1854115a29fd7bac54d553ce50404969b6275", "query_id": "Q016", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["bm25"], "paper_id": "1f7e58950a55e8f310197dfba3e2f118e841e1ba", "query_id": "Q016", "ranks": {"bm25": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b20a5cd0068c6ffdc9614d018389fe28f8deab45", "query_id": "Q016", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["graph"], "paper_id": "c36571ac50808c75fa8a5d37f1041af22e89e6ee", "query_id": "Q016", "ranks": {"graph": 14}}
+{"methods": ["bm25"], "paper_id": "7698c4a3ac775cc7ea97527fb32aace4d980430e", "query_id": "Q017", "ranks": {"bm25": 8}}
+{"methods": ["graph"], "paper_id": "44a6fbbef0929ecd750b3bc885065e8079ee8f3f", "query_id": "Q017", "ranks": {"graph": 11}}
+{"methods": ["bm25"], "paper_id": "400389ca8b23ff77fa9ee96717fe6447df7469af", "query_id": "Q017", "ranks": {"bm25": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3e8f40ca79a37bfb53dca00c79b84ca3b571d924", "query_id": "Q017", "ranks": {"hybrid": 3, "production": 2, "vector": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "346c5e5d28c45ad3460277699bf8e244cd33c2cf", "query_id": "Q017", "ranks": {"hybrid": 11, "production": 4, "vector": 12}}
+{"methods": ["bm25"], "paper_id": "3336c824709d19c47c8fbf2a741a02d0ffb17ef1", "query_id": "Q017", "ranks": {"bm25": 4}}
+{"methods": ["bm25"], "paper_id": "1943b862598fe27f302f05fb0a690b3a4a9fcbca", "query_id": "Q017", "ranks": {"bm25": 7}}
+{"methods": ["bm25"], "paper_id": "66b54fb4c0cefba28fbe6fe170355e3c625ceef1", "query_id": "Q017", "ranks": {"bm25": 2}}
+{"methods": ["graph"], "paper_id": "1b434e321646313f28e72b0fc6e68bff111f6f79", "query_id": "Q017", "ranks": {"graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "7c6057f821574e51df2be694c76c4dad11ce2527", "query_id": "Q017", "ranks": {"hybrid": 16, "production": 19, "vector": 16}}
+{"methods": ["bm25"], "paper_id": "a71e40e0895f9a3d1e85e0bf9c1b032855446ede", "query_id": "Q017", "ranks": {"bm25": 10}}
+{"methods": ["bm25"], "paper_id": "01beb517addc5194706dc8d383f005e4f77e5be7", "query_id": "Q017", "ranks": {"bm25": 20}}
+{"methods": ["production"], "paper_id": "b0ca941fd8aa7345e8aba84c067a795f65c38382", "query_id": "Q017", "ranks": {"production": 11}}
+{"methods": ["graph"], "paper_id": "83ed014fb3f0881ad1e61034e3cf12581624fa58", "query_id": "Q017", "ranks": {"graph": 2}}
+{"methods": ["bm25"], "paper_id": "8e6d1470e8d52b46b07db84bcdc727963b6bf7dd", "query_id": "Q017", "ranks": {"bm25": 18}}
+{"methods": ["graph"], "paper_id": "b4eae52a98ee8df41692596268b8e10168b64dbe", "query_id": "Q017", "ranks": {"graph": 12}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "28aced1522ac329ad068565f4e3208e23862f221", "query_id": "Q017", "ranks": {"bm25": 14, "hybrid": 4, "production": 8, "vector": 3}}
+{"methods": ["bm25"], "paper_id": "19f2c76be1dbeb8a7ed0db4539f359e7b1764afa", "query_id": "Q017", "ranks": {"bm25": 19}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "3efa96570a10fecba0f93e0f62e95d41ce7b624b", "query_id": "Q017", "ranks": {"bm25": 15, "hybrid": 1, "production": 6, "vector": 1}}
+{"methods": ["graph"], "paper_id": "ad9dadabdcfc1e8a1ba41e72d857da02dd5126e3", "query_id": "Q017", "ranks": {"graph": 3}}
+{"methods": ["bm25"], "paper_id": "2d6bd8ae17776d82d4d1f63038cb0a4731543758", "query_id": "Q017", "ranks": {"bm25": 5}}
+{"methods": ["hybrid", "vector"], "paper_id": "899bb5f4ad958834eb8bd79a4c9336645cc39d99", "query_id": "Q017", "ranks": {"hybrid": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "2fce1ef37391cd685fc5459e1cbfcb8490b85242", "query_id": "Q017", "ranks": {"graph": 7}}
+{"methods": ["graph"], "paper_id": "069b07a146480e80ee1564f5b77b96c31310ca8f", "query_id": "Q017", "ranks": {"graph": 15}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "b93a473dbf7a6a81aa3412c4f47b6bb736959f06", "query_id": "Q017", "ranks": {"bm25": 13, "hybrid": 7, "production": 12, "vector": 5}}
+{"methods": ["bm25"], "paper_id": "cefee18a6e90e747b94dc25e71993cd0bcdbecbe", "query_id": "Q017", "ranks": {"bm25": 9}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5e40edeb996ac1b5d019a47fe43adfbeb8bba654", "query_id": "Q017", "ranks": {"hybrid": 15, "production": 18, "vector": 15}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "84497899d8bf19fc392174f80a2256fdf5c2e00f", "query_id": "Q017", "ranks": {"bm25": 11, "hybrid": 9, "production": 13, "vector": 7}}
+{"methods": ["graph"], "paper_id": "174f6f019e4d2781d33d40e63876464940838bcc", "query_id": "Q017", "ranks": {"graph": 1}}
+{"methods": ["graph"], "paper_id": "1df8ce9e21c544a8ba0911e3e7825abc752236eb", "query_id": "Q017", "ranks": {"graph": 17}}
+{"methods": ["graph"], "paper_id": "b64be4caa953a519e215e9ac1db86940a7e2d173", "query_id": "Q017", "ranks": {"graph": 13}}
+{"methods": ["graph"], "paper_id": "2a6e359933cf718c9debff2637ea158d8873e850", "query_id": "Q017", "ranks": {"graph": 19}}
+{"methods": ["bm25", "hybrid", "vector"], "paper_id": "9d74d87789b993d84b1e2356be3b2e6ef43c7f79", "query_id": "Q017", "ranks": {"bm25": 16, "hybrid": 18, "vector": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "c09b6e62362988127f8d8a4243a0227bfd0770ca", "query_id": "Q017", "ranks": {"hybrid": 17, "production": 20, "vector": 17}}
+{"methods": ["graph"], "paper_id": "fc55292fe416e7071d87afbda34ece0e71f3653c", "query_id": "Q017", "ranks": {"graph": 9}}
+{"methods": ["graph"], "paper_id": "3660a3034d0b78921c3316242584f45ffffd07db", "query_id": "Q017", "ranks": {"graph": 20}}
+{"methods": ["production"], "paper_id": "2d615707481030d271f2c888b13267b1681f4aa2", "query_id": "Q017", "ranks": {"production": 5}}
+{"methods": ["graph"], "paper_id": "a47424106165acd212b3233af8eb5a26cc567b4b", "query_id": "Q017", "ranks": {"graph": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "653985edce7775f40eb1d60ba36d31293d6e4fd9", "query_id": "Q017", "ranks": {"hybrid": 5, "production": 10, "vector": 4}}
+{"methods": ["bm25"], "paper_id": "4878686f9b126a1fdcbdb374a4c98855a4961ca8", "query_id": "Q017", "ranks": {"bm25": 3}}
+{"methods": ["production"], "paper_id": "73366d75289c5e37481639fb54fdee28a664e2b3", "query_id": "Q017", "ranks": {"production": 9}}
+{"methods": ["graph"], "paper_id": "27ff4a9e25fbc1504081d49b428acca25916cb33", "query_id": "Q017", "ranks": {"graph": 18}}
+{"methods": ["graph"], "paper_id": "85cb1d20ae5ba3f547dc76d2cc73677652900d9b", "query_id": "Q017", "ranks": {"graph": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8fe578c05151489305445083a035a56a6a2cc3a6", "query_id": "Q017", "ranks": {"hybrid": 10, "production": 14, "vector": 8}}
+{"methods": ["bm25", "hybrid", "production", "vector"], "paper_id": "72ce1f2b6c2f66f548607faf53ffccf1f5a2acd5", "query_id": "Q017", "ranks": {"bm25": 1, "hybrid": 2, "production": 7, "vector": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ee21a30bc29f9c210caa36264ccd68a5662bf688", "query_id": "Q017", "ranks": {"hybrid": 12, "production": 15, "vector": 10}}
+{"methods": ["graph", "hybrid", "production", "vector"], "paper_id": "435bc42450259a22cfba92b40217b8d26f4a7ed5", "query_id": "Q017", "ranks": {"graph": 8, "hybrid": 14, "production": 17, "vector": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "919dadfd190a3fa1d41a602c11a51dd22a797561", "query_id": "Q017", "ranks": {"hybrid": 13, "production": 16, "vector": 13}}
+{"methods": ["bm25"], "paper_id": "a6eb04d1c260f1ce6e4f33ca33857b8d4869f209", "query_id": "Q017", "ranks": {"bm25": 6}}
+{"methods": ["graph"], "paper_id": "b1bfd2691635368b7e118589dc854ee4fede1def", "query_id": "Q017", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "07808da6b32d464f66aac31297f070c15499b92b", "query_id": "Q017", "ranks": {"bm25": 12}}
+{"methods": ["hybrid", "vector"], "paper_id": "1b24fbc2189aca1d17f66eac7c8b09397eaf336f", "query_id": "Q017", "ranks": {"hybrid": 19, "vector": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2e5bcdf9c9f6dbd9a1f2e0e1a748da8081b79e87", "query_id": "Q017", "ranks": {"hybrid": 8, "production": 1, "vector": 11}}
+{"methods": ["graph"], "paper_id": "11972f9f5a0226546aa3f21d54efab84e7a8ce01", "query_id": "Q017", "ranks": {"graph": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3328a42bdc552fbfba5dbd5b6c16b8aff26fea18", "query_id": "Q017", "ranks": {"hybrid": 6, "production": 3, "vector": 9}}
+{"methods": ["graph"], "paper_id": "4a59a09644eb8d9f9542df6acd343faea77b4586", "query_id": "Q017", "ranks": {"graph": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2f158d090ffef32e066e7638655bd85072b9c515", "query_id": "Q018", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q018", "ranks": {"graph": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "54c37590a56adce8ce2536e572434cc104f5ec08", "query_id": "Q018", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["bm25"], "paper_id": "42c46c38a5f9336700f173e39d274d333a4557eb", "query_id": "Q018", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4d4f41fa429f37ce41de0422938affb7805cf9a8", "query_id": "Q018", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8c24ef76d0a15bae316d1b9e6ab526ea5af93530", "query_id": "Q018", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "28a22bea3d98b326715bcede9b0216d3f788e1b8", "query_id": "Q018", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["bm25"], "paper_id": "8c88c693d5dc2802d3b76b85740e1f04fdaaf801", "query_id": "Q018", "ranks": {"bm25": 18}}
+{"methods": ["graph"], "paper_id": "8a7250697ad953befc3a382876a161c5355b2d51", "query_id": "Q018", "ranks": {"graph": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3f4dff0c50a2edc4d38973669f8459449f114e28", "query_id": "Q018", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["bm25"], "paper_id": "0888b965a1d9f9264fb54d91193341315aa2fb69", "query_id": "Q018", "ranks": {"bm25": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9d2b167ae11edffd944c22de4225a711111d1e2e", "query_id": "Q018", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "e577a7fb5fb306b4d56e7886d921c6d521d6942f", "query_id": "Q018", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["bm25"], "paper_id": "d200943d18b4ac585ed4a47c2603cde598cc3eaa", "query_id": "Q018", "ranks": {"bm25": 5}}
+{"methods": ["graph"], "paper_id": "3b70a95535f3541ab608a1d7521c162016941279", "query_id": "Q018", "ranks": {"graph": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "e3d1175f5b522220c31f96c5c6753a0757aae471", "query_id": "Q018", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["bm25"], "paper_id": "d988f3e05ed6199125e60ece2dc3af000176f1c2", "query_id": "Q018", "ranks": {"bm25": 3}}
+{"methods": ["bm25"], "paper_id": "f7a3d9bcf052f2b4ef7d59dcca4013ea11081d0f", "query_id": "Q018", "ranks": {"bm25": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "20c4882d63558015ed91aec419c18c6af74f699f", "query_id": "Q018", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q018", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q018", "ranks": {"graph": 19}}
+{"methods": ["graph"], "paper_id": "0d77d3db4a7633b35698e4849d3c145158a0c7b4", "query_id": "Q018", "ranks": {"graph": 1}}
+{"methods": ["bm25"], "paper_id": "c426ce2819990b2de233f93c11940cfb0161b836", "query_id": "Q018", "ranks": {"bm25": 12}}
+{"methods": ["graph"], "paper_id": "1d41090ba8e597380e7353b6b1f42d6a7d9f83b4", "query_id": "Q018", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "12e40d3fff82853ac302f64b7af3fdc7000970a3", "query_id": "Q018", "ranks": {"bm25": 20}}
+{"methods": ["graph"], "paper_id": "516a4a733283e7ff9f318de2d00e9462127dc1e6", "query_id": "Q018", "ranks": {"graph": 4}}
+{"methods": ["graph"], "paper_id": "5e7047851d05b2ecef5de451dda5404acda726de", "query_id": "Q018", "ranks": {"graph": 15}}
+{"methods": ["bm25"], "paper_id": "3c7b3687bce8877e12b2c47860bd2e22a7b195c4", "query_id": "Q018", "ranks": {"bm25": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6b2b1bc1e1c2815cccc9487e3f73709467b615cb", "query_id": "Q018", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["graph"], "paper_id": "b905a4452b9eb53ec5bdec44381dcb1c458e186f", "query_id": "Q018", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ba7fe04c0529bd86a9dc048c064472b1a3c08177", "query_id": "Q018", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "1ede15a0aa5204de1f3013d7616a93dbd46fd849", "query_id": "Q018", "ranks": {"bm25": 17}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q018", "ranks": {"graph": 16}}
+{"methods": ["graph"], "paper_id": "b9631936ab9e41511f0eb85adb0fc7b8efb7983e", "query_id": "Q018", "ranks": {"graph": 20}}
+{"methods": ["bm25"], "paper_id": "909332c081a81af8e46ab69ef23638942d62fc7e", "query_id": "Q018", "ranks": {"bm25": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9332dd9afa389d8d273e1713a6e1ca98797c6e5f", "query_id": "Q018", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "7717e17df9e6f83fb17f3dbcd6189a4cbeb359b7", "query_id": "Q018", "ranks": {"graph": 18}}
+{"methods": ["graph"], "paper_id": "a50f37cdd0614567ef52ffa63c70285d97630ce4", "query_id": "Q018", "ranks": {"graph": 9}}
+{"methods": ["bm25"], "paper_id": "e3707931c7be45af9de688d62ab66114e1a4d971", "query_id": "Q018", "ranks": {"bm25": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b2ea3564e8d763a00d733a3dc44f85550a995fd0", "query_id": "Q018", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["bm25"], "paper_id": "1110e8fc8f8163f37fb54dffcf584b9e15a107b7", "query_id": "Q018", "ranks": {"bm25": 9}}
+{"methods": ["graph"], "paper_id": "4beca2d9dec6455b68c00dfb5268382c5023ff5c", "query_id": "Q018", "ranks": {"graph": 11}}
+{"methods": ["graph"], "paper_id": "bd9ab344da99022cbbbfd3f5c9c82a0b21c60ad9", "query_id": "Q018", "ranks": {"graph": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "47ae807cd511b35e78a2cd4e198283dea6dafd41", "query_id": "Q018", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["bm25"], "paper_id": "2b8a207189bc02d73d1dce850bcde24dbd984483", "query_id": "Q018", "ranks": {"bm25": 10}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d6721b9b0c65aca4af9ea0b6063dc72f8558f6c2", "query_id": "Q018", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6bfe4a32dbf4c58af83745e2fcf68217217a03ea", "query_id": "Q018", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["graph"], "paper_id": "78167a0578e995148dac629768e9495113c8babd", "query_id": "Q018", "ranks": {"graph": 5}}
+{"methods": ["graph"], "paper_id": "dd1eba39ac17b1f5c41f81cc01216129f3c56f6d", "query_id": "Q018", "ranks": {"graph": 14}}
+{"methods": ["bm25"], "paper_id": "26d9776d22e0af8d5133eef1db662a70cd2824de", "query_id": "Q018", "ranks": {"bm25": 16}}
+{"methods": ["bm25"], "paper_id": "a7d4c41a3daba79fc6c1a809f9c337668dc6661a", "query_id": "Q018", "ranks": {"bm25": 1}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q018", "ranks": {"graph": 8}}
+{"methods": ["bm25"], "paper_id": "30258c205060af5ce958dc6c9e184c9498ee48ed", "query_id": "Q018", "ranks": {"bm25": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "894d61c709ec6f61899703458d90b09c663d7b11", "query_id": "Q018", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["graph"], "paper_id": "f15c15d6a3380f94206c7393103a9f9f3bddcbe9", "query_id": "Q018", "ranks": {"graph": 13}}
+{"methods": ["bm25"], "paper_id": "7557a99bebea1c52f122413139206bb0ce6cdb9d", "query_id": "Q018", "ranks": {"bm25": 11}}
+{"methods": ["bm25"], "paper_id": "93aaacec41d2d9bd2bc162df595075cb489c7334", "query_id": "Q018", "ranks": {"bm25": 8}}
+{"methods": ["bm25"], "paper_id": "bcb47761db8f8dfa012c49c2b3405da515bcc0e9", "query_id": "Q018", "ranks": {"bm25": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "7e9af8a6081dc00187bd4a6727751d1721bd7816", "query_id": "Q018", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["graph"], "paper_id": "c36571ac50808c75fa8a5d37f1041af22e89e6ee", "query_id": "Q018", "ranks": {"graph": 17}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q019", "ranks": {"graph": 8}}
+{"methods": ["bm25"], "paper_id": "8db3621aaf9411d9f783ec7205b7d834e1201e9b", "query_id": "Q019", "ranks": {"bm25": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "78c7179c1cb014e121adc59fb7117b213270dc93", "query_id": "Q019", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["bm25"], "paper_id": "dc64a776cfb67652e78c59d2bdc3d88b2d710b8c", "query_id": "Q019", "ranks": {"bm25": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "fc580c211689663a64f42e2ba92c864cb134ba9b", "query_id": "Q019", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "250909ee6b3a6529ff6bb6c4b4894f56c9456799", "query_id": "Q019", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["bm25"], "paper_id": "4490e37ba6abf234bca73812f2a6825b1390e7e3", "query_id": "Q019", "ranks": {"bm25": 20}}
+{"methods": ["bm25"], "paper_id": "66b40c96361bc1cb3242d6af004dc261c3cdf418", "query_id": "Q019", "ranks": {"bm25": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ccbd7f5f7aaa7a50e35ff3de41f718861de790c4", "query_id": "Q019", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["bm25"], "paper_id": "ef33d4545e6346354d0db35375da5f41d2984885", "query_id": "Q019", "ranks": {"bm25": 10}}
+{"methods": ["graph"], "paper_id": "aeea29ad352a04e74b6a4459e7328aa6e904486d", "query_id": "Q019", "ranks": {"graph": 12}}
+{"methods": ["bm25"], "paper_id": "11420a371320b2d0dfb58db30df14dfdb9d9072a", "query_id": "Q019", "ranks": {"bm25": 5}}
+{"methods": ["bm25"], "paper_id": "ba4cf3c5e41bb0762323a69dae2a357406fea1e1", "query_id": "Q019", "ranks": {"bm25": 12}}
+{"methods": ["bm25"], "paper_id": "1ca279c51bb4e3e7de0c5c565a9e4df8bc9ce39e", "query_id": "Q019", "ranks": {"bm25": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3034061bbf0e4fc6add3a55c799e07945dce321c", "query_id": "Q019", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["graph"], "paper_id": "13d1f71036278249ad476eda58d38db48d881db9", "query_id": "Q019", "ranks": {"graph": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "97d69e7e8c04714bf58dcbe5ae7454db69b657a7", "query_id": "Q019", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["graph"], "paper_id": "13a2df532131d48f29c72cb07cb5812d6980baff", "query_id": "Q019", "ranks": {"graph": 7}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q019", "ranks": {"graph": 2}}
+{"methods": ["bm25"], "paper_id": "e1d5db2697a37c9e0d09779313e42f545fee9130", "query_id": "Q019", "ranks": {"bm25": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a85846fd827a157b624ee012e75cbe37344281c", "query_id": "Q019", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["graph"], "paper_id": "2093381f8205f8c3925670f85afeabea274ba626", "query_id": "Q019", "ranks": {"graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6bcdf260d7927d8fe4ff030c20ee1db974d0c969", "query_id": "Q019", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q019", "ranks": {"graph": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "40a2d5fa293a03cff880d8b909be74279f991588", "query_id": "Q019", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["graph"], "paper_id": "02a3452a5f7fe42ba32bbf30af28b7845b2d6857", "query_id": "Q019", "ranks": {"graph": 20}}
+{"methods": ["graph"], "paper_id": "108eea36fc140fc0aeb2b6024925b28a7125c2ca", "query_id": "Q019", "ranks": {"graph": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "db99875c38f18e1e8d34578400a157369c91f22d", "query_id": "Q019", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["bm25"], "paper_id": "d99487d2dfa8e6f13512ecc216a9e7e1e2cee237", "query_id": "Q019", "ranks": {"bm25": 4}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q019", "ranks": {"graph": 1}}
+{"methods": ["bm25"], "paper_id": "2fbd0140d6845316f9d4ebcd7235eb5a99ec2b57", "query_id": "Q019", "ranks": {"bm25": 2}}
+{"methods": ["graph"], "paper_id": "cf0b4eba5424fd0302c2f7c9ac3b4a4120a29dbe", "query_id": "Q019", "ranks": {"graph": 11}}
+{"methods": ["bm25"], "paper_id": "b0ca941fd8aa7345e8aba84c067a795f65c38382", "query_id": "Q019", "ranks": {"bm25": 18}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "886144bdf52254bca44d3bd38bc971a5220ce288", "query_id": "Q019", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["graph"], "paper_id": "3603f868b94920c329d6bbee602348c9dc5ef558", "query_id": "Q019", "ranks": {"graph": 5}}
+{"methods": ["graph"], "paper_id": "d9479591a7e44d82dae04c22b5654bfd71d1f685", "query_id": "Q019", "ranks": {"graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "fe4a4cee1a42cb02d69ae603b85098db364624bb", "query_id": "Q019", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["bm25"], "paper_id": "7f4a1baed9f909f527f77e30e051116474fd4017", "query_id": "Q019", "ranks": {"bm25": 6}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "af84c6db6b5c41ca628867ff4a27566e9ca3c69e", "query_id": "Q019", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["bm25"], "paper_id": "afaaa2fd4b6e0c033cb0971682b4a9f153676bff", "query_id": "Q019", "ranks": {"bm25": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "2a0a49d69b854b66e22a9176d77984cca112d9d3", "query_id": "Q019", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["graph"], "paper_id": "b9631936ab9e41511f0eb85adb0fc7b8efb7983e", "query_id": "Q019", "ranks": {"graph": 10}}
+{"methods": ["graph"], "paper_id": "ab9e30123e0914ab5a97c36b9f9dda618cb1647c", "query_id": "Q019", "ranks": {"graph": 19}}
+{"methods": ["bm25"], "paper_id": "fb31a97915c0d1d92c4a2365a147cf10a1efade9", "query_id": "Q019", "ranks": {"bm25": 8}}
+{"methods": ["graph"], "paper_id": "96a21ab57b483325c5f67d26bac7b2884ae2b104", "query_id": "Q019", "ranks": {"graph": 6}}
+{"methods": ["bm25"], "paper_id": "b3652914b9e4adcdd745aaa852aec6856a6bcd17", "query_id": "Q019", "ranks": {"bm25": 9}}
+{"methods": ["graph"], "paper_id": "c36571ac50808c75fa8a5d37f1041af22e89e6ee", "query_id": "Q019", "ranks": {"graph": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "85cb1d20ae5ba3f547dc76d2cc73677652900d9b", "query_id": "Q019", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["graph"], "paper_id": "6c371facb7f853697b8f85221f5f38561156e4f2", "query_id": "Q019", "ranks": {"graph": 14}}
+{"methods": ["graph"], "paper_id": "c9bff87fa80d5fcafd754db93b90f3a8415348f4", "query_id": "Q019", "ranks": {"graph": 15}}
+{"methods": ["bm25"], "paper_id": "0303d79680c83bbdbd649281532bfa6cc3f8eb65", "query_id": "Q019", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8ca3be8e47289aef296d3e5804dc22b37dc1f635", "query_id": "Q019", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["graph"], "paper_id": "74e1545e86661332729b6b0ae2b0330f48c79954", "query_id": "Q019", "ranks": {"graph": 9}}
+{"methods": ["bm25"], "paper_id": "327ebd3af94ed863db1a850ea510e102a7bff7f8", "query_id": "Q019", "ranks": {"bm25": 17}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6d9f0dd572bb680c6b3125f7bf1d0e3dbb6d1935", "query_id": "Q019", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8973ad5fc1264594a1fda3bd9e04258074cea9cc", "query_id": "Q019", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["bm25"], "paper_id": "780270a7940c96b0c907103ff8e77dfe082f564f", "query_id": "Q019", "ranks": {"bm25": 19}}
+{"methods": ["bm25"], "paper_id": "6b72135bf31e78ccee78478228b635201326d217", "query_id": "Q019", "ranks": {"bm25": 14}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5aa40518f2a3df8d628bbc5c02ff1bb9b72740cc", "query_id": "Q019", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "b88f456daaf29860d2b59c621be3bd878a581a59", "query_id": "Q019", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["graph"], "paper_id": "8d3711d1a01a8071d8a93f518d2e35bf6dc8e505", "query_id": "Q020", "ranks": {"graph": 7}}
+{"methods": ["bm25"], "paper_id": "d406963cf064e92e4ca58348d588dd408a858267", "query_id": "Q020", "ranks": {"bm25": 4}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "c6d550c3fcecf27b979be84c4cd444cc1c72bf47", "query_id": "Q020", "ranks": {"hybrid": 7, "production": 7, "vector": 7}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "a53fb6d6e39d4a17cb12de880f4567f9076edbaf", "query_id": "Q020", "ranks": {"hybrid": 19, "production": 19, "vector": 19}}
+{"methods": ["bm25"], "paper_id": "61cce75554a6d1bb802f26758c3b0ba97de6918d", "query_id": "Q020", "ranks": {"bm25": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "896f2aac3d9f32cd676442de2f88e8a802d8c349", "query_id": "Q020", "ranks": {"hybrid": 15, "production": 15, "vector": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "48bfd1f82938036ecf680cf17ff2b882191a3ea0", "query_id": "Q020", "ranks": {"hybrid": 17, "production": 17, "vector": 17}}
+{"methods": ["bm25"], "paper_id": "fc2927d5343ec717858b6baa085125eea199d23b", "query_id": "Q020", "ranks": {"bm25": 2}}
+{"methods": ["graph"], "paper_id": "23ce8950b9360158c04ab0c1dcf9a73022b60673", "query_id": "Q020", "ranks": {"graph": 2}}
+{"methods": ["bm25"], "paper_id": "e9b973e5fb4ab649e0d229cd346919a9dbe6e7dc", "query_id": "Q020", "ranks": {"bm25": 6}}
+{"methods": ["graph"], "paper_id": "57bc933e06ffbbccd68134e2e2f172c61f0e6566", "query_id": "Q020", "ranks": {"graph": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5f23f00cd2e3884790818da25dd230f04a624679", "query_id": "Q020", "ranks": {"hybrid": 16, "production": 16, "vector": 16}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "40df59e86d1effc21f470251dd10401cdd29cb12", "query_id": "Q020", "ranks": {"hybrid": 6, "production": 6, "vector": 6}}
+{"methods": ["graph"], "paper_id": "00ffcf266403ba1ce8e28bff0fa025f62f9c3dde", "query_id": "Q020", "ranks": {"graph": 19}}
+{"methods": ["bm25"], "paper_id": "151f9ac987e1bd6469d3a5030a2dc4660ca5e81c", "query_id": "Q020", "ranks": {"bm25": 1}}
+{"methods": ["bm25"], "paper_id": "b3652914b9e4adcdd745aaa852aec6856a6bcd17", "query_id": "Q020", "ranks": {"bm25": 16}}
+{"methods": ["bm25"], "paper_id": "f28a7a33b530c4af6c818ca1c883861c0f7ac241", "query_id": "Q020", "ranks": {"bm25": 17}}
+{"methods": ["graph"], "paper_id": "ab9e30123e0914ab5a97c36b9f9dda618cb1647c", "query_id": "Q020", "ranks": {"graph": 14}}
+{"methods": ["graph"], "paper_id": "13d1f71036278249ad476eda58d38db48d881db9", "query_id": "Q020", "ranks": {"graph": 13}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "6fb8b967dad742eb390a3090f094a12f2d909538", "query_id": "Q020", "ranks": {"hybrid": 18, "production": 18, "vector": 18}}
+{"methods": ["graph"], "paper_id": "a788b829395c780ea5cb4fef6cc64c7bc331d739", "query_id": "Q020", "ranks": {"graph": 17}}
+{"methods": ["graph"], "paper_id": "aeea29ad352a04e74b6a4459e7328aa6e904486d", "query_id": "Q020", "ranks": {"graph": 11}}
+{"methods": ["graph"], "paper_id": "02a3452a5f7fe42ba32bbf30af28b7845b2d6857", "query_id": "Q020", "ranks": {"graph": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "8c24ef76d0a15bae316d1b9e6ab526ea5af93530", "query_id": "Q020", "ranks": {"hybrid": 12, "production": 12, "vector": 12}}
+{"methods": ["bm25"], "paper_id": "48402bec037fc2a5033c4dc7f90733b7e86da446", "query_id": "Q020", "ranks": {"bm25": 13}}
+{"methods": ["bm25"], "paper_id": "5327c0830833187b87c80c6c671a2763a99be268", "query_id": "Q020", "ranks": {"bm25": 7}}
+{"methods": ["graph"], "paper_id": "c36571ac50808c75fa8a5d37f1041af22e89e6ee", "query_id": "Q020", "ranks": {"graph": 4}}
+{"methods": ["graph"], "paper_id": "8eee1d2ebf0db9b24d2c6cc501720d6007083083", "query_id": "Q020", "ranks": {"graph": 3}}
+{"methods": ["bm25"], "paper_id": "e39afdbd832bd8fd0fb4f4f7df3722dc5f5cab2a", "query_id": "Q020", "ranks": {"bm25": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "88504211538e43beca2064ef8be1669fbc7bcd4f", "query_id": "Q020", "ranks": {"hybrid": 10, "production": 10, "vector": 10}}
+{"methods": ["graph"], "paper_id": "13a2df532131d48f29c72cb07cb5812d6980baff", "query_id": "Q020", "ranks": {"graph": 6}}
+{"methods": ["graph"], "paper_id": "8819adc0f064d5293bd2b783a63e23f68109738a", "query_id": "Q020", "ranks": {"graph": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3f4dff0c50a2edc4d38973669f8459449f114e28", "query_id": "Q020", "ranks": {"hybrid": 4, "production": 4, "vector": 4}}
+{"methods": ["bm25"], "paper_id": "c9f6a0866670131774918418227e6b5e5af13570", "query_id": "Q020", "ranks": {"bm25": 18}}
+{"methods": ["bm25"], "paper_id": "72efe2e3d2651379081909db9b710f6f91c6956f", "query_id": "Q020", "ranks": {"bm25": 14}}
+{"methods": ["bm25"], "paper_id": "3d61a28b9429fc8f7047fc379a0134a3765edbcb", "query_id": "Q020", "ranks": {"bm25": 11}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "5b53a03186a418d2da94136aa499915ef50f88f7", "query_id": "Q020", "ranks": {"hybrid": 1, "production": 1, "vector": 1}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "f470e11faa6200026cf39e248510070c078e509a", "query_id": "Q020", "ranks": {"hybrid": 3, "production": 3, "vector": 3}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "d80da3ce91f0076042eff4ae11e015f841596334", "query_id": "Q020", "ranks": {"hybrid": 11, "production": 11, "vector": 11}}
+{"methods": ["bm25"], "paper_id": "fa65e254872fc84724f41f945078bf4e5bf34f20", "query_id": "Q020", "ranks": {"bm25": 19}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "4d391dff5371a5ec299d73e5c7dddc3f33eafa80", "query_id": "Q020", "ranks": {"hybrid": 2, "production": 2, "vector": 2}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "28a22bea3d98b326715bcede9b0216d3f788e1b8", "query_id": "Q020", "ranks": {"hybrid": 8, "production": 8, "vector": 8}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "9208290fd7948ed14ebe55718118c401e8396159", "query_id": "Q020", "ranks": {"hybrid": 9, "production": 9, "vector": 9}}
+{"methods": ["graph"], "paper_id": "e07093f22c1689c6a6ffeebab65db7538b18547d", "query_id": "Q020", "ranks": {"graph": 18}}
+{"methods": ["graph"], "paper_id": "b9631936ab9e41511f0eb85adb0fc7b8efb7983e", "query_id": "Q020", "ranks": {"graph": 9}}
+{"methods": ["graph"], "paper_id": "cf0b4eba5424fd0302c2f7c9ac3b4a4120a29dbe", "query_id": "Q020", "ranks": {"graph": 10}}
+{"methods": ["bm25"], "paper_id": "5eda60d4940d4185df45c5703e103458171d465d", "query_id": "Q020", "ranks": {"bm25": 15}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3bfa808ce20b2736708c3fc0b9443635e3f133a7", "query_id": "Q020", "ranks": {"hybrid": 20, "production": 20, "vector": 20}}
+{"methods": ["graph"], "paper_id": "108eea36fc140fc0aeb2b6024925b28a7125c2ca", "query_id": "Q020", "ranks": {"graph": 12}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "ded0bf48df10f6c93d8a67f981d1605c43a95fcc", "query_id": "Q020", "ranks": {"hybrid": 5, "production": 5, "vector": 5}}
+{"methods": ["graph"], "paper_id": "96a21ab57b483325c5f67d26bac7b2884ae2b104", "query_id": "Q020", "ranks": {"graph": 5}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "69cf82188106e1fe3b917e328a2c966ac4107584", "query_id": "Q020", "ranks": {"hybrid": 14, "production": 14, "vector": 14}}
+{"methods": ["bm25"], "paper_id": "6bcdd7d3f42ebe2d673d2488b31b8e8342e47d58", "query_id": "Q020", "ranks": {"bm25": 20}}
+{"methods": ["hybrid", "production", "vector"], "paper_id": "3dd80563756363f45b42d997b9d4111a74ebbdf8", "query_id": "Q020", "ranks": {"hybrid": 13, "production": 13, "vector": 13}}
+{"methods": ["bm25"], "paper_id": "5f1654036434c049b3bd64e91930e025796b5da8", "query_id": "Q020", "ranks": {"bm25": 5}}
+{"methods": ["bm25"], "paper_id": "e7139f6831f32bff95c1a9cfc9b10ec4f24ce36b", "query_id": "Q020", "ranks": {"bm25": 8}}
+{"methods": ["graph"], "paper_id": "0363e12da739e50bac2dc369be935c9b45d97512", "query_id": "Q020", "ranks": {"graph": 20}}
+{"methods": ["graph"], "paper_id": "74e1545e86661332729b6b0ae2b0330f48c79954", "query_id": "Q020", "ranks": {"graph": 8}}
+{"methods": ["bm25"], "paper_id": "78dd5c9aa2029ef9a19749854c4f5ac724fffc9a", "query_id": "Q020", "ranks": {"bm25": 9}}
+{"methods": ["bm25"], "paper_id": "fdd4a9a3df1becd354a452b31106c0f7dd6394a9", "query_id": "Q020", "ranks": {"bm25": 10}}

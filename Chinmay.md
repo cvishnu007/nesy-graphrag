@@ -1,6 +1,6 @@
 # Chinmay — Local generation and evaluation work log
 
-Updated: September 13, 2026. Branch: `feat/local-evaluation`, based on the latest `origin/phase3` (`880d76e`); local `master` was already current at `ee27d00`.
+Updated: September 14, 2026. **Paused at the user’s request; partial checkpoint retained for delivery.** Branch: `feat/local-evaluation`, based on the latest `origin/phase3` (`880d76e`); local `master` was already current at `ee27d00`.
 
 The user requested all five follow-up workstreams and asked that every change be recorded here. The August 27 handoff is preserved below as history; its Neo4j/Groq blockers no longer describe the current local setup.
 
@@ -16,7 +16,7 @@ The user requested all five follow-up workstreams and asked that every change be
 - Fixed canonical reasoning benchmark defaults to `teammate2/benchmarks/`. Added cross-platform `packaged_reproduction.py` and repaired `teammate2/reproduce.ps1`. Verified frozen benchmark hashes, including line-ending normalization, 313 unique annotation items and 392 assignments, and reproduced both splits with zero task failures. Historical package-manifest drift is reported separately rather than rewriting old evidence.
 - Added deterministic BM25 and optional production-filtered fusion to retrieval pooling/scoring. Added `refresh_retrieval.py` to freeze rankings/configuration before AI grading, verify artifact hashes, retain raw/checkpointed method-hidden judgments, export human-review CSV, and score saved development/test ranks without retuning.
 - Added `matched_rag.py` for vector RAG versus GraphRAG with the same model, prompt, evidence/output budgets and no repair retries. It stores evidence, raw outputs, hashes and provenance; independent answer-quality labels remain separate work.
-- Added development-only partial-support calibration over saved NLI probabilities. Test partial-support F1 increased **0 → 0.125**, macro F1 **0.2855 → 0.3190**, but false acceptance increased **0 → 0.03125**. This experimental threshold was not adopted in production.
+- Added development-only partial-support calibration over saved NLI probabilities. Test partial-support F1 increased **0 → 0.125**, macro F1 **0.2855 → 0.3190**, but false acceptance increased **0 → 0.03125**. This experimental threshold was not adopted in production. Prior test weakness motivated the experiment, so confirmatory improvement claims need a fresh untouched test set.
 - Added a separate, licensed SciFact claim/evidence benchmark and reproducible evaluation CLI. It preserves complete rationale sets and separates official train/local development (955 items) from official dev/local test (338 items, 122 contradicted). The fixed NLI model achieved contradiction F1 **0.6286**, two-gold-class macro F1 **0.5143**, and overall accuracy **0.3580**. It evaluates biomedical entailment, not graph paper-pair detection. The frozen in-domain paper-pair benchmark still has one positive test contradiction.
 - Added and extended automated tests for provider selection/retries/fallbacks, pipeline routing, BM25, frozen-pool integrity, matched contexts, packaged paths/hashes, development-only calibration, SciFact conversion and label-blinded evaluation. The current full suite passes **306 tests**; compile, dependency consistency and diff-whitespace checks also pass. One upstream spaCy/Click deprecation warning remains.
 - Added `docs/LOCAL_EVALUATION.md`, refreshed `PROJECT_STATUS.md`, and updated README/setup instructions with local startup, safe rebuilds, portable reproduction and interpretation limits. Tightened live checks so empty or invalid structured generations cannot silently count as successful pipeline evidence.
@@ -27,17 +27,38 @@ The user requested all five follow-up workstreams and asked that every change be
 - Added `store_audit.py` and a stale-evidence regression test; the audit checks all titles/abstracts as well as paper-ID parity and NER completion.
 
 - The first grading attempt stopped on malformed JSON after eight development-only judgments. Preserved it under `abandoned_dev_format_v1`; added schema-constrained Ollama output, bounded batch length/grades, and a regression test. A second development-only trial confirmed schema validity but spent most generation time repeating IDs/prose. Preserved and discarded its 24 dev labels too. Final protocol 1.2 returns ordered integer grades mapped to saved batch IDs; no rationale is requested or invented. All protocol changes preceded test-query grading, and no retrieval settings changed.
-- Streamlit startup and its three-mode selector passed the live AppTest with no exceptions; the loopback demo is running at `http://127.0.0.1:8501`. Application-mode generation checks remain pending.
+- Streamlit startup and its three-mode selector passed the live AppTest with no exceptions; the loopback demo previously ran at `http://127.0.0.1:8501`. Application-mode generation checks remain pending.
 
 - Added a rank-only overlap diagnostic: production fusion returns the same ordered top 20 as vector retrieval for 15 of 20 queries. No labels were used and no retrieval settings were changed after this check.
 
-## Still running or pending
+- Added a results-CSV whitespace attribute so Git accepts standard CSV CRLF endings without rewriting frozen artifact bytes; checks still detect trailing spaces and blank lines.
 
-1. Expanded five-method rankings (1,145 query-paper candidates) are frozen for all 20 queries in `results/retrieval/expanded_20260913/`. Checkpointed local AI grading is running; held-out scoring and paired significance follow without parameter changes.
-2. Run matched RAG and all three local application modes, then verify Streamlit startup.
-3. Complete local code review and final test/compile/dependency checks, update this log and project status with the actual results, and retain the changes on the local feature branch.
+## Pause, push and laptop cleanup — September 14
 
-A separate review agent hit its service usage limit; review continues in the primary session. Implementation checkpoint committed locally as `579de55` and the feature branch is now checked out in the main IDE workspace. No code or results have been pushed. Independent human judgment review, stronger in-domain contradiction coverage, and expert hypothesis/answer evaluation remain research limitations rather than completed validation.
+The user requested that implementation stop, the half-done changes be pushed, and downloaded laptop runtime resources such as Ollama be removed. No further evaluation work is being started.
+
+Completed code is retained in local commits `579de55` and `185659d`, with this pause checkpoint added afterward on `feat/local-evaluation`. The push targets that feature branch; `master` and `phase3` are not being merged or overwritten.
+
+**Exact unfinished state:** the final grading protocol saved **778 / 1,145** AI-reference judgments (all 347 development candidates, plus 431 test candidates through part of Q014). **367 remain.** The run lost its Ollama connection and its watcher exited before producing a complete benchmark. Expanded retrieval scoring, all four significance comparisons, the full matched-RAG experiment, and live backend generation checks did **not run**. Streamlit startup/mode-selection and a direct Ollama completion were verified earlier; those do not substitute for the unfinished generation checks. Frozen candidates, rankings, protocols, raw responses, partial checkpoints and abandoned development-only format trials are preserved under `results/retrieval/expanded_20260913/`, with an explicit `PAUSED.json` marker. No partial retrieval score is reported as a final result.
+
+Cleanup performed:
+
+- Stopped the Ollama launch service and confirmed the background grading/watcher/Streamlit/Neo4j jobs were no longer running.
+- Uninstalled session-installed Homebrew formulae: **ollama, neo4j, cypher-shell, openjdk@21, mlx-c, mlx, little-cms2**. Checked installed dependents before removing the extra libraries.
+- Removed the session-created `.ollama` directory (Qwen weights/cache/keys), downloaded DeBERTa NLI cache and locks, SciFact source download/extraction, dedicated Neo4j data/config/logs, and matching Homebrew download caches.
+- Restored the original `.env` and original **10,000 raw / 8,850 clean / 8,850 NER** JSON files byte-for-byte from the pre-session backup. Unrelated environment changes were checked before restoration; none were overwritten.
+- Restored a compact Chroma collection with exactly the original **8,850 IDs, documents and metadata**, reusing the original vectors without model inference. Chroma cosine reinsertion causes small float32 renormalization differences; all vectors were checked within absolute tolerance `1e-6` (maximum observed `9.54e-7`). Removed the expanded index, expanded JSON corpus, expansion checkpoint and now-redundant temporary backup.
+- Preserved the pre-existing Python virtual environment and SPECTER model cache. Existing shared Homebrew libraries that were upgraded during installation were retained to avoid breaking other software; their names are recorded in `results/local/runtime_cleanup_20260914.json`.
+- Preserved small diagnostic logs and the completed evaluation evidence in Git. The 47,627-paper store audit describes the verified September 13 snapshot, **not the laptop’s state after cleanup**. The demo is now stopped and its services/models are uninstalled.
+- Updated README, project status, the local runbook, and the execution checklist to show the pause and cleanup. After cleanup, **306 tests passed** (one upstream spaCy/Click warning); compilation and `pip check` passed. Checks confirmed all seven installed formulae and the model directories absent, ports 11434/7687/8501 closed, and exact 8,850-ID parity across the restored clean/NER/Chroma data. Push target: `origin/feat/local-evaluation`.
+
+## Resume later
+
+1. The saved retrieval pool can finish grading and score cached rankings on another configured Ollama machine; restore the exact settings in `judge_protocol.json`, then run the documented `grade` and `evaluate` stages in the existing directory. Keep the original relevance criteria and retrieval settings fixed; 431 test judgments already exist.
+2. Run the predeclared significance comparisons after all judgments are complete. Do not treat the AI references as human ground truth.
+3. Rebuild/reacquire matching expanded stores and reinstall services before live demo or matched-RAG work. The currently restored laptop data has only 8,850 papers and cannot be described as the removed 47,627-paper snapshot.
+4. Complete local backend generation checks before the held-out matched-RAG comparison, then update this work log with actual outcomes.
+5. Independent retrieval/answer review, stronger in-domain paper-pair contradiction coverage and expert hypothesis evaluation remain research work. The separate SciFact results and partial-support calibration already completed are retained with their limitations.
 
 ## Historical August 27 handoff
 

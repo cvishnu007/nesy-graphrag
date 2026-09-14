@@ -1,0 +1,14 @@
+{
+  "status": "paused_incomplete",
+  "date": "2026-09-14",
+  "reason": "User requested pause, push partial changes, and remove session runtime downloads.",
+  "candidate_count": 1145,
+  "completed_judgments": 778,
+  "remaining_judgments": 367,
+  "last_run_failure": "Ollama connection lost; watcher exited before scoring.",
+  "full_benchmark_frozen": false,
+  "retrieval_scoring_run": false,
+  "matched_rag_run": false,
+  "local_pipeline_generation_checks_run": false,
+  "resume": "Reinstall/configure the same Ollama model/settings and resume grade in this directory; saved pool and rankings do not require the removed full corpus. Full live demo and matched-RAG require rebuilt matching stores."
+}

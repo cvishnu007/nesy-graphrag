@@ -1,0 +1,53 @@
+Loaded 47627 papers from ./data/s2_clean.json
+NER resume: 8850 reused, 38777 remaining
+spaCy model loaded on cpu!
+Extracting entities...
+spaCy workers: n_process=2, batch_size=128, checkpoint_size=1000
+NER checkpoint: 1000/38777 new papers; 9850/47627 total ready
+NER checkpoint: 2000/38777 new papers; 10850/47627 total ready
+NER checkpoint: 3000/38777 new papers; 11850/47627 total ready
+NER checkpoint: 4000/38777 new papers; 12850/47627 total ready
+NER checkpoint: 5000/38777 new papers; 13850/47627 total ready
+NER checkpoint: 6000/38777 new papers; 14850/47627 total ready
+NER checkpoint: 7000/38777 new papers; 15850/47627 total ready
+NER checkpoint: 8000/38777 new papers; 16850/47627 total ready
+NER checkpoint: 9000/38777 new papers; 17850/47627 total ready
+NER checkpoint: 10000/38777 new papers; 18850/47627 total ready
+NER checkpoint: 11000/38777 new papers; 19850/47627 total ready
+NER checkpoint: 12000/38777 new papers; 20850/47627 total ready
+NER checkpoint: 13000/38777 new papers; 21850/47627 total ready
+NER checkpoint: 14000/38777 new papers; 22850/47627 total ready
+NER checkpoint: 15000/38777 new papers; 23850/47627 total ready
+NER checkpoint: 16000/38777 new papers; 24850/47627 total ready
+NER checkpoint: 17000/38777 new papers; 25850/47627 total ready
+NER checkpoint: 18000/38777 new papers; 26850/47627 total ready
+NER checkpoint: 19000/38777 new papers; 27850/47627 total ready
+NER checkpoint: 20000/38777 new papers; 28850/47627 total ready
+NER checkpoint: 21000/38777 new papers; 29850/47627 total ready
+NER checkpoint: 22000/38777 new papers; 30850/47627 total ready
+NER checkpoint: 23000/38777 new papers; 31850/47627 total ready
+NER checkpoint: 24000/38777 new papers; 32850/47627 total ready
+NER checkpoint: 25000/38777 new papers; 33850/47627 total ready
+NER checkpoint: 26000/38777 new papers; 34850/47627 total ready
+NER checkpoint: 27000/38777 new papers; 35850/47627 total ready
+NER checkpoint: 28000/38777 new papers; 36850/47627 total ready
+NER checkpoint: 29000/38777 new papers; 37850/47627 total ready
+NER checkpoint: 30000/38777 new papers; 38850/47627 total ready
+NER checkpoint: 31000/38777 new papers; 39850/47627 total ready
+NER checkpoint: 32000/38777 new papers; 40850/47627 total ready
+NER checkpoint: 33000/38777 new papers; 41850/47627 total ready
+NER checkpoint: 34000/38777 new papers; 42850/47627 total ready
+NER checkpoint: 35000/38777 new papers; 43850/47627 total ready
+NER checkpoint: 36000/38777 new papers; 44850/47627 total ready
+NER checkpoint: 37000/38777 new papers; 45850/47627 total ready
+NER checkpoint: 38000/38777 new papers; 46850/47627 total ready
+NER checkpoint: 38777/38777 new papers; 47627/47627 total ready
+
+Sample entities from paper 0:
+['gcns', 'new state', 'lightgcn', 'existing work', 'its effectiveness', 'collaborative filtering', 'graph classification tasks', 'transformation', 'linear', 'recommendation performance']
+
+Sample entities from paper 1:
+['state-of', 'four different settings', 'various combinations', 'this paper', 'various priors', 'augmentation extents', 'robustness', 'gnns', 'multiple datasets', 'image data']
+
+Done! Saved to ./data/s2_ner.json
+Papers with entities: 47627
