@@ -1,0 +1,258 @@
+{
+  "task": "concepts",
+  "paper_count": 47619,
+  "concept_count": 195252,
+  "max_df": 476,
+  "generic_count": 32789,
+  "generic_by_reason": {
+    "discourse_phrase": 32755,
+    "document_frequency": 34
+  },
+  "concept_edges_ignored": 136972,
+  "singleton_concepts": 162974,
+  "top_generic": [
+    [
+      7013,
+      "this paper"
+    ],
+    [
+      4971,
+      "this study"
+    ],
+    [
+      3362,
+      "this work"
+    ],
+    [
+      3042,
+      "them"
+    ],
+    [
+      2289,
+      "graph neural networks"
+    ],
+    [
+      2192,
+      "computer vision"
+    ],
+    [
+      1987,
+      "the-art"
+    ],
+    [
+      1898,
+      "natural language processing"
+    ],
+    [
+      1806,
+      "research"
+    ],
+    [
+      1606,
+      "addition"
+    ],
+    [
+      1526,
+      "researchers"
+    ],
+    [
+      1486,
+      "cybersecurity"
+    ],
+    [
+      1233,
+      "models"
+    ],
+    [
+      1217,
+      "recent years"
+    ],
+    [
+      1194,
+      "machine learning"
+    ],
+    [
+      1154,
+      "techniques"
+    ],
+    [
+      1017,
+      "large language models"
+    ],
+    [
+      920,
+      "security"
+    ],
+    [
+      910,
+      "images"
+    ],
+    [
+      900,
+      "these challenges"
+    ],
+    [
+      880,
+      "methods"
+    ],
+    [
+      861,
+      "applications"
+    ],
+    [
+      857,
+      "accuracy"
+    ],
+    [
+      853,
+      "experiments"
+    ],
+    [
+      840,
+      "neural networks"
+    ],
+    [
+      824,
+      "healthcare"
+    ],
+    [
+      820,
+      "this research"
+    ],
+    [
+      813,
+      "graphs"
+    ],
+    [
+      785,
+      "software engineering"
+    ],
+    [
+      776,
+      "what"
+    ]
+  ],
+  "top_retained": [
+    [
+      475,
+      "organizations"
+    ],
+    [
+      474,
+      "sensors"
+    ],
+    [
+      463,
+      "training"
+    ],
+    [
+      440,
+      "tools"
+    ],
+    [
+      440,
+      "quality"
+    ],
+    [
+      435,
+      "management"
+    ],
+    [
+      430,
+      "data"
+    ],
+    [
+      426,
+      "engineering"
+    ],
+    [
+      423,
+      "tasks"
+    ],
+    [
+      422,
+      "service"
+    ],
+    [
+      418,
+      "implementation"
+    ],
+    [
+      412,
+      "medicine"
+    ],
+    [
+      411,
+      "safety"
+    ],
+    [
+      403,
+      "solutions"
+    ],
+    [
+      401,
+      "transformers"
+    ],
+    [
+      398,
+      "understanding"
+    ],
+    [
+      398,
+      "problems"
+    ],
+    [
+      398,
+      "practitioners"
+    ],
+    [
+      379,
+      "light"
+    ],
+    [
+      379,
+      "databases"
+    ],
+    [
+      377,
+      "networks"
+    ],
+    [
+      373,
+      "knowledge"
+    ],
+    [
+      370,
+      "studies"
+    ],
+    [
+      370,
+      "application"
+    ],
+    [
+      362,
+      "advances"
+    ],
+    [
+      361,
+      "input"
+    ],
+    [
+      352,
+      "attacks"
+    ],
+    [
+      345,
+      "users"
+    ],
+    [
+      341,
+      "individuals"
+    ],
+    [
+      335,
+      "transparency"
+    ]
+  ],
+  "written": 195252
+}

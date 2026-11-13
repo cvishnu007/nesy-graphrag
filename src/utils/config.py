@@ -161,6 +161,51 @@ GRAPH_MIN_QUERY_TERM_COVERAGE = float(
     os.getenv("GRAPH_MIN_QUERY_TERM_COVERAGE", "0.75")
 )
 GRAPH_STRONG_CONNECTIONS = int(os.getenv("GRAPH_STRONG_CONNECTIONS", "10"))
+
+# -- Experimental retrieval options (defaults reproduce the frozen protocol) --
+# Graph gate: "absolute" uses the fixed thresholds above; "relative" keeps a
+# graph neighbour whose similarity is within GRAPH_RELATIVE_MARGIN of the
+# weakest neural seed, so the gate adapts to each query's similarity band.
+GRAPH_GATE_MODE = os.getenv("GRAPH_GATE_MODE", "absolute").strip().lower()
+if GRAPH_GATE_MODE not in {"absolute", "relative"}:
+    raise ValueError("GRAPH_GATE_MODE must be 'absolute' or 'relative'")
+GRAPH_RELATIVE_MARGIN = float(os.getenv("GRAPH_RELATIVE_MARGIN", "0.03"))
+GRAPH_CANDIDATE_LIMIT = int(os.getenv("GRAPH_CANDIDATE_LIMIT", "20"))
+if GRAPH_CANDIDATE_LIMIT < 1:
+    raise ValueError("GRAPH_CANDIDATE_LIMIT must be at least 1")
+# Relationship types traversed during expansion, separated by "|".
+GRAPH_EXPANSION_EDGES = tuple(
+    edge.strip().upper()
+    for edge in os.getenv("GRAPH_EXPANSION_EDGES", "CITES").split("|")
+    if edge.strip()
+)
+ALLOWED_EXPANSION_EDGES = {"CITES", "SIMILAR_TO"}
+if not GRAPH_EXPANSION_EDGES or not set(GRAPH_EXPANSION_EDGES) <= ALLOWED_EXPANSION_EDGES:
+    raise ValueError("GRAPH_EXPANSION_EDGES must use only CITES and/or SIMILAR_TO")
+# Lexical third arm for reciprocal-rank fusion; 0 disables it.
+BM25_FUSION_WEIGHT = float(os.getenv("BM25_FUSION_WEIGHT", "0.0"))
+if BM25_FUSION_WEIGHT < 0:
+    raise ValueError("BM25_FUSION_WEIGHT cannot be negative")
+# Text embedded into Chroma: "abstract" (historical index) or "title_abstract"
+# (SPECTER's training format: original-case title [SEP] abstract).
+EMBEDDING_TEXT_MODE = os.getenv("EMBEDDING_TEXT_MODE", "abstract").strip().lower()
+if EMBEDDING_TEXT_MODE not in {"abstract", "title_abstract", "title_abstract_plain"}:
+    raise ValueError("EMBEDDING_TEXT_MODE must be abstract, title_abstract, or title_abstract_plain")
+# Instruction prepended to queries only (e.g. BGE models). Documents are never prefixed.
+EMBEDDING_QUERY_PREFIX = os.getenv("EMBEDDING_QUERY_PREFIX", "")
+# Concepts flagged generic by src.storage.graph_enrichment are ignored by
+# concept-based reasoning when this is on. Off by default: with it on, the
+# concept-overlap contradiction generator finds no candidate pairs on the
+# current graph (measured November 13, 2026), because its pairs came from
+# generic hub phrases.
+# Concept graph for reasoning: "spacy" (historical noun chunks) or "scientific"
+# (SciERC-trained entities; build with graph_enrichment scientific-entities).
+CONCEPT_SOURCE = os.getenv("CONCEPT_SOURCE", "spacy").strip().lower()
+if CONCEPT_SOURCE not in {"spacy", "scientific"}:
+    raise ValueError("CONCEPT_SOURCE must be 'spacy' or 'scientific'")
+CONCEPT_EXCLUDE_GENERIC = os.getenv("CONCEPT_EXCLUDE_GENERIC", "false").strip().lower() in {
+    "1", "true", "yes", "on"
+}
 CITES_THRESHOLD     = int(os.getenv("CITES_THRESHOLD",     2))
 MAX_AUTHORS         = int(os.getenv("MAX_AUTHORS",         5))
 MAX_CONCEPTS        = int(os.getenv("MAX_CONCEPTS",        10))
@@ -197,6 +242,22 @@ CONTRADICTION_CANDIDATE_POOL = int(
 CONTRADICTION_MIN_CONFIDENCE = float(
     os.getenv("CONTRADICTION_MIN_CONFIDENCE", "0.70")
 )
+# Candidate generator: "concept" (shared noun-phrase overlap, historical) or
+# "nli" (sentence-level NLI contradiction scores; see pipeline/contradiction_nli.py).
+CONTRADICTION_CANDIDATE_MODE = os.getenv("CONTRADICTION_CANDIDATE_MODE", "concept").strip().lower()
+if CONTRADICTION_CANDIDATE_MODE not in {"concept", "nli"}:
+    raise ValueError("CONTRADICTION_CANDIDATE_MODE must be 'concept' or 'nli'")
+CONTRADICTION_YEAR_WEIGHT = float(os.getenv("CONTRADICTION_YEAR_WEIGHT", "0.25"))
+if not 0 <= CONTRADICTION_YEAR_WEIGHT <= 1:
+    raise ValueError("CONTRADICTION_YEAR_WEIGHT must be between 0 and 1")
+CONTRADICTION_REQUIRE_DIFFERENT_YEAR = os.getenv(
+    "CONTRADICTION_REQUIRE_DIFFERENT_YEAR", "true"
+).strip().lower() in {"1", "true", "yes", "on"}
+# Schema-constrained JSON verdicts (Ollama only); the legacy line format is
+# still parsed, so stored analyses remain readable.
+CONTRADICTION_STRUCTURED_OUTPUT = os.getenv(
+    "CONTRADICTION_STRUCTURED_OUTPUT", "true"
+).strip().lower() in {"1", "true", "yes", "on"}
 HYPOTHESIS_MIN_SHARED_CONCEPTS = int(
     os.getenv("HYPOTHESIS_MIN_SHARED_CONCEPTS", "2")
 )
@@ -206,6 +267,15 @@ HYPOTHESIS_MIN_QUERY_SUPPORT = int(
 HYPOTHESIS_CANDIDATE_POOL = int(
     os.getenv("HYPOTHESIS_CANDIDATE_POOL", "25")
 )
+# Relationships that disqualify a "structural hole": a candidate linked to any
+# query paper by one of these edge types is already connected.
+HYPOTHESIS_HOLE_EDGES = tuple(
+    edge.strip().upper()
+    for edge in os.getenv("HYPOTHESIS_HOLE_EDGES", "CITES").split("|")
+    if edge.strip()
+)
+if not HYPOTHESIS_HOLE_EDGES or not set(HYPOTHESIS_HOLE_EDGES) <= ALLOWED_EXPANSION_EDGES:
+    raise ValueError("HYPOTHESIS_HOLE_EDGES must use only CITES and/or SIMILAR_TO")
 
 # -- Reasoning evaluation -------------------------------------------------
 CONTRADICTION_BENCHMARK_FILE = os.getenv(

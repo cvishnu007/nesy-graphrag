@@ -1,0 +1,22 @@
+litsearch: 64183 papers, 597 queries
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 3070.84it/s]
+ranked specter {'corpus_encode_seconds': 0.2, 'cached': True}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 22113.89it/s]
+ranked specter2_base {'corpus_encode_seconds': 576.9, 'cached': False}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 6334.60it/s]
+ranked scincl {'corpus_encode_seconds': 358.7, 'cached': False}
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 3382.69it/s]
+ranked minilm {'corpus_encode_seconds': 94.7, 'cached': False}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  92%|#########1| 183/199 [00:00<00:00, 1824.36it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 1934.13it/s]
+ranked bge_base {'corpus_encode_seconds': 366.6, 'cached': False}
+rrf_bm25_bge_base        ndcg@10=0.4895 R@5=0.5465 R@20=0.6847 R@100=0.8279
+rrf_bm25_specter2_base   ndcg@10=0.4618 R@5=0.5244 R@20=0.6623 R@100=0.7919
+rrf_bm25_minilm          ndcg@10=0.4563 R@5=0.5249 R@20=0.6634 R@100=0.7961
+bge_base                 ndcg@10=0.4486 R@5=0.5056 R@20=0.6685 R@100=0.7925
+bm25                     ndcg@10=0.3955 R@5=0.4451 R@20=0.6018 R@100=0.7182
+rrf_bm25_scincl          ndcg@10=0.3932 R@5=0.4495 R@20=0.6174 R@100=0.7570
+rrf_bm25_specter         ndcg@10=0.3770 R@5=0.4482 R@20=0.5967 R@100=0.7607
+minilm                   ndcg@10=0.3521 R@5=0.4166 R@20=0.5855 R@100=0.7422
+specter2_base            ndcg@10=0.3307 R@5=0.3882 R@20=0.5601 R@100=0.7263
+scincl                   ndcg@10=0.2411 R@5=0.2689 R@20=0.4269 R@100=0.5844
+specter                  ndcg@10=0.2082 R@5=0.2438 R@20=0.3714 R@100=0.5423

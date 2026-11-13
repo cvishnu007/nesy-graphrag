@@ -1,0 +1,408 @@
+{
+ "summary": {
+  "label": "scientific",
+  "concept_source": "scientific",
+  "exclude_generic": true,
+  "queries": 26,
+  "contradiction_pairs_mean": 0.8461538461538461,
+  "contradiction_zero_queries": 13,
+  "hypothesis_candidates_mean": 25,
+  "hypothesis_zero_queries": 0,
+  "hns_values": [
+   0.3333,
+   0.3333,
+   0.3333,
+   0.3333,
+   0.6667,
+   0.3333,
+   0.6667,
+   0.3333,
+   0.6667,
+   0.3333,
+   0.3333,
+   0.6667
+  ],
+  "hns_distinct": [
+   0.333,
+   0.667
+  ]
+ },
+ "rows": [
+  {
+   "query": "graph neural networks for node classification",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "node classification accuracy",
+    "graph structure",
+    "node features",
+    "graph representation learning"
+   ],
+   "hypothesis_top_score": 0.4246,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "graph attention network methods",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "topological structures",
+    "graph-structured data",
+    "graph structures",
+    "graph data"
+   ],
+   "hypothesis_top_score": 0.52,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "graph neural networks for recommendation systems",
+   "contradiction_pairs": 3,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "recommender systems",
+    "side information",
+    "graph data"
+   ],
+   "hypothesis_top_score": 0.6,
+   "contradiction_top_shared": [
+    "recommender systems",
+    "side information"
+   ]
+  },
+  {
+   "query": "graph convolutional networks compared with graph attention networks",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "gats",
+    "graph attention networks",
+    "edges"
+   ],
+   "hypothesis_top_score": 0.4486,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "self-supervised graph representation learning",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "node representations",
+    "node embeddings",
+    "node",
+    "graphcl",
+    "self supervised manner"
+   ],
+   "hypothesis_top_score": 0.6769,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "graph neural networks for molecular property prediction",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "molecular properties",
+    "prediction of molecular properties",
+    "drug discovery",
+    "molecular property prediction"
+   ],
+   "hypothesis_top_score": 0.5382,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "link prediction using graph neural networks",
+   "contradiction_pairs": 2,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "link prediction",
+    "graph representations",
+    "node representations"
+   ],
+   "hypothesis_top_score": 0.58,
+   "contradiction_top_shared": [
+    "link prediction",
+    "link prediction tasks",
+    "links"
+   ]
+  },
+  {
+   "query": "graph classification methods",
+   "contradiction_pairs": 1,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "link prediction",
+    "edges",
+    "node classification",
+    "graph classification tasks"
+   ],
+   "hypothesis_top_score": 0.5846,
+   "contradiction_top_shared": [
+    "graph representation vectors",
+    "graph representation learning",
+    "anomaly detection",
+    "node classification"
+   ]
+  },
+  {
+   "query": "heterogeneous graph neural networks",
+   "contradiction_pairs": 3,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "heterogeneous graph neural networks",
+    "hgnns",
+    "heterogeneous graph",
+    "heterogeneous graphs"
+   ],
+   "hypothesis_top_score": 0.5846,
+   "contradiction_top_shared": [
+    "heterogeneous graph neural networks",
+    "hgnns",
+    "heterogeneous graph"
+   ]
+  },
+  {
+   "query": "dynamic graph neural networks",
+   "contradiction_pairs": 1,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "dynamic graph neural networks",
+    "dynamic graphs",
+    "structures"
+   ],
+   "hypothesis_top_score": 0.5286,
+   "contradiction_top_shared": [
+    "recommendation systems",
+    "social networks",
+    "dynamic graphs"
+   ]
+  },
+  {
+   "query": "oversmoothing in deep graph neural networks",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "graph convolutions",
+    "layers",
+    "over-smoothing",
+    "dirichlet energy"
+   ],
+   "hypothesis_top_score": 0.5046,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "explainable graph neural network methods",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "graph data",
+    "analytical tasks",
+    "edges"
+   ],
+   "hypothesis_top_score": 0.42,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "graph neural networks for traffic forecasting",
+   "contradiction_pairs": 1,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "traffic forecasting",
+    "gnn",
+    "traffic forecasting problems"
+   ],
+   "hypothesis_top_score": 0.5385,
+   "contradiction_top_shared": [
+    "statistical models",
+    "traffic forecasting"
+   ]
+  },
+  {
+   "query": "graph neural networks for fraud detection",
+   "contradiction_pairs": 1,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "fraud detection",
+    "real-world datasets",
+    "camouflage",
+    "edges"
+   ],
+   "hypothesis_top_score": 0.6,
+   "contradiction_top_shared": [
+    "gnn aggregation process",
+    "relation camouflage",
+    "feature camouflage"
+   ]
+  },
+  {
+   "query": "privacy-preserving federated graph learning",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "graph data",
+    "non-iid problem",
+    "gnn models"
+   ],
+   "hypothesis_top_score": 0.47,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "contrastive learning for graph representations",
+   "contradiction_pairs": 1,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "graph contrastive learning",
+    "node representations",
+    "node"
+   ],
+   "hypothesis_top_score": 0.5,
+   "contradiction_top_shared": [
+    "node representations",
+    "node embeddings",
+    "node",
+    "graphcl",
+    "self supervised manner"
+   ]
+  },
+  {
+   "query": "adversarial attacks and robustness in graph neural networks",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "adversarial attacks",
+    "robustness",
+    "training",
+    "adversarial examples"
+   ],
+   "hypothesis_top_score": 0.6182,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "transformer architectures for graph learning",
+   "contradiction_pairs": 1,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "transformer architecture",
+    "graph transformers",
+    "graph representation learning",
+    "transformer",
+    "structural information"
+   ],
+   "hypothesis_top_score": 0.6769,
+   "contradiction_top_shared": [
+    "over-squashing",
+    "graph transformers",
+    "over-smoothing"
+   ]
+  },
+  {
+   "query": "reinforcement learning with graph neural networks",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "drl",
+    "reinforcement learning",
+    "multi-agent reinforcement learning"
+   ],
+   "hypothesis_top_score": 0.44,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "knowledge graph embeddings compared with graph neural networks",
+   "contradiction_pairs": 3,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "entities",
+    "kgs",
+    "knowledge graphs",
+    "edges",
+    "question answering"
+   ],
+   "hypothesis_top_score": 0.65,
+   "contradiction_top_shared": [
+    "knowledge graph",
+    "knowledge graphs",
+    "knowledge graph completion"
+   ]
+  },
+  {
+   "query": "cybersecurity",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "cyber-attacks",
+    "cyberspace",
+    "malicious software",
+    "malware"
+   ],
+   "hypothesis_top_score": 0.56,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "databases",
+   "contradiction_pairs": 2,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "text",
+    "metadata"
+   ],
+   "hypothesis_top_score": 0.39,
+   "contradiction_top_shared": [
+    "sql queries",
+    "text-to-sql"
+   ]
+  },
+  {
+   "query": "software engineering",
+   "contradiction_pairs": 2,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "software",
+    "software development",
+    "computer science"
+   ],
+   "hypothesis_top_score": 0.625,
+   "contradiction_top_shared": [
+    "software development life cycle",
+    "software development",
+    "sdlc"
+   ]
+  },
+  {
+   "query": "cloud computing",
+   "contradiction_pairs": 1,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "memory",
+    "processing",
+    "computing"
+   ],
+   "hypothesis_top_score": 0.44,
+   "contradiction_top_shared": [
+    "computing",
+    "resource allocation"
+   ]
+  },
+  {
+   "query": "operating systems",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "time",
+    "planning",
+    "robot operating system"
+   ],
+   "hypothesis_top_score": 0.2886,
+   "contradiction_top_shared": []
+  },
+  {
+   "query": "computer networks",
+   "contradiction_pairs": 0,
+   "hypothesis_candidates": 25,
+   "hypothesis_top_shared": [
+    "computer networks",
+    "networking"
+   ],
+   "hypothesis_top_score": 0.4,
+   "contradiction_top_shared": []
+  }
+ ]
+}

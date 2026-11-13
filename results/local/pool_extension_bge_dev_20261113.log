@@ -1,0 +1,36 @@
+Judged 4/121
+Judged 8/121
+Judged 12/121
+Judged 16/121
+Judged 20/121
+Judged 24/121
+Judged 25/121
+Judged 29/121
+Judged 33/121
+Judged 37/121
+Judged 41/121
+Judged 42/121
+Judged 46/121
+Judged 50/121
+Judged 54/121
+Judged 58/121
+Judged 62/121
+Judged 66/121
+Judged 70/121
+Judged 74/121
+Judged 78/121
+Judged 82/121
+Judged 85/121
+Judged 89/121
+Judged 93/121
+Judged 97/121
+Judged 101/121
+Judged 105/121
+Judged 109/121
+Judged 113/121
+Judged 117/121
+Judged 121/121
+full_bge_bm25_similar      ndcg@10=0.6663 p@10=0.7667 recall@20=0.3329 map=0.2617 unjudged@20=0.000
+bge                        ndcg@10=0.6248 p@10=0.7333 recall@20=0.3500 map=0.2739 unjudged@20=0.000
+rrf_bge_bm25               ndcg@10=0.6091 p@10=0.7000 recall@20=0.2873 map=0.2160 unjudged@20=0.000
+graph_relative_similar_bge ndcg@10=0.5968 p@10=0.7667 recall@20=0.3407 map=0.2672 unjudged@20=0.000

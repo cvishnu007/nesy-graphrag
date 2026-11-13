@@ -1,0 +1,42 @@
+{
+  "created_at_utc": "2026-11-13T14:14:23.260221+00:00",
+  "split": "test",
+  "final_test": true,
+  "top_k": 20,
+  "benchmark": "results/retrieval/expanded_20260913/benchmark.json",
+  "benchmark_sha256": "d4712e76600856cb759847e896c930ebef5bbf99bf4d79ac31d05bc096c906b5",
+  "benchmark_corpus_paper_count": 47627,
+  "live_corpus_sha256": "dc3c6d30b23fc714ef54f2bee3434419d9c935782a2ce9d80c3cc4fe8fdc7b2e",
+  "variants": {
+    "vector_abstract": {
+      "neural": true
+    },
+    "production_absolute": {
+      "neural": true,
+      "graph": "absolute"
+    },
+    "bm25": {
+      "neural": false,
+      "lexical_weight": 1.0
+    },
+    "rrf_ta_bm25": {
+      "neural": true,
+      "collection": "s2_papers_specter_ta",
+      "lexical_weight": 1.0
+    },
+    "full_ta_bm25_similar": {
+      "neural": true,
+      "collection": "s2_papers_specter_ta",
+      "graph": "relative",
+      "margin": 0.03,
+      "edges": [
+        "CITES",
+        "SIMILAR_TO"
+      ],
+      "limit": 50,
+      "lexical_weight": 1.0
+    }
+  },
+  "label_source": "local Ollama AI-reference labels; not human ground truth",
+  "note": "Live retrieval on the current stores scored against the frozen pool's labels; condensed metrics drop unjudged documents and must be read with the unjudged rate."
+}

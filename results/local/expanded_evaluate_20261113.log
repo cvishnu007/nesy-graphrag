@@ -1,0 +1,120 @@
+[1/6] Q001: graph neural networks for node classification
+  graph  NDCG@10=0.3786 Recall@10=0.1111 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3245 Recall@10=0.1481 Unjudged@20=0.0000
+  production NDCG@10=0.3245 Recall@10=0.1481 Unjudged@20=0.0000
+  vector NDCG@10=0.3245 Recall@10=0.1481 Unjudged@20=0.0000
+  bm25   NDCG@10=0.4163 Recall@10=0.1852 Unjudged@20=0.0000
+[2/6] Q002: graph attention network methods
+  graph  NDCG@10=0.2930 Recall@10=0.1212 Unjudged@20=0.0000
+  hybrid NDCG@10=0.6036 Recall@10=0.2121 Unjudged@20=0.0000
+  production NDCG@10=0.6036 Recall@10=0.2121 Unjudged@20=0.0000
+  vector NDCG@10=0.6036 Recall@10=0.2121 Unjudged@20=0.0000
+  bm25   NDCG@10=0.3698 Recall@10=0.1515 Unjudged@20=0.0000
+[3/6] Q003: graph neural networks for recommendation systems
+  graph  NDCG@10=0.2935 Recall@10=0.0690 Unjudged@20=0.0000
+  hybrid NDCG@10=0.6164 Recall@10=0.2414 Unjudged@20=0.0000
+  production NDCG@10=0.6164 Recall@10=0.2414 Unjudged@20=0.0000
+  vector NDCG@10=0.6976 Recall@10=0.2414 Unjudged@20=0.0000
+  bm25   NDCG@10=0.4124 Recall@10=0.1724 Unjudged@20=0.0000
+[4/6] Q004: graph convolutional networks compared with graph attention networks
+  graph  NDCG@10=0.2436 Recall@10=0.1364 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3529 Recall@10=0.1818 Unjudged@20=0.0000
+  production NDCG@10=0.3529 Recall@10=0.1818 Unjudged@20=0.0000
+  vector NDCG@10=0.3529 Recall@10=0.1818 Unjudged@20=0.0000
+  bm25   NDCG@10=0.2078 Recall@10=0.1818 Unjudged@20=0.0000
+[5/6] Q005: self-supervised graph representation learning
+  graph  NDCG@10=0.3945 Recall@10=0.1333 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3121 Recall@10=0.1000 Unjudged@20=0.0000
+  production NDCG@10=0.4782 Recall@10=0.1333 Unjudged@20=0.0000
+  vector NDCG@10=0.3121 Recall@10=0.1000 Unjudged@20=0.0000
+  bm25   NDCG@10=0.5988 Recall@10=0.2000 Unjudged@20=0.0000
+[6/6] Q006: graph neural networks for molecular property prediction
+  graph  NDCG@10=0.3815 Recall@10=0.2333 Unjudged@20=0.0000
+  hybrid NDCG@10=0.2745 Recall@10=0.1333 Unjudged@20=0.0000
+  production NDCG@10=0.3718 Recall@10=0.1333 Unjudged@20=0.0000
+  vector NDCG@10=0.2994 Recall@10=0.1333 Unjudged@20=0.0000
+  bm25   NDCG@10=0.6250 Recall@10=0.2333 Unjudged@20=0.0000
+[1/14] Q007: link prediction using graph neural networks
+  graph  NDCG@10=0.2588 Recall@10=0.1111 Unjudged@20=0.0000
+  hybrid NDCG@10=0.4923 Recall@10=0.2222 Unjudged@20=0.0000
+  production NDCG@10=0.4923 Recall@10=0.2222 Unjudged@20=0.0000
+  vector NDCG@10=0.4923 Recall@10=0.2222 Unjudged@20=0.0000
+  bm25   NDCG@10=0.6748 Recall@10=0.2593 Unjudged@20=0.0000
+[2/14] Q008: graph classification methods
+  graph  NDCG@10=0.2837 Recall@10=0.0909 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3679 Recall@10=0.1364 Unjudged@20=0.0000
+  production NDCG@10=0.3679 Recall@10=0.1364 Unjudged@20=0.0000
+  vector NDCG@10=0.3679 Recall@10=0.1364 Unjudged@20=0.0000
+  bm25   NDCG@10=0.5115 Recall@10=0.2727 Unjudged@20=0.0000
+[3/14] Q009: heterogeneous graph neural networks
+  graph  NDCG@10=0.6023 Recall@10=0.2121 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3052 Recall@10=0.0606 Unjudged@20=0.0000
+  production NDCG@10=0.4035 Recall@10=0.0909 Unjudged@20=0.0000
+  vector NDCG@10=0.3052 Recall@10=0.0606 Unjudged@20=0.0000
+  bm25   NDCG@10=0.8358 Recall@10=0.2424 Unjudged@20=0.0000
+[4/14] Q010: dynamic graph neural networks
+  graph  NDCG@10=0.2083 Recall@10=0.1000 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3160 Recall@10=0.1333 Unjudged@20=0.0000
+  production NDCG@10=0.3160 Recall@10=0.1333 Unjudged@20=0.0000
+  vector NDCG@10=0.3160 Recall@10=0.1333 Unjudged@20=0.0000
+  bm25   NDCG@10=0.6236 Recall@10=0.2000 Unjudged@20=0.0000
+[5/14] Q011: oversmoothing in deep graph neural networks
+  graph  NDCG@10=0.1795 Recall@10=0.1429 Unjudged@20=0.0000
+  hybrid NDCG@10=0.6021 Recall@10=0.2381 Unjudged@20=0.0000
+  production NDCG@10=0.6021 Recall@10=0.2381 Unjudged@20=0.0000
+  vector NDCG@10=0.6021 Recall@10=0.2381 Unjudged@20=0.0000
+  bm25   NDCG@10=0.6122 Recall@10=0.2381 Unjudged@20=0.0000
+[6/14] Q012: explainable graph neural network methods
+  graph  NDCG@10=0.3610 Recall@10=0.1515 Unjudged@20=0.0000
+  hybrid NDCG@10=0.5420 Recall@10=0.2121 Unjudged@20=0.0000
+  production NDCG@10=0.5420 Recall@10=0.2121 Unjudged@20=0.0000
+  vector NDCG@10=0.5420 Recall@10=0.2121 Unjudged@20=0.0000
+  bm25   NDCG@10=0.0904 Recall@10=0.0909 Unjudged@20=0.0000
+[7/14] Q013: graph neural networks for traffic forecasting
+  graph  NDCG@10=0.5686 Recall@10=0.2258 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3164 Recall@10=0.1290 Unjudged@20=0.0000
+  production NDCG@10=0.3164 Recall@10=0.1290 Unjudged@20=0.0000
+  vector NDCG@10=0.3164 Recall@10=0.1290 Unjudged@20=0.0000
+  bm25   NDCG@10=0.6812 Recall@10=0.2258 Unjudged@20=0.0000
+[8/14] Q014: graph neural networks for fraud detection
+  graph  NDCG@10=0.7415 Recall@10=0.2581 Unjudged@20=0.0000
+  hybrid NDCG@10=0.6275 Recall@10=0.1935 Unjudged@20=0.0000
+  production NDCG@10=0.6275 Recall@10=0.1935 Unjudged@20=0.0000
+  vector NDCG@10=0.6275 Recall@10=0.1935 Unjudged@20=0.0000
+  bm25   NDCG@10=0.5293 Recall@10=0.1935 Unjudged@20=0.0000
+[9/14] Q015: privacy-preserving federated graph learning
+  graph  NDCG@10=0.2749 Recall@10=0.1143 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3556 Recall@10=0.1714 Unjudged@20=0.0000
+  production NDCG@10=0.3556 Recall@10=0.1714 Unjudged@20=0.0000
+  vector NDCG@10=0.3556 Recall@10=0.1714 Unjudged@20=0.0000
+  bm25   NDCG@10=0.2273 Recall@10=0.1429 Unjudged@20=0.0000
+[10/14] Q016: contrastive learning for graph representations
+  graph  NDCG@10=0.4761 Recall@10=0.2059 Unjudged@20=0.0000
+  hybrid NDCG@10=0.6025 Recall@10=0.1471 Unjudged@20=0.0000
+  production NDCG@10=0.6025 Recall@10=0.1471 Unjudged@20=0.0000
+  vector NDCG@10=0.6025 Recall@10=0.1471 Unjudged@20=0.0000
+  bm25   NDCG@10=0.5711 Recall@10=0.2059 Unjudged@20=0.0000
+[11/14] Q017: adversarial attacks and robustness in graph neural networks
+  graph  NDCG@10=0.4925 Recall@10=0.1667 Unjudged@20=0.0000
+  hybrid NDCG@10=0.4232 Recall@10=0.2222 Unjudged@20=0.0000
+  production NDCG@10=0.6040 Recall@10=0.1944 Unjudged@20=0.0000
+  vector NDCG@10=0.4206 Recall@10=0.2222 Unjudged@20=0.0000
+  bm25   NDCG@10=0.5098 Recall@10=0.1944 Unjudged@20=0.0000
+[12/14] Q018: transformer architectures for graph learning
+  graph  NDCG@10=0.5302 Recall@10=0.2188 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3346 Recall@10=0.1562 Unjudged@20=0.0000
+  production NDCG@10=0.3346 Recall@10=0.1562 Unjudged@20=0.0000
+  vector NDCG@10=0.3346 Recall@10=0.1562 Unjudged@20=0.0000
+  bm25   NDCG@10=0.4356 Recall@10=0.1875 Unjudged@20=0.0000
+[13/14] Q019: reinforcement learning with graph neural networks
+  graph  NDCG@10=0.4959 Recall@10=0.1290 Unjudged@20=0.0000
+  hybrid NDCG@10=0.3070 Recall@10=0.0968 Unjudged@20=0.0000
+  production NDCG@10=0.3070 Recall@10=0.0968 Unjudged@20=0.0000
+  vector NDCG@10=0.3070 Recall@10=0.0968 Unjudged@20=0.0000
+  bm25   NDCG@10=0.6895 Recall@10=0.2581 Unjudged@20=0.0000
+[14/14] Q020: knowledge graph embeddings compared with graph neural networks
+  graph  NDCG@10=0.3115 Recall@10=0.1622 Unjudged@20=0.0000
+  hybrid NDCG@10=0.4995 Recall@10=0.1892 Unjudged@20=0.0000
+  production NDCG@10=0.4995 Recall@10=0.1892 Unjudged@20=0.0000
+  vector NDCG@10=0.4995 Recall@10=0.1892 Unjudged@20=0.0000
+  bm25   NDCG@10=0.4106 Recall@10=0.1892 Unjudged@20=0.0000

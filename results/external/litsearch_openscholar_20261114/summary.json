@@ -1,0 +1,349 @@
+{
+  "benchmark": "litsearch",
+  "label_source": "author-inspected target papers (LitSearch)",
+  "paper_count": 64183,
+  "query_count": 597,
+  "created_at_utc": "2026-11-13T20:28:51.857377+00:00",
+  "device": "cuda",
+  "models": {
+    "specter": {
+      "repo": "sentence-transformers/allenai-specter",
+      "kind": "st",
+      "doc": "sep"
+    },
+    "bge_base": {
+      "repo": "BAAI/bge-base-en-v1.5",
+      "kind": "st",
+      "doc": "dot",
+      "query_prefix": "Represent this sentence for searching relevant passages: "
+    },
+    "openscholar": {
+      "repo": "OpenSciLM/OpenScholar_Retriever",
+      "kind": "mean",
+      "doc": "dot"
+    }
+  },
+  "timing": {
+    "specter": {
+      "corpus_encode_seconds": 0.2,
+      "cached": true
+    },
+    "bge_base": {
+      "corpus_encode_seconds": 0.3,
+      "cached": true
+    },
+    "openscholar": {
+      "corpus_encode_seconds": 345.0,
+      "cached": false
+    }
+  },
+  "methods": {
+    "bm25": {
+      "ndcg@10": 0.39549427861969727,
+      "recall@5": 0.44511446119486325,
+      "recall@20": 0.60178671133445,
+      "recall@100": 0.7182021217197097,
+      "map": 0.357718314920549,
+      "mrr": 0.36259125146144794
+    },
+    "specter": {
+      "ndcg@10": 0.2081729428316708,
+      "recall@5": 0.24377442769402569,
+      "recall@20": 0.37141261864879954,
+      "recall@100": 0.542322724734785,
+      "map": 0.18550220052352726,
+      "mrr": 0.19042318605010183
+    },
+    "bge_base": {
+      "ndcg@10": 0.44857127183959417,
+      "recall@5": 0.5056393076493579,
+      "recall@20": 0.6685092127303183,
+      "recall@100": 0.7925181462869905,
+      "map": 0.40692327694480585,
+      "mrr": 0.41397895896213555
+    },
+    "openscholar": {
+      "ndcg@10": 0.2768734225139763,
+      "recall@5": 0.32948073701842545,
+      "recall@20": 0.47699609156895584,
+      "recall@100": 0.6805695142378559,
+      "map": 0.2457632581783591,
+      "mrr": 0.25356753248790664
+    },
+    "rrf_bm25_specter": {
+      "ndcg@10": 0.3770209553131664,
+      "recall@5": 0.4481853713009492,
+      "recall@20": 0.5967057509771078,
+      "recall@100": 0.7606923506420994,
+      "map": 0.34055830993565483,
+      "mrr": 0.3475748988303898
+    },
+    "rrf_bm25_bge_base": {
+      "ndcg@10": 0.48949293306230657,
+      "recall@5": 0.5464544946957007,
+      "recall@20": 0.6847012841987716,
+      "recall@100": 0.8279173646007817,
+      "map": 0.45443950516241544,
+      "mrr": 0.46210675760086595
+    },
+    "rrf_bm25_openscholar": {
+      "ndcg@10": 0.4099526513236905,
+      "recall@5": 0.4803461753210497,
+      "recall@20": 0.5984366275823562,
+      "recall@100": 0.7701284198771635,
+      "map": 0.37444136629756275,
+      "mrr": 0.38219724751473
+    }
+  },
+  "significance_vs_specter": {
+    "bm25_vs_specter_ndcg@10": {
+      "pair_count": 597,
+      "mean_delta": 0.18732133578802648,
+      "bootstrap_95_ci": [
+        0.15387195727137878,
+        0.220985799156859
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "bge_base_vs_specter_ndcg@10": {
+      "pair_count": 597,
+      "mean_delta": 0.24039832900792338,
+      "bootstrap_95_ci": [
+        0.20882824807376935,
+        0.2723372137170294
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "openscholar_vs_specter_ndcg@10": {
+      "pair_count": 597,
+      "mean_delta": 0.06870047968230551,
+      "bootstrap_95_ci": [
+        0.03967759592279729,
+        0.09838652827631711
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bm25_specter_vs_specter_ndcg@10": {
+      "pair_count": 597,
+      "mean_delta": 0.16884801248149553,
+      "bootstrap_95_ci": [
+        0.1444752148998087,
+        0.1929813213291411
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bm25_bge_base_vs_specter_ndcg@10": {
+      "pair_count": 597,
+      "mean_delta": 0.28131999023063575,
+      "bootstrap_95_ci": [
+        0.24773554117132973,
+        0.31503538898825373
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bm25_openscholar_vs_specter_ndcg@10": {
+      "pair_count": 597,
+      "mean_delta": 0.2017797084920197,
+      "bootstrap_95_ci": [
+        0.17045300360711338,
+        0.23290874780616977
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    }
+  },
+  "subsets": {
+    "set=inline_acl": {
+      "query_count": 98,
+      "bm25": {
+        "recall@5": 0.32891156462585036,
+        "recall@20": 0.5282312925170068
+      },
+      "specter": {
+        "recall@5": 0.21462585034013604,
+        "recall@20": 0.3085034013605442
+      },
+      "bge_base": {
+        "recall@5": 0.4323129251700681,
+        "recall@20": 0.5826530612244898
+      },
+      "openscholar": {
+        "recall@5": 0.3285714285714286,
+        "recall@20": 0.48741496598639455
+      },
+      "rrf_bm25_specter": {
+        "recall@5": 0.41904761904761906,
+        "recall@20": 0.4972789115646258
+      },
+      "rrf_bm25_bge_base": {
+        "recall@5": 0.47687074829931975,
+        "recall@20": 0.6404761904761904
+      },
+      "rrf_bm25_openscholar": {
+        "recall@5": 0.472108843537415,
+        "recall@20": 0.5792517006802721
+      }
+    },
+    "specificity=0": {
+      "query_count": 155,
+      "bm25": {
+        "recall@5": 0.30473118279569894,
+        "recall@20": 0.4372043010752688
+      },
+      "specter": {
+        "recall@5": 0.17440860215053763,
+        "recall@20": 0.2918279569892473
+      },
+      "bge_base": {
+        "recall@5": 0.38946236559139785,
+        "recall@20": 0.5587096774193548
+      },
+      "openscholar": {
+        "recall@5": 0.18193548387096772,
+        "recall@20": 0.30494623655913977
+      },
+      "rrf_bm25_specter": {
+        "recall@5": 0.3133333333333333,
+        "recall@20": 0.44666666666666666
+      },
+      "rrf_bm25_bge_base": {
+        "recall@5": 0.3886021505376344,
+        "recall@20": 0.5436559139784947
+      },
+      "rrf_bm25_openscholar": {
+        "recall@5": 0.3436559139784946,
+        "recall@20": 0.4243010752688172
+      }
+    },
+    "specificity=1": {
+      "query_count": 442,
+      "bm25": {
+        "recall@5": 0.49434389140271495,
+        "recall@20": 0.6595022624434389
+      },
+      "specter": {
+        "recall@5": 0.2680995475113122,
+        "recall@20": 0.3993212669683258
+      },
+      "bge_base": {
+        "recall@5": 0.5463800904977375,
+        "recall@20": 0.7070135746606335
+      },
+      "openscholar": {
+        "recall@5": 0.38122171945701355,
+        "recall@20": 0.5373303167420814
+      },
+      "rrf_bm25_specter": {
+        "recall@5": 0.49547511312217196,
+        "recall@20": 0.6493212669683258
+      },
+      "rrf_bm25_bge_base": {
+        "recall@5": 0.6018099547511312,
+        "recall@20": 0.7341628959276018
+      },
+      "rrf_bm25_openscholar": {
+        "recall@5": 0.5282805429864253,
+        "recall@20": 0.6595022624434389
+      }
+    },
+    "set=inline_nonacl": {
+      "query_count": 253,
+      "bm25": {
+        "recall@5": 0.35375494071146246,
+        "recall@20": 0.5237154150197628
+      },
+      "specter": {
+        "recall@5": 0.21936758893280633,
+        "recall@20": 0.35375494071146246
+      },
+      "bge_base": {
+        "recall@5": 0.46047430830039526,
+        "recall@20": 0.6363636363636364
+      },
+      "openscholar": {
+        "recall@5": 0.2549407114624506,
+        "recall@20": 0.39723320158102765
+      },
+      "rrf_bm25_specter": {
+        "recall@5": 0.3774703557312253,
+        "recall@20": 0.5276679841897233
+      },
+      "rrf_bm25_bge_base": {
+        "recall@5": 0.4683794466403162,
+        "recall@20": 0.616600790513834
+      },
+      "rrf_bm25_openscholar": {
+        "recall@5": 0.4090909090909091,
+        "recall@20": 0.5118577075098815
+      }
+    },
+    "set=manual_acl": {
+      "query_count": 155,
+      "bm25": {
+        "recall@5": 0.5419354838709678,
+        "recall@20": 0.6774193548387096
+      },
+      "specter": {
+        "recall@5": 0.2645161290322581,
+        "recall@20": 0.3741935483870968
+      },
+      "bge_base": {
+        "recall@5": 0.5483870967741935,
+        "recall@20": 0.6967741935483871
+      },
+      "openscholar": {
+        "recall@5": 0.38064516129032255,
+        "recall@20": 0.535483870967742
+      },
+      "rrf_bm25_specter": {
+        "recall@5": 0.5096774193548387,
+        "recall@20": 0.6774193548387096
+      },
+      "rrf_bm25_bge_base": {
+        "recall@5": 0.6258064516129033,
+        "recall@20": 0.7548387096774194
+      },
+      "rrf_bm25_openscholar": {
+        "recall@5": 0.5419354838709678,
+        "recall@20": 0.6774193548387096
+      }
+    },
+    "set=manual_iclr": {
+      "query_count": 91,
+      "bm25": {
+        "recall@5": 0.6593406593406593,
+        "recall@20": 0.7692307692307693
+      },
+      "specter": {
+        "recall@5": 0.3076923076923077,
+        "recall@20": 0.4835164835164835
+      },
+      "bge_base": {
+        "recall@5": 0.6373626373626373,
+        "recall@20": 0.8021978021978022
+      },
+      "openscholar": {
+        "recall@5": 0.45054945054945056,
+        "recall@20": 0.5879120879120879
+      },
+      "rrf_bm25_specter": {
+        "recall@5": 0.5714285714285714,
+        "recall@20": 0.7582417582417582
+      },
+      "rrf_bm25_bge_base": {
+        "recall@5": 0.7032967032967034,
+        "recall@20": 0.8021978021978022
+      },
+      "rrf_bm25_openscholar": {
+        "recall@5": 0.5824175824175825,
+        "recall@20": 0.7252747252747253
+      }
+    }
+  },
+  "notes": "specter2_base is the SPECTER2 base model without its task adapter (the adapters library would downgrade transformers in this environment)."
+}

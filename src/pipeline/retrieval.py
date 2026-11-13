@@ -5,9 +5,15 @@ from collections import Counter
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import (
+    ALLOWED_EXPANSION_EDGES,
+    BM25_FUSION_WEIGHT,
+    GRAPH_CANDIDATE_LIMIT,
+    GRAPH_EXPANSION_EDGES,
     GRAPH_FUSION_WEIGHT,
+    GRAPH_GATE_MODE,
     GRAPH_HIGH_SEMANTIC_THRESHOLD,
     GRAPH_MIN_QUERY_TERM_COVERAGE,
+    GRAPH_RELATIVE_MARGIN,
     GRAPH_SEMANTIC_FLOOR,
     GRAPH_STRONG_CONNECTIONS,
     HOP_DEPTH,
@@ -27,17 +33,32 @@ def neural_retrieve(query, top_k=TOP_K):
     return chroma_query(query, top_k=top_k)
 
 
-def symbolic_expand(driver, paper_ids):
-    """Stage 2 — 1-2 hop graph traversal via Neo4j CITES edges.
+def _expansion_pattern(edge_types):
+    """Return a validated relationship-type alternation for Cypher."""
+    edges = tuple(edge_types)
+    if not edges or not set(edges) <= ALLOWED_EXPANSION_EDGES:
+        raise ValueError(f"Expansion edges must be drawn from {sorted(ALLOWED_EXPANSION_EDGES)}")
+    return "|".join(edges)
+
+
+def symbolic_expand(driver, paper_ids, *, edge_types=None, limit=None):
+    """Stage 2 — 1-2 hop graph traversal via Neo4j relationship edges.
+
+    ``edge_types`` defaults to ``GRAPH_EXPANSION_EDGES`` (CITES only), and
+    ``limit`` to ``GRAPH_CANDIDATE_LIMIT`` (20), reproducing the original query.
 
     NOTE: This intentionally does NOT exclude ``paper_ids`` from results
     so that papers found by both neural and symbolic retrieval can be
     correctly tagged as ``source="both"`` in ``nesy_retrieve()``.
     """
     hop_depth = max(1, int(HOP_DEPTH))
+    pattern = _expansion_pattern(edge_types or GRAPH_EXPANSION_EDGES)
+    candidate_limit = int(limit or GRAPH_CANDIDATE_LIMIT)
+    if candidate_limit < 1:
+        raise ValueError("limit must be positive")
     query = f"""
         UNWIND $ids AS pid
-        MATCH (p:Paper {{id: pid}})-[:CITES*1..{hop_depth}]-(related:Paper)
+        MATCH (p:Paper {{id: pid}})-[:{pattern}*1..{hop_depth}]-(related:Paper)
         WHERE related.id <> pid
         WITH related, count(DISTINCT pid) AS connections
         RETURN related.id       AS id,
@@ -47,10 +68,10 @@ def symbolic_expand(driver, paper_ids):
                related.category AS category,
                connections
         ORDER BY connections DESC, related.id
-        LIMIT 20
+        LIMIT $limit
     """
     with driver.session() as session:
-        result = session.run(query, ids=paper_ids)
+        result = session.run(query, ids=paper_ids, limit=candidate_limit)
 
         records = list(result)
         max_connections = max((r["connections"] for r in records), default=1)
@@ -98,48 +119,92 @@ def query_term_coverage(query, paper):
     return len(query_terms & paper_terms) / len(query_terms)
 
 
-def filter_symbolic_candidates(query, symbolic_papers, semantic_scores):
+def filter_symbolic_candidates(
+    query,
+    symbolic_papers,
+    semantic_scores,
+    *,
+    mode=None,
+    seed_scores=None,
+    margin=None,
+):
     """Remove graph neighbours that lack sufficient query relevance.
 
-    A candidate is retained when it is strongly similar to the query, or when
-    it has a reasonable semantic match, high query-term coverage, and links to
-    many distinct neural seed papers. Defaults were selected on development
-    queries and checked once on the held-out benchmark split.
+    ``absolute`` mode (default) keeps a candidate that is strongly similar to
+    the query, or that has a reasonable semantic match, high query-term
+    coverage, and links to many distinct neural seed papers.
+
+    ``relative`` mode keeps a candidate whose similarity is at least the
+    weakest neural seed's similarity minus ``margin``. Absolute thresholds sit
+    inside the similarity band of the top neural results for most queries, so
+    they reject almost every graph neighbour; the relative gate adapts to each
+    query's band instead. Tune ``margin`` on development queries only.
     """
+    mode = (mode or GRAPH_GATE_MODE).lower()
+    if mode not in {"absolute", "relative"}:
+        raise ValueError("mode must be absolute or relative")
+    margin = GRAPH_RELATIVE_MARGIN if margin is None else float(margin)
+    seed_values = [float(value) for value in (seed_scores or []) if value is not None]
+    if mode == "relative" and not seed_values:
+        return []
+    relative_floor = min(seed_values) - margin if seed_values else None
+
     retained = []
     for paper in symbolic_papers:
         semantic_similarity = float(semantic_scores.get(paper["id"], 0.0))
         term_coverage = query_term_coverage(query, paper)
         connections = int(paper.get("graph_connections", 0))
-        semantic_match = semantic_similarity >= GRAPH_HIGH_SEMANTIC_THRESHOLD
-        supported_match = (
-            semantic_similarity >= GRAPH_SEMANTIC_FLOOR
-            and term_coverage >= GRAPH_MIN_QUERY_TERM_COVERAGE
-            and connections >= GRAPH_STRONG_CONNECTIONS
-        )
-        if not (semantic_match or supported_match):
-            continue
+        if mode == "relative":
+            if semantic_similarity < relative_floor:
+                continue
+            reason = "within_relative_margin"
+        else:
+            semantic_match = semantic_similarity >= GRAPH_HIGH_SEMANTIC_THRESHOLD
+            supported_match = (
+                semantic_similarity >= GRAPH_SEMANTIC_FLOOR
+                and term_coverage >= GRAPH_MIN_QUERY_TERM_COVERAGE
+                and connections >= GRAPH_STRONG_CONNECTIONS
+            )
+            if not (semantic_match or supported_match):
+                continue
+            reason = (
+                "high_semantic_similarity"
+                if semantic_match
+                else "strong_multi_seed_support"
+            )
 
         item = dict(paper)
         item["semantic_similarity"] = round(semantic_similarity, 6)
         item["query_term_coverage"] = round(term_coverage, 6)
-        item["graph_filter_reason"] = (
-            "high_semantic_similarity"
-            if semantic_match
-            else "strong_multi_seed_support"
-        )
+        item["graph_filter_reason"] = reason
         retained.append(item)
     return retained
 
 
-def relevant_symbolic_expand(driver, query, paper_ids):
-    """Expand through citations and retain only query-relevant neighbours."""
+def relevant_symbolic_expand(driver, query, paper_ids, seed_scores=None):
+    """Expand through the graph and retain only query-relevant neighbours."""
     candidates = symbolic_expand(driver, paper_ids)
     scores = score_papers_against_query(
         query,
         [paper["id"] for paper in candidates],
     )
-    return filter_symbolic_candidates(query, candidates, scores)
+    return filter_symbolic_candidates(
+        query, candidates, scores, seed_scores=seed_scores,
+    )
+
+
+_BM25 = None
+
+
+def lexical_retrieve(query, top_k=TOP_K):
+    """BM25 over the cleaned title+abstract corpus (lazily indexed once)."""
+    global _BM25
+    if _BM25 is None:
+        from src.evaluation.retrievers.bm25_retrieval import BM25Retriever
+        from src.utils.config import CLEAN_FILE
+
+        _BM25 = BM25Retriever.from_json(CLEAN_FILE)
+    return _BM25.retrieve(query, top_k=top_k)
 
 
 def _rrf_score(rank, weight):
@@ -148,9 +213,29 @@ def _rrf_score(rank, weight):
     return weight * (rank_constant + 1) / (rank_constant + rank)
 
 
-def fuse_results(neural_papers, symbolic_papers, top_k):
-    """Fuse neural and graph rankings using weighted reciprocal-rank fusion."""
-    total_weight = NEURAL_FUSION_WEIGHT + GRAPH_FUSION_WEIGHT
+def _add_lexical(fused, lexical_papers, weight):
+    for rank, paper in enumerate(lexical_papers or [], 1):
+        contribution = _rrf_score(rank, weight)
+        item = fused.get(paper["id"])
+        if item is None:
+            item = dict(paper)
+            item["source"] = "lexical"
+            item["fusion_score"] = 0.0
+            fused[paper["id"]] = item
+        elif item["source"] != "lexical":
+            item["lexical_support"] = True
+        item["lexical_rank"] = rank
+        item["fusion_score"] += contribution
+
+
+def fuse_results(neural_papers, symbolic_papers, top_k, *, lexical_papers=None,
+                 lexical_weight=None):
+    """Fuse neural, graph, and optional BM25 rankings with weighted RRF."""
+    lexical_weight = BM25_FUSION_WEIGHT if lexical_weight is None else float(lexical_weight)
+    if lexical_weight < 0:
+        raise ValueError("lexical_weight cannot be negative")
+    use_lexical = lexical_weight > 0 and lexical_papers is not None
+    total_weight = NEURAL_FUSION_WEIGHT + GRAPH_FUSION_WEIGHT + (lexical_weight if use_lexical else 0.0)
     if total_weight <= 0:
         raise ValueError("At least one retrieval fusion weight must be positive")
 
@@ -187,6 +272,9 @@ def fuse_results(neural_papers, symbolic_papers, top_k):
             item["fusion_score"] = contribution
             fused[paper_id] = item
 
+    if use_lexical:
+        _add_lexical(fused, lexical_papers, lexical_weight)
+
     for item in fused.values():
         item["score"] = round(item.pop("fusion_score") / total_weight, 6)
 
@@ -200,9 +288,15 @@ def nesy_retrieve(driver, query, top_k=TOP_K):
     """Full NeSy retrieval — neural + symbolic combined and ranked."""
     neural_papers   = neural_retrieve(query, top_k)
     neural_ids      = [p["id"] for p in neural_papers]
-    symbolic_papers = relevant_symbolic_expand(driver, query, neural_ids)
+    symbolic_papers = relevant_symbolic_expand(
+        driver, query, neural_ids,
+        seed_scores=[p.get("score") for p in neural_papers],
+    )
+    lexical_papers = lexical_retrieve(query, top_k) if BM25_FUSION_WEIGHT > 0 else None
 
-    return fuse_results(neural_papers, symbolic_papers, top_k)
+    return fuse_results(
+        neural_papers, symbolic_papers, top_k, lexical_papers=lexical_papers,
+    )
 
 def _citation_degrees(driver, paper_ids):
     """Return undirected citation degree for every known paper ID."""
@@ -292,8 +386,12 @@ def diagnose_retrieval(driver, query, top_k=TOP_K):
         query,
         raw_symbolic_papers,
         semantic_scores,
+        seed_scores=[paper.get("score") for paper in neural_papers],
     )
-    final_papers = fuse_results(neural_papers, symbolic_papers, top_k)
+    lexical_papers = lexical_retrieve(query, top_k) if BM25_FUSION_WEIGHT > 0 else None
+    final_papers = fuse_results(
+        neural_papers, symbolic_papers, top_k, lexical_papers=lexical_papers,
+    )
     all_ids = [paper["id"] for paper in neural_papers + symbolic_papers]
     report = build_retrieval_diagnostics(
         neural_papers,

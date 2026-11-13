@@ -14,3 +14,8 @@ python-dotenv==1.2.3
 requests==2.34.2
 torchvision==0.27.1
 pytest==8.4.2
+# Scientific NER comparison (GLiNER zero-shot baseline) and its tokenizer dependencies.
+# protobuf must be >= the gencode version sentencepiece was built with (7.36.1).
+gliner==0.2.30
+sentencepiece==0.2.3
+protobuf==7.36.1

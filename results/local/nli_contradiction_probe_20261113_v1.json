@@ -1,0 +1,452 @@
+{
+ "rows": [
+  {
+   "query": "graph neural networks for node classification",
+   "candidates": 5,
+   "scores": [
+    0.9914,
+    0.9699,
+    0.6996,
+    0.4998,
+    0.3966
+   ],
+   "top": {
+    "paper1": "on the bottleneck of graph neural networks and its practical implications",
+    "paper2": "speqnets: sparsity-aware permutation-equivariant graph networks",
+    "evidence_1": "graph neural networks (gnns) were shown to effectively learn from highly structured data containing elements (nodes) with relationships (edges) between them.",
+    "evidence_2": "while (message-passing) graph neural networks have clear limitations in approximating permutation-equivariant functions over graphs or general relational data, more expressive, higher-order graph neural networks do not scale to large graphs.",
+    "nli_contradiction": 0.9914
+   },
+   "seconds": 7.8
+  },
+  {
+   "query": "graph attention network methods",
+   "candidates": 5,
+   "scores": [
+    0.9995,
+    0.9984,
+    0.9894,
+    0.9705,
+    0.9219
+   ],
+   "top": {
+    "paper1": "a unified structure learning framework for graph attention networks",
+    "paper2": "lipschitz normalization for self-attention layers with application to graph neural networks",
+    "evidence_1": "graph neural networks (gnns) have achieved state-of-the-art performance in many elds and attracted a lot of attention in the communit.",
+    "evidence_2": "first, we show that, for deep graph attention networks (gat), gradient explosion appears during training, leading to poor performance of gradient-based training algorithms.",
+    "nli_contradiction": 0.9995
+   },
+   "seconds": 1.3
+  },
+  {
+   "query": "graph neural networks for recommendation systems",
+   "candidates": 5,
+   "scores": [
+    0.0092,
+    0.0024,
+    0.0014,
+    0.0009,
+    0.0007
+   ],
+   "top": {
+    "paper1": "graph neural network: current state of art, challenges and applications",
+    "paper2": "cold brew: distilling graph node representations with incomplete or missing neighborhoods",
+    "evidence_1": "this paper also demonstrates the basic challenges encountered while implementing gnn.",
+    "evidence_2": "graph neural networks (gnns) have achieved state-of-the-art performance in node classification, regression, and recommendation tasks.",
+    "nli_contradiction": 0.0092
+   },
+   "seconds": 0.2
+  },
+  {
+   "query": "graph convolutional networks compared with graph attention networks",
+   "candidates": 5,
+   "scores": [
+    0.7389,
+    0.3922,
+    0.332,
+    0.0128,
+    0.0059
+   ],
+   "top": {
+    "paper1": "parameter prediction for unseen deep architectures",
+    "paper2": "coatnet: marrying convolution and attention for all data sizes",
+    "evidence_1": "on imagenet, top-5 accuracy of some of our networks approaches 50.",
+    "evidence_2": "experiments show that our coatnets achieve state-of-the-art performance under different resource constraints across various datasets: without extra data, coatnet achieves 86.0 imagenet top-1 accuracy; when pre-trained with 13m images from imagenet-21k, our coatnet achieves 88.56 top-1 accuracy, matching vit-huge pre-trained with 300m images from jft-300m while using 23x less data; notably, when we further scale up coatnet with jft-3b, it achieves 90.88 top-1 accuracy on imagenet, establishing a new state-of-the-art result.",
+    "nli_contradiction": 0.7389
+   },
+   "seconds": 0.3
+  },
+  {
+   "query": "self-supervised graph representation learning",
+   "candidates": 1,
+   "scores": [
+    0.0003
+   ],
+   "top": {
+    "paper1": "research review for broad learning system: algorithms, theory, and applications",
+    "paper2": "an overview of supervised machine learning algorithm",
+    "evidence_1": "it represents a step toward building more efficient and effective machine-learning methods that can be extended to a broader range of necessary research fields.",
+    "evidence_2": "algorithms for machine learning automatically learn from experience and improve from it without being explicitly programmed.",
+    "nli_contradiction": 0.0003
+   },
+   "seconds": 0.2
+  },
+  {
+   "query": "graph neural networks for molecular property prediction",
+   "candidates": 5,
+   "scores": [
+    0.9879,
+    0.4271,
+    0.3963,
+    0.1871,
+    0.0975
+   ],
+   "top": {
+    "paper1": "speqnets: sparsity-aware permutation-equivariant graph networks",
+    "paper2": "a general tensor prediction framework based on graph neural networks.",
+    "evidence_1": "while (message-passing) graph neural networks have clear limitations in approximating permutation-equivariant functions over graphs or general relational data, more expressive, higher-order graph neural networks do not scale to large graphs.",
+    "evidence_2": "graph neural networks (gnns) have been shown to be extremely flexible and accurate in predicting the physical properties of molecules and crystals.",
+    "nli_contradiction": 0.9879
+   },
+   "seconds": 0.3
+  },
+  {
+   "query": "link prediction using graph neural networks",
+   "candidates": 4,
+   "scores": [
+    0.4998,
+    0.0037,
+    0.002,
+    0.0012
+   ],
+   "top": {
+    "paper1": "on the bottleneck of graph neural networks and its practical implications",
+    "paper2": "graph structure of neural networks",
+    "evidence_1": "we demonstrate that the bottleneck hinders popular gnns from fitting the training data.",
+    "evidence_2": "using this representation we show that: (1) a sweet spot of relational graphs leads to neural networks with significantly improved predictive performance; (2) neural networks performance is approximately a smooth function of the clustering coefficient and average path length of its relational graph; (3) our findings are consistent across many different tasks and datasets; (4) the sweet spot can be identified efficiently; (5) top-performing neural networks have graph structure surprisingly similar to those of real biological neural networks.",
+    "nli_contradiction": 0.4998
+   },
+   "seconds": 0.2
+  },
+  {
+   "query": "graph classification methods",
+   "candidates": 4,
+   "scores": [
+    0.3524,
+    0.0897,
+    0.0258,
+    0.0003
+   ],
+   "top": {
+    "paper1": "multiple graph kernel learning based on gmdh-type neural network",
+    "paper2": "a comprehensive survey on support vector machine classification: applications, challenges and trends",
+    "evidence_1": "abstract multiple kernel learning (mkl), as a principled classification method, selects and combines base kernels to increase the categorization accuracy of support vector machines (svms).",
+    "evidence_2": "the svm has been playing a significant role in pattern recognition which is an extensively popular and active research area among the researchers.",
+    "nli_contradiction": 0.3524
+   },
+   "seconds": 0.2
+  },
+  {
+   "query": "heterogeneous graph neural networks",
+   "candidates": 5,
+   "scores": [
+    0.9914,
+    0.4998,
+    0.4924,
+    0.3962,
+    0.0005
+   ],
+   "top": {
+    "paper1": "on the bottleneck of graph neural networks and its practical implications",
+    "paper2": "speqnets: sparsity-aware permutation-equivariant graph networks",
+    "evidence_1": "graph neural networks (gnns) were shown to effectively learn from highly structured data containing elements (nodes) with relationships (edges) between them.",
+    "evidence_2": "while (message-passing) graph neural networks have clear limitations in approximating permutation-equivariant functions over graphs or general relational data, more expressive, higher-order graph neural networks do not scale to large graphs.",
+    "nli_contradiction": 0.9914
+   },
+   "seconds": 0.2
+  },
+  {
+   "query": "dynamic graph neural networks",
+   "candidates": 4,
+   "scores": [
+    0.0014,
+    0.0013,
+    0.001,
+    0.0007
+   ],
+   "top": {
+    "paper1": "e(n) equivariant graph neural networks",
+    "paper2": "graph neural networks for learning equivariant representations of neural networks",
+    "evidence_1": "in contrast with existing methods, our work does not require computationally expensive higher-order representations in intermediate layers while it still achieves competitive or better performance.",
+    "evidence_2": "however, existing approaches either overlook the inherent permutation symmetry in the neural network or rely on intricate weight-sharing patterns to achieve equivariance, while ignoring the impact of the network architecture itself.",
+    "nli_contradiction": 0.0014
+   },
+   "seconds": 0.1
+  },
+  {
+   "query": "oversmoothing in deep graph neural networks",
+   "candidates": 5,
+   "scores": [
+    0.4817,
+    0.1008,
+    0.0042,
+    0.004,
+    0.0025
+   ],
+   "top": {
+    "paper1": "graph neural networks do not always oversmooth",
+    "paper2": "demystifying oversmoothing in attention-based graph neural networks",
+    "evidence_1": "we test the predictions of our approach and find good agreement with finite-size gcns.",
+    "evidence_2": "the proposed framework extends the existing results on oversmoothing for symmetric gcns to a significantly broader class of gnn models, including random walk gcns, graph attention networks (gats) and (graph) transformers.",
+    "nli_contradiction": 0.4817
+   },
+   "seconds": 0.4
+  },
+  {
+   "query": "explainable graph neural network methods",
+   "candidates": 5,
+   "scores": [
+    0.6289,
+    0.4754,
+    0.4572,
+    0.2035,
+    0.0411
+   ],
+   "top": {
+    "paper1": "contrastive graph neural network explanation",
+    "paper2": "higher-order explanations of graph neural networks via relevant walks",
+    "evidence_1": "graph neural networks achieve remarkable results on problems with structured data but come as black-box predictors.",
+    "evidence_2": "in this paper, we show that gnns can in fact be naturally explained using higher-order expansions, i.e., by identifying groups of edges that jointly contribute to the prediction.",
+    "nli_contradiction": 0.6289
+   },
+   "seconds": 0.2
+  },
+  {
+   "query": "graph neural networks for traffic forecasting",
+   "candidates": 2,
+   "scores": [
+    0.4998,
+    0.0005
+   ],
+   "top": {
+    "paper1": "on the bottleneck of graph neural networks and its practical implications",
+    "paper2": "graph structure of neural networks",
+    "evidence_1": "we demonstrate that the bottleneck hinders popular gnns from fitting the training data.",
+    "evidence_2": "using this representation we show that: (1) a sweet spot of relational graphs leads to neural networks with significantly improved predictive performance; (2) neural networks performance is approximately a smooth function of the clustering coefficient and average path length of its relational graph; (3) our findings are consistent across many different tasks and datasets; (4) the sweet spot can be identified efficiently; (5) top-performing neural networks have graph structure surprisingly similar to those of real biological neural networks.",
+    "nli_contradiction": 0.4998
+   },
+   "seconds": 0.1
+  },
+  {
+   "query": "graph neural networks for fraud detection",
+   "candidates": 5,
+   "scores": [
+    0.9968,
+    0.9409,
+    0.9296,
+    0.8449,
+    0.8382
+   ],
+   "top": {
+    "paper1": "graph neural networks for financial fraud detection: a review",
+    "paper2": "fraudgt: a simple, effective, and efficient graph transformer for financial fraud detection",
+    "evidence_1": "this review reveals that gnns are exceptionally adept at capturing complex relational patterns and dynamics within financial networks, significantly outperforming traditional fraud detection methods.",
+    "evidence_2": "to address these limitations, we introduce fraudgt, a simple, effective, and efficient graph transformer (gt) model specifically designed for fraud detection in financial transaction graphs.",
+    "nli_contradiction": 0.9968
+   },
+   "seconds": 0.5
+  },
+  {
+   "query": "privacy-preserving federated graph learning",
+   "candidates": 4,
+   "scores": [
+    0.4791,
+    0.0049,
+    0.0021,
+    0.0001
+   ],
+   "top": {
+    "paper1": "fedhgn: a federated framework for heterogeneous graph neural networks",
+    "paper2": "subgraph-level federated graph neural network for privacy-preserving recommendation with meta-learning",
+    "evidence_1": "with better privacy preservation, fedhgn consistently outperforms local training and conventional fl methods on three widely adopted heterogeneous graph datasets with varying client numbers.",
+    "evidence_2": "comprehensive experiments across six datasets demonstrate our methods superiority over centralized gnn-based recommendations, while preserving user privacy.",
+    "nli_contradiction": 0.4791
+   },
+   "seconds": 0.2
+  },
+  {
+   "query": "contrastive learning for graph representations",
+   "candidates": 0,
+   "scores": [],
+   "top": null,
+   "seconds": 0.1
+  },
+  {
+   "query": "adversarial attacks and robustness in graph neural networks",
+   "candidates": 5,
+   "scores": [
+    0.9903,
+    0.9858,
+    0.8296,
+    0.8152,
+    0.5548
+   ],
+   "top": {
+    "paper1": "are defenses for graph neural networks robust?",
+    "paper2": "adversarial robustness in graph neural networks: a hamiltonian approach",
+    "evidence_1": "a cursory reading of the literature suggests that we have made a lot of progress in designing effective adversarial defenses for graph neural networks (gnns).",
+    "evidence_2": "extensive numerical experiments demonstrate that gnns leveraging conservative hamiltonian flows with lyapunov stability substantially improve robustness against adversarial perturbations.",
+    "nli_contradiction": 0.9903
+   },
+   "seconds": 0.5
+  },
+  {
+   "query": "transformer architectures for graph learning",
+   "candidates": 3,
+   "scores": [
+    0.5034,
+    0.0022,
+    0.0009
+   ],
+   "top": {
+    "paper1": "transformers are graph neural networks",
+    "paper2": "evaluating logical generalization in graph neural networks",
+    "evidence_1": "we show how transformers can be viewed as message passing gnns operating on fully connected graphs of tokens, where the self-attention mechanism capture the relative importance of all tokens w.r.t.",
+    "evidence_2": "however, while relational learning algorithms such as graph neural networks (gnns) show promise, we do not understand how effectively these approaches can adapt to new tasks.",
+    "nli_contradiction": 0.5034
+   },
+   "seconds": 0.1
+  },
+  {
+   "query": "reinforcement learning with graph neural networks",
+   "candidates": 0,
+   "scores": [],
+   "top": null,
+   "seconds": 0.1
+  },
+  {
+   "query": "knowledge graph embeddings compared with graph neural networks",
+   "candidates": 4,
+   "scores": [
+    0.5054,
+    0.0011,
+    0.0005,
+    0.0003
+   ],
+   "top": {
+    "paper1": "network representation learning: a macro and micro view",
+    "paper2": "a survey on graph neural networks",
+    "evidence_1": "one advantage of the survey is that we systematically study the underlying theoretical foundations underlying the different categories of algorithms, which offers deep insights for better understanding the development of the network representation learning field.",
+    "evidence_2": "this poses a significant challenge to deep learning algorithms.",
+    "nli_contradiction": 0.5054
+   },
+   "seconds": 0.1
+  },
+  {
+   "query": "cybersecurity",
+   "candidates": 5,
+   "scores": [
+    0.4991,
+    0.3624,
+    0.1061,
+    0.024,
+    0.0086
+   ],
+   "top": {
+    "paper1": "a review of cybersecurity strategies in modern organizations: examining the evolution and effectiveness of cybersecurity measures for data protection",
+    "paper2": "cyber governance studies in ensuring cybersecurity: an overview of cybersecurity governance",
+    "evidence_1": "key findings reveal a significant shift towards advanced technologies like ai and ml in cybersecurity, the critical role of human factors in shaping cybersecurity outcomes, and the influence of international policies in standardizing cybersecurity practices.",
+    "evidence_2": "the result showed that although there are studies that produce local solutions for cybersecurity governance in different countries, a general governance framework has not been established as yet.",
+    "nli_contradiction": 0.4991
+   },
+   "seconds": 0.5
+  },
+  {
+   "query": "databases",
+   "candidates": 3,
+   "scores": [
+    0.0005,
+    0.0003,
+    0.0003
+   ],
+   "top": {
+    "paper1": "research review for broad learning system: algorithms, theory, and applications",
+    "paper2": "feature selection methods in big medical databases:a comprehensive survey",
+    "evidence_1": "it represents a step toward building more efficient and effective machine-learning methods that can be extended to a broader range of necessary research fields.",
+    "evidence_2": "feature selection has emerged as a critical strategy to overcome these issues by improving efficiency, accuracy, interpretability, and scalability.",
+    "nli_contradiction": 0.0005
+   },
+   "seconds": 0.1
+  },
+  {
+   "query": "software engineering",
+   "candidates": 4,
+   "scores": [
+    0.4448,
+    0.0118,
+    0.0007,
+    0.0006
+   ],
+   "top": {
+    "paper1": "modeling should be an independent scientific discipline",
+    "paper2": "detecting latent topics and trends in software engineering research since 1980 using probabilistic topic modeling",
+    "evidence_1": "software modeling started as a paradigm to help developers build better software faster by enabling them to specify, reason and manipulate software systems at a higher-abstraction level while ignoring irrelevant low-level technical details.",
+    "evidence_2": "from this perspective, this study aimed to reveal a holistic view that reflects topics, trends, and trajectories in software engineering research by analyzing the majority of domain-specific articles published over the last 40 years.",
+    "nli_contradiction": 0.4448
+   },
+   "seconds": 0.2
+  },
+  {
+   "query": "cloud computing",
+   "candidates": 2,
+   "scores": [
+    0.0011,
+    0.001
+   ],
+   "top": {
+    "paper1": "public health innovation through cloud adoption: a comparative analysis of drivers and barriers in japan, south korea, and singapore",
+    "paper2": "security and privacy in cloud-based e-health system",
+    "evidence_1": "governments are increasingly using cloud computing to reduce cost, increase access, improve quality, and create innovations in healthcare.",
+    "evidence_2": "the key focus of this paper is to address the increased demand for cloud computing and its definition, technologies widely used in healthcare, their problems and possibilities, and the way protection mechanisms are organized and prepared when the company chooses to implement the latest evolving service model.",
+    "nli_contradiction": 0.0011
+   },
+   "seconds": 0.2
+  },
+  {
+   "query": "operating systems",
+   "candidates": 0,
+   "scores": [],
+   "top": null,
+   "seconds": 0.1
+  },
+  {
+   "query": "computer networks",
+   "candidates": 1,
+   "scores": [
+    0.0004
+   ],
+   "top": {
+    "paper1": "an overview of supervised machine learning algorithm",
+    "paper2": "neural networks and machine learning",
+    "evidence_1": "algorithms for machine learning automatically learn from experience and improve from it without being explicitly programmed.",
+    "evidence_2": "the objective of the discipline of machine learning is to create computers that can independently learn and improve.",
+    "nli_contradiction": 0.0004
+   },
+   "seconds": 0.1
+  }
+ ],
+ "summary": {
+  "queries": 26,
+  "queries_with_candidates": 23,
+  "mean_candidates": 3.5,
+  "top_score_quantiles": [
+   0.0003,
+   0.0014,
+   0.4791,
+   0.4998,
+   0.7389,
+   0.9914
+  ],
+  "queries_with_top_score_ge_0.5": 10
+ }
+}

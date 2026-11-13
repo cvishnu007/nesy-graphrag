@@ -1,0 +1,8 @@
+{
+  "bge": {"neural": true},
+  "rrf_bge_bm25": {"neural": true, "lexical_weight": 1.0},
+  "graph_relative_similar_bge": {"neural": true, "graph": "relative", "margin": 0.03,
+                                 "edges": ["CITES", "SIMILAR_TO"], "limit": 50},
+  "full_bge_bm25_similar": {"neural": true, "graph": "relative", "margin": 0.03,
+                            "edges": ["CITES", "SIMILAR_TO"], "limit": 50, "lexical_weight": 1.0}
+}

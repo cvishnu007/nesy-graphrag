@@ -1,0 +1,336 @@
+{
+  "dataset": "data/external/zj88zj__SCIERC/test.json",
+  "sentences": 551,
+  "gold_entities": 1685,
+  "gold_types": {
+    "Task": 263,
+    "Material": 158,
+    "OtherScientificTerm": 522,
+    "Generic": 241,
+    "Method": 430,
+    "Metric": 71
+  },
+  "models": {
+    "models/scibert-scierc-ner": {
+      "untyped_span": {
+        "precision": 0.7184,
+        "recall": 0.7769,
+        "f1": 0.7465,
+        "gold": 1685,
+        "predicted": 1822
+      },
+      "typed": {
+        "precision": 0.6147,
+        "recall": 0.6647,
+        "f1": 0.6387,
+        "gold": 1685,
+        "predicted": 1822,
+        "per_type": {
+          "Task": {
+            "precision": 0.5753,
+            "recall": 0.654,
+            "f1": 0.6121,
+            "gold": 263,
+            "predicted": 299
+          },
+          "Method": {
+            "precision": 0.7309,
+            "recall": 0.6884,
+            "f1": 0.709,
+            "gold": 430,
+            "predicted": 405
+          },
+          "Metric": {
+            "precision": 0.6203,
+            "recall": 0.6901,
+            "f1": 0.6533,
+            "gold": 71,
+            "predicted": 79
+          },
+          "Material": {
+            "precision": 0.5893,
+            "recall": 0.6266,
+            "f1": 0.6074,
+            "gold": 158,
+            "predicted": 168
+          },
+          "OtherScientificTerm": {
+            "precision": 0.5366,
+            "recall": 0.6034,
+            "f1": 0.5681,
+            "gold": 522,
+            "predicted": 587
+          },
+          "Generic": {
+            "precision": 0.6655,
+            "recall": 0.7842,
+            "f1": 0.72,
+            "gold": 241,
+            "predicted": 284
+          }
+        }
+      },
+      "typed_without_generic": {
+        "precision": 0.6053,
+        "recall": 0.6447,
+        "f1": 0.6244,
+        "gold": 1444,
+        "predicted": 1538,
+        "per_type": {
+          "Task": {
+            "precision": 0.5753,
+            "recall": 0.654,
+            "f1": 0.6121,
+            "gold": 263,
+            "predicted": 299
+          },
+          "Method": {
+            "precision": 0.7309,
+            "recall": 0.6884,
+            "f1": 0.709,
+            "gold": 430,
+            "predicted": 405
+          },
+          "Metric": {
+            "precision": 0.6203,
+            "recall": 0.6901,
+            "f1": 0.6533,
+            "gold": 71,
+            "predicted": 79
+          },
+          "Material": {
+            "precision": 0.5893,
+            "recall": 0.6266,
+            "f1": 0.6074,
+            "gold": 158,
+            "predicted": 168
+          },
+          "OtherScientificTerm": {
+            "precision": 0.5366,
+            "recall": 0.6034,
+            "f1": 0.5681,
+            "gold": 522,
+            "predicted": 587
+          }
+        }
+      }
+    },
+    "gliner:urchade/gliner_medium-v2.1": {
+      "untyped_span": {
+        "precision": 0.6186,
+        "recall": 0.2724,
+        "f1": 0.3782,
+        "gold": 1685,
+        "predicted": 742
+      },
+      "typed": {
+        "precision": 0.3922,
+        "recall": 0.1727,
+        "f1": 0.2398,
+        "gold": 1685,
+        "predicted": 742,
+        "per_type": {
+          "Task": {
+            "precision": 0.5065,
+            "recall": 0.1483,
+            "f1": 0.2294,
+            "gold": 263,
+            "predicted": 77
+          },
+          "Method": {
+            "precision": 0.3876,
+            "recall": 0.3047,
+            "f1": 0.3411,
+            "gold": 430,
+            "predicted": 338
+          },
+          "Metric": {
+            "precision": 0.3684,
+            "recall": 0.3944,
+            "f1": 0.381,
+            "gold": 71,
+            "predicted": 76
+          },
+          "Material": {
+            "precision": 0.3788,
+            "recall": 0.3165,
+            "f1": 0.3448,
+            "gold": 158,
+            "predicted": 132
+          },
+          "OtherScientificTerm": {
+            "precision": 0.3613,
+            "recall": 0.0824,
+            "f1": 0.1342,
+            "gold": 522,
+            "predicted": 119
+          },
+          "Generic": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold": 241,
+            "predicted": 0
+          }
+        }
+      },
+      "typed_without_generic": {
+        "precision": 0.3922,
+        "recall": 0.2015,
+        "f1": 0.2662,
+        "gold": 1444,
+        "predicted": 742,
+        "per_type": {
+          "Task": {
+            "precision": 0.5065,
+            "recall": 0.1483,
+            "f1": 0.2294,
+            "gold": 263,
+            "predicted": 77
+          },
+          "Method": {
+            "precision": 0.3876,
+            "recall": 0.3047,
+            "f1": 0.3411,
+            "gold": 430,
+            "predicted": 338
+          },
+          "Metric": {
+            "precision": 0.3684,
+            "recall": 0.3944,
+            "f1": 0.381,
+            "gold": 71,
+            "predicted": 76
+          },
+          "Material": {
+            "precision": 0.3788,
+            "recall": 0.3165,
+            "f1": 0.3448,
+            "gold": 158,
+            "predicted": 132
+          },
+          "OtherScientificTerm": {
+            "precision": 0.3613,
+            "recall": 0.0824,
+            "f1": 0.1342,
+            "gold": 522,
+            "predicted": 119
+          }
+        }
+      }
+    },
+    "anlp/SciERC_trained_Scibert": {
+      "untyped_span": {
+        "precision": 0.2966,
+        "recall": 0.2973,
+        "f1": 0.297,
+        "gold": 1685,
+        "predicted": 1689
+      },
+      "typed": {
+        "precision": 0.2937,
+        "recall": 0.2944,
+        "f1": 0.294,
+        "gold": 1685,
+        "predicted": 1689,
+        "per_type": {
+          "Task": {
+            "precision": 0.1311,
+            "recall": 0.1331,
+            "f1": 0.1321,
+            "gold": 263,
+            "predicted": 267
+          },
+          "Method": {
+            "precision": 0.1674,
+            "recall": 0.1674,
+            "f1": 0.1674,
+            "gold": 430,
+            "predicted": 430
+          },
+          "Metric": {
+            "precision": 0.3582,
+            "recall": 0.338,
+            "f1": 0.3478,
+            "gold": 71,
+            "predicted": 67
+          },
+          "Material": {
+            "precision": 0.2013,
+            "recall": 0.2025,
+            "f1": 0.2019,
+            "gold": 158,
+            "predicted": 159
+          },
+          "OtherScientificTerm": {
+            "precision": 0.2054,
+            "recall": 0.205,
+            "f1": 0.2052,
+            "gold": 522,
+            "predicted": 521
+          },
+          "Generic": {
+            "precision": 0.9224,
+            "recall": 0.9378,
+            "f1": 0.93,
+            "gold": 241,
+            "predicted": 245
+          }
+        }
+      },
+      "typed_without_generic": {
+        "precision": 0.187,
+        "recall": 0.187,
+        "f1": 0.187,
+        "gold": 1444,
+        "predicted": 1444,
+        "per_type": {
+          "Task": {
+            "precision": 0.1311,
+            "recall": 0.1331,
+            "f1": 0.1321,
+            "gold": 263,
+            "predicted": 267
+          },
+          "Method": {
+            "precision": 0.1674,
+            "recall": 0.1674,
+            "f1": 0.1674,
+            "gold": 430,
+            "predicted": 430
+          },
+          "Metric": {
+            "precision": 0.3582,
+            "recall": 0.338,
+            "f1": 0.3478,
+            "gold": 71,
+            "predicted": 67
+          },
+          "Material": {
+            "precision": 0.2013,
+            "recall": 0.2025,
+            "f1": 0.2019,
+            "gold": 158,
+            "predicted": 159
+          },
+          "OtherScientificTerm": {
+            "precision": 0.2054,
+            "recall": 0.205,
+            "f1": 0.2052,
+            "gold": 522,
+            "predicted": 521
+          }
+        }
+      }
+    },
+    "spacy": {
+      "untyped_span": {
+        "precision": 0.2029,
+        "recall": 0.4012,
+        "f1": 0.2695,
+        "gold": 1685,
+        "predicted": 3331
+      }
+    }
+  }
+}

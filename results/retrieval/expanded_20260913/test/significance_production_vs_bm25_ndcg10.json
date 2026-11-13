@@ -1,0 +1,13 @@
+{
+  "challenger": "production",
+  "reference": "bm25",
+  "metric": "ndcg@10",
+  "pair_count": 14,
+  "mean_delta": -0.07371306042805044,
+  "bootstrap_95_ci": [
+    -0.19605521939756748,
+    0.05381731980197195
+  ],
+  "bootstrap_probability_positive": 0.12722,
+  "exact_two_sided_randomization_p": 0.2838134765625
+}

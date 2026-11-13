@@ -1,6 +1,6 @@
 # NeSy-GraphRAG Setup
 
-For the September 13 macOS/Ollama setup and current evaluation commands, start with [docs/LOCAL_EVALUATION.md](docs/LOCAL_EVALUATION.md). The Windows hardware counts below describe the teammate’s August 31 snapshot.
+For the current Phase 1 scope, verified local state, incomplete experiments, and the safe continuation sequence, read [AGENT_HANDOFF.md](AGENT_HANDOFF.md) before following this guide. Use [docs/LOCAL_EVALUATION.md](docs/LOCAL_EVALUATION.md) for frozen evaluation/reproduction commands. Historical machine snapshots in contributor logs are not setup requirements.
 
 This guide reproduces the verified local project setup from a fresh clone. The primary instructions target Windows PowerShell, Python 3.11, a local Neo4j database, Semantic Scholar data, and an optional NVIDIA GPU.
 
@@ -17,8 +17,8 @@ PDF ingestion is not part of this setup. The current pipeline uses paper metadat
 - Python dependencies pinned in `requirements.txt`
 - Semantic Scholar corpus configuration: 11 CSE topic queries, up to 5,000 records per query, 2020-2025, Computer Science
 - SPECTER embeddings: `allenai-specter`
-- Groq primary model: `openai/gpt-oss-120b`
-- Groq fallback model: `llama-3.1-8b-instant`
+- Default generation: local Ollama `qwen2.5:3b-instruct`
+- Optional Groq hosting: `openai/gpt-oss-120b` primary, `llama-3.1-8b-instant` fallback
 - Retrieval benchmark: 20 queries (6 development, 14 test), version `0.2-draft`
 - Current benchmark judgments: machine-assisted and pending human review
 
@@ -145,7 +145,7 @@ Check dependency consistency:
 
 ## 5. Configure Neo4j
 
-Create and start a dedicated local Neo4j database. The graph build command executes `MATCH (n) DETACH DELETE n`, so do not point this project at a database containing unrelated data.
+Create and start a dedicated local Neo4j database. The graph build command deletes every node in the configured database (in 1,000-node transactions), so do not point this project at a database containing unrelated data.
 
 Verified local connection settings:
 
@@ -294,7 +294,7 @@ The count should match the cleaned-paper count. The verified broad snapshot repo
 
 ### Stage 4: Neo4j Graph
 
-Ensure Neo4j is running and `.env` contains `NEO4J_ALLOW_RESET=true`.
+Ensure Neo4j is running. Keep `NEO4J_ALLOW_RESET=false` in `.env`; the commands below enable the reset for this one process only.
 
 ```powershell
 $env:NEO4J_ALLOW_RESET = "true"
@@ -320,7 +320,8 @@ Run the complete unit suite:
 .\venv\Scripts\python.exe -m pytest
 ```
 
-The historical August 31 repository collected 249 pytest cases, including multi-topic ingestion,
+The latest recorded full run (September 14) passed 306 tests; the historical August 31 repository
+collected 249. Coverage includes multi-topic ingestion,
 resume safety, production retrieval, annotation tooling, provenance, semantic
 support, model comparisons, contradiction, and hypothesis coverage.
 
@@ -413,6 +414,28 @@ The source defaults expect reasoning benchmark files under
 `evaluation/benchmarks/`, but the merged evidence copies currently live under
 `teammate2/benchmarks/`. Use explicit benchmark paths until canonical root
 artifacts are intentionally integrated.
+
+## 10b. Research-Model Configuration (November 2026)
+
+The selected configuration needs three extra builds after Stages 1-4. Set `HF_HUB_DISABLE_XET=1` if Hugging Face downloads hang.
+
+```powershell
+# BGE retrieval index (new collection; the historical s2_papers collection is untouched)
+$env:CHROMA_COLLECTION="s2_papers_bge"; $env:EMBEDDING_MODEL="BAAI/bge-base-en-v1.5"
+$env:EMBEDDING_TEXT_MODE="title_abstract_plain"
+.\venv\Scripts\python.exe -m src.storage.chroma_store
+
+# Graph enrichment: generic-concept flags and SIMILAR_TO edges (additive)
+.\venv\Scripts\python.exe -m src.storage.graph_enrichment concepts --write
+.\venv\Scripts\python.exe -m src.storage.graph_enrichment similarity --collection s2_papers --write
+
+# Scientific entities: train on SciERC (train/dev/test in data/external/zj88zj__SCIERC/), extract, load
+.\venv\Scripts\python.exe -m src.ingestion.train_scierc_ner
+.\venv\Scripts\python.exe -m src.ingestion.scientific_ner extract --model models/scibert-scierc-ner
+.\venv\Scripts\python.exe -m src.storage.graph_enrichment scientific-entities --write
+```
+
+Then add the configuration block from [AGENT_HANDOFF.md](AGENT_HANDOFF.md) to `.env`. Contradiction NLI needs `cross-encoder/nli-deberta-v3-small` cached (see [docs/LOCAL_EVALUATION.md](docs/LOCAL_EVALUATION.md)).
 
 ## 11. Start The Streamlit App
 
@@ -534,4 +557,4 @@ Confirm `GROQ_API_KEY` is valid. The configured primary model is `openai/gpt-oss
 - Review claims have passage-ID provenance, but semantic correctness still requires evaluation.
 - Hypotheses are generated research suggestions, not validated scientific findings.
 
-After setup, read `PROJECT_STATUS.md` for implemented capabilities, known limitations, and the evaluation roadmap.
+After setup, read [AGENT_HANDOFF.md](AGENT_HANDOFF.md) and [PROJECT_STATUS.md](PROJECT_STATUS.md) for implemented capabilities, known limitations, and the continuation roadmap.

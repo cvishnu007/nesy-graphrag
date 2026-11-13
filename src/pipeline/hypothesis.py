@@ -3,9 +3,12 @@ import re
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
+from src.pipeline.concepts import concept_cypher
 from src.pipeline.prompts import build_hypothesis_prompt
 from src.pipeline.retrieval import neural_retrieve
 from src.utils.config import (
+    CONCEPT_EXCLUDE_GENERIC,
+    HYPOTHESIS_HOLE_EDGES,
     HYPOTHESIS_CANDIDATE_POOL,
     HYPOTHESIS_MIN_QUERY_SUPPORT,
     HYPOTHESIS_MIN_SHARED_CONCEPTS,
@@ -75,21 +78,24 @@ def generate_hypotheses(driver, query, top_k=5):
     if not neural_ids:
         return []
 
-    cypher = """
+    hole_edges = "|".join(HYPOTHESIS_HOLE_EDGES)
+    cypher = f"""
         UNWIND $ids AS pid
-        MATCH (query_paper:Paper {id: pid})-[:RELATED_TO]->(shared:Concept)
+        MATCH (query_paper:Paper {{id: pid}})-[:RELATED_TO]->(shared:Concept)
               <-[:RELATED_TO]-(candidate:Paper)
         WHERE NOT candidate.id IN $ids
+          AND NOT ($exclude_generic AND coalesce(shared.generic, false))
         WITH candidate,
              collect(DISTINCT shared.name) AS shared_names,
              collect(DISTINCT query_paper.id) AS supporting_ids
         WHERE size(shared_names) >= $min_shared
           AND size(supporting_ids) >= $min_support
-          AND NOT EXISTS {
-              MATCH (query_paper:Paper)-[:CITES]-(candidate)
+          AND NOT EXISTS {{
+              MATCH (query_paper:Paper)-[:{hole_edges}]-(candidate)
               WHERE query_paper.id IN $ids
-          }
+          }}
         OPTIONAL MATCH (candidate)-[:RELATED_TO]->(candidate_concept:Concept)
+        WHERE NOT ($exclude_generic AND coalesce(candidate_concept.generic, false))
         WITH candidate, shared_names, supporting_ids,
              count(DISTINCT candidate_concept) AS candidate_concepts
         RETURN candidate.id AS id,
@@ -104,11 +110,12 @@ def generate_hypotheses(driver, query, top_k=5):
     """
     with driver.session() as session:
         records = list(session.run(
-            cypher,
+            concept_cypher(cypher),
             ids=neural_ids,
             min_shared=HYPOTHESIS_MIN_SHARED_CONCEPTS,
             min_support=HYPOTHESIS_MIN_QUERY_SUPPORT,
             candidate_pool=max(top_k, HYPOTHESIS_CANDIDATE_POOL),
+            exclude_generic=CONCEPT_EXCLUDE_GENERIC,
         ))
 
     candidates = []

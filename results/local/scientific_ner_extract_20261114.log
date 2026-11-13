@@ -1,0 +1,13 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  87%|########6 | 173/199 [00:00<00:00, 1705.15it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 1783.72it/s]
+{
+  "papers": 47619,
+  "entities": 1225433,
+  "by_type": {
+    "Method": 379395,
+    "Task": 281281,
+    "OtherScientificTerm": 375928,
+    "Material": 115235,
+    "Metric": 73594
+  },
+  "empty_papers": 4
+}

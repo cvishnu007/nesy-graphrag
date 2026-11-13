@@ -1,0 +1,31 @@
+Judged 4/82
+Judged 7/82
+Judged 11/82
+Judged 15/82
+Judged 16/82
+Judged 20/82
+Judged 22/82
+Judged 26/82
+Judged 29/82
+Judged 33/82
+Judged 35/82
+Judged 39/82
+Judged 43/82
+Judged 45/82
+Judged 49/82
+Judged 53/82
+Judged 54/82
+Judged 58/82
+Judged 61/82
+Judged 63/82
+Judged 67/82
+Judged 69/82
+Judged 73/82
+Judged 75/82
+Judged 79/82
+Judged 82/82
+bm25                       ndcg@10=0.5288 p@10=0.6286 recall@20=0.3733 map=0.2616 unjudged@20=0.000
+rrf_ta_bm25                ndcg@10=0.4874 p@10=0.5714 recall@20=0.3448 map=0.2346 unjudged@20=0.000
+full_ta_bm25_similar       ndcg@10=0.4756 p@10=0.6000 recall@20=0.3442 map=0.2282 unjudged@20=0.000
+production_absolute        ndcg@10=0.4489 p@10=0.5071 recall@20=0.3074 map=0.1972 unjudged@20=0.000
+vector_abstract            ndcg@10=0.4374 p@10=0.5143 recall@20=0.3093 map=0.1970 unjudged@20=0.000

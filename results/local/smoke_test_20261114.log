@@ -1,0 +1,82 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  88%|████████▊ | 176/199 [00:00<00:00, 1753.38it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 1782.48it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3738.21it/s]
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|██████████| 106/106 [00:00<00:00, 3893.48it/s]
+SMOKE {
+ "review": {
+  "papers": 5,
+  "sources": [
+   "both",
+   "lexical",
+   "neural",
+   "symbolic"
+  ],
+  "claims": 6,
+  "stats": {
+   "total_claims": 6,
+   "grounded_claims": 6,
+   "unsupported_claims": 0,
+   "total_citations": 12,
+   "valid_citations": 12,
+   "invalid_citations": 0,
+   "citation_precision": 1.0,
+   "claim_coverage": 1.0,
+   "valid_output": true,
+   "generation_attempts": 1
+  }
+ },
+ "review_seconds": 38.1,
+ "contradict": [
+  {
+   "method": "nli_sentence_pairs",
+   "verdict": "DIFFERENT SCOPE",
+   "valid": true,
+   "confidence": 1.0,
+   "nli": 0.9971,
+   "structured": true
+  },
+  {
+   "method": "nli_sentence_pairs",
+   "verdict": "DIFFERENT SCOPE",
+   "valid": true,
+   "confidence": 1.0,
+   "nli": 0.9832,
+   "structured": true
+  },
+  {
+   "method": "nli_sentence_pairs",
+   "verdict": "DIFFERENT SCOPE",
+   "valid": true,
+   "confidence": 1.0,
+   "nli": 0.4218,
+   "structured": true
+  },
+  {
+   "method": "nli_sentence_pairs",
+   "verdict": "DIFFERENT SCOPE",
+   "valid": true,
+   "confidence": 1.0,
+   "nli": 0.2543,
+   "structured": true
+  },
+  {
+   "method": "nli_sentence_pairs",
+   "verdict": "CONTRADICTION",
+   "valid": true,
+   "confidence": 1.0,
+   "nli": 0.0771,
+   "structured": true
+  }
+ ],
+ "contradict_seconds": 42.1,
+ "hypothesis": {
+  "accepted": 5,
+  "rejected": 0,
+  "first": [
+   "fraud detection",
+   "real-world datasets",
+   "camouflage",
+   "edges"
+  ]
+ },
+ "hypothesis_seconds": 15.2
+}

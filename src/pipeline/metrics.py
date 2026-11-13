@@ -30,8 +30,10 @@ from typing import Any
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 
+from src.pipeline.concepts import concept_cypher
 from src.pipeline.verdicts import is_confident_contradiction
 from src.utils.config import (
+    CONCEPT_EXCLUDE_GENERIC,
     CONTRADICTION_MIN_CONFIDENCE,
     EVALUATION_END_YEAR,
     EVALUATION_START_YEAR,
@@ -288,6 +290,34 @@ def compute_rdi(
 # 5. HYPOTHESIS NOVELTY SCORE (HNS)
 # ─────────────────────────────────────────────────────────────
 
+_HNS_QUERY = """
+    MATCH (h:Paper {id: $hid})-[:RELATED_TO]->(hc:Concept)
+    MATCH (q:Paper)-[:RELATED_TO]->(qc:Concept)
+    WHERE q.id IN $qids AND hc <> qc
+    MATCH path = shortestPath((hc)-[:RELATED_TO*..6]-(qc))
+    WITH length(path) AS pathLen
+    ORDER BY pathLen ASC
+    LIMIT 1
+    RETURN pathLen
+"""
+
+_HNS_QUERY_EXCLUDING_GENERIC = """
+    MATCH (h:Paper {id: $hid})-[:RELATED_TO]->(hc:Concept)
+    WHERE NOT coalesce(hc.generic, false)
+    WITH collect(hc) AS starts
+    MATCH (q:Paper)-[:RELATED_TO]->(qc:Concept)
+    WHERE q.id IN $qids AND NOT coalesce(qc.generic, false)
+    WITH starts, collect(DISTINCT qc) AS ends
+    UNWIND starts AS hc
+    MATCH path = SHORTEST 1 (hc)(()-[:RELATED_TO]-(n) WHERE NOT coalesce(n.generic, false)){1,6}(qc)
+    WHERE qc IN ends AND hc <> qc
+    WITH length(path) AS pathLen
+    ORDER BY pathLen ASC
+    LIMIT 1
+    RETURN pathLen
+"""
+
+
 def compute_hns(
     driver,
     hypotheses: list,
@@ -340,16 +370,17 @@ def compute_hns(
     try:
         with driver.session() as session:
             for hid in hyp_ids:
-                result = session.run("""
-                    MATCH (h:Paper {id: $hid})-[:RELATED_TO]->(hc:Concept)
-                    MATCH (q:Paper)-[:RELATED_TO]->(qc:Concept)
-                    WHERE q.id IN $qids AND hc <> qc
-                    MATCH path = shortestPath((hc)-[*..6]-(qc))
-                    WITH length(path) AS pathLen
-                    ORDER BY pathLen ASC
-                    LIMIT 1
-                    RETURN pathLen
-                """, hid=hid, qids=query_paper_ids)
+                # Paths run only through concept links. With exclusion on,
+                # concepts flagged generic (e.g. "this paper") are skipped
+                # during traversal; otherwise nearly every pair is two hops
+                # apart. The inline quantified-path predicate keeps the search
+                # bidirectional; an all(nodes(path)) filter forces Neo4j into
+                # an exhaustive search that took minutes per hypothesis.
+                result = session.run(
+                    concept_cypher(_HNS_QUERY_EXCLUDING_GENERIC if CONCEPT_EXCLUDE_GENERIC else _HNS_QUERY),
+                    hid=hid, qids=query_paper_ids,
+                    exclude_generic=CONCEPT_EXCLUDE_GENERIC,
+                )
 
                 record = result.single()
                 if record and record["pathLen"] > 0:

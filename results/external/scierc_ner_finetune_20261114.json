@@ -1,0 +1,126 @@
+{
+  "base": "allenai/scibert_scivocab_uncased",
+  "seed": 13,
+  "epochs": 10,
+  "lr": 5e-05,
+  "batch_size": 16,
+  "train_sentences": 1861,
+  "dev_sentences": 275,
+  "test_sentences": 551,
+  "selection": "best dev typed exact-span F1; test scored once",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 108.557,
+      "dev_typed_f1": 0.4958
+    },
+    {
+      "epoch": 2,
+      "train_loss": 38.527,
+      "dev_typed_f1": 0.6149
+    },
+    {
+      "epoch": 3,
+      "train_loss": 20.719,
+      "dev_typed_f1": 0.609
+    },
+    {
+      "epoch": 4,
+      "train_loss": 11.294,
+      "dev_typed_f1": 0.6228
+    },
+    {
+      "epoch": 5,
+      "train_loss": 7.022,
+      "dev_typed_f1": 0.6359
+    },
+    {
+      "epoch": 6,
+      "train_loss": 3.965,
+      "dev_typed_f1": 0.6406
+    },
+    {
+      "epoch": 7,
+      "train_loss": 2.517,
+      "dev_typed_f1": 0.6379
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.67,
+      "dev_typed_f1": 0.6597
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.928,
+      "dev_typed_f1": 0.6605
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.555,
+      "dev_typed_f1": 0.657
+    }
+  ],
+  "best_dev_typed_f1": 0.6605,
+  "training_seconds": 264,
+  "test": {
+    "typed": {
+      "precision": 0.6147,
+      "recall": 0.6647,
+      "f1": 0.6387,
+      "gold": 1685,
+      "predicted": 1822,
+      "per_type": {
+        "Task": {
+          "precision": 0.5753,
+          "recall": 0.654,
+          "f1": 0.6121,
+          "gold": 263,
+          "predicted": 299
+        },
+        "Method": {
+          "precision": 0.7309,
+          "recall": 0.6884,
+          "f1": 0.709,
+          "gold": 430,
+          "predicted": 405
+        },
+        "Metric": {
+          "precision": 0.6203,
+          "recall": 0.6901,
+          "f1": 0.6533,
+          "gold": 71,
+          "predicted": 79
+        },
+        "Material": {
+          "precision": 0.5893,
+          "recall": 0.6266,
+          "f1": 0.6074,
+          "gold": 158,
+          "predicted": 168
+        },
+        "OtherScientificTerm": {
+          "precision": 0.5366,
+          "recall": 0.6034,
+          "f1": 0.5681,
+          "gold": 522,
+          "predicted": 587
+        },
+        "Generic": {
+          "precision": 0.6655,
+          "recall": 0.7842,
+          "f1": 0.72,
+          "gold": 241,
+          "predicted": 284
+        }
+      }
+    },
+    "untyped_span": {
+      "precision": 0.7184,
+      "recall": 0.7769,
+      "f1": 0.7465,
+      "gold": 1685,
+      "predicted": 1822
+    }
+  },
+  "model_dir": "models\\scibert-scierc-ner"
+}

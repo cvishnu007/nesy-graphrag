@@ -1,0 +1,27 @@
+{
+  "frozen_at_utc": "2026-11-13T14:13:45.438078+00:00",
+  "selected_variant": "full_ta_bm25_similar",
+  "selected_spec": {
+    "neural": true,
+    "collection": "s2_papers_specter_ta",
+    "graph": "relative",
+    "margin": 0.03,
+    "edges": [
+      "CITES",
+      "SIMILAR_TO"
+    ],
+    "limit": 50,
+    "lexical_weight": 1.0
+  },
+  "selection_split": "dev",
+  "selection_metric": "ndcg@10 with pool-extended judgments",
+  "dev_evidence_sha256": "1da52a3a480d633d782360c1134a22ced7232990e4cdb2a217291b9144cb9433",
+  "test_comparisons": [
+    "vector_abstract",
+    "production_absolute",
+    "bm25",
+    "rrf_ta_bm25",
+    "full_ta_bm25_similar"
+  ],
+  "note": "Frozen before any test-split retrieval of new variants. Test is run once; no further tuning."
+}

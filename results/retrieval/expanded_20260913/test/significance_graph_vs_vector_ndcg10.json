@@ -1,0 +1,13 @@
+{
+  "challenger": "graph",
+  "reference": "vector",
+  "metric": "ndcg@10",
+  "pair_count": 14,
+  "mean_delta": -0.02173912169070158,
+  "bootstrap_95_ci": [
+    -0.12854078907269903,
+    0.08356447869743763
+  ],
+  "bootstrap_probability_positive": 0.34778,
+  "exact_two_sided_randomization_p": 0.704345703125
+}

@@ -2,6 +2,8 @@
 
 NeSy-GraphRAG is a research-assistant prototype for automated literature review and hypothesis generation. It combines neural retrieval with symbolic graph validation and sentence-level provenance so generated review claims remain traceable to verified abstract evidence.
 
+**Start here:** [AGENT_HANDOFF.md](AGENT_HANDOFF.md) is the canonical continuation document for a new developer or chat. It states the Phase 1 scope, live data/store snapshot, completed work, incomplete evaluation, safety rules, and exact next commands. [PROJECT_STATUS.md](PROJECT_STATUS.md) is the short current-status view; [SETUP.md](SETUP.md) is the clone-to-running-environment guide.
+
 Local Ollama generation, BM25, matched-context RAG comparison, and portable reasoning reproduction are implemented. See the [local evaluation runbook](docs/LOCAL_EVALUATION.md) for the September 13 work and reproducible commands. Current research work focuses on independent judgment review, generated-output evaluation, controlled experiments, and measured scaling. PDF ingestion is not part of the current scope.
 
 ## What It Does
@@ -21,7 +23,9 @@ Local Ollama generation, BM25, matched-context RAG comparison, and portable reas
 
 ## Current Status
 
-**September 14 pause:** partial work is retained on `feat/local-evaluation`. Laptop-only services/models and expanded stores were removed at the user's request; original 8,850-paper data was restored. Retrieval grading is 778/1,145 complete; final expanded scoring and matched-RAG runs remain unfinished. See [Chinmay.md](Chinmay.md) for the full handoff.
+**November 14 update:** retrieval now uses BGE-base with BM25 fusion and graph expansion (project test NDCG@10 0.619 vs 0.449 before, p = 0.004; strongest method on the SciDocs and LitSearch public benchmarks). Concepts now come from a SciBERT model fine-tuned on SciERC (typed F1 0.639). Contradiction candidates use sentence-level NLI with evidence. See [docs/RESULTS.md](docs/RESULTS.md).
+
+**November 1 reconciliation:** the current local corpus and stores contain 47,619 clean/NER/Chroma/Neo4j papers with 22,370 citation edges. Retrieval grading is still 778/1,145 complete; final expanded scoring and matched-RAG runs remain unfinished. See [AGENT_HANDOFF.md](AGENT_HANDOFF.md) for the authoritative handoff rather than historical contributor logs.
 
 
 See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the single source of truth on implemented capabilities, missing work, limitations, and future priorities.
@@ -34,7 +38,7 @@ Short version:
 - ChromaDB indexing is implemented and local collections exist.
 - Neo4j graph loading code is implemented.
 - Literature review, contradiction, hypothesis, metrics, and baseline comparison modules exist.
-- The teammate’s August 31 snapshot contains 47,619 clean papers. The September 13 Mac fetch produced 52,820 raw / 47,627 clean papers; see the current status report for store verification.
+- The reconciled local snapshot contains 52,822 raw and 47,619 clean papers. Historical logs may contain different September 13 counts from a separate machine/run; use [AGENT_HANDOFF.md](AGENT_HANDOFF.md) for the current state.
 - Hybrid rank fusion is implemented and returns neural, symbolic, and overlapping results.
 - Automatic CUDA/MPS/CPU selection and CPU worker controls are implemented.
 - CUDA embedding inference is verified on the local RTX 3050 with PyTorch `2.12.1+cu126`.
@@ -67,71 +71,25 @@ The latest teammate integration also includes a self-contained audit package und
 
 ```text
 nesy-graphrag/
-|-- app/
-|   `-- streamlit_app.py
+|-- app/streamlit_app.py      Streamlit UI for review, contradiction, and hypothesis modes
 |-- src/
-|   |-- evaluation/
-|   |   |-- retrievers/
-|   |   |-- benchmark_io.py
-|   |   |-- candidate_pool.py
-|   |   |-- finalize_judgments.py
-|   |   |-- ir_metrics.py
-|   |   |-- retrieval_runner.py
-|   |   `-- significance.py
-|   |-- ingestion/
-|   |   |-- arxiv_fetcher.py
-|   |   |-- semantic_scholar_fetcher.py
-|   |   |-- run_ingestion.py
-|   |   `-- ner_extractor.py
-|   |-- pipeline/
-|   |   |-- baseline_harness.py
-|   |   |-- contradiction.py
-|   |   |-- hypothesis.py
-|   |   |-- metrics.py
-|   |   |-- orchestrator.py
-|   |   |-- prompts.py
-|   |   |-- provenance.py
-|   |   |-- retrieval.py
-|   |   |-- results_logger.py
-|   |   |-- review.py
-|   |   |-- validator.py
-|   |   `-- verdicts.py
-|   |-- storage/
-|   |   |-- chroma_store.py
-|   |   `-- neo4j_store.py
-|   `-- utils/
-|       |-- compute.py
-|       |-- config.py
-|       `-- groq_client.py
-|-- evaluation/
-|   `-- benchmarks/
-|       |-- retrieval_queries.json
-|       |-- retrieval_judgments_draft.csv
-|       `-- retrieval_queries_judged.json
-|-- results/
-|   `-- retrieval/
-|-- tests/
-|   |-- conftest.py
-|   |-- test_benchmark_io.py
-|   |-- test_candidate_pool.py
-|   |-- test_chroma_scores.py
-|   |-- test_core_guards.py
-|   |-- test_finalize_judgments.py
-|   |-- test_graph_only_retrieval.py
-|   |-- test_hypotheses.py
-|   |-- test_ir_metrics.py
-|   |-- test_provenance.py
-|   |-- test_retrieval.py
-|   |-- test_retrieval_runner.py
-|   |-- test_significance.py
-|   |-- test_two_way_hybrid_retrieval.py
-|   `-- test_verdicts.py
-|-- PROJECT_STATUS.md
-|-- SETUP.md
-|-- VISHNU.md
-|-- pytest.ini
-|-- requirements.txt
-`-- README.md
+|   |-- ingestion/            Semantic Scholar (default) and arXiv fetchers, cleaning, spaCy NER
+|   |-- storage/              Chroma/SPECTER index and Neo4j graph loader/driver
+|   |-- pipeline/             retrieval, review, contradiction, hypothesis, provenance,
+|   |                         prompts, verdicts, validator, metrics, orchestrator
+|   |-- evaluation/           retrievers/ (BM25, graph-only, evaluation hybrid), IR metrics,
+|   |                         significance, frozen-pool grading (refresh_retrieval),
+|   |                         matched_rag, reasoning benchmarks/runners, annotation tooling,
+|   |                         semantic support, SciFact, model comparisons, audits
+|   `-- utils/                config, compute, provider-neutral llm_client, groq_client
+|-- evaluation/benchmarks/    retrieval queries and judgments, SciFact support benchmark
+|-- results/                  retrieval, reasoning, and local verification artifacts
+|-- teammate2/                self-contained AI-reference reasoning evidence package
+|-- tests/                    pytest suite (306 passing at the last full run)
+|-- docs/                     evaluation runbook, design specs, and plans
+|-- AGENT_HANDOFF.md          canonical continuation handoff
+|-- PROJECT_STATUS.md, SETUP.md, README.md
+`-- requirements.txt, pytest.ini, .env.example
 ```
 
 Generated data lives under `data/`, which is ignored by Git.
@@ -194,7 +152,7 @@ DATA_SOURCE=s2
 NEO4J_URI=neo4j://127.0.0.1:7687
 NEO4J_USERNAME=neo4j
 NEO4J_PASSWORD=your_password
-NEO4J_ALLOW_RESET=true
+NEO4J_ALLOW_RESET=false
 
 LLM_PROVIDER=ollama
 OLLAMA_BASE_URL=http://127.0.0.1:11434
@@ -246,7 +204,7 @@ meaningful query terms, and connects to at least 10 distinct vector seed papers.
 The stricter connection requirement is intentional: two-hop citation paths made
 the earlier value of two too permissive on the development queries.
 
-`NEO4J_ALLOW_RESET=true` is required only for a dedicated project database because graph loading clears the configured database.
+Keep `NEO4J_ALLOW_RESET=false` in `.env`. Enable it only for the single command that rebuilds a dedicated project database, because graph loading clears the configured database.
 
 ## Pipeline
 
@@ -320,7 +278,7 @@ Implemented in `src/pipeline/metrics.py`:
 - `RDI`: Reasoning Depth Index
 - `HNS`: Hypothesis Novelty Score
 
-These are prototype diagnostics, not established scientific benchmarks. TS uses valid passage citations and claim coverage, NBR measures graph participation rather than relevance, and HNS measures normalized graph-path distance rather than expert-assessed novelty. See `PROJECT_STATUS.md` for limitations.
+These are prototype diagnostics, not established scientific benchmarks. TS uses valid passage citations and claim coverage, NBR measures graph participation rather than relevance, and HNS measures normalized graph-path distance rather than expert-assessed novelty. See [AGENT_HANDOFF.md](AGENT_HANDOFF.md) for limitations and evidence boundaries.
 
 The review UI displays only `TS` and `ATD`, which are computed from that review
 run. `NBR`, `RDI`, and `HNS` remain backend diagnostics for retrieval analysis
@@ -328,7 +286,7 @@ or combined review/contradiction/hypothesis experiments.
 
 ## Scope Boundaries
 
-- The September 13 corpus is 47,627 cleaned Semantic Scholar records collected through 11 broad CSE topic queries, primarily abstracts and metadata. It is not a balanced taxonomy, a relevance-labeled corpus, or the million-scale full-text corpus proposed in the Phase 1 report.
+- The reconciled corpus is 47,619 cleaned Semantic Scholar records collected through 11 broad CSE topic queries, primarily abstracts and metadata. It is not a balanced taxonomy, a relevance-labeled corpus, or the million-scale full-text corpus proposed in the Phase 1 report.
 - The teammate’s historical expanded graph had 22,370 real citation edges across 47,619 papers. Topic smoke tests found useful vector results, but strict graph filtering retained a result for only one of 11 representative queries; scaling alone has not solved sparse graph contribution.
 - The project uses pretrained SPECTER embeddings and local Ollama `qwen2.5:3b-instruct` by default, with optional Groq hosting; it does not train or fine-tune a local reasoning model.
 - Review claims are traceable to deterministic sentence IDs from verified abstracts. Passage existence is enforced; semantic entailment quality is not yet benchmarked.
@@ -341,4 +299,4 @@ or combined review/contradiction/hypothesis experiments.
 - Rebuild the S2 Chroma collection before final evaluation if its vector count does not match the current cleaned S2 dataset.
 - Resource usage changes by stage: embedding can use the GPU, NER uses GPU when supported or parallel CPU otherwise, and API/Neo4j stages can be network or database bound.
 - Pytest unit tests use small in-memory driver doubles only to isolate failure/guard behavior; end-to-end checks use the real local Neo4j graph and Chroma index.
-- Use `PROJECT_STATUS.md` for planning updates instead of creating new phase/status files.
+- Update [AGENT_HANDOFF.md](AGENT_HANDOFF.md) and [PROJECT_STATUS.md](PROJECT_STATUS.md) together after material implementation, runtime, evaluation, or scope changes.

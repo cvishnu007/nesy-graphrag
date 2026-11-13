@@ -1,0 +1,169 @@
+Connected to Neo4j!
+{
+  "task": "scientific-entities",
+  "model": "models/scibert-scierc-ner",
+  "papers_with_entities": 47615,
+  "entity_nodes": 323624,
+  "mention_edges": 696390,
+  "generic_nodes": 17321,
+  "singleton_entities": 272346,
+  "by_type": {
+    "Method": 105715,
+    "Task": 78448,
+    "OtherScientificTerm": 106189,
+    "Material": 26810,
+    "Metric": 6462
+  },
+  "top_retained": [
+    [
+      476,
+      "sensors",
+      "OtherScientificTerm"
+    ],
+    [
+      472,
+      "computing",
+      "Task"
+    ],
+    [
+      464,
+      "blockchain",
+      "Method"
+    ],
+    [
+      453,
+      "convolutional neural network",
+      "Method"
+    ],
+    [
+      451,
+      "detection",
+      "Task"
+    ],
+    [
+      437,
+      "cyberattacks",
+      "OtherScientificTerm"
+    ],
+    [
+      436,
+      "engineering",
+      "Task"
+    ],
+    [
+      435,
+      "internet",
+      "OtherScientificTerm"
+    ],
+    [
+      428,
+      "software",
+      "OtherScientificTerm"
+    ],
+    [
+      421,
+      "network",
+      "OtherScientificTerm"
+    ],
+    [
+      418,
+      "robustness",
+      "Metric"
+    ],
+    [
+      414,
+      "edge computing",
+      "Method"
+    ],
+    [
+      407,
+      "science",
+      "Task"
+    ],
+    [
+      400,
+      "latency",
+      "Metric"
+    ],
+    [
+      399,
+      "digital",
+      "OtherScientificTerm"
+    ],
+    [
+      392,
+      "reliability",
+      "Metric"
+    ],
+    [
+      387,
+      "training",
+      "Task"
+    ],
+    [
+      385,
+      "communication",
+      "OtherScientificTerm"
+    ],
+    [
+      376,
+      "drug discovery",
+      "Task"
+    ],
+    [
+      374,
+      "system",
+      "Task"
+    ],
+    [
+      372,
+      "analysis",
+      "Task"
+    ],
+    [
+      369,
+      "devices",
+      "Method"
+    ],
+    [
+      369,
+      "cyber threats",
+      "OtherScientificTerm"
+    ],
+    [
+      361,
+      "edges",
+      "OtherScientificTerm"
+    ],
+    [
+      356,
+      "diagnosis",
+      "Task"
+    ],
+    [
+      355,
+      "computer vision tasks",
+      "Task"
+    ],
+    [
+      351,
+      "gnn",
+      "Method"
+    ],
+    [
+      350,
+      "robotics",
+      "Task"
+    ],
+    [
+      349,
+      "transformers",
+      "Method"
+    ],
+    [
+      347,
+      "medicine",
+      "Task"
+    ]
+  ]
+}

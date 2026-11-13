@@ -1,0 +1,13 @@
+{
+  "challenger": "hybrid",
+  "reference": "bm25",
+  "metric": "ndcg@10",
+  "pair_count": 6,
+  "mean_delta": -0.024323138168106814,
+  "bootstrap_95_ci": [
+    -0.21413600107221265,
+    0.15485138107228277
+  ],
+  "bootstrap_probability_positive": 0.4178,
+  "exact_two_sided_randomization_p": 0.8125
+}

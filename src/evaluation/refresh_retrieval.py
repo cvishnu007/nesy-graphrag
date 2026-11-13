@@ -34,12 +34,21 @@ def freeze_pool(directory):
     })
 
 
+def _matches_digest(data, digest):
+    """Accept exact bytes or a pure CRLF/LF difference from Git checkout."""
+    if hashlib.sha256(data).hexdigest() == digest:
+        return True
+    lf = data.replace(b'\r\n', b'\n')
+    return any(hashlib.sha256(value).hexdigest() == digest
+               for value in (lf, lf.replace(b'\n', b'\r\n')))
+
+
 def verify_pool(directory):
     expected = json.loads((directory / 'pool_manifest.json').read_text())
     if set(expected) != set(POOL_FILES):
         raise ValueError('Pool manifest changed')
     for name, digest in expected.items():
-        if hashlib.sha256((directory / name).read_bytes()).hexdigest() != digest:
+        if not _matches_digest((directory / name).read_bytes(), digest):
             raise ValueError(f'Frozen pool artifact changed: {name}')
 
 
@@ -135,7 +144,7 @@ def runtime_retrieval_settings():
     }
 
 
-def prepare(directory):
+def prepare(directory, benchmark_path='evaluation/benchmarks/retrieval_queries.json'):
     from src.evaluation.benchmark_io import load_benchmark
     from src.evaluation.candidate_pool import build_retrievers,pool_benchmark,write_pool_outputs
     from src.storage.chroma_store import get_collection
@@ -149,8 +158,9 @@ def prepare(directory):
     try:
         with driver.session() as session: graph_ids={r['id'] for r in session.run('MATCH (p:Paper) RETURN p.id AS id')}
         if set(get_collection().get(include=[])['ids'])!=ids or graph_ids!=ids: raise ValueError('Corpus/Chroma/Neo4j ID parity required before pooling')
-        benchmark=load_benchmark('evaluation/benchmarks/retrieval_queries.json')
-        benchmark['benchmark_version']='0.3-expanded-ai-reference'
+        benchmark=load_benchmark(benchmark_path)
+        benchmark['source_benchmark_version']=benchmark['benchmark_version']
+        benchmark['benchmark_version']='0.3-expanded-ai-reference' if benchmark['benchmark_version'].startswith('0.1') else benchmark['benchmark_version']+'-ai-reference'
         benchmark['status']='pool_frozen_pending_ai_reference_judgments_and_human_review'
         benchmark['corpus'].update({'paper_count':len(ids),'sha256':hashlib.sha256(corpus_bytes).hexdigest()})
         for q in benchmark['queries']: q['judgments']={}
@@ -171,8 +181,9 @@ def main(argv=None):
     parser.add_argument('stage',choices=['prepare','grade','evaluate'])
     parser.add_argument('--directory',type=Path,required=True)
     parser.add_argument('--batch-size',type=int,default=4)
+    parser.add_argument('--benchmark',default='evaluation/benchmarks/retrieval_queries.json',help='Query file used by prepare')
     args=parser.parse_args(argv); directory=args.directory
-    if args.stage=='prepare': prepare(directory); return 0
+    if args.stage=='prepare': prepare(directory, args.benchmark); return 0
     verify_pool(directory)
     with (directory/'candidates.csv').open(newline='') as stream: rows=list(csv.DictReader(stream))
     if args.stage=='grade':

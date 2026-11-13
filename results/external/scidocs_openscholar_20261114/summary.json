@@ -1,0 +1,162 @@
+{
+  "benchmark": "scidocs",
+  "label_source": "citation/co-view derived (BEIR SciDocs)",
+  "paper_count": 25657,
+  "query_count": 1000,
+  "created_at_utc": "2026-11-13T20:20:22.431665+00:00",
+  "device": "cuda",
+  "models": {
+    "specter": {
+      "repo": "sentence-transformers/allenai-specter",
+      "kind": "st",
+      "doc": "sep"
+    },
+    "bge_base": {
+      "repo": "BAAI/bge-base-en-v1.5",
+      "kind": "st",
+      "doc": "dot",
+      "query_prefix": "Represent this sentence for searching relevant passages: "
+    },
+    "openscholar": {
+      "repo": "OpenSciLM/OpenScholar_Retriever",
+      "kind": "mean",
+      "doc": "dot"
+    }
+  },
+  "timing": {
+    "specter": {
+      "corpus_encode_seconds": 0.1,
+      "cached": true
+    },
+    "bge_base": {
+      "corpus_encode_seconds": 0.1,
+      "cached": true
+    },
+    "openscholar": {
+      "corpus_encode_seconds": 154.3,
+      "cached": false
+    }
+  },
+  "methods": {
+    "bm25": {
+      "ndcg@10": 0.1520510358999793,
+      "recall@5": 0.11053333333333333,
+      "recall@20": 0.2121333333333333,
+      "recall@100": 0.34953333333333336,
+      "map": 0.10404207470846118,
+      "mrr": 0.28272280491782076
+    },
+    "specter": {
+      "ndcg@10": 0.15094765071340557,
+      "recall@5": 0.10896666666666667,
+      "recall@20": 0.2204,
+      "recall@100": 0.41303333333333336,
+      "map": 0.1055774771216374,
+      "mrr": 0.2855424709744829
+    },
+    "bge_base": {
+      "ndcg@10": 0.2184369576507394,
+      "recall@5": 0.16428333333333334,
+      "recall@20": 0.29960000000000003,
+      "recall@100": 0.4930833333333333,
+      "map": 0.1544828050549179,
+      "mrr": 0.37034820633280774
+    },
+    "openscholar": {
+      "ndcg@10": 0.16318204339872577,
+      "recall@5": 0.11808333333333335,
+      "recall@20": 0.23325,
+      "recall@100": 0.4083833333333333,
+      "map": 0.11160916820972887,
+      "mrr": 0.2988223579104123
+    },
+    "rrf_bm25_specter": {
+      "ndcg@10": 0.18011597413037864,
+      "recall@5": 0.13538333333333333,
+      "recall@20": 0.26055,
+      "recall@100": 0.43776666666666664,
+      "map": 0.127011721721722,
+      "mrr": 0.3292746626110299
+    },
+    "rrf_bm25_bge_base": {
+      "ndcg@10": 0.19760722635355213,
+      "recall@5": 0.14693333333333333,
+      "recall@20": 0.2768833333333333,
+      "recall@100": 0.46818333333333334,
+      "map": 0.14268513204296765,
+      "mrr": 0.3502051978282522
+    },
+    "rrf_bm25_openscholar": {
+      "ndcg@10": 0.17673714892825534,
+      "recall@5": 0.12953333333333333,
+      "recall@20": 0.24925,
+      "recall@100": 0.40995,
+      "map": 0.1223699447375477,
+      "mrr": 0.3156500667183662
+    }
+  },
+  "significance_vs_specter": {
+    "bm25_vs_specter_ndcg@10": {
+      "pair_count": 1000,
+      "mean_delta": 0.0011033851865737195,
+      "bootstrap_95_ci": [
+        -0.010513873319201629,
+        0.0128413541105838
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 0.8545072746362682
+    },
+    "bge_base_vs_specter_ndcg@10": {
+      "pair_count": 1000,
+      "mean_delta": 0.06748930693733382,
+      "bootstrap_95_ci": [
+        0.05550816328879607,
+        0.0795184297219379
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "openscholar_vs_specter_ndcg@10": {
+      "pair_count": 1000,
+      "mean_delta": 0.012234392685320183,
+      "bootstrap_95_ci": [
+        0.0014931273229443773,
+        0.023160061440181883
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 0.026348682565871705
+    },
+    "rrf_bm25_specter_vs_specter_ndcg@10": {
+      "pair_count": 1000,
+      "mean_delta": 0.029168323416973077,
+      "bootstrap_95_ci": [
+        0.020621555304662663,
+        0.037799985127144685
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bm25_bge_base_vs_specter_ndcg@10": {
+      "pair_count": 1000,
+      "mean_delta": 0.04665957564014657,
+      "bootstrap_95_ci": [
+        0.034740949367178565,
+        0.05847792357783478
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bm25_openscholar_vs_specter_ndcg@10": {
+      "pair_count": 1000,
+      "mean_delta": 0.025789498214849774,
+      "bootstrap_95_ci": [
+        0.014576669712177765,
+        0.037118728240697264
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    }
+  },
+  "subsets": {},
+  "notes": "specter2_base is the SPECTER2 base model without its task adapter (the adapters library would downgrade transformers in this environment)."
+}

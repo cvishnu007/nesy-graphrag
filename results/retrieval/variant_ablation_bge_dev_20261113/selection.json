@@ -1,0 +1,37 @@
+{
+  "frozen_at_utc": "2026-11-13T18:10:50.591779+00:00",
+  "selected_variant": "full_bge_bm25_similar",
+  "selected_spec": {
+    "neural": true,
+    "graph": "relative",
+    "margin": 0.03,
+    "edges": [
+      "CITES",
+      "SIMILAR_TO"
+    ],
+    "limit": 50,
+    "lexical_weight": 1.0
+  },
+  "embedding": {
+    "model": "BAAI/bge-base-en-v1.5",
+    "collection": "s2_papers_bge",
+    "text_mode": "title_abstract_plain",
+    "query_prefix": "Represent this sentence for searching relevant passages: "
+  },
+  "selection_split": "dev",
+  "selection_metric": "ndcg@10, pool-extended (union of both dev extensions)",
+  "dev_evidence_sha256": "ce7e023e132762d10039f38aaacda417389b450b94350947425812d060c5eebc",
+  "predeclared_test_comparisons": [
+    "bge",
+    "rrf_bge_bm25",
+    "full_bge_bm25_similar",
+    "production_absolute",
+    "vector_abstract",
+    "bm25"
+  ],
+  "external_evidence": [
+    "results/external/scidocs_20261113",
+    "results/external/litsearch_20261113"
+  ],
+  "note": "Frozen before test retrieval with BGE. Test run once."
+}

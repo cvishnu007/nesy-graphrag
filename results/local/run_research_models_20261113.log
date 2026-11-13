@@ -1,0 +1,5 @@
+available NER models: ['anlp/SciERC_trained_Scibert', 'roccas98/Scibert_finetuned_scierc', 'anlp/SciERC_trained_SciDeBERTa']
+RUN -m src.ingestion.scientific_ner evaluate --models anlp/SciERC_trained_Scibert roccas98/Scibert_finetuned_scierc anlp/SciERC_trained_SciDeBERTa spacy --output results/external/scierc_ner_20261113.json
+EXIT 0 results/local/scierc_ner_eval_20261113.log
+selected NER: anlp/SciERC_trained_Scibert 0.0
+RUN -m src.ingestion.scientific_ner extract --model anlp/SciERC_trained_Scibert --output data/s2_ner_scientific.json

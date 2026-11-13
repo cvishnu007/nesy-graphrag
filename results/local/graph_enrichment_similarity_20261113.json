@@ -1,0 +1,15 @@
+{
+  "task": "similarity",
+  "collection": "s2_papers",
+  "paper_count": 47619,
+  "k": 5,
+  "edge_count": 238095,
+  "score_quantiles": {
+    "0.0": 0.729544,
+    "0.1": 0.864416,
+    "0.5": 0.907078,
+    "0.9": 0.940039,
+    "1.0": 1.000001
+  },
+  "written": 238095
+}

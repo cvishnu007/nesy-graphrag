@@ -1,0 +1,328 @@
+{
+  "benchmark_version": "0.4-stratified-draft",
+  "status": "draft_pending_team_review",
+  "corpus": {
+    "source": "s2",
+    "paper_count": 47619,
+    "years": "2020-2025",
+    "collection": "s2_papers"
+  },
+  "query_provenance": {
+    "author": "AI assistant proposal",
+    "team_review_required": true,
+    "design": "4 queries per ingestion topic (11 topics); 2 dev and 2 test per topic; specific research questions, not topic names",
+    "instructions": "Review, edit, or replace queries before pooling. Do not tune on test queries. Pool with a fresh directory via refresh_retrieval prepare."
+  },
+  "primary_metric": "ndcg@10",
+  "secondary_metric": "recall@20",
+  "queries": [
+    {
+      "query_id": "V2-01-1",
+      "split": "dev",
+      "topic": "graph neural networks",
+      "query": "graph neural networks for drug-target interaction prediction",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-01-2",
+      "split": "dev",
+      "topic": "graph neural networks",
+      "query": "scalable training of graph neural networks on large graphs",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-01-3",
+      "split": "test",
+      "topic": "graph neural networks",
+      "query": "graph neural networks for combinatorial optimization",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-01-4",
+      "split": "test",
+      "topic": "graph neural networks",
+      "query": "expressive power of message passing neural networks",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-02-1",
+      "split": "dev",
+      "topic": "artificial intelligence and machine learning",
+      "query": "uncertainty quantification in deep neural networks",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-02-2",
+      "split": "dev",
+      "topic": "artificial intelligence and machine learning",
+      "query": "few-shot learning with meta-learning",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-02-3",
+      "split": "test",
+      "topic": "artificial intelligence and machine learning",
+      "query": "continual learning and catastrophic forgetting",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-02-4",
+      "split": "test",
+      "topic": "artificial intelligence and machine learning",
+      "query": "fairness and bias mitigation in machine learning models",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-03-1",
+      "split": "dev",
+      "topic": "cybersecurity",
+      "query": "deep learning for network intrusion detection",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-03-2",
+      "split": "dev",
+      "topic": "cybersecurity",
+      "query": "malware detection using machine learning",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-03-3",
+      "split": "test",
+      "topic": "cybersecurity",
+      "query": "phishing website detection",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-03-4",
+      "split": "test",
+      "topic": "cybersecurity",
+      "query": "adversarial attacks on deep learning based security systems",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-04-1",
+      "split": "dev",
+      "topic": "computer networks",
+      "query": "software-defined networking traffic engineering",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-04-2",
+      "split": "dev",
+      "topic": "computer networks",
+      "query": "resource allocation in 5G and 6G wireless networks",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-04-3",
+      "split": "test",
+      "topic": "computer networks",
+      "query": "routing protocols for wireless sensor networks",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-04-4",
+      "split": "test",
+      "topic": "computer networks",
+      "query": "network slicing for mobile edge computing",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-05-1",
+      "split": "dev",
+      "topic": "databases",
+      "query": "learned index structures for database systems",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-05-2",
+      "split": "dev",
+      "topic": "databases",
+      "query": "query optimization with machine learning",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-05-3",
+      "split": "test",
+      "topic": "databases",
+      "query": "blockchain-based data management and integrity",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-05-4",
+      "split": "test",
+      "topic": "databases",
+      "query": "natural language interfaces to relational databases",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-06-1",
+      "split": "dev",
+      "topic": "software engineering",
+      "query": "automated program repair",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-06-2",
+      "split": "dev",
+      "topic": "software engineering",
+      "query": "deep learning for code generation and completion",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-06-3",
+      "split": "test",
+      "topic": "software engineering",
+      "query": "software defect prediction",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-06-4",
+      "split": "test",
+      "topic": "software engineering",
+      "query": "test case generation with large language models",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-07-1",
+      "split": "dev",
+      "topic": "cloud computing",
+      "query": "task scheduling in cloud computing",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-07-2",
+      "split": "dev",
+      "topic": "cloud computing",
+      "query": "serverless computing performance and cold starts",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-07-3",
+      "split": "test",
+      "topic": "cloud computing",
+      "query": "energy-efficient virtual machine placement in data centers",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-07-4",
+      "split": "test",
+      "topic": "cloud computing",
+      "query": "edge-cloud offloading for Internet of Things applications",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-08-1",
+      "split": "dev",
+      "topic": "natural language processing",
+      "query": "retrieval-augmented generation for question answering",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-08-2",
+      "split": "dev",
+      "topic": "natural language processing",
+      "query": "hallucination in large language models",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-08-3",
+      "split": "test",
+      "topic": "natural language processing",
+      "query": "multilingual and low-resource machine translation",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-08-4",
+      "split": "test",
+      "topic": "natural language processing",
+      "query": "sentiment analysis of social media text",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-09-1",
+      "split": "dev",
+      "topic": "computer vision",
+      "query": "vision transformers for image classification",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-09-2",
+      "split": "dev",
+      "topic": "computer vision",
+      "query": "object detection in autonomous driving",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-09-3",
+      "split": "test",
+      "topic": "computer vision",
+      "query": "medical image segmentation with deep learning",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-09-4",
+      "split": "test",
+      "topic": "computer vision",
+      "query": "self-supervised visual representation learning",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-10-1",
+      "split": "dev",
+      "topic": "data science",
+      "query": "time series forecasting with deep learning",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-10-2",
+      "split": "dev",
+      "topic": "data science",
+      "query": "anomaly detection in multivariate sensor data",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-10-3",
+      "split": "test",
+      "topic": "data science",
+      "query": "explainable machine learning for tabular data",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-10-4",
+      "split": "test",
+      "topic": "data science",
+      "query": "big data analytics for healthcare",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-11-1",
+      "split": "dev",
+      "topic": "operating systems",
+      "query": "kernel-level security and isolation mechanisms",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-11-2",
+      "split": "dev",
+      "topic": "operating systems",
+      "query": "memory management for virtualized systems",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-11-3",
+      "split": "test",
+      "topic": "operating systems",
+      "query": "real-time operating systems for embedded devices",
+      "judgments": {}
+    },
+    {
+      "query_id": "V2-11-4",
+      "split": "test",
+      "topic": "operating systems",
+      "query": "container orchestration and resource isolation",
+      "judgments": {}
+    }
+  ]
+}

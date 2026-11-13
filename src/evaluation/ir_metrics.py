@@ -154,6 +154,18 @@ def unjudged_rate_at_k(
     return unjudged / len(top_k)
 
 
+def condensed_ranking(
+    ranked_ids: Iterable[str],
+    judgments: Mapping[str, int],
+) -> list[str]:
+    """Drop unjudged documents (Sakai, SIGIR 2007 condensed-list evaluation).
+
+    Use when a system retrieves documents outside the judged pool; report the
+    unjudged rate alongside, because condensed scores can overstate quality.
+    """
+    return [paper_id for paper_id in _unique_ranked_ids(ranked_ids) if paper_id in judgments]
+
+
 def evaluate_ranking(
     ranked_ids: Iterable[str],
     judgments: Mapping[str, int],

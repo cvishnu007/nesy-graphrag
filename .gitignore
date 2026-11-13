@@ -22,3 +22,9 @@ notebooks/.ipynb_checkpoints/
 # OS
 .DS_Store
 Thumbs.db
+
+# Raw per-query rankings from public benchmarks (large, regenerable with src.evaluation.external_benchmarks)
+results/external/**/rankings.jsonl
+
+# Locally trained model weights (regenerate with src.ingestion.train_scierc_ner)
+models/

@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 11880.70it/s]
+anlp/SciERC_trained_Scibert {"untyped_span": {"precision": 0.0, "recall": 0.0, "f1": 0.0}, "typed": {"precision": 0.0, "recall": 0.0, "f1": 0.0}}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  51%|#####1    | 102/199 [00:00<00:00, 991.59it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 1340.99it/s]
+roccas98/Scibert_finetuned_scierc {"untyped_span": {"precision": 0.0, "recall": 0.0, "f1": 0.0}, "typed": {"precision": 0.0, "recall": 0.0, "f1": 0.0}}
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|##########| 198/198 [00:00<00:00, 9076.40it/s]
+anlp/SciERC_trained_SciDeBERTa {"untyped_span": {"precision": 0.0, "recall": 0.0, "f1": 0.0}, "typed": {"precision": 0.0, "recall": 0.0, "f1": 0.0}}
+spacy {"untyped_span": {"precision": 0.2029, "recall": 0.4012, "f1": 0.2695}}

@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 3420.32it/s]
+models/scibert-scierc-ner {"untyped_span": {"precision": 0.7184, "recall": 0.7769, "f1": 0.7465}, "typed": {"precision": 0.6147, "recall": 0.6647, "f1": 0.6387}, "typed_without_generic": {"precision": 0.6053, "recall": 0.6447, "f1": 0.6244}}
+[transformers] The tokenizer you are loading from 'microsoft/deberta-v3-base' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+gliner:urchade/gliner_medium-v2.1 {"untyped_span": {"precision": 0.6186, "recall": 0.2724, "f1": 0.3782}, "typed": {"precision": 0.3922, "recall": 0.1727, "f1": 0.2398}, "typed_without_generic": {"precision": 0.3922, "recall": 0.2015, "f1": 0.2662}}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 9981.66it/s]
+anlp/SciERC_trained_Scibert {"untyped_span": {"precision": 0.2966, "recall": 0.2973, "f1": 0.297}, "typed": {"precision": 0.2937, "recall": 0.2944, "f1": 0.294}, "typed_without_generic": {"precision": 0.187, "recall": 0.187, "f1": 0.187}}
+spacy {"untyped_span": {"precision": 0.2029, "recall": 0.4012, "f1": 0.2695}}

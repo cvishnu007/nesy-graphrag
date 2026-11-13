@@ -1,0 +1,13 @@
+{
+  "challenger": "vector",
+  "reference": "bm25",
+  "metric": "ndcg@10",
+  "pair_count": 14,
+  "mean_delta": -0.0938268954990955,
+  "bootstrap_95_ci": [
+    -0.22039667189964435,
+    0.037224285038365376
+  ],
+  "bootstrap_probability_positive": 0.07924,
+  "exact_two_sided_randomization_p": 0.1923828125
+}

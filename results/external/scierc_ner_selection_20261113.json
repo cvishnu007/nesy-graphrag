@@ -1,0 +1,9 @@
+{
+  "selected": "anlp/SciERC_trained_Scibert",
+  "criterion": "typed exact-span F1 on SciERC test",
+  "scores": {
+    "anlp/SciERC_trained_Scibert": 0.0,
+    "roccas98/Scibert_finetuned_scierc": 0.0,
+    "anlp/SciERC_trained_SciDeBERTa": 0.0
+  }
+}

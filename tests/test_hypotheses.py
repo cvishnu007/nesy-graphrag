@@ -40,7 +40,8 @@ class PathSession:
     def __exit__(self, exc_type, exc_value, traceback):
         return False
 
-    def run(self, query, *, hid, qids):
+    def run(self, query, *, hid, qids, exclude_generic=False):
+        self.last_exclude_generic = exclude_generic
         return PathResult(self.path_lengths.get(hid))
 
 

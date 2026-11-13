@@ -1,8 +1,10 @@
 # Local demo and evaluation runbook
 
-**Paused September 14:** runtime services/models and expanded local stores described below were removed at the user’s request. The laptop is back to its original 8,850-paper data and `.env`. These are reinstall/rebuild and reproduction instructions, not a claim that the demo is currently running. See [Chinmay.md](../Chinmay.md) for cleanup and the 778/1,145 grading checkpoint.
+> Read [AGENT_HANDOFF.md](../AGENT_HANDOFF.md) first for the current scope, local store snapshot, incomplete checkpoints, and data-safety rules. This document describes evaluation/reproduction procedures. Historical macOS references are examples, not a requirement for the current Windows environment.
 
-This work uses a fresh Semantic Scholar download: **52,820 raw / 47,627 clean papers**, preserving all original 10,000 raw and 8,850 clean IDs. The teammate's 47,619-paper snapshot describes a different fetch. Abstracts and generated stores remain ignored by Git.
+**Current checkpoint:** retrieval grading remains paused at 778/1,145 labels. The current local data and stores have been reconciled to **52,822 raw / 47,619 clean / 47,619 NER / 47,619 Chroma / 47,619 Neo4j papers** with 22,370 citation edges. Ollama and Streamlit are stopped unless the operator starts them. The paused pool in `results/retrieval/expanded_20260913/` was frozen on a different 47,627-paper corpus. Resuming `grade`/`evaluate` is safe because they use only saved candidates and rankings, but `matched_rag` runs live on the current 47,619-paper stores, so label each result with its corpus. These commands are resumable/reproducible procedures, not a claim that a live demo is already running.
+
+Historical cleanup and macOS-specific notes remain in [Chinmay.md](../Chinmay.md). They do not override the current snapshot in [AGENT_HANDOFF.md](../AGENT_HANDOFF.md). Abstracts and generated stores remain ignored by Git.
 
 Run commands from the repository root. Activate the existing environment with `source venv/bin/activate` on macOS/Linux, or `.\venv\Scripts\Activate.ps1` on Windows, then use `python` below. Install `requirements.txt` and `en_core_web_sm` for a fresh environment. Do not recreate an existing environment.
 

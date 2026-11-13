@@ -1,0 +1,90 @@
+{
+  "split": "dev",
+  "extension_judgments": 121,
+  "judge": {
+    "provider": "ollama",
+    "model": "qwen2.5:3b-instruct",
+    "base_url": "http://127.0.0.1:11434",
+    "timeout_sec": 300,
+    "max_retries": 4,
+    "context_length": 8192,
+    "keep_alive": "2m",
+    "prompt_version": "blinded-title-abstract-1.2-ordered-grades",
+    "batch_size": 4,
+    "temperature": 0.0,
+    "max_tokens": 64,
+    "structured_output": "Ollama JSON schema; ordered integer grades bound to saved batch paper IDs"
+  },
+  "label_source": "local Ollama AI-reference labels (same judge as frozen pool)",
+  "frozen_benchmark_sha256": "d4712e76600856cb759847e896c930ebef5bbf99bf4d79ac31d05bc096c906b5",
+  "variants": {
+    "bge": {
+      "query_count": 6,
+      "ndcg@10": 0.6247508225224614,
+      "precision@10": 0.7333333333333334,
+      "recall@20": 0.3499573318722255,
+      "map": 0.2738849341594399,
+      "mrr": 0.9166666666666666,
+      "unjudged_rate@20": 0.0,
+      "per_query_ndcg@10": {
+        "Q001": 0.5571073043311724,
+        "Q002": 0.7974213651285714,
+        "Q003": 0.7877736340270853,
+        "Q004": 0.445915745504194,
+        "Q005": 0.594462366811667,
+        "Q006": 0.5658245193320781
+      }
+    },
+    "rrf_bge_bm25": {
+      "query_count": 6,
+      "ndcg@10": 0.6090755231714765,
+      "precision@10": 0.7000000000000001,
+      "recall@20": 0.2872984777240096,
+      "map": 0.21598100963339625,
+      "mrr": 0.8333333333333334,
+      "unjudged_rate@20": 0.0,
+      "per_query_ndcg@10": {
+        "Q001": 0.5369576157936193,
+        "Q002": 0.5114929244708022,
+        "Q003": 0.7041822171374262,
+        "Q004": 0.3820594871932735,
+        "Q005": 0.8146824772118209,
+        "Q006": 0.7050784172219171
+      }
+    },
+    "graph_relative_similar_bge": {
+      "query_count": 6,
+      "ndcg@10": 0.596818174597106,
+      "precision@10": 0.7666666666666666,
+      "recall@20": 0.3406829183424928,
+      "map": 0.2671796255763738,
+      "mrr": 0.75,
+      "unjudged_rate@20": 0.0,
+      "per_query_ndcg@10": {
+        "Q001": 0.6079303414800418,
+        "Q002": 0.6694331306907346,
+        "Q003": 0.6505956337573727,
+        "Q004": 0.40581035528933523,
+        "Q005": 0.5276655069911375,
+        "Q006": 0.7194740793740138
+      }
+    },
+    "full_bge_bm25_similar": {
+      "query_count": 6,
+      "ndcg@10": 0.6663143924368798,
+      "precision@10": 0.7666666666666666,
+      "recall@20": 0.3329067898216834,
+      "map": 0.2616686515903535,
+      "mrr": 0.9166666666666666,
+      "unjudged_rate@20": 0.0,
+      "per_query_ndcg@10": {
+        "Q001": 0.6905315401376445,
+        "Q002": 0.6694331306907346,
+        "Q003": 0.6652907408280684,
+        "Q004": 0.34896790232627495,
+        "Q005": 0.749292475390367,
+        "Q006": 0.8743705652481897
+      }
+    }
+  }
+}

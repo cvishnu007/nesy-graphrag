@@ -1,0 +1,14 @@
+scidocs: 25657 papers, 1000 queries
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 2107.32it/s]
+ranked specter {'corpus_encode_seconds': 151.9, 'cached': False}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 13202.15it/s]
+ranked specter2_base {'corpus_encode_seconds': 152.4, 'cached': False}
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 3067.40it/s]
+ranked minilm {'corpus_encode_seconds': 30.3, 'cached': False}
+minilm                   ndcg@10=0.2171 R@5=0.1588 R@20=0.3117 R@100=0.5097
+rrf_bm25_minilm          ndcg@10=0.1982 R@5=0.1442 R@20=0.2834 R@100=0.4790
+rrf_bm25_specter2_base   ndcg@10=0.1854 R@5=0.1366 R@20=0.2716 R@100=0.4533
+rrf_bm25_specter         ndcg@10=0.1801 R@5=0.1354 R@20=0.2606 R@100=0.4378
+specter2_base            ndcg@10=0.1725 R@5=0.1251 R@20=0.2572 R@100=0.4627
+bm25                     ndcg@10=0.1521 R@5=0.1105 R@20=0.2121 R@100=0.3495
+specter                  ndcg@10=0.1509 R@5=0.1090 R@20=0.2204 R@100=0.4130

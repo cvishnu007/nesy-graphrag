@@ -1,0 +1,9 @@
+Connected to Neo4j!
+Embedding device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU, 4.0 GB)
+Loading embedding model: BAAI/bge-base-en-v1.5
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  51%|#####1    | 102/199 [00:00<00:00, 1012.26it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 1218.65it/s]
+Model loaded!
+rrf_bge_bm25               condensed ndcg@10=0.5699 standard ndcg@10=0.5002 unjudged@10=0.150
+full_bge_bm25_similar      condensed ndcg@10=0.5582 standard ndcg@10=0.4657 unjudged@10=0.307
+bge                        condensed ndcg@10=0.5029 standard ndcg@10=0.3428 unjudged@10=0.464
+graph_relative_similar_bge condensed ndcg@10=0.5005 standard ndcg@10=0.3431 unjudged@10=0.486

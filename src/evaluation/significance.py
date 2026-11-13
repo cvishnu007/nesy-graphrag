@@ -53,6 +53,44 @@ def paired_significance(
     }
 
 
+def paired_permutation_test(
+    deltas: list[float],
+    *,
+    samples: int = 20_000,
+    bootstrap_samples: int = 10_000,
+    seed: int = 20261113,
+) -> dict:
+    """Monte Carlo paired sign-flip test plus bootstrap CI for any number of pairs.
+
+    Use instead of ``paired_significance`` when there are more than 20 queries.
+    The p-value uses the (count + 1) / (samples + 1) correction so it is never 0.
+    """
+    if not deltas:
+        raise ValueError("At least one paired difference is required")
+    if samples < 1000 or bootstrap_samples < 1000:
+        raise ValueError("Use at least 1000 permutation and bootstrap samples")
+    import numpy as np
+
+    values = np.asarray(deltas, dtype=float)
+    observed = float(values.mean())
+    rng = np.random.default_rng(seed)
+    extreme = 0
+    for start in range(0, samples, 2000):
+        size = min(2000, samples - start)
+        signs = rng.choice((-1.0, 1.0), size=(size, len(values)))
+        extreme += int((np.abs((signs * values).mean(axis=1)) >= abs(observed) - 1e-15).sum())
+    indices = rng.integers(0, len(values), size=(bootstrap_samples, len(values)))
+    means = np.sort(values[indices].mean(axis=1))
+    return {
+        "pair_count": len(values),
+        "mean_delta": observed,
+        "bootstrap_95_ci": [float(means[int(0.025 * bootstrap_samples)]),
+                            float(means[int(0.975 * bootstrap_samples)])],
+        "permutation_samples": samples,
+        "monte_carlo_two_sided_p": (extreme + 1) / (samples + 1),
+    }
+
+
 def load_paired_deltas(path, challenger, reference, metric):
     """Read per-query metrics and return challenger-reference differences."""
     with Path(path).open(encoding="utf-8-sig", newline="") as file:

@@ -1,0 +1,31 @@
+Connected to Neo4j!
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 2853.86it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 3168.83it/s]
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|##########| 106/106 [00:00<00:00, 2327.16it/s]
+{"query": "graph neural networks for node classification", "candidates": 1, "scores": [0.4998], "seconds": 6.5}
+{"query": "graph attention network methods", "candidates": 5, "scores": [0.9935, 0.9894, 0.9703, 0.921, 0.5299], "seconds": 0.4}
+{"query": "graph neural networks for recommendation systems", "candidates": 1, "scores": [0.0008], "seconds": 0.3}
+{"query": "graph convolutional networks compared with graph attention networks", "candidates": 3, "scores": [0.7385, 0.3928, 0.332], "seconds": 0.3}
+{"query": "self-supervised graph representation learning", "candidates": 0, "scores": [], "seconds": 0.1}
+{"query": "graph neural networks for molecular property prediction", "candidates": 1, "scores": [0.0018], "seconds": 0.1}
+{"query": "link prediction using graph neural networks", "candidates": 2, "scores": [0.4998, 0.0037], "seconds": 0.1}
+{"query": "graph classification methods", "candidates": 0, "scores": [], "seconds": 0.1}
+{"query": "heterogeneous graph neural networks", "candidates": 2, "scores": [0.4998, 0.4924], "seconds": 0.1}
+{"query": "dynamic graph neural networks", "candidates": 3, "scores": [0.0013, 0.001, 0.0007], "seconds": 0.1}
+{"query": "oversmoothing in deep graph neural networks", "candidates": 2, "scores": [0.4818, 0.0017], "seconds": 0.1}
+{"query": "explainable graph neural network methods", "candidates": 3, "scores": [0.6283, 0.4754, 0.0114], "seconds": 0.1}
+{"query": "graph neural networks for traffic forecasting", "candidates": 1, "scores": [0.4998], "seconds": 0.1}
+{"query": "graph neural networks for fraud detection", "candidates": 5, "scores": [0.8303, 0.527, 0.5015, 0.0613, 0.0027], "seconds": 0.1}
+{"query": "privacy-preserving federated graph learning", "candidates": 1, "scores": [0.0049], "seconds": 0.1}
+{"query": "contrastive learning for graph representations", "candidates": 0, "scores": [], "seconds": 0.2}
+{"query": "adversarial attacks and robustness in graph neural networks", "candidates": 5, "scores": [0.9903, 0.9858, 0.8296, 0.687, 0.5551], "seconds": 0.3}
+{"query": "transformer architectures for graph learning", "candidates": 1, "scores": [0.5034], "seconds": 0.1}
+{"query": "reinforcement learning with graph neural networks", "candidates": 0, "scores": [], "seconds": 0.0}
+{"query": "knowledge graph embeddings compared with graph neural networks", "candidates": 1, "scores": [0.0003], "seconds": 0.1}
+{"query": "cybersecurity", "candidates": 3, "scores": [0.0174, 0.0006, 0.0002], "seconds": 0.1}
+{"query": "databases", "candidates": 0, "scores": [], "seconds": 0.0}
+{"query": "software engineering", "candidates": 1, "scores": [0.0118], "seconds": 0.1}
+{"query": "cloud computing", "candidates": 0, "scores": [], "seconds": 0.1}
+{"query": "operating systems", "candidates": 0, "scores": [], "seconds": 0.0}
+{"query": "computer networks", "candidates": 0, "scores": [], "seconds": 0.0}
+SUMMARY {"queries": 26, "queries_with_candidates": 18, "mean_candidates": 1.5769230769230769, "top_score_quantiles": [0.0003, 0.0018, 0.0174, 0.4998, 0.5034, 0.8303], "queries_with_top_score_ge_0.5": 6}

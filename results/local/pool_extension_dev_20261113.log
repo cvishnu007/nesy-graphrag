@@ -1,0 +1,39 @@
+Judged 4/113
+Judged 8/113
+Judged 12/113
+Judged 16/113
+Judged 20/113
+Judged 24/113
+Judged 28/113
+Judged 32/113
+Judged 36/113
+Judged 40/113
+Judged 41/113
+Judged 45/113
+Judged 49/113
+Judged 53/113
+Judged 57/113
+Judged 61/113
+Judged 64/113
+Judged 68/113
+Judged 72/113
+Judged 76/113
+Judged 80/113
+Judged 83/113
+Judged 87/113
+Judged 91/113
+Judged 94/113
+Judged 98/113
+Judged 102/113
+Judged 106/113
+Judged 110/113
+Judged 113/113
+full_ta_bm25_similar       ndcg@10=0.5481 p@10=0.5833 recall@20=0.2788 map=0.1923 unjudged@20=0.000
+rrf_ta_bm25                ndcg@10=0.4989 p@10=0.5333 recall@20=0.2496 map=0.1577 unjudged@20=0.000
+graph_relative_similar     ndcg@10=0.4848 p@10=0.5333 recall@20=0.2801 map=0.1728 unjudged@20=0.000
+vector_title_abstract      ndcg@10=0.4632 p@10=0.4667 recall@20=0.2584 map=0.1622 unjudged@20=0.000
+production_absolute        ndcg@10=0.4579 p@10=0.5000 recall@20=0.2465 map=0.1397 unjudged@20=0.000
+bm25                       ndcg@10=0.4383 p@10=0.5333 recall@20=0.3127 map=0.1949 unjudged@20=0.000
+vector_abstract            ndcg@10=0.4317 p@10=0.4833 recall@20=0.2375 map=0.1285 unjudged@20=0.000
+rrf_vector_bm25            ndcg@10=0.4313 p@10=0.5000 recall@20=0.2543 map=0.1438 unjudged@20=0.000
+graph_relative_cites       ndcg@10=0.3927 p@10=0.4667 recall@20=0.2474 map=0.1332 unjudged@20=0.000

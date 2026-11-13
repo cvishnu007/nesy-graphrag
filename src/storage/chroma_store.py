@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import (
     BATCH_SIZE, CHROMA_COLLECTION, CHROMA_DIR, CLEAN_FILE, DATA_SOURCE,
-    EMBEDDING_BATCH_SIZE, EMBEDDING_MODEL,
+    EMBEDDING_BATCH_SIZE, EMBEDDING_MODEL, EMBEDDING_QUERY_PREFIX, EMBEDDING_TEXT_MODE,
 )
 from src.utils.compute import configure_torch
 
@@ -17,8 +17,17 @@ _collection = None
 _embedder   = None
 
 
-def get_collection():
+_named_collections = {}
+
+
+def get_collection(name=None):
+    """Return the configured collection, or a named existing one."""
     global _collection
+    if name is not None and name != CHROMA_COLLECTION:
+        if name not in _named_collections:
+            client = chromadb.PersistentClient(path=CHROMA_DIR)
+            _named_collections[name] = client.get_collection(name)
+        return _named_collections[name]
     if _collection is None:
         client      = chromadb.PersistentClient(path=CHROMA_DIR)
         _collection = client.get_or_create_collection(
@@ -50,11 +59,31 @@ def get_embedder():
 def encode_query(text):
     """Encode and briefly cache query text shared by retrieval stages."""
     embedding = get_embedder().encode(
-        [text],
+        [EMBEDDING_QUERY_PREFIX + text],
         batch_size=EMBEDDING_BATCH_SIZE,
         show_progress_bar=False,
     )[0]
     return tuple(float(value) for value in embedding)
+
+
+def embedding_text(row, mode=EMBEDDING_TEXT_MODE, sep_token="[SEP]"):
+    """Return the text encoded for one paper.
+
+    ``abstract`` reproduces the historical index (cleaned, lowercased abstract).
+    ``title_abstract`` uses SPECTER's training input: original-case title, the
+    tokenizer separator, then the original-case abstract. Stored Chroma
+    documents remain the cleaned abstract either way, so provenance passages
+    and store audits are unchanged.
+    """
+    if mode == "abstract":
+        return row["clean_abstract"]
+    if mode not in {"title_abstract", "title_abstract_plain"}:
+        raise ValueError("mode must be abstract, title_abstract, or title_abstract_plain")
+    title = str(row.get("title") or row.get("clean_title") or "").strip()
+    abstract = str(row.get("abstract") or row.get("clean_abstract") or "").strip()
+    if mode == "title_abstract_plain":
+        return ". ".join(part for part in (title, abstract) if part)
+    return f"{title}{sep_token}{abstract}"
 
 
 def build_index():
@@ -72,7 +101,15 @@ def build_index():
     collection = get_collection()
     embedder   = get_embedder()
 
+    historical = CHROMA_COLLECTION == f"{DATA_SOURCE}_papers"
+    if historical and (EMBEDDING_TEXT_MODE != "abstract" or "specter" not in EMBEDDING_MODEL.lower()):
+        raise RuntimeError(
+            "Refusing to mix embedding models or text modes in the historical collection; "
+            "set CHROMA_COLLECTION to a new collection name."
+        )
+    sep_token = getattr(getattr(embedder, "tokenizer", None), "sep_token", None) or "[SEP]"
     print(f"Loaded {len(df)} papers from {CLEAN_FILE}")
+    print(f"Embedding text mode: {EMBEDDING_TEXT_MODE}")
     print(f"ChromaDB collection '{CHROMA_COLLECTION}' ready; already stored: {collection.count()} papers")
 
     # resume support — skip already stored
@@ -84,7 +121,7 @@ def build_index():
     for i in range(0, total, BATCH_SIZE):
         batch      = df_remaining.iloc[i : i + BATCH_SIZE]
         embeddings = embedder.encode(
-            batch["clean_abstract"].tolist(),
+            [embedding_text(row, sep_token=sep_token) for _, row in batch.iterrows()],
             batch_size=EMBEDDING_BATCH_SIZE,
             show_progress_bar=False
         ).tolist()
@@ -104,7 +141,9 @@ def build_index():
                     "corpusId"         : str(row["corpusId"]) if row.get("corpusId") else "",
                     "ingestion_queries" : "; ".join(row.get("ingestion_queries", []))
                                           if isinstance(row.get("ingestion_queries"), list) else "",
-                    "source_dataset"   : DATA_SOURCE
+                    "source_dataset"   : DATA_SOURCE,
+                    "embedding_text_mode": EMBEDDING_TEXT_MODE,
+                    "embedding_model": EMBEDDING_MODEL,
                 }
                 for _, row in batch.iterrows()
             ]
@@ -116,9 +155,9 @@ def build_index():
     print(f"\nDone! Total stored in ChromaDB: {collection.count()}")
 
 
-def query(text, top_k=10):
+def query(text, top_k=10, collection_name=None):
     """Query ChromaDB with a text string, returns list of paper dicts."""
-    collection = get_collection()
+    collection = get_collection(collection_name) if collection_name else get_collection()
     result_count = min(max(0, int(top_k)), collection.count())
     if result_count == 0:
         return []
@@ -146,7 +185,7 @@ def query(text, top_k=10):
     return papers
 
 
-def score_papers_against_query(text, paper_ids):
+def score_papers_against_query(text, paper_ids, collection_name=None):
     """Return cosine similarity between a query and stored paper embeddings.
 
     This reuses embeddings already stored in ChromaDB, so graph candidates do
@@ -156,7 +195,8 @@ def score_papers_against_query(text, paper_ids):
     if not text.strip() or not unique_ids:
         return {}
 
-    stored = get_collection().get(ids=unique_ids, include=["embeddings"])
+    collection = get_collection(collection_name) if collection_name else get_collection()
+    stored = collection.get(ids=unique_ids, include=["embeddings"])
     stored_embeddings = stored.get("embeddings")
     if stored_embeddings is None or len(stored_embeddings) == 0:
         return {}

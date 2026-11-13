@@ -1,0 +1,42 @@
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|##########| 197/197 [00:00<00:00, 13468.92it/s]
+[transformers] [1mBertForTokenClassification LOAD REPORT[0m from: allenai/scibert_scivocab_uncased
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+bert.pooler.dense.bias                     | UNEXPECTED | 
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+bert.pooler.dense.weight                   | UNEXPECTED | 
+cls.predictions.decoder.weight             | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
+cls.predictions.decoder.bias               | UNEXPECTED | 
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+cls.seq_relationship.bias                  | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+classifier.weight                          | MISSING    | 
+classifier.bias                            | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\ingestion\train_scierc_ner.py:126: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  scheduler.step()
+{"epoch": 1, "train_loss": 108.557, "dev_typed_f1": 0.4958}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|##########| 1/1 [00:01<00:00,  1.82s/it]Writing model shards: 100%|##########| 1/1 [00:01<00:00,  1.82s/it]
+{"epoch": 2, "train_loss": 38.527, "dev_typed_f1": 0.6149}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|##########| 1/1 [00:01<00:00,  1.02s/it]Writing model shards: 100%|##########| 1/1 [00:01<00:00,  1.02s/it]
+{"epoch": 3, "train_loss": 20.719, "dev_typed_f1": 0.609}
+{"epoch": 4, "train_loss": 11.294, "dev_typed_f1": 0.6228}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|##########| 1/1 [00:01<00:00,  1.00s/it]Writing model shards: 100%|##########| 1/1 [00:01<00:00,  1.00s/it]
+{"epoch": 5, "train_loss": 7.022, "dev_typed_f1": 0.6359}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|##########| 1/1 [00:02<00:00,  2.11s/it]Writing model shards: 100%|##########| 1/1 [00:02<00:00,  2.11s/it]
+{"epoch": 6, "train_loss": 3.965, "dev_typed_f1": 0.6406}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|##########| 1/1 [00:00<00:00,  1.19it/s]Writing model shards: 100%|##########| 1/1 [00:00<00:00,  1.19it/s]
+{"epoch": 7, "train_loss": 2.517, "dev_typed_f1": 0.6379}
+{"epoch": 8, "train_loss": 1.67, "dev_typed_f1": 0.6597}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|##########| 1/1 [00:00<00:00,  1.33it/s]Writing model shards: 100%|##########| 1/1 [00:00<00:00,  1.33it/s]
+{"epoch": 9, "train_loss": 0.928, "dev_typed_f1": 0.6605}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|##########| 1/1 [00:05<00:00,  5.61s/it]Writing model shards: 100%|##########| 1/1 [00:05<00:00,  5.61s/it]
+{"epoch": 10, "train_loss": 0.555, "dev_typed_f1": 0.657}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 3812.57it/s]
+TEST {"typed": {"precision": 0.6147, "recall": 0.6647, "f1": 0.6387}, "untyped_span": {"precision": 0.7184, "recall": 0.7769, "f1": 0.7465}}

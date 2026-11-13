@@ -1,0 +1,22 @@
+scidocs: 25657 papers, 1000 queries
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 2446.40it/s]
+ranked specter {'corpus_encode_seconds': 0.1, 'cached': True}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 3553.00it/s]
+ranked bge_base {'corpus_encode_seconds': 0.1, 'cached': True}
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|##########| 197/197 [00:00<00:00, 32834.41it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: OpenSciLM/OpenScholar_Retriever
+Key                 | Status  | 
+--------------------+---------+-
+pooler.dense.weight | MISSING | 
+pooler.dense.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+ranked openscholar {'corpus_encode_seconds': 154.3, 'cached': False}
+bge_base                 ndcg@10=0.2184 R@5=0.1643 R@20=0.2996 R@100=0.4931
+rrf_bm25_bge_base        ndcg@10=0.1976 R@5=0.1469 R@20=0.2769 R@100=0.4682
+rrf_bm25_specter         ndcg@10=0.1801 R@5=0.1354 R@20=0.2606 R@100=0.4378
+rrf_bm25_openscholar     ndcg@10=0.1767 R@5=0.1295 R@20=0.2492 R@100=0.4099
+openscholar              ndcg@10=0.1632 R@5=0.1181 R@20=0.2333 R@100=0.4084
+bm25                     ndcg@10=0.1521 R@5=0.1105 R@20=0.2121 R@100=0.3495
+specter                  ndcg@10=0.1509 R@5=0.1090 R@20=0.2204 R@100=0.4130

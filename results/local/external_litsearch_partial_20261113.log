@@ -1,0 +1,6 @@
+litsearch: 64183 papers, 597 queries
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 2250.34it/s]
+ranked specter {'corpus_encode_seconds': 594.6, 'cached': False}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 21014.82it/s]
+ranked specter2_base {'corpus_encode_seconds': 753.6, 'cached': False}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 2260.71it/s]
