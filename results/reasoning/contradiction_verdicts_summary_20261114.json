@@ -1,0 +1,197 @@
+{
+  "benchmark": "SciFact test (expert labels), 338 pairs, 122 contradictions",
+  "nli_screening": {
+    "model": "cross-encoder/nli-deberta-v3-small (symmetric mean contradiction probability)",
+    "threshold_selected_on_dev": 0.028999999165534973,
+    "dev_auroc": 0.8065,
+    "test_auroc": 0.818,
+    "test_at_dev_threshold": {
+      "precision": 0.6138,
+      "recall": 0.7295,
+      "f1": 0.6667,
+      "accuracy": 0.7367,
+      "tp": 89,
+      "fp": 56,
+      "fn": 33,
+      "positives": 122,
+      "count": 338
+    },
+    "test_at_0.5": {
+      "precision": 0.7808,
+      "recall": 0.4672,
+      "f1": 0.5846,
+      "accuracy": 0.7604,
+      "tp": 57,
+      "fp": 16,
+      "fn": 65,
+      "positives": 122,
+      "count": 338
+    }
+  },
+  "verdict_models": {
+    "qwen2.5-3B (local)": {
+      "answered": 338,
+      "missing": [],
+      "binary": {
+        "precision": 0.3864,
+        "recall": 0.8361,
+        "f1": 0.5285,
+        "accuracy": 0.4615,
+        "tp": 102,
+        "fp": 162,
+        "fn": 20,
+        "positives": 122,
+        "count": 338
+      },
+      "valid_rate": 1.0,
+      "verdict_counts": {
+        "CONTRADICTION": 264,
+        "DIFFERENT SCOPE": 74
+      },
+      "calibration": {
+        "bins": [
+          {
+            "range": [
+              0.9,
+              1.0
+            ],
+            "count": 338,
+            "accuracy": 0.4615,
+            "mean_confidence": 1.0
+          }
+        ],
+        "expected_calibration_error": 0.5385
+      },
+      "confidence_distinct_values": [
+        1.0
+      ]
+    },
+    "Qwen3.8-27B (Groq)": {
+      "answered": 338,
+      "missing": [],
+      "binary": {
+        "precision": 0.9535,
+        "recall": 0.6721,
+        "f1": 0.7885,
+        "accuracy": 0.8698,
+        "tp": 82,
+        "fp": 4,
+        "fn": 40,
+        "positives": 122,
+        "count": 338
+      },
+      "valid_rate": 1.0,
+      "verdict_counts": {
+        "DIFFERENT SCOPE": 50,
+        "AGREEMENT": 202,
+        "CONTRADICTION": 86
+      },
+      "calibration": {
+        "bins": [
+          {
+            "range": [
+              0.9,
+              1.0
+            ],
+            "count": 338,
+            "accuracy": 0.8698,
+            "mean_confidence": 0.9584
+          }
+        ],
+        "expected_calibration_error": 0.0886
+      },
+      "confidence_distinct_values": [
+        0.9,
+        0.95,
+        1.0
+      ]
+    },
+    "GPT-OSS-120B (Groq)": {
+      "answered": 337,
+      "missing": [
+        "SF-583dff81ef0681e4"
+      ],
+      "binary": {
+        "precision": 0.9457,
+        "recall": 0.7131,
+        "f1": 0.8131,
+        "accuracy": 0.8813,
+        "tp": 87,
+        "fp": 5,
+        "fn": 35,
+        "positives": 122,
+        "count": 337
+      },
+      "valid_rate": 1.0,
+      "verdict_counts": {
+        "DIFFERENT SCOPE": 58,
+        "AGREEMENT": 187,
+        "CONTRADICTION": 92
+      },
+      "calibration": {
+        "bins": [
+          {
+            "range": [
+              0.7,
+              0.9
+            ],
+            "count": 28,
+            "accuracy": 0.5,
+            "mean_confidence": 0.8136
+          },
+          {
+            "range": [
+              0.9,
+              1.0
+            ],
+            "count": 309,
+            "accuracy": 0.9159,
+            "mean_confidence": 0.9593
+          }
+        ],
+        "expected_calibration_error": 0.0659
+      },
+      "confidence_distinct_values": [
+        0.72,
+        0.73,
+        0.75,
+        0.78,
+        0.8,
+        0.82,
+        0.85,
+        0.88,
+        0.92,
+        0.93,
+        0.95,
+        0.96,
+        0.97,
+        0.98,
+        0.99
+      ],
+      "bounds_if_missing_answered": {
+        "best": {
+          "precision": 0.9457,
+          "recall": 0.7131,
+          "f1": 0.8131,
+          "accuracy": 0.8817,
+          "tp": 87,
+          "fp": 5,
+          "fn": 35,
+          "positives": 122,
+          "count": 338
+        },
+        "worst": {
+          "precision": 0.9355,
+          "recall": 0.7131,
+          "f1": 0.8093,
+          "accuracy": 0.8787,
+          "tp": 87,
+          "fp": 6,
+          "fn": 35,
+          "positives": 122,
+          "count": 338
+        }
+      }
+    }
+  }
+}

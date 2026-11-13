@@ -1,0 +1,94 @@
+{
+  "nli_model": "cross-encoder/nli-deberta-v3-small",
+  "min_confidence": 0.5,
+  "arms": {
+    "vector_rag": {
+      "queries": 14,
+      "mean_claims_per_answer": 5.786,
+      "abstention_rate": 0.0,
+      "structural_citation_precision": 0.9838,
+      "semantic_support_rate": 0.321,
+      "contradicted_rate": 0.0617,
+      "total_claims": 81
+    },
+    "graph_rag": {
+      "queries": 14,
+      "mean_claims_per_answer": 5.929,
+      "abstention_rate": 0.0,
+      "structural_citation_precision": 0.9945,
+      "semantic_support_rate": 0.2771,
+      "contradicted_rate": 0.1205,
+      "total_claims": 83
+    }
+  },
+  "paired_test": {
+    "comparison": "graph_rag - vector_rag per-query support rate",
+    "pair_count": 14,
+    "mean_delta": -0.043027210884353746,
+    "bootstrap_95_ci": [
+      -0.24778911564625852,
+      0.15
+    ],
+    "bootstrap_probability_positive": 0.33782,
+    "exact_two_sided_randomization_p": 0.692626953125
+  },
+  "per_query_support_rate": {
+    "Q007": {
+      "vector_rag": 0.0,
+      "graph_rag": 0.16666666666666666
+    },
+    "Q008": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.7142857142857143
+    },
+    "Q009": {
+      "vector_rag": 0.0,
+      "graph_rag": 0.6
+    },
+    "Q010": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.0
+    },
+    "Q011": {
+      "vector_rag": 0.2,
+      "graph_rag": 0.2
+    },
+    "Q012": {
+      "vector_rag": 0.5,
+      "graph_rag": 0.16666666666666666
+    },
+    "Q013": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.5
+    },
+    "Q014": {
+      "vector_rag": 0.2,
+      "graph_rag": 0.5
+    },
+    "Q015": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.16666666666666666
+    },
+    "Q016": {
+      "vector_rag": 0.8,
+      "graph_rag": 0.0
+    },
+    "Q017": {
+      "vector_rag": 0.0,
+      "graph_rag": 0.16666666666666666
+    },
+    "Q018": {
+      "vector_rag": 1.0,
+      "graph_rag": 0.3333333333333333
+    },
+    "Q019": {
+      "vector_rag": 0.16666666666666666,
+      "graph_rag": 0.25
+    },
+    "Q020": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.16666666666666666
+    }
+  },
+  "note": "Automated NLI support; validate on a human-labelled sample before publication."
+}

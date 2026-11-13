@@ -13,6 +13,12 @@ from typing import Any
 from src.evaluation.reasoning_benchmark_io import SUPPORT_LABELS
 
 
+# Cached models are downloaded at pinned revisions for reproducibility; offline
+# loading must request the same revision (the "main" ref may not exist locally).
+PINNED_REVISIONS = {
+    "cross-encoder/nli-deberta-v3-small": "fa2804872c3b4bd748f38c0185cc85775361e735",
+}
+
 SupportProvider = Callable[[str, Mapping[str, Any]], Mapping[str, Any]]
 LABEL_PRIORITY = {
     "CONTRADICTED": 4,
@@ -47,7 +53,7 @@ def nli_scores_to_prediction(
 class LocalNLISupportProvider:
     """Offline claim-support provider backed by a locally cached NLI model."""
 
-    def __init__(self, model_name: str, *, partial_entailment_floor: float = 0.20):
+    def __init__(self, model_name: str, *, partial_entailment_floor: float = 0.20, revision: str | None = None):
         import torch
         from sentence_transformers import CrossEncoder
 
@@ -55,6 +61,7 @@ class LocalNLISupportProvider:
         self.partial_entailment_floor = partial_entailment_floor
         self.model = CrossEncoder(
             model_name,
+            revision=revision or PINNED_REVISIONS.get(model_name),
             local_files_only=True,
             device="cuda" if torch.cuda.is_available() else "cpu",
         )
@@ -86,7 +93,7 @@ class LocalNLISupportProvider:
 
 @lru_cache(maxsize=2)
 def build_local_nli_provider(model_name: str) -> LocalNLISupportProvider:
-    return LocalNLISupportProvider(model_name)
+    return LocalNLISupportProvider(model_name, revision=PINNED_REVISIONS.get(model_name))
 
 
 def normalize_support_label(value: Any) -> str | None:

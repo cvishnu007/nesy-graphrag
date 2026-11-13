@@ -86,6 +86,32 @@ Representative shared concepts behind the top hypothesis candidate: "molecular p
 
 Structured JSON verdicts: 5/5 valid in the end-to-end smoke test (legacy line format: 17 of 39 malformed on the frozen test set). The local 3B judge reports confidence 1.0 for every verdict, so confidence is not calibrated; contradiction accuracy is unmeasured until a benchmark with ≥ 10 positives per split exists.
 
+## 5b. Contradiction verdict models (SciFact test; 338 expert-labelled pairs, 122 contradictions)
+
+Same structured prompt as the application, no tuning, single run (`src/evaluation/contradiction_verdict_eval.py`; `results/reasoning/contradiction_verdicts_summary_20261114.json`).
+
+| Verdict model | Precision | Recall | F1 | Accuracy | Calibration error (ECE) | "Contradiction" calls |
+|---|---:|---:|---:|---:|---:|---:|
+| qwen2.5-3B-instruct (local) | 0.386 | 0.836 | 0.528 | 0.462 | 0.538 | 264 / 338 |
+| Qwen3.8-27B (Groq) | 0.954 | 0.672 | 0.788 | 0.870 | 0.089 | 86 / 338 |
+| **GPT-OSS-120B (Groq)** | 0.946 | 0.713 | **0.813** | **0.881** | **0.066** | 92 / 337 |
+| NLI screening alone (dev threshold) | 0.614 | 0.730 | 0.667 | 0.737 | AUROC 0.818 | — |
+
+GPT-OSS-120B answered 337 of 338 items before Groq's daily token limit (200K TPD); the missing item is a non-contradiction, and the worst-case F1 is 0.809. The local 3B model over-detects contradictions (accuracy below the 0.64 majority baseline) and its confidence is uninformative. Recommendation: NLI screening locally, verdicts from a large model.
+
+## 5c. Answer grounding: standard RAG vs this system (matched budget)
+
+14 test queries; identical generator (local qwen2.5-3B), prompt, top-5 papers, 6,000-character evidence budget, zero repair attempts. Claim support judged by local NLI (`cross-encoder/nli-deberta-v3-small`, pinned revision) against the cited passages (`src/evaluation/rag_answer_quality.py`).
+
+| | Standard RAG (BGE vector) | This system (BGE + BM25 + graph) |
+|---|---:|---:|
+| Claims per answer | 5.79 | 5.93 |
+| Structural citation precision | 0.984 | 0.995 |
+| **Claims supported by cited evidence** | **0.321** | **0.277** |
+| Claims contradicted by cited evidence | 0.062 | 0.120 |
+
+Per-query support difference −0.043, 95% CI [−0.248, +0.150], exact paired p = 0.69: no significant difference. Retrieved papers overlap by about 2.5 of 5 per query. Main finding: structurally valid citations (≈99%) do not imply support (≈30%); passage-ID validation alone overstates grounding. NLI support is an automated proxy pending human validation.
+
 ## 6. Data and graph facts
 
 - 3.6% of 625,222 references resolve inside the corpus; 71.4% of papers have no citation edge.

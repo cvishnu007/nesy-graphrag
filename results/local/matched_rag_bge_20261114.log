@@ -1,0 +1,81 @@
+Connected to Neo4j!
+Embedding device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU, 4.0 GB)
+Loading embedding model: BAAI/bge-base-en-v1.5
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 2366.49it/s]
+Model loaded!
+Completed Q007
+Completed Q008
+Completed Q009
+Completed Q010
+Completed Q011
+Completed Q012
+Completed Q013
+Completed Q014
+Completed Q015
+Completed Q016
+Completed Q017
+Completed Q018
+Completed Q019
+Completed Q020
+Traceback (most recent call last):
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\transformers\utils\hub.py", line 438, in cached_files
+    hf_hub_download(
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\huggingface_hub\file_download.py", line 1019, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\huggingface_hub\file_download.py", line 1166, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\huggingface_hub\file_download.py", line 1896, in _raise_on_head_call_error
+    raise LocalEntryNotFoundError(
+huggingface_hub.errors.LocalEntryNotFoundError: Cannot find the requested files in the disk cache and outgoing traffic has been disabled. To enable hf.co look-ups and downloads online, set 'local_files_only' to False.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\evaluation\rag_answer_quality.py", line 91, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\evaluation\rag_answer_quality.py", line 74, in main
+    summary, per_query = score_reviews(rows, build_local_nli_provider(NLI_MODEL), min_confidence=args.min_confidence)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\evaluation\semantic_support.py", line 89, in build_local_nli_provider
+    return LocalNLISupportProvider(model_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\evaluation\semantic_support.py", line 56, in __init__
+    self.model = CrossEncoder(
+                 ^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\sentence_transformers\util\decorators.py", line 165, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\sentence_transformers\cross_encoder\model.py", line 186, in __init__
+    super().__init__(
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\sentence_transformers\base\model.py", line 236, in __init__
+    modules, self.module_kwargs = self._load_modules(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\sentence_transformers\base\model.py", line 1070, in _load_modules
+    return self._load_default_modules(model_name_or_path, **load_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\sentence_transformers\cross_encoder\model.py", line 237, in _load_default_modules
+    config: PretrainedConfig = AutoConfig.from_pretrained(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\transformers\models\auto\configuration_auto.py", line 388, in from_pretrained
+    config_dict, unused_kwargs = PreTrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\transformers\configuration_utils.py", line 747, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\transformers\configuration_utils.py", line 802, in _get_config_dict
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\transformers\utils\hub.py", line 294, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\transformers\utils\hub.py", line 521, in cached_files
+    raise OSError(
+OSError: We couldn't connect to 'https://huggingface.co' to load the files, and couldn't find them in the cached files.
+Check your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.

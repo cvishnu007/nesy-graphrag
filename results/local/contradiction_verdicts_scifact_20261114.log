@@ -4,3 +4,14 @@ qwen2.5:3b-instruct: 25/338
 qwen2.5:3b-instruct: 50/338
 qwen2.5:3b-instruct: 75/338
 qwen2.5:3b-instruct: 100/338
+qwen2.5:3b-instruct: 125/338
+qwen2.5:3b-instruct: 150/338
+qwen2.5:3b-instruct: 175/338
+qwen2.5:3b-instruct: 200/338
+qwen2.5:3b-instruct: 225/338
+qwen2.5:3b-instruct: 250/338
+qwen2.5:3b-instruct: 275/338
+qwen2.5:3b-instruct: 300/338
+qwen2.5:3b-instruct: 325/338
+ollama:qwen2.5:3b-instruct {"precision": 0.3864, "recall": 0.8361, "f1": 0.5285, "accuracy": 0.4615, "tp": 102, "fp": 162, "fn": 20, "positives": 122, "count": 338} valid 1.0
+qwen/qwen3.8-27b: 25/338

@@ -1,0 +1,73 @@
+{
+  "benchmark": "evaluation/benchmarks/scifact_support_v1.json",
+  "positive_class": "CONTRADICTED",
+  "test_count": 338,
+  "test_positives": 122,
+  "label_source": "SciFact expert annotations",
+  "nli": {
+    "model": "cross-encoder/nli-deberta-v3-small (symmetric mean contradiction probability)",
+    "threshold_selected_on_dev": 0.028999999165534973,
+    "dev_auroc": 0.8065,
+    "test_auroc": 0.818,
+    "test_at_dev_threshold": {
+      "precision": 0.6138,
+      "recall": 0.7295,
+      "f1": 0.6667,
+      "accuracy": 0.7367,
+      "tp": 89,
+      "fp": 56,
+      "fn": 33,
+      "positives": 122,
+      "count": 338
+    },
+    "test_at_0.5": {
+      "precision": 0.7808,
+      "recall": 0.4672,
+      "f1": 0.5846,
+      "accuracy": 0.7604,
+      "tp": 57,
+      "fp": 16,
+      "fn": 65,
+      "positives": 122,
+      "count": 338
+    }
+  },
+  "llm": {
+    "ollama:qwen2.5:3b-instruct": {
+      "binary": {
+        "precision": 0.3864,
+        "recall": 0.8361,
+        "f1": 0.5285,
+        "accuracy": 0.4615,
+        "tp": 102,
+        "fp": 162,
+        "fn": 20,
+        "positives": 122,
+        "count": 338
+      },
+      "valid_rate": 1.0,
+      "verdict_counts": {
+        "CONTRADICTION": 264,
+        "DIFFERENT SCOPE": 74
+      },
+      "calibration": {
+        "bins": [
+          {
+            "range": [
+              0.9,
+              1.0
+            ],
+            "count": 338,
+            "accuracy": 0.4615,
+            "mean_confidence": 1.0
+          }
+        ],
+        "expected_calibration_error": 0.5385
+      },
+      "confidence_distinct_values": [
+        1.0
+      ],
+      "seconds": 4642
+    }
+  }
+}
