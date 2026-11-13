@@ -19,3 +19,4 @@ pytest==8.4.2
 gliner==0.2.30
 sentencepiece==0.2.3
 protobuf==7.36.1
+pytrec_eval-terrier==0.5.11

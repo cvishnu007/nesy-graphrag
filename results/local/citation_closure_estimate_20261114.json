@@ -1,0 +1,14 @@
+{
+  "description": "Offline estimate of citation-closure expansion from references already stored in data/s2_clean.json (no API calls).",
+  "corpus_papers": 47619, "reference_links": 625222, "in_corpus_links": 22370, "in_corpus_share": 0.036,
+  "distinct_external_papers": 379354,
+  "options": [
+    {"min_citing_corpus_papers": 20, "papers_added": 1226, "edges_added": 69542, "in_corpus_share": 0.147, "edges_per_paper": 1.88},
+    {"min_citing_corpus_papers": 10, "papers_added": 3591, "edges_added": 100316, "in_corpus_share": 0.196, "edges_per_paper": 2.40},
+    {"min_citing_corpus_papers": 5, "papers_added": 11630, "edges_added": 150351, "in_corpus_share": 0.276, "edges_per_paper": 2.92},
+    {"min_citing_corpus_papers": 3, "papers_added": 30737, "edges_added": 213663, "in_corpus_share": 0.378, "edges_per_paper": 3.01},
+    {"min_citing_corpus_papers": 2, "papers_added": 71309, "edges_added": 294807, "in_corpus_share": 0.507, "edges_per_paper": 2.67}
+  ],
+  "caveats": ["Edges counted only from existing corpus papers to added papers; added papers' own references would add more.",
+              "Many added papers predate 2020, widening the corpus beyond the 2020-2025 ingestion window."]
+}

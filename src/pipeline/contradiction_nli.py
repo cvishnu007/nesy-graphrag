@@ -133,7 +133,11 @@ def rank_contradiction_candidates(
     by_id = {paper["id"]: paper for paper in papers}
 
     candidate_pairs, sentence_pairs = [], []
+    from src.pipeline.near_duplicates import are_near_duplicates
+
     for first, second in combinations(sorted(sentences), 2):
+        if are_near_duplicates(first, second):
+            continue  # near-identical abstracts can only look like agreement
         for a in sentences[first]:
             for b in sentences[second]:
                 similarity = float(vectors[position[a["id"]]] @ vectors[position[b["id"]]])

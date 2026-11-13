@@ -28,3 +28,6 @@ results/external/**/rankings.jsonl
 
 # Locally trained model weights (regenerate with src.ingestion.train_scierc_ner)
 models/
+
+# Hidden AI grades for the human review (annotators must not see them; rebuild with build_relevance_sheet.py)
+evaluation/human_review/*DO_NOT_SHARE*

@@ -189,3 +189,19 @@ def test_frozen_pool_digest_tolerates_only_line_ending_changes():
     assert _matches_digest(original, digest)
     assert _matches_digest(original.replace(b"\n", b"\r\n"), digest)
     assert not _matches_digest(b'{\n  "a": 2\n}\n', digest)
+
+
+def test_near_duplicate_collapse_keeps_highest_ranked_member():
+    from src.pipeline.near_duplicates import are_near_duplicates, collapse
+
+    mapping = {"a": frozenset({"b"}), "b": frozenset({"a"})}
+    papers = [{"id": "b"}, {"id": "c"}, {"id": "a"}, {"id": "d"}]
+    assert [p["id"] for p in collapse(papers, mapping)] == ["b", "c", "d"]
+    assert are_near_duplicates("a", "b", mapping) and not are_near_duplicates("a", "c", mapping)
+
+
+def test_near_duplicate_file_is_well_formed():
+    from src.pipeline.near_duplicates import near_duplicate_map
+
+    mapping = near_duplicate_map()
+    assert mapping and all(key not in value for key, value in mapping.items())

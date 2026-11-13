@@ -47,9 +47,13 @@ def _llm_sidebar_fields():
 
 
 def test_review_ui_only_renders_metrics_computed_for_that_workflow():
+    # TS/ATD were retired as quality measures (docs/EVALUATION_PROTOCOL.md section 6);
+    # the review UI shows per-answer checks computed from that run's provenance.
     assert _rendered_metric_labels() == [
-        "TS (Trustworthiness)",
-        "ATD (Temporal Range)",
+        "Citation validity",
+        "Grounded claims",
+        "Evidence supports claim",
+        "Evidence supports claim",
     ]
 
 

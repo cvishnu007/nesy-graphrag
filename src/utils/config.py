@@ -182,6 +182,15 @@ GRAPH_EXPANSION_EDGES = tuple(
 ALLOWED_EXPANSION_EDGES = {"CITES", "SIMILAR_TO"}
 if not GRAPH_EXPANSION_EDGES or not set(GRAPH_EXPANSION_EDGES) <= ALLOWED_EXPANSION_EDGES:
     raise ValueError("GRAPH_EXPANSION_EDGES must use only CITES and/or SIMILAR_TO")
+# Hide a result whose abstract is near-identical (cosine >= 0.995) to a higher-ranked
+# result. Pairs come from evaluation/near_duplicate_pairs.json; no data is deleted.
+COLLAPSE_NEAR_DUPLICATES = os.getenv("COLLAPSE_NEAR_DUPLICATES", "false").strip().lower() in {
+    "1", "true", "yes", "on"
+}
+NEAR_DUPLICATE_FILE = os.getenv(
+    "NEAR_DUPLICATE_FILE",
+    str(Path(__file__).resolve().parents[2] / "evaluation/near_duplicate_pairs.json"),
+)
 # Lexical third arm for reciprocal-rank fusion; 0 disables it.
 BM25_FUSION_WEIGHT = float(os.getenv("BM25_FUSION_WEIGHT", "0.0"))
 if BM25_FUSION_WEIGHT < 0:

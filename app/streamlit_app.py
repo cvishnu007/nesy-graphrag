@@ -1,6 +1,8 @@
-import streamlit as st
-import sys
+import json
 import os
+import sys
+
+import streamlit as st
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from src.pipeline.orchestrator import get_neo4j, get_llm
@@ -9,9 +11,10 @@ from src.pipeline.contradiction import llm_contradict
 from src.pipeline.verdicts import contradiction_verdict
 from src.pipeline.hypothesis import llm_hypothesis
 from src.storage.chroma_store import get_collection
-from src.utils.config import CHROMA_COLLECTION, DATA_SOURCE
+from src.utils.config import (
+    CHROMA_COLLECTION, CONCEPT_SOURCE, CONTRADICTION_CANDIDATE_MODE, DATA_SOURCE, EMBEDDING_MODEL,
+)
 from src.utils.llm_client import llm_runtime_metadata
-from src.pipeline.metrics import compute_all_metrics
 
 # ════════════════════════════════════════════════════
 # INIT (cached so it only runs once)
@@ -63,6 +66,8 @@ with st.sidebar:
     st.markdown(f"- Chroma collection: `{CHROMA_COLLECTION}` ({collection.count()} vectors)")
     st.markdown(f"- Neo4j: {paper_nodes} papers, {cites_edges} CITES edges")
     st.markdown(f"- LLM: `{llm_metadata['provider']} / {llm_metadata['model']}`")
+    st.markdown(f"- Embedding: `{EMBEDDING_MODEL}`")
+    st.markdown(f"- Concepts: `{CONCEPT_SOURCE}` · contradiction candidates: `{CONTRADICTION_CANDIDATE_MODE}`")
 
 # ── Main ─────────────────────────────────────────────
 query = st.text_input(
@@ -125,33 +130,43 @@ if run and query:
                     st.code(error)
 
         st.markdown("### 📄 Retrieved Papers")
+        source_badges = {
+            "both": "🟢 vector + graph", "neural": "🔵 vector", "symbolic": "🟠 graph",
+            "lexical": "🟣 keyword (BM25)",
+        }
         for p in papers:
-            badge = "🟢 neural+symbolic" if p["source"] == "both" else ("🔵 neural" if p["source"] == "neural" else "🟠 symbolic")
+            badge = source_badges.get(p["source"], p["source"])
+            if p.get("lexical_support"):
+                badge += " + keyword"
             with st.expander(f"{badge} {p['title'][:80]}... ({p['year']})"):
                 st.write(f"**Category:** {p['category']}")
-                st.write(f"**Score:** {round(p['score'], 3)}")
+                st.write(f"**Fused score:** {round(p['score'], 3)}")
                 st.write(f"**Abstract:** {(p.get('abstract') or 'N/A')[:400]}")
 
-        # ── METRICS ──
-        metrics = compute_all_metrics(
-            result,
-            driver=driver,
-        )
-        st.markdown("### 📊 Evaluation Metrics")
-        col1, col2 = st.columns(2)
-        col1.metric("TS (Trustworthiness)", f"{metrics['ts']['ts']:.3f}",
-                    help="Prototype passage-citation integrity and claim-coverage diagnostic")
-        col2.metric("ATD (Temporal Range)", f"{metrics['atd']['atd']:.3f}",
-                    help=f"1.0 means all {metrics['atd']['span_size']} configured years are represented")
-
-        # ── Flag missing years explicitly ──
-        missing_years = metrics["atd"].get("missing_years", [])
-        if missing_years:
-            st.warning(
-                f"⚠️ **Missing years in results:** {', '.join(str(y) for y in missing_years)}. "
-                f"Papers from these years were not found in the retrieval results, "
-                f"which may indicate gaps in dataset coverage or query specificity."
-            )
+        # ── METRICS (see docs/EVALUATION_PROTOCOL.md) ──
+        stats = provenance_stats
+        semantic = result.get("semantic_support", {})
+        st.markdown("### 📊 Answer Checks")
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Citation validity",
+                    f"{stats.get('valid_citations', 0)}/{stats.get('total_citations', 0)}",
+                    help="Cited passage IDs that exist among the supplied evidence passages")
+        col2.metric("Grounded claims",
+                    f"{stats.get('grounded_claims', 0)}/{stats.get('total_claims', 0)}",
+                    help="Claims whose every citation is valid; others are withheld and audited")
+        if semantic.get("enabled"):
+            support = semantic.get("stats", {})
+            col3.metric("Evidence supports claim",
+                        f"{support.get('accepted_claims', 0)}/{support.get('evaluated_claims', 0)}",
+                        help="Local NLI judged the cited passages to support the claim (automated check)")
+        else:
+            col3.metric("Evidence supports claim", "off",
+                        help="Set SEMANTIC_SUPPORT_MODEL to enable NLI checking of each claim")
+        sources = {}
+        for p in papers:
+            sources[p["source"]] = sources.get(p["source"], 0) + 1
+        st.caption("Retrieval sources: " + ", ".join(
+            f"{source_badges.get(k, k)} × {v}" for k, v in sorted(sources.items())))
 
     # ── CONTRADICTION MODE ────────────────────────────
     elif "contradiction" in mode.lower():
@@ -172,16 +187,31 @@ if run and query:
                 verdict = contradiction_verdict(item)
                 verdict_color = "🔴" if verdict == "CONTRADICTION" else ("🟡" if verdict == "AGREEMENT" else "🔵")
 
-                with st.expander(f"{verdict_color} Pair {i+1}: {p1['title'][:40]}... vs {p2['title'][:40]}..."):
+                with st.expander(f"{verdict_color} Pair {i+1}: {verdict} — {p1['title'][:40]}... vs {p2['title'][:40]}..."):
                     col1, col2 = st.columns(2)
-                    with col1:
-                        st.markdown(f"**Paper 1 ({p1['year']})**")
-                        st.write(p1['title'])
-                    with col2:
-                        st.markdown(f"**Paper 2 ({p2['year']})**")
-                        st.write(p2['title'])
-                    st.markdown("**LLM Analysis:**")
-                    st.markdown(analysis)
+                    for column, paper, evidence in ((col1, p1, item.get("evidence_1")),
+                                                    (col2, p2, item.get("evidence_2"))):
+                        with column:
+                            st.markdown(f"**{paper['title']}** ({paper['year']})")
+                            if evidence:
+                                st.info(f"“{evidence['text']}”  \n`{evidence['id']}`")
+                    detail = [f"**Verdict:** {verdict}"]
+                    if item.get("confidence") is not None:
+                        detail.append(f"LLM confidence {item['confidence']:.2f} (uncalibrated)")
+                    if item.get("nli_contradiction") is not None:
+                        detail.append(f"NLI contradiction score {item['nli_contradiction']:.2f}")
+                    if item.get("shared_concept_names"):
+                        detail.append("shared concepts: " + ", ".join(item["shared_concept_names"][:6]))
+                    st.markdown(" · ".join(detail))
+                    try:
+                        parsed = json.loads(analysis)
+                        st.markdown(f"**Reason:** {parsed.get('reason', '')}")
+                        if parsed.get("claim_1") or parsed.get("claim_2"):
+                            st.markdown(f"- Paper 1 claims: {parsed.get('claim_1', '')}\n"
+                                        f"- Paper 2 claims: {parsed.get('claim_2', '')}")
+                    except (json.JSONDecodeError, TypeError, AttributeError):
+                        st.markdown("**LLM Analysis:**")
+                        st.markdown(analysis)
 
     # ── HYPOTHESIS MODE ───────────────────────────────
     elif "hypothesis" in mode.lower():
@@ -200,7 +230,9 @@ if run and query:
 
                 with st.expander(f"💡 Hypothesis {i+1}: {h.get('title', '')[:60]}... ({h.get('year', '')})"):
                     st.markdown(f"**Category:** {h.get('category', 'N/A')}")
-                    st.markdown(f"**Shared Concepts:** {h.get('shared_concepts', 'N/A')}")
+                    names = h.get("shared_concept_names") or []
+                    st.markdown(f"**Shared Concepts ({h.get('shared_concepts', len(names))}):** "
+                                + (", ".join(names[:10]) or "N/A"))
                     st.markdown(f"**Supporting Papers:** {h.get('supporting_papers', 'N/A')}")
                     st.markdown(f"**Evidence Score:** {h.get('evidence_score', 'N/A')}")
                     st.markdown(f"**Feasibility:** {item.get('feasibility', 'UNKNOWN')}")

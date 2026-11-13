@@ -7,6 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.utils.config import (
     ALLOWED_EXPANSION_EDGES,
     BM25_FUSION_WEIGHT,
+    COLLAPSE_NEAR_DUPLICATES,
     GRAPH_CANDIDATE_LIMIT,
     GRAPH_EXPANSION_EDGES,
     GRAPH_FUSION_WEIGHT,
@@ -294,9 +295,16 @@ def nesy_retrieve(driver, query, top_k=TOP_K):
     )
     lexical_papers = lexical_retrieve(query, top_k) if BM25_FUSION_WEIGHT > 0 else None
 
-    return fuse_results(
-        neural_papers, symbolic_papers, top_k, lexical_papers=lexical_papers,
+    if not COLLAPSE_NEAR_DUPLICATES:
+        return fuse_results(
+            neural_papers, symbolic_papers, top_k, lexical_papers=lexical_papers,
+        )
+    from src.pipeline.near_duplicates import collapse
+
+    fused = fuse_results(
+        neural_papers, symbolic_papers, top_k * 2, lexical_papers=lexical_papers,
     )
+    return collapse(fused)[:top_k]
 
 def _citation_degrees(driver, paper_ids):
     """Return undirected citation degree for every known paper ID."""
