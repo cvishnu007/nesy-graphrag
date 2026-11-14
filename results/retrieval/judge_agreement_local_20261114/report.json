@@ -1,0 +1,48 @@
+{
+  "human_sheet": "evaluation/human_review/relevance_sheet_cv.csv",
+  "split_seed": "judge-selection-v1",
+  "results": {
+    "selection:ollama:qwen2.5:3b-instruct@original": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.5627,
+      "exact_agreement": 0.57,
+      "binary_relevant_agreement": 0.71
+    },
+    "selection:ollama:qwen2.5:3b-instruct@strict": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.3285,
+      "exact_agreement": 0.56,
+      "binary_relevant_agreement": 0.64
+    },
+    "held_out:ollama:qwen2.5:3b-instruct@original": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.4411,
+      "exact_agreement": 0.53,
+      "binary_relevant_agreement": 0.62
+    },
+    "selection:ollama:qwen2.5:7b-instruct@strict": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.6022,
+      "exact_agreement": 0.58,
+      "binary_relevant_agreement": 0.75
+    },
+    "selection:ollama:qwen2.5:7b-instruct@original": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.5813,
+      "exact_agreement": 0.61,
+      "binary_relevant_agreement": 0.79
+    },
+    "selection:ollama:qwen2.5:7b-instruct@strict#batch1": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.7689,
+      "exact_agreement": 0.71,
+      "binary_relevant_agreement": 0.83
+    },
+    "held_out:ollama:qwen2.5:7b-instruct@strict#batch1": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.7485,
+      "exact_agreement": 0.72,
+      "binary_relevant_agreement": 0.81
+    }
+  }
+}

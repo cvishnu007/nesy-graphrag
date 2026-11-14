@@ -111,7 +111,8 @@ class SemanticScholarClient:
                 continue
 
             if response.status_code == 429:
-                sleep_for = self._parse_retry_after(response.headers)
+                # Exponential backoff: heavy batch requests can stay throttled for tens of seconds.
+                sleep_for = max(self._parse_retry_after(response.headers), min(60.0, 2.0 ** (attempt + 1)))
                 print(f"[S2] 429 rate-limited. sleeping {sleep_for:.1f}s...")
                 time.sleep(sleep_for)
                 continue

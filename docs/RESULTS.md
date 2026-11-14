@@ -51,6 +51,25 @@ Frozen pool: 1,145 labels from local `qwen2.5:3b-instruct` (grades 0/1/2: 541/12
 
 The selection was frozen on dev (6 queries) before test was opened (`results/retrieval/variant_ablation_bge_dev_20261113/selection.json`). Non-selected BGE + graph without BM25 scored 0.646 on test; it is reported but was not chosen post hoc. The earlier SPECTER-era dev selection did not generalize (dev 0.548 → test 0.476 < BM25 0.529).
 
+## 2b. Relevance judge validation against human grades
+
+One annotator graded a deterministic 200-pair sample of the pool, blinded to the method and the AI grade (`evaluation/human_review/relevance_sheet_cv.csv`). The pairs were split 50/50 by hash. Judges were compared on the selection half, and the chosen judge was scored once on the held-out half (`src/evaluation/judge_agreement.py`; `results/retrieval/judge_agreement_*_20261114/report.json`). Agreement is quadratic-weighted Cohen's kappa on the 0/1/2 scale.
+
+| Judge | Selection κ (n=100) | Held-out κ (n=100) | Held-out exact | Held-out binary |
+|---|---:|---:|---:|---:|
+| Frozen pool labels (qwen2.5-3B, pool batches) | 0.166 | — | — | — |
+| qwen2.5-3B, original prompt, re-run | 0.563 | 0.441 | 0.53 | 0.62 |
+| qwen2.5-3B, strict prompt | 0.329 | — | — | — |
+| qwen2.5-7B (local), original prompt, 4 papers per call | 0.581 | — | — | — |
+| qwen2.5-7B (local), strict prompt, 4 papers per call | 0.602 | — | — | — |
+| **qwen2.5-7B (local), strict prompt, 1 paper per call (used for grading)** | **0.769** | **0.749** | **0.72** | **0.81** |
+| Qwen3.8-27B (Groq), original prompt | 0.817 | — | — | — |
+| **Qwen3.8-27B (Groq), strict prompt (best)** | **0.883** | **0.884** | **0.81** | **0.85** |
+
+The 27B judge is the most accurate, but Groq's free tier (200K tokens/day) covers only about 200 pairs a day, against about 3,950 needed. The local 7B judge, one paper per call, passes the predeclared threshold (held-out κ ≥ 0.6) and grades both pools. Grading one paper per call raised the 7B's κ from 0.60 to 0.77, consistent with the batch-position bias below.
+
+All 200 frozen labels against the human grades: κ 0.187. Diagnosis: the stored labels match the raw judge outputs exactly (0 mismatches of 1,145), so the problem is not storage or alignment. The 3B judge has a batch-position bias. Across 279 four-paper batches it used only 20 of the 81 possible grade patterns, gave position 2 a grade of 2 in almost every batch, and produced `[0,2,2,0]` or `[0,2,0,2]` in 40% of them. Re-running the same model on the same pairs agreed with the frozen labels at only κ 0.031. **The frozen 3B labels are therefore treated as unreliable, and section 2 is superseded by section 2c.** Limitation: one annotator, so human-human agreement is not measured.
+
 ## 3. Scientific entity extraction (SciERC test; 100 abstracts, 1,685 gold entities)
 
 | Extractor | Typed F1 | Typed F1 w/o Generic | Span F1 |

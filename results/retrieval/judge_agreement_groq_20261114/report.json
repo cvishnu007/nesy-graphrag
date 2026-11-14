@@ -1,0 +1,24 @@
+{
+  "human_sheet": "evaluation/human_review/relevance_sheet_cv.csv",
+  "split_seed": "judge-selection-v1",
+  "results": {
+    "selection:groq:qwen/qwen3.8-27b@original": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.8167,
+      "exact_agreement": 0.72,
+      "binary_relevant_agreement": 0.82
+    },
+    "selection:groq:qwen/qwen3.8-27b@strict": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.8832,
+      "exact_agreement": 0.82,
+      "binary_relevant_agreement": 0.89
+    },
+    "held_out:groq:qwen/qwen3.8-27b@strict": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.8837,
+      "exact_agreement": 0.81,
+      "binary_relevant_agreement": 0.85
+    }
+  }
+}

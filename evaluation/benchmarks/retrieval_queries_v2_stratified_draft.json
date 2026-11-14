@@ -1,6 +1,6 @@
 {
-  "benchmark_version": "0.4-stratified-draft",
-  "status": "draft_pending_team_review",
+  "benchmark_version": "0.5-stratified-reviewed",
+  "status": "reviewed_frozen_for_pooling",
   "corpus": {
     "source": "s2",
     "paper_count": 47619,
@@ -8,10 +8,12 @@
     "collection": "s2_papers"
   },
   "query_provenance": {
-    "author": "AI assistant proposal",
-    "team_review_required": true,
+    "author": "AI assistant proposal (v0.4); revisions AI-suggested and accepted by the team reviewer",
+    "reviewed_by": "team reviewer CV, 2026-11-14",
+    "team_review_required": false,
     "design": "4 queries per ingestion topic (11 topics); 2 dev and 2 test per topic; specific research questions, not topic names",
-    "instructions": "Review, edit, or replace queries before pooling. Do not tune on test queries. Pool with a fresh directory via refresh_retrieval prepare."
+    "revisions": "6 queries edited or replaced (original_query/revision_note). Two v0.4.1 replacements were swapped in v0.5 after a keyword corpus-support check found <=1 matching paper (V2-04-4, V2-11-4). Keyword matches for the other checked queries: membership inference/model inversion ~37, entity resolution 17, EHR 412, SDN traffic engineering 51, kernel isolation 12, RTOS 7. Not every query was checked; pooling reports per-query relevant counts.",
+    "instructions": "Frozen for pooling. Do not edit queries after pooling starts. Do not tune on test queries. Pool with a fresh directory via refresh_retrieval prepare --benchmark."
   },
   "primary_metric": "ndcg@10",
   "secondary_metric": "recall@20",
@@ -97,15 +99,19 @@
       "query_id": "V2-03-4",
       "split": "test",
       "topic": "cybersecurity",
-      "query": "adversarial attacks on deep learning based security systems",
-      "judgments": {}
+      "query": "membership inference and model inversion attacks on machine learning models",
+      "judgments": {},
+      "original_query": "adversarial attacks on deep learning based security systems",
+      "revision_note": "Original was vague and overlapped the intrusion/malware queries (test would reward tuning on dev)."
     },
     {
       "query_id": "V2-04-1",
       "split": "dev",
       "topic": "computer networks",
-      "query": "software-defined networking traffic engineering",
-      "judgments": {}
+      "query": "traffic engineering in software-defined networks",
+      "judgments": {},
+      "original_query": "software-defined networking traffic engineering",
+      "revision_note": "Rephrased as a natural search; same intent."
     },
     {
       "query_id": "V2-04-2",
@@ -125,8 +131,10 @@
       "query_id": "V2-04-4",
       "split": "test",
       "topic": "computer networks",
-      "query": "network slicing for mobile edge computing",
-      "judgments": {}
+      "query": "communication and routing in vehicular ad hoc networks",
+      "judgments": {},
+      "original_query": "network slicing for mobile edge computing",
+      "revision_note": "v0.4.1 replaced the original (it overlapped V2-04-2 and V2-07-4) with 'congestion control in data center networks'; v0.5 replaced that because the corpus has about 1 matching paper. About 128 corpus papers match vehicular networks."
     },
     {
       "query_id": "V2-05-1",
@@ -146,8 +154,10 @@
       "query_id": "V2-05-3",
       "split": "test",
       "topic": "databases",
-      "query": "blockchain-based data management and integrity",
-      "judgments": {}
+      "query": "entity resolution and record linkage",
+      "judgments": {},
+      "original_query": "blockchain-based data management and integrity",
+      "revision_note": "Blockchain is weakly tied to databases and the query was vague; entity resolution is a core data-management problem."
     },
     {
       "query_id": "V2-05-4",
@@ -293,8 +303,10 @@
       "query_id": "V2-10-4",
       "split": "test",
       "topic": "data science",
-      "query": "big data analytics for healthcare",
-      "judgments": {}
+      "query": "machine learning on electronic health records",
+      "judgments": {},
+      "original_query": "big data analytics for healthcare",
+      "revision_note": "Original was a buzzword phrase with no clear relevance boundary."
     },
     {
       "query_id": "V2-11-1",
@@ -321,8 +333,10 @@
       "query_id": "V2-11-4",
       "split": "test",
       "topic": "operating systems",
-      "query": "container orchestration and resource isolation",
-      "judgments": {}
+      "query": "storage management for flash and solid-state drives",
+      "judgments": {},
+      "original_query": "container orchestration and resource isolation",
+      "revision_note": "v0.4.1 replaced the original (it duplicated the cloud topic) with 'file systems for persistent memory'; v0.5 replaced that because 0 corpus papers match. About 74 corpus papers match flash/SSD storage."
     }
   ]
 }

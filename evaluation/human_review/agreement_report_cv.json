@@ -1,0 +1,12 @@
+{
+  "items": 200,
+  "human_vs_ai": {
+    "relevance_sheet_cv": {
+      "n": 200,
+      "quadratic_weighted_kappa": 0.1867,
+      "exact_agreement": 0.41,
+      "binary_relevant_agreement": 0.555
+    }
+  },
+  "human_vs_human": {}
+}
