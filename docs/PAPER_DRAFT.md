@@ -152,7 +152,7 @@ Round 1 (30 queries, one rater, blinded): the original structural-hole candidate
 
 ### 5.7 Answer grounding (RESULTS §5c)
 
-With a 3B generator, about 30% of claims were supported by their cited passages, despite about 99% structurally valid citations. Vector RAG and our system did not differ (p = 0.69). With the 7B generator (dev, 22 queries), support is 37.8% for both systems and structural precision is 100%. ⏳ Test half.
+With a 3B generator, about 30% of claims were supported by their cited passages, despite about 99% structurally valid citations. Vector RAG and our system did not differ (p = 0.69). With the 7B generator on all 44 stratified queries, support rises to 38.9% (vector RAG) and 41.8% (our system), with no significant difference (+0.046 [−0.068, 0.157], p = 0.43; RESULTS §5c-2). About 60% of structurally valid claims are still not entailed by their cited passages, which argues for semantic support checks rather than passage-ID validation alone.
 
 ## 6. Discussion
 

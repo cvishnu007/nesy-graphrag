@@ -1,0 +1,116 @@
+{
+  "nli_model": "cross-encoder/nli-deberta-v3-small",
+  "min_confidence": 0.5,
+  "arms": {
+    "vector_rag": {
+      "queries": 22,
+      "mean_claims_per_answer": 3.409,
+      "abstention_rate": 0.0,
+      "structural_citation_precision": 1.0,
+      "semantic_support_rate": 0.4,
+      "contradicted_rate": 0.0267,
+      "total_claims": 75
+    },
+    "graph_rag": {
+      "queries": 22,
+      "mean_claims_per_answer": 3.455,
+      "abstention_rate": 0.0,
+      "structural_citation_precision": 0.9962,
+      "semantic_support_rate": 0.4605,
+      "contradicted_rate": 0.0526,
+      "total_claims": 76
+    }
+  },
+  "paired_test": null,
+  "per_query_support_rate": {
+    "V2-01-3": {
+      "vector_rag": 0.5,
+      "graph_rag": 0.6666666666666666
+    },
+    "V2-01-4": {
+      "vector_rag": 0.0,
+      "graph_rag": 0.3333333333333333
+    },
+    "V2-02-3": {
+      "vector_rag": 0.5,
+      "graph_rag": 0.0
+    },
+    "V2-02-4": {
+      "vector_rag": 0.5,
+      "graph_rag": 0.75
+    },
+    "V2-03-3": {
+      "vector_rag": 0.75,
+      "graph_rag": 0.6666666666666666
+    },
+    "V2-03-4": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.3333333333333333
+    },
+    "V2-04-3": {
+      "vector_rag": 0.0,
+      "graph_rag": 0.6666666666666666
+    },
+    "V2-04-4": {
+      "vector_rag": 0.5,
+      "graph_rag": 0.5
+    },
+    "V2-05-3": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.75
+    },
+    "V2-05-4": {
+      "vector_rag": 0.75,
+      "graph_rag": 0.75
+    },
+    "V2-06-3": {
+      "vector_rag": 0.0,
+      "graph_rag": 0.5
+    },
+    "V2-06-4": {
+      "vector_rag": 0.0,
+      "graph_rag": 0.6666666666666666
+    },
+    "V2-07-3": {
+      "vector_rag": 0.0,
+      "graph_rag": 0.0
+    },
+    "V2-07-4": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.0
+    },
+    "V2-08-3": {
+      "vector_rag": 0.0,
+      "graph_rag": 0.3333333333333333
+    },
+    "V2-08-4": {
+      "vector_rag": 0.6,
+      "graph_rag": 0.0
+    },
+    "V2-09-3": {
+      "vector_rag": 0.6666666666666666,
+      "graph_rag": 0.0
+    },
+    "V2-09-4": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.6666666666666666
+    },
+    "V2-10-3": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.25
+    },
+    "V2-10-4": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 1.0
+    },
+    "V2-11-3": {
+      "vector_rag": 0.3333333333333333,
+      "graph_rag": 0.3333333333333333
+    },
+    "V2-11-4": {
+      "vector_rag": 1.0,
+      "graph_rag": 0.8
+    }
+  },
+  "note": "Automated NLI support; validate on a human-labelled sample before publication."
+}

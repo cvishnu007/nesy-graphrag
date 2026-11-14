@@ -1,0 +1,67 @@
+{
+  "benchmark_version": "0.5-stratified-reviewed",
+  "split": "dev",
+  "retrieval_settings": {
+    "embedding_model": "BAAI/bge-base-en-v1.5",
+    "evaluation_hybrid_weights": [
+      16.0,
+      1.0
+    ],
+    "graph_only_candidate_limit": 100,
+    "rrf_k": 60,
+    "production": {
+      "hop_depth": 2,
+      "neural_weight": 1.0,
+      "graph_weight": 1.0
+    },
+    "graph_filter": {
+      "GRAPH_HIGH_SEMANTIC_THRESHOLD": 0.85,
+      "GRAPH_SEMANTIC_FLOOR": 0.75,
+      "GRAPH_MIN_QUERY_TERM_COVERAGE": 0.75,
+      "GRAPH_STRONG_CONNECTIONS": 10
+    }
+  },
+  "query_ids": [
+    "V2-01-1",
+    "V2-01-2",
+    "V2-02-1",
+    "V2-02-2",
+    "V2-03-1",
+    "V2-03-2",
+    "V2-04-1",
+    "V2-04-2",
+    "V2-05-1",
+    "V2-05-2",
+    "V2-06-1",
+    "V2-06-2",
+    "V2-07-1",
+    "V2-07-2",
+    "V2-08-1",
+    "V2-08-2",
+    "V2-09-1",
+    "V2-09-2",
+    "V2-10-1",
+    "V2-10-2",
+    "V2-11-1",
+    "V2-11-2"
+  ],
+  "sample_only": false,
+  "corpus_sha256": "dc3c6d30b23fc714ef54f2bee3434419d9c935782a2ce9d80c3cc4fe8fdc7b2e",
+  "paper_count": 47619,
+  "llm": {
+    "provider": "ollama",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11434",
+    "timeout_sec": 300,
+    "max_retries": 4,
+    "context_length": 8192,
+    "keep_alive": "10m"
+  },
+  "top_k": 5,
+  "context_chars": 6000,
+  "max_tokens": 600,
+  "temperature": 0.0,
+  "repair_attempts": 0,
+  "selection": "predeclared defaults; no test-set tuning",
+  "interpretation": "structural provenance and latency only; semantic correctness requires separate labels"
+}

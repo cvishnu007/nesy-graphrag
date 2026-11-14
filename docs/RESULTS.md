@@ -315,6 +315,20 @@ The screener mostly pairs papers that each report their own good results. The lo
 
 Per-query support difference −0.043, 95% CI [−0.248, +0.150], exact paired p = 0.69: no significant difference. Retrieved papers overlap by about 2.5 of 5 per query. Main finding: structurally valid citations (≈99%) do not imply support (≈30%); passage-ID validation alone overstates grounding. NLI support is an automated proxy pending human validation.
 
+### 5c-2. Answer grounding with the 7B generator (44 stratified queries)
+
+Same protocol as §5c (top 5 papers, 6,000-character budget, zero repair attempts, local NLI support), generator `qwen2.5:7b-instruct`, on all 44 stratified queries (`results/reasoning/matched_rag_7b_stratified_{dev,test}_20261115/`).
+
+| | Standard RAG (BGE vector) | This system (BGE + BM25 + graph) |
+|---|---:|---:|
+| Claims (total) | 157 | 158 |
+| Claims per answer | 3.57 | 3.59 |
+| Structural citation precision | 1.000 | 0.996 |
+| **Claims supported by cited evidence** | **0.389** | **0.418** |
+| Claims contradicted by cited evidence | 0.038 | 0.070 |
+
+Per-query support difference (system − vector): +0.046, 95% CI [−0.068, 0.157], Monte Carlo p = 0.43, so no significant difference. Support is higher than with the 3B generator (§5c, about 0.30), but those runs used different queries (14 GNN test queries), so the change is indicative only. Structurally valid citations still do not imply support: about 60% of claims are not entailed by their cited passages under the automated NLI check, which awaits human validation.
+
 ## 6. Data and graph facts
 
 - 3.6% of 625,222 references resolve inside the corpus; 71.4% of papers have no citation edge.
