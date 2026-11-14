@@ -212,6 +212,40 @@ The original structural-hole candidates are significantly less relevant and no m
 
 The judge reproduces the human ordering of the two rated arms (0.43 vs 0.93; humans 3.27 vs 4.20). The tie was broken by the implementation's alphabetical order, not by a stated rule, so both tied variants go to the human test. Novelty cannot be judged automatically: round 2 rates all four arms on the 14 queries not used here.
 
+## 4c. Time-sliced hypothesis benchmark (retrospective discovery)
+
+`src/evaluation/temporal_hypothesis.py`; `results/reasoning/temporal_hypothesis_20261115/`. This is the standard literature-based-discovery evaluation, with no human labels.
+
+**Setup.**
+- **Hypothesis:** "method M could be applied to task T", for a SciERC (Task, Method) pair that never co-occurs in any paper up to the cutoff.
+- **Confirmed:** the pair co-occurs in ≥ 2 papers after the cutoff.
+- **What scorers see:** only pre-cutoff papers (32,039; cutoff 2022) with their entities, BGE vectors, and citations between pre-cutoff papers. Entity frequencies and the generic filter (document frequency ≤ 1%, specific names only) are recomputed on pre-cutoff papers.
+- **Size:** 120 tasks with ≥ 10 pre-cutoff papers and ≥ 3 confirmed methods; on average 4,633 candidate methods and 5.6 confirmed per task. Scorers were predeclared and nothing was tuned. Paired sign-flip tests across tasks.
+
+| Scorer (120 tasks) | AP | P@20 | Recall@100 | AUROC |
+|---|---:|---:|---:|---:|
+| **Fusion: popularity + vector + entity graph + citation graph** | **0.087** | **0.050** | **0.441** | **0.927** |
+| Fusion: vector + entity graph + citation graph | 0.083 | 0.045 | 0.406 | 0.894 |
+| Fusion: entity graph + citation graph | 0.077 | 0.046 | 0.390 | 0.864 |
+| Entity-graph bridge (Adamic–Adar) | 0.072 | 0.043 | 0.398 | 0.860 |
+| Vector similarity (text only) | 0.044 | 0.033 | 0.302 | 0.846 |
+| Popularity | 0.032 | 0.021 | 0.288 | 0.896 |
+| Citation-graph bridge | 0.017 | 0.013 | 0.231 | 0.679 |
+| Random | 0.003 | 0.003 | 0.024 | 0.506 |
+
+| Comparison | Δ AP | 95% CI | Δ Recall@100 | p (AP) |
+|---|---:|---|---:|---:|
+| Vector + graph vs vector | +0.039 | [0.022, 0.056] | +0.103 | < 0.0001 |
+| Graph only vs vector | +0.033 | [0.015, 0.052] | +0.088 | 0.0004 |
+| Entity bridge vs vector | +0.028 | [0.010, 0.047] | +0.096 | 0.001 |
+| All four vs popularity | +0.055 | [0.038, 0.073] | +0.152 | < 0.0001 |
+
+**Robustness.** Test half (60 tasks): vector + graph vs vector +0.043 AP (p = 0.003). Cutoff 2021 (135 tasks): 0.142 vs 0.097 (+0.045, p < 0.0001). Stricter confirmation, ≥ 3 later papers (32 tasks): 0.079 vs 0.043 (+0.036, p = 0.035).
+
+**Finding.** Graph structure predicts which method–task combinations researchers adopt later. Graph signals nearly double average precision over text similarity, and the best fusion ranks confirmed combinations about 29× above random. The citation bridge is weak alone but complements the entity graph. This evaluates the signals behind the hypothesis generator, not the generated text; the human round 2 judges candidate quality.
+
+**Limits.** "Confirmed" means co-occurrence in later abstracts. It does not mean a positive result, and it misses combinations described with other names. Entities come from an automatic extractor (typed F1 0.64).
+
 ## 5. Contradiction candidates
 
 | Generator | Queries with candidates (of 26) | Evidence |

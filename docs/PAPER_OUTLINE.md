@@ -1,6 +1,7 @@
 # Paper Outline (draft)
 
 Working title options:
+- *Where Does Graph Structure Help Scholarly RAG? Not Topical Retrieval, but Citation Relatedness and Research Discovery*
 - *Evaluating Provenance-Grounded GraphRAG for Scientific Literature: What Helps, What Does Not, and Why*
 - *Grounded Literature Review, Contradiction Screening, and Hypothesis Generation over a Sparse Scientific Graph*
 
@@ -12,6 +13,7 @@ Framing: an **evaluated system plus empirical findings**, not a new model. Every
 2. **A controlled retrieval study** on two public benchmarks (SciDocs, LitSearch) and two project benchmarks graded by a human-validated LLM judge (held-out κ 0.75 with a human annotator), with a frozen dev/test protocol:
    - general retriever + BM25 fusion beats SPECTER, SPECTER2 base, SciNCL, and OpenScholar (all p < 0.001 on LitSearch);
    - on 44 independent topic-stratified queries, NDCG@10 0.644 vs 0.287 for the original system (+0.358, 95% CI [0.285, 0.434]); the gain comes from the embedding and BM25 fusion, while graph expansion adds a non-significant +0.023.
+   - **graph signals predict future research:** in a time-sliced benchmark (pre-2023 data, 120 tasks), graph-based method–task scores nearly double average precision over text similarity (0.083 vs 0.044, p < 0.0001; robust to cutoff and threshold);
    - **where the graph helps:** on citation recommendation (400 test papers, real citations as ground truth, leakage-controlled), co-citation over the densified graph adds +0.068 Recall@20 over BGE + BM25 (28% relative, p < 0.0001), while for topical queries the densified graph adds nothing (§2e).
 3. **Negative and diagnostic findings** that matter for GraphRAG on scholarly data:
    - a small LLM relevance judge (3B) produced batch-position-biased labels (κ 0.17 with a human); validating the judge on human grades changed the measured effect sizes, and one paper per call fixed a 7B judge (κ 0.60 → 0.77);
@@ -53,6 +55,7 @@ Framing: an **evaluated system plus empirical findings**, not a new model. Every
 | AI relevance judge agrees with humans | RESULTS §2b | ✅ one annotator; ⏳ second annotator |
 | NER selection | RESULTS §3 | ✅ |
 | Concept graph quality | RESULTS §4 | ✅ (probe) |
+| Hypothesis signals, time-sliced discovery benchmark | RESULTS §4c | ✅ positive, robust |
 | Hypothesis quality, human ratings | RESULTS §4b | ✅ round 1 (negative); ⏳ round 2 (revised method, held-out queries) |
 | Contradiction screening and verdicts | RESULTS §5, §5b, §5b-2 | ✅ SciFact verdicts; ✅ round 1 in-domain (negative); ⏳ round 2 index |
 | Answer grounding: vector RAG vs GraphRAG | RESULTS §5c | ✅ (no significant difference) |
