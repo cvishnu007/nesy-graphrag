@@ -143,7 +143,7 @@ OLLAMA_KEEP_ALIVE=2m
 
 | Component | Choice | Evidence |
 |---|---|---|
-| Retrieval embedding | BGE-base-en-v1.5 (`s2_papers_bge`, 47,619 vectors) | Beats SPECTER, SPECTER2 base, SciNCL, and OpenScholar on SciDocs and LitSearch (all p < 0.001); project test NDCG@10 0.619 vs 0.449 for the previous production (p = 0.004) |
+| Retrieval embedding | BGE-base-en-v1.5 (`s2_papers_bge`, 47,619 vectors) | Beats SPECTER, SPECTER2 base, SciNCL, and OpenScholar on SciDocs and LitSearch (all p < 0.001); 44 stratified queries with validated labels: NDCG@10 0.644 vs 0.287 for the previous production (RESULTS §2d) |
 | Retrieval fusion | BGE + BM25 + graph (CITES and SIMILAR_TO, relative gate) | Dev-selected, test-confirmed once |
 | Entity extraction | SciBERT fine-tuned on SciERC (`models/scibert-scierc-ner`, gitignored) | SciERC test typed F1 0.639 vs GLiNER 0.240 and community checkpoints ≤ 0.294; spaCy span F1 0.270 |
 | Concept graph | `(:Paper)-[:MENTIONS]->(:SciEntity {name, type, df, generic})`: 323,624 nodes, 696,390 edges | Shared concepts become task/method terms instead of discourse phrases |
@@ -155,28 +155,43 @@ End-to-end smoke test (`results/local/smoke_test_20261114.log`): review 6/6 clai
 
 **Environment notes.** `gliner`, `sentencepiece`, and `protobuf==7.36.1` were added (protobuf must be at least the gencode version sentencepiece was built with). The `adapters` package was not installed because it would downgrade `transformers`. The local environment runs spaCy 3.7.5 although `requirements.txt` pins 3.8.16; this predates the November work. Hugging Face's Xet client hung on some downloads; `HF_HUB_DISABLE_XET=1` works around it. Unit tests pin all selectable options in `tests/conftest.py`, so they do not depend on `.env`.
 
+## November 14–15, 2026: Human Validation, Stratified Benchmark, Densification
+
+Full tables: [docs/RESULTS.md](docs/RESULTS.md) §2b–2d, §4b, §5b-2, §6. Human tasks: [evaluation/human_review/README.md](evaluation/human_review/README.md).
+
+**Relevance judge.** `src/evaluation/judge_agreement.py` splits the human sheet (`relevance_sheet_cv.csv`, 200 pairs, annotator CV) 50/50 by hash; judges are chosen on the selection half and scored once on the held-out half. Frozen 3B pool labels: κ 0.17 (batch-position bias; stored labels match raw outputs). Local `qwen2.5:7b-instruct`, strict prompt, `--batch-size 1`: held-out κ 0.75 (**used for grading**). Groq `qwen/qwen3.8-27b`, strict: held-out κ 0.88, but the free tier (200K tokens/day) cannot grade full pools. Do not use additional Groq keys to bypass rate limits.
+
+**Retrieval with validated labels.**
+- `src/evaluation/regrade_pool.py` regrades the 1,644 GNN-pool pairs into `results/retrieval/regraded_qwen2_5_7b_strict_b1_20261114/`: selected 0.813 vs production 0.349 on test (14/14 wins).
+- `src/evaluation/stratified_benchmark.py` (`rank --family specter|bge`, `grade`, `score`) evaluates the reviewed 44-query set v0.5 (`results/retrieval/stratified_v2_20261114/`): selected 0.644 vs production 0.287. The selected system is not significantly better than BM25 (+0.019) or BGE + BM25 (+0.023). The query file is hash-locked once pooling starts.
+
+**Hypotheses.** Round 1 (one rater, 30 queries) rated structural holes below a vector baseline. Those candidates ran with `CONCEPT_EXCLUDE_GENERIC=false`, and 21 of 30 differ with the filter on. `src/pipeline/hypothesis_bridge.py` (problem bridge plus a novel method) was selected on the same queries with the 7B judge (`src/evaluation/hypothesis_dev.py`; relevance 0.43 → 0.77). Round 2 (`build_round2_kit.py`, 14 held-out queries, 4 blinded arms, generic filter on) awaits ratings.
+
+**Contradictions.** Round 1: 0 real contradictions in 56 top NLI pairs. A 7B verdict filter (`src/evaluation/contradiction_human_eval.py`) flags 5 of 68 (4.8% false alarms; SciFact F1 0.70). `src/pipeline/contradiction_citation.py` and `src/evaluation/contradiction_index.py` build a corpus-wide citation-grounded index (591 candidates; 9 of the top 150 flagged). Round 2 has 40 pairs awaiting labels.
+
+**Densification.** `src/ingestion/citation_densify.py` (`fetch-s2`, `fetch-openalex`, `build`, `fetch-external`, `write --write`, `stats`) has written additive layers: `CITES_ADDED` 133,527, `COUPLED_WITH` 411,418, `ExternalPaper` 24,714 with `CITES_EXTERNAL` 641,616. Inputs are in ignored `data/` files (`s2_references_supplement.json`, `openalex_references.json`, `openalex_external_papers.json`, `citation_densify_plan.json`). `OPENALEX_API_KEY` goes in `.env`. The new edge types are allowed in `GRAPH_EXPANSION_EDGES` but are not enabled by default. Undo: delete those relationship types and `ExternalPaper` nodes in auto-commit batches.
+
+**Environment.** `.env` was overwritten on Nov 14 at 22:14 by an older copy; the BGE settings and `CONCEPT_EXCLUDE_GENERIC=true` were restored (pre-restore copy outside the repository). `ollama pull qwen2.5:7b-instruct` is required for the judge and verdict filter. The S2 client now backs off exponentially on 429.
+
 ## Important Limitations
 
 - Citation expansion is sparse. More papers broaden semantic retrieval but do not automatically create useful graph contribution.
 - spaCy noun chunks are noisy concept proxies; concept density is not concept quality.
-- Existing retrieval judgments are local Ollama AI-reference labels, not human relevance ground truth.
-- The old 20-query set concerns graph-neural-network topics and is not representative of the broad CSE corpus.
+- Retrieval judgments are LLM-judge labels validated against one human annotator (held-out κ 0.75), not human ground truth.
+- The old 20-query set concerns graph-neural-network topics; the 44-query stratified set (v0.5) covers all 11 topics.
 - The frozen in-domain contradiction package has inadequate positive-class coverage; do not make strong contradiction-quality claims from it.
 - Claim provenance proves that a cited passage exists and is structurally valid. It does not by itself prove full semantic entailment.
 - Hypotheses, contradictions, and reviews are model outputs requiring human/expert review.
 
 ## Immediate Next Work
 
-Items 1-3 of the earlier plan (start Ollama, finish grading, score with significance) were completed on November 13, 2026. Continue in this order unless the user changes priorities; the full publication roadmap is in [docs/EVALUATION_PROTOCOL.md](docs/EVALUATION_PROTOCOL.md):
+Continue in this order unless the user changes priorities:
 
-1. Have the team review `retrieval_queries_v2_stratified_draft.json`, then pool and grade it in a fresh directory.
-2. Grade a 200-pair human sample of the frozen pool to measure AI-judge agreement.
-3. Deduplicate near-duplicate papers.
-4. Run matched-budget vector RAG versus GraphRAG with the frozen protocol. It runs live on the current 47,619-paper stores; record that corpus in the write-up.
-5. Obtain independent human review of relevance judgments and generated answers before reporting research-quality conclusions.
-6. Build a better-covered in-domain contradiction benchmark and expert review protocol for hypotheses.
-7. Compare scientific NER, embedding, and LLM alternatives using frozen development/test protocols, one component at a time.
-8. Scale in controlled 10K/50K/100K experiments only after retrieval-quality evidence is stable.
+1. Score the second rater's sheets and the round 2 sheets when they arrive (`python -m src.evaluation.human_ratings {hypothesis|contradiction|hypothesis_round2|contradiction_round2} --sheets ...`; relevance with `src.evaluation.human_agreement`).
+2. Evaluate retrieval with `CITES_ADDED`/`COUPLED_WITH`: select on the 22 stratified dev queries, extend the pool with the same 7B judge, then test once.
+3. If round 2 supports the revised methods, switch the application to `hypothesis_bridge` and the citation index plus verdict filter, and document it.
+4. Optional robustness: regrade both pools with a 27B-class judge (for example on Kaggle; re-validate on the human sheet first).
+5. Deduplicate near-duplicate papers.
 
 ## Safe Commands
 

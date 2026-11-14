@@ -1,4 +1,4 @@
-# Results (November 13–14, 2026)
+# Results (November 13–15, 2026)
 
 Every number below states its corpus, label source, and statistical test. Protocol: [EVALUATION_PROTOCOL.md](EVALUATION_PROTOCOL.md). Raw artifacts are in `results/`.
 
@@ -36,7 +36,9 @@ Labels come only from the benchmarks. Paired Monte Carlo sign-flip tests (20,000
 
 OpenScholar vs BGE: −0.055 (SciDocs) and −0.172 (LitSearch), both p < 0.001. Findings: (1) every alternative beats SPECTER; (2) BM25 fusion helps every dense model on LitSearch; (3) a strong general retriever beats all scientific embedding models tested, and SciNCL's SciDocs strength does not transfer to natural-language questions. SPECTER2 was evaluated without its query adapter (the `adapters` package would downgrade `transformers`), so its scores are a lower bound.
 
-## 2. Project benchmark (20 GNN queries; AI-reference labels; pool-extended)
+## 2. Project benchmark (20 GNN queries; AI-reference labels; pool-extended) — superseded by §2c
+
+> **Superseded.** These numbers use the frozen 3B labels, which agree with human grades at κ 0.17 (§2b). They are kept for the record. Use §2c (same rankings, validated labels) and §2d (independent 44-query set).
 
 Frozen pool: 1,145 labels from local `qwen2.5:3b-instruct` (grades 0/1/2: 541/126/478), on the 47,627-paper pool corpus. New variants run on the 47,619-paper live stores; their unjudged results were graded by the same blinded judge (`pool_extension.py`), so every scored list is fully judged. Exact paired randomization tests.
 
@@ -69,6 +71,52 @@ One annotator graded a deterministic 200-pair sample of the pool, blinded to the
 The 27B judge is the most accurate, but Groq's free tier (200K tokens/day) covers only about 200 pairs a day, against about 3,950 needed. The local 7B judge, one paper per call, passes the predeclared threshold (held-out κ ≥ 0.6) and grades both pools. Grading one paper per call raised the 7B's κ from 0.60 to 0.77, consistent with the batch-position bias below.
 
 All 200 frozen labels against the human grades: κ 0.187. Diagnosis: the stored labels match the raw judge outputs exactly (0 mismatches of 1,145), so the problem is not storage or alignment. The 3B judge has a batch-position bias. Across 279 four-paper batches it used only 20 of the 81 possible grade patterns, gave position 2 a grade of 2 in almost every batch, and produced `[0,2,2,0]` or `[0,2,0,2]` in 40% of them. Re-running the same model on the same pairs agreed with the frozen labels at only κ 0.031. **The frozen 3B labels are therefore treated as unreliable, and section 2 is superseded by section 2c.** Limitation: one annotator, so human-human agreement is not measured.
+
+## 2c. GNN benchmark regraded with the validated judge
+
+Every pooled pair (1,145 frozen plus 499 extension; 1,644 total) was regraded by the local 7B judge (strict prompt, one paper per call, held-out κ 0.75), papers ordered by hash within each query (`src/evaluation/regrade_pool.py`; `results/retrieval/regraded_qwen2_5_7b_strict_b1_20261114/summary.json`). Rankings are the stored Nov 13 rankings, unchanged; every scored list is fully judged. Exact paired randomization tests.
+
+| Test (14 queries) | NDCG@10 (validated labels) | NDCG@10 (frozen 3B labels, §2) |
+|---|---:|---:|
+| **Selected: BGE + BM25 + graph** | **0.813** | 0.619 |
+| BGE alone | 0.814 | 0.620 |
+| BGE + graph | 0.813 | 0.646 |
+| BM25 | 0.793 | 0.529 |
+| BGE + BM25 | 0.791 | 0.566 |
+| Production before Nov 13 (SPECTER, absolute gate) | 0.349 | 0.449 |
+
+Selected vs production: +0.464, p = 0.0001, 14/14 wins. Selected vs BGE alone: −0.001, p = 0.96. Selected vs BM25: +0.020, p = 0.67. On dev (6 queries), the selected configuration ranks first under the validated labels too (0.701), so the Nov 13 selection stands. Conclusion: BGE-family retrieval is far better than the SPECTER-era system; on GNN queries, BM25 and graph expansion add nothing measurable over BGE.
+
+## 2d. Independent confirmation: 44 topic-stratified queries
+
+Queries: `evaluation/benchmarks/retrieval_queries_v2_stratified_draft.json` v0.5 (4 per ingestion topic, 11 topics; team-reviewed, frozen before pooling; two near-empty queries replaced after a corpus-support check). The retrieval configuration was frozen on Nov 13 and nothing was tuned on these queries. Pool: union of the top 20 of 8 systems, 2,305 pairs, all graded by the validated 7B judge (`src/evaluation/stratified_benchmark.py`; `results/retrieval/stratified_v2_20261114/summary.json`). Monte Carlo sign-flip tests (20,000) with bootstrap 95% CIs; 9 predeclared comparisons.
+
+| All 44 queries | NDCG@10 | P@10 | Recall@20 |
+|---|---:|---:|---:|
+| **Selected: BGE + BM25 + graph (CITES + SIMILAR_TO)** | **0.644** | **0.725** | **0.613** |
+| BM25 | 0.626 | 0.691 | 0.534 |
+| BGE + BM25 | 0.621 | 0.702 | 0.588 |
+| BGE alone | 0.593 | 0.684 | 0.556 |
+| BGE + graph | 0.585 | 0.680 | 0.589 |
+| SPECTER-era best (title+abstract + BM25 + graph) | 0.380 | 0.486 | 0.405 |
+| Production before Nov 13 (SPECTER, absolute gate) | 0.287 | 0.382 | 0.264 |
+| SPECTER vector only | 0.273 | 0.368 | 0.263 |
+
+| Paired comparison (44 queries) | Δ NDCG@10 | 95% CI | p | Holm-adjusted |
+|---|---:|---|---:|---|
+| Selected vs production | +0.358 | [0.285, 0.434] | < 0.0001 | significant |
+| BM25 vs production | +0.339 | [0.270, 0.406] | < 0.0001 | significant |
+| BGE + BM25 vs production | +0.334 | [0.265, 0.405] | < 0.0001 | significant |
+| BGE vs production | +0.306 | [0.235, 0.381] | < 0.0001 | significant |
+| Selected vs BGE alone | +0.052 | [0.012, 0.087] | 0.010 | significant (threshold 0.010) |
+| Selected vs BGE + BM25 (graph contribution) | +0.023 | [−0.011, 0.059] | 0.21 | n.s. |
+| Selected vs BM25 | +0.019 | [−0.029, 0.064] | 0.46 | n.s. |
+| BGE vs BM25 | −0.033 | [−0.090, 0.024] | 0.27 | n.s. |
+| BGE + graph vs BGE | −0.008 | [−0.053, 0.034] | 0.74 | n.s. |
+
+Dev and test halves (22 queries each) agree: selected 0.710 / 0.578; production 0.306 / 0.268. Two operating-systems queries have no grade-2 paper in the pool (V2-11-2, V2-11-3).
+
+**Findings.** (1) The selected system beats the original production system by a large margin on every topic split. (2) Its advantage over BGE alone comes from BM25 fusion. Graph expansion over BGE + BM25 is a small, non-significant gain (+0.023), and graph expansion alone does not help BGE (−0.008). (3) BM25 is a strong baseline on this corpus; the selected system's lead over it is not significant. Retrieval claims must therefore credit lexical fusion, not the graph.
 
 ## 3. Scientific entity extraction (SciERC test; 100 abstracts, 1,685 gold entities)
 
@@ -104,6 +152,8 @@ Representative shared concepts behind the top hypothesis candidate: "molecular p
 | Relevance | 3.27 | **4.20** | −0.93 [−1.43, −0.47] | **0.002** |
 | Novelty | 1.97 | 2.07 | −0.10 | 0.76 |
 | Promise | 2.20 | 2.57 | −0.37 | 0.17 |
+
+**Configuration caveat.** The round-1 structural-hole candidates were generated with `CONCEPT_EXCLUDE_GENERIC=false` (the code default), not the `true` recorded for the application on Nov 14. With the generic filter on, 21 of the 30 top candidates change. Round 1 therefore rates the unfiltered variant. Round 2 uses the filtered one (`build_round2_kit.py` refuses to run otherwise).
 
 The original structural-hole candidates are significantly less relevant and no more novel. The rater's notes ("unrelated: IDS survey", "generic gnn tutorial") trace this to links through broad shared concepts.
 
@@ -187,8 +237,10 @@ Per-query support difference −0.043, 95% CI [−0.248, +0.150], exact paired p
 
 ## 7. Open items for publication
 
-1. Human labels: 200-pair relevance sample (judge agreement), hypothesis ratings with weighted kappa.
-2. Contradiction benchmark with ≥ 10 positives per split; calibrate or replace LLM verdict confidence.
-3. Topic-stratified 44-query set (draft in `evaluation/benchmarks/`) reviewed, pooled, and graded.
-4. Corpus densification by reference closure; deduplication.
-5. Matched-budget vector RAG vs GraphRAG answer evaluation.
+Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c).
+
+1. **Second human rater** for relevance (human–human κ), round-1 hypotheses, and round-1 contradictions.
+2. **Round 2 human ratings** (`evaluation/human_review/*round2*`): revised hypothesis method and citation-grounded contradiction index on held-out queries.
+3. Retrieval on the densified graph (`CITES_ADDED`, `COUPLED_WITH`) as a new variant: dev selection on the 22 stratified dev queries, pool extension, then test once.
+4. Optional robustness check: regrade both pools with a larger judge (27B class) and confirm the §2c/§2d conclusions hold.
+5. Deduplication of 51 near-duplicate pairs; contradiction benchmark with ≥ 10 in-domain positives.

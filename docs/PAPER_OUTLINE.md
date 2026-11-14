@@ -9,14 +9,18 @@ Framing: an **evaluated system plus empirical findings**, not a new model. Every
 ## 1. Contributions
 
 1. **A provenance-grounded pipeline** for literature review, contradiction screening, and hypothesis generation over 47,619 CS papers, where every generated claim and every contradiction candidate is tied to verifiable sentence IDs, and unverifiable claims are withheld (structural citation validity 12/12 in end-to-end tests).
-2. **A controlled retrieval study** on two public benchmarks (SciDocs, LitSearch) and a project benchmark with a frozen dev/test protocol and same-judge pool extension:
+2. **A controlled retrieval study** on two public benchmarks (SciDocs, LitSearch) and two project benchmarks graded by a human-validated LLM judge (held-out κ 0.75 with a human annotator), with a frozen dev/test protocol:
    - general retriever + BM25 fusion beats SPECTER, SPECTER2 base, SciNCL, and OpenScholar (all p < 0.001 on LitSearch);
-   - project test NDCG@10 0.619 vs 0.449 for the original system (p = 0.004).
+   - on 44 independent topic-stratified queries, NDCG@10 0.644 vs 0.287 for the original system (+0.358, 95% CI [0.285, 0.434]); the gain comes from the embedding and BM25 fusion, while graph expansion adds a non-significant +0.023.
 3. **Negative and diagnostic findings** that matter for GraphRAG on scholarly data:
+   - a small LLM relevance judge (3B) produced batch-position-biased labels (κ 0.17 with a human); validating the judge on human grades changed the measured effect sizes, and one paper per call fixed a 7B judge (κ 0.60 → 0.77);
+   - concept-overlap structural holes produce *less* relevant hypothesis candidates than nearest neighbours (human rating 3.27 vs 4.20 of 5, p = 0.002); a problem-bridge, novel-method revision is under test;
+   - NLI contradiction screening over abstracts finds no real contradictions in 56 top-ranked pairs (human labels); a citation-grounded index and a verdict filter (4.8% false alarms) are under test;
+   - reference lists were missing for 77% of papers; filling them from Semantic Scholar and OpenAlex cut isolated papers from 71% to 2%;
    - citation expansion fails when only 3.6% of references resolve in-corpus; semantic kNN edges turn graph expansion from harmful to helpful;
    - noun-phrase concept graphs manufacture contradiction candidates and collapse novelty scores (HNS constant at 0.333);
    - a dev-selected configuration that did not generalize, reported with the protocol that caught it.
-4. **Component validation on expert labels:** SciERC NER (fine-tuned SciBERT, typed F1 0.639 vs 0.240 zero-shot GLiNER), SciFact contradiction screening (NLI AUROC 0.818), and ⏳ verdict models of 3B–120B parameters.
+4. **Component validation on expert labels:** SciERC NER (fine-tuned SciBERT, typed F1 0.639 vs 0.240 zero-shot GLiNER), SciFact contradiction screening (NLI AUROC 0.818), and verdict models of 3B–120B parameters (F1 0.53–0.81; a local 7B reaches 0.70).
 
 ## 2. Related work (positioning)
 
@@ -44,18 +48,20 @@ Framing: an **evaluated system plus empirical findings**, not a new model. Every
 | Claim | Evidence | Status |
 |---|---|---|
 | Retrieval comparison on public benchmarks | RESULTS §1 | ✅ |
-| Retrieval on project benchmark, dev→test | RESULTS §2 | ✅ (AI labels) |
-| AI relevance judge agrees with humans | `evaluation/human_review/` | ❌ team labelling |
+| Retrieval on project benchmarks, validated labels | RESULTS §2c, §2d | ✅ (one human validated the judge) |
+| AI relevance judge agrees with humans | RESULTS §2b | ✅ one annotator; ⏳ second annotator |
 | NER selection | RESULTS §3 | ✅ |
-| Concept graph quality | RESULTS §4 | ✅ (probe); ❌ human hypothesis ratings |
-| Contradiction screening and verdicts | RESULTS §5, `contradiction_verdict_eval.py` | ✅ NLI; ⏳ verdicts |
-| Answer grounding: vector RAG vs GraphRAG | `matched_rag.py` + `rag_answer_quality.py` | ⏳ |
+| Concept graph quality | RESULTS §4 | ✅ (probe) |
+| Hypothesis quality, human ratings | RESULTS §4b | ✅ round 1 (negative); ⏳ round 2 (revised method, held-out queries) |
+| Contradiction screening and verdicts | RESULTS §5, §5b, §5b-2 | ✅ SciFact verdicts; ✅ round 1 in-domain (negative); ⏳ round 2 index |
+| Answer grounding: vector RAG vs GraphRAG | RESULTS §5c | ✅ (no significant difference) |
+| Citation densification | RESULTS §6 | ✅ |
 | Metric implementation correctness | `tests/test_ir_metrics_vs_trec_eval.py` (exact match to trec_eval) | ✅ |
 | Scaling with corpus size | planned citation-closure study | ❌ future work or extension |
 
 ## 5. Limitations to state explicitly
 
-- Project relevance labels are AI-generated until the human agreement study is complete; queries are GNN-focused (stratified 44-query set pending).
+- Project relevance labels come from an LLM judge validated against one human annotator (held-out κ 0.75); a second annotator is pending.
 - SciFact is biomedical; contradiction components are validated off-domain.
 - SPECTER2 was evaluated without its query adapter (dependency conflict); its scores are a lower bound.
 - Abstracts only; no full text.
@@ -68,11 +74,13 @@ Framing: an **evaluated system plus empirical findings**, not a new model. Every
 
 ## 7. Submission checklist
 
-- [ ] Human relevance agreement (200 pairs, 2 annotators)
-- [ ] Human hypothesis ratings with weighted kappa
-- [ ] Stratified 44-query benchmark pooled and graded
-- [ ] Contradiction verdict comparison completed
-- [ ] Vector RAG vs GraphRAG grounding comparison completed
+- [x] Human relevance sample (200 pairs, 1 annotator) and judge validation
+- [ ] Second relevance annotator (human–human κ)
+- [x] Human hypothesis ratings, round 1 (1 rater)
+- [ ] Hypothesis and contradiction round 2, two raters, weighted kappa
+- [x] Stratified 44-query benchmark pooled and graded
+- [x] Contradiction verdict comparison completed (3B, 7B, 27B, 120B)
+- [x] Vector RAG vs GraphRAG grounding comparison completed
 - [ ] Bibliography verified against the original papers
 - [ ] Code and data release plan (licenses: SciFact CC BY 4.0, abstracts ODC-By, LitSearch and SciDocs terms)
 

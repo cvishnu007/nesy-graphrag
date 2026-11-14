@@ -151,7 +151,7 @@ def main(argv=None) -> int:
         judge(make_client(model_spec), rows, prompt_name, labels_path, batch_size=args.batch_size)
         (output / "judge.json").write_text(json.dumps({
             "judge": args.judge, "batch_size": args.batch_size, "pool_depth": DEPTH, "pooled_pairs": len(rows),
-            "human_validation": "results/retrieval/judge_agreement_groq_20261114/report.json"}, indent=2) + "\n")
+            "human_validation": ("results/retrieval/judge_agreement_groq_20261114/report.json" if args.judge.startswith("groq") else "results/retrieval/judge_agreement_local_20261114/report.json")}, indent=2) + "\n")
         print(f"graded {len(rows)} pooled pairs", flush=True)
         return 0
 

@@ -38,8 +38,10 @@ def main():
     from src.storage.neo4j_store import get_driver
     from src.utils import config
 
-    if config.CONCEPT_SOURCE != "scientific" or config.EMBEDDING_MODEL != "BAAI/bge-base-en-v1.5":
-        raise SystemExit("Use the selected configuration (BGE, CONCEPT_SOURCE=scientific)")
+    if (config.CONCEPT_SOURCE != "scientific" or config.EMBEDDING_MODEL != "BAAI/bge-base-en-v1.5"
+            or not config.CONCEPT_EXCLUDE_GENERIC):
+        raise SystemExit("Use the documented configuration: BGE, CONCEPT_SOURCE=scientific, "
+                         "CONCEPT_EXCLUDE_GENERIC=true (round 1 ran without the generic filter; see RESULTS 4b)")
     corpus = {p["id"]: p for p in json.loads(Path(config.CLEAN_FILE).read_text(encoding="utf-8"))}
     used = {q["query_id"] for q in pick_queries()}
     test_queries = [q for q in json.loads(Path(QUERIES).read_text(encoding="utf-8"))["queries"]
@@ -111,7 +113,9 @@ def main():
             writer.writeheader()
             writer.writerows(rows)
         (OUT / f"{prefix}_key_DO_NOT_SHARE_WITH_ANNOTATORS.json").write_text(json.dumps(
-            {"seed": SEED, "design": __doc__, "items": key}, indent=1) + "\n")
+            {"seed": SEED, "design": __doc__, "concept_source": config.CONCEPT_SOURCE,
+             "concept_exclude_generic": config.CONCEPT_EXCLUDE_GENERIC, "embedding_model": config.EMBEDDING_MODEL,
+             "items": key}, indent=1) + "\n")
         print(f"{prefix}: {len(rows)} items", flush=True)
 
 

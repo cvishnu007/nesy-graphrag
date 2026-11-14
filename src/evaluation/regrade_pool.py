@@ -143,7 +143,7 @@ def main(argv=None) -> int:
     report = {"judge": args.judge, "pooled_pairs": len(rows),
               "grade_counts": {g: sum(v == g for v in graded.values()) for g in (0, 1, 2)},
               "agreement_with_frozen_3b_labels": pair_report(old, new),
-              "human_validation": "results/retrieval/judge_agreement_groq_20261114/report.json",
+              "human_validation": ("results/retrieval/judge_agreement_groq_20261114/report.json" if args.judge.startswith("groq") else "results/retrieval/judge_agreement_local_20261114/report.json"),
               "splits": {}}
     for split in ("dev", "test"):
         query_ids = sorted(q["query_id"] for q in benchmark["queries"] if q["split"] == split)
