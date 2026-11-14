@@ -118,6 +118,22 @@ Dev and test halves (22 queries each) agree: selected 0.710 / 0.578; production 
 
 **Findings.** (1) The selected system beats the original production system by a large margin on every topic split. (2) Its advantage over BGE alone comes from BM25 fusion. Graph expansion over BGE + BM25 is a small, non-significant gain (+0.023), and graph expansion alone does not help BGE (−0.008). (3) BM25 is a strong baseline on this corpus; the selected system's lead over it is not significant. Retrieval claims must therefore credit lexical fusion, not the graph.
 
+## 2e. Retrieval on the densified citation graph
+
+`src/evaluation/dense_graph_eval.py`; `results/retrieval/dense_graph_20261115/`. The selected system's graph expansion was rerun with the opt-in dense layers (§6). Newly retrieved pairs (67 dev, 48 test) were graded by the same validated 7B judge into a separate extension file. The rule was predeclared: pick the best dense variant on the 22 dev queries and test it once.
+
+| NDCG@10 | Dev (22) | Test (22) |
+|---|---:|---:|
+| Current system (`CITES` + `SIMILAR_TO`) | 0.708 | 0.576 |
+| BGE + BM25, no graph | 0.695 | 0.543 |
+| **Dense: `CITES` + `CITES_ADDED` + `COUPLED_WITH` (selected on dev)** | 0.693 | 0.540 |
+| Dense: all four edge types | 0.680 | — |
+| Dense: `CITES` + `CITES_ADDED` + `SIMILAR_TO` | 0.657 | — |
+
+On test, dense vs no graph: −0.003 (p = 0.92); dense vs current: −0.036 (p = 0.20). Recall@20 is slightly higher with the dense graph than without a graph (0.605 vs 0.585).
+
+**Why the denser graph does not raise NDCG.** On dev, the 63 papers that dense expansion moved into the top 10 have the same mean relevance as the 63 they displaced (1.19 vs 1.21 on 0–2; 51% grade 2 in both). The graph finds equally relevant alternatives, but BGE + BM25 already fills the top 10 with relevant papers (P@10 ≈ 0.78), so swapping cannot raise the score. Topical-relevance ranking for short queries is the setting where citation structure helps least. Its measurable value in this project is elsewhere: citation-grounded contradiction pairs (§5b-2), hypothesis candidates outside the vector neighbourhood (§4b), and coverage (§6).
+
 ## 3. Scientific entity extraction (SciERC test; 100 abstracts, 1,685 gold entities)
 
 | Extractor | Typed F1 | Typed F1 w/o Generic | Span F1 |

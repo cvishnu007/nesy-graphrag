@@ -1,0 +1,20 @@
+{
+  "selected": "dense_citation_only",
+  "spec": {
+    "neural": true,
+    "graph": "relative",
+    "margin": 0.03,
+    "limit": 50,
+    "lexical_weight": 1.0,
+    "edges": [
+      "CITES",
+      "CITES_ADDED",
+      "COUPLED_WITH"
+    ]
+  },
+  "dev_ndcg@10": {
+    "dense_all": 0.6795554477612532,
+    "dense_citation_only": 0.6930546294350615,
+    "dense_cites_similar": 0.6567548724930119
+  }
+}
