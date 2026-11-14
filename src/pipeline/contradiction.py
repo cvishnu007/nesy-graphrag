@@ -123,7 +123,11 @@ def llm_contradict(llm_client, driver, query, top_k=5):
     print(f"[CONTRADICTION MODE] {query}")
     print(f"{'=' * 60}")
 
-    if CONTRADICTION_CANDIDATE_MODE == "nli":
+    if CONTRADICTION_CANDIDATE_MODE == "citation":
+        from src.pipeline.contradiction_citation import detect_contradictions_from_index
+
+        candidates = detect_contradictions_from_index(driver, query, top_k=top_k)
+    elif CONTRADICTION_CANDIDATE_MODE == "nli":
         from src.pipeline.contradiction_nli import detect_contradictions_nli
 
         candidates = detect_contradictions_nli(driver, query, top_k=top_k)

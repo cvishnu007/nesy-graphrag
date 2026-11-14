@@ -235,6 +235,9 @@ if run and query:
                     names = h.get("shared_concept_names") or []
                     st.markdown(f"**Shared Concepts ({h.get('shared_concepts', len(names))}):** "
                                 + (", ".join(names[:10]) or "N/A"))
+                    if h.get("novel_methods"):
+                        st.markdown("**Methods new to this topic's nearest papers:** "
+                                    + ", ".join(h["novel_methods"][:8]))
                     st.markdown(f"**Supporting Papers:** {h.get('supporting_papers', 'N/A')}")
                     st.markdown(f"**Evidence Score:** {h.get('evidence_score', 'N/A')}")
                     st.markdown(f"**Feasibility:** {item.get('feasibility', 'UNKNOWN')}")

@@ -157,9 +157,21 @@ def llm_hypothesis(llm_client, driver, query, top_k=5):
     print(f"[HYPOTHESIS MODE] {query}")
     print(f"{'=' * 60}")
 
-    hypotheses = generate_hypotheses(driver, query, top_k=top_k)
+    from src.utils.config import HYPOTHESIS_GENERATOR
+
+    if HYPOTHESIS_GENERATOR == "bridge":
+        from src.pipeline.hypothesis_bridge import generate_bridged_hypotheses
+        from src.pipeline.prompts import build_bridge_hypothesis_prompt
+
+        hypotheses = [{**c, "category": "", "shared_concepts": len(c["shared_problems"]),
+                       "shared_concept_names": c["shared_problems"], "supporting_papers": len(c["supporting_paper_ids"])}
+                      for c in generate_bridged_hypotheses(driver, query, top_k=top_k, margin=0.10)]
+        make_prompt = build_bridge_hypothesis_prompt
+    else:
+        hypotheses = generate_hypotheses(driver, query, top_k=top_k)
+        make_prompt = build_hypothesis_prompt
     query_papers = neural_retrieve(query, top_k=3)
-    print(f"[Graph] Found {len(hypotheses)} evidence-ranked structural holes")
+    print(f"[Graph] Found {len(hypotheses)} evidence-ranked {HYPOTHESIS_GENERATOR} candidates")
     if not hypotheses:
         print("No hypothesis candidates found.")
         return {"query": query, "hypotheses": []}
@@ -173,7 +185,7 @@ def llm_hypothesis(llm_client, driver, query, top_k=5):
         print(f"[LLM] Generating hypothesis {index}/{len(hypotheses)}...")
         try:
             response = llm_client.complete(
-                build_hypothesis_prompt(query_context, hypothesis),
+                make_prompt(query_context, hypothesis),
                 max_tokens=700,
                 temperature=0.0,
             )

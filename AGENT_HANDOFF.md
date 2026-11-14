@@ -173,6 +173,13 @@ Full tables: [docs/RESULTS.md](docs/RESULTS.md) §2b–2d, §4b, §5b-2, §6. Hu
 
 **Graph contribution.** `src/evaluation/dense_graph_eval.py` (dev select, test once): the dense layers do not raise topical NDCG (papers they add are as relevant as the ones they displace). `src/evaluation/citation_recommendation.py`: co-citation over the dense graph adds +0.068 Recall@20 over BGE + BM25 on 400 test papers. `COLLAPSE_NEAR_DUPLICATES=true` is set in `.env`; no data is deleted.
 
+**Application switched to evidence-backed methods (2026-11-15; reversible in `.env`, backup outside the repository).**
+- `OLLAMA_MODEL=qwen2.5:7b-instruct`: the 3B default had verdict F1 0.53 and judge κ 0.44; the 7B has 0.70 and 0.75.
+- `CONTRADICTION_CANDIDATE_MODE=citation`: pairs from the corpus-wide citation index (`CONTRADICTION_INDEX_FILE`) touching the query's top 50 papers, re-verdicted by the app LLM. 27 of the 44 stratified queries get at least one pair. The previous value was `nli`.
+- `HYPOTHESIS_GENERATOR=bridge`: `hypothesis_bridge` candidates with `build_bridge_hypothesis_prompt`. The previous value was `structural_hole`.
+- A **Related Work** mode (`src/pipeline/related_work.py`) uses the citation-recommendation configuration.
+- Both reasoning switches await round 2 human confirmation. Code defaults are unchanged (`concept`, `structural_hole`, 3B), and the tests pin them.
+
 **Environment.** `.env` was overwritten on Nov 14 at 22:14 by an older copy; the BGE settings and `CONCEPT_EXCLUDE_GENERIC=true` were restored (pre-restore copy outside the repository). `ollama pull qwen2.5:7b-instruct` is required for the judge and verdict filter. The S2 client now backs off exponentially on 429.
 
 ## Important Limitations

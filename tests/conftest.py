@@ -16,6 +16,7 @@ _TEST_DEFAULTS = {
     "CONCEPT_EXCLUDE_GENERIC": "false",
     "CONTRADICTION_CANDIDATE_MODE": "concept",
     "HYPOTHESIS_HOLE_EDGES": "CITES",
+    "HYPOTHESIS_GENERATOR": "structural_hole",
 }
 os.environ.update(_TEST_DEFAULTS)
 

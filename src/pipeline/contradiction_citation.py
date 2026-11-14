@@ -152,3 +152,46 @@ def build_corpus_index(driver, corpus, citations, *, scorer=None, batch=500):
              for pid in critical for cited in sorted(citations[pid]) if cited in byid and cited != pid]
     return rank_citation_candidates(pairs, top_k=len(pairs) or 1, scorer=scorer), {
         "critical_papers": len(critical), "citation_pairs": len(pairs)}
+
+
+def load_index(path=None):
+    import json
+    from pathlib import Path
+
+    from src.utils.config import CONTRADICTION_INDEX_FILE
+
+    file = Path(path or CONTRADICTION_INDEX_FILE)
+    if not file.exists():
+        return []
+    return [json.loads(line) for line in file.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def index_candidates_for(index, retrieved_ids, top_k=5):
+    """Indexed pairs touching the retrieved papers; prior verdict CONTRADICTION first, then by NLI."""
+    retrieved = set(retrieved_ids)
+    hits = [row for row in index if row["citing_id"] in retrieved or row["cited_id"] in retrieved]
+    hits.sort(key=lambda row: (row.get("verdict") != "CONTRADICTION", -row["nli_contradiction"], row["rank"]))
+    return hits[:top_k]
+
+
+def detect_contradictions_from_index(driver, query, top_k=5, *, retrieve_k=None, index=None):
+    """Application path for CONTRADICTION_CANDIDATE_MODE=citation."""
+    from src.pipeline.retrieval import nesy_retrieve
+    from src.utils.config import CONTRADICTION_INDEX_RETRIEVE_K
+
+    papers = nesy_retrieve(driver, query, top_k=retrieve_k or CONTRADICTION_INDEX_RETRIEVE_K)
+    rows = index_candidates_for(index if index is not None else load_index(), [p["id"] for p in papers], top_k)
+    if not rows:
+        return []
+    ids = sorted({row["citing_id"] for row in rows} | {row["cited_id"] for row in rows})
+    with driver.session() as session:
+        meta = {r["id"]: dict(r) for r in session.run(
+            "UNWIND $ids AS pid MATCH (p:Paper {id: pid}) "
+            "RETURN p.id AS id, p.title AS title, p.abstract AS abstract, p.year AS year", ids=ids)}
+    return [{
+        "paper1": meta[row["citing_id"]], "paper2": meta[row["cited_id"]],
+        "evidence_1": row["evidence_1"], "evidence_2": row["evidence_2"],
+        "nli_contradiction": row["nli_contradiction"], "candidate_score": row["nli_contradiction"],
+        "candidate_method": "citation_index", "shared_concept_names": row.get("shared_subjects", []),
+        "index_rank": row["rank"], "index_verdict": row.get("verdict"),
+    } for row in rows if row["citing_id"] in meta and row["cited_id"] in meta]

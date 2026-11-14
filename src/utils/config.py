@@ -255,8 +255,12 @@ CONTRADICTION_MIN_CONFIDENCE = float(
 # Candidate generator: "concept" (shared noun-phrase overlap, historical) or
 # "nli" (sentence-level NLI contradiction scores; see pipeline/contradiction_nli.py).
 CONTRADICTION_CANDIDATE_MODE = os.getenv("CONTRADICTION_CANDIDATE_MODE", "concept").strip().lower()
-if CONTRADICTION_CANDIDATE_MODE not in {"concept", "nli"}:
-    raise ValueError("CONTRADICTION_CANDIDATE_MODE must be 'concept' or 'nli'")
+if CONTRADICTION_CANDIDATE_MODE not in {"concept", "nli", "citation"}:
+    raise ValueError("CONTRADICTION_CANDIDATE_MODE must be 'concept', 'nli' or 'citation'")
+# Corpus-wide citation-grounded index (src/evaluation/contradiction_index.py), used when mode is "citation".
+CONTRADICTION_INDEX_FILE = os.getenv(
+    "CONTRADICTION_INDEX_FILE", "results/reasoning/contradiction_index_20261114/index.jsonl")
+CONTRADICTION_INDEX_RETRIEVE_K = int(os.getenv("CONTRADICTION_INDEX_RETRIEVE_K", "50"))
 CONTRADICTION_YEAR_WEIGHT = float(os.getenv("CONTRADICTION_YEAR_WEIGHT", "0.25"))
 if not 0 <= CONTRADICTION_YEAR_WEIGHT <= 1:
     raise ValueError("CONTRADICTION_YEAR_WEIGHT must be between 0 and 1")
@@ -279,6 +283,11 @@ HYPOTHESIS_CANDIDATE_POOL = int(
 )
 # Relationships that disqualify a "structural hole": a candidate linked to any
 # query paper by one of these edge types is already connected.
+# "structural_hole" (original; rated below a vector baseline in round 1) or "bridge"
+# (src/pipeline/hypothesis_bridge.py; dev-selected, time-sliced signals validated, round 2 pending).
+HYPOTHESIS_GENERATOR = os.getenv("HYPOTHESIS_GENERATOR", "structural_hole").strip().lower()
+if HYPOTHESIS_GENERATOR not in {"structural_hole", "bridge"}:
+    raise ValueError("HYPOTHESIS_GENERATOR must be 'structural_hole' or 'bridge'")
 HYPOTHESIS_HOLE_EDGES = tuple(
     edge.strip().upper()
     for edge in os.getenv("HYPOTHESIS_HOLE_EDGES", "CITES").split("|")
