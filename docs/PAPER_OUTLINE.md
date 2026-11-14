@@ -1,5 +1,7 @@
 # Paper Outline (draft)
 
+Full draft text: [PAPER_DRAFT.md](PAPER_DRAFT.md). Headline numbers are checked by `python -m src.evaluation.reproduce`.
+
 Working title options:
 - *Where Does Graph Structure Help Scholarly RAG? Not Topical Retrieval, but Citation Relatedness and Research Discovery*
 - *Evaluating Provenance-Grounded GraphRAG for Scientific Literature: What Helps, What Does Not, and Why*

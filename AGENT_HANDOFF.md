@@ -247,6 +247,14 @@ Both refuse the test split without `--final-test`.
 
 This requires no live database or LLM, but it reproduces AI-reference package results rather than human-ground-truth results.
 
+### Reproduce headline numbers (no LLM calls)
+
+```powershell
+.env\Scripts\python.exe -m src.evaluation.reproduce
+```
+
+This recomputes 14 headline values (judge κ, stratified and regraded NDCG, citation recommendation, time-sliced AP and P@10) from saved artifacts, and exits non-zero on drift.
+
 ### Verify code after changes
 
 ```powershell
