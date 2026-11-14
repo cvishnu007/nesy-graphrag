@@ -134,6 +134,33 @@ On test, dense vs no graph: −0.003 (p = 0.92); dense vs current: −0.036 (p =
 
 **Why the denser graph does not raise NDCG.** On dev, the 63 papers that dense expansion moved into the top 10 have the same mean relevance as the 63 they displaced (1.19 vs 1.21 on 0–2; 51% grade 2 in both). The graph finds equally relevant alternatives, but BGE + BM25 already fills the top 10 with relevant papers (P@10 ≈ 0.78), so swapping cannot raise the score. Topical-relevance ranking for short queries is the setting where citation structure helps least. Its measurable value in this project is elsewhere: citation-grounded contradiction pairs (§5b-2), hypothesis candidates outside the vector neighbourhood (§4b), and coverage (§6).
 
+## 2f. Citation recommendation: where the graph helps
+
+Task: given a corpus paper's title and abstract, find the corpus papers it cites (`src/evaluation/citation_recommendation.py`; `results/retrieval/citation_recommendation_20261115/`). Ground truth is the real reference lists (`CITES` + `CITES_ADDED`), with no LLM judge.
+
+**Leakage controls:**
+- the query paper's own citation edges are never used;
+- papers that cite it are excluded from the neighbour set;
+- every method ranks only papers published no later than the query paper.
+
+The graph signal is co-citation through neighbours: papers cited by the query's 50 nearest BGE neighbours, weighted by neighbour similarity. Of 9,534 eligible papers (year ≥ 2022, ≥ 5 older cited corpus papers), 600 were selected by hash: 200 dev, 400 test. Graph settings were chosen on dev by Recall@20 from a predeclared grid (k ∈ {10, 20, 50}, weight ∈ {0.5, 1.0}). The chosen setting, k = 50 with weight 1.0, is at the edge of the grid and ran once on test. Monte Carlo sign-flip tests with bootstrap 95% CIs.
+
+| Test (400 papers) | Recall@20 | NDCG@10 | MAP |
+|---|---:|---:|---:|
+| **BGE + BM25 + co-citation graph** | **0.308** | **0.283** | **0.188** |
+| Co-citation graph alone | 0.267 | 0.250 | 0.159 |
+| BGE | 0.251 | 0.231 | 0.142 |
+| BGE + BM25 | 0.241 | 0.217 | 0.135 |
+| BM25 | 0.169 | 0.155 | 0.091 |
+
+| Comparison (test) | Δ Recall@20 | 95% CI | Δ NDCG@10 | p |
+|---|---:|---|---:|---:|
+| With graph vs BGE + BM25 | **+0.068** | [0.055, 0.081] | +0.067 | < 0.0001 |
+| With graph vs BGE | **+0.057** | [0.043, 0.072] | +0.053 | < 0.0001 |
+| Graph alone vs BGE | +0.016 | [−0.006, 0.038] | +0.019 | 0.17 |
+
+Dev agrees (+0.071 Recall@20 over BGE + BM25). **Finding:** when the task depends on citation structure rather than topical similarity, the densified graph gives a large, significant gain (28% relative Recall@20 over BGE + BM25). Together with §2d–2e, this marks the boundary: graph structure is redundant for short topical queries but complementary for citation-level relatedness. BM25 fusion slightly hurts here (long abstract queries), unlike in §2d.
+
 ## 3. Scientific entity extraction (SciERC test; 100 abstracts, 1,685 gold entities)
 
 | Extractor | Typed F1 | Typed F1 w/o Generic | Span F1 |

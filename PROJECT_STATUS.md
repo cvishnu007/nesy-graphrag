@@ -38,7 +38,8 @@ The repository is on `phase3` at `8f2eaa2`, four commits ahead of `origin/phase3
 - **Retrieval, validated labels.** On 44 independent topic-stratified queries, the selected BGE + BM25 + graph system scores NDCG@10 0.644 vs 0.287 for the original production system (p < 0.0001). The gain comes from BGE and BM25 fusion; graph expansion adds a non-significant +0.023. On the regraded GNN benchmark: 0.813 vs 0.349.
 - **Hypotheses and contradictions, human round 1 (negative).** Structural-hole hypotheses were less relevant than a vector baseline (3.27 vs 4.20 of 5, p = 0.002). No real contradictions were found among 56 top NLI-screened pairs. Revised methods (problem-bridge hypotheses; citation-grounded contradiction index with a 7B verdict filter) await round 2 human ratings on held-out queries.
 - **Citation graph densified.** Reference lists for 46,708 papers (from 10,899) via Semantic Scholar and OpenAlex; opt-in `CITES_ADDED`, `COUPLED_WITH`, and `ExternalPaper` layers. Isolated papers fell from 71.4% to 2.4%.
-- 383 tests pass. Tables: [docs/RESULTS.md](docs/RESULTS.md). Human tasks: [evaluation/human_review/README.md](evaluation/human_review/README.md).
+- **Where the graph helps.** The densified graph does not improve topical retrieval (test −0.003 vs no graph) but adds +0.068 Recall@20 (28% relative, p < 0.0001) on leakage-controlled citation recommendation. Near-duplicate collapse is enabled in `.env` (no pair co-occurs in any benchmark top 10).
+- 386 tests pass. Tables: [docs/RESULTS.md](docs/RESULTS.md). Human tasks: [evaluation/human_review/README.md](evaluation/human_review/README.md).
 
 ## November 14, 2026 Update
 

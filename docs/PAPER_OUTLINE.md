@@ -12,6 +12,7 @@ Framing: an **evaluated system plus empirical findings**, not a new model. Every
 2. **A controlled retrieval study** on two public benchmarks (SciDocs, LitSearch) and two project benchmarks graded by a human-validated LLM judge (held-out κ 0.75 with a human annotator), with a frozen dev/test protocol:
    - general retriever + BM25 fusion beats SPECTER, SPECTER2 base, SciNCL, and OpenScholar (all p < 0.001 on LitSearch);
    - on 44 independent topic-stratified queries, NDCG@10 0.644 vs 0.287 for the original system (+0.358, 95% CI [0.285, 0.434]); the gain comes from the embedding and BM25 fusion, while graph expansion adds a non-significant +0.023.
+   - **where the graph helps:** on citation recommendation (400 test papers, real citations as ground truth, leakage-controlled), co-citation over the densified graph adds +0.068 Recall@20 over BGE + BM25 (28% relative, p < 0.0001), while for topical queries the densified graph adds nothing (§2e).
 3. **Negative and diagnostic findings** that matter for GraphRAG on scholarly data:
    - a small LLM relevance judge (3B) produced batch-position-biased labels (κ 0.17 with a human); validating the judge on human grades changed the measured effect sizes, and one paper per call fixed a 7B judge (κ 0.60 → 0.77);
    - concept-overlap structural holes produce *less* relevant hypothesis candidates than nearest neighbours (human rating 3.27 vs 4.20 of 5, p = 0.002); a problem-bridge, novel-method revision is under test;
@@ -56,6 +57,7 @@ Framing: an **evaluated system plus empirical findings**, not a new model. Every
 | Contradiction screening and verdicts | RESULTS §5, §5b, §5b-2 | ✅ SciFact verdicts; ✅ round 1 in-domain (negative); ⏳ round 2 index |
 | Answer grounding: vector RAG vs GraphRAG | RESULTS §5c | ✅ (no significant difference) |
 | Citation densification | RESULTS §6 | ✅ |
+| Graph contribution: topical retrieval vs citation recommendation | RESULTS §2e, §2f | ✅ |
 | Metric implementation correctness | `tests/test_ir_metrics_vs_trec_eval.py` (exact match to trec_eval) | ✅ |
 | Scaling with corpus size | planned citation-closure study | ❌ future work or extension |
 

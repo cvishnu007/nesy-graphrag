@@ -171,6 +171,8 @@ Full tables: [docs/RESULTS.md](docs/RESULTS.md) §2b–2d, §4b, §5b-2, §6. Hu
 
 **Densification.** `src/ingestion/citation_densify.py` (`fetch-s2`, `fetch-openalex`, `build`, `fetch-external`, `write --write`, `stats`) has written additive layers: `CITES_ADDED` 133,527, `COUPLED_WITH` 411,418, `ExternalPaper` 24,714 with `CITES_EXTERNAL` 641,616. Inputs are in ignored `data/` files (`s2_references_supplement.json`, `openalex_references.json`, `openalex_external_papers.json`, `citation_densify_plan.json`). `OPENALEX_API_KEY` goes in `.env`. The new edge types are allowed in `GRAPH_EXPANSION_EDGES` but are not enabled by default. Undo: delete those relationship types and `ExternalPaper` nodes in auto-commit batches.
 
+**Graph contribution.** `src/evaluation/dense_graph_eval.py` (dev select, test once): the dense layers do not raise topical NDCG (papers they add are as relevant as the ones they displace). `src/evaluation/citation_recommendation.py`: co-citation over the dense graph adds +0.068 Recall@20 over BGE + BM25 on 400 test papers. `COLLAPSE_NEAR_DUPLICATES=true` is set in `.env`; no data is deleted.
+
 **Environment.** `.env` was overwritten on Nov 14 at 22:14 by an older copy; the BGE settings and `CONCEPT_EXCLUDE_GENERIC=true` were restored (pre-restore copy outside the repository). `ollama pull qwen2.5:7b-instruct` is required for the judge and verdict filter. The S2 client now backs off exponentially on 429.
 
 ## Important Limitations
