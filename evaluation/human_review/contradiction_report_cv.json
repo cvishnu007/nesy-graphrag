@@ -1,0 +1,18 @@
+{
+  "raters": [
+    "contradiction_sheet_labeled_cv"
+  ],
+  "inter_rater_kappa": {},
+  "arms": {
+    "top_ranked": {
+      "n": 56,
+      "precision_contradiction": 0.0,
+      "precision_contradiction_or_tension": 0.089
+    },
+    "lower_ranked_control": {
+      "n": 12,
+      "precision_contradiction": 0.0,
+      "precision_contradiction_or_tension": 0.0
+    }
+  }
+}

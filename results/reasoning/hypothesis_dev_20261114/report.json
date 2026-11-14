@@ -1,0 +1,1816 @@
+{
+  "rule": " (2026-11-14, before any result was seen): among the\nbridge configurations, choose the one with the highest mean judged relevance of\nthe top candidate over all 30 dev queries, counting a query without a candidate\nas 0",
+  "arms": {
+    "graph_structural_hole": {
+      "coverage": 30,
+      "mean_judged_relevance_0_2": 0.433,
+      "mean_judged_relevance_when_present": 0.433,
+      "mean_human_relevance_1_5": 3.267
+    },
+    "vector_neighbour": {
+      "coverage": 30,
+      "mean_judged_relevance_0_2": 0.933,
+      "mean_judged_relevance_when_present": 0.933,
+      "mean_human_relevance_1_5": 4.2
+    },
+    "bridge_m05": {
+      "coverage": 23,
+      "mean_judged_relevance_0_2": 0.7,
+      "mean_judged_relevance_when_present": 0.913
+    },
+    "bridge_m10": {
+      "coverage": 29,
+      "mean_judged_relevance_0_2": 0.767,
+      "mean_judged_relevance_when_present": 0.793
+    },
+    "bridge_m10_specific": {
+      "coverage": 27,
+      "mean_judged_relevance_0_2": 0.767,
+      "mean_judged_relevance_when_present": 0.852
+    }
+  },
+  "selected": "bridge_m10",
+  "candidates": {
+    "bridge_m05|V2-01-2": {
+      "id": "5ca04cde78542b8d58c4c5b2db91ddd65b56d917",
+      "title": "lazygnn: large-scale graph neural networks via lazy propagation",
+      "year": 2023,
+      "query_similarity": 0.8175,
+      "relevance_floor": 0.8014,
+      "shared_problems": [
+        "large-scale"
+      ],
+      "novel_methods": [
+        "deeper models",
+        "deeper gnns"
+      ],
+      "supporting_paper_ids": [
+        "3a272ee8265b4007f4f6d8ab9cf065e4fe1b6751"
+      ],
+      "evidence_score": 15.3336,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-01-3": {
+      "id": "887d11c3fbc1a87a8bfe97bd53cfedab89496f99",
+      "title": "a gnn-guided predict-and-search framework for mixed-integer linear programming",
+      "year": 2023,
+      "query_similarity": 0.8045,
+      "relevance_floor": 0.8012,
+      "shared_problems": [
+        "combinatorial optimization problems",
+        "optimization"
+      ],
+      "novel_methods": [
+        "gurobi",
+        "mixed-integer linear programming",
+        "machine learning (ml) algorithms"
+      ],
+      "supporting_paper_ids": [
+        "d596ac251729fc3647b08b51c5208fdf5414c7c1",
+        "93c9f9ac6962d38ea937160a11b66ca09290d394",
+        "84dbf3f70e0192e74674df29be5bb2bc7e3d9d97",
+        "8694bbf386616b1f7bd0e151693ad16a0d805bb6"
+      ],
+      "evidence_score": 36.2051,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-01-4": {
+      "id": "a9c75f2aa2eb6038316d2afd3e3cfaf59ba1cb06",
+      "title": "generalized laplacian positional encoding for graph representation learning",
+      "year": 2022,
+      "query_similarity": 0.7644,
+      "relevance_floor": 0.7628,
+      "shared_problems": [
+        "graph-structured data"
+      ],
+      "novel_methods": [
+        "positional encoding schemes",
+        "positional encodings",
+        "pytorch"
+      ],
+      "supporting_paper_ids": [
+        "9a5ff9a67fd389d26b20697fea01c12d012f8592",
+        "dc8f407e9eae9ff2383c4d6d8325bbf9d5c6a5b0"
+      ],
+      "evidence_score": 14.7884,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-03-1": {
+      "id": "a55edf08db6252c5bc12376afb4d09c52ca20f79",
+      "title": "a critical review of artificial intelligence based approaches in intrusion detection: a comprehensive analysis",
+      "year": 2024,
+      "query_similarity": 0.7857,
+      "relevance_floor": 0.7798,
+      "shared_problems": [
+        "computer networks",
+        "intrusion detection",
+        "intelligence"
+      ],
+      "novel_methods": [
+        "explainable",
+        "machine",
+        "xai",
+        "artificial",
+        "federated learning"
+      ],
+      "supporting_paper_ids": [
+        "18ca24000345036ce084e33a74f86693809f98a3",
+        "e310e1a774e44ec7e2ccf45bac1ac0f4df0213ab",
+        "e5d1e2b09699c72dda288f2dc83e17bc33fe4d9b"
+      ],
+      "evidence_score": 54.4085,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-03-3": {
+      "id": "30ec62b993cd5734b53d293c2636da51b721ce93",
+      "title": "phishing website detection using deep learning models",
+      "year": 2024,
+      "query_similarity": 0.7789,
+      "relevance_floor": 0.7662,
+      "shared_problems": [
+        "detecting phishing websites",
+        "website",
+        "phishing"
+      ],
+      "novel_methods": [
+        "pca",
+        "ensemble learning",
+        "deep learning algorithms"
+      ],
+      "supporting_paper_ids": [
+        "7a3fae0be6e34f70a17d0445b7d0b3321f63e180",
+        "112b7a9400abb6071692310fbde5443ee985f304",
+        "d52e0903316fe908af2246789aa7b17073553d57",
+        "ffc3acb99a9ffb1144872518d56a13e7401926f4",
+        "9de4d6952887fa0370ec57bcbafa15e5d4727651"
+      ],
+      "evidence_score": 54.3992,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-04-1": {
+      "id": "c95f14a7ff78697155220e80605d242c28df587f",
+      "title": "a research review of openflow for datacenter networking",
+      "year": 2023,
+      "query_similarity": 0.747,
+      "relevance_floor": 0.7463,
+      "shared_problems": [
+        "traffic engineering"
+      ],
+      "novel_methods": [
+        "openflow",
+        "software-defined networks"
+      ],
+      "supporting_paper_ids": [
+        "b1d3b4d67fe3d41abd15b8c854489d536794c03a",
+        "adc4a3072a2bc39765a324e36014ad2d9becb2d8",
+        "9bc46ee0322fd4e7df1afa06be3e3a10002f115e"
+      ],
+      "evidence_score": 14.7933,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-04-2": {
+      "id": "7c217005304d30959b41b4abcf4bc5d2213856ac",
+      "title": "on softwarization of intelligence in 6g networks for ultra-fast optimal policy selection: challenges and opportunities",
+      "year": 2023,
+      "query_similarity": 0.7118,
+      "relevance_floor": 0.6942,
+      "shared_problems": [
+        "sixth generation"
+      ],
+      "novel_methods": [
+        "htc"
+      ],
+      "supporting_paper_ids": [
+        "28a5b88a2e3e63d59662bd448e6d36b527558488"
+      ],
+      "evidence_score": 12.949,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-04-4": {
+      "id": "f938a29f108fe901ba4bc9162bbece909e8940f1",
+      "title": "future intelligent and secure vehicular network toward 6g: machine-learning approaches",
+      "year": 2020,
+      "query_similarity": 0.7173,
+      "relevance_floor": 0.7035,
+      "shared_problems": [
+        "networking"
+      ],
+      "novel_methods": [
+        "6g) network",
+        "vehicular network"
+      ],
+      "supporting_paper_ids": [
+        "ca3e3e2c64e8e5bc86150dae865226a80533ffd9"
+      ],
+      "evidence_score": 13.3118,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-06-1": {
+      "id": "434cada59abcfc8d3ed3f5bf1b9234f32df1c416",
+      "title": "automatic generation of test cases based on bug reports: a feasibility study with large language models",
+      "year": 2023,
+      "query_similarity": 0.7063,
+      "relevance_floor": 0.7055,
+      "shared_problems": [
+        "automated program",
+        "apr",
+        "repair",
+        "program repair"
+      ],
+      "novel_methods": [
+        "apr tool",
+        "regression testing"
+      ],
+      "supporting_paper_ids": [
+        "545e9dc34256d39b6d6fd6a6fa02a9e399856912",
+        "4ac68702d9977c30f48ad02c92fcecf02ab9ef46",
+        "38c90416352d35cbbffa4ba7486cabd04f21e951",
+        "b7f46c9f01d9f649d18b709e2e88b3b97bebd016",
+        "02417d57dec9215a0b66a63e9a70571c168de54b"
+      ],
+      "evidence_score": 66.8215,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-06-2": {
+      "id": "383bea43bbd3c606db5f3456e6c988eb41f6b92e",
+      "title": "an empirical study of retrieval-augmented code generation: challenges and opportunities",
+      "year": 2025,
+      "query_similarity": 0.8089,
+      "relevance_floor": 0.7813,
+      "shared_problems": [
+        "natural language descriptions",
+        "code generation"
+      ],
+      "novel_methods": [
+        "pre-trained code models",
+        "fusion strategies"
+      ],
+      "supporting_paper_ids": [
+        "c317f4d5ddeb11da9a5c8fea1e3cdec2f7de485d",
+        "045a6f92b58f08d5b305dd5d661316a506ee4d43"
+      ],
+      "evidence_score": 28.9506,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-06-3": {
+      "id": "3db3710bae31c512d3b079bb9a9d07d4597eaafa",
+      "title": "software defect prediction using tree-based ensembles",
+      "year": 2020,
+      "query_similarity": 0.7459,
+      "relevance_floor": 0.741,
+      "shared_problems": [
+        "prediction of software defects",
+        "defect prediction",
+        "software defect prediction"
+      ],
+      "novel_methods": [
+        "extra trees",
+        "tree-based ensembles",
+        "bagging ensembles",
+        "boosting ensembles"
+      ],
+      "supporting_paper_ids": [
+        "ac511acd876375cd7b166c646dc8d97a0b9bdfa2",
+        "b3e2d0062ff9c9846f0fbeec33bb230ddab7bc94",
+        "acafd8ebf835acab33b103637a5b73fc9f94ba20",
+        "e2652aaa711e18cccfb09ee113431e1298d8b2a2"
+      ],
+      "evidence_score": 93.9754,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-06-4": {
+      "id": "7d80c4d1ed282ba2eebb2262e17a7dcd636615ab",
+      "title": "an empirical study on how large language models impact software testing learning",
+      "year": 2024,
+      "query_similarity": 0.7538,
+      "relevance_floor": 0.7509,
+      "shared_problems": [
+        "software testing",
+        "testing"
+      ],
+      "novel_methods": [
+        "assistant",
+        "large language model",
+        "generative ai"
+      ],
+      "supporting_paper_ids": [
+        "f43b8a87a96f8abc2467b90538b643a6061416e9",
+        "1153b05709be3dd0dc5e5d4d4ee8f631995ad768"
+      ],
+      "evidence_score": 29.4043,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-07-1": {
+      "id": "4b44f179dd55a3c9a06155f56f59bf0c7b32b427",
+      "title": "a woa-based optimization approach for task scheduling in cloud computing systems",
+      "year": 2020,
+      "query_similarity": 0.7812,
+      "relevance_floor": 0.761,
+      "shared_problems": [
+        "cloud task scheduling",
+        "scheduling",
+        "task scheduling"
+      ],
+      "novel_methods": [
+        "multiobjective optimization model",
+        "woa",
+        "cloud system",
+        "metaheuristic algorithms"
+      ],
+      "supporting_paper_ids": [
+        "31250c519b898f9f04acff36329821f3ad251857",
+        "9906471e2494d7505d09bc44c3cb1875fa6aa81e",
+        "9ec2df75d3088d223d2116fbfcff0a8483156204",
+        "f8bb73cc5d35e34f81ece894b98a74d3fadcb3fd"
+      ],
+      "evidence_score": 78.224,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-07-2": {
+      "id": "4b575282429d1306a042a83c51741c74a90b99ea",
+      "title": "serverless computing: state-of-the-art, challenges and opportunities",
+      "year": 2023,
+      "query_similarity": 0.7238,
+      "relevance_floor": 0.7112,
+      "shared_problems": [
+        "computing"
+      ],
+      "novel_methods": [
+        "cutting-edge solutions",
+        "open-source frameworks"
+      ],
+      "supporting_paper_ids": [
+        "8049a85cb3db9a091c730798f454a0ccea55b752",
+        "36338d869d7589b01c3707d70bece8c320e439e2"
+      ],
+      "evidence_score": 10.0712,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-07-3": {
+      "id": "6019fa28d6d47abbfa6ba62a5eac9503dcbb411a",
+      "title": "predicted affinity based virtual machine placement in cloud computing environments",
+      "year": 2020,
+      "query_similarity": 0.7691,
+      "relevance_floor": 0.7482,
+      "shared_problems": [
+        "vm placement"
+      ],
+      "novel_methods": [
+        "affinity model"
+      ],
+      "supporting_paper_ids": [
+        "1c229b9dac7f1398b2f7a41ce945e23119a4c277",
+        "134ed3548c51aaaaaa87be8811201968aa3eaa1e"
+      ],
+      "evidence_score": 14.1468,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-08-1": {
+      "id": "9ab45aa875b56335303398e84a59a3756cd9d530",
+      "title": "graph retrieval-augmented generation: a survey",
+      "year": 2024,
+      "query_similarity": 0.7739,
+      "relevance_floor": 0.7569,
+      "shared_problems": [
+        "generation",
+        "databases"
+      ],
+      "novel_methods": [
+        "graphrag",
+        "retraining"
+      ],
+      "supporting_paper_ids": [
+        "8ae4581027c682b9ebad687c76e3a0559016c760",
+        "88dc871460a3a03699dc0a8ca248542a5d39f41e",
+        "46f9f7b8f88f72e12cbdb21e3311f995eb6e65c5"
+      ],
+      "evidence_score": 25.0017,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-08-3": {
+      "id": "e00631018e737355f1b0b3db779641f8f26288b1",
+      "title": "wikibert models: deep transfer learning for many languages",
+      "year": 2020,
+      "query_similarity": 0.7303,
+      "relevance_floor": 0.73,
+      "shared_problems": [
+        "high-resource languages",
+        "english"
+      ],
+      "novel_methods": [
+        "language-specific bert models",
+        "deep neural language models",
+        "mono",
+        "multilingual models",
+        "pre-training",
+        "bert"
+      ],
+      "supporting_paper_ids": [
+        "64813a022c5405225ae848dcd7ecfdbe45d23d99",
+        "c9629421113a3dda8b544e9eac3b174dc40eda4b",
+        "5760218e4635cc2841dc7fba1752427a023c2193"
+      ],
+      "evidence_score": 63.3571,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-08-4": {
+      "id": "1b51acb719a4389b1d6f466d83136c6bd62d452b",
+      "title": "a novel hybrid deep learning model for sentiment classification",
+      "year": 2020,
+      "query_similarity": 0.7429,
+      "relevance_floor": 0.7328,
+      "shared_problems": [
+        "sentiment classification",
+        "social media platforms",
+        "twitter"
+      ],
+      "novel_methods": [
+        "fasttext",
+        "word embedding",
+        "gated recurrent unit",
+        "word2vec",
+        "long short-term memory",
+        "convolutional neural network"
+      ],
+      "supporting_paper_ids": [
+        "0154f95bf194a1b7bc3acdd3a7f8a67db7269376",
+        "4e0526421da87d88627fef66e9e84ed559fff249",
+        "c589ddc6c6fb07189af7c1212f6eb15c5ff72cde"
+      ],
+      "evidence_score": 77.0529,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-09-2": {
+      "id": "ee9f1d2b6f9a1b1f6a539edec1b009959b0e6e82",
+      "title": "a survey on deep-learning-based lidar 3d object detection for autonomous driving",
+      "year": 2022,
+      "query_similarity": 0.7881,
+      "relevance_floor": 0.7858,
+      "shared_problems": [
+        "driving",
+        "autonomous driving",
+        "object detection"
+      ],
+      "novel_methods": [
+        "3d perception system"
+      ],
+      "supporting_paper_ids": [
+        "3dc3fa3ae91ea9ec6c3d263a9940f0c20f663cc6",
+        "dd0f57944456cd8d11e89376d5b0b51e084e6b68",
+        "862d5a40992ec3845c1950ea760578b64f32f828",
+        "73d091d1739b8eed35f23ab334aa6cb0641fd099"
+      ],
+      "evidence_score": 28.4261,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-09-4": {
+      "id": "e54aa7f89746749e5f387f0d5d234ffd23c16cf8",
+      "title": "self-supervised learning for large-scale item recommendations",
+      "year": 2020,
+      "query_similarity": 0.7016,
+      "relevance_floor": 0.6965,
+      "shared_problems": [
+        "search and recommendation systems",
+        "natural language understanding"
+      ],
+      "novel_methods": [
+        "recommender model"
+      ],
+      "supporting_paper_ids": [
+        "581940979a686d75f48af51f6bd8b00d6bf14b13"
+      ],
+      "evidence_score": 23.3632,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-10-2": {
+      "id": "e49cdb15413f236e937d215684346c5dbab03bd2",
+      "title": "coupled attention networks for multivariate time series anomaly detection",
+      "year": 2023,
+      "query_similarity": 0.7483,
+      "relevance_floor": 0.7372,
+      "shared_problems": [
+        "multivariate time series data",
+        "anomaly detection"
+      ],
+      "novel_methods": [
+        "graph attention"
+      ],
+      "supporting_paper_ids": [
+        "be15bbf72688b48f4b4af57ed7240c97c66494c2",
+        "21d2742e38f7167354dafcf7f565d3894b31d008",
+        "4ca3dc91e398372e15cab156d017cc069458a490"
+      ],
+      "evidence_score": 19.7271,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-10-3": {
+      "id": "25d3a4e048d0020ba9cffc6442ebd4e7bb548a55",
+      "title": "tabddpm: modelling tabular data with diffusion models",
+      "year": 2022,
+      "query_similarity": 0.7263,
+      "relevance_floor": 0.717,
+      "shared_problems": [
+        "tabular data"
+      ],
+      "novel_methods": [
+        "denoising diffusion probabilistic models",
+        "generative modeling",
+        "diffusion model",
+        "diffusion models"
+      ],
+      "supporting_paper_ids": [
+        "5ffe911a7e0ba59f6cfe96a75e76a2f3ba067705",
+        "bcb47761db8f8dfa012c49c2b3405da515bcc0e9",
+        "27f74cdf23379c906c68ef1bc9ff915dc7748e63"
+      ],
+      "evidence_score": 20.4083,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m05|V2-11-3": {
+      "id": "1dec8ae0478f53a28a3fcdf6a0ae5225ba84d2d5",
+      "title": "sok: enabling security analyses of embedded systems via rehosting",
+      "year": 2021,
+      "query_similarity": 0.6297,
+      "relevance_floor": 0.6063,
+      "shared_problems": [
+        "debugging"
+      ],
+      "novel_methods": [
+        "dynamic analysis",
+        "software system"
+      ],
+      "supporting_paper_ids": [
+        "722700b3992d519accda0093fd2f6988b043599b"
+      ],
+      "evidence_score": 10.937,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-01-2": {
+      "id": "a9c75f2aa2eb6038316d2afd3e3cfaf59ba1cb06",
+      "title": "generalized laplacian positional encoding for graph representation learning",
+      "year": 2022,
+      "query_similarity": 0.7586,
+      "relevance_floor": 0.7514,
+      "shared_problems": [
+        "graph data",
+        "graph-structured data"
+      ],
+      "novel_methods": [
+        "positional encoding schemes",
+        "positional encodings",
+        "pytorch",
+        "message passing neural networks"
+      ],
+      "supporting_paper_ids": [
+        "674819a81b1f27e65a4ea3de86bfdafb52612223",
+        "3229291b9b7e9a7200b543089e05a4442cbe6a9b"
+      ],
+      "evidence_score": 35.2782,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-01-3": {
+      "id": "887d11c3fbc1a87a8bfe97bd53cfedab89496f99",
+      "title": "a gnn-guided predict-and-search framework for mixed-integer linear programming",
+      "year": 2023,
+      "query_similarity": 0.8045,
+      "relevance_floor": 0.7512,
+      "shared_problems": [
+        "combinatorial optimization problems",
+        "optimization"
+      ],
+      "novel_methods": [
+        "gurobi",
+        "mixed-integer linear programming",
+        "machine learning (ml) algorithms"
+      ],
+      "supporting_paper_ids": [
+        "d596ac251729fc3647b08b51c5208fdf5414c7c1",
+        "93c9f9ac6962d38ea937160a11b66ca09290d394",
+        "84dbf3f70e0192e74674df29be5bb2bc7e3d9d97",
+        "8694bbf386616b1f7bd0e151693ad16a0d805bb6"
+      ],
+      "evidence_score": 36.2051,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-01-4": {
+      "id": "8e5a30011f16715d3ca58a81cf0b2f96a2f26534",
+      "title": "architectural implications of graph neural networks",
+      "year": 2020,
+      "query_similarity": 0.7579,
+      "relevance_floor": 0.7128,
+      "shared_problems": [
+        "graph-related tasks"
+      ],
+      "novel_methods": [
+        "gnn computation",
+        "multi-layer perceptrons",
+        "gcns"
+      ],
+      "supporting_paper_ids": [
+        "03f7c2194ae25ee8f1abb7cd699499f718b73425"
+      ],
+      "evidence_score": 19.4585,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-02-3": {
+      "id": "7b42415abc6be23eb7e8502b83073af39e7147f1",
+      "title": "streaming graph neural networks via continual learning",
+      "year": 2020,
+      "query_similarity": 0.7115,
+      "relevance_floor": 0.6784,
+      "shared_problems": [
+        "catastrophic forgetting problem"
+      ],
+      "novel_methods": [
+        "approximation algorithm",
+        "model regularization",
+        "gnn model"
+      ],
+      "supporting_paper_ids": [
+        "e41a28daa05cc955e00690c20a3fa15ba2d11cdc"
+      ],
+      "evidence_score": 23.8638,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-02-4": {
+      "id": "0eb33a1a6150b066ea063c61e539d5267a66764f",
+      "title": "deep fair models for complex data: graphs labeling and explainable face recognition",
+      "year": 2021,
+      "query_similarity": 0.7448,
+      "relevance_floor": 0.7155,
+      "shared_problems": [
+        "model decisions"
+      ],
+      "novel_methods": [
+        "deep architecture",
+        "data representation",
+        "ai-based systems"
+      ],
+      "supporting_paper_ids": [
+        "2e8aeb7725546ad99a70e3580290371709f28ac9"
+      ],
+      "evidence_score": 22.3087,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-03-1": {
+      "id": "a55edf08db6252c5bc12376afb4d09c52ca20f79",
+      "title": "a critical review of artificial intelligence based approaches in intrusion detection: a comprehensive analysis",
+      "year": 2024,
+      "query_similarity": 0.7857,
+      "relevance_floor": 0.7298,
+      "shared_problems": [
+        "computer networks",
+        "intrusion detection",
+        "intelligence"
+      ],
+      "novel_methods": [
+        "explainable",
+        "machine",
+        "xai",
+        "artificial",
+        "federated learning"
+      ],
+      "supporting_paper_ids": [
+        "18ca24000345036ce084e33a74f86693809f98a3",
+        "e310e1a774e44ec7e2ccf45bac1ac0f4df0213ab",
+        "e5d1e2b09699c72dda288f2dc83e17bc33fe4d9b"
+      ],
+      "evidence_score": 54.4085,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-03-3": {
+      "id": "102549e5b1b9f603812503054b96fab1b876894e",
+      "title": "optimising phishing detection: a comparative analysis of machine learning methods with feature selection",
+      "year": 2025,
+      "query_similarity": 0.7324,
+      "relevance_floor": 0.7162,
+      "shared_problems": [
+        "cybersecurity attack",
+        "phishing detection",
+        "phishing"
+      ],
+      "novel_methods": [
+        "recursive feature elimination",
+        "security technologies",
+        "principal component analysis",
+        "artificial neural network"
+      ],
+      "supporting_paper_ids": [
+        "7a3fae0be6e34f70a17d0445b7d0b3321f63e180",
+        "112b7a9400abb6071692310fbde5443ee985f304",
+        "d52e0903316fe908af2246789aa7b17073553d57",
+        "ffc3acb99a9ffb1144872518d56a13e7401926f4",
+        "9de4d6952887fa0370ec57bcbafa15e5d4727651"
+      ],
+      "evidence_score": 63.8318,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-03-4": {
+      "id": "2811559b89a32fdf9facf24f4847f1d37393d158",
+      "title": "differentially private decoding in large language models",
+      "year": 2022,
+      "query_similarity": 0.6851,
+      "relevance_floor": 0.6836,
+      "shared_problems": [
+        "analysis"
+      ],
+      "novel_methods": [
+        "pre-trained large language model",
+        "pre-trained model",
+        "pre-training",
+        "fine-tuning",
+        "llm"
+      ],
+      "supporting_paper_ids": [
+        "e594cef29d90e82f681afa6bb7b0aa4e8da2ceae"
+      ],
+      "evidence_score": 14.58,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-04-1": {
+      "id": "4526bb89a290d61405b0bc90b1e75b896959b12f",
+      "title": "is machine learning ready for traffic engineering optimization?",
+      "year": 2021,
+      "query_similarity": 0.7177,
+      "relevance_floor": 0.6963,
+      "shared_problems": [
+        "te",
+        "traffic engineering"
+      ],
+      "novel_methods": [
+        "constraint programming",
+        "distributed system",
+        "multi-agent reinforcement learning"
+      ],
+      "supporting_paper_ids": [
+        "b1d3b4d67fe3d41abd15b8c854489d536794c03a",
+        "adc4a3072a2bc39765a324e36014ad2d9becb2d8",
+        "9bc46ee0322fd4e7df1afa06be3e3a10002f115e"
+      ],
+      "evidence_score": 39.7914,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-04-2": {
+      "id": "30df51636a7f49daa3e27515c77a1f38236bacb6",
+      "title": "deep reinforcement learning based computation offloading and resource allocation for low-latency fog radio access networks",
+      "year": 2020,
+      "query_similarity": 0.6874,
+      "relevance_floor": 0.6442,
+      "shared_problems": [
+        "resource allocation"
+      ],
+      "novel_methods": [
+        "fog radio access networks",
+        "f-rans",
+        "edge caching",
+        "edge computing"
+      ],
+      "supporting_paper_ids": [
+        "be963d20122b0e8aab331058001948155ef66b5b"
+      ],
+      "evidence_score": 18.0544,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-04-4": {
+      "id": "72d146f3441b9ff6db5906ab598a0d82d8e08ea8",
+      "title": "networking architectures and protocols for iot applications in smart cities: recent developments and perspectives",
+      "year": 2023,
+      "query_similarity": 0.6595,
+      "relevance_floor": 0.6535,
+      "shared_problems": [
+        "smart home",
+        "networking"
+      ],
+      "novel_methods": [
+        "smart city model",
+        "networking protocols",
+        "designs",
+        "wireless sensor networks"
+      ],
+      "supporting_paper_ids": [
+        "ca3e3e2c64e8e5bc86150dae865226a80533ffd9",
+        "2c57f4ceb4ba2546e4bd2a0b1d0055991ebdab07"
+      ],
+      "evidence_score": 40.6107,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-05-1": {
+      "id": "43796a5e908cd435850f57e8ba5835d68bc55967",
+      "title": "quantum machine learning: foundation, new techniques, and opportunities for database research",
+      "year": 2023,
+      "query_similarity": 0.7055,
+      "relevance_floor": 0.675,
+      "shared_problems": [
+        "data management tasks"
+      ],
+      "novel_methods": [
+        "quantum algorithms",
+        "quantum computers",
+        "quantum computing"
+      ],
+      "supporting_paper_ids": [
+        "b3ddb3f594e9ed9ba02e6294629c9be64c072772"
+      ],
+      "evidence_score": 19.5423,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-05-3": {
+      "id": "bab5e35001757719d0f8338f94dde2860dae784a",
+      "title": "how large language models will disrupt data management",
+      "year": 2023,
+      "query_similarity": 0.6704,
+      "relevance_floor": 0.6356,
+      "shared_problems": [
+        "entity resolution"
+      ],
+      "novel_methods": [
+        "statistical machine learning",
+        "gpt-4"
+      ],
+      "supporting_paper_ids": [
+        "f11cba099b8cf14815f7b3d85f55ecfddbf9f04d",
+        "3bb65676c785fb2637d5e169ebd6a00ee34f02ce",
+        "efb8d757619a16c7bb5fec60b8588ebec53eb8f8"
+      ],
+      "evidence_score": 14.6477,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-06-1": {
+      "id": "434cada59abcfc8d3ed3f5bf1b9234f32df1c416",
+      "title": "automatic generation of test cases based on bug reports: a feasibility study with large language models",
+      "year": 2023,
+      "query_similarity": 0.7063,
+      "relevance_floor": 0.6555,
+      "shared_problems": [
+        "automated program",
+        "apr",
+        "repair",
+        "program repair"
+      ],
+      "novel_methods": [
+        "apr tool",
+        "regression testing"
+      ],
+      "supporting_paper_ids": [
+        "545e9dc34256d39b6d6fd6a6fa02a9e399856912",
+        "4ac68702d9977c30f48ad02c92fcecf02ab9ef46",
+        "38c90416352d35cbbffa4ba7486cabd04f21e951",
+        "b7f46c9f01d9f649d18b709e2e88b3b97bebd016",
+        "02417d57dec9215a0b66a63e9a70571c168de54b"
+      ],
+      "evidence_score": 66.8215,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-06-2": {
+      "id": "375a571174ea59b1f4aa62ad2619e9593fc03436",
+      "title": "large language models are few-shot summarizers: multi-intent comment generation via in-context learning",
+      "year": 2023,
+      "query_similarity": 0.7719,
+      "relevance_floor": 0.7313,
+      "shared_problems": [
+        "code snippet",
+        "natural language descriptions",
+        "natural language"
+      ],
+      "novel_methods": [
+        "pre-training",
+        "llm"
+      ],
+      "supporting_paper_ids": [
+        "c317f4d5ddeb11da9a5c8fea1e3cdec2f7de485d",
+        "c7cbbbdba2c942180675c2a69035e506d9378679",
+        "045a6f92b58f08d5b305dd5d661316a506ee4d43"
+      ],
+      "evidence_score": 33.6239,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-06-3": {
+      "id": "3db3710bae31c512d3b079bb9a9d07d4597eaafa",
+      "title": "software defect prediction using tree-based ensembles",
+      "year": 2020,
+      "query_similarity": 0.7459,
+      "relevance_floor": 0.691,
+      "shared_problems": [
+        "prediction of software defects",
+        "defect prediction",
+        "software defect prediction"
+      ],
+      "novel_methods": [
+        "extra trees",
+        "tree-based ensembles",
+        "bagging ensembles",
+        "boosting ensembles"
+      ],
+      "supporting_paper_ids": [
+        "ac511acd876375cd7b166c646dc8d97a0b9bdfa2",
+        "b3e2d0062ff9c9846f0fbeec33bb230ddab7bc94",
+        "acafd8ebf835acab33b103637a5b73fc9f94ba20",
+        "e2652aaa711e18cccfb09ee113431e1298d8b2a2"
+      ],
+      "evidence_score": 93.9754,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-06-4": {
+      "id": "b9befa831fac74773826144f1517a24b67bfa0fb",
+      "title": "do advanced language models eliminate the need for prompt engineering in software engineering?",
+      "year": 2024,
+      "query_similarity": 0.7079,
+      "relevance_floor": 0.7009,
+      "shared_problems": [
+        "software engineering (se) tasks",
+        "program repair",
+        "se tasks"
+      ],
+      "novel_methods": [
+        "non-reasoning models",
+        "claude 3",
+        "gpt-4o"
+      ],
+      "supporting_paper_ids": [
+        "f43b8a87a96f8abc2467b90538b643a6061416e9",
+        "c935ef9b9c10cfa3c61722c7f89c77ee3da75c60"
+      ],
+      "evidence_score": 60.2501,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-07-1": {
+      "id": "4b44f179dd55a3c9a06155f56f59bf0c7b32b427",
+      "title": "a woa-based optimization approach for task scheduling in cloud computing systems",
+      "year": 2020,
+      "query_similarity": 0.7812,
+      "relevance_floor": 0.711,
+      "shared_problems": [
+        "cloud task scheduling",
+        "scheduling",
+        "task scheduling"
+      ],
+      "novel_methods": [
+        "multiobjective optimization model",
+        "woa",
+        "cloud system",
+        "metaheuristic algorithms"
+      ],
+      "supporting_paper_ids": [
+        "31250c519b898f9f04acff36329821f3ad251857",
+        "9906471e2494d7505d09bc44c3cb1875fa6aa81e",
+        "9ec2df75d3088d223d2116fbfcff0a8483156204",
+        "f8bb73cc5d35e34f81ece894b98a74d3fadcb3fd"
+      ],
+      "evidence_score": 78.224,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-07-2": {
+      "id": "eece941f94a40cc1727eb231ec20938fec8d7397",
+      "title": "cloudburst",
+      "year": 2020,
+      "query_similarity": 0.6642,
+      "relevance_floor": 0.6612,
+      "shared_problems": [
+        "computing"
+      ],
+      "novel_methods": [
+        "cloudburst",
+        "python programming",
+        "function-as-a-service (faas) platforms",
+        "autoscaling"
+      ],
+      "supporting_paper_ids": [
+        "8049a85cb3db9a091c730798f454a0ccea55b752",
+        "36338d869d7589b01c3707d70bece8c320e439e2"
+      ],
+      "evidence_score": 14.7716,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-07-3": {
+      "id": "3ea7d6e424a23bcbe846d9c24efb01973e9a00e7",
+      "title": "an intelligent optimization method for optimal virtual machine allocation in cloud data centers",
+      "year": 2020,
+      "query_similarity": 0.7185,
+      "relevance_floor": 0.6982,
+      "shared_problems": [
+        "cloud data center"
+      ],
+      "novel_methods": [
+        "service providers",
+        "differential evolution",
+        "cloud computing paradigm"
+      ],
+      "supporting_paper_ids": [
+        "1c229b9dac7f1398b2f7a41ce945e23119a4c277"
+      ],
+      "evidence_score": 20.5637,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-08-1": {
+      "id": "002c256d30d6be4b23d365a8de8ae0e67e4c9641",
+      "title": "improving language models by retrieving from trillions of tokens",
+      "year": 2021,
+      "query_similarity": 0.7403,
+      "relevance_floor": 0.7069,
+      "shared_problems": [
+        "knowledge-intensive tasks",
+        "question answering"
+      ],
+      "novel_methods": [
+        "auto-regressive language models",
+        "differentiable encoder",
+        "retro",
+        "gpt-3",
+        "fine-tuning",
+        "transformers"
+      ],
+      "supporting_paper_ids": [
+        "88dc871460a3a03699dc0a8ca248542a5d39f41e",
+        "9d9268b0191891511b09362759ba6a754c28fd9e",
+        "46f9f7b8f88f72e12cbdb21e3311f995eb6e65c5"
+      ],
+      "evidence_score": 64.5036,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-08-3": {
+      "id": "e00631018e737355f1b0b3db779641f8f26288b1",
+      "title": "wikibert models: deep transfer learning for many languages",
+      "year": 2020,
+      "query_similarity": 0.7303,
+      "relevance_floor": 0.68,
+      "shared_problems": [
+        "high-resource languages",
+        "english"
+      ],
+      "novel_methods": [
+        "language-specific bert models",
+        "deep neural language models",
+        "mono",
+        "multilingual models",
+        "pre-training",
+        "bert"
+      ],
+      "supporting_paper_ids": [
+        "64813a022c5405225ae848dcd7ecfdbe45d23d99",
+        "c9629421113a3dda8b544e9eac3b174dc40eda4b",
+        "5760218e4635cc2841dc7fba1752427a023c2193"
+      ],
+      "evidence_score": 63.3571,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-08-4": {
+      "id": "1b51acb719a4389b1d6f466d83136c6bd62d452b",
+      "title": "a novel hybrid deep learning model for sentiment classification",
+      "year": 2020,
+      "query_similarity": 0.7429,
+      "relevance_floor": 0.6828,
+      "shared_problems": [
+        "sentiment classification",
+        "social media platforms",
+        "twitter"
+      ],
+      "novel_methods": [
+        "fasttext",
+        "word embedding",
+        "gated recurrent unit",
+        "word2vec",
+        "long short-term memory",
+        "convolutional neural network"
+      ],
+      "supporting_paper_ids": [
+        "0154f95bf194a1b7bc3acdd3a7f8a67db7269376",
+        "4e0526421da87d88627fef66e9e84ed559fff249",
+        "c589ddc6c6fb07189af7c1212f6eb15c5ff72cde"
+      ],
+      "evidence_score": 77.0529,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-09-2": {
+      "id": "78a73395e906a4cfacd4445ff71e67278e31613d",
+      "title": "leveraging deep learning techniques to obtain efficacious segmentation results",
+      "year": 2023,
+      "query_similarity": 0.763,
+      "relevance_floor": 0.7358,
+      "shared_problems": [
+        "pedestrian detection",
+        "autonomous driving"
+      ],
+      "novel_methods": [
+        "encoder-decoder architectures",
+        "image segmentation algorithms",
+        "segmentation algorithms",
+        "fully convolutional neural networks",
+        "deep learning-based models",
+        "attention mechanisms"
+      ],
+      "supporting_paper_ids": [
+        "3dc3fa3ae91ea9ec6c3d263a9940f0c20f663cc6",
+        "862d5a40992ec3845c1950ea760578b64f32f828",
+        "73d091d1739b8eed35f23ab334aa6cb0641fd099"
+      ],
+      "evidence_score": 62.6433,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-09-4": {
+      "id": "48abfc41a0abf023d2037ebb2f274835e0d322d0",
+      "title": "compositional exemplars for in-context learning",
+      "year": 2023,
+      "query_similarity": 0.6612,
+      "relevance_floor": 0.6465,
+      "shared_problems": [
+        "in-context examples",
+        "examples"
+      ],
+      "novel_methods": [
+        "determinantal point processes",
+        "icl",
+        "heuristics"
+      ],
+      "supporting_paper_ids": [
+        "5f61ddc37476acf3741b0bfe5fcb59639cadbb86"
+      ],
+      "evidence_score": 37.8292,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-10-2": {
+      "id": "9cccd2b246fc95f9b208ad5feb3c6d2a2ba7bc7d",
+      "title": "impact of machine learning on intrusion detection systems for the protection of critical infrastructure",
+      "year": 2025,
+      "query_similarity": 0.7011,
+      "relevance_floor": 0.6872,
+      "shared_problems": [
+        "time-series data",
+        "anomaly detection"
+      ],
+      "novel_methods": [
+        "robust intrusion detection systems",
+        "unsupervised learning algorithms",
+        "supervised learning algorithms"
+      ],
+      "supporting_paper_ids": [
+        "be15bbf72688b48f4b4af57ed7240c97c66494c2",
+        "21d2742e38f7167354dafcf7f565d3894b31d008",
+        "5afc72eaf420b3b1ff47459eb4c77a706b7768b2",
+        "4ca3dc91e398372e15cab156d017cc069458a490"
+      ],
+      "evidence_score": 33.9356,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-10-3": {
+      "id": "100c070d097fd26b62472b71d984f36b06ba1f74",
+      "title": "egg-gae: scalable graph neural networks for tabular data imputation",
+      "year": 2022,
+      "query_similarity": 0.6686,
+      "relevance_floor": 0.667,
+      "shared_problems": [
+        "tabular datasets"
+      ],
+      "novel_methods": [
+        "ensemble strategy",
+        "gaes",
+        "graph autoencoders",
+        "autoencoders"
+      ],
+      "supporting_paper_ids": [
+        "ddd75b2cb5cf0ab2426698f185a00a16bf16ad3b"
+      ],
+      "evidence_score": 28.0813,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-11-1": {
+      "id": "90033f36aad747f86862800eb94239427e210796",
+      "title": "a clogging resistant secure authentication scheme for fog computing services",
+      "year": 2021,
+      "query_similarity": 0.6467,
+      "relevance_floor": 0.6335,
+      "shared_problems": [
+        "key"
+      ],
+      "novel_methods": [
+        "fog computing"
+      ],
+      "supporting_paper_ids": [
+        "b340307c89ff00d8b30194a265e1afc3a9e44906"
+      ],
+      "evidence_score": 7.7926,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10|V2-11-3": {
+      "id": "374dc83af282adbd163a5868f664623be0f1950d",
+      "title": "logical time for reactive software",
+      "year": 2023,
+      "query_similarity": 0.5894,
+      "relevance_floor": 0.5563,
+      "shared_problems": [
+        "timing"
+      ],
+      "novel_methods": [
+        "engineering model",
+        "programming models"
+      ],
+      "supporting_paper_ids": [
+        "ba3af0b165e80323b22da8fc3e1d6258653c24c5"
+      ],
+      "evidence_score": 14.727,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-01-2": {
+      "id": "cc73da69eb495a122ed24bc680bf9e2f1a420e0c",
+      "title": "a survey of pretraining on graphs: taxonomy, methods, and applications",
+      "year": 2022,
+      "query_similarity": 0.7734,
+      "relevance_floor": 0.7514,
+      "shared_problems": [
+        "learning on graphs"
+      ],
+      "novel_methods": [
+        "pgms",
+        "graph pre-training",
+        "model architectures",
+        "pretrained language models",
+        "bert"
+      ],
+      "supporting_paper_ids": [
+        "674819a81b1f27e65a4ea3de86bfdafb52612223"
+      ],
+      "evidence_score": 29.7515,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-01-3": {
+      "id": "8e4d43c9a1d96bfa2c8bbe68d1a406e2ad394096",
+      "title": "learning to control local search for combinatorial optimization",
+      "year": 2022,
+      "query_similarity": 0.7664,
+      "relevance_floor": 0.7512,
+      "shared_problems": [
+        "combinatorial optimization problems"
+      ],
+      "novel_methods": [
+        "approximate solutions",
+        "deep graph neural network",
+        "local search",
+        "optimization process",
+        "markov decision process"
+      ],
+      "supporting_paper_ids": [
+        "93c9f9ac6962d38ea937160a11b66ca09290d394",
+        "84dbf3f70e0192e74674df29be5bb2bc7e3d9d97",
+        "8694bbf386616b1f7bd0e151693ad16a0d805bb6"
+      ],
+      "evidence_score": 30.5913,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-01-4": {
+      "id": "8e5a30011f16715d3ca58a81cf0b2f96a2f26534",
+      "title": "architectural implications of graph neural networks",
+      "year": 2020,
+      "query_similarity": 0.7579,
+      "relevance_floor": 0.7128,
+      "shared_problems": [
+        "graph-related tasks"
+      ],
+      "novel_methods": [
+        "gnn computation",
+        "multi-layer perceptrons",
+        "gcns"
+      ],
+      "supporting_paper_ids": [
+        "03f7c2194ae25ee8f1abb7cd699499f718b73425"
+      ],
+      "evidence_score": 19.4585,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-02-3": {
+      "id": "7b42415abc6be23eb7e8502b83073af39e7147f1",
+      "title": "streaming graph neural networks via continual learning",
+      "year": 2020,
+      "query_similarity": 0.7115,
+      "relevance_floor": 0.6784,
+      "shared_problems": [
+        "catastrophic forgetting problem"
+      ],
+      "novel_methods": [
+        "approximation algorithm",
+        "model regularization",
+        "gnn model"
+      ],
+      "supporting_paper_ids": [
+        "e41a28daa05cc955e00690c20a3fa15ba2d11cdc"
+      ],
+      "evidence_score": 23.8638,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-02-4": {
+      "id": "0eb33a1a6150b066ea063c61e539d5267a66764f",
+      "title": "deep fair models for complex data: graphs labeling and explainable face recognition",
+      "year": 2021,
+      "query_similarity": 0.7448,
+      "relevance_floor": 0.7155,
+      "shared_problems": [
+        "model decisions"
+      ],
+      "novel_methods": [
+        "deep architecture",
+        "data representation",
+        "ai-based systems"
+      ],
+      "supporting_paper_ids": [
+        "2e8aeb7725546ad99a70e3580290371709f28ac9"
+      ],
+      "evidence_score": 22.3087,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-03-1": {
+      "id": "566c4d635f98b1412b12df33930e52eec74aa397",
+      "title": "a spectrogram image-based network anomaly detection system using deep convolutional neural network",
+      "year": 2021,
+      "query_similarity": 0.7841,
+      "relevance_floor": 0.7298,
+      "shared_problems": [
+        "computer networks",
+        "network security"
+      ],
+      "novel_methods": [
+        "short-time fourier transform",
+        "deep convolution neural network",
+        "network intrusion detection system",
+        "security solutions"
+      ],
+      "supporting_paper_ids": [
+        "e310e1a774e44ec7e2ccf45bac1ac0f4df0213ab",
+        "be1b69dcd9af0792d9b617917993f50c4e714fa3"
+      ],
+      "evidence_score": 42.1821,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-03-3": {
+      "id": "43fa8d552de28c9efeb957f20fc3b6ae8b2de9bf",
+      "title": "a comprehensive review of phishing attack detection using machine learning techniques",
+      "year": 2024,
+      "query_similarity": 0.749,
+      "relevance_floor": 0.7162,
+      "shared_problems": [
+        "phishing detection",
+        "phishing attacks"
+      ],
+      "novel_methods": [
+        "phishing strategies",
+        "rf",
+        "principal component analysis",
+        "ml algorithms",
+        "ml models"
+      ],
+      "supporting_paper_ids": [
+        "7a3fae0be6e34f70a17d0445b7d0b3321f63e180",
+        "ffc3acb99a9ffb1144872518d56a13e7401926f4"
+      ],
+      "evidence_score": 47.3268,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-03-4": {
+      "id": "438a482ac088f4315cf099998cf7f898eba19c74",
+      "title": "dst: dynamic substitute training for data-free black-box attack",
+      "year": 2022,
+      "query_similarity": 0.6941,
+      "relevance_floor": 0.6836,
+      "shared_problems": [
+        "computer vision tasks"
+      ],
+      "novel_methods": [
+        "substitute model",
+        "deep neural network models",
+        "knowledge distillation"
+      ],
+      "supporting_paper_ids": [
+        "0aee8500fd2bb33c69ee3b05a20a75fbfc5bb3aa"
+      ],
+      "evidence_score": 11.3812,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-04-1": {
+      "id": "4526bb89a290d61405b0bc90b1e75b896959b12f",
+      "title": "is machine learning ready for traffic engineering optimization?",
+      "year": 2021,
+      "query_similarity": 0.7177,
+      "relevance_floor": 0.6963,
+      "shared_problems": [
+        "te",
+        "traffic engineering"
+      ],
+      "novel_methods": [
+        "constraint programming",
+        "distributed system",
+        "multi-agent reinforcement learning"
+      ],
+      "supporting_paper_ids": [
+        "b1d3b4d67fe3d41abd15b8c854489d536794c03a",
+        "adc4a3072a2bc39765a324e36014ad2d9becb2d8",
+        "9bc46ee0322fd4e7df1afa06be3e3a10002f115e"
+      ],
+      "evidence_score": 39.7914,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-04-2": {
+      "id": "30df51636a7f49daa3e27515c77a1f38236bacb6",
+      "title": "deep reinforcement learning based computation offloading and resource allocation for low-latency fog radio access networks",
+      "year": 2020,
+      "query_similarity": 0.6874,
+      "relevance_floor": 0.6442,
+      "shared_problems": [
+        "resource allocation"
+      ],
+      "novel_methods": [
+        "fog radio access networks",
+        "f-rans",
+        "edge caching",
+        "edge computing"
+      ],
+      "supporting_paper_ids": [
+        "be963d20122b0e8aab331058001948155ef66b5b"
+      ],
+      "evidence_score": 18.0544,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-04-4": {
+      "id": "72d146f3441b9ff6db5906ab598a0d82d8e08ea8",
+      "title": "networking architectures and protocols for iot applications in smart cities: recent developments and perspectives",
+      "year": 2023,
+      "query_similarity": 0.6595,
+      "relevance_floor": 0.6535,
+      "shared_problems": [
+        "smart home"
+      ],
+      "novel_methods": [
+        "smart city model",
+        "networking protocols",
+        "wireless sensor networks"
+      ],
+      "supporting_paper_ids": [
+        "ca3e3e2c64e8e5bc86150dae865226a80533ffd9",
+        "2c57f4ceb4ba2546e4bd2a0b1d0055991ebdab07"
+      ],
+      "evidence_score": 17.5911,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-05-1": {
+      "id": "43796a5e908cd435850f57e8ba5835d68bc55967",
+      "title": "quantum machine learning: foundation, new techniques, and opportunities for database research",
+      "year": 2023,
+      "query_similarity": 0.7055,
+      "relevance_floor": 0.675,
+      "shared_problems": [
+        "data management tasks"
+      ],
+      "novel_methods": [
+        "quantum algorithms",
+        "quantum computers",
+        "quantum computing"
+      ],
+      "supporting_paper_ids": [
+        "b3ddb3f594e9ed9ba02e6294629c9be64c072772"
+      ],
+      "evidence_score": 19.5423,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-05-3": {
+      "id": "bab5e35001757719d0f8338f94dde2860dae784a",
+      "title": "how large language models will disrupt data management",
+      "year": 2023,
+      "query_similarity": 0.6704,
+      "relevance_floor": 0.6356,
+      "shared_problems": [
+        "entity resolution"
+      ],
+      "novel_methods": [
+        "statistical machine learning",
+        "gpt-4"
+      ],
+      "supporting_paper_ids": [
+        "f11cba099b8cf14815f7b3d85f55ecfddbf9f04d",
+        "3bb65676c785fb2637d5e169ebd6a00ee34f02ce",
+        "efb8d757619a16c7bb5fec60b8588ebec53eb8f8"
+      ],
+      "evidence_score": 14.6477,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-06-1": {
+      "id": "8ec43046e046b639f997d30c76d3e5cffa624051",
+      "title": "evaluating fault localization and program repair capabilities of existing closed-source general-purpose llms",
+      "year": 2024,
+      "query_similarity": 0.712,
+      "relevance_floor": 0.6555,
+      "shared_problems": [
+        "fault localization",
+        "automated program repair",
+        "apr"
+      ],
+      "novel_methods": [
+        "pre-trained large language models",
+        "codex",
+        "gpt",
+        "fl"
+      ],
+      "supporting_paper_ids": [
+        "545e9dc34256d39b6d6fd6a6fa02a9e399856912",
+        "4ac68702d9977c30f48ad02c92fcecf02ab9ef46",
+        "38c90416352d35cbbffa4ba7486cabd04f21e951",
+        "b7f46c9f01d9f649d18b709e2e88b3b97bebd016"
+      ],
+      "evidence_score": 66.5832,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-06-2": {
+      "id": "375a571174ea59b1f4aa62ad2619e9593fc03436",
+      "title": "large language models are few-shot summarizers: multi-intent comment generation via in-context learning",
+      "year": 2023,
+      "query_similarity": 0.7719,
+      "relevance_floor": 0.7313,
+      "shared_problems": [
+        "code snippet",
+        "natural language descriptions",
+        "natural language"
+      ],
+      "novel_methods": [
+        "pre-training",
+        "llm"
+      ],
+      "supporting_paper_ids": [
+        "c317f4d5ddeb11da9a5c8fea1e3cdec2f7de485d",
+        "c7cbbbdba2c942180675c2a69035e506d9378679",
+        "045a6f92b58f08d5b305dd5d661316a506ee4d43"
+      ],
+      "evidence_score": 33.6239,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-06-3": {
+      "id": "3db3710bae31c512d3b079bb9a9d07d4597eaafa",
+      "title": "software defect prediction using tree-based ensembles",
+      "year": 2020,
+      "query_similarity": 0.7459,
+      "relevance_floor": 0.691,
+      "shared_problems": [
+        "prediction of software defects",
+        "defect prediction",
+        "software defect prediction"
+      ],
+      "novel_methods": [
+        "extra trees",
+        "tree-based ensembles",
+        "bagging ensembles",
+        "boosting ensembles"
+      ],
+      "supporting_paper_ids": [
+        "ac511acd876375cd7b166c646dc8d97a0b9bdfa2",
+        "b3e2d0062ff9c9846f0fbeec33bb230ddab7bc94",
+        "acafd8ebf835acab33b103637a5b73fc9f94ba20",
+        "e2652aaa711e18cccfb09ee113431e1298d8b2a2"
+      ],
+      "evidence_score": 93.9754,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-06-4": {
+      "id": "b9befa831fac74773826144f1517a24b67bfa0fb",
+      "title": "do advanced language models eliminate the need for prompt engineering in software engineering?",
+      "year": 2024,
+      "query_similarity": 0.7079,
+      "relevance_floor": 0.7009,
+      "shared_problems": [
+        "software engineering (se) tasks",
+        "program repair",
+        "se tasks"
+      ],
+      "novel_methods": [
+        "non-reasoning models",
+        "claude 3",
+        "gpt-4o"
+      ],
+      "supporting_paper_ids": [
+        "f43b8a87a96f8abc2467b90538b643a6061416e9",
+        "c935ef9b9c10cfa3c61722c7f89c77ee3da75c60"
+      ],
+      "evidence_score": 60.2501,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-07-1": {
+      "id": "4b44f179dd55a3c9a06155f56f59bf0c7b32b427",
+      "title": "a woa-based optimization approach for task scheduling in cloud computing systems",
+      "year": 2020,
+      "query_similarity": 0.7812,
+      "relevance_floor": 0.711,
+      "shared_problems": [
+        "cloud task scheduling",
+        "task scheduling"
+      ],
+      "novel_methods": [
+        "multiobjective optimization model",
+        "woa",
+        "cloud system",
+        "metaheuristic algorithms"
+      ],
+      "supporting_paper_ids": [
+        "31250c519b898f9f04acff36329821f3ad251857",
+        "9906471e2494d7505d09bc44c3cb1875fa6aa81e",
+        "9ec2df75d3088d223d2116fbfcff0a8483156204",
+        "f8bb73cc5d35e34f81ece894b98a74d3fadcb3fd"
+      ],
+      "evidence_score": 55.0054,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-07-3": {
+      "id": "3ea7d6e424a23bcbe846d9c24efb01973e9a00e7",
+      "title": "an intelligent optimization method for optimal virtual machine allocation in cloud data centers",
+      "year": 2020,
+      "query_similarity": 0.7185,
+      "relevance_floor": 0.6982,
+      "shared_problems": [
+        "cloud data center"
+      ],
+      "novel_methods": [
+        "service providers",
+        "differential evolution",
+        "cloud computing paradigm"
+      ],
+      "supporting_paper_ids": [
+        "1c229b9dac7f1398b2f7a41ce945e23119a4c277"
+      ],
+      "evidence_score": 20.5637,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-08-1": {
+      "id": "002c256d30d6be4b23d365a8de8ae0e67e4c9641",
+      "title": "improving language models by retrieving from trillions of tokens",
+      "year": 2021,
+      "query_similarity": 0.7403,
+      "relevance_floor": 0.7069,
+      "shared_problems": [
+        "knowledge-intensive tasks",
+        "question answering"
+      ],
+      "novel_methods": [
+        "auto-regressive language models",
+        "differentiable encoder",
+        "retro",
+        "gpt-3",
+        "fine-tuning"
+      ],
+      "supporting_paper_ids": [
+        "88dc871460a3a03699dc0a8ca248542a5d39f41e",
+        "9d9268b0191891511b09362759ba6a754c28fd9e",
+        "46f9f7b8f88f72e12cbdb21e3311f995eb6e65c5"
+      ],
+      "evidence_score": 58.8747,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-08-3": {
+      "id": "82453548b97f78ab2cdb9a8626ff858db9ce5a82",
+      "title": "pre-training polish transformer-based language models at scale",
+      "year": 2020,
+      "query_similarity": 0.7128,
+      "relevance_floor": 0.68,
+      "shared_problems": [
+        "low-resource languages",
+        "machine translation",
+        "nlp tasks"
+      ],
+      "novel_methods": [
+        "transformer-based architecture",
+        "transformer-based language models",
+        "pre-trained models"
+      ],
+      "supporting_paper_ids": [
+        "64813a022c5405225ae848dcd7ecfdbe45d23d99",
+        "ee8848f3f6a08e80ff08a1093f78b3f7a3d84f37",
+        "c9629421113a3dda8b544e9eac3b174dc40eda4b",
+        "5760218e4635cc2841dc7fba1752427a023c2193"
+      ],
+      "evidence_score": 45.6968,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-08-4": {
+      "id": "8cc6add89dc1670540b50ee34a3de61acecbc4c6",
+      "title": "affective-knowledge-enhanced graph convolutional networks for aspect-based sentiment analysis with multi-head attention",
+      "year": 2023,
+      "query_similarity": 0.7332,
+      "relevance_floor": 0.6828,
+      "shared_problems": [
+        "sentiment analysis tasks",
+        "aspect-based sentiment analysis"
+      ],
+      "novel_methods": [
+        "mha",
+        "multi-head attention",
+        "absa",
+        "gnn model",
+        "graph convolutional neural network",
+        "gcn"
+      ],
+      "supporting_paper_ids": [
+        "c589ddc6c6fb07189af7c1212f6eb15c5ff72cde"
+      ],
+      "evidence_score": 66.0859,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-09-2": {
+      "id": "78a73395e906a4cfacd4445ff71e67278e31613d",
+      "title": "leveraging deep learning techniques to obtain efficacious segmentation results",
+      "year": 2023,
+      "query_similarity": 0.763,
+      "relevance_floor": 0.7358,
+      "shared_problems": [
+        "pedestrian detection",
+        "autonomous driving"
+      ],
+      "novel_methods": [
+        "encoder-decoder architectures",
+        "image segmentation algorithms",
+        "segmentation algorithms",
+        "fully convolutional neural networks",
+        "deep learning-based models",
+        "attention mechanisms"
+      ],
+      "supporting_paper_ids": [
+        "3dc3fa3ae91ea9ec6c3d263a9940f0c20f663cc6",
+        "862d5a40992ec3845c1950ea760578b64f32f828",
+        "73d091d1739b8eed35f23ab334aa6cb0641fd099"
+      ],
+      "evidence_score": 62.6433,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-09-4": {
+      "id": "e54aa7f89746749e5f387f0d5d234ffd23c16cf8",
+      "title": "self-supervised learning for large-scale item recommendations",
+      "year": 2020,
+      "query_similarity": 0.7016,
+      "relevance_floor": 0.6465,
+      "shared_problems": [
+        "search and recommendation systems",
+        "natural language understanding"
+      ],
+      "novel_methods": [
+        "recommender model"
+      ],
+      "supporting_paper_ids": [
+        "581940979a686d75f48af51f6bd8b00d6bf14b13"
+      ],
+      "evidence_score": 23.3632,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-10-2": {
+      "id": "9cccd2b246fc95f9b208ad5feb3c6d2a2ba7bc7d",
+      "title": "impact of machine learning on intrusion detection systems for the protection of critical infrastructure",
+      "year": 2025,
+      "query_similarity": 0.7011,
+      "relevance_floor": 0.6872,
+      "shared_problems": [
+        "time-series data",
+        "anomaly detection"
+      ],
+      "novel_methods": [
+        "robust intrusion detection systems",
+        "unsupervised learning algorithms",
+        "supervised learning algorithms"
+      ],
+      "supporting_paper_ids": [
+        "be15bbf72688b48f4b4af57ed7240c97c66494c2",
+        "21d2742e38f7167354dafcf7f565d3894b31d008",
+        "5afc72eaf420b3b1ff47459eb4c77a706b7768b2",
+        "4ca3dc91e398372e15cab156d017cc069458a490"
+      ],
+      "evidence_score": 33.9356,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-10-3": {
+      "id": "100c070d097fd26b62472b71d984f36b06ba1f74",
+      "title": "egg-gae: scalable graph neural networks for tabular data imputation",
+      "year": 2022,
+      "query_similarity": 0.6686,
+      "relevance_floor": 0.667,
+      "shared_problems": [
+        "tabular datasets"
+      ],
+      "novel_methods": [
+        "ensemble strategy",
+        "gaes",
+        "graph autoencoders"
+      ],
+      "supporting_paper_ids": [
+        "ddd75b2cb5cf0ab2426698f185a00a16bf16ad3b"
+      ],
+      "evidence_score": 23.5464,
+      "candidate_method": "problem_bridge_novel_method"
+    },
+    "bridge_m10_specific|V2-11-1": {
+      "id": "90033f36aad747f86862800eb94239427e210796",
+      "title": "a clogging resistant secure authentication scheme for fog computing services",
+      "year": 2021,
+      "query_similarity": 0.6467,
+      "relevance_floor": 0.6335,
+      "shared_problems": [
+        "key"
+      ],
+      "novel_methods": [
+        "fog computing"
+      ],
+      "supporting_paper_ids": [
+        "b340307c89ff00d8b30194a265e1afc3a9e44906"
+      ],
+      "evidence_score": 7.7926,
+      "candidate_method": "problem_bridge_novel_method"
+    }
+  }
+}

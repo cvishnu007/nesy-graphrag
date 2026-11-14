@@ -54,3 +54,15 @@ def test_human_ratings_reports_arm_means_and_precision():
     result = contradiction_report({"a": labels}, ckey)["arms"]
     assert result["top_ranked"]["precision_contradiction"] == 0.5
     assert result["lower_ranked_control"]["precision_contradiction_or_tension"] == 1.0
+
+
+def test_round2_hypothesis_item_counts_for_every_arm_that_chose_it():
+    from src.evaluation.human_ratings import hypothesis_round2_report
+
+    key = {"items": [{"item_id": "A", "query_id": "Q", "arms": ["bridge_m10", "bridge_m10_specific"]},
+                     {"item_id": "B", "query_id": "Q", "arms": ["vector_neighbour"]}]}
+    sheet = {"A": {"relevance_1_5": 4, "novelty_1_5": 4, "promise_1_5": 4},
+             "B": {"relevance_1_5": 5, "novelty_1_5": 1, "promise_1_5": 2}}
+    report = hypothesis_round2_report({"x": sheet}, key)
+    assert report["arms"]["bridge_m10_specific"]["novelty_1_5"] == 4
+    assert report["comparisons"]["bridge_m10_minus_vector_neighbour"]["novelty_1_5"]["mean_delta"] == 3

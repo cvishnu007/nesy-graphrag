@@ -179,9 +179,10 @@ GRAPH_EXPANSION_EDGES = tuple(
     for edge in os.getenv("GRAPH_EXPANSION_EDGES", "CITES").split("|")
     if edge.strip()
 )
-ALLOWED_EXPANSION_EDGES = {"CITES", "SIMILAR_TO"}
+# CITES_ADDED and COUPLED_WITH come from src/ingestion/citation_densify.py (opt-in; defaults unchanged)
+ALLOWED_EXPANSION_EDGES = {"CITES", "SIMILAR_TO", "CITES_ADDED", "COUPLED_WITH"}
 if not GRAPH_EXPANSION_EDGES or not set(GRAPH_EXPANSION_EDGES) <= ALLOWED_EXPANSION_EDGES:
-    raise ValueError("GRAPH_EXPANSION_EDGES must use only CITES and/or SIMILAR_TO")
+    raise ValueError(f"GRAPH_EXPANSION_EDGES must use only {sorted(ALLOWED_EXPANSION_EDGES)}")
 # Hide a result whose abstract is near-identical (cosine >= 0.995) to a higher-ranked
 # result. Pairs come from evaluation/near_duplicate_pairs.json; no data is deleted.
 COLLAPSE_NEAR_DUPLICATES = os.getenv("COLLAPSE_NEAR_DUPLICATES", "false").strip().lower() in {
@@ -284,7 +285,7 @@ HYPOTHESIS_HOLE_EDGES = tuple(
     if edge.strip()
 )
 if not HYPOTHESIS_HOLE_EDGES or not set(HYPOTHESIS_HOLE_EDGES) <= ALLOWED_EXPANSION_EDGES:
-    raise ValueError("HYPOTHESIS_HOLE_EDGES must use only CITES and/or SIMILAR_TO")
+    raise ValueError(f"HYPOTHESIS_HOLE_EDGES must use only {sorted(ALLOWED_EXPANSION_EDGES)}")
 
 # -- Reasoning evaluation -------------------------------------------------
 CONTRADICTION_BENCHMARK_FILE = os.getenv(

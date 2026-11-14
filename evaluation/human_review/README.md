@@ -20,7 +20,12 @@ These human labels are what make the evaluation publishable: they validate the a
 | 5 | Contradiction labels, 68 pairs | 2 people | ~1 h each | ⏳ |
 | 6 | Free OpenAlex API key | Project owner | 5 min | ⏳ Unblocks citation densification for papers whose references Semantic Scholar hides |
 
-For tasks 4 and 5, two raters are needed for agreement. If only one person is available, the results are still useful but are reported as single-rater.
+| 7 | **Round 2** hypothesis ratings, 43 items (14 new test queries) | 2 people | ~1 h each | ⏳ Same rules as task 4; sheet `hypothesis_round2_sheet_blank.csv` |
+| 8 | **Round 2** contradiction labels, 40 pairs | 2 people | ~45 min each | ⏳ Same rules as task 5; sheet `contradiction_round2_sheet_blank.csv` |
+
+Round 2 tests the methods revised after round 1, on queries not used for the revision. Rate it like round 1; the sheets do not say which method produced a row.
+
+For tasks 4, 5, 7 and 8, two raters are needed for agreement. If only one person is available, the results are still useful but are reported as single-rater.
 
 ---
 
@@ -62,6 +67,16 @@ Sheet: `contradiction_sheet_blank.csv` (68 rows). Each row has two findings from
 
 Judge the two findings. Use the titles only for context.
 
+**You do not need numbers or ground truth.** You are not deciding which paper is right; that would need full text. You are judging whether the two papers' *stated claims* conflict. Abstracts state claims in words ("X outperforms Y", "X fails to generalize", "no significant improvement").
+
+- **Different numbers on different datasets or systems are never a contradiction on their own.** "Model A reaches 99% on dataset D1" vs "Model B reaches 98% on dataset D2" is **0**.
+- Two papers that both report good results for their own methods is **0**.
+- **2** needs the *same* subject (same method, or the same general claim) and *opposite* conclusions in words: "pre-training helps low-resource translation" vs "pre-training gives no benefit for low-resource translation".
+- **1** is opposite-leaning claims under different conditions, where both could be true.
+- If a sentence is too vague to compare, choose **0** and write "vague" in `notes`.
+
+Most rows are expected to be 0. That is a result, not a problem: the sheet measures how many of the system's candidates are real contradictions.
+
 ## Task 6: OpenAlex API key (project owner)
 
 Semantic Scholar hides reference lists for many publishers, and 77% of our papers had none. OpenAlex (CC0 open data) has most of them, matched by DOI. Keyless access shares a small daily budget that is often exhausted.
@@ -82,9 +97,18 @@ Semantic Scholar hides reference lists for many publishers, and 77% of our paper
 .\venv\Scripts\python.exe -m src.evaluation.human_ratings contradiction --sheets evaluation\human_review\contradiction_sheet_<A>.csv evaluation\human_review\contradiction_sheet_<B>.csv
 ```
 
+```powershell
+# Round 2
+.\venv\Scripts\python.exe -m src.evaluation.human_ratings hypothesis_round2 --sheets evaluation\human_review\hypothesis_round2_sheet_<A>.csv
+.\venv\Scripts\python.exe -m src.evaluation.human_ratings contradiction_round2 --sheets evaluation\human_review\contradiction_round2_sheet_<A>.csv
+```
+
 ## Sample designs
 
 - **Relevance:** 200 query–paper pairs from the frozen 1,145-label GNN pool, stratified by the original 3B AI grade (80/50/70 for grades 0/1/2). Seed 20261114 (`build_relevance_sheet.py`).
 - **Hypotheses and contradictions:** 30 of the 44 stratified queries chosen by hash, seed 20261114 (`build_review_kit.py`). The selected configuration was used: BGE retrieval, BM25, graph expansion, and the SciERC entity graph.
   - Hypothesis arms per query: the top structural-hole candidate from the entity graph, and a vector-neighbour baseline (vector rank 6–15, not cited by the top 5). Rows are shuffled, and the linking concepts stay in the key because they would reveal the arm.
   - Contradiction rows: the top two NLI-ranked candidates among the top 20 retrieved papers (56 rows), plus a lower-ranked control (rank 5–15) for 12 queries.
+- **Round 2 (`build_round2_kit.py`, seed 20261115):** the 14 stratified queries not used in round 1.
+  - Hypothesis arms per query: vector neighbour, original structural hole, problem-bridge (margin 0.10, selected on the round-1 queries with the validated 7B relevance judge), and problem-bridge restricted to specific entities (tied on dev, secondary). A paper chosen by several arms appears once.
+  - Contradiction pairs come from the corpus-wide citation-grounded index: all 9 the verdict model called contradictions, 15 unflagged from the top 150, and 16 from ranks 151+.

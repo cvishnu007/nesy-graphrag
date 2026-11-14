@@ -1,0 +1,52 @@
+{
+  "raters": [
+    "hypothesis_sheet_rated_cv"
+  ],
+  "inter_rater_kappa": {},
+  "arms": {
+    "graph_structural_hole": {
+      "n": 30,
+      "relevance_1_5": 3.267,
+      "novelty_1_5": 1.967,
+      "promise_1_5": 2.2
+    },
+    "vector_neighbour": {
+      "n": 30,
+      "relevance_1_5": 4.2,
+      "novelty_1_5": 2.067,
+      "promise_1_5": 2.567
+    }
+  },
+  "graph_minus_vector": {
+    "relevance_1_5": {
+      "pair_count": 30,
+      "mean_delta": -0.9333333333333333,
+      "bootstrap_95_ci": [
+        -1.4333333333333333,
+        -0.4666666666666667
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 0.0016999150042497876
+    },
+    "novelty_1_5": {
+      "pair_count": 30,
+      "mean_delta": -0.1,
+      "bootstrap_95_ci": [
+        -0.5333333333333333,
+        0.3333333333333333
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 0.7639118044097795
+    },
+    "promise_1_5": {
+      "pair_count": 30,
+      "mean_delta": -0.36666666666666664,
+      "bootstrap_95_ci": [
+        -0.8,
+        0.06666666666666667
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 0.1654917254137293
+    }
+  }
+}

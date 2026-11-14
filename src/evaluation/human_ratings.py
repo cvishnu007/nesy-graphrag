@@ -18,7 +18,7 @@ from pathlib import Path
 from statistics import fmean
 
 from src.evaluation.human_agreement import weighted_kappa
-from src.evaluation.significance import paired_significance
+from src.evaluation.significance import paired_permutation_test, paired_significance
 
 HYPOTHESIS_FIELDS = ("relevance_1_5", "novelty_1_5", "promise_1_5")
 
@@ -69,14 +69,44 @@ def hypothesis_report(sheets, key):
     paired = [q for q in by_query.values() if len(q) == 2]
     for field in HYPOTHESIS_FIELDS:
         deltas = [q["graph_structural_hole"][field] - q["vector_neighbour"][field] for q in paired]
-        report["graph_minus_vector"][field] = paired_significance(deltas)
+        report["graph_minus_vector"][field] = (paired_significance(deltas) if len(deltas) <= 20
+                                               else paired_permutation_test(deltas))
+    return report
+
+
+ROUND2_ARMS = ("vector_neighbour", "graph_structural_hole", "bridge_m10", "bridge_m10_specific")
+ROUND2_COMPARISONS = (("bridge_m10", "vector_neighbour"), ("bridge_m10", "graph_structural_hole"),
+                      ("bridge_m10_specific", "vector_neighbour"), ("graph_structural_hole", "vector_neighbour"))
+
+
+def hypothesis_round2_report(sheets, key):
+    """An item chosen by several arms counts for each of them; comparisons are paired by query."""
+    ratings = mean_ratings(sheets)
+    by_query = defaultdict(dict)
+    for item in key["items"]:
+        if item["item_id"] in ratings:
+            for arm in item["arms"]:
+                by_query[item["query_id"]][arm] = ratings[item["item_id"]]
+    report = {"raters": sorted(sheets), "inter_rater_kappa": kappas(sheets, HYPOTHESIS_FIELDS, (1, 2, 3, 4, 5)),
+              "arms": {}, "comparisons": {}}
+    for arm in ROUND2_ARMS:
+        values = [q[arm] for q in by_query.values() if arm in q]
+        if values:
+            report["arms"][arm] = {"n": len(values), **{f: round(fmean(v[f] for v in values), 3)
+                                                        for f in HYPOTHESIS_FIELDS}}
+    for challenger, reference in ROUND2_COMPARISONS:
+        paired = [q for q in by_query.values() if challenger in q and reference in q]
+        if paired:
+            report["comparisons"][f"{challenger}_minus_{reference}"] = {
+                field: paired_significance([q[challenger][field] - q[reference][field] for q in paired])
+                for field in HYPOTHESIS_FIELDS}
     return report
 
 
 def contradiction_report(sheets, key):
     ratings = mean_ratings(sheets)
     report = {"raters": sorted(sheets), "inter_rater_kappa": kappas(sheets, ("label_0_1_2",), (0, 1, 2)), "arms": {}}
-    for arm in ("top_ranked", "lower_ranked_control"):
+    for arm in sorted({i["arm"] for i in key["items"]}):
         labels = [ratings[i["item_id"]]["label_0_1_2"] for i in key["items"] if i["arm"] == arm and i["item_id"] in ratings]
         if labels:
             report["arms"][arm] = {"n": len(labels),
@@ -87,14 +117,14 @@ def contradiction_report(sheets, key):
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("kind", choices=("hypothesis", "contradiction"))
+    parser.add_argument("kind", choices=("hypothesis", "contradiction", "hypothesis_round2", "contradiction_round2"))
     parser.add_argument("--sheets", nargs="+", required=True)
     parser.add_argument("--output")
     args = parser.parse_args(argv)
     key = json.loads(Path(f"evaluation/human_review/{args.kind}_key_DO_NOT_SHARE_WITH_ANNOTATORS.json").read_text())
-    if args.kind == "hypothesis":
+    if args.kind.startswith("hypothesis"):
         sheets = {Path(p).stem: read(p, HYPOTHESIS_FIELDS, {"1", "2", "3", "4", "5"}) for p in args.sheets}
-        report = hypothesis_report(sheets, key)
+        report = (hypothesis_round2_report if args.kind.endswith("round2") else hypothesis_report)(sheets, key)
     else:
         sheets = {Path(p).stem: read(p, ("label_0_1_2",), {"0", "1", "2"}) for p in args.sheets}
         report = contradiction_report(sheets, key)

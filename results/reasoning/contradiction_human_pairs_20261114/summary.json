@@ -1,0 +1,28 @@
+{
+  "ollama:qwen2.5:7b-instruct": {
+    "llm": "ollama:qwen2.5:7b-instruct",
+    "sheet": "evaluation/human_review/contradiction_sheet_labeled_cv.csv",
+    "pairs": 68,
+    "human_label_counts": {
+      "0": 63,
+      "1": 5
+    },
+    "verdict_counts": {
+      "DIFFERENT SCOPE": 52,
+      "CONTRADICTION": 5,
+      "AGREEMENT": 11
+    },
+    "human_label_x_verdict": {
+      "0|AGREEMENT": 10,
+      "0|CONTRADICTION": 3,
+      "0|DIFFERENT SCOPE": 50,
+      "1|AGREEMENT": 1,
+      "1|CONTRADICTION": 2,
+      "1|DIFFERENT SCOPE": 2
+    },
+    "false_alarm_rate_on_human_0": 0.0476,
+    "flagged": 5,
+    "flagged_with_human_label_ge1": 2,
+    "valid_rate": 1.0
+  }
+}

@@ -95,6 +95,30 @@ Corpus extraction (47,619 abstracts): 1,225,433 typed mentions (Method 379k, Oth
 
 Representative shared concepts behind the top hypothesis candidate: "molecular property prediction", "drug discovery" (vs "graph neural networks", "algorithms"); "malicious software", "malware" (vs "them", "this report"); "text-to-sql", "sql queries" (vs "resources", "input"). Concept-overlap contradiction pairing is sparse once noise is removed, so contradiction candidates use NLI sentence pairs.
 
+## 4b. Hypothesis candidates: human ratings (round 1, one rater) and revision
+
+30 stratified queries; per query, the top structural-hole candidate from the entity graph and a vector-neighbour baseline (vector rank 6–15, not cited by the top 5), shuffled and blinded (`evaluation/human_review/hypothesis_sheet_rated_cv.csv`). Ratings 1–5; paired by query, Monte Carlo sign-flip test.
+
+| Mean rating | Structural hole (graph) | Vector neighbour | Graph − vector | p |
+|---|---:|---:|---:|---:|
+| Relevance | 3.27 | **4.20** | −0.93 [−1.43, −0.47] | **0.002** |
+| Novelty | 1.97 | 2.07 | −0.10 | 0.76 |
+| Promise | 2.20 | 2.57 | −0.37 | 0.17 |
+
+The original structural-hole candidates are significantly less relevant and no more novel. The rater's notes ("unrelated: IDS survey", "generic gnn tutorial") trace this to links through broad shared concepts.
+
+**Revision: problem-bridge, novel-method candidates** (`src/pipeline/hypothesis_bridge.py`), following the literature-based-discovery pattern "apply method M to problem T". The candidate shares a specific Task or Material entity (IDF-weighted) with the query papers, mentions a Method that none of the query's 15 nearest papers mention, stays above a relevance floor, and is outside the vector top 15. Development on the same 30 queries used the human-validated 7B relevance judge; the selection rule was predeclared (`src/evaluation/hypothesis_dev.py`):
+
+| Generator | Mean judged relevance (0–2; no candidate = 0) | Coverage |
+|---|---:|---:|
+| Vector neighbour | 0.93 | 30/30 |
+| **Problem bridge, margin 0.10 (selected)** | **0.77** | 29/30 |
+| Problem bridge, margin 0.10, specific entities only | 0.77 (tie) | 27/30 |
+| Problem bridge, margin 0.05 | 0.70 | 23/30 |
+| Original structural hole | 0.43 | 30/30 |
+
+The judge reproduces the human ordering of the two rated arms (0.43 vs 0.93; humans 3.27 vs 4.20). The tie was broken by the implementation's alphabetical order, not by a stated rule, so both tied variants go to the human test. Novelty cannot be judged automatically: round 2 rates all four arms on the 14 queries not used here.
+
 ## 5. Contradiction candidates
 
 | Generator | Queries with candidates (of 26) | Evidence |
@@ -112,11 +136,25 @@ Same structured prompt as the application, no tuning, single run (`src/evaluatio
 | Verdict model | Precision | Recall | F1 | Accuracy | Calibration error (ECE) | "Contradiction" calls |
 |---|---:|---:|---:|---:|---:|---:|
 | qwen2.5-3B-instruct (local) | 0.386 | 0.836 | 0.528 | 0.462 | 0.538 | 264 / 338 |
+| qwen2.5-7B-instruct (local) | 0.849 | 0.598 | 0.702 | 0.817 | — | 86 / 338 |
 | Qwen3.8-27B (Groq) | 0.954 | 0.672 | 0.788 | 0.870 | 0.089 | 86 / 338 |
 | **GPT-OSS-120B (Groq)** | 0.946 | 0.713 | **0.813** | **0.881** | **0.066** | 92 / 337 |
 | NLI screening alone (dev threshold) | 0.614 | 0.730 | 0.667 | 0.737 | AUROC 0.818 | — |
 
 GPT-OSS-120B answered 337 of 338 items before Groq's daily token limit (200K TPD); the missing item is a non-contradiction, and the worst-case F1 is 0.809. The local 3B model over-detects contradictions (accuracy below the 0.64 majority baseline) and its confidence is uninformative. Recommendation: NLI screening locally, verdicts from a large model.
+
+## 5b-2. Contradictions in the CS corpus: human labels (round 1, one rater)
+
+68 pairs from the NLI sentence-pair screener (30 stratified queries, top 20 retrieved papers each; `evaluation/human_review/contradiction_sheet_labeled_cv.csv`). Labels: 2 = contradiction, 1 = tension, 0 = none.
+
+| | Pairs | Human contradiction (2) | Human tension (1) |
+|---|---:|---:|---:|
+| Top-ranked NLI candidates | 56 | 0 | 5 (8.9%) |
+| Lower-ranked controls | 12 | 0 | 0 |
+
+The screener mostly pairs papers that each report their own good results. The local 7B verdict model, given the same pairs and the application prompt (`src/evaluation/contradiction_human_eval.py`), called 5 of 68 a contradiction: 2 were human tension pairs, and 3 of the 63 human-0 pairs were false alarms (4.8%). Without the verdict step, all 68 would be shown.
+
+**Revision: citation-grounded index** (`src/pipeline/contradiction_citation.py`, `src/evaluation/contradiction_index.py`). Disagreements in CS are usually written on purpose (replications, "revisiting", negative results), and the disputing paper cites the disputed one. The index pairs critical findings ("fails to", "contrary to", "surprisingly", "on par with") with the papers they cite, requires a shared specific SciERC entity in both sentences, and ranks pairs by NLI. On the densified graph: 364 critical-finding papers, 1,958 citation-linked pairs, 591 candidates. The 7B verdict model called 9 of the top 150 contradictions. Human precision is pending (round 2, 40 pairs).
 
 ## 5c. Answer grounding: standard RAG vs this system (matched budget)
 
@@ -134,6 +172,15 @@ Per-query support difference −0.043, 95% CI [−0.248, +0.150], exact paired p
 ## 6. Data and graph facts
 
 - 3.6% of 625,222 references resolve inside the corpus; 71.4% of papers have no citation edge.
+- **Densification (2026-11-15, `src/ingestion/citation_densify.py`).** Only 10,899 papers (23%) had reference lists; Semantic Scholar hides most lists for publisher-licensing reasons. Added reference lists came from the Semantic Scholar batch API (21,027 papers) and OpenAlex by DOI (44,090 of 46,198 matched). Opt-in layers, each its own label or edge type, so defaults and frozen results are unchanged:
+
+| | Before | After |
+|---|---:|---:|
+| Papers with a reference list | 10,899 | 46,708 |
+| Corpus-internal citation edges | 22,370 `CITES` | + 133,527 `CITES_ADDED` |
+| Bibliographic coupling (`COUPLED_WITH`, cosine, top 10 per paper, ≥ 2 shared) | 0 | 411,418 |
+| External papers cited by ≥ 10 corpus papers (`ExternalPaper`, `CITES_EXTERNAL`) | 0 | 24,714 nodes, 641,616 edges |
+| Papers with no citation link | 33,995 (71.4%) | 6,394 (13.4%); 1,154 (2.4%) counting coupling |
 - 51 near-duplicate paper pairs (cosine ≥ 0.995), mostly preprint/published versions.
 - Before flags, 83.5% of spaCy concepts were singletons and "this paper" linked 7,013 papers; 32,789 generic concepts are now flagged.
 - 238,095 `SIMILAR_TO` edges (top-5 SPECTER neighbours; median cosine 0.907).
