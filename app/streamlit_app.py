@@ -10,6 +10,7 @@ from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
 from src.pipeline.verdicts import contradiction_verdict
 from src.pipeline.hypothesis import llm_hypothesis
+from src.pipeline.related_work import related_work
 from src.storage.chroma_store import get_collection
 from src.utils.config import (
     CHROMA_COLLECTION, CONCEPT_SOURCE, CONTRADICTION_CANDIDATE_MODE, DATA_SOURCE, EMBEDDING_MODEL,
@@ -52,10 +53,11 @@ with st.sidebar:
     st.header("⚙️ Settings")
     mode = st.radio(
         "Select Mode",
-        ["📚 Literature Review", "⚡ Contradiction Detection", "💡 Hypothesis Generation"],
+        ["📚 Literature Review", "⚡ Contradiction Detection", "💡 Hypothesis Generation",
+         "🔗 Related Work (citation graph)"],
         index=0
     )
-    if "review" in mode.lower():
+    if "review" in mode.lower() or "related" in mode.lower():
         top_k = st.slider("Papers to retrieve", min_value=3, max_value=15, value=10)
     else:
         top_k = st.slider("Candidates to evaluate", min_value=1, max_value=10, value=5)
@@ -239,6 +241,20 @@ if run and query:
                     st.markdown("**Generated Hypothesis:**")
                     st.markdown(llm_text)
                     st.markdown(f"**Missing Evidence:** {item.get('missing_evidence', 'Not provided')}")
+
+    # ── RELATED WORK MODE ─────────────────────────────
+    elif "related" in mode.lower():
+        with st.spinner("Finding related work through semantic, keyword, and co-citation signals..."):
+            result = related_work(driver, query, top_k=top_k)
+        st.info(f"Suggestions from {result['neighbours']} nearest papers and their citations "
+                "(evaluated on citation recommendation: +28% Recall@20 over text-only retrieval; RESULTS §2f)")
+        if not result["papers"]:
+            st.warning("No related work found.")
+        for i, paper in enumerate(result["papers"], 1):
+            with st.expander(f"{i}. {paper['title']} ({paper['year']})"):
+                st.markdown(f"**Why:** {paper['why']}")
+                st.markdown((paper.get("abstract") or "")[:800])
+                st.caption(f"`{paper['id']}`")
 
 elif run and not query:
     st.warning("Please enter a query first.")
