@@ -235,6 +235,10 @@ if run and query:
                     names = h.get("shared_concept_names") or []
                     st.markdown(f"**Shared Concepts ({h.get('shared_concepts', len(names))}):** "
                                 + (", ".join(names[:10]) or "N/A"))
+                    if h.get("example_paper_title"):
+                        st.markdown(f"**Example paper using the method near a linking concept:** "
+                                    f"{h['example_paper_title']} · citation links between the two areas: "
+                                    f"{h.get('citation_links', 0)}")
                     if h.get("novel_methods"):
                         st.markdown("**Methods new to this topic's nearest papers:** "
                                     + ", ".join(h["novel_methods"][:8]))

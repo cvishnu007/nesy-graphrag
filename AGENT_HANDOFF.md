@@ -176,7 +176,7 @@ Full tables: [docs/RESULTS.md](docs/RESULTS.md) §2b–2d, §4b, §5b-2, §6. Hu
 **Application switched to evidence-backed methods (2026-11-15; reversible in `.env`, backup outside the repository).**
 - `OLLAMA_MODEL=qwen2.5:7b-instruct`: the 3B default had verdict F1 0.53 and judge κ 0.44; the 7B has 0.70 and 0.75.
 - `CONTRADICTION_CANDIDATE_MODE=citation`: pairs from the corpus-wide citation index (`CONTRADICTION_INDEX_FILE`) touching the query's top 50 papers, re-verdicted by the app LLM. 27 of the 44 stratified queries get at least one pair. The previous value was `nli`.
-- `HYPOTHESIS_GENERATOR=bridge`: `hypothesis_bridge` candidates with `build_bridge_hypothesis_prompt`. The previous value was `structural_hole`.
+- `HYPOTHESIS_GENERATOR=ranker`: method–task pairs from `src/pipeline/hypothesis_ranker.py` (the §4c scorer; time-sliced precision@10 0.067 vs 0.038 for the vector baseline and 0.021 for the `bridge` generator, RESULTS §4d). `bridge` and `structural_hole` remain available. The ranker is not yet human-rated.
 - A **Related Work** mode (`src/pipeline/related_work.py`) uses the citation-recommendation configuration.
 - Both reasoning switches await round 2 human confirmation. Code defaults are unchanged (`concept`, `structural_hole`, 3B), and the tests pin them.
 

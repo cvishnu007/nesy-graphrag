@@ -1,0 +1,761 @@
+{
+  "settings": {
+    "cutoff": 2022,
+    "min_future": 2,
+    "limit": 10
+  },
+  "tasks": 120,
+  "arms": {
+    "bridge": {
+      "precision@10": 0.0208,
+      "tasks_with_hit": 16,
+      "mean_proposed": 9.11
+    },
+    "vector_neighbour": {
+      "precision@10": 0.0375,
+      "tasks_with_hit": 34,
+      "mean_proposed": 10.0
+    },
+    "popularity": {
+      "precision@10": 0.0233,
+      "tasks_with_hit": 26,
+      "mean_proposed": 10.0
+    },
+    "random": {
+      "precision@10": 0.0008,
+      "tasks_with_hit": 1,
+      "mean_proposed": 10.0
+    }
+  },
+  "comparisons": {
+    "bridge_vs_vector_neighbour": {
+      "mean_delta": -0.0167,
+      "bootstrap_95_ci": [
+        -0.0325,
+        -0.0008
+      ],
+      "p": 0.05324733763311834
+    },
+    "bridge_vs_popularity": {
+      "mean_delta": -0.0025,
+      "bootstrap_95_ci": [
+        -0.0167,
+        0.0125
+      ],
+      "p": 0.8251087445627718
+    },
+    "bridge_vs_random": {
+      "mean_delta": 0.02,
+      "bootstrap_95_ci": [
+        0.01,
+        0.0317
+      ],
+      "p": 9.99950002499875e-05
+    },
+    "vector_neighbour_vs_random": {
+      "mean_delta": 0.0367,
+      "bootstrap_95_ci": [
+        0.0258,
+        0.0483
+      ],
+      "p": 4.999750012499375e-05
+    }
+  },
+  "bridge_examples": {
+    "code summarization": [
+      {
+        "method": "siamese neural network",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "term frequency-inverse document frequency",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "tf-idf",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "training strategies",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "llms",
+        "confirmed": true,
+        "future_papers": 7
+      },
+      {
+        "method": "gpt-3",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "large language models",
+        "confirmed": true,
+        "future_papers": 7
+      },
+      {
+        "method": "deep learning architectures",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ],
+    "cybersecurity challenges": [
+      {
+        "method": "digital technology",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "cybersecurity standards",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "dl techniques",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "convolution neural networks",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "digital technologies",
+        "confirmed": true,
+        "future_papers": 2
+      },
+      {
+        "method": "recurrent neural networks",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "deep learning techniques",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "cybersecurity frameworks",
+        "confirmed": false,
+        "future_papers": 1
+      },
+      {
+        "method": "factor analysis",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "thematic analysis",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ],
+    "data analysis": [
+      {
+        "method": "representations of",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "ai techniques",
+        "confirmed": true,
+        "future_papers": 3
+      },
+      {
+        "method": "co-authorship analysis",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "bibliometric methods",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "co-citation analysis",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "ai technologies",
+        "confirmed": false,
+        "future_papers": 1
+      },
+      {
+        "method": "design science research approach",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "process models",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "agile methodologies",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "word embedding models",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ],
+    "data collection": [
+      {
+        "method": "loop",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "real-time",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "ml methods",
+        "confirmed": false,
+        "future_papers": 1
+      },
+      {
+        "method": "ml algorithms",
+        "confirmed": true,
+        "future_papers": 2
+      },
+      {
+        "method": "qualitative methods",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "qualitative method",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "project-based learning",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "ai framework",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "artificial intelligence (ai) methodologies",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "inductive reasoning",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ],
+    "data security": [
+      {
+        "method": "cp-abe schemes",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "vehicular ad hoc network",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "search engines",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "machine learning approaches",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "software architectures",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "computing paradigms",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "business models",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "cybersecurity frameworks",
+        "confirmed": true,
+        "future_papers": 2
+      },
+      {
+        "method": "prisma methodology",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "cybersecurity measures",
+        "confirmed": true,
+        "future_papers": 3
+      }
+    ],
+    "e-commerce": [
+      {
+        "method": "systematic literature review",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "matrix factorization",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "deep learning techniques",
+        "confirmed": true,
+        "future_papers": 2
+      },
+      {
+        "method": "digital technologies",
+        "confirmed": false,
+        "future_papers": 1
+      }
+    ],
+    "malware detection": [
+      {
+        "method": "detection techniques",
+        "confirmed": true,
+        "future_papers": 2
+      },
+      {
+        "method": "security systems",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "unified modeling language",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ],
+    "medical applications": [
+      {
+        "method": "nmf",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "non-negative matrix factorization",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "machine learning technology",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "machine learning technique",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "artificial intelligence (ai) technology",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "ai technology",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "cdsss",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "cdss",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "explainable ai",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "xai",
+        "confirmed": true,
+        "future_papers": 2
+      }
+    ],
+    "model training": [
+      {
+        "method": "deep neural network-based models",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "llms",
+        "confirmed": true,
+        "future_papers": 4
+      },
+      {
+        "method": "neural network model",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "large language models",
+        "confirmed": true,
+        "future_papers": 3
+      },
+      {
+        "method": "attention mechanism",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "nlp model",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "pretrained model",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "nlp systems",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "training procedures",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "ptms",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ],
+    "natural language understanding": [
+      {
+        "method": "neural network-based models",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "business model",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "llms",
+        "confirmed": true,
+        "future_papers": 14
+      },
+      {
+        "method": "large language models",
+        "confirmed": true,
+        "future_papers": 17
+      },
+      {
+        "method": "generative pre-trained transformer 3",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "language model",
+        "confirmed": true,
+        "future_papers": 2
+      },
+      {
+        "method": "nlp models",
+        "confirmed": false,
+        "future_papers": 1
+      },
+      {
+        "method": "computer systems",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "cl",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "continual learning",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ],
+    "nlp": [
+      {
+        "method": "neural network-based models",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "business model",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "large language models",
+        "confirmed": true,
+        "future_papers": 24
+      },
+      {
+        "method": "nlg",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "rnn",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "transformer-based models",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "attention mechanisms",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "modular architecture",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "optimization techniques",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "lm",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ],
+    "resource allocation": [
+      {
+        "method": "local model",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "global model",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "fl",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "federated learning",
+        "confirmed": false,
+        "future_papers": 1
+      },
+      {
+        "method": "mobile computing",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "mobile cloud computing",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "optimization algorithm",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "fog computing",
+        "confirmed": true,
+        "future_papers": 3
+      }
+    ],
+    "risk management": [
+      {
+        "method": "multiple linear regression",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "exploratory factor analysis",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "bim",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "digital technologies",
+        "confirmed": true,
+        "future_papers": 2
+      },
+      {
+        "method": "systematic mapping review",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "tools",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "sensor technologies",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "building information modelling",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "mental models",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "communication system",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ],
+    "software development life cycle": [
+      {
+        "method": "mda",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "agile methods",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "systematic literature reviews",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "thematic analysis",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "software engineering paradigm",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "maturity model",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "ai software",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "ai system",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "ai systems",
+        "confirmed": true,
+        "future_papers": 2
+      },
+      {
+        "method": "agile methodologies",
+        "confirmed": false,
+        "future_papers": 1
+      }
+    ],
+    "software maintenance": [
+      {
+        "method": "deep neural network-based models",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "llms",
+        "confirmed": true,
+        "future_papers": 4
+      },
+      {
+        "method": "neural network model",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "large language models",
+        "confirmed": true,
+        "future_papers": 9
+      },
+      {
+        "method": "attention mechanism",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "contextual embeddings",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "computer programs",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "language models",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "maven",
+        "confirmed": false,
+        "future_papers": 0
+      },
+      {
+        "method": "npm",
+        "confirmed": false,
+        "future_papers": 0
+      }
+    ]
+  }
+}

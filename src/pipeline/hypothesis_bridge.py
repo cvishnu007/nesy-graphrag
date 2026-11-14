@@ -93,3 +93,18 @@ def generate_bridged_hypotheses(driver, query, top_k=5, *, seeds=5, exclude_rank
             "candidate_method": "problem_bridge_novel_method",
         })
     return sorted(candidates, key=lambda c: (-c["evidence_score"], c["id"]))[:top_k]
+
+
+GENERIC_HEADS = {"approach", "approaches", "method", "methods", "technique", "techniques", "algorithm", "algorithms",
+                 "measure", "measures", "model", "models", "strategy", "strategies", "system", "systems",
+                 "framework", "frameworks", "solution", "solutions", "tool", "tools", "mechanism", "mechanisms"}
+
+
+def is_informative(name, kind):
+    """Readable hypothesis terms: no generic head with one modifier; no ambiguous short task acronyms."""
+    words = name.split()
+    if len(words) <= 2 and words[-1] in GENERIC_HEADS:
+        return False
+    if kind == "Task" and len(name) <= 3:
+        return False
+    return True

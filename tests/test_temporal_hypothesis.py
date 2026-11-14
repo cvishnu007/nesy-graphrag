@@ -16,3 +16,9 @@ def test_task_metrics_perfect_and_worst():
 def test_rrf_prefers_items_ranked_high_in_both():
     fused = rrf_scores([np.array([3.0, 2.0, 1.0]), np.array([1.0, 3.0, 2.0])])
     assert int(np.argmax(fused)) == 1
+
+
+def test_propose_skips_known_and_duplicates():
+    from src.evaluation.temporal_generator import propose
+
+    assert propose(["a", "b", "a", "c", "d"], known={"b"}, limit=2) == ["a", "c"]

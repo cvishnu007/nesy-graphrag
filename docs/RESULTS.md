@@ -246,6 +246,25 @@ The judge reproduces the human ordering of the two rated arms (0.43 vs 0.93; hum
 
 **Limits.** "Confirmed" means co-occurrence in later abstracts. It does not mean a positive result, and it misses combinations described with other names. Entities come from an automatic extractor (typed F1 0.64).
 
+## 4d. Time-sliced test of the hypothesis generators
+
+`src/evaluation/temporal_generator.py`; `results/reasoning/temporal_generator_20261115/`. The §4c setup (cutoff 2022, ≥ 2 confirming papers, same 120 tasks, same candidates) is reused, with each arm proposing 10 methods per task from pre-cutoff data only. The task name is the query.
+
+| Proposes 10 methods per task | Precision@10 | Tasks with ≥ 1 confirmed |
+|---|---:|---:|
+| **Method–task ranker: RRF(vector, entity bridge, citation bridge), the §4c scorer** | **0.067** | — |
+| Entity bridge alone (§4c) | 0.061 | — |
+| Vector-neighbour papers' methods (human-study baseline) | 0.038 | 34 |
+| Popularity | 0.023 | 26 |
+| Paper-candidate bridge generator (`hypothesis_bridge`, pre-cutoff port) | 0.021 | 16 |
+| Random | 0.001–0.003 | 1 |
+
+The ranker rows come from the §4c scorers (predeclared; precision@10 added to the same runs). Bridge vs vector neighbour: −0.017, 95% CI [−0.033, −0.001], p = 0.053. Ranker (vector + graph) vs vector scorer: +0.030 [0.017, 0.043], p = 0.0001. The two evaluations agree where they overlap (popularity 0.023 in both; vector 0.037 vs 0.038).
+
+**Finding.** The graph signal is strong, but routing it through candidate papers wastes it. The bridge generator proposes only methods that none of the 15 nearest papers mention, which discards the methods researchers most often adopt next. Ranking (task, method) pairs directly is 1.8× the text baseline and 3× the paper-candidate generator.
+
+**Application.** `src/pipeline/hypothesis_ranker.py` implements the ranker on the full corpus (`HYPOTHESIS_GENERATOR=ranker`). For readability it filters generic heads ("X methods") and task acronyms of 3 characters or fewer. With that filter, the benchmark advantage holds (94 tasks: 0.052 vs 0.028, p < 0.0001; `summary_informative_only.json`). Two caveats: "never combined in the corpus" does not mean novel in the wider literature (the corpus covers 2020–2025), and entity typing errors pass through (e.g., "social engineering" tagged as a method). The ranker has not been human-rated; round 2 rates the paper-candidate generators.
+
 ## 5. Contradiction candidates
 
 | Generator | Queries with candidates (of 26) | Evidence |

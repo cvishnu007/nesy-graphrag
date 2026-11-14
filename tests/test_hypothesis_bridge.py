@@ -11,3 +11,10 @@ def test_rarer_shared_problems_and_novel_methods_score_higher():
 def test_specificity_filter_drops_lone_common_words():
     assert not is_specific("analysis") and not is_specific("pytorch")
     assert is_specific("graph contrastive learning") and is_specific("nsl-kdd") and is_specific("mpnn")
+
+
+def test_informative_filter():
+    from src.pipeline.hypothesis_bridge import is_informative
+
+    assert not is_informative("detection methods", "Method") and not is_informative("cf", "Task")
+    assert is_informative("reinforcement learning", "Method") and is_informative("job shop scheduling", "Task")

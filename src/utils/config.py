@@ -286,8 +286,9 @@ HYPOTHESIS_CANDIDATE_POOL = int(
 # "structural_hole" (original; rated below a vector baseline in round 1) or "bridge"
 # (src/pipeline/hypothesis_bridge.py; dev-selected, time-sliced signals validated, round 2 pending).
 HYPOTHESIS_GENERATOR = os.getenv("HYPOTHESIS_GENERATOR", "structural_hole").strip().lower()
-if HYPOTHESIS_GENERATOR not in {"structural_hole", "bridge"}:
-    raise ValueError("HYPOTHESIS_GENERATOR must be 'structural_hole' or 'bridge'")
+# "ranker": method-task pairs ranked by the time-sliced benchmark scorer (src/pipeline/hypothesis_ranker.py).
+if HYPOTHESIS_GENERATOR not in {"structural_hole", "bridge", "ranker"}:
+    raise ValueError("HYPOTHESIS_GENERATOR must be 'structural_hole', 'bridge' or 'ranker'")
 HYPOTHESIS_HOLE_EDGES = tuple(
     edge.strip().upper()
     for edge in os.getenv("HYPOTHESIS_HOLE_EDGES", "CITES").split("|")

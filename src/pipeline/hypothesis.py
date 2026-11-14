@@ -159,7 +159,16 @@ def llm_hypothesis(llm_client, driver, query, top_k=5):
 
     from src.utils.config import HYPOTHESIS_GENERATOR
 
-    if HYPOTHESIS_GENERATOR == "bridge":
+    if HYPOTHESIS_GENERATOR == "ranker":
+        from src.pipeline.hypothesis_ranker import rank_hypotheses
+        from src.pipeline.prompts import build_ranker_hypothesis_prompt
+
+        hypotheses = [{**h, "id": h["example_paper_id"], "title": f"{h['method']} -> {h['task']}", "year": "",
+                       "category": "", "shared_concepts": len(h["bridging_entities"]),
+                       "shared_concept_names": h["bridging_entities"], "supporting_papers": h["task_support"]}
+                      for h in rank_hypotheses(query, top_k=top_k)]
+        make_prompt = build_ranker_hypothesis_prompt
+    elif HYPOTHESIS_GENERATOR == "bridge":
         from src.pipeline.hypothesis_bridge import generate_bridged_hypotheses
         from src.pipeline.prompts import build_bridge_hypothesis_prompt
 

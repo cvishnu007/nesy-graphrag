@@ -56,6 +56,7 @@ Framing: an **evaluated system plus empirical findings**, not a new model. Every
 | NER selection | RESULTS §3 | ✅ |
 | Concept graph quality | RESULTS §4 | ✅ (probe) |
 | Hypothesis signals, time-sliced discovery benchmark | RESULTS §4c | ✅ positive, robust |
+| Hypothesis generators, time-sliced | RESULTS §4d | ✅ ranker 1.8× text baseline; paper-candidate bridge below baseline (negative) |
 | Hypothesis quality, human ratings | RESULTS §4b | ✅ round 1 (negative); ⏳ round 2 (revised method, held-out queries) |
 | Contradiction screening and verdicts | RESULTS §5, §5b, §5b-2 | ✅ SciFact verdicts; ✅ round 1 in-domain (negative); ⏳ round 2 index |
 | Answer grounding: vector RAG vs GraphRAG | RESULTS §5c | ✅ (no significant difference) |

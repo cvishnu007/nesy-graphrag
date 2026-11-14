@@ -60,7 +60,8 @@ def task_metrics(scores, positives):
     n, p = len(scores), len(pos_ranks)
     ap = float(np.mean([(i + 1) / r for i, r in enumerate(pos_ranks)]))
     auroc = float((n - p) and (np.sum(n - pos_ranks) - p * (p - 1) / 2) / (p * (n - p)))
-    return {"ap": ap, "p@20": float(np.sum(pos_ranks <= 20) / 20), "r@100": float(np.sum(pos_ranks <= 100) / p),
+    return {"ap": ap, "p@10": float(np.sum(pos_ranks <= 10) / 10), "p@20": float(np.sum(pos_ranks <= 20) / 20),
+            "r@100": float(np.sum(pos_ranks <= 100) / p),
             "auroc": auroc}
 
 
@@ -84,12 +85,15 @@ def main(argv=None) -> int:
     parser.add_argument("--max-df-fraction", type=float, default=0.01, help="pre-cutoff generic filter")
     parser.add_argument("--min-task-df", type=int, default=10)
     parser.add_argument("--min-task-positives", type=int, default=3)
+    parser.add_argument("--informative-only", action="store_true",
+                        help="sensitivity check for the app ranker's readability filter (is_informative)")
+    parser.add_argument("--output-name", default="summary.json")
     args = parser.parse_args(argv)
     from scipy.sparse import csr_matrix
 
     from src.evaluation.contradiction_index import PLAN, citation_map
     from src.evaluation.significance import paired_permutation_test
-    from src.pipeline.hypothesis_bridge import is_specific
+    from src.pipeline.hypothesis_bridge import is_informative, is_specific
     from src.storage.chroma_store import get_collection
     from src.utils.config import CLEAN_FILE
 
@@ -107,7 +111,8 @@ def main(argv=None) -> int:
     df_past = Counter(e for pid in past for e in paper_entities.get(pid, ()))
     max_df = args.max_df_fraction * len(past)
     vocab = sorted(e for e, n in df_past.items()
-                   if args.min_df <= n <= max_df and is_specific(e) and etype[e] in ("Task", "Method"))
+                   if args.min_df <= n <= max_df and is_specific(e) and etype[e] in ("Task", "Method")
+                   and (not args.informative_only or is_informative(e, etype[e])))
     index = {e: i for i, e in enumerate(vocab)}
     tasks_all = [e for e in vocab if etype[e] == "Task"]
     methods = np.array([index[e] for e in vocab if etype[e] == "Method"])
@@ -206,10 +211,10 @@ def main(argv=None) -> int:
     for part in ("all", "dev", "test"):
         chosen = [t for t in eligible if part == "all" or split[t] == part]
         summary = {name: {m: round(float(np.mean([values[t][m] for t in chosen])), 4)
-                          for m in ("ap", "p@20", "r@100", "auroc")} for name, values in per_task.items()}
+                          for m in ("ap", "p@10", "p@20", "r@100", "auroc")} for name, values in per_task.items()}
         tests = {}
         for a, b in comparisons:
-            for metric in ("ap", "r@100"):
+            for metric in ("ap", "p@10", "r@100"):
                 deltas = [per_task[a][t][metric] - per_task[b][t][metric] for t in chosen]
                 result = paired_permutation_test(deltas)
                 tests[f"{a}_vs_{b}:{metric}"] = {"mean_delta": round(result["mean_delta"], 4),
@@ -217,7 +222,7 @@ def main(argv=None) -> int:
                                                  "p": result["monte_carlo_two_sided_p"]}
         report["splits"][part] = {"tasks": len(chosen), "scorers": summary, "comparisons": tests}
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "summary.json").write_text(json.dumps(report, indent=2) + "\n")
+    (OUT / args.output_name).write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps({k: v for k, v in report.items() if k != "splits"}, indent=1))
     for part in ("all", "test"):
         print(f"\n{part} ({report['splits'][part]['tasks']} tasks)")
