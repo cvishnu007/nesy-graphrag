@@ -133,7 +133,7 @@ Used as generators, ranking method–task pairs directly (P@10 0.067) beats the 
 
 ### 5.5 Hypothesis candidates rated by humans (RESULTS §4b)
 
-Round 1 (30 queries, two raters, blinded; inter-rater κ 0.82–0.90): the original structural-hole candidates were rated less relevant than vector neighbours (3.10 vs 4.12 of 5, p = 0.001), less promising (2.15 vs 2.67, p = 0.03), and no more novel (1.88 vs 2.17, n.s.). The rated variant ran without the generic-entity filter. ⏳ Round 2 (14 held-out queries, four arms, two raters).
+Round 1 (30 queries, two raters, blinded; inter-rater κ 0.82–0.90): the original structural-hole candidates were rated less relevant than vector neighbours (3.10 vs 4.12 of 5, p = 0.001), less promising (2.15 vs 2.67, p = 0.03), and no more novel (1.88 vs 2.17, n.s.). The rated variant ran without the generic-entity filter. Round 2 (14 held-out queries, four blinded arms, filter on, one rater): the revised problem-bridge generator, preferred by the LLM judge on the selection queries, was no better than the original and did not beat vector neighbours (relevance 3.54 vs 3.93, promise 3.31 vs 3.64; n.s. with 13 pairs). The original again scored lower on promise (3.00 vs 3.64, p = 0.03). Paper-level graph candidates thus lose to vector similarity in both rounds; only the method–task ranker (§5.4) shows a graph advantage, on the time-sliced benchmark.
 
 ### 5.6 Contradictions (RESULTS §5b, §5b-2)
 

@@ -21,7 +21,7 @@ These human labels are what make the evaluation publishable: they validate the a
 | 5 | Contradiction labels, 68 pairs | 2 people | ~1 h each | ✅ Done (`contradiction_sheet_labeled_cv.csv`, `contradiction_sheet_labeled_rater3.csv`); κ 0.76 |
 | 6 | Free OpenAlex API key | Project owner | 5 min | ⏳ Unblocks citation densification for papers whose references Semantic Scholar hides |
 
-| 7 | **Round 2** hypothesis ratings, 43 items (14 new test queries) | 2 people | ~1 h each | ⏳ Same rules as task 4; sheet `hypothesis_round2_sheet_blank.csv` |
+| 7 | **Round 2** hypothesis ratings, 42 items (14 new test queries) | 2 people | ~1 h each | ✅ Rater 1 done (`hypothesis_round2_sheet_rated_cv.csv`); second rater optional |
 | 8 | **Round 2** contradiction labels, 40 pairs | 2 people | ~45 min each | ⏳ Same rules as task 5; sheet `contradiction_round2_sheet_blank.csv` |
 
 Round 2 tests the methods revised after round 1, on queries not used for the revision. Rate it like round 1; the sheets do not say which method produced a row.

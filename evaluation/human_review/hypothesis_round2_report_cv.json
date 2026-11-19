@@ -1,0 +1,162 @@
+{
+  "raters": [
+    "hypothesis_round2_sheet_rated_cv"
+  ],
+  "inter_rater_kappa": {},
+  "arms": {
+    "vector_neighbour": {
+      "n": 14,
+      "relevance_1_5": 3.929,
+      "novelty_1_5": 2.857,
+      "promise_1_5": 3.643
+    },
+    "graph_structural_hole": {
+      "n": 14,
+      "relevance_1_5": 3.5,
+      "novelty_1_5": 2.357,
+      "promise_1_5": 3.0
+    },
+    "bridge_m10": {
+      "n": 13,
+      "relevance_1_5": 3.538,
+      "novelty_1_5": 2.769,
+      "promise_1_5": 3.308
+    },
+    "bridge_m10_specific": {
+      "n": 13,
+      "relevance_1_5": 3.538,
+      "novelty_1_5": 2.923,
+      "promise_1_5": 3.308
+    }
+  },
+  "comparisons": {
+    "bridge_m10_minus_vector_neighbour": {
+      "relevance_1_5": {
+        "pair_count": 13,
+        "mean_delta": -0.5384615384615384,
+        "bootstrap_95_ci": [
+          -1.1538461538461537,
+          0.07692307692307693
+        ],
+        "bootstrap_probability_positive": 0.04096,
+        "exact_two_sided_randomization_p": 0.1953125
+      },
+      "novelty_1_5": {
+        "pair_count": 13,
+        "mean_delta": -0.15384615384615385,
+        "bootstrap_95_ci": [
+          -0.9230769230769231,
+          0.6923076923076923
+        ],
+        "bootstrap_probability_positive": 0.321,
+        "exact_two_sided_randomization_p": 0.861328125
+      },
+      "promise_1_5": {
+        "pair_count": 13,
+        "mean_delta": -0.46153846153846156,
+        "bootstrap_95_ci": [
+          -1.0769230769230769,
+          0.23076923076923078
+        ],
+        "bootstrap_probability_positive": 0.07646,
+        "exact_two_sided_randomization_p": 0.294921875
+      }
+    },
+    "bridge_m10_minus_graph_structural_hole": {
+      "relevance_1_5": {
+        "pair_count": 13,
+        "mean_delta": 0.07692307692307693,
+        "bootstrap_95_ci": [
+          -0.5384615384615384,
+          0.6923076923076923
+        ],
+        "bootstrap_probability_positive": 0.54696,
+        "exact_two_sided_randomization_p": 1.0
+      },
+      "novelty_1_5": {
+        "pair_count": 13,
+        "mean_delta": 0.38461538461538464,
+        "bootstrap_95_ci": [
+          -0.23076923076923078,
+          1.0
+        ],
+        "bootstrap_probability_positive": 0.86032,
+        "exact_two_sided_randomization_p": 0.375
+      },
+      "promise_1_5": {
+        "pair_count": 13,
+        "mean_delta": 0.23076923076923078,
+        "bootstrap_95_ci": [
+          -0.38461538461538464,
+          0.8461538461538461
+        ],
+        "bootstrap_probability_positive": 0.71956,
+        "exact_two_sided_randomization_p": 0.65625
+      }
+    },
+    "bridge_m10_specific_minus_vector_neighbour": {
+      "relevance_1_5": {
+        "pair_count": 13,
+        "mean_delta": -0.5384615384615384,
+        "bootstrap_95_ci": [
+          -1.2307692307692308,
+          0.15384615384615385
+        ],
+        "bootstrap_probability_positive": 0.0571,
+        "exact_two_sided_randomization_p": 0.236328125
+      },
+      "novelty_1_5": {
+        "pair_count": 13,
+        "mean_delta": 0.0,
+        "bootstrap_95_ci": [
+          -0.6923076923076923,
+          0.7692307692307693
+        ],
+        "bootstrap_probability_positive": 0.44414,
+        "exact_two_sided_randomization_p": 1.0
+      },
+      "promise_1_5": {
+        "pair_count": 13,
+        "mean_delta": -0.46153846153846156,
+        "bootstrap_95_ci": [
+          -0.9230769230769231,
+          0.15384615384615385
+        ],
+        "bootstrap_probability_positive": 0.0453,
+        "exact_two_sided_randomization_p": 0.216796875
+      }
+    },
+    "graph_structural_hole_minus_vector_neighbour": {
+      "relevance_1_5": {
+        "pair_count": 14,
+        "mean_delta": -0.42857142857142855,
+        "bootstrap_95_ci": [
+          -0.8571428571428571,
+          0.07142857142857142
+        ],
+        "bootstrap_probability_positive": 0.03414,
+        "exact_two_sided_randomization_p": 0.1875
+      },
+      "novelty_1_5": {
+        "pair_count": 14,
+        "mean_delta": -0.5,
+        "bootstrap_95_ci": [
+          -1.2857142857142858,
+          0.21428571428571427
+        ],
+        "bootstrap_probability_positive": 0.0721,
+        "exact_two_sided_randomization_p": 0.3125
+      },
+      "promise_1_5": {
+        "pair_count": 14,
+        "mean_delta": -0.6428571428571429,
+        "bootstrap_95_ci": [
+          -1.0714285714285714,
+          -0.21428571428571427
+        ],
+        "bootstrap_probability_positive": 0.0,
+        "exact_two_sided_randomization_p": 0.03125
+      }
+    }
+  }
+}

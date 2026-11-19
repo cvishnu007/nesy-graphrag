@@ -228,6 +228,23 @@ The original structural-hole candidates are significantly less relevant and no m
 
 The judge reproduces the human ordering of the two rated arms (0.43 vs 0.93; humans 3.27 vs 4.20). The tie was broken by the implementation's alphabetical order, not by a stated rule, so both tied variants go to the human test. Novelty cannot be judged automatically: round 2 rates all four arms on the 14 queries not used here.
 
+**Round 2 (held-out test, one rater).** The 14 stratified queries not used in round 1 or in the selection above; four blinded arms, generic filter on; a paper chosen by several arms is rated once and counts for each (`evaluation/human_review/hypothesis_round2_sheet_rated_cv.csv`, report `hypothesis_round2_report_cv.json`). Rater 1 only. Exact paired randomization tests.
+
+| Mean rating (1–5) | n | Relevance | Novelty | Promise |
+|---|---:|---:|---:|---:|
+| Vector neighbour | 14 | **3.93** | 2.86 | **3.64** |
+| Original structural hole | 14 | 3.50 | 2.36 | 3.00 |
+| Problem bridge (selected) | 13 | 3.54 | 2.77 | 3.31 |
+| Problem bridge, specific entities | 13 | 3.54 | 2.92 | 3.31 |
+
+| Paired difference | Relevance | Novelty | Promise |
+|---|---:|---:|---:|
+| Bridge − vector (13) | −0.54 [−1.15, 0.08], p = 0.20 | −0.15, p = 0.86 | −0.46, p = 0.29 |
+| Bridge − structural hole (13) | +0.08, p = 1.0 | +0.38, p = 0.38 | +0.23, p = 0.66 |
+| Structural hole − vector (14) | −0.43, p = 0.19 | −0.50, p = 0.31 | **−0.64 [−1.07, −0.21], p = 0.03** |
+
+**Finding.** The revision does not transfer to held-out queries: the problem bridge is no better than the original structural hole and does not beat vector neighbours on any scale (all differences negative or near zero, none significant with 13 pairs). The 7B judge preferred the bridge on the selection queries (0.77 vs 0.43); people on new queries did not. This agrees with the time-sliced test (§4d: bridge P@10 0.021 vs vector 0.038). Paper-level hypothesis candidates from graph structure therefore do not beat vector similarity in human ratings in either round. The method–task ranker (§4d) is the only graph-based generator with a positive result, and it has not been human-rated.
+
 ## 4c. Time-sliced hypothesis benchmark (retrospective discovery)
 
 `src/evaluation/temporal_hypothesis.py`; `results/reasoning/temporal_hypothesis_20261115/`. This is the standard literature-based-discovery evaluation, with no human labels.
@@ -279,7 +296,7 @@ The ranker rows come from the §4c scorers (predeclared; precision@10 added to t
 
 **Finding.** The graph signal is strong, but routing it through candidate papers wastes it. The bridge generator proposes only methods that none of the 15 nearest papers mention, which discards the methods researchers most often adopt next. Ranking (task, method) pairs directly is 1.8× the text baseline and 3× the paper-candidate generator.
 
-**Application.** `src/pipeline/hypothesis_ranker.py` implements the ranker on the full corpus (`HYPOTHESIS_GENERATOR=ranker`). For readability it filters generic heads ("X methods") and task acronyms of 3 characters or fewer. With that filter, the benchmark advantage holds (94 tasks: 0.052 vs 0.028, p < 0.0001; `summary_informative_only.json`). Two caveats: "never combined in the corpus" does not mean novel in the wider literature (the corpus covers 2020–2025), and entity typing errors pass through (e.g., "social engineering" tagged as a method). The ranker has not been human-rated; round 2 rates the paper-candidate generators.
+**Application.** `src/pipeline/hypothesis_ranker.py` implements the ranker on the full corpus (`HYPOTHESIS_GENERATOR=ranker`). For readability it filters generic heads ("X methods") and task acronyms of 3 characters or fewer. With that filter, the benchmark advantage holds (94 tasks: 0.052 vs 0.028, p < 0.0001; `summary_informative_only.json`). Two caveats: "never combined in the corpus" does not mean novel in the wider literature (the corpus covers 2020–2025), and entity typing errors pass through (e.g., "social engineering" tagged as a method). The ranker has not been human-rated; round 2 rated only the paper-candidate generators (§4b).
 
 ## 5. Contradiction candidates
 
@@ -368,7 +385,7 @@ Per-query support difference (system − vector): +0.046, 95% CI [−0.068, 0.15
 Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c).
 
 1. ~~Second human rater~~ Done: relevance on a 50-pair subset (κ 0.91, §2b), round-1 hypotheses (κ 0.82–0.90, §4b), round-1 contradictions (κ 0.76, §5b-2).
-2. **Round 2 human ratings** (`evaluation/human_review/*round2*`): revised hypothesis method and citation-grounded contradiction index on held-out queries.
+2. **Round 2 human ratings**: hypotheses done (rater 1, §4b: the bridge does not beat vector neighbours); citation-grounded contradiction index (40 pairs) pending.
 3. Retrieval on the densified graph (`CITES_ADDED`, `COUPLED_WITH`) as a new variant: dev selection on the 22 stratified dev queries, pool extension, then test once.
 4. Optional robustness check: regrade both pools with a larger judge (27B class) and confirm the §2c/§2d conclusions hold.
 5. Deduplication of 51 near-duplicate pairs; contradiction benchmark with ≥ 10 in-domain positives.

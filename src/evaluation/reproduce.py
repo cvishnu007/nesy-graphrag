@@ -77,6 +77,7 @@ EXPECTED = {
     "human-human kappa, 50-pair subset": 0.9084,
     "hypothesis round 1 relevance kappa, 2 raters": 0.9047,
     "contradiction round 1 kappa, 2 raters": 0.7601,
+    "hypothesis round 2 relevance, bridge minus vector": -0.5385,
     "stratified NDCG@10, selected": 0.644,
     "stratified NDCG@10, BM25": 0.626,
     "stratified NDCG@10, BGE+BM25": 0.621,
@@ -108,6 +109,9 @@ def main() -> int:
         "contradiction round 1 kappa, 2 raters": saved(
             "evaluation/human_review/contradiction_report_cv_rater3.json", "inter_rater_kappa",
             "contradiction_sheet_labeled_cv~contradiction_sheet_labeled_rater3", "label_0_1_2"),
+        "hypothesis round 2 relevance, bridge minus vector": saved(
+            "evaluation/human_review/hypothesis_round2_report_cv.json", "comparisons",
+            "bridge_m10_minus_vector_neighbour", "relevance_1_5", "mean_delta"),
         "stratified NDCG@10, selected": strat["full_bge_bm25_similar"],
         "stratified NDCG@10, BM25": strat["bm25"],
         "stratified NDCG@10, BGE+BM25": strat["rrf_bge_bm25"],
