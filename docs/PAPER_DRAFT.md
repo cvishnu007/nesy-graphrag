@@ -1,10 +1,10 @@
 # Where Does Graph Structure Help Scholarly RAG? Topical Retrieval, Citation Relatedness, and Research Discovery
 
-*Draft, 2026-11-15. Every number cites a section of [RESULTS.md](RESULTS.md); ⏳ marks results pending human ratings. Authors, affiliations, and venue formatting to be added.*
+*Draft, 2026-11-19. Every number cites a section of [RESULTS.md](RESULTS.md). All planned human ratings are in. Authors, affiliations, and venue formatting to be added.*
 
 ## Abstract
 
-Graph-based retrieval-augmented generation (GraphRAG) is increasingly proposed for scientific literature, but it is rarely tested against strong text baselines with controlled protocols. We build a literature assistant over 47,619 computer-science abstracts that combines dense retrieval, BM25, a citation graph densified from Semantic Scholar and OpenAlex (corpus-internal citation edges ×7), and a SciERC entity graph. We evaluate it on two public benchmarks and two project benchmarks graded by an LLM judge validated against human relevance grades. Three findings emerge. (1) For topical queries, a general embedding with BM25 fusion beats every scientific embedding model tested and more than doubles the original system's NDCG@10 (0.644 vs 0.287 on 44 topic-stratified queries). Graph expansion adds no significant gain, even after densification, because the papers it introduces are exactly as relevant as those they displace. (2) For citation recommendation, co-citation over the densified graph improves Recall@20 by 28% relative to text retrieval (p < 0.0001). (3) In a time-sliced discovery benchmark, graph signals nearly double average precision over text similarity when predicting which method–task combinations researchers adopt after a cutoff. We also report negative results: a small LLM relevance judge with position bias, structural-hole hypotheses rated below a nearest-neighbour baseline, and NLI contradiction screening on abstracts with no true positives among 56 top candidates. Together these locate where graph structure helps scholarly RAG: citation-level relatedness and discovery, not topical ranking.
+Graph-based retrieval-augmented generation (GraphRAG) is increasingly proposed for scientific literature, but it is rarely tested against strong text baselines with controlled protocols. We build a literature assistant over 47,619 computer-science abstracts that combines dense retrieval, BM25, a citation graph densified from Semantic Scholar and OpenAlex (corpus-internal citation edges ×7), and a SciERC entity graph. We evaluate it on two public benchmarks and two project benchmarks graded by an LLM judge validated against human relevance grades. Three findings emerge. (1) For topical queries, a general embedding with BM25 fusion beats every scientific embedding model tested and more than doubles the original system's NDCG@10 (0.644 vs 0.287 on 44 topic-stratified queries). Graph expansion adds no significant gain, even after densification, because the papers it introduces are exactly as relevant as those they displace. (2) For citation recommendation, co-citation over the densified graph improves Recall@20 by 28% relative to text retrieval (p < 0.0001). (3) In a time-sliced discovery benchmark, graph signals nearly double average precision over text similarity when predicting which method–task combinations researchers adopt after a cutoff. (4) For contradiction detection, grounding candidates in citations between critical findings and the papers they dispute raises human-judged precision (contradiction or tension) from 9% for NLI screening to 56% after an LLM verdict filter. We also report negative results: a small LLM relevance judge with position bias, and graph-derived hypothesis candidates rated below a nearest-neighbour baseline by humans in two rounds, including on held-out queries. Together these locate where graph structure helps scholarly RAG: citation-level relatedness and discovery, not topical ranking.
 
 ## 1. Introduction
 
@@ -15,7 +15,7 @@ We take an empirical stance and ask: *for which tasks does graph structure add v
 1. **A controlled evaluation** of retrieval for scholarly RAG on SciDocs, LitSearch, and two project benchmarks, using a dev/test protocol, pool extension, and an LLM judge validated on human grades (§4).
 2. **A boundary result for graph structure.** It is redundant for topical ranking even after densifying citations 7× (§5.2), but it gives large gains for citation recommendation (§5.3) and for predicting future method–task combinations (§5.4).
 3. **A methodological warning about LLM judges.** A 3B judge's labels agreed with a human at κ 0.17 because of batch-position bias. Correcting the judge changed every effect size (§4.3).
-4. **Negative results with diagnoses** for hypothesis generation and contradiction detection on abstracts, plus revised methods (§5.5–5.6).
+4. **Human-rated reasoning modes.** Citation-grounded contradiction detection works where NLI screening on abstracts did not (§5.6). Graph-derived hypothesis candidates do not beat vector neighbours in two human rounds, and a revision chosen with an LLM judge did not transfer to held-out queries (§5.5).
 
 ## 2. Related work
 
@@ -148,7 +148,7 @@ Round 1 (30 queries, two raters, blinded; inter-rater κ 0.82–0.90): the origi
 
 **In-corpus, round 1.** Two raters (κ 0.76) labelled 68 NLI-screened pairs. No pair is a contradiction for both; one rater called 2 of the 56 top pairs contradictions (both LLM versus search-based unit-test generation) and the other called them tensions; 7 of 56 (12.5%) are a tension or contradiction for at least one rater, against 0 of 12 controls. The screener mostly pairs papers that each report their own gains. A 7B verdict filter cuts the pairs shown from 68 to 5: it keeps both disputed pairs, and the other 3 (about 5% of negatives) are false alarms.
 
-**Revision.** A citation-grounded index pairs critical findings ("fails to", "contrary to", "surprisingly") with the papers they cite: 591 candidates, 9 of the top 150 flagged by the verdict model. ⏳ Round 2 precision (40 pairs).
+**Revision.** A citation-grounded index pairs critical findings ("fails to", "contrary to", "surprisingly") with the papers they cite: 591 candidates, 9 of the top 150 flagged by the verdict model. **Round 2** (40 blinded pairs, one rater): 5 of the 9 verdict-flagged pairs are a contradiction or tension, including 2 real contradictions (a follow-up reporting that Post2Vec does not improve over the state of the art; constructive exact low-rank embeddings against an impossibility result), against 9% and 0 for the round 1 screener (p = 0.003 and 0.017). NLI rank within the index matters (top 150: 10 of 24 vs rank 151+: 1 of 16, p = 0.03); the verdict filter's extra gain (56% vs 33%) is not significant at this size.
 
 ### 5.7 Answer grounding (RESULTS §5c)
 
@@ -164,12 +164,16 @@ With a 3B generator, about 30% of claims were supported by their cited passages,
 
 **Judges must be validated.** An unvalidated small judge would have produced wrong effect sizes throughout.
 
+**Disagreement is written into citations.** In CS abstracts, contradictions are rare between topically similar papers but appear where one paper explicitly revisits another; restricting candidates to citation links is what made the contradiction mode useful (§5.6).
+
+**LLM-judge selection can overfit.** The hypothesis revision chosen by the 7B judge on dev queries did not beat the baseline for a human on held-out queries (§5.5), so human test sets remain necessary for generative modes.
+
 ## 7. Limitations
 
 - Abstracts only; one corpus (CS, 2020–2025, 47,619 papers).
 - Project relevance labels come from an LLM judge (held-out κ 0.75 against the first annotator). Human–human agreement was measured on only 50 pairs (κ 0.91), with two annotators.
 - "Confirmed" in the time-sliced benchmark means later co-occurrence in abstracts, not a successful result. Entity extraction is automatic (F1 0.64).
-- SciFact is biomedical; in-corpus contradiction precision rests on small human samples.
+- SciFact is biomedical; in-corpus contradiction precision rests on small human samples (68 pairs with two raters, 40 with one). Round 2 hypothesis and contradiction labels come from one rater.
 - SPECTER2 was evaluated without its query adapter.
 - Hypotheses suggested as "never combined in the corpus" may be known in older literature.
 

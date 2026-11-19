@@ -1,0 +1,23 @@
+{
+  "raters": [
+    "contradiction_round2_sheet_labeled_cv"
+  ],
+  "inter_rater_kappa": {},
+  "arms": {
+    "index_rank151_plus": {
+      "n": 16,
+      "precision_contradiction": 0.0,
+      "precision_contradiction_or_tension": 0.062
+    },
+    "index_top150_unflagged": {
+      "n": 15,
+      "precision_contradiction": 0.0,
+      "precision_contradiction_or_tension": 0.333
+    },
+    "index_verdict_contradiction": {
+      "n": 9,
+      "precision_contradiction": 0.222,
+      "precision_contradiction_or_tension": 0.556
+    }
+  }
+}

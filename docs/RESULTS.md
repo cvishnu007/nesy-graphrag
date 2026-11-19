@@ -335,7 +335,20 @@ No pair is a contradiction for both raters. The four disagreements are all one s
 
 The local 7B verdict model, given the same pairs and the application prompt (`src/evaluation/contradiction_human_eval.py`), called 5 of 68 a contradiction. Two of them are exactly C013 and C021, the only pairs either rater labelled a contradiction. The other 3 are labelled 0 by both raters: false alarms on 3 of 63 (rater 1) and 3 of 61 (rater 2) negatives, about 5%. Without the verdict step, all 68 would be shown.
 
-**Revision: citation-grounded index** (`src/pipeline/contradiction_citation.py`, `src/evaluation/contradiction_index.py`). Disagreements in CS are usually written on purpose (replications, "revisiting", negative results), and the disputing paper cites the disputed one. The index pairs critical findings ("fails to", "contrary to", "surprisingly", "on par with") with the papers they cite, requires a shared specific SciERC entity in both sentences, and ranks pairs by NLI. On the densified graph: 364 critical-finding papers, 1,958 citation-linked pairs, 591 candidates. The 7B verdict model called 9 of the top 150 contradictions. Human precision is pending (round 2, 40 pairs).
+**Revision: citation-grounded index** (`src/pipeline/contradiction_citation.py`, `src/evaluation/contradiction_index.py`). Disagreements in CS are usually written on purpose (replications, "revisiting", negative results), and the disputing paper cites the disputed one. The index pairs critical findings ("fails to", "contrary to", "surprisingly", "on par with") with the papers they cite, requires a shared specific SciERC entity in both sentences, and ranks pairs by NLI. On the densified graph: 364 critical-finding papers, 1,958 citation-linked pairs, 591 candidates. The 7B verdict model called 9 of the top 150 contradictions.
+
+**Round 2 human labels (one rater, blinded to arm).** 40 index pairs: all 9 verdict-flagged pairs, 15 unflagged pairs from the top 150 by NLI, and 16 pairs ranked 151+ (`evaluation/human_review/contradiction_round2_sheet_labeled_cv.csv`, report `contradiction_round2_report_cv.json`). Fisher exact tests.
+
+| Arm | Pairs | Contradiction (2) | Contradiction or tension (≥ 1) |
+|---|---:|---:|---:|
+| Verdict-flagged | 9 | **2 (22%)** | **5 (56%)** |
+| Top 150, not flagged | 15 | 0 | 5 (33%) |
+| Rank 151+ | 16 | 0 | 1 (6%) |
+| *Round 1 NLI screener, top-ranked (§5b-2, same rater)* | *56* | *0* | *5 (9%)* |
+
+The two contradictions are a direct dispute (CT031: "Post2Vec achieves 15–25% F1 improvement" vs a follow-up finding it "cannot further improve the SOTA") and an impossibility result answered by a constructive one (CT015: low-dimensional embeddings "provably cannot capture" triangle-rich networks vs "exact low-dimensional factorizations of many real-world networks"). Tensions include Agentless vs agent-based SWE systems, fairness-mitigation benchmarking vs a mitigation method, and graph foundation models.
+
+**Finding.** Citation grounding turns contradiction detection from negative to usable. Tension-or-contradiction precision rises from 9% (round 1 screener) to 56% for verdict-flagged index pairs (p = 0.003), and real contradictions go from 0 of 56 to 2 of 9 (p = 0.017). Within the index, NLI ranking matters (top 150: 10 of 24 vs rank 151+: 1 of 16, p = 0.027); the verdict filter's gain over unflagged top-150 pairs (56% vs 33%) is not significant with 9 and 15 pairs (p = 0.40). Caveats: one rater, small arms, and round 1 and round 2 use different pair sources and queries, so the cross-round comparison is indicative.
 
 ## 5c. Answer grounding: standard RAG vs this system (matched budget)
 
@@ -385,7 +398,7 @@ Per-query support difference (system − vector): +0.046, 95% CI [−0.068, 0.15
 Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c).
 
 1. ~~Second human rater~~ Done: relevance on a 50-pair subset (κ 0.91, §2b), round-1 hypotheses (κ 0.82–0.90, §4b), round-1 contradictions (κ 0.76, §5b-2).
-2. **Round 2 human ratings**: hypotheses done (rater 1, §4b: the bridge does not beat vector neighbours); citation-grounded contradiction index (40 pairs) pending.
+2. ~~Round 2 human ratings~~ Done by rater 1: hypotheses (§4b, the bridge does not beat vector neighbours) and contradictions (§5b-2, the citation index reaches 56% tension-or-contradiction precision with the verdict filter). A second rater for round 2 is optional.
 3. Retrieval on the densified graph (`CITES_ADDED`, `COUPLED_WITH`) as a new variant: dev selection on the 22 stratified dev queries, pool extension, then test once.
 4. Optional robustness check: regrade both pools with a larger judge (27B class) and confirm the §2c/§2d conclusions hold.
 5. Deduplication of 51 near-duplicate pairs; contradiction benchmark with ≥ 10 in-domain positives.
