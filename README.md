@@ -79,4 +79,4 @@ Generated data (`data/`), the fine-tuned entity model (`models/`) and `.env` are
 
 ## Team
 
-Capstone project by Vishnu, Chinmay and Devesh. Historical work logs: `VISHNU.md`, `Chinmay.md`, `devesh.md`.
+Capstone project by Vishnu, Chinmay, Devesh and Gurleen. Historical work logs: `VISHNU.md`, `Chinmay.md`, `devesh.md`.
