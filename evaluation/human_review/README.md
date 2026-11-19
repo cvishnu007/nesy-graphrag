@@ -133,15 +133,15 @@ Semantic Scholar hides reference lists for many publishers, and 77% of our paper
 
 ## Rater record
 
-Reviewers will ask who rated and how independent they were. Fill the blanks before submission (names can be replaced by roles in the paper).
+All raters are anonymous. Publications and reports refer to them only as Rater A, B and C, with their role; no names are recorded. The suffixes in sheet file names (`_cv`, `_rater3`) are internal sheet IDs, not identities; for double-blind submission, share an anonymised copy of the repository.
 
-| Rater | Sheets | Who | Relation to the system | AI tools used | Saw other raters' sheets |
+| Rater | Sheets | Role | Relation to the system | AI tools used | Saw other raters' sheets |
 |---|---|---|---|---|---|
-| Rater 1 (CV) | relevance 200, hypotheses R1 and R2, contradictions R1 and R2 | Project member (system developer) | Built the system; blind to method and AI grade on every sheet (method keys hidden) | None | n/a (rated first) |
-| Rater 3 | relevance subset 50, hypotheses R1, contradictions R1 | ___ (name or role, e.g. "teammate", "CS student not on the project") | ___ (involved in development? yes/no) | None (confirmed by the project owner, 2026-11-19) | No (confirmed by the project owner, 2026-11-19) |
-| Judge-transfer rater (task 9) | judge transfer 100 | ___ | ___ | ___ | ___ |
+| Rater A (sheets `*_cv.csv`) | relevance 200, hypotheses R1 and R2, contradictions R1 and R2 | Project member | Developer of the system; blind to method and AI grade on every sheet (method keys hidden) | None | n/a (rated first) |
+| Rater B (sheets `*_rater3.csv`) | relevance subset 50, hypotheses R1, contradictions R1 | ___ (role only, e.g. "project member" or "CS student not on the project") | ___ (involved in development? yes/no) | None (confirmed by the project owner, 2026-11-19) | No (confirmed by the project owner, 2026-11-19) |
+| Rater C (task 9, judge transfer 100) | judge transfer 100 | ___ (role only) | ___ | ___ | ___ |
 
-Known limits to state in the paper: rater 1 is the developer on every task; round 2 has one rater; rater 3's independence rests on the owner's confirmation, not a recorded protocol.
+Known limits to state in the paper: Rater A is the developer and rates every task; round 2 has one rater; Rater B's independence rests on the owner's confirmation, not a recorded protocol.
 
 ## Sample designs
 
