@@ -21,7 +21,7 @@ Example queries for each mode: [docs/DEMO_QUERIES.md](docs/DEMO_QUERIES.md).
 
 **Why "NeSy":** neural models (embeddings, the LLM, NLI, the entity tagger) propose; a typed citation and entity graph and explicit rules (passage-ID provenance checks, citation-link and entity constraints) restrict and verify what is shown. See [PAPER_DRAFT §3.1](docs/PAPER_DRAFT.md).
 
-Measured with frozen dev/test splits, an LLM relevance judge validated against human grades (on GNN-topic pairs; a check on the other topics is prepared), two human raters, and paired significance tests. Full tables: [docs/RESULTS.md](docs/RESULTS.md).
+Measured with frozen dev/test splits, an LLM relevance judge validated against human grades (κ 0.75 on GNN topics, 0.57 on the other ten, where it is strict), three human raters, and paired significance tests. Full tables: [docs/RESULTS.md](docs/RESULTS.md).
 
 The knowledge graph (Neo4j: papers, authors, 323k scientific entities, and original plus densified citation links) is the backbone of the system. Every mode reads from it. The evaluation measures, task by task, how much the graph adds on top of strong text retrieval:
 
@@ -57,7 +57,7 @@ Generated data (`data/`), the fine-tuned entity model (`models/`) and `.env` are
 
 ```powershell
 .\venv\Scripts\python.exe -m pytest -q                                        # tests
-.\venv\Scripts\python.exe -m src.evaluation.reproduce                         # check 23 headline numbers
+.\venv\Scripts\python.exe -m src.evaluation.reproduce                         # check 24 headline numbers
 .\venv\Scripts\python.exe -m streamlit run app\streamlit_app.py --server.address localhost   # app
 ```
 
@@ -78,7 +78,7 @@ Generated data (`data/`), the fine-tuned entity model (`models/`) and `.env` are
 
 - Abstracts and metadata only; no PDF or full-text processing.
 - Only one model is trained: a SciBERT entity tagger fine-tuned on SciERC (typed F1 0.64). Retrieval and generation use pretrained models.
-- Relevance labels come from a 7B LLM judge validated against human grades on GNN-topic pairs (held-out κ 0.75; two humans agree at κ 0.91). Its accuracy on the other ten topics is not yet measured.
+- Relevance labels come from a 7B LLM judge validated against human grades on GNN-topic pairs (held-out κ 0.75; two humans agree at κ 0.91). On the other ten topics it reaches κ 0.57, below the 0.6 bar: it grades more strictly than a human, equally for systems with and without the graph, but more so for the original system, so the gain over the original system is likely overstated.
 - Rater 1 on every human task built the system (sheets were blind to method); round 2 has one rater.
 - Outputs are research suggestions to check, not verified scientific conclusions.
 

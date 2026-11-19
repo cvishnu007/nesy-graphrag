@@ -17,7 +17,7 @@ Last updated: November 19, 2026. Detailed state and decisions: [AGENT_HANDOFF.md
 | Language model | Local `qwen2.5:7b-instruct` (Ollama) |
 | App modes | Literature Review, Contradiction Detection (citation-grounded), Hypothesis Generation (method–task ranker), Related Work (co-citation, citation map) |
 | Tests | 406 passing (no databases or models needed) |
-| Reproduction | `python -m src.evaluation.reproduce`: 23/23 headline numbers |
+| Reproduction | `python -m src.evaluation.reproduce`: 24/24 headline numbers |
 
 ## Results
 
@@ -54,8 +54,8 @@ Full tables in [docs/RESULTS.md](docs/RESULTS.md).
 
 ## Evidence boundaries
 
-- Relevance labels are LLM-judge labels validated against humans on GNN-topic pairs only, not human ground truth. A 100-pair check over the other ten topics is prepared (`evaluation/human_review/judge_transfer_sheet_blank.csv`), not yet graded.
-- Rater 1 on every human task is the system's developer; the second rater's details are not yet recorded (`evaluation/human_review/README.md`, Rater record).
+- Relevance labels are LLM-judge labels validated against humans on GNN-topic pairs only, not human ground truth. On 100 pairs from the other ten topics the judge reaches κ 0.57, below the 0.6 bar; it is strict, equally so with and without the graph, more so for the original system (RESULTS §2b).
+- Raters are anonymous. Rater A (every task) is the system's developer; Rater B is a project member who did not build it; Rater C graded the judge-transfer check (`evaluation/human_review/README.md`, Rater record).
 - The co-citation expansion is prior work (Strohman et al., 2007; Citeomatic's NNSelect); the paper claims only that it still adds to modern encoders.
 - Round 2 human ratings come from one rater.
 - The GraphRAG baseline re-implements LightRAG's retrieval over our entity graph; the original LLM-built index was infeasible on our hardware.

@@ -1,0 +1,101 @@
+item_id,grade_0_1_2,notes
+T001,2,LLM-based unit test generation is literally the whole paper. easy 2
+T002,2,"resource allocation in 6G, yes. it leans heavily on the zero-trust security angle and it's more about softwarized/compute resources than radio resources, but still fits"
+T003,1,general tutorial on interpretable/explainable ML. nothing specific to tabular data
+T004,2,SLR on load balancing + task scheduling in cloud. direct match
+T005,0,"biological knowledge graph. only 'relational' and 'databases' overlap, no NL interface at all"
+T006,0,"CUDA kernels, not OS kernels. word overlap only"
+T007,2,"TE in software-defined vehicular networks. SDVN is still SDN, multipath routing for TE. counts"
+T008,0,general textbook on inference/learning math foundations. nothing about self-supervised or vision
+T009,2,new metric for 3D object detection specifically for self-driving. on topic
+T010,2,"critiques entropy / mutual info as aleatoric vs epistemic measures. not DNN-only in theory, but these are the standard measures for deep nets and the experiments are on vision models"
+T011,2,hallucination survey for LLMs. spot on
+T012,1,"data2vec does vision, but it's a general SSL framework across speech, text and vision. visual is one third of it"
+T013,2,NL2SQL correctness checking for end users. NL interfaces to DBs is the core
+T014,1,ML for intrusion detection systems. same security + ML space but IDS ≠ malware detection
+T015,0,"P4 heavy-hitter detection / network monitoring. TE gets name-dropped in the intro, that's it"
+T016,1,"generic YOLO overview. autonomous driving shows up only as one example application"
+T017,2,CT tumor segmentation with CNN + attention gates + deep supervision
+T018,1,"broad XAI review. LIME/SHAP get used on tabular data a lot but the paper isn't about tabular specifically"
+T019,0,"LLM overview. translation mentioned in passing, nothing about multilingual or low-resource MT"
+T020,2,systematic review + taxonomy of ML for malware detection. direct
+T021,1,"active learning for ML-enhanced DB systems. query optimization is one of the motivating examples, not the focus"
+T022,1,"code translation, not generation/completion exactly. related area (neural code models) but different task"
+T023,2,multi-agent RL for distributed TE in hybrid SDN. clear 2
+T024,1,"buffer manager across DRAM/NVM/SSD. SSD is part of the hierarchy but it's mostly about NVM + DB buffer management, not flash management"
+T025,0,"ROS2 is robotics middleware, not an RTOS. latency study is real-time-ish but doesn't address the core topic"
+T026,0,"education / adaptive learning paths for students. nothing to do with catastrophic forgetting"
+T027,2,contrastive seasonal-trend representations for TS forecasting. deep learning forecasting is the main thing
+T028,2,"unsupervised anomaly detection on multidimensional device/sensor streams, deployed at scale. fits well"
+T029,2,lit review on identifying and mitigating bias in ML. matches the whole query
+T030,0,"about detokenization / inner lexicon in LLMs. not hallucination"
+T031,2,Q-learning to reduce serverless cold start frequency. on point
+T032,0,"MemGPT borrows OS virtual memory ideas for LLM context. not memory management for virtualized systems"
+T033,1,"sentiment analysis survey, but general. social media text isn't the focus"
+T034,0,"PagedAttention is inspired by OS paging, but it's KV cache for LLM serving. not virtualization"
+T035,1,"bounding box regression loss for object detection in general. no autonomous driving angle"
+T036,2,least-privilege compartmentalization analysis of the Linux kernel. kernel security/isolation exactly
+T037,2,LLM repo-level code completion using IDE static context
+T038,2,survey/taxonomy of task offloading in edge-cloud for smart devices. IoT fits
+T039,2,XAI survey specifically for tabular data. perfect match
+T040,2,"usability of LIME on tabular models. explainability for tabular data is the core, even with the UX angle"
+T041,0,basic ML classification overview. no fairness or bias mitigation
+T042,0,"practical LLM survey. nothing on test case generation"
+T043,2,CodeBERT fine-tuned for APR on Java bugs
+T044,1,"serverless research vs real systems. cold start optimizations (snapshot booting) come up, but it's a position paper on the gap overall"
+T045,2,"NVMe FDP SSDs for flash caches, reducing write amplification. flash storage management directly"
+T046,2,malware detection with CNN/DT/RF on malware images
+T047,2,MEC offloading + resource management for IoT with energy harvesting
+T048,2,"ML models for malware detection, feature selection/scaling study"
+T049,2,"compares LLM-based test gen vs SBST vs symbolic execution. LLM test generation is central"
+T050,1,"machine unlearning survey. MIA is mentioned as the motivation (learning whether an instance was in training data), not the topic"
+T051,1,"general DL object detection review. AD is just listed among applications"
+T052,0,research methods / stats tutorial for psychology. unrelated
+T053,2,heuristic multipath TE in SDN with OpenDaylight
+T054,2,"fine-grained JIT defect prediction with static metrics + warnings"
+T055,0,"5G/6G system-level simulation methodology. right domain, but resource allocation isn't what it's about"
+T056,2,comprehensive review of medical image segmentation incl. deep learning
+T057,0,"catalog of biological databases. the 'z-index' is a citation metric, not an index structure"
+T058,1,"materials science RAG agent. reducing hallucination is a motivation, but the paper is about the materials tool"
+T059,2,ontology-aware RAG for QA in cybersecurity education
+T060,2,dual-indexing RAG architecture evaluated on multi-hop QA
+T061,2,pufferfish optimization for cloud task scheduling
+T062,2,"GNN + bandit traffic management in SDN-IoT. traffic management ≈ TE here. evaluation datasets are a bit odd (KDD) but the topic matches"
+T063,2,"RAG/RAU survey. broader than just QA, but RAG is the main topic and QA-style knowledge tasks are the main use"
+T064,0,"semantic processing survey (WSD, NER, etc). no DB interfaces"
+T065,2,ValueNet NL-to-SQL on Spider
+T066,1,"BNN uncertainty quantification used for prosthesis context prediction. UQ in DNNs is a big part, but the main subject is the application"
+T067,0,"urban sensor access + data management. mentions communication protocols, not routing protocols for WSNs"
+T068,2,membership inference attacks on Stable Diffusion
+T069,1,"self-supervised contrastive learning, but on graphs/nodes. not visual"
+T070,2,dynamic GNN anomaly detection on industrial multivariate sensor data
+T071,1,"perspective piece on ML + large electronic health databases for precision medicine. relevant but not really about methods on EHRs"
+T072,2,BERT for phishing URL detection
+T073,2,benchmarking 12 bias mitigation methods. right on
+T074,1,"serverless scheduling across hybrid cloud for cost/deadlines. serverless performance yes, cold starts not addressed"
+T075,2,abstract resource attacks on shared kernel in container virtualization. kernel isolation exactly
+T076,2,"DRL VM placement in data centers, power is one of the objectives"
+T077,2,Bayesian networks for software defect prediction
+T078,2,"GAT + TCN for multivariate TS anomaly detection, sensor data from manufacturing"
+T079,1,"Arabic social media preprocessing. sentiment analysis is one downstream result, not the main subject"
+T080,1,"ROS 2 real-time performance, looks at kernel/schedulability. still middleware, not an RTOS for embedded devices"
+T081,1,"phishing email detection, not websites. same family of problem"
+T082,2,"structure-aware retrieval-augmented LM, evaluated on science QA among others"
+T083,1,"explainability via LLM counterfactuals, but for text classifiers, not tabular"
+T084,2,survey of NL interfaces for tabular data querying incl. text-to-SQL
+T085,2,"Flow-Loss, learned cardinality estimation optimized for query plans"
+T086,2,original ViT paper
+T087,1,"heterogeneous TEE for isolating accelerators. isolation mechanism yes, but hardware/rack level rather than kernel level"
+T088,2,Bayesian CNN ensemble for network intrusion detection
+T089,2,"cloud system for LLM code completion. more of a systems paper, but code completion is the core"
+T090,0,LoRA review. no query optimization
+T091,0,"secure coding benchmark for LLMs. 'automated test case generation' is about the benchmark pipeline, not generating software tests"
+T092,2,domain adaptation for deep entity resolution
+T093,1,"wormhole attack detection in WSNs. attacks routing paths, but it's security, not routing protocols"
+T094,2,"AI-driven resource management in 6G, with energy efficiency"
+T095,0,ensemble multifeature DL survey. no fairness content
+T096,2,CNN-BiLSTM NIDS on NSL-KDD and UNSW-NB15
+T097,1,"few-shot learning with semantics, but it's not really a meta-learning approach"
+T098,1,"splits autoencoder between edge and cloud for IoT analytics. kind of offloading/partitioning, not task offloading decisions"
+T099,2,greedy-dual caching keep-alive to reduce cold starts
+T100,2,graph-based FSL with an episodically meta-trained graph network

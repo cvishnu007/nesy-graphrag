@@ -236,7 +236,7 @@ Example queries for each mode: [docs/DEMO_QUERIES.md](DEMO_QUERIES.md). If the r
 .\venv\Scripts\python.exe -m src.evaluation.reproduce
 ```
 
-It recomputes 23 headline values (judge agreement, retrieval NDCG, human agreement and ratings, the LightRAG baseline, citation recommendation on our corpus, DBLP and PubMed, and the time-sliced discovery benchmark) and prints `23/23 reproduced`. Two checks need the gitignored key `evaluation/human_review/relevance_subset50_key_DO_NOT_SHARE_WITH_ANNOTATORS.json`; ask the project owner for it.
+It recomputes 24 headline values (judge agreement, including the judge-transfer check, retrieval NDCG, human agreement and ratings, the LightRAG baseline, citation recommendation on our corpus, DBLP and PubMed, and the time-sliced discovery benchmark) and prints `24/24 reproduced`. It needs only committed files: the gitignored annotator keys are rebuilt deterministically.
 
 **13.2 Rerun experiments.** These need the stores; LLM steps need Ollama. Each writes to its own results folder. Run them as `.\venv\Scripts\python.exe -m ...`; each module's docstring (or `--help`) explains its stages:
 

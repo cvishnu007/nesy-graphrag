@@ -1,6 +1,6 @@
 # Human Review Tasks
 
-**Status (2026-11-19):** all planned ratings are done and scored (RESULTS §2b, §4b, §5b-2). Excluded template/AI sheets are in `excluded/` with the reasons. Open: the judge transfer check (task 9) and the rater record below. Optional: a second rater for round 2.
+**Status (2026-11-19):** all planned ratings are done and scored (RESULTS §2b, §4b, §5b-2). Excluded template/AI sheets are in `excluded/` with the reasons. Task 9 (judge transfer) is done. Open: Rater C's role in the rater record below. Optional: a second rater for round 2.
 
 These human labels are what make the evaluation publishable: they validate the automated judges and measure the two components that have no public benchmark (hypotheses, and contradictions in our CS corpus).
 
@@ -26,7 +26,7 @@ These human labels are what make the evaluation publishable: they validate the a
 | 7 | **Round 2** hypothesis ratings, 42 items (14 new test queries) | 2 people | ~1 h each | ✅ Rater 1 done (`hypothesis_round2_sheet_rated_cv.csv`); second rater optional |
 | 8 | **Round 2** contradiction labels, 40 pairs | 2 people | ~45 min each | ✅ Rater 1 done (`contradiction_round2_sheet_labeled_cv.csv`); second rater optional |
 
-| 9 | **Judge transfer check**: relevance grades, 100 pairs from the 10 non-GNN topics | Anyone except CV preferred; CV acceptable | ~1.5 h | ⏳ Open (`judge_transfer_sheet_blank.csv`). Tests whether the 7B judge, validated on GNN pairs, holds on the other topics of the 44-query benchmark |
+| 9 | **Judge transfer check**: relevance grades, 100 pairs from the 10 non-GNN topics | Anyone except CV preferred; CV acceptable | ~1.5 h | ✅ Done 2026-11-19 (`judge_transfer_sheet_raterC.csv`): κ 0.57 vs the 7B judge, below the 0.6 bar; the judge is strict (RESULTS §2b) |
 
 Round 2 tests the methods revised after round 1, on queries not used for the revision. Rate it like round 1; the sheets do not say which method produced a row.
 
@@ -139,7 +139,7 @@ All raters are anonymous. Publications and reports refer to them only as Rater A
 |---|---|---|---|---|---|
 | Rater A (sheets `*_cv.csv`) | relevance 200, hypotheses R1 and R2, contradictions R1 and R2 | Project member | Developer of the system; blind to method and AI grade on every sheet (method keys hidden) | None | n/a (rated first) |
 | Rater B (sheets `*_rater3.csv`) | relevance subset 50, hypotheses R1, contradictions R1 | Project member | Did not build the system (confirmed by the project owner, 2026-11-19) | None (confirmed by the project owner, 2026-11-19) | No (confirmed by the project owner, 2026-11-19) |
-| Rater C (task 9, judge transfer 100) | judge transfer 100 | ___ (role only) | ___ | ___ | ___ |
+| Rater C (sheet `judge_transfer_sheet_raterC.csv`) | judge transfer 100 | ___ (role only) | ___ (involved in development? yes/no) | ___ | ___ |
 
 Known limits to state in the paper: Rater A is the developer and rates every task; round 2 has one rater; Rater B is a project member, though not a developer, and their independence rests on the owner's confirmation, not a recorded protocol.
 

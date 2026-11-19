@@ -48,6 +48,21 @@ def human_human_kappa():
     return pair_report([first[i] for i in items], [second[i] for i in items])["quadratic_weighted_kappa"]
 
 
+def judge_transfer_kappa():
+    import importlib.util
+
+    from src.evaluation.human_agreement import pair_report
+
+    spec = importlib.util.spec_from_file_location("build_judge_transfer_sheet", "evaluation/human_review/build_judge_transfer_sheet.py")
+    builder = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(builder)
+    mapping, labels = builder.subset_mapping(), builder.judge_labels()
+    human = {mapping[r["item_id"]]: int(r["grade_0_1_2"]) for r in csv.DictReader(
+        open("evaluation/human_review/judge_transfer_sheet_raterC.csv", encoding="utf-8-sig"))}
+    items = sorted(human)
+    return pair_report([human[i] for i in items], [labels[i] for i in items])["quadratic_weighted_kappa"]
+
+
 def stratified():
     from src.evaluation.regrade_pool import score
     from src.evaluation.stratified_benchmark import load_rankings
@@ -80,6 +95,7 @@ EXPECTED = {
     "judge held-out kappa, 7B strict 1/call": 0.7485,
     "judge held-out kappa, 27B strict": 0.8837,
     "human-human kappa, 50-pair subset": 0.9084,
+    "judge transfer kappa, 10 non-GNN topics": 0.5714,
     "hypothesis round 1 relevance kappa, 2 raters": 0.9047,
     "contradiction round 1 kappa, 2 raters": 0.7601,
     "hypothesis round 2 relevance, bridge minus vector": -0.5385,
@@ -113,6 +129,7 @@ def main() -> int:
         "judge held-out kappa, 7B strict 1/call": kappa["7b_strict_batch1"],
         "judge held-out kappa, 27B strict": kappa["27b_strict"],
         "human-human kappa, 50-pair subset": human_human_kappa(),
+        "judge transfer kappa, 10 non-GNN topics": judge_transfer_kappa(),
         "hypothesis round 1 relevance kappa, 2 raters": saved(
             "evaluation/human_review/hypothesis_report_cv_rater3.json", "inter_rater_kappa",
             "hypothesis_sheet_rated_cv~hypothesis_sheet_rated_rater3", "relevance_1_5"),

@@ -84,7 +84,18 @@ All 200 frozen labels against the human grades: κ 0.187. Diagnosis: the stored 
 
 The 7B judge used for grading sits below human–human agreement (0.76–0.80 vs 0.91), as expected. The stratified sample over-represents grade 1 relative to the pool, so these κ values are not directly comparable with the 100-pair held-out κ above.
 
-**Scope.** All 200 validation pairs come from the GNN benchmark pool. The 44-query benchmark (§2d) covers ten further topics, where the judge's accuracy is assumed rather than measured. A blinded 100-pair check over those ten topics (10 per topic, stratified by judge grade) is prepared: `evaluation/human_review/judge_transfer_sheet_blank.csv`, built and scored by `evaluation/human_review/build_judge_transfer_sheet.py` (task 9 in the human-review README). Not yet graded.
+**Scope.** All 200 validation pairs come from the GNN benchmark pool. The 44-query benchmark (§2d) covers ten further topics, where the judge's accuracy is assumed rather than measured. A blinded 100-pair check over those ten topics (10 per topic, stratified 4/2/4 by judge grade) was graded by a third rater (Rater C) without AI: `evaluation/human_review/judge_transfer_sheet_raterC.csv`, built and scored by `evaluation/human_review/build_judge_transfer_sheet.py`, report `judge_transfer_report.json`.
+
+| Judge transfer (100 pairs, 10 non-GNN topics) | Value |
+|---|---:|
+| Quadratic-weighted κ, 7B judge vs Rater C | **0.571** |
+| Exact agreement | 61% |
+| Binary (relevant = 1 or 2) agreement | 74% |
+| Mean grade, human / judge | 1.34 / 1.00 |
+
+**The judge misses the predeclared bar (κ ≥ 0.6) on these topics.** Its errors are one-sided: it is stricter than the human (judge below human on 32 items, above on 7), and 9 papers the human graded 2 got a 0 (for example, a detection metric designed for self-driving under "object detection in autonomous driving"). Per-topic exact agreement ranges from 40% (vision, data science, software engineering) to 90% (databases).
+
+**Effect on the conclusions.** On the sampled papers in each system's top 10, the judge under-grades by +0.40 for both BGE + BM25 and BGE + BM25 + graph, so the graph comparison (§2d) is not biased by the judge's error. It under-grades the original system's papers more (+0.61 vs +0.27 to +0.40 for the new systems; 18–30 items per system), so the reported gap between the new and original systems (0.644 vs 0.287) is probably overstated, though the human grades still favour the new systems (mean 1.83 vs 1.44 on the sampled top-10 papers). Absolute NDCG values on the 44-query benchmark are underestimates.
 
 An earlier full-200 second sheet was excluded: its grades came from a template/AI first pass with 36 of 200 revised by hand (`relevance_sheet_rater2*.csv`, not committed).
 

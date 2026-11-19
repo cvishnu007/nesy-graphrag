@@ -37,6 +37,7 @@ EXCLUDED_TOPIC = "graph neural networks"  # already covered by the first validat
 QUOTA = {0: 4, 1: 2, 2: 4}
 SEED = 20261120
 FIRST_VALIDATION_KAPPA = 0.75  # held-out, GNN pairs (RESULTS 2b)
+VARIANTS = ("production_absolute", "bge", "bm25", "rrf_bge_bm25", "full_bge_bm25_similar")
 
 
 def rows(path):
@@ -128,8 +129,22 @@ def score(sheet_path, output=REPORT):
         h, j = [human[i] for i in its], [labels[i] for i in its]
         per_topic[topic] = {"items": len(its), "exact_agreement": round(sum(a == b for a, b in zip(h, j)) / len(its), 3),
                             "mean_human": round(sum(h) / len(h), 3), "mean_judge": round(sum(j) / len(j), 3)}
+    # Does the judge's error depend on which system retrieved the paper? Items in each
+    # variant's top 10 (RESULTS 2d rankings); mean human and judge grade on those items.
+    rankings = defaultdict(dict)
+    for row in map(json.loads, (LABELS.parent / "rankings.jsonl").read_text().splitlines()):
+        rankings[row["variant"]][row["query_id"]] = row["ranked_paper_ids"][:10]
+    by_variant = {}
+    for variant in VARIANTS:
+        its = [i for i in items if i.split("/", 1)[1] in rankings[variant].get(i.split("/")[0], [])]
+        if its:
+            h, j = [human[i] for i in its], [labels[i] for i in its]
+            by_variant[variant] = {"items_in_top10": len(its), "mean_human": round(sum(h) / len(h), 3),
+                                   "mean_judge": round(sum(j) / len(j), 3),
+                                   "human_minus_judge": round((sum(h) - sum(j)) / len(h), 3)}
     report = {"sheet": str(sheet_path), "judge": "ollama:qwen2.5:7b-instruct@strict (stored pool labels)",
               "items": len(items), "judge_vs_human": overall, "per_topic": per_topic,
+              "by_variant_top10": by_variant,
               "first_validation_heldout_kappa_gnn": FIRST_VALIDATION_KAPPA,
               "threshold": "predeclared: quadratic-weighted kappa >= 0.6, as for the first validation",
               "note": "Sample stratified by judge grade, so kappa is not directly comparable with a random sample."}

@@ -41,17 +41,17 @@ The current implementation is an abstract-and-metadata prototype. It is delibera
   - Round 2 (rater 1): hypotheses (the bridge does not beat vector neighbours) and contradictions (56% tension-or-contradiction precision for verdict-flagged pairs).
   - Template/AI-generated second-rater sheets are kept in `evaluation/human_review/excluded/` and used nowhere.
 - **Citation-trained encoders** (`citeomatic_benchmark --encoder specter2_base|scincl`). Co-citation raises Recall@20 on top of all three encoders in both domains. SPECTER2 + BM25 + co-citation on DBLP test: 0.300 / 0.708 vs trained Citeomatic 0.303 / 0.689. The script exits with `os._exit` after writing results, because Windows CUDA teardown hung.
-- `src/evaluation/reproduce.py` checks 23 headline numbers. 406 tests pass.
+- `src/evaluation/reproduce.py` checks 24 headline numbers. 406 tests pass.
 
 **Review fixes (November 19, on `baselines-graphrag-citation`).** An external-style review listed six blockers. Done:
-- `reproduce.py` no longer needs the gitignored subset key; `build_relevance_subset.subset_mapping()` rebuilds it deterministically. Verified 23/23 in a fresh clone.
+- `reproduce.py` no longer needs the gitignored subset key; `build_relevance_subset.subset_mapping()` rebuilds it deterministically. Verified 24/24 in a fresh clone.
 - Overstatements corrected in the abstract, README, RESULTS and PROJECT_STATUS: "Selected vs BGE alone" is borderline (p = 0.0095, Holm-adjusted 0.048), not plainly significant; SPECTER2 is citation-pretrained, so "untrained … matches Citeomatic" became "no training on DBLP … comes close to"; contradiction precision now carries counts and CIs (5/9, 27–81%) and the single-rater caveat; "exactly as relevant" became "about as relevant"; the abstract lists four findings and four public benchmarks.
 - Related work rewritten with the closest prior work (Strohman et al. 2007; McNee et al. 2002; Citeomatic NNSelect; Small; Kessler; citation function; AGATHA, Science4Cast, SciMON; HippoRAG; LLM-judge papers) and a 41-entry reference list (11 checked online, marked †).
 - PAPER_DRAFT §3.1 explains what is neural and what is symbolic.
 - `evaluation/human_review/build_judge_transfer_sheet.py` and `judge_transfer_sheet_blank.csv`: 100 blinded pairs from the ten non-GNN topics to check the judge (task 9). The key is gitignored and also rebuildable.
 - `evaluation/human_review/README.md` has a Rater record table with blanks for the owner.
 
-Still needs people: grading task 9; a second rater for round 2.
+Task 9 graded by Rater C: judge κ 0.57 on the ten non-GNN topics, below the 0.6 bar; the judge is strict, equally with and without the graph (+0.40), more for the original system (+0.61). RESULTS §2b, PAPER §4.3 and §7 report it; `reproduce.py` checks it (24 numbers). Still needs people: Rater C's role in the rater record; optionally a second rater for round 2.
 
 **Local `.env` warning.** On November 19 the owner's `.env` had `NEO4J_ALLOW_RESET=true`. It should be `false` except during an intentional graph rebuild.
 
@@ -237,7 +237,7 @@ Full tables: [docs/RESULTS.md](docs/RESULTS.md) §2b–2d, §4b, §5b-2, §6. Hu
 Continue in this order unless the user changes priorities:
 
 1. Format `docs/PAPER_DRAFT.md` for the venue the user chooses (template, page limit, figures, AI-use and data-availability statements). Check the references not marked †.
-2. When the task 9 sheet comes back, score it (`build_judge_transfer_sheet.py score`), add the κ to RESULTS §2b and PAPER_DRAFT §4.3/§7, and add it to `reproduce.py`. If κ < 0.6, say the 44-query numbers rest on an unvalidated judge for those topics.
+2. Optional: regrade the 44-query pool with a stronger judge (the 27B judge reached κ 0.88 on GNN pairs but needs about 3,950 calls) or have humans grade the top-10 lists, to firm up the gain over the original system.
 3. Optional evaluation:
    - a second rater for round 2;
    - more labelled contradiction pairs;
@@ -296,7 +296,7 @@ This requires no live database or LLM, but it reproduces AI-reference package re
 .\venv\Scripts\python.exe -m src.evaluation.reproduce
 ```
 
-This recomputes 23 headline values (judge κ, human agreement and ratings, stratified and regraded NDCG, the LightRAG-style baseline, citation recommendation on our corpus and on DBLP/PubMed, time-sliced AP and P@10) from saved artifacts, and exits non-zero on drift. Two checks need the gitignored subset key in `evaluation/human_review/`.
+This recomputes 24 headline values (judge κ including the judge-transfer check, human agreement and ratings, stratified and regraded NDCG, the LightRAG-style baseline, citation recommendation on our corpus and on DBLP/PubMed, time-sliced AP and P@10) from saved artifacts, and exits non-zero on drift. It needs only committed files; the gitignored subset keys are rebuilt deterministically.
 
 ### Verify code after changes
 
