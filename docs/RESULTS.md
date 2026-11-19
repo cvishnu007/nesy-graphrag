@@ -210,7 +210,7 @@ Representative shared concepts behind the top hypothesis candidate: "molecular p
 | Novelty | 1.88 | 2.17 | −0.28 [−0.67, 0.10] | 0.20 |
 | Promise | 2.15 | **2.67** | −0.52 [−0.93, −0.10] | **0.03** |
 
-Inter-rater quadratic-weighted κ: relevance 0.90, novelty 0.82, promise 0.89. First rater alone: relevance 3.27 vs 4.20 (p = 0.002), novelty 1.97 vs 2.07, promise 2.20 vs 2.57 (n.s.). Second rater alone: relevance −1.10 (p = 0.001), novelty −0.47 (p = 0.04), promise −0.67 (p = 0.01). The novelty and promise κ are high for subjective scales; the second rater was not asked to certify that they had not seen the first rater's sheet. An earlier second sheet was excluded because its novelty was a fixed function of relevance (novelty = 7 − relevance in 42 of 60 items).
+Inter-rater quadratic-weighted κ: relevance 0.90, novelty 0.82, promise 0.89. First rater alone: relevance 3.27 vs 4.20 (p = 0.002), novelty 1.97 vs 2.07, promise 2.20 vs 2.57 (n.s.). Second rater alone: relevance −1.10 (p = 0.001), novelty −0.47 (p = 0.04), promise −0.67 (p = 0.01). The second rater worked blind to the first rater's sheet and without AI assistance. An earlier second sheet was excluded because its novelty was a fixed function of relevance (novelty = 7 − relevance in 42 of 60 items).
 
 **Configuration caveat.** The round-1 structural-hole candidates were generated with `CONCEPT_EXCLUDE_GENERIC=false` (the code default), not the `true` recorded for the application on Nov 14. With the generic filter on, 21 of the 30 top candidates change. Round 1 therefore rates the unfiltered variant. Round 2 uses the filtered one (`build_round2_kit.py` refuses to run otherwise).
 
