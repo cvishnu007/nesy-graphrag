@@ -217,4 +217,12 @@ def main(argv=None) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    import os
+    import sys
+
+    code = main()
+    sys.stdout.flush()
+    sys.stderr.flush()
+    # The results file is already written. On Windows, interpreter shutdown can hang while
+    # tearing down CUDA/tokenizer threads (seen with the SPECTER2 encoder), so exit directly.
+    os._exit(code)

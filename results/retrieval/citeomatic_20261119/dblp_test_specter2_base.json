@@ -1,0 +1,124 @@
+{
+  "dataset": "dblp",
+  "split": "test",
+  "encoder": "specter2_base",
+  "protocol": "citeomatic (Bhagavatula et al. 2018)",
+  "min_gold": 10,
+  "neighbours": 50,
+  "graph_weight": 1.0,
+  "depth": 100,
+  "methods": {
+    "bm25": {
+      "queries": 931,
+      "p@20": 0.1441,
+      "r@20": 0.2296,
+      "f1@20": 0.1771,
+      "mrr": 0.5689
+    },
+    "specter2_base": {
+      "queries": 931,
+      "p@20": 0.1898,
+      "r@20": 0.2991,
+      "f1@20": 0.2322,
+      "mrr": 0.6096
+    },
+    "rrf_specter2_base_bm25": {
+      "queries": 931,
+      "p@20": 0.1929,
+      "r@20": 0.3056,
+      "f1@20": 0.2365,
+      "mrr": 0.663
+    },
+    "rrf_specter2_base_bm25_cocitation": {
+      "queries": 931,
+      "p@20": 0.2443,
+      "r@20": 0.3871,
+      "f1@20": 0.2996,
+      "mrr": 0.708
+    }
+  },
+  "comparisons": {
+    "rrf_specter2_base_bm25_cocitation_vs_rrf_specter2_base_bm25_r@20": {
+      "pair_count": 931,
+      "mean_delta": 0.08144836634605583,
+      "bootstrap_95_ci": [
+        0.07449998899861852,
+        0.08871493675088021
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_specter2_base_bm25_cocitation_vs_rrf_specter2_base_bm25_rr": {
+      "pair_count": 931,
+      "mean_delta": 0.04499031545687349,
+      "bootstrap_95_ci": [
+        0.021331474575775625,
+        0.06867675654798101
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 0.0004999750012499375
+    },
+    "rrf_specter2_base_bm25_cocitation_vs_specter2_base_r@20": {
+      "pair_count": 931,
+      "mean_delta": 0.08799945569222117,
+      "bootstrap_95_ci": [
+        0.08044763845920336,
+        0.09563741993822336
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_specter2_base_bm25_cocitation_vs_specter2_base_rr": {
+      "pair_count": 931,
+      "mean_delta": 0.09845011096419676,
+      "bootstrap_95_ci": [
+        0.07272573122128664,
+        0.12481252285948644
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_specter2_base_bm25_vs_bm25_r@20": {
+      "pair_count": 931,
+      "mean_delta": 0.076074470474227,
+      "bootstrap_95_ci": [
+        0.06927837929216694,
+        0.08277097929092307
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_specter2_base_bm25_vs_bm25_rr": {
+      "pair_count": 931,
+      "mean_delta": 0.09408171146753981,
+      "bootstrap_95_ci": [
+        0.07493129255812468,
+        0.11335299084826542
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    }
+  },
+  "published": {
+    "BM25 (theirs)": [
+      0.119,
+      0.425
+    ],
+    "ClusCite": [
+      0.237,
+      0.548
+    ],
+    "NNSelect": [
+      0.282,
+      0.579
+    ],
+    "NNSelect + NNRank": [
+      0.302,
+      0.672
+    ],
+    "+ metadata": [
+      0.303,
+      0.689
+    ]
+  }
+}

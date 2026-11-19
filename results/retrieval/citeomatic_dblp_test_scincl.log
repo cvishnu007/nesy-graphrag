@@ -1,0 +1,16 @@
+dblp/test: 50227 papers, 28807 candidates, 931 queries
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7098.89it/s]
+  200/931
+  400/931
+  600/931
+  800/931
+  bm25                       F1@20=0.177 MRR=0.569 R@20=0.230 (n=931)
+  scincl                     F1@20=0.215 MRR=0.584 R@20=0.277 (n=931)
+  rrf_scincl_bm25            F1@20=0.230 MRR=0.629 R@20=0.298 (n=931)
+  rrf_scincl_bm25_cocitation F1@20=0.283 MRR=0.666 R@20=0.366 (n=931)
+  published BM25 (theirs)      F1@20=0.119 MRR=0.425
+  published ClusCite           F1@20=0.237 MRR=0.548
+  published NNSelect           F1@20=0.282 MRR=0.579
+  published NNSelect + NNRank  F1@20=0.302 MRR=0.672
+  published + metadata         F1@20=0.303 MRR=0.689

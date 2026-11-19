@@ -1,0 +1,25 @@
+pubmed/valid: 47347 papers, 34230 candidates, 2768 queries
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 16548.37it/s]
+  200/2768
+  400/2768
+  600/2768
+  800/2768
+  1000/2768
+  1200/2768
+  1400/2768
+  1600/2768
+  1800/2768
+  2000/2768
+  2200/2768
+  2400/2768
+  2600/2768
+  bm25                       F1@20=0.280 MRR=0.768 R@20=0.269 (n=2768)
+  specter2_base              F1@20=0.287 MRR=0.766 R@20=0.276 (n=2768)
+  rrf_specter2_base_bm25     F1@20=0.322 MRR=0.809 R@20=0.310 (n=2768)
+  rrf_specter2_base_bm25_cocitation F1@20=0.353 MRR=0.794 R@20=0.338 (n=2768)
+  published BM25 (theirs)      F1@20=0.209 MRR=0.574
+  published ClusCite           F1@20=0.274 MRR=0.578
+  published NNSelect           F1@20=0.309 MRR=0.699
+  published NNSelect + NNRank  F1@20=0.325 MRR=0.754
+  published + metadata         F1@20=0.329 MRR=0.771

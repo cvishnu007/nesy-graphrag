@@ -1,0 +1,59 @@
+pubmed/test: 47347 papers, 34230 candidates, 8815 queries
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 30394.61it/s]
+  200/8815
+  400/8815
+  600/8815
+  800/8815
+  1000/8815
+  1200/8815
+  1400/8815
+  1600/8815
+  1800/8815
+  2000/8815
+  2200/8815
+  2400/8815
+  2600/8815
+  2800/8815
+  3000/8815
+  3200/8815
+  3400/8815
+  3600/8815
+  3800/8815
+C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\huggingface_hub\file_download.py:141: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\cvish\.cache\huggingface\hub\models--allenai--specter2_aug2023refresh_base. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+  4000/8815
+  4200/8815
+  4400/8815
+  4600/8815
+  4800/8815
+  5000/8815
+  5200/8815
+  5400/8815
+  5600/8815
+  5800/8815
+  6000/8815
+  6200/8815
+  6400/8815
+  6600/8815
+  6800/8815
+  7000/8815
+  7200/8815
+  7400/8815
+  7600/8815
+  7800/8815
+  8000/8815
+  8200/8815
+  8400/8815
+  8600/8815
+  8800/8815
+  bm25                       F1@20=0.243 MRR=0.687 R@20=0.239 (n=8815)
+  specter2_base              F1@20=0.257 MRR=0.702 R@20=0.253 (n=8815)
+  rrf_specter2_base_bm25     F1@20=0.288 MRR=0.748 R@20=0.284 (n=8815)
+  rrf_specter2_base_bm25_cocitation F1@20=0.316 MRR=0.724 R@20=0.310 (n=8815)
+  published BM25 (theirs)      F1@20=0.209 MRR=0.574
+  published ClusCite           F1@20=0.274 MRR=0.578
+  published NNSelect           F1@20=0.309 MRR=0.699
+  published NNSelect + NNRank  F1@20=0.325 MRR=0.754
+  published + metadata         F1@20=0.329 MRR=0.771

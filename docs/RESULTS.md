@@ -224,9 +224,30 @@ Co-citation over BGE + BM25 (paired, Monte Carlo sign-flip, bootstrap 95% CI):
   Co-citation promotes widely cited papers in both datasets (about twice a typical gold paper's citations), so popularity alone does not explain the difference. What differs is relative precision at the top: on DBLP the graph's first pick is as often correct as text's, so equal-weight fusion helps; on PubMed text is already right 71% of the time and the graph only 45%, so fusion displaces correct first picks. A lower graph weight would likely suit biomedicine; it was not tuned, to keep the §2f settings fixed.
 - The graph's citation benefit is therefore clear for CS and mixed for biomedicine.
 
+**Modern citation-trained encoders.** To check that the gain is not specific to BGE, the same protocol was rerun with SPECTER2 (base, Aug 2023 refresh) and SciNCL, two scientific-paper encoders trained on citation links (`--encoder specter2_base|scincl`; CLS pooling, title [SEP] abstract; files `*_specter2_base.json`, `*_scincl.json`). The co-citation step and its settings are unchanged; its neighbours come from each encoder. Test splits, F1@20 / MRR:
+
+| Encoder | Alone | + BM25 | + BM25 + co-citation | Co-citation gain: Recall@20 | Co-citation gain: reciprocal rank |
+|---|---|---|---|---|---|
+| **DBLP** (931 queries) | | | | | |
+| BGE | 0.227 / 0.625 | 0.230 / 0.649 | 0.284 / 0.677 | +0.069 [0.062, 0.075] | +0.028 [0.005, 0.051] |
+| SPECTER2 | 0.232 / 0.610 | 0.236 / 0.663 | **0.300 / 0.708** | +0.081 [0.074, 0.089] | +0.045 [0.021, 0.069] |
+| SciNCL | 0.215 / 0.584 | 0.230 / 0.629 | 0.283 / 0.666 | +0.069 [0.062, 0.076] | +0.037 [0.013, 0.060] |
+| **PubMed** (8,815 queries) | | | | | |
+| BGE | 0.282 / 0.745 | 0.290 / 0.747 | 0.305 / 0.699 | +0.014 [0.012, 0.015] | −0.049 [−0.056, −0.041] |
+| SPECTER2 | 0.257 / 0.702 | 0.288 / 0.748 | **0.316** / 0.724 | +0.026 [0.024, 0.027] | −0.023 [−0.031, −0.016] |
+| SciNCL | 0.234 / 0.649 | 0.270 / 0.719 | 0.281 / 0.663 | +0.010 [0.009, 0.012] | −0.056 [−0.064, −0.048] |
+
+All gains and losses are significant (paired sign-flip, p ≤ 0.019). The validation splits show the same pattern.
+
+**Finding (modern encoders).**
+- Co-citation improves Recall@20 and F1@20 on top of every encoder in both domains, including the two trained on citations. So the citation graph adds information that citation-trained embeddings do not already capture.
+- In CS it also improves top-1 ranking for every encoder. SPECTER2 + BM25 + co-citation, with no training on DBLP, matches the trained Citeomatic system on F1@20 (0.300 vs 0.303) and exceeds it on MRR (0.708 vs 0.689).
+- In biomedicine it lowers MRR for every encoder, least for SPECTER2. This is consistent with the top-1 diagnosis above.
+- The choice of encoder matters less than the co-citation step: on DBLP the three encoders alone lie within 0.02 F1@20.
+
 **Caveats.**
-- The comparison is with 2018 systems, not the current state of the art.
-- BGE's training data likely includes many of these papers, which may favour the text methods. It does not affect the co-citation-versus-text comparison, which uses the same vectors on both sides.
+- The published comparison systems are from 2018. The modern baselines here are encoders (BGE 2023, SPECTER2 2023, SciNCL 2022), not trained citation recommenders.
+- BGE's, SPECTER2's and SciNCL's training data likely include many of these papers (SPECTER2 and SciNCL are trained on Semantic Scholar citation data), which may favour the text methods. It does not affect the co-citation-versus-text comparison, which uses the same vectors on both sides.
 - Our BM25 queries with the full title and abstract; Citeomatic's queries with key terms, which explains the higher BM25 here.
 
 ## 2g. GraphRAG baseline: LightRAG-style retrieval (44 stratified queries)
