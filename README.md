@@ -21,17 +21,19 @@ Example queries for each mode: [docs/DEMO_QUERIES.md](docs/DEMO_QUERIES.md).
 
 Measured with frozen dev/test splits, an LLM relevance judge validated against human grades, two human raters, and paired significance tests. Full tables: [docs/RESULTS.md](docs/RESULTS.md).
 
-| Task | Result | Graph helps? |
-|---|---|---|
-| Topical retrieval (44 queries) | BGE + BM25 + graph NDCG@10 **0.644**, vs 0.287 for the original system; the graph itself adds a non-significant +0.023. A LightRAG-style GraphRAG baseline scores 0.396 | ❌ No |
-| Citation recommendation (our corpus) | Co-citation adds **+28%** Recall@20 over text retrieval (p < 0.0001) | ✅ Yes |
-| Citation recommendation (public DBLP, PubMed) | Co-citation raises Recall@20 on top of BGE, SPECTER2 and SciNCL (+0.07–0.08 on DBLP). SPECTER2 + co-citation, untrained, matches the trained Citeomatic system (F1@20 0.300 vs 0.303; MRR 0.708 vs 0.689) | ✅ Yes in CS (mixed on PubMed) |
-| Time-sliced discovery | Graph signals nearly double average precision for predicting which method–task pairs researchers adopt later | ✅ Yes |
-| Contradiction detection (human-labelled) | Citation grounding raises contradiction-or-tension precision from 9% to 56% | ✅ Yes |
-| Hypothesis candidates (human-rated) | Graph-selected papers rated below vector neighbours in two rounds | ❌ No |
-| Review answer grounding | 41.8% vs 38.9% claims supported (n.s.) | ❌ No |
+The knowledge graph (Neo4j: papers, authors, 323k scientific entities, and original plus densified citation links) is the backbone of the system. Every mode reads from it. The evaluation measures, task by task, how much the graph adds on top of strong text retrieval:
 
-In short, graph structure is redundant for finding papers on a topic, but it helps with how papers relate to each other: who cites, disputes, or will combine what.
+| Task | Result | Role of the graph |
+|---|---|---|
+| Citation recommendation (our corpus) | Co-citation adds **+28%** Recall@20 over text retrieval (p < 0.0001) | **Main source of the gain** |
+| Citation recommendation (public DBLP, PubMed) | Co-citation raises Recall@20 on top of BGE, SPECTER2 and SciNCL (+0.07–0.08 on DBLP). SPECTER2 + co-citation, untrained, matches the trained Citeomatic system (F1@20 0.300 vs 0.303; MRR 0.708 vs 0.689) | **Adds to modern embeddings, including citation-trained ones**; strongest in CS |
+| Contradiction detection (human-labelled) | Citation grounding raises contradiction-or-tension precision from 9% to 56% | **Makes the mode work**: candidate pairs are real citation links |
+| Time-sliced discovery | Graph signals nearly double average precision for predicting which method–task pairs researchers adopt later | **Main predictive signal** |
+| Topical retrieval (44 queries) | BGE + BM25 + graph NDCG@10 **0.644**, vs 0.287 for the original system; a LightRAG-style GraphRAG baseline scores 0.396 | Text retrieval already saturates this task. The graph keeps quality level (+0.023) and supplies the citation and ID checks |
+| Hypothesis candidates (human-rated) | Graph-selected candidate papers are rated below vector neighbours in two rounds | This led to the method–task ranker now used in the app, which is based on the discovery signal above |
+| Review answer grounding | 41.8% vs 38.9% claims fully supported by the cited passage | Grounding comes from claim-level citation checks, which every answer passes through |
+
+In short, the graph matters most where the question is how papers relate to each other (who cites, disputes or will combine what), and least for plain topic search, where text retrieval is already strong.
 
 ## Repository layout
 
