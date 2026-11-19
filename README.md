@@ -19,15 +19,17 @@ Example queries for each mode: [docs/DEMO_QUERIES.md](docs/DEMO_QUERIES.md).
 
 ## Main findings
 
-Measured with frozen dev/test splits, an LLM relevance judge validated against human grades, two human raters, and paired significance tests. Full tables: [docs/RESULTS.md](docs/RESULTS.md).
+**Why "NeSy":** neural models (embeddings, the LLM, NLI, the entity tagger) propose; a typed citation and entity graph and explicit rules (passage-ID provenance checks, citation-link and entity constraints) restrict and verify what is shown. See [PAPER_DRAFT §3.1](docs/PAPER_DRAFT.md).
+
+Measured with frozen dev/test splits, an LLM relevance judge validated against human grades (on GNN-topic pairs; a check on the other topics is prepared), two human raters, and paired significance tests. Full tables: [docs/RESULTS.md](docs/RESULTS.md).
 
 The knowledge graph (Neo4j: papers, authors, 323k scientific entities, and original plus densified citation links) is the backbone of the system. Every mode reads from it. The evaluation measures, task by task, how much the graph adds on top of strong text retrieval:
 
 | Task | Result | Role of the graph |
 |---|---|---|
 | Citation recommendation (our corpus) | Co-citation adds **+28%** Recall@20 over text retrieval (p < 0.0001) | **Main source of the gain** |
-| Citation recommendation (public DBLP, PubMed) | Co-citation raises Recall@20 on top of BGE, SPECTER2 and SciNCL (+0.07–0.08 on DBLP). SPECTER2 + co-citation, untrained, matches the trained Citeomatic system (F1@20 0.300 vs 0.303; MRR 0.708 vs 0.689) | **Adds to modern embeddings, including citation-trained ones**; strongest in CS |
-| Contradiction detection (human-labelled) | Citation grounding raises contradiction-or-tension precision from 9% to 56% | **Makes the mode work**: candidate pairs are real citation links |
+| Citation recommendation (public DBLP, PubMed) | Co-citation raises Recall@20 on top of BGE, SPECTER2 and SciNCL (+0.07–0.08 on DBLP). With SPECTER2 (itself pretrained on citations) and no training on DBLP, it comes close to the trained Citeomatic system (F1@20 0.300 vs 0.303; MRR 0.708 vs 0.689). The expansion follows Strohman et al. (2007) and Citeomatic's NNSelect; the new evidence is that it still adds to modern encoders | **Adds to modern embeddings, including citation-trained ones**; strongest in CS |
+| Contradiction detection (human-labelled) | Citation grounding raises contradiction-or-tension precision from 9% (5/56) to 56% (5/9; 95% CI 27–81%; one rater) | **Makes the mode work**: candidate pairs are real citation links |
 | Time-sliced discovery | Graph signals nearly double average precision for predicting which method–task pairs researchers adopt later | **Main predictive signal** |
 | Topical retrieval (44 queries) | BGE + BM25 + graph NDCG@10 **0.644**, vs 0.287 for the original system; a LightRAG-style GraphRAG baseline scores 0.396 | Text retrieval already saturates this task. The graph keeps quality level (+0.023) and supplies the citation and ID checks |
 | Hypothesis candidates (human-rated) | Graph-selected candidate papers are rated below vector neighbours in two rounds | This led to the method–task ranker now used in the app, which is based on the discovery signal above |
@@ -46,7 +48,7 @@ src/evaluation/      Benchmarks, LLM judge, human-rating scorers, baselines (Lig
 evaluation/          Benchmark queries, human review sheets and instructions
 results/             Saved rankings, labels and summaries behind every reported number
 docs/                Run guide, results, paper draft, evaluation protocol, demo queries
-tests/               pytest suite (404 tests; no databases or models needed)
+tests/               pytest suite (406 tests; no databases or models needed)
 ```
 
 Generated data (`data/`), the fine-tuned entity model (`models/`) and `.env` are not committed.
@@ -76,7 +78,8 @@ Generated data (`data/`), the fine-tuned entity model (`models/`) and `.env` are
 
 - Abstracts and metadata only; no PDF or full-text processing.
 - Only one model is trained: a SciBERT entity tagger fine-tuned on SciERC (typed F1 0.64). Retrieval and generation use pretrained models.
-- Relevance labels come from a 7B LLM judge validated against human grades (held-out κ 0.75; two humans agree at κ 0.91).
+- Relevance labels come from a 7B LLM judge validated against human grades on GNN-topic pairs (held-out κ 0.75; two humans agree at κ 0.91). Its accuracy on the other ten topics is not yet measured.
+- Rater 1 on every human task built the system (sheets were blind to method); round 2 has one rater.
 - Outputs are research suggestions to check, not verified scientific conclusions.
 
 ## Team

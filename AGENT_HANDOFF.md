@@ -41,7 +41,17 @@ The current implementation is an abstract-and-metadata prototype. It is delibera
   - Round 2 (rater 1): hypotheses (the bridge does not beat vector neighbours) and contradictions (56% tension-or-contradiction precision for verdict-flagged pairs).
   - Template/AI-generated second-rater sheets are kept in `evaluation/human_review/excluded/` and used nowhere.
 - **Citation-trained encoders** (`citeomatic_benchmark --encoder specter2_base|scincl`). Co-citation raises Recall@20 on top of all three encoders in both domains. SPECTER2 + BM25 + co-citation on DBLP test: 0.300 / 0.708 vs trained Citeomatic 0.303 / 0.689. The script exits with `os._exit` after writing results, because Windows CUDA teardown hung.
-- `src/evaluation/reproduce.py` checks 23 headline numbers. 404 tests pass.
+- `src/evaluation/reproduce.py` checks 23 headline numbers. 406 tests pass.
+
+**Review fixes (November 19, on `baselines-graphrag-citation`).** An external-style review listed six blockers. Done:
+- `reproduce.py` no longer needs the gitignored subset key; `build_relevance_subset.subset_mapping()` rebuilds it deterministically. Verified 23/23 in a fresh clone.
+- Overstatements corrected in the abstract, README, RESULTS and PROJECT_STATUS: "Selected vs BGE alone" is borderline (p = 0.0095, Holm-adjusted 0.048), not plainly significant; SPECTER2 is citation-pretrained, so "untrained … matches Citeomatic" became "no training on DBLP … comes close to"; contradiction precision now carries counts and CIs (5/9, 27–81%) and the single-rater caveat; "exactly as relevant" became "about as relevant"; the abstract lists four findings and four public benchmarks.
+- Related work rewritten with the closest prior work (Strohman et al. 2007; McNee et al. 2002; Citeomatic NNSelect; Small; Kessler; citation function; AGATHA, Science4Cast, SciMON; HippoRAG; LLM-judge papers) and a 41-entry reference list (11 checked online, marked †).
+- PAPER_DRAFT §3.1 explains what is neural and what is symbolic.
+- `evaluation/human_review/build_judge_transfer_sheet.py` and `judge_transfer_sheet_blank.csv`: 100 blinded pairs from the ten non-GNN topics to check the judge (task 9). The key is gitignored and also rebuildable.
+- `evaluation/human_review/README.md` has a Rater record table with blanks for the owner.
+
+Still needs people: grading task 9; filling the rater record (who rater 3 is, whether they were involved in development); a second rater for round 2.
 
 **Local `.env` warning.** On November 19 the owner's `.env` had `NEO4J_ALLOW_RESET=true`. It should be `false` except during an intentional graph rebuild.
 
@@ -226,13 +236,14 @@ Full tables: [docs/RESULTS.md](docs/RESULTS.md) §2b–2d, §4b, §5b-2, §6. Hu
 
 Continue in this order unless the user changes priorities:
 
-1. Format `docs/PAPER_DRAFT.md` for the venue the user chooses (template, page limit, figures, 25–40 verified references, AI-use and data-availability statements).
-2. Optional evaluation:
+1. Format `docs/PAPER_DRAFT.md` for the venue the user chooses (template, page limit, figures, AI-use and data-availability statements). Check the references not marked †.
+2. When the task 9 sheet comes back, score it (`build_judge_transfer_sheet.py score`), add the κ to RESULTS §2b and PAPER_DRAFT §4.3/§7, and add it to `reproduce.py`. If κ < 0.6, say the 44-query numbers rest on an unvalidated judge for those topics.
+3. Optional evaluation:
    - a second rater for round 2;
    - more labelled contradiction pairs;
    - human ratings of the method–task ranker.
-3. Optional: the 75k-paper corpus on `corpus-expansion-75k`. Use separate data files and a separate Chroma collection, and a separate Neo4j database (Community edition has one user database, so a second DBMS or instance). Then re-measure the benchmarks.
-4. Optional: evaluate retrieval with `CITES_ADDED`/`COUPLED_WITH` as an expansion edge type; deduplicate near-duplicate papers.
+4. Optional: the 75k-paper corpus on `corpus-expansion-75k`. Use separate data files and a separate Chroma collection, and a separate Neo4j database (Community edition has one user database, so a second DBMS or instance). Then re-measure the benchmarks.
+5. Optional: evaluate retrieval with `CITES_ADDED`/`COUPLED_WITH` as an expansion edge type; deduplicate near-duplicate papers.
 
 ## Safe Commands
 

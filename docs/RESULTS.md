@@ -84,6 +84,8 @@ All 200 frozen labels against the human grades: κ 0.187. Diagnosis: the stored 
 
 The 7B judge used for grading sits below human–human agreement (0.76–0.80 vs 0.91), as expected. The stratified sample over-represents grade 1 relative to the pool, so these κ values are not directly comparable with the 100-pair held-out κ above.
 
+**Scope.** All 200 validation pairs come from the GNN benchmark pool. The 44-query benchmark (§2d) covers ten further topics, where the judge's accuracy is assumed rather than measured. A blinded 100-pair check over those ten topics (10 per topic, stratified by judge grade) is prepared: `evaluation/human_review/judge_transfer_sheet_blank.csv`, built and scored by `evaluation/human_review/build_judge_transfer_sheet.py` (task 9 in the human-review README). Not yet graded.
+
 An earlier full-200 second sheet was excluded: its grades came from a template/AI first pass with 36 of 200 revised by hand (`relevance_sheet_rater2*.csv`, not committed).
 
 ## 2c. GNN benchmark regraded with the validated judge
@@ -122,7 +124,7 @@ Queries: `evaluation/benchmarks/retrieval_queries_v2_stratified_draft.json` v0.5
 | BM25 vs production | +0.339 | [0.270, 0.406] | < 0.0001 | significant |
 | BGE + BM25 vs production | +0.334 | [0.265, 0.405] | < 0.0001 | significant |
 | BGE vs production | +0.306 | [0.235, 0.381] | < 0.0001 | significant |
-| Selected vs BGE alone | +0.052 | [0.012, 0.087] | 0.010 | significant (threshold 0.010) |
+| Selected vs BGE alone | +0.052 | [0.012, 0.087] | 0.0095 | borderline (Holm-adjusted p = 0.048; Monte Carlo, 20,000 samples) |
 | Selected vs BGE + BM25 (graph contribution) | +0.023 | [−0.011, 0.059] | 0.21 | n.s. |
 | Selected vs BM25 | +0.019 | [−0.029, 0.064] | 0.46 | n.s. |
 | BGE vs BM25 | −0.033 | [−0.090, 0.024] | 0.27 | n.s. |
@@ -241,7 +243,7 @@ All gains and losses are significant (paired sign-flip, p ≤ 0.019). The valida
 
 **Finding (modern encoders).**
 - Co-citation improves Recall@20 and F1@20 on top of every encoder in both domains, including the two trained on citations. So the citation graph adds information that citation-trained embeddings do not already capture.
-- In CS it also improves top-1 ranking for every encoder. SPECTER2 + BM25 + co-citation, with no training on DBLP, matches the trained Citeomatic system on F1@20 (0.300 vs 0.303) and exceeds it on MRR (0.708 vs 0.689).
+- In CS it also improves top-1 ranking for every encoder. SPECTER2 + BM25 + co-citation, with no training on DBLP, comes close to the trained Citeomatic system on F1@20 (0.300 vs 0.303) and is slightly higher on MRR (0.708 vs 0.689). SPECTER2 itself was pretrained on Semantic Scholar citation links, which likely include DBLP papers, and the neighbour-citation expansion follows Strohman et al. (2007) and Citeomatic's NNSelect step.
 - In biomedicine it lowers MRR for every encoder, least for SPECTER2. This is consistent with the top-1 diagnosis above.
 - The choice of encoder matters less than the co-citation step: on DBLP the three encoders alone lie within 0.02 F1@20.
 
@@ -443,7 +445,7 @@ The local 7B verdict model, given the same pairs and the application prompt (`sr
 
 The two contradictions are a direct dispute (CT031: "Post2Vec achieves 15–25% F1 improvement" vs a follow-up finding it "cannot further improve the SOTA") and an impossibility result answered by a constructive one (CT015: low-dimensional embeddings "provably cannot capture" triangle-rich networks vs "exact low-dimensional factorizations of many real-world networks"). Tensions include Agentless vs agent-based SWE systems, fairness-mitigation benchmarking vs a mitigation method, and graph foundation models.
 
-**Finding.** Citation grounding turns contradiction detection from negative to usable. Tension-or-contradiction precision rises from 9% (round 1 screener) to 56% for verdict-flagged index pairs (p = 0.003), and real contradictions go from 0 of 56 to 2 of 9 (p = 0.017). Within the index, NLI ranking matters (top 150: 10 of 24 vs rank 151+: 1 of 16, p = 0.027); the verdict filter's gain over unflagged top-150 pairs (56% vs 33%) is not significant with 9 and 15 pairs (p = 0.40). Caveats: one rater, small arms, and round 1 and round 2 use different pair sources and queries, so the cross-round comparison is indicative.
+**Finding.** Citation grounding turns contradiction detection from negative to usable. Tension-or-contradiction precision rises from 9% (5 of 56, round 1 screener; 95% Wilson CI 4–19%) to 56% for verdict-flagged index pairs (5 of 9; 95% CI 27–81%; Fisher p = 0.003), and real contradictions go from 0 of 56 to 2 of 9 (p = 0.017). Within the index, NLI ranking matters (top 150: 10 of 24 vs rank 151+: 1 of 16, p = 0.027); the verdict filter's gain over unflagged top-150 pairs (56% vs 33%) is not significant with 9 and 15 pairs (p = 0.40). Caveats: one rater (the system's developer), small arms, and round 1 and round 2 use different pair sources and queries, so the cross-round comparison is indicative.
 
 ## 5c. Answer grounding: standard RAG vs this system (matched budget)
 

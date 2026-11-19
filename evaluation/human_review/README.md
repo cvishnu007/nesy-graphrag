@@ -1,6 +1,6 @@
 # Human Review Tasks
 
-**Status (2026-11-19):** all planned ratings are done and scored (RESULTS §2b, §4b, §5b-2). Excluded template/AI sheets are in `excluded/` with the reasons. Remaining optional work: a second rater for round 2.
+**Status (2026-11-19):** all planned ratings are done and scored (RESULTS §2b, §4b, §5b-2). Excluded template/AI sheets are in `excluded/` with the reasons. Open: the judge transfer check (task 9) and the rater record below. Optional: a second rater for round 2.
 
 These human labels are what make the evaluation publishable: they validate the automated judges and measure the two components that have no public benchmark (hypotheses, and contradictions in our CS corpus).
 
@@ -25,6 +25,8 @@ These human labels are what make the evaluation publishable: they validate the a
 
 | 7 | **Round 2** hypothesis ratings, 42 items (14 new test queries) | 2 people | ~1 h each | ✅ Rater 1 done (`hypothesis_round2_sheet_rated_cv.csv`); second rater optional |
 | 8 | **Round 2** contradiction labels, 40 pairs | 2 people | ~45 min each | ✅ Rater 1 done (`contradiction_round2_sheet_labeled_cv.csv`); second rater optional |
+
+| 9 | **Judge transfer check**: relevance grades, 100 pairs from the 10 non-GNN topics | Anyone except CV preferred; CV acceptable | ~1.5 h | ⏳ Open (`judge_transfer_sheet_blank.csv`). Tests whether the 7B judge, validated on GNN pairs, holds on the other topics of the 44-query benchmark |
 
 Round 2 tests the methods revised after round 1, on queries not used for the revision. Rate it like round 1; the sheets do not say which method produced a row.
 
@@ -54,6 +56,16 @@ Sheet: `relevance_subset50_sheet_blank.csv`. Same 0/1/2 scale as above. For the 
 - Notes are optional; a few words for uncertain rows is enough.
 
 Return the file renamed `relevance_subset50_sheet_<initials>.csv`.
+
+### Task 9: Judge transfer check (100 pairs, 10 topics)
+
+Sheet: `judge_transfer_sheet_blank.csv`. Same 0/1/2 scale and the same independence rules as task 3b. The queries cover cybersecurity, databases, NLP, vision, networks, cloud, operating systems, software engineering, data science and general ML; judge each from the query, title and abstract only. Return it renamed `judge_transfer_sheet_<initials>.csv` and score it with:
+
+```powershell
+.\venv\Scripts\python.exe evaluation\human_review\build_judge_transfer_sheet.py score --sheet evaluation\human_review\judge_transfer_sheet_<initials>.csv
+```
+
+The predeclared bar is the same as for the first validation: quadratic-weighted κ ≥ 0.6 between the human and the stored 7B judge labels. Report the result whatever it is; below 0.6, the 44-query numbers must be described as resting on an unvalidated judge for those topics.
 
 ## Task 4: Hypothesis ratings
 
@@ -118,6 +130,18 @@ Semantic Scholar hides reference lists for many publishers, and 77% of our paper
 .\venv\Scripts\python.exe -m src.evaluation.human_ratings hypothesis_round2 --sheets evaluation\human_review\hypothesis_round2_sheet_<A>.csv
 .\venv\Scripts\python.exe -m src.evaluation.human_ratings contradiction_round2 --sheets evaluation\human_review\contradiction_round2_sheet_<A>.csv
 ```
+
+## Rater record
+
+Reviewers will ask who rated and how independent they were. Fill the blanks before submission (names can be replaced by roles in the paper).
+
+| Rater | Sheets | Who | Relation to the system | AI tools used | Saw other raters' sheets |
+|---|---|---|---|---|---|
+| Rater 1 (CV) | relevance 200, hypotheses R1 and R2, contradictions R1 and R2 | Project member (system developer) | Built the system; blind to method and AI grade on every sheet (method keys hidden) | None | n/a (rated first) |
+| Rater 3 | relevance subset 50, hypotheses R1, contradictions R1 | ___ (name or role, e.g. "teammate", "CS student not on the project") | ___ (involved in development? yes/no) | None (confirmed by the project owner, 2026-11-19) | No (confirmed by the project owner, 2026-11-19) |
+| Judge-transfer rater (task 9) | judge transfer 100 | ___ | ___ | ___ | ___ |
+
+Known limits to state in the paper: rater 1 is the developer on every task; round 2 has one rater; rater 3's independence rests on the owner's confirmation, not a recorded protocol.
 
 ## Sample designs
 

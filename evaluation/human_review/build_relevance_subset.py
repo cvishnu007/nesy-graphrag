@@ -9,8 +9,8 @@ Items come only from the held-out half of the 200-pair sheet (split "judge-selec
 so the 7B and 27B judges can be compared on the same pairs. Sampling is stratified by the
 first grader's grade (20 x 0, 12 x 1, 18 x 2) so every grade has enough items for kappa.
 Items are renumbered S01..S50 and shuffled, so the sheet cannot be lined up with
-relevance_sheet_cv.csv or any other graded copy. The S -> R mapping lives in the
-gitignored *_DO_NOT_SHARE_* key.
+relevance_sheet_cv.csv or any other graded copy. The S -> R mapping is written to the
+gitignored *_DO_NOT_SHARE_* key for convenience; it can also be rebuilt with subset_mapping().
 """
 from __future__ import annotations
 
@@ -42,15 +42,28 @@ def rows(path):
         return list(csv.DictReader(stream))
 
 
-def build():
-    source = {r["item_id"]: r for r in rows(SOURCE)}
+def picked_items():
+    """The 50 source item ids in sheet order (S01..S50). Deterministic, so the key can be
+    rebuilt from committed files; the gitignored key file only stops annotators reading it."""
+    source = [r["item_id"] for r in rows(SOURCE)]
     first = {r["item_id"]: int(r["grade_0_1_2"]) for r in rows(FIRST_GRADER)}
-    _, held_out = split_items(list(source))
+    _, held_out = split_items(source)
     rng = random.Random(20261119)
     picked = []
     for grade, n in QUOTA.items():
         picked += rng.sample(sorted(i for i in held_out if first[i] == grade), n)
     rng.shuffle(picked)
+    return picked
+
+
+def subset_mapping():
+    """S-id -> source item id, rebuilt deterministically."""
+    return {f"S{n:02d}": item for n, item in enumerate(picked_items(), 1)}
+
+
+def build():
+    source = {r["item_id"]: r for r in rows(SOURCE)}
+    picked = picked_items()
     sheet, key = [], []
     for n, item in enumerate(picked, 1):
         r = source[item]
@@ -67,7 +80,7 @@ def build():
 
 
 def score(sheet_path, output):
-    mapping = {k["item_id"]: k["source_item_id"] for k in json.loads(KEY.read_text())["items"]}
+    mapping = subset_mapping()
     graded = {}
     for r in rows(sheet_path):
         value = r["grade_0_1_2"].strip()

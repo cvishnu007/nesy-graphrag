@@ -35,8 +35,13 @@ def judge_kappa():
 def human_human_kappa():
     from src.evaluation.human_agreement import pair_report
 
-    key = json.loads(Path("evaluation/human_review/relevance_subset50_key_DO_NOT_SHARE_WITH_ANNOTATORS.json").read_text())
-    mapping = {k["item_id"]: k["source_item_id"] for k in key["items"]}
+    import importlib.util
+
+    # The S -> R key is gitignored (annotator blinding) but deterministic; rebuild it.
+    spec = importlib.util.spec_from_file_location("build_relevance_subset", "evaluation/human_review/build_relevance_subset.py")
+    builder = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(builder)
+    mapping = builder.subset_mapping()
     first = {r["item_id"]: int(r["grade_0_1_2"]) for r in csv.DictReader(open("evaluation/human_review/relevance_sheet_cv.csv", encoding="utf-8-sig"))}
     second = {mapping[r["item_id"]]: int(r["grade_0_1_2"]) for r in csv.DictReader(open("evaluation/human_review/relevance_subset50_sheet_rater3.csv", encoding="utf-8-sig"))}
     items = sorted(second)

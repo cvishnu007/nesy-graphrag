@@ -4,7 +4,7 @@
 
 ## Abstract
 
-Graph-based retrieval-augmented generation (GraphRAG) is increasingly proposed for scientific literature, but it is rarely tested against strong text baselines with controlled protocols. We build a literature assistant over 47,619 computer-science abstracts that combines dense retrieval, BM25, a citation graph densified from Semantic Scholar and OpenAlex (corpus-internal citation edges ×7), and a SciERC entity graph. We evaluate it on two public benchmarks and two project benchmarks graded by an LLM judge validated against human relevance grades. Three findings emerge. (1) For topical queries, a general embedding with BM25 fusion beats every scientific embedding model tested and more than doubles the original system's NDCG@10 (0.644 vs 0.287 on 44 topic-stratified queries). Graph expansion adds no significant gain, even after densification, because the papers it introduces are exactly as relevant as those they displace, and a LightRAG-style entity-graph retriever scores far lower (0.396). (2) For citation recommendation, co-citation over the densified graph improves Recall@20 by 28% relative to text retrieval (p < 0.0001). On the public DBLP and PubMed benchmarks, the same untrained step raises Recall@20 on top of every encoder tested, including the citation-trained SPECTER2 and SciNCL. With SPECTER2 on DBLP it matches a trained neural recommender (F1@20 0.300 vs 0.303; MRR 0.708 vs 0.689). In biomedicine it lowers the rank of the first correct paper. (3) In a time-sliced discovery benchmark, graph signals nearly double average precision over text similarity when predicting which method–task combinations researchers adopt after a cutoff. (4) For contradiction detection, grounding candidates in citations between critical findings and the papers they dispute raises human-judged precision (contradiction or tension) from 9% for NLI screening to 56% after an LLM verdict filter. We also report negative results: a small LLM relevance judge with position bias, and graph-derived hypothesis candidates rated below a nearest-neighbour baseline by humans in two rounds, including on held-out queries. Together these locate where graph structure helps scholarly RAG: citation-level relatedness and discovery, not topical ranking.
+Graph-based retrieval-augmented generation (GraphRAG) is increasingly proposed for scientific literature, but it is rarely tested against strong text baselines with controlled protocols. We build a neuro-symbolic literature assistant over 47,619 computer-science abstracts: neural components (dense retrieval, a local LLM, NLI, a fine-tuned entity tagger) propose, and symbolic components (a typed citation and SciERC entity graph, and rule-based provenance and citation constraints) restrict and verify what is shown. We evaluate it on four public benchmarks (SciDocs, LitSearch, DBLP, PubMed) and on project benchmarks graded by an LLM judge validated against human relevance grades. Four findings emerge. (1) For topical queries, a general embedding with BM25 fusion beats every scientific embedding model tested and more than doubles the original system's NDCG@10 (0.644 vs 0.287 on 44 topic-stratified queries). Graph expansion adds no significant gain, even after densifying citations, because the papers it introduces are about as relevant as those they displace, and a LightRAG-style entity-graph retriever scores far lower (0.396). (2) For citation recommendation, expanding text retrieval with the papers cited by the query's nearest neighbours, an idea going back to Strohman et al. (2007) and used for candidate selection by Citeomatic, improves Recall@20 by 28% relative to text retrieval (p < 0.0001). On the public DBLP and PubMed benchmarks, with no training on either dataset, it raises Recall@20 on top of every encoder tested, including the citation-trained SPECTER2 and SciNCL. With SPECTER2 on DBLP the result is close to the trained Citeomatic system (F1@20 0.300 vs 0.303; MRR 0.708 vs 0.689), although SPECTER2 was itself pretrained on citation links from a corpus that may overlap with DBLP. In biomedicine it lowers the rank of the first correct paper. (3) In a time-sliced discovery benchmark, adding graph signals to text similarity nearly doubles average precision when predicting which method–task combinations researchers adopt after a cutoff. (4) For contradiction detection, restricting candidates to citation links between critical findings and the papers they dispute raises contradiction-or-tension precision from 9% (5 of 56) for NLI screening to 56% (5 of 9; 95% CI 27–81%) after an LLM verdict filter, in a small single-rater study. We also report negative results: a small LLM relevance judge with position bias, and graph-derived hypothesis candidates rated below a nearest-neighbour baseline by humans in two rounds, including on held-out queries. Together these locate where graph structure helps scholarly RAG: citation-level relatedness and discovery, not topical ranking.
 
 ## 1. Introduction
 
@@ -12,42 +12,59 @@ Literature review assistants must find relevant work, surface disagreements, and
 
 We take an empirical stance and ask: *for which tasks does graph structure add value over a strong text retriever?* Our contributions:
 
-1. **A controlled evaluation** of retrieval for scholarly RAG on SciDocs, LitSearch, and two project benchmarks, using a dev/test protocol, pool extension, and an LLM judge validated on human grades (§4).
-2. **A boundary result for graph structure.** It is redundant for topical ranking even after densifying citations 7×, and a LightRAG-style entity-graph retriever falls far below text retrieval (§5.2), but it gives large gains for citation recommendation (§5.3) and for predicting future method–task combinations (§5.4).
-3. **A methodological warning about LLM judges.** A 3B judge's labels agreed with a human at κ 0.17 because of batch-position bias. Correcting the judge changed every effect size (§4.3).
-4. **Human-rated reasoning modes.** Citation-grounded contradiction detection works where NLI screening on abstracts did not (§5.6). Graph-derived hypothesis candidates do not beat vector neighbours in two human rounds, and a revision chosen with an LLM judge did not transfer to held-out queries (§5.5).
+1. **A controlled, task-by-task evaluation** of graph structure in scholarly RAG on four public benchmarks (SciDocs, LitSearch, DBLP, PubMed) and four project benchmarks, using a dev/test protocol, pool extension, paired tests, and an LLM judge validated on human grades (§4).
+2. **A boundary result for graph structure.** It is redundant for topical ranking even after densifying citations 7×, and a LightRAG-style entity-graph retriever falls far below text retrieval (§5.2). For citation recommendation, the neighbour-citation expansion we use is not new (Strohman et al., 2007; Bhagavatula et al., 2018); our contribution is showing that it still adds to modern encoders, including ones trained on citations (§5.3). Graph signals also improve prediction of future method–task combinations (§5.4).
+3. **A methodological warning about LLM judges.** A 3B judge's labels agreed with a human at κ 0.17 because of batch-position bias. Correcting the judge changed the main effect sizes substantially (§4.3).
+4. **A neuro-symbolic assistant with human-rated reasoning modes** (§3.1). Citation-grounded contradiction detection works where NLI screening on abstracts did not (§5.6). Graph-derived hypothesis candidates do not beat vector neighbours in two human rounds, and a revision chosen with an LLM judge did not transfer to held-out queries (§5.5).
 
 ## 2. Related work
 
-**GraphRAG.** Edge et al. (2024) build LLM-extracted entity graphs with community summaries for query-focused summarisation. LightRAG (Guo et al., 2024) indexes LLM-extracted entities and relations and retrieves through dual-level keyword matching; we evaluate its retrieval algorithm as a baseline. We use citation and supervised entity graphs, and we measure task by task where they help.
+**GraphRAG.** Edge et al. (2024) build LLM-extracted entity graphs with community summaries for query-focused summarisation. LightRAG (Guo et al., 2024) indexes LLM-extracted entities and relations and retrieves through dual-level keyword matching; we evaluate its retrieval algorithm as a baseline. HippoRAG (Gutiérrez et al., 2024) runs personalised PageRank over an LLM-built graph for multi-hop QA. Peng et al. (2024) survey the area. These systems build their graphs with LLMs and target open-domain QA; we use citation and supervised entity graphs over scholarly text and measure, task by task, where they help.
 
-**Scientific retrieval and RAG.** SPECTER (Cohan et al., 2020) and SciNCL (Ostendorff et al., 2022) learn citation-informed embeddings. OpenScholar (Asai et al., 2024) retrieves over about 45M papers. LitSearch (Ajith et al., 2024) and SciDocs (BEIR; Thakur et al., 2021) benchmark literature search. We find a general embedding (BGE; Xiao et al., 2023) with BM25 beats the scientific embeddings tested.
+**Neuro-symbolic AI.** Neuro-symbolic systems combine learned models with explicit symbols, rules or structured knowledge (Garcez and Lamb, 2023; Kautz, 2022). Our system is a loose, pipelined coupling (the "Neuro | Symbolic" pattern in Kautz's taxonomy): neural models propose candidates, and a typed graph and hand-written rules constrain and verify them (§3.1). We do not learn rules or train end to end.
 
-**Contradictions and claims.** PaperQA2 (Skarlinski et al., 2024) reports contradiction detection validated by experts in biology. SciFact (Wadden et al., 2020) provides expert-labelled claim–evidence pairs, which we use to validate verdict models.
+**Scientific retrieval and RAG.** SPECTER (Cohan et al., 2020), SciNCL (Ostendorff et al., 2022) and SPECTER2 (Singh et al., 2023) learn citation-informed paper embeddings. OpenScholar (Asai et al., 2024) retrieves over about 45M papers. LitSearch (Ajith et al., 2024) and SciDocs (Cohan et al., 2020; in BEIR, Thakur et al., 2021) benchmark literature search. We find that a general embedding (BGE; Xiao et al., 2023) with BM25 (Robertson and Zaragoza, 2009), fused by reciprocal rank (Cormack et al., 2009), beats the scientific embeddings tested.
 
-**Literature-based discovery (LBD).** LBD predicts implicit connections from co-occurrence (ABC models) and evaluates with time slicing: predictions from data before a cutoff are checked against later literature. We apply this protocol to method–task pairs extracted with a SciERC-trained tagger (Luan et al., 2018).
+**Citation recommendation.** Co-citation (Small, 1973) and bibliographic coupling (Kessler, 1963) are the classical citation-based relatedness measures. McNee et al. (2002) recommend citations by collaborative filtering over the citation graph. Strohman et al. (2007) retrieve the papers most similar to a manuscript and add every paper they cite, which is the same expansion as our co-citation step; Citeomatic's NNSelect (Bhagavatula et al., 2018) likewise takes candidates from the query's nearest neighbours in embedding space and their citations, and then trains a reranker. ClusCite (Ren et al., 2014) and Citeomatic define the DBLP and PubMed benchmarks we reuse with their published protocol. Our citation-recommendation method is therefore not new. What we add is (i) evidence that this expansion still helps on top of modern encoders, including citation-trained ones, with no training on the target data, and (ii) the same signal used inside a RAG assistant, where it explains each suggestion.
 
-**Citation recommendation.** ClusCite (Ren et al., 2014) and Citeomatic (Bhagavatula et al., 2018) define the global citation recommendation benchmarks on DBLP and PubMed that we reuse with their published protocol.
+**Contradictions and citation function.** Citation-function analysis classifies why a paper cites another, including to criticise or contrast (Teufel et al., 2006; Cohan et al., 2019). We use the citing sentence's critical wording as a filter rather than a trained classifier. PaperQA2 (Skarlinski et al., 2024) reports contradiction detection validated by experts in biology. SciFact (Wadden et al., 2020) provides expert-labelled claim–evidence pairs, which we use to validate verdict models.
 
-**Attribution.** ALCE (Gao et al., 2023) evaluates citation precision and NLI support, which we adopt for answer grounding.
+**Literature-based discovery (LBD).** LBD predicts implicit connections from co-occurrence (Swanson, 1986) and evaluates with time slicing: predictions from data before a cutoff are checked against later literature. AGATHA (Sybrandt et al., 2020) does this for biomedicine with graph mining and transformers, and Science4Cast (Krenn et al., 2023) frames future AI research directions as link prediction in a concept network, finding hand-crafted network features strongest. SciMON (Wang et al., 2024) generates natural-language ideas optimised for novelty. We apply the time-slicing protocol to method–task pairs extracted with a SciERC-trained tagger (Luan et al., 2018; SciBERT, Beltagy et al., 2019), scored with Adamic–Adar (Adamic and Adar, 2003) and citation bridges.
 
-*(References still to verify against original records: SPECTER, SPECTER2, BEIR, SciFact, SciERC, BGE, GLiNER, Sakai 2007; see PAPER_OUTLINE §8.)*
+**Attribution and LLM judges.** ALCE (Gao et al., 2023) evaluates citation precision and NLI support, which we adopt for answer grounding. LLMs can match human relevance labellers when the prompt is chosen against human labels (Thomas et al., 2024), and LLM judges show position bias (Zheng et al., 2023), which we also observe. Agreement uses weighted kappa (Cohen, 1968); multiple comparisons use Holm's procedure (Holm, 1979).
 
 ## 3. System
 
-**Corpus.** 47,619 Semantic Scholar abstracts (11 CS topics, 2020–2025).
+**Corpus.** 47,619 Semantic Scholar abstracts (Kinney et al., 2023; 11 CS topics, 2020–2025).
+
+**Language model.** `qwen2.5:7b-instruct` (Qwen Team, 2024), run locally.
 
 **Retrieval.** BGE-base-en-v1.5 dense retrieval with a query instruction, BM25, and graph expansion (`CITES`, `SIMILAR_TO`; relative gate: candidates must be within 0.03 of the weakest seed's similarity), fused by weighted reciprocal-rank fusion (RRF).
 
-**Citation densification (RESULTS §6).** Only 23% of papers came with reference lists. Fetching lists from the Semantic Scholar batch API and OpenAlex (DOI-matched; 44,090 of 46,198) raised coverage to 98%. Added layers: 133,527 corpus-internal citations, 411,418 bibliographic-coupling edges, and 24,714 external papers. Isolated papers fell from 71.4% to 2.4%.
+**Citation densification (RESULTS §6).** Only 23% of papers came with reference lists. Fetching lists from the Semantic Scholar batch API and OpenAlex (Priem et al., 2022; DOI-matched; 44,090 of 46,198) raised coverage to 98%. Added layers: 133,527 corpus-internal citations, 411,418 bibliographic-coupling edges, and 24,714 external papers. Isolated papers fell from 71.4% to 2.4%.
 
 **Entities (RESULTS §3).** SciBERT fine-tuned on SciERC (test typed F1 0.639) extracts Method, Task, Material, Metric, and OtherScientificTerm mentions. The graph has 323,624 `SciEntity` nodes and 696,390 mention edges.
 
 **Reasoning modes.**
 - **Grounded review:** sentence-level passage IDs; invalid citations withheld.
-- **Contradiction:** NLI screening plus a structured LLM verdict, or a corpus-wide citation-grounded index.
+- **Contradiction:** NLI screening (a DeBERTa-v3 cross-encoder; He et al., 2023) plus a structured LLM verdict, or a corpus-wide citation-grounded index.
 - **Hypothesis:** structural holes, a problem bridge, or a method–task ranker.
 - **Related work:** co-citation fusion.
+
+### 3.1 Neural and symbolic components
+
+The "neuro-symbolic" in the project name refers to a division of labour, not to learned logic. Neural models propose; explicit structure and rules decide what is allowed and verify it.
+
+| Step | Neural (learned) | Symbolic (explicit structure or rule) |
+|---|---|---|
+| Knowledge | BGE embeddings; SciBERT–SciERC tagger extracts entities | Typed graph in Neo4j: `Paper`, `SciEntity` (Method, Task, Material, Metric, Other), `CITES`, `CITES_ADDED`, `COUPLED_WITH`, `MENTIONS` |
+| Retrieval | Dense and BM25 ranking | Graph expansion only along typed edges, with a similarity gate; fixed RRF fusion |
+| Review answers | LLM writes claims | Every claim must cite sentence-level passage IDs that exist in the retrieved set; claims with missing or unknown IDs are withheld and listed, and cited paper IDs must exist in the graph |
+| Contradictions | NLI screening; LLM verdict | Candidates must be joined by a citation edge, the citing sentence must match a critical-language pattern, and both sentences must name the same specific entity |
+| Hypotheses | Vector similarity between entity contexts | Only Method–Task pairs that never co-occur; Adamic–Adar over shared entities and citation links between the two sets of papers; generic-entity exclusions |
+| Related work | Nearest neighbours | Suggestions come from the neighbours' citation records, shown as an explanation for each suggestion |
+
+This coupling is what makes outputs checkable: each answer, contradiction or hypothesis is traceable to graph facts and passage IDs. It does not make them correct; §5.7 shows that structurally valid citations are often not semantically supported.
 
 ## 4. Evaluation design
 
@@ -80,7 +97,7 @@ One annotator graded 200 pooled pairs, blinded to method and AI grade. Judges we
 | **qwen2.5-7B, strict rubric, 1 paper per call (used)** | **0.75** |
 | Qwen3.8-27B, strict rubric | 0.88 |
 
-The 3B judge's labels depended on batch position. It used 20 of 81 possible four-grade patterns and gave the second paper a 2 in almost every batch. Grading one paper per call raised the 7B judge from κ 0.60 to 0.77 on the selection half. Every project retrieval number below uses the validated 7B labels.
+The 3B judge's labels depended on batch position. It used 20 of 81 possible four-grade patterns and gave the second paper a 2 in almost every batch. Grading one paper per call raised the 7B judge from κ 0.60 to 0.77 on the selection half. Every project retrieval number below uses the validated 7B labels. The 200 validation pairs come from the GNN benchmark pool, so for the other ten topics of the 44-query benchmark the judge's accuracy is assumed, not measured; a 100-pair check over those topics is prepared (`evaluation/human_review/build_judge_transfer_sheet.py`) but not yet graded.
 
 ## 5. Results
 
@@ -98,11 +115,11 @@ BGE beats SPECTER, SPECTER2 (base, without adapter), SciNCL, and OpenScholar on 
 | BGE | 0.593 |
 | Original system (SPECTER) | 0.287 |
 
-Selected vs original: +0.358 [0.285, 0.434]. Selected vs BGE alone: +0.052 (p = 0.010; significant after Holm correction). Graph over BGE + BM25: +0.023, not significant.
+Selected vs original: +0.358 [0.285, 0.434]. Selected vs BGE alone: +0.052 [0.012, 0.087] (p = 0.0095; Holm-adjusted p = 0.048 over the nine predeclared comparisons, so only borderline). Graph over BGE + BM25: +0.023, not significant.
 
 With the densified citation layers (selected on dev, tested once), the graph adds −0.003 on test (p = 0.92). Papers introduced by dense expansion have the same mean relevance as those displaced (1.19 vs 1.21 on 0–2; 51% grade 2 in both). Text retrieval already fills the top 10 with relevant papers (P@10 ≈ 0.78), so equally relevant substitutes cannot raise the score.
 
-**GraphRAG baseline (RESULTS §2g).** A LightRAG-style retriever (LightRAG's query algorithm over our SciERC entity graph; the original LLM-built index is infeasible at this scale on our hardware) reaches 0.396 NDCG@10 in its default mix mode and 0.176 in hybrid mode, against 0.642 for this system (+0.246, 39 wins and 3 losses, p < 0.0001) and 0.591 for BGE alone. Entity-centric retrieval ranks papers by which entities they mention; generic keywords such as "scalability" match entities found in thousands of papers. We report this as a re-implementation over a supervised graph, not the original package.
+**GraphRAG baseline (RESULTS §2g).** A LightRAG-style retriever (LightRAG's query algorithm over our SciERC entity graph; the original LLM-built index is infeasible at this scale on our hardware) reaches 0.396 NDCG@10 in its default mix mode and 0.176 in hybrid mode, against 0.642 for this system (0.644 in the table above; the extended pool adds relevant papers to the ideal ranking) (+0.246, 39 wins and 3 losses, p < 0.0001) and 0.591 for BGE alone. Entity-centric retrieval ranks papers by which entities they mention; generic keywords such as "scalability" match entities found in thousands of papers. We report this as a re-implementation over a supervised graph, not the original package.
 
 ### 5.3 Citation recommendation: graph structure helps (RESULTS §2f)
 
@@ -119,7 +136,7 @@ Given a paper's title and abstract, rank the corpus papers it cites. Leakage con
 
 +0.068 Recall@20 over BGE + BM25 [0.055, 0.081], p < 0.0001.
 
-**Public benchmarks (RESULTS §2h).** On the DBLP and PubMed benchmarks of Bhagavatula et al. (2018), the same method, with no training on either dataset, gives:
+**Public benchmarks (RESULTS §2h).** On the DBLP and PubMed benchmarks of Bhagavatula et al. (2018), the same method, with no training on either dataset, gives the results below. The expansion is close to Citeomatic's NNSelect candidate step (§2), so this tests whether an old idea still adds to modern encoders, not a new method.
 
 | Test split | DBLP F1@20 / MRR | PubMed F1@20 / MRR |
 |---|---|---|
@@ -128,7 +145,7 @@ Given a paper's title and abstract, rank the corpus papers it cites. Leakage con
 | ClusCite (published) | 0.237 / 0.548 | 0.274 / 0.578 |
 | Citeomatic, best (published) | 0.303 / 0.689 | 0.329 / 0.771 |
 
-On DBLP, co-citation adds +0.069 Recall@20 and +0.028 MRR (both significant) and is competitive with the trained Citeomatic system. The gain is not specific to BGE. With citation-trained encoders (test, F1@20 / MRR, + BM25 → + BM25 + co-citation), SPECTER2 goes from 0.236 / 0.663 to **0.300 / 0.708**, and SciNCL from 0.230 / 0.629 to 0.283 / 0.666. Co-citation adds +0.069 to +0.081 Recall@20 for all three encoders (p < 0.001). So the citation graph carries information that embeddings trained on citations do not already capture. On PubMed it adds +0.010 to +0.026 Recall@20 across the three encoders, but lowers MRR by 0.023 (SPECTER2) to 0.056 (SciNCL). So the citation-graph benefit is clear in CS and mixed in biomedicine. A diagnosis on the validation year shows why. Co-citation favours widely cited papers in both datasets, but on PubMed text retrieval already ranks a correct paper first 71% of the time against 45% for the graph alone, so equal-weight fusion displaces correct first picks; on DBLP the two are equally precise at the top (52%).
+On DBLP, co-citation adds +0.069 Recall@20 and +0.028 MRR (both significant) and comes close to the trained Citeomatic system. The gain is not specific to BGE. With citation-trained encoders (test, F1@20 / MRR, + BM25 → + BM25 + co-citation), SPECTER2 goes from 0.236 / 0.663 to **0.300 / 0.708**, and SciNCL from 0.230 / 0.629 to 0.283 / 0.666. Co-citation adds +0.069 to +0.081 Recall@20 for all three encoders (p < 0.001). So, on DBLP, the citation graph carries information that these citation-trained embeddings do not already capture. Two caveats: SPECTER2 and SciNCL were pretrained on citation links from Semantic Scholar, which probably includes many DBLP and PubMed papers, so they are not training-free; and the comparison is with 2018 systems. On PubMed it adds +0.010 to +0.026 Recall@20 across the three encoders, but lowers MRR by 0.023 (SPECTER2) to 0.056 (SciNCL). So the citation-graph benefit is clear in CS and mixed in biomedicine. A diagnosis on the validation year shows why. Co-citation favours widely cited papers in both datasets, but on PubMed text retrieval already ranks a correct paper first 71% of the time against 45% for the graph alone, so equal-weight fusion displaces correct first picks; on DBLP the two are equally precise at the top (52%).
 
 ### 5.4 Time-sliced discovery: graph signals predict future research (RESULTS §4c–4d)
 
@@ -163,7 +180,7 @@ Round 1 (30 queries, two raters, blinded; inter-rater κ 0.82–0.90): the origi
 
 **In-corpus, round 1.** Two raters (κ 0.76) labelled 68 NLI-screened pairs. No pair is a contradiction for both; one rater called 2 of the 56 top pairs contradictions (both LLM versus search-based unit-test generation) and the other called them tensions; 7 of 56 (12.5%) are a tension or contradiction for at least one rater, against 0 of 12 controls. The screener mostly pairs papers that each report their own gains. A 7B verdict filter cuts the pairs shown from 68 to 5: it keeps both disputed pairs, and the other 3 (about 5% of negatives) are false alarms.
 
-**Revision.** A citation-grounded index pairs critical findings ("fails to", "contrary to", "surprisingly") with the papers they cite: 591 candidates, 9 of the top 150 flagged by the verdict model. **Round 2** (40 blinded pairs, one rater): 5 of the 9 verdict-flagged pairs are a contradiction or tension, including 2 real contradictions (a follow-up reporting that Post2Vec does not improve over the state of the art; constructive exact low-rank embeddings against an impossibility result), against 9% and 0 for the round 1 screener (p = 0.003 and 0.017). NLI rank within the index matters (top 150: 10 of 24 vs rank 151+: 1 of 16, p = 0.03); the verdict filter's extra gain (56% vs 33%) is not significant at this size.
+**Revision.** A citation-grounded index pairs critical findings ("fails to", "contrary to", "surprisingly") with the papers they cite: 591 candidates, 9 of the top 150 flagged by the verdict model. **Round 2** (40 blinded pairs, one rater, the system's developer): 5 of the 9 verdict-flagged pairs (56%; 95% Wilson CI 27–81%) are a contradiction or tension, including 2 real contradictions (a follow-up reporting that Post2Vec does not improve over the state of the art; constructive exact low-rank embeddings against an impossibility result), against 9% (5 of 56, same rater) and 0 for the round 1 screener (Fisher p = 0.003 and 0.017). Round 1 and round 2 use different queries and pair sources, so this cross-round comparison is indicative, and the 56% rests on 9 pairs. NLI rank within the index matters (top 150: 10 of 24 vs rank 151+: 1 of 16, p = 0.03); the verdict filter's extra gain (56% vs 33%) is not significant at this size.
 
 ### 5.7 Answer grounding (RESULTS §5c)
 
@@ -188,10 +205,12 @@ With a 3B generator, about 30% of claims were supported by their cited passages,
 - Abstracts only; one corpus (CS, 2020–2025, 47,619 papers).
 - Public citation benchmarks: the published comparison systems are from 2018, and our modern baselines are encoders (BGE, SPECTER2, SciNCL), not trained citation recommenders. The encoders' training data likely overlaps with DBLP and PubMed papers. The citation-graph benefit does not transfer fully to biomedicine (PubMed MRR drops).
 - The GraphRAG baseline re-implements LightRAG's retrieval over our SciERC graph; the original LLM-built index (and Microsoft GraphRAG) was infeasible at this scale on our hardware, and a stronger LLM might narrow the gap.
-- Project relevance labels come from an LLM judge (held-out κ 0.75 against the first annotator). Human–human agreement was measured on only 50 pairs (κ 0.91), with two annotators.
+- Project relevance labels come from an LLM judge (held-out κ 0.75 against the first annotator). The judge was validated only on GNN-topic pairs; its accuracy on the other ten topics of the 44-query benchmark is not yet measured. Human–human agreement was measured on only 50 pairs (κ 0.91), with two annotators.
+- Rater 1, on every human task, is a project member who built the system, although every sheet was blind to method. Round 2 has only this rater. The second rater's independence (no AI, no access to rater 1's sheets) was confirmed by the project owner but not recorded under a formal protocol.
 - "Confirmed" in the time-sliced benchmark means later co-occurrence in abstracts, not a successful result. Entity extraction is automatic (F1 0.64).
-- SciFact is biomedical; in-corpus contradiction precision rests on small human samples (68 pairs with two raters, 40 with one). Round 2 hypothesis and contradiction labels come from one rater.
+- SciFact is biomedical; in-corpus contradiction precision rests on small human samples (68 pairs with two raters, 40 with one), and the round 2 headline on 9 pairs.
 - SPECTER2 was evaluated without its query adapter.
+- The neuro-symbolic coupling is rule-based and hand-written (§3.1); rules such as the critical-language pattern were designed on this corpus.
 - Hypotheses suggested as "never combined in the corpus" may be known in older literature.
 
 ## 8. Conclusion
@@ -200,4 +219,50 @@ Graph structure is not a general upgrade for scholarly RAG. It is redundant for 
 
 ## Reproducibility
 
-Code, configurations, frozen query sets, judge prompts, and result artifacts are in the repository (`src/evaluation/*`, `results/*`). The commands are listed in [AGENT_HANDOFF.md](../AGENT_HANDOFF.md). Data licences: Semantic Scholar abstracts (ODC-By), OpenAlex (CC0), SciFact (CC BY 4.0); LitSearch and SciDocs under their own terms.
+Code, configurations, frozen query sets, judge prompts, and result artifacts are in the repository (`src/evaluation/*`, `results/*`). The full run is described in [RUN_FROM_SCRATCH.md](RUN_FROM_SCRATCH.md); `python -m src.evaluation.reproduce` recomputes 23 headline numbers from committed files. Data licences: Semantic Scholar abstracts (ODC-By), OpenAlex (CC0), SciFact (CC BY 4.0); LitSearch and SciDocs under their own terms.
+
+## References
+
+*Entries marked † were checked against publisher, proceedings or arXiv records on 2026-11-19. The others are standard references written from known records; check each (authors, pages, DOI) and whether arXiv-only entries now have a peer-reviewed version before submission, then convert to the venue's citation style.*
+
+- Adamic, L. A., & Adar, E. (2003). Friends and neighbors on the Web. *Social Networks*, 25(3), 211–230.
+- Ajith, A., Xia, M., Chevalier, A., Goyal, T., Chen, D., & Gao, T. (2024). LitSearch: A retrieval benchmark for scientific literature search. In *Proceedings of EMNLP 2024*.
+- Asai, A., et al. (2024). OpenScholar: Synthesizing scientific literature with retrieval-augmented LMs. arXiv:2411.14199.
+- Beltagy, I., Lo, K., & Cohan, A. (2019). SciBERT: A pretrained language model for scientific text. In *Proceedings of EMNLP-IJCNLP 2019*.
+- Bhagavatula, C., Feldman, S., Power, R., & Ammar, W. (2018). Content-based citation recommendation. In *Proceedings of NAACL-HLT 2018*.
+- Cohan, A., Ammar, W., van Zuylen, M., & Cady, F. (2019). Structural scaffolds for citation intent classification in scientific publications. In *Proceedings of NAACL-HLT 2019*.
+- Cohan, A., Feldman, S., Beltagy, I., Downey, D., & Weld, D. S. (2020). SPECTER: Document-level representation learning using citation-informed transformers. In *Proceedings of ACL 2020*.
+- Cohen, J. (1968). Weighted kappa: Nominal scale agreement with provision for scaled disagreement or partial credit. *Psychological Bulletin*, 70(4), 213–220.
+- Cormack, G. V., Clarke, C. L. A., & Büttcher, S. (2009). Reciprocal rank fusion outperforms Condorcet and individual rank learning methods. In *Proceedings of SIGIR 2009*.
+- Edge, D., Trinh, H., Cheng, N., Bradley, J., Chao, A., Mody, A., Truitt, S., & Larson, J. (2024). From local to global: A graph RAG approach to query-focused summarization. arXiv:2404.16130.
+- Gao, T., Yen, H., Yu, J., & Chen, D. (2023). Enabling large language models to generate text with citations. In *Proceedings of EMNLP 2023*.
+- †Garcez, A. d'Avila, & Lamb, L. C. (2023). Neurosymbolic AI: The 3rd wave. *Artificial Intelligence Review*, 56(11), 12387–12406. https://doi.org/10.1007/s10462-023-10448-w
+- Guo, Z., Xia, L., Yu, Y., Ao, T., & Huang, C. (2024). LightRAG: Simple and fast retrieval-augmented generation. arXiv:2410.05779.
+- †Gutiérrez, B. J., Shu, Y., Gu, Y., Yasunaga, M., & Su, Y. (2024). HippoRAG: Neurobiologically inspired long-term memory for large language models. In *Advances in Neural Information Processing Systems 37 (NeurIPS 2024)*.
+- He, P., Gao, J., & Chen, W. (2023). DeBERTaV3: Improving DeBERTa using ELECTRA-style pre-training with gradient-disentangled embedding sharing. In *Proceedings of ICLR 2023*.
+- Holm, S. (1979). A simple sequentially rejective multiple test procedure. *Scandinavian Journal of Statistics*, 6(2), 65–70.
+- †Kautz, H. (2022). The third AI summer: AAAI Robert S. Engelmore memorial lecture. *AI Magazine*, 43(1), 105–125. https://doi.org/10.1002/aaai.12036
+- Kessler, M. M. (1963). Bibliographic coupling between scientific papers. *American Documentation*, 14(1), 10–25.
+- Kinney, R., et al. (2023). The Semantic Scholar open data platform. arXiv:2301.10140.
+- †Krenn, M., et al. (2023). Forecasting the future of artificial intelligence with machine learning-based link prediction in an exponentially growing knowledge network. *Nature Machine Intelligence*, 5, 1326–1335. https://doi.org/10.1038/s42256-023-00735-0
+- Luan, Y., He, L., Ostendorf, M., & Hajishirzi, H. (2018). Multi-task identification of entities, relations, and coreference for scientific knowledge graph construction. In *Proceedings of EMNLP 2018*.
+- †McNee, S. M., Albert, I., Cosley, D., Gopalkrishnan, P., Lam, S. K., Rashid, A. M., Konstan, J. A., & Riedl, J. (2002). On the recommending of citations for research papers. In *Proceedings of CSCW 2002*, 116–125. https://doi.org/10.1145/587078.587096
+- Ostendorff, M., Rethmeier, N., Augenstein, I., Gipp, B., & Rehm, G. (2022). Neighborhood contrastive learning for scientific document representations with citation embeddings. In *Proceedings of EMNLP 2022*.
+- †Peng, B., Zhu, Y., Liu, Y., Bo, X., Shi, H., Hong, C., Zhang, Y., & Tang, S. (2024). Graph retrieval-augmented generation: A survey. arXiv:2408.08921.
+- Priem, J., Piwowar, H., & Orr, R. (2022). OpenAlex: A fully-open index of scholarly works, authors, venues, institutions, and concepts. arXiv:2205.01833.
+- Qwen Team. (2024). Qwen2.5 technical report. arXiv:2412.15115.
+- Ren, X., Liu, J., Yu, X., Khandelwal, U., Gu, Q., Wang, L., & Han, J. (2014). ClusCite: Effective citation recommendation by information network-based clustering. In *Proceedings of KDD 2014*.
+- Robertson, S., & Zaragoza, H. (2009). The probabilistic relevance framework: BM25 and beyond. *Foundations and Trends in Information Retrieval*, 3(4), 333–389.
+- †Singh, A., D'Arcy, M., Cohan, A., Downey, D., & Feldman, S. (2023). SciRepEval: A multi-format benchmark for scientific document representations. In *Proceedings of EMNLP 2023*, 5548–5566.
+- Skarlinski, M. D., et al. (2024). Language agents achieve superhuman synthesis of scientific knowledge. arXiv:2409.13740.
+- Small, H. (1973). Co-citation in the scientific literature: A new measure of the relationship between two documents. *Journal of the American Society for Information Science*, 24(4), 265–269.
+- †Strohman, T., Croft, W. B., & Jensen, D. (2007). Recommending citations for academic papers. In *Proceedings of SIGIR 2007*, 705–706. https://doi.org/10.1145/1277741.1277868
+- Swanson, D. R. (1986). Fish oil, Raynaud's syndrome, and undiscovered public knowledge. *Perspectives in Biology and Medicine*, 30(1), 7–18.
+- †Sybrandt, J., Tyagin, I., Shtutman, M., & Safro, I. (2020). AGATHA: Automatic graph mining and transformer based hypothesis generation approach. In *Proceedings of CIKM 2020*.
+- Teufel, S., Siddharthan, A., & Tidhar, D. (2006). Automatic classification of citation function. In *Proceedings of EMNLP 2006*.
+- Thakur, N., Reimers, N., Rücklé, A., Srivastava, A., & Gurevych, I. (2021). BEIR: A heterogeneous benchmark for zero-shot evaluation of information retrieval models. In *NeurIPS 2021 Datasets and Benchmarks Track*.
+- †Thomas, P., Spielman, S., Craswell, N., & Mitra, B. (2024). Large language models can accurately predict searcher preferences. In *Proceedings of SIGIR 2024*.
+- Wadden, D., Lin, S., Lo, K., Wang, L. L., van Zuylen, M., Cohan, A., & Hajishirzi, H. (2020). Fact or fiction: Verifying scientific claims. In *Proceedings of EMNLP 2020*.
+- †Wang, Q., Downey, D., Ji, H., & Hope, T. (2024). SciMON: Scientific inspiration machines optimized for novelty. In *Proceedings of ACL 2024 (Volume 1: Long Papers)*, 279–299.
+- Xiao, S., Liu, Z., Zhang, P., & Muennighoff, N. (2023). C-Pack: Packaged resources to advance general Chinese embedding. arXiv:2309.07597. (BGE models.)
+- Zheng, L., et al. (2023). Judging LLM-as-a-judge with MT-Bench and Chatbot Arena. In *NeurIPS 2023 Datasets and Benchmarks Track*.
