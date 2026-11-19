@@ -39,10 +39,37 @@ def cocitation(driver, neighbours, *, exclude=()):
         records = list(session.run(
             "UNWIND $ids AS nid MATCH (n:Paper {id: nid})-[:CITES|CITES_ADDED]->(c:Paper) "
             "RETURN c.id AS id, collect(DISTINCT nid) AS citing", ids=list(similarity)))
-    scored = {r["id"]: (sum(similarity[n] for n in r["citing"]), len(r["citing"]))
+    scored = {r["id"]: (sum(similarity[n] for n in r["citing"]), list(r["citing"]))
               for r in records if r["id"] not in exclude}
     ranking = sorted(scored, key=lambda pid: (-scored[pid][0], pid))
-    return ranking, {pid: count for pid, (_, count) in scored.items()}
+    return ranking, {pid: citing for pid, (_, citing) in scored.items()}
+
+
+def citation_graph(driver, results, neighbours, citers, *, max_neighbours=12):
+    """Nodes and edges for drawing the suggestions with their citation evidence.
+
+    Edges: a similar paper (neighbour) citing a suggestion, which is the co-citation
+    evidence, and citations among the suggestions themselves. Only the neighbours
+    citing the most suggestions are kept so the drawing stays readable.
+    """
+    suggestion_ids = [r["id"] for r in results]
+    chosen = set(suggestion_ids)
+    support = defaultdict(int)
+    for pid in suggestion_ids:
+        for nid in citers.get(pid, ()):
+            if nid not in chosen:
+                support[nid] += 1
+    keep = sorted(support, key=lambda nid: (-support[nid], nid))[:max_neighbours]
+    by_id = {p["id"]: p for p in neighbours}
+    edges = [{"source": nid, "target": pid, "kind": "cocitation"}
+             for pid in suggestion_ids for nid in citers.get(pid, ()) if nid in keep]
+    with driver.session() as session:
+        edges += [{"source": r["a"], "target": r["b"], "kind": "cites"} for r in session.run(
+            "UNWIND $ids AS a MATCH (x:Paper {id: a})-[:CITES|CITES_ADDED]->(y:Paper) "
+            "WHERE y.id IN $ids AND y.id <> a RETURN DISTINCT a, y.id AS b", ids=suggestion_ids)]
+    nodes = [{"id": nid, "title": by_id[nid].get("title", ""), "year": by_id[nid].get("year"),
+              "role": "neighbour", "cites_suggestions": support[nid]} for nid in keep if nid in by_id]
+    return {"nodes": nodes, "edges": edges}
 
 
 def related_work(driver, text, top_k=10, *, paper_id=None, max_year=None):
@@ -73,12 +100,13 @@ def related_work(driver, text, top_k=10, *, paper_id=None, max_year=None):
             continue
         reasons = []
         if "cocitation" in ranks:
-            reasons.append(f"cited by {citing_counts.get(pid, 0)} of the {len(neighbours)} most similar papers")
+            reasons.append(f"cited by {len(citing_counts.get(pid, ()))} of the {len(neighbours)} most similar papers")
         if "bge" in ranks:
             reasons.append(f"semantic match #{ranks['bge']}")
         if "bm25" in ranks:
             reasons.append(f"keyword match #{ranks['bm25']}")
         results.append({"id": pid, "title": record["title"], "year": record["year"],
                         "abstract": record["abstract"], "score": score, "source_ranks": ranks,
-                        "cited_by_neighbours": citing_counts.get(pid, 0), "why": "; ".join(reasons)})
-    return {"query": text, "neighbours": len(neighbours), "papers": results}
+                        "cited_by_neighbours": len(citing_counts.get(pid, ())), "why": "; ".join(reasons)})
+    return {"query": text, "neighbours": len(neighbours), "papers": results,
+            "graph": citation_graph(driver, results, neighbours, citing_counts)}

@@ -3,8 +3,11 @@ import os
 import sys
 
 import streamlit as st
+import streamlit.components.v1 as components
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(os.path.dirname(__file__))
+from graph_view import graph_html
 from src.pipeline.orchestrator import get_neo4j, get_llm
 from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
@@ -267,6 +270,17 @@ if run and query:
                 "(evaluated on citation recommendation: +28% Recall@20 over text-only retrieval; RESULTS §2f)")
         if not result["papers"]:
             st.warning("No related work found.")
+        else:
+            st.markdown("### 🕸️ Citation map")
+            st.caption("Numbers match the list below. Hover a node or edge for details; drag nodes to rearrange, "
+                       "scroll to zoom. Grey nodes are the similar papers whose reference lists back the "
+                       "co-citation signal.")
+            theme = getattr(getattr(st.context, "theme", None), "type", None) or "dark"
+            components.html(graph_html(result, theme=theme), height=580, scrolling=False)
+            graph = result.get("graph") or {}
+            links = sum(1 for e in graph.get("edges", []) if e["kind"] == "cites")
+            st.caption(f"{len(graph.get('nodes', []))} similar papers shown · {links} citation(s) among the suggestions")
+            st.markdown("### 📄 Suggestions")
         for i, paper in enumerate(result["papers"], 1):
             with st.expander(f"{i}. {paper['title']} ({paper['year']})"):
                 st.markdown(f"**Why:** {paper['why']}")
