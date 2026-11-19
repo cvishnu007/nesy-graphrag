@@ -1,6 +1,6 @@
 # Human Review Tasks
 
-**Status (2026-11-19):** all planned ratings are done and scored (RESULTS §2b, §4b, §5b-2). Excluded template/AI sheets are in `excluded/` with the reasons. Task 9 (judge transfer) is done. Open: Rater C's role in the rater record below. Optional: a second rater for round 2.
+**Status (2026-11-19):** all planned ratings are done and scored (RESULTS §2b, §4b, §5b-2). Excluded template/AI sheets are in `excluded/` with the reasons. Task 9 (judge transfer) is done. Optional: a second rater for round 2.
 
 These human labels are what make the evaluation publishable: they validate the automated judges and measure the two components that have no public benchmark (hypotheses, and contradictions in our CS corpus).
 
@@ -139,9 +139,9 @@ All raters are anonymous. Publications and reports refer to them only as Rater A
 |---|---|---|---|---|---|
 | Rater A (sheets `*_cv.csv`) | relevance 200, hypotheses R1 and R2, contradictions R1 and R2 | Project member | Developer of the system; blind to method and AI grade on every sheet (method keys hidden) | None | n/a (rated first) |
 | Rater B (sheets `*_rater3.csv`) | relevance subset 50, hypotheses R1, contradictions R1 | Project member | Did not build the system (confirmed by the project owner, 2026-11-19) | None (confirmed by the project owner, 2026-11-19) | No (confirmed by the project owner, 2026-11-19) |
-| Rater C (sheet `judge_transfer_sheet_raterC.csv`) | judge transfer 100 | ___ (role only) | ___ (involved in development? yes/no) | ___ | ___ |
+| Rater C (sheet `judge_transfer_sheet_raterC.csv`) | judge transfer 100 | Project member | Did not build the system (confirmed by the project owner, 2026-11-19) | None (confirmed by the project owner, 2026-11-19) | No; did not see the judge-grade key (confirmed by the project owner, 2026-11-19) |
 
-Known limits to state in the paper: Rater A is the developer and rates every task; round 2 has one rater; Rater B is a project member, though not a developer, and their independence rests on the owner's confirmation, not a recorded protocol.
+Known limits to state in the paper: Rater A is the developer and rates every task; round 2 has one rater; Raters B and C are project members, though not developers, and their independence rests on the owner's confirmation, not a recorded protocol.
 
 ## Sample designs
 

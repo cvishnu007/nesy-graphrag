@@ -51,7 +51,7 @@ The current implementation is an abstract-and-metadata prototype. It is delibera
 - `evaluation/human_review/build_judge_transfer_sheet.py` and `judge_transfer_sheet_blank.csv`: 100 blinded pairs from the ten non-GNN topics to check the judge (task 9). The key is gitignored and also rebuildable.
 - `evaluation/human_review/README.md` has a Rater record table with blanks for the owner.
 
-Task 9 graded by Rater C: judge κ 0.57 on the ten non-GNN topics, below the 0.6 bar; the judge is strict, equally with and without the graph (+0.40), more for the original system (+0.61). RESULTS §2b, PAPER §4.3 and §7 report it; `reproduce.py` checks it (24 numbers). Still needs people: Rater C's role in the rater record; optionally a second rater for round 2.
+Task 9 graded by Rater C: judge κ 0.57 on the ten non-GNN topics, below the 0.6 bar; the judge is strict, equally with and without the graph (+0.40), more for the original system (+0.61). RESULTS §2b, PAPER §4.3 and §7 report it; `reproduce.py` checks it (24 numbers). Rater C is a project member who did not build the system (no AI, no key). Optional: a second rater for round 2.
 
 **Local `.env` warning.** On November 19 the owner's `.env` had `NEO4J_ALLOW_RESET=true`. It should be `false` except during an intentional graph rebuild.
 
