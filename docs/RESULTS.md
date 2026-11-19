@@ -209,7 +209,19 @@ Co-citation over BGE + BM25 (paired, Monte Carlo sign-flip, bootstrap 95% CI):
 
 **Finding.**
 - **CS (DBLP):** the co-citation gain replicates. Without training or metadata, the method beats ClusCite and Citeomatic's NNSelect on both metrics, and NNSelect + NNRank on MRR. It stays below the trained Citeomatic systems on F1@20 (0.284 vs 0.302–0.303).
-- **Biomedicine (PubMed):** co-citation still raises recall, but by much less, and it lowers MRR. Its first-ranked suggestion is more often wrong than text retrieval's. A likely reason, not tested here, is that summed neighbour similarity favours widely cited papers, which in PubMed are less often the specific first reference. Text alone (BGE + BM25) already matches the best published MRR within 0.02.
+- **Biomedicine (PubMed):** co-citation still raises recall, but by much less, and it lowers MRR. Its first-ranked suggestion is more often wrong than text retrieval's. Text alone (BGE + BM25) already matches the best published MRR within 0.02.
+- **Why MRR drops on PubMed (diagnosis, 600 validation queries per dataset; `top1_diagnosis_valid.json`, `src/evaluation/citeomatic_top1_diagnosis.py`):**
+
+  | | DBLP | PubMed |
+  |---|---:|---:|
+  | Median citations of text's #1 pick | 2 | 6 |
+  | Median citations of fused #1 pick | 15 | 27.5 |
+  | Median citations of a gold paper | 8.5 | 14 |
+  | Text #1 pick correct | 52.5% | 71.2% |
+  | Co-citation-only #1 pick correct | 51.8% | 44.7% |
+  | Fused #1 pick correct | 55.7% | 66.7% |
+
+  Co-citation promotes widely cited papers in both datasets (about twice a typical gold paper's citations), so popularity alone does not explain the difference. What differs is relative precision at the top: on DBLP the graph's first pick is as often correct as text's, so equal-weight fusion helps; on PubMed text is already right 71% of the time and the graph only 45%, so fusion displaces correct first picks. A lower graph weight would likely suit biomedicine; it was not tuned, to keep the §2f settings fixed.
 - The graph's citation benefit is therefore clear for CS and mixed for biomedicine.
 
 **Caveats.**

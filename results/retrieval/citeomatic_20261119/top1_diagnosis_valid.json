@@ -1,0 +1,24 @@
+{
+  "dblp": {
+    "text_top1_indeg": 2.0,
+    "cocit_top1_indeg": 15.0,
+    "gold_indeg": 8.5,
+    "text_top1_hit": 0.525,
+    "cocit_top1_hit": 0.557,
+    "graph_only_top1_hit": 0.518,
+    "gold_in_cocit_pool": 0.602,
+    "train_median_indeg": 1.0,
+    "queries": 600
+  },
+  "pubmed": {
+    "text_top1_indeg": 6.0,
+    "cocit_top1_indeg": 27.5,
+    "gold_indeg": 14.0,
+    "text_top1_hit": 0.712,
+    "cocit_top1_hit": 0.667,
+    "graph_only_top1_hit": 0.447,
+    "gold_in_cocit_pool": 0.534,
+    "train_median_indeg": 12.0,
+    "queries": 600
+  }
+}

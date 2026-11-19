@@ -128,7 +128,7 @@ Given a paper's title and abstract, rank the corpus papers it cites. Leakage con
 | ClusCite (published) | 0.237 / 0.548 | 0.274 / 0.578 |
 | Citeomatic, best (published) | 0.303 / 0.689 | 0.329 / 0.771 |
 
-On DBLP, co-citation adds +0.069 Recall@20 and +0.028 MRR (both significant) and is competitive with the trained Citeomatic system. On PubMed it adds +0.014 Recall@20 but lowers MRR by 0.049, so the citation-graph benefit is clear in CS and mixed in biomedicine.
+On DBLP, co-citation adds +0.069 Recall@20 and +0.028 MRR (both significant) and is competitive with the trained Citeomatic system. On PubMed it adds +0.014 Recall@20 but lowers MRR by 0.049, so the citation-graph benefit is clear in CS and mixed in biomedicine. A diagnosis on the validation year shows why. Co-citation favours widely cited papers in both datasets, but on PubMed text retrieval already ranks a correct paper first 71% of the time against 45% for the graph alone, so equal-weight fusion displaces correct first picks; on DBLP the two are equally precise at the top (52%).
 
 ### 5.4 Time-sliced discovery: graph signals predict future research (RESULTS §4c–4d)
 
