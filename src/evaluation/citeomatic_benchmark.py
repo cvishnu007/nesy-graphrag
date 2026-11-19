@@ -105,10 +105,44 @@ def text(paper):
     return ". ".join(part for part in (paper["title"], paper["abstract"]) if part)
 
 
-def run(dataset, split):
+ENCODERS = ("bge", "specter2_base", "scincl")
+
+
+def make_encoder(encoder):
+    """Return (encode(texts) -> unit vectors, text(paper)) for an encoder name.
+
+    ``bge`` is the app's embedding model (title. abstract). ``specter2_base`` and ``scincl``
+    are citation-trained scientific-paper encoders, used as in RESULTS §1 (CLS pooling,
+    title [SEP] abstract; SPECTER2 base without a task adapter).
+    """
+    if encoder == "bge":
+        from src.storage.chroma_store import get_embedder
+
+        model = get_embedder()
+        return (lambda texts: model.encode(texts, batch_size=64, normalize_embeddings=True,
+                                           convert_to_numpy=True).astype(np.float32)), text
+    import torch
+    from src.evaluation.external_benchmarks import load_encoder
+
+    model = load_encoder(encoder, "cuda" if torch.cuda.is_available() else "cpu")
+    sep = model.tokenizer.sep_token
+
+    def encode(texts):
+        vectors = model.encode(texts, batch_size=32).astype(np.float32)
+        return vectors / np.maximum(np.linalg.norm(vectors, axis=1, keepdims=True), 1e-12)
+
+    return encode, (lambda paper: f"{paper['title']}{sep}{paper['abstract']}")
+
+
+def method_names(encoder):
+    if encoder == "bge":  # names kept from the first run so saved results stay comparable
+        return {"vec": "bge", "rrf": "rrf_bge_bm25", "full": "rrf_bge_bm25_cocitation"}
+    return {"vec": encoder, "rrf": f"rrf_{encoder}_bm25", "full": f"rrf_{encoder}_bm25_cocitation"}
+
+
+def run(dataset, split, encoder="bge"):
     from src.evaluation.citation_recommendation import cocitation_ranking, rrf
     from src.evaluation.retrievers.bm25_retrieval import BM25Retriever
-    from src.storage.chroma_store import get_embedder
 
     papers = load(dataset)
     train = set(split_ids(papers, dataset, "train"))
@@ -117,33 +151,38 @@ def run(dataset, split):
     train_ids = sorted(train)
     print(f"{dataset}/{split}: {len(papers)} papers, {len(train_ids)} candidates, {len(queries)} queries", flush=True)
 
-    cache = DATA / dataset / "train_bge.npy"  # derived from the downloaded corpus; not committed
-    model = get_embedder()
+    cache = DATA / dataset / f"train_{encoder}.npy"  # derived from the downloaded corpus; not committed
+    encode, doc_text = make_encoder(encoder)
     if cache.exists():
         doc = np.load(cache)
     else:
-        doc = model.encode([text(papers[p]) for p in train_ids], batch_size=64, normalize_embeddings=True,
-                           show_progress_bar=True, convert_to_numpy=True).astype(np.float32)
+        doc = encode([doc_text(papers[p]) for p in train_ids])
         np.save(cache, doc)
-    qvec = model.encode([text(papers[p]) for p, _ in queries], batch_size=64, normalize_embeddings=True,
-                        convert_to_numpy=True).astype(np.float32)
+    qvec = encode([doc_text(papers[p]) for p, _ in queries])
+    names = method_names(encoder)
     bm25 = BM25Retriever([{"id": p, "title": papers[p]["title"], "abstract": papers[p]["abstract"]} for p in train_ids])
+    # BM25 rankings do not depend on the encoder; cache them so each split is searched once.
+    lexical_path = DATA / dataset / f"bm25_{split}.json"
+    lexical_cache = json.loads(lexical_path.read_text()) if lexical_path.exists() else {}
     cites = {p: papers[p]["out"] & train for p in train_ids}
 
-    per_query = {name: {} for name in ("bm25", "bge", "rrf_bge_bm25", "rrf_bge_bm25_cocitation")}
+    per_query = {name: {} for name in ("bm25", names["vec"], names["rrf"], names["full"])}
     for i, (pid, gold_set) in enumerate(queries):
         scores = doc @ qvec[i]
         order = np.argsort(-scores)[:max(DEPTH, NEIGHBOURS)]
         bge = [train_ids[j] for j in order[:DEPTH]]
-        lexical = [r["id"] for r in bm25.retrieve(text(papers[pid]), top_k=DEPTH)]
+        if pid not in lexical_cache:
+            lexical_cache[pid] = [r["id"] for r in bm25.retrieve(text(papers[pid]), top_k=DEPTH)]
+        lexical = lexical_cache[pid]
         neighbours = [train_ids[j] for j in order[:NEIGHBOURS]]
         graph = cocitation_ranking(neighbours, [scores[j] for j in order[:NEIGHBOURS]], cites, lambda c: True)
-        lists = {"bm25": lexical, "bge": bge, "rrf_bge_bm25": rrf([bge, lexical], [1.0, 1.0]),
-                 "rrf_bge_bm25_cocitation": rrf([bge, lexical, graph], [1.0, 1.0, GRAPH_WEIGHT])}
+        lists = {"bm25": lexical, names["vec"]: bge, names["rrf"]: rrf([bge, lexical], [1.0, 1.0]),
+                 names["full"]: rrf([bge, lexical, graph], [1.0, 1.0, GRAPH_WEIGHT])}
         for name, ranked in lists.items():
             per_query[name][pid] = metrics(ranked[:DEPTH], gold_set)
         if (i + 1) % 200 == 0:
             print(f"  {i + 1}/{len(queries)}", flush=True)
+    lexical_path.write_text(json.dumps(lexical_cache))
     return per_query
 
 
@@ -153,20 +192,23 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--dataset", choices=sorted(SPLITS), required=True)
     parser.add_argument("--split", choices=("valid", "test"), required=True)
+    parser.add_argument("--encoder", choices=ENCODERS, default="bge")
     args = parser.parse_args(argv)
     OUT.mkdir(parents=True, exist_ok=True)
-    per_query = run(args.dataset, args.split)
+    per_query = run(args.dataset, args.split, args.encoder)
+    names = method_names(args.encoder)
     summary = {name: summarise(q) for name, q in per_query.items()}
     comparisons = {}
-    for a, b in (("rrf_bge_bm25_cocitation", "rrf_bge_bm25"), ("rrf_bge_bm25_cocitation", "bge"),
-                 ("rrf_bge_bm25", "bm25")):
+    for a, b in ((names["full"], names["rrf"]), (names["full"], names["vec"]), (names["rrf"], "bm25")):
         for metric in ("r@20", "rr"):
             deltas = [per_query[a][q][metric] - per_query[b][q][metric] for q in per_query[a]]
             comparisons[f"{a}_vs_{b}_{metric}"] = paired_permutation_test(deltas)
-    report = {"dataset": args.dataset, "split": args.split, "protocol": "citeomatic (Bhagavatula et al. 2018)",
+    report = {"dataset": args.dataset, "split": args.split, "encoder": args.encoder,
+              "protocol": "citeomatic (Bhagavatula et al. 2018)",
               "min_gold": MIN_GOLD, "neighbours": NEIGHBOURS, "graph_weight": GRAPH_WEIGHT, "depth": DEPTH,
               "methods": summary, "comparisons": comparisons, "published": PUBLISHED[args.dataset]}
-    (OUT / f"{args.dataset}_{args.split}.json").write_text(json.dumps(report, indent=2) + "\n")
+    suffix = "" if args.encoder == "bge" else f"_{args.encoder}"
+    (OUT / f"{args.dataset}_{args.split}{suffix}.json").write_text(json.dumps(report, indent=2) + "\n")
     for name, s in summary.items():
         print(f"  {name:26} F1@20={s['f1@20']:.3f} MRR={s['mrr']:.3f} R@20={s['r@20']:.3f} (n={s['queries']})")
     for name, (f1, mrr) in PUBLISHED[args.dataset].items():
