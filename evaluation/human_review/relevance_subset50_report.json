@@ -1,0 +1,55 @@
+{
+  "provenance": "Second grader (not CV), graded 2026-11-19 from query/title/abstract only; project owner confirmed no AI assistance. Grades pasted into chat and merged into the blank sheet.",
+  "sheet": "evaluation/human_review/relevance_subset50_sheet_rater3.csv",
+  "items": 50,
+  "second_vs_first_grader": {
+    "n": 50,
+    "quadratic_weighted_kappa": 0.9084,
+    "exact_agreement": 0.86,
+    "binary_relevant_agreement": 0.9
+  },
+  "judges": {
+    "7b_strict_batch1": {
+      "vs_first_grader": {
+        "n": 50,
+        "quadratic_weighted_kappa": 0.7996,
+        "exact_agreement": 0.8,
+        "binary_relevant_agreement": 0.84
+      },
+      "vs_second_grader": {
+        "n": 50,
+        "quadratic_weighted_kappa": 0.7638,
+        "exact_agreement": 0.74,
+        "binary_relevant_agreement": 0.78
+      },
+      "vs_consensus": {
+        "n": 43,
+        "quadratic_weighted_kappa": 0.8608,
+        "exact_agreement": 0.8372,
+        "binary_relevant_agreement": 0.8605,
+        "consensus_items": 43
+      }
+    },
+    "27b_strict": {
+      "vs_first_grader": {
+        "n": 50,
+        "quadratic_weighted_kappa": 0.8595,
+        "exact_agreement": 0.78,
+        "binary_relevant_agreement": 0.82
+      },
+      "vs_second_grader": {
+        "n": 50,
+        "quadratic_weighted_kappa": 0.9484,
+        "exact_agreement": 0.92,
+        "binary_relevant_agreement": 0.92
+      },
+      "vs_consensus": {
+        "n": 43,
+        "quadratic_weighted_kappa": 0.9439,
+        "exact_agreement": 0.907,
+        "binary_relevant_agreement": 0.907,
+        "consensus_items": 43
+      }
+    }
+  }
+}

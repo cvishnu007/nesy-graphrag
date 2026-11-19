@@ -32,6 +32,17 @@ def judge_kappa():
     return out
 
 
+def human_human_kappa():
+    from src.evaluation.human_agreement import pair_report
+
+    key = json.loads(Path("evaluation/human_review/relevance_subset50_key_DO_NOT_SHARE_WITH_ANNOTATORS.json").read_text())
+    mapping = {k["item_id"]: k["source_item_id"] for k in key["items"]}
+    first = {r["item_id"]: int(r["grade_0_1_2"]) for r in csv.DictReader(open("evaluation/human_review/relevance_sheet_cv.csv", encoding="utf-8-sig"))}
+    second = {mapping[r["item_id"]]: int(r["grade_0_1_2"]) for r in csv.DictReader(open("evaluation/human_review/relevance_subset50_sheet_rater3.csv", encoding="utf-8-sig"))}
+    items = sorted(second)
+    return pair_report([first[i] for i in items], [second[i] for i in items])["quadratic_weighted_kappa"]
+
+
 def stratified():
     from src.evaluation.regrade_pool import score
     from src.evaluation.stratified_benchmark import load_rankings
@@ -63,6 +74,7 @@ def saved(path, *keys):
 EXPECTED = {
     "judge held-out kappa, 7B strict 1/call": 0.7485,
     "judge held-out kappa, 27B strict": 0.8837,
+    "human-human kappa, 50-pair subset": 0.9084,
     "stratified NDCG@10, selected": 0.644,
     "stratified NDCG@10, BM25": 0.626,
     "stratified NDCG@10, BGE+BM25": 0.621,
@@ -87,6 +99,7 @@ def main() -> int:
     actual = {
         "judge held-out kappa, 7B strict 1/call": kappa["7b_strict_batch1"],
         "judge held-out kappa, 27B strict": kappa["27b_strict"],
+        "human-human kappa, 50-pair subset": human_human_kappa(),
         "stratified NDCG@10, selected": strat["full_bge_bm25_similar"],
         "stratified NDCG@10, BM25": strat["bm25"],
         "stratified NDCG@10, BGE+BM25": strat["rrf_bge_bm25"],

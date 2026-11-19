@@ -69,7 +69,7 @@ We take an empirical stance and ask: *for which tasks does graph structure add v
 
 ### 4.3 Validating the relevance judge (RESULTS §2b)
 
-One annotator graded 200 pooled pairs, blinded to method and AI grade. Judges were selected on half the pairs and scored once on the other half.
+One annotator graded 200 pooled pairs, blinded to method and AI grade. Judges were selected on half the pairs and scored once on the other half. A second, independent annotator graded a blinded 50-pair stratified subset of the held-out half: human–human κ 0.91, against 0.76–0.80 for the 7B judge and 0.86–0.95 for the 27B judge on the same pairs.
 
 | Judge | Held-out quadratic-weighted κ |
 |---|---:|
@@ -167,7 +167,7 @@ With a 3B generator, about 30% of claims were supported by their cited passages,
 ## 7. Limitations
 
 - Abstracts only; one corpus (CS, 2020–2025, 47,619 papers).
-- Project relevance labels come from an LLM judge validated against a single annotator (held-out κ 0.75). Human–human agreement is pending.
+- Project relevance labels come from an LLM judge (held-out κ 0.75 against the first annotator). Human–human agreement was measured on only 50 pairs (κ 0.91), with two annotators.
 - "Confirmed" in the time-sliced benchmark means later co-occurrence in abstracts, not a successful result. Entity extraction is automatic (F1 0.64).
 - SciFact is biomedical; in-corpus contradiction precision rests on small human samples.
 - SPECTER2 was evaluated without its query adapter.

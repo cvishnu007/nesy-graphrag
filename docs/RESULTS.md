@@ -70,7 +70,21 @@ One annotator graded a deterministic 200-pair sample of the pool, blinded to the
 
 The 27B judge is the most accurate, but Groq's free tier (200K tokens/day) covers only about 200 pairs a day, against about 3,950 needed. The local 7B judge, one paper per call, passes the predeclared threshold (held-out κ ≥ 0.6) and grades both pools. Grading one paper per call raised the 7B's κ from 0.60 to 0.77, consistent with the batch-position bias below.
 
-All 200 frozen labels against the human grades: κ 0.187. Diagnosis: the stored labels match the raw judge outputs exactly (0 mismatches of 1,145), so the problem is not storage or alignment. The 3B judge has a batch-position bias. Across 279 four-paper batches it used only 20 of the 81 possible grade patterns, gave position 2 a grade of 2 in almost every batch, and produced `[0,2,2,0]` or `[0,2,0,2]` in 40% of them. Re-running the same model on the same pairs agreed with the frozen labels at only κ 0.031. **The frozen 3B labels are therefore treated as unreliable, and section 2 is superseded by section 2c.** Limitation: one annotator, so human-human agreement is not measured.
+All 200 frozen labels against the human grades: κ 0.187. Diagnosis: the stored labels match the raw judge outputs exactly (0 mismatches of 1,145), so the problem is not storage or alignment. The 3B judge has a batch-position bias. Across 279 four-paper batches it used only 20 of the 81 possible grade patterns, gave position 2 a grade of 2 in almost every batch, and produced `[0,2,2,0]` or `[0,2,0,2]` in 40% of them. Re-running the same model on the same pairs agreed with the frozen labels at only κ 0.031. **The frozen 3B labels are therefore treated as unreliable, and section 2 is superseded by section 2c.**
+
+**Human–human agreement (50-pair subset).** A second grader, independent of the first, graded a blinded 50-pair subset of the held-out half without AI assistance (`evaluation/human_review/relevance_subset50_sheet_rater3.csv`; built and scored by `evaluation/human_review/build_relevance_subset.py`; report `relevance_subset50_report.json`). The subset is stratified by the first grader's grade (20/12/18) and renumbered, so it cannot be aligned with the first sheet.
+
+| Pair (same 50 pairs) | κ | Exact | Binary |
+|---|---:|---:|---:|
+| Grader 1 vs grader 2 | **0.908** | 0.86 | 0.90 |
+| 7B judge vs grader 1 / grader 2 | 0.800 / 0.764 | | |
+| 7B judge vs consensus (43 pairs) | 0.861 | | |
+| 27B judge vs grader 1 / grader 2 | 0.860 / 0.948 | | |
+| 27B judge vs consensus (43 pairs) | 0.944 | | |
+
+The 7B judge used for grading sits below human–human agreement (0.76–0.80 vs 0.91), as expected. The stratified sample over-represents grade 1 relative to the pool, so these κ values are not directly comparable with the 100-pair held-out κ above.
+
+An earlier full-200 second sheet was excluded: its grades came from a template/AI first pass with 36 of 200 revised by hand (`relevance_sheet_rater2*.csv`, not committed).
 
 ## 2c. GNN benchmark regraded with the validated judge
 
@@ -349,7 +363,7 @@ Per-query support difference (system − vector): +0.046, 95% CI [−0.068, 0.15
 
 Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c).
 
-1. **Second human rater** for relevance (human–human κ), round-1 hypotheses, and round-1 contradictions.
+1. **Second human rater** for round-1 hypotheses and round-1 contradictions. (Relevance done on a 50-pair subset: human–human κ 0.91, §2b.)
 2. **Round 2 human ratings** (`evaluation/human_review/*round2*`): revised hypothesis method and citation-grounded contradiction index on held-out queries.
 3. Retrieval on the densified graph (`CITES_ADDED`, `COUPLED_WITH`) as a new variant: dev selection on the 22 stratified dev queries, pool extension, then test once.
 4. Optional robustness check: regrade both pools with a larger judge (27B class) and confirm the §2c/§2d conclusions hold.

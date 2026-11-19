@@ -61,7 +61,7 @@ The repository is on `phase3` at `8f2eaa2`, four commits ahead of `origin/phase3
 
 ## Incomplete or Not Yet Validated
 
-- Second human rater for relevance, hypotheses, and contradictions (human–human agreement).
+- Second human rater for hypotheses and contradictions. (Relevance: done on a 50-pair subset, human–human κ 0.91.)
 - Round 2 human ratings of the revised hypothesis and contradiction methods.
 - Retrieval with the densified citation layers (a new variant; dev selection, pool extension, then test once).
 - Application-mode live generation checks with the 7B verdict filter.
