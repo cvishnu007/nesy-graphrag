@@ -1,0 +1,52 @@
+graded 2305 pooled pairs
+graded 1644 of 1644 pooled pairs
+
+dev (6 queries)
+  full_bge_bm25_similar          ndcg@10=0.701 p@10=0.950 map=0.324 unjudged@20=0.000
+  graph_relative_similar_bge     ndcg@10=0.671 p@10=0.933 map=0.309 unjudged@20=0.000
+  bge                            ndcg@10=0.660 p@10=0.967 map=0.343 unjudged@20=0.000
+  rrf_bge_bm25                   ndcg@10=0.658 p@10=0.917 map=0.332 unjudged@20=0.000
+  bm25                           ndcg@10=0.649 p@10=0.917 map=0.306 unjudged@20=0.000
+  orig_bm25                      ndcg@10=0.649 p@10=0.917 map=0.306 unjudged@20=0.000
+  rrf_ta_bm25                    ndcg@10=0.484 p@10=0.750 map=0.208 unjudged@20=0.000
+  rrf_vector_bm25                ndcg@10=0.454 p@10=0.700 map=0.193 unjudged@20=0.000
+  orig_graph                     ndcg@10=0.330 p@10=0.467 map=0.093 unjudged@20=0.000
+  full_ta_bm25_similar           ndcg@10=0.308 p@10=0.567 map=0.157 unjudged@20=0.000
+  vector_title_abstract          ndcg@10=0.282 p@10=0.500 map=0.109 unjudged@20=0.000
+  orig_production                ndcg@10=0.259 p@10=0.483 map=0.110 unjudged@20=0.000
+  production_absolute            ndcg@10=0.259 p@10=0.483 map=0.110 unjudged@20=0.000
+  orig_vector                    ndcg@10=0.248 p@10=0.467 map=0.109 unjudged@20=0.000
+  vector_abstract                ndcg@10=0.248 p@10=0.467 map=0.109 unjudged@20=0.000
+  orig_hybrid                    ndcg@10=0.245 p@10=0.467 map=0.108 unjudged@20=0.000
+  graph_relative_similar         ndcg@10=0.241 p@10=0.383 map=0.073 unjudged@20=0.000
+  graph_relative_cites           ndcg@10=0.206 p@10=0.400 map=0.077 unjudged@20=0.000
+  full_bge_bm25_similar_vs_production_absolute       delta=+0.442 p=0.0312 wins=6/6
+  bge_vs_production_absolute                         delta=+0.401 p=0.0312 wins=6/6
+  rrf_bge_bm25_vs_production_absolute                delta=+0.399 p=0.0312 wins=6/6
+  bm25_vs_production_absolute                        delta=+0.389 p=0.0312 wins=6/6
+  full_bge_bm25_similar_vs_bm25                      delta=+0.053 p=0.4375 wins=3/6
+  full_bge_bm25_similar_vs_bge                       delta=+0.041 p=0.3125 wins=4/6
+  bge_vs_bm25                                        delta=+0.011 p=0.8438 wins=4/6
+
+test (14 queries)
+  bge                            ndcg@10=0.814 p@10=0.964 map=0.398 unjudged@20=0.000
+  graph_relative_similar_bge     ndcg@10=0.813 p@10=0.921 map=0.390 unjudged@20=0.000
+  full_bge_bm25_similar          ndcg@10=0.813 p@10=0.921 map=0.391 unjudged@20=0.000
+  bm25                           ndcg@10=0.793 p@10=0.907 map=0.375 unjudged@20=0.000
+  orig_bm25                      ndcg@10=0.792 p@10=0.907 map=0.375 unjudged@20=0.000
+  rrf_bge_bm25                   ndcg@10=0.791 p@10=0.950 map=0.391 unjudged@20=0.000
+  rrf_ta_bm25                    ndcg@10=0.598 p@10=0.736 map=0.255 unjudged@20=0.000
+  full_ta_bm25_similar           ndcg@10=0.419 p@10=0.536 map=0.207 unjudged@20=0.000
+  vector_abstract                ndcg@10=0.359 p@10=0.457 map=0.136 unjudged@20=0.000
+  orig_hybrid                    ndcg@10=0.359 p@10=0.457 map=0.136 unjudged@20=0.000
+  orig_vector                    ndcg@10=0.359 p@10=0.457 map=0.136 unjudged@20=0.000
+  orig_production                ndcg@10=0.357 p@10=0.464 map=0.137 unjudged@20=0.000
+  production_absolute            ndcg@10=0.349 p@10=0.450 map=0.134 unjudged@20=0.000
+  orig_graph                     ndcg@10=0.272 p@10=0.350 map=0.084 unjudged@20=0.000
+  full_bge_bm25_similar_vs_production_absolute       delta=+0.464 p=0.0001 wins=14/14
+  bge_vs_production_absolute                         delta=+0.465 p=0.0001 wins=14/14
+  rrf_bge_bm25_vs_production_absolute                delta=+0.441 p=0.0002 wins=13/14
+  bm25_vs_production_absolute                        delta=+0.443 p=0.0005 wins=12/14
+  full_bge_bm25_similar_vs_bm25                      delta=+0.020 p=0.6658 wins=9/14
+  full_bge_bm25_similar_vs_bge                       delta=-0.001 p=0.9639 wins=5/14
+  bge_vs_bm25                                        delta=+0.021 p=0.5754 wins=7/14

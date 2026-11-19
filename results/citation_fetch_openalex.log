@@ -1,0 +1,136 @@
+fetched 50/46198 (kept 49)
+fetched 1050/46198 (kept 1045)
+fetched 2050/46198 (kept 2045)
+fetched 3050/46198 (kept 3043)
+fetched 4050/46198 (kept 4041)
+fetched 5050/46198 (kept 5040)
+fetched 6050/46198 (kept 6039)
+fetched 7050/46198 (kept 7037)
+fetched 8050/46198 (kept 8034)
+fetched 9050/46198 (kept 9034)
+fetched 10050/46198 (kept 10029)
+fetched 11050/46198 (kept 11029)
+fetched 12050/46198 (kept 12024)
+fetched 13050/46198 (kept 13022)
+fetched 14050/46198 (kept 13918)
+fetched 15050/46198 (kept 14841)
+fetched 16050/46198 (kept 15839)
+fetched 17050/46198 (kept 16835)
+fetched 18050/46198 (kept 17833)
+fetched 19050/46198 (kept 18828)
+fetched 20050/46198 (kept 19826)
+fetched 21050/46198 (kept 20825)
+fetched 22050/46198 (kept 21824)
+fetched 23050/46198 (kept 22823)
+fetched 24050/46198 (kept 23820)
+fetched 25050/46198 (kept 24820)
+fetched 26050/46198 (kept 25819)
+fetched 27050/46198 (kept 26816)
+fetched 28050/46198 (kept 27814)
+fetched 29050/46198 (kept 28812)
+fetched 30050/46198 (kept 29811)
+fetched 31050/46198 (kept 30807)
+fetched 32050/46198 (kept 31803)
+fetched 33050/46198 (kept 32793)
+fetched 34050/46198 (kept 33776)
+fetched 35050/46198 (kept 34666)
+fetched 36050/46198 (kept 35595)
+fetched 37050/46198 (kept 36586)
+fetched 38050/46198 (kept 37586)
+fetched 39050/46198 (kept 38586)
+fetched 40050/46198 (kept 39586)
+fetched 41050/46198 (kept 40586)
+fetched 42050/46198 (kept 41559)
+fetched 43050/46198 (kept 42065)
+Traceback (most recent call last):
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 1395, in getresponse
+    response.begin()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 325, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 294, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 1395, in getresponse
+    response.begin()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 325, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 294, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\ingestion\citation_densify.py", line 331, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\ingestion\citation_densify.py", line 303, in main
+    fetch_openalex_references(corpus)
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\ingestion\citation_densify.py", line 174, in fetch_openalex_references
+    return _checkpointed(OPENALEX, sorted(by_doi), 50, batch_fetch)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\ingestion\citation_densify.py", line 148, in _checkpointed
+    done.update(fetch_batch(batch))
+                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\ingestion\citation_densify.py", line 166, in batch_fetch
+    for work in _openalex_get({"filter": "doi:" + "|".join(dois), "per-page": 50,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\ingestion\citation_densify.py", line 130, in _openalex_get
+    response = requests.get(OPENALEX_URL, params=query, headers={"User-Agent": "research-client/1.0"},
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\requests\api.py", line 87, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+fetched 50/2348 (kept 42458)
+fetched 1050/2348 (kept 42979)
+fetched 2050/2348 (kept 43797)
+fetched 2348/2348 (kept 44090)

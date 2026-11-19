@@ -1,0 +1,40 @@
+{
+  "llm": "ollama:qwen2.5:7b-instruct",
+  "sheet": "evaluation/human_review/contradiction_sheet_labeled_cv.csv",
+  "pairs": 68,
+  "human_label_counts": {
+    "0": 63,
+    "1": 5
+  },
+  "verdict_counts": {
+    "DIFFERENT SCOPE": 52,
+    "CONTRADICTION": 5,
+    "AGREEMENT": 11
+  },
+  "human_label_x_verdict": {
+    "0|AGREEMENT": 10,
+    "0|CONTRADICTION": 3,
+    "0|DIFFERENT SCOPE": 50,
+    "1|AGREEMENT": 1,
+    "1|CONTRADICTION": 2,
+    "1|DIFFERENT SCOPE": 2
+  },
+  "false_alarm_rate_on_human_0": 0.0476,
+  "flagged": 5,
+  "flagged_with_human_label_ge1": 2,
+  "valid_rate": 1.0
+}
+qwen2.5:7b-instruct: 25/338
+qwen2.5:7b-instruct: 50/338
+qwen2.5:7b-instruct: 75/338
+qwen2.5:7b-instruct: 100/338
+qwen2.5:7b-instruct: 125/338
+qwen2.5:7b-instruct: 150/338
+qwen2.5:7b-instruct: 175/338
+qwen2.5:7b-instruct: 200/338
+qwen2.5:7b-instruct: 225/338
+qwen2.5:7b-instruct: 250/338
+qwen2.5:7b-instruct: 275/338
+qwen2.5:7b-instruct: 300/338
+qwen2.5:7b-instruct: 325/338
+ollama:qwen2.5:7b-instruct {"precision": 0.8488, "recall": 0.5984, "f1": 0.7019, "accuracy": 0.8166, "tp": 73, "fp": 13, "fn": 49, "positives": 122, "count": 338} valid 1.0

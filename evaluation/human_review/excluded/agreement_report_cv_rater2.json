@@ -1,0 +1,49 @@
+{
+  "items": 200,
+  "human_vs_ai": {
+    "relevance_sheet_cv": {
+      "n": 200,
+      "quadratic_weighted_kappa": 0.1867,
+      "exact_agreement": 0.41,
+      "binary_relevant_agreement": 0.555
+    },
+    "relevance_sheet_rater2": {
+      "n": 200,
+      "quadratic_weighted_kappa": 0.1565,
+      "exact_agreement": 0.41,
+      "binary_relevant_agreement": 0.59
+    }
+  },
+  "human_vs_human": {
+    "relevance_sheet_cv~relevance_sheet_rater2": {
+      "n": 200,
+      "quadratic_weighted_kappa": 0.7697,
+      "exact_agreement": 0.705,
+      "binary_relevant_agreement": 0.785
+    }
+  },
+  "ai_vs_consensus": {
+    "n": 141,
+    "quadratic_weighted_kappa": 0.211,
+    "exact_agreement": 0.4326,
+    "binary_relevant_agreement": 0.5816,
+    "consensus_items": 141,
+    "confusion_human_rows_ai_columns": [
+      [
+        27,
+        11,
+        16
+      ],
+      [
+        17,
+        7,
+        7
+      ],
+      [
+        15,
+        14,
+        27
+      ]
+    ]
+  }
+}

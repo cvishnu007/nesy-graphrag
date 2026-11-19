@@ -1,0 +1,16 @@
+Connected to Neo4j!
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|##########| 106/106 [00:00<00:00, 2103.80it/s]
+{"critical_papers": 364, "citation_pairs": 1958} candidates=591
+{
+  "critical_papers": 364,
+  "citation_pairs": 1958,
+  "candidates": 591,
+  "verdict_model": "ollama:qwen2.5:7b-instruct",
+  "verdicted": 150,
+  "verdict_counts": {
+    "CONTRADICTION": 9,
+    "DIFFERENT SCOPE": 130,
+    "AGREEMENT": 11
+  },
+  "nli_ge_0_5": 140
+}

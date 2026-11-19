@@ -1,0 +1,39 @@
+Connected to Neo4j!
+Embedding device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU, 4.0 GB)
+Loading embedding model: BAAI/bge-base-en-v1.5
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 3364.26it/s]
+Model loaded!
+{
+  "rule": " (2026-11-14, before any result was seen): among the\nbridge configurations, choose the one with the highest mean judged relevance of\nthe top candidate over all 30 dev queries, counting a query without a candidate\nas 0",
+  "arms": {
+    "graph_structural_hole": {
+      "coverage": 30,
+      "mean_judged_relevance_0_2": 0.433,
+      "mean_judged_relevance_when_present": 0.433,
+      "mean_human_relevance_1_5": 3.267
+    },
+    "vector_neighbour": {
+      "coverage": 30,
+      "mean_judged_relevance_0_2": 0.933,
+      "mean_judged_relevance_when_present": 0.933,
+      "mean_human_relevance_1_5": 4.2
+    },
+    "bridge_m05": {
+      "coverage": 23,
+      "mean_judged_relevance_0_2": 0.7,
+      "mean_judged_relevance_when_present": 0.913
+    },
+    "bridge_m10": {
+      "coverage": 29,
+      "mean_judged_relevance_0_2": 0.767,
+      "mean_judged_relevance_when_present": 0.793
+    },
+    "bridge_m10_specific": {
+      "coverage": 27,
+      "mean_judged_relevance_0_2": 0.767,
+      "mean_judged_relevance_when_present": 0.852
+    }
+  },
+  "selected": "bridge_m10"
+}

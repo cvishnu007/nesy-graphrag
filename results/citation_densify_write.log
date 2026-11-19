@@ -1,0 +1,41 @@
+fetched 50/25326 (kept 49)
+fetched 1050/25326 (kept 1040)
+fetched 2050/25326 (kept 2038)
+fetched 3050/25326 (kept 3036)
+fetched 4050/25326 (kept 4035)
+fetched 5050/25326 (kept 5032)
+fetched 6050/25326 (kept 6026)
+fetched 7050/25326 (kept 7021)
+fetched 8050/25326 (kept 8011)
+fetched 9050/25326 (kept 9002)
+fetched 10050/25326 (kept 9997)
+fetched 11050/25326 (kept 10993)
+fetched 12050/25326 (kept 11990)
+fetched 13050/25326 (kept 12988)
+fetched 14050/25326 (kept 13984)
+fetched 15050/25326 (kept 14983)
+fetched 16050/25326 (kept 15965)
+fetched 17050/25326 (kept 16901)
+fetched 18050/25326 (kept 17890)
+fetched 19050/25326 (kept 18874)
+fetched 20050/25326 (kept 19869)
+fetched 21050/25326 (kept 20852)
+fetched 22050/25326 (kept 21818)
+fetched 23050/25326 (kept 22800)
+fetched 24050/25326 (kept 23784)
+fetched 25050/25326 (kept 24585)
+fetched 25326/25326 (kept 24714)
+Connected to Neo4j!
+{"cites_added": 133527, "coupled_with": 411418, "external_nodes": 24714, "cites_external": 641616}
+{
+  "papers": 47619,
+  "isolated_original_cites": 33995,
+  "isolated_cites_or_added": 6394,
+  "isolated_citation_layers": 1154,
+  "isolated_citation_layers_or_external": 986,
+  "cites": 22370,
+  "cites_added": 133527,
+  "coupled_with": 411418,
+  "external_papers": 24714,
+  "cites_external": 641616
+}

@@ -1,0 +1,19 @@
+eligible=9534 dev=200 test=400 selected=rrf_bge_bm25_graph_k50_w1.0
+  rrf_bge_bm25_graph_k50_w1.0    recall@20=0.308 ndcg@10=0.259 map=0.179
+  rrf_bge_bm25_graph_k20_w1.0    recall@20=0.303 ndcg@10=0.258 map=0.178
+  rrf_bge_bm25_graph_k10_w1.0    recall@20=0.295 ndcg@10=0.256 map=0.174
+  rrf_bge_bm25_graph_k50_w0.5    recall@20=0.280 ndcg@10=0.237 map=0.159
+  rrf_bge_bm25_graph_k20_w0.5    recall@20=0.273 ndcg@10=0.235 map=0.160
+  graph_k50                      recall@20=0.271 ndcg@10=0.240 map=0.158
+  rrf_bge_bm25_graph_k10_w0.5    recall@20=0.271 ndcg@10=0.232 map=0.154
+  bge                            recall@20=0.266 ndcg@10=0.208 map=0.139
+  graph_k20                      recall@20=0.253 ndcg@10=0.244 map=0.155
+  rrf_bge_bm25                   recall@20=0.237 ndcg@10=0.191 map=0.125
+  graph_k10                      recall@20=0.230 ndcg@10=0.230 map=0.144
+  bm25                           recall@20=0.154 ndcg@10=0.141 map=0.084
+  rrf_bge_bm25_graph_k50_w1.0_vs_rrf_bge_bm25:recall@20   delta=+0.0706 CI=[0.0526, 0.0891] p=0.0000
+  rrf_bge_bm25_graph_k50_w1.0_vs_rrf_bge_bm25:ndcg@10     delta=+0.0682 CI=[0.0505, 0.0854] p=0.0000
+  rrf_bge_bm25_graph_k50_w1.0_vs_bge:recall@20            delta=+0.0422 CI=[0.0232, 0.0609] p=0.0001
+  rrf_bge_bm25_graph_k50_w1.0_vs_bge:ndcg@10              delta=+0.0517 CI=[0.0319, 0.0711] p=0.0000
+  rrf_bge_bm25_vs_bge:recall@20                           delta=-0.0284 CI=[-0.0464, -0.011] p=0.0022
+  rrf_bge_bm25_vs_bge:ndcg@10                             delta=-0.0164 CI=[-0.0326, -0.0005] p=0.0438

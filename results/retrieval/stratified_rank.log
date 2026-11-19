@@ -1,0 +1,18 @@
+Connected to Neo4j!
+Embedding device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU, 4.0 GB)
+Loading embedding model: allenai-specter
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  62%|######2   | 124/199 [00:00<00:00, 1223.67it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 1698.95it/s]
+Model loaded!
+ranked vector_abstract
+ranked production_absolute
+ranked bm25
+ranked full_ta_bm25_similar
+Connected to Neo4j!
+Embedding device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU, 4.0 GB)
+Loading embedding model: BAAI/bge-base-en-v1.5
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  94%|#########3| 187/199 [00:00<00:00, 1836.24it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 1916.50it/s]
+Model loaded!
+ranked bge
+ranked rrf_bge_bm25
+ranked graph_relative_similar_bge
+ranked full_bge_bm25_similar

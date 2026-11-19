@@ -1,0 +1,2 @@
+selection ollama:qwen2.5:7b-instruct@strict        kappa=0.6022 exact=0.58 binary=0.75 n=100
+selection ollama:qwen2.5:7b-instruct@original      kappa=0.5813 exact=0.61 binary=0.79 n=100

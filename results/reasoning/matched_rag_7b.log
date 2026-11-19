@@ -1,0 +1,104 @@
+Connected to Neo4j!
+Embedding device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU, 4.0 GB)
+Loading embedding model: BAAI/bge-base-en-v1.5
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 3475.52it/s]
+Model loaded!
+Completed V2-01-1
+Completed V2-01-2
+Completed V2-02-1
+Completed V2-02-2
+Completed V2-03-1
+Completed V2-03-2
+Completed V2-04-1
+Completed V2-04-2
+Completed V2-05-1
+Completed V2-05-2
+Completed V2-06-1
+Completed V2-06-2
+Completed V2-07-1
+Completed V2-07-2
+Completed V2-08-1
+Completed V2-08-2
+Completed V2-09-1
+Completed V2-09-2
+Completed V2-10-1
+Completed V2-10-2
+Completed V2-11-1
+Completed V2-11-2
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|##########| 106/106 [00:00<00:00, 2187.34it/s]
+{
+  "arms": {
+    "vector_rag": {
+      "queries": 22,
+      "mean_claims_per_answer": 3.727,
+      "abstention_rate": 0.0,
+      "structural_citation_precision": 1.0,
+      "semantic_support_rate": 0.378,
+      "contradicted_rate": 0.0488,
+      "total_claims": 82
+    },
+    "graph_rag": {
+      "queries": 22,
+      "mean_claims_per_answer": 3.727,
+      "abstention_rate": 0.0,
+      "structural_citation_precision": 1.0,
+      "semantic_support_rate": 0.378,
+      "contradicted_rate": 0.0854,
+      "total_claims": 82
+    }
+  },
+  "paired_test": null
+}
+Connected to Neo4j!
+Embedding device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU, 4.0 GB)
+Loading embedding model: BAAI/bge-base-en-v1.5
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  19%|#9        | 38/199 [00:00<00:00, 368.82it/s]Loading weights:  38%|###7      | 75/199 [00:00<00:00, 327.58it/s]Loading weights:  56%|#####5    | 111/199 [00:00<00:00, 339.74it/s]Loading weights:  84%|########3 | 167/199 [00:00<00:00, 410.47it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 400.92it/s]
+Model loaded!
+Completed V2-01-3
+Completed V2-01-4
+Completed V2-02-3
+Completed V2-02-4
+Completed V2-03-3
+Completed V2-03-4
+Completed V2-04-3
+Completed V2-04-4
+Completed V2-05-3
+Completed V2-05-4
+Completed V2-06-3
+Completed V2-06-4
+Completed V2-07-3
+Completed V2-07-4
+Completed V2-08-3
+Completed V2-08-4
+Completed V2-09-3
+Completed V2-09-4
+Completed V2-10-3
+Completed V2-10-4
+Completed V2-11-3
+Completed V2-11-4
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|##########| 106/106 [00:00<00:00, 2750.31it/s]
+{
+  "arms": {
+    "vector_rag": {
+      "queries": 22,
+      "mean_claims_per_answer": 3.409,
+      "abstention_rate": 0.0,
+      "structural_citation_precision": 1.0,
+      "semantic_support_rate": 0.4,
+      "contradicted_rate": 0.0267,
+      "total_claims": 75
+    },
+    "graph_rag": {
+      "queries": 22,
+      "mean_claims_per_answer": 3.455,
+      "abstention_rate": 0.0,
+      "structural_citation_precision": 0.9962,
+      "semantic_support_rate": 0.4605,
+      "contradicted_rate": 0.0526,
+      "total_claims": 76
+    }
+  },
+  "paired_test": null
+}

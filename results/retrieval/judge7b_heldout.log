@@ -1,0 +1,1 @@
+held_out  ollama:qwen2.5:7b-instruct@strict#batch1 kappa=0.7485 exact=0.72 binary=0.81 n=100

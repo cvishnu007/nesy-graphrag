@@ -1,0 +1,23 @@
+[Groq] 429 rate-limited on qwen/qwen3.8-27b. Retrying in 2.0s (attempt 1/6)...
+[Groq] 429 rate-limited on qwen/qwen3.8-27b. Retrying in 4.0s (attempt 2/6)...
+[Groq] 429 rate-limited on qwen/qwen3.8-27b. Retrying in 8.0s (attempt 3/6)...
+[Groq] 429 rate-limited on qwen/qwen3.8-27b. Retrying in 16.0s (attempt 4/6)...
+[Groq] 429 rate-limited on qwen/qwen3.8-27b. Retrying in 32.0s (attempt 5/6)...
+[Groq] 429 rate-limited on qwen/qwen3.8-27b. Retrying in 60.0s (attempt 6/6)...
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\evaluation\regrade_pool.py", line 163, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\evaluation\regrade_pool.py", line 128, in main
+    judge(make_client(model_spec), rows, prompt_name, checkpoint)
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\evaluation\judge_agreement.py", line 98, in judge
+    grades = parse_grades(client.complete(prompt, max_tokens=800, temperature=0.0, **options), len(batch))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\utils\llm_client.py", line 247, in complete
+    return groq_chat_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cvish\Capstone\project-code\nesy-graphrag\src\utils\groq_client.py", line 114, in groq_chat_with_retry
+    raise RuntimeError(
+RuntimeError: Groq chat completion failed after retries on models ['qwen/qwen3.8-27b']: Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_REDACTED` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199264, Requested 1217. Please try again in 3m27.792s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
