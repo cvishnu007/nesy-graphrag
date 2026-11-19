@@ -138,10 +138,10 @@ All raters are anonymous. Publications and reports refer to them only as Rater A
 | Rater | Sheets | Role | Relation to the system | AI tools used | Saw other raters' sheets |
 |---|---|---|---|---|---|
 | Rater A (sheets `*_cv.csv`) | relevance 200, hypotheses R1 and R2, contradictions R1 and R2 | Project member | Developer of the system; blind to method and AI grade on every sheet (method keys hidden) | None | n/a (rated first) |
-| Rater B (sheets `*_rater3.csv`) | relevance subset 50, hypotheses R1, contradictions R1 | ___ (role only, e.g. "project member" or "CS student not on the project") | ___ (involved in development? yes/no) | None (confirmed by the project owner, 2026-11-19) | No (confirmed by the project owner, 2026-11-19) |
+| Rater B (sheets `*_rater3.csv`) | relevance subset 50, hypotheses R1, contradictions R1 | Project member | Did not build the system (confirmed by the project owner, 2026-11-19) | None (confirmed by the project owner, 2026-11-19) | No (confirmed by the project owner, 2026-11-19) |
 | Rater C (task 9, judge transfer 100) | judge transfer 100 | ___ (role only) | ___ | ___ | ___ |
 
-Known limits to state in the paper: Rater A is the developer and rates every task; round 2 has one rater; Rater B's independence rests on the owner's confirmation, not a recorded protocol.
+Known limits to state in the paper: Rater A is the developer and rates every task; round 2 has one rater; Rater B is a project member, though not a developer, and their independence rests on the owner's confirmation, not a recorded protocol.
 
 ## Sample designs
 
