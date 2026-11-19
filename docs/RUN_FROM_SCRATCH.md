@@ -236,7 +236,7 @@ Example queries for each mode: [docs/DEMO_QUERIES.md](DEMO_QUERIES.md). If the r
 .\venv\Scripts\python.exe -m src.evaluation.reproduce
 ```
 
-It recomputes 22 headline values (judge agreement, retrieval NDCG, human agreement and ratings, the LightRAG baseline, citation recommendation on our corpus, DBLP and PubMed, and the time-sliced discovery benchmark) and prints `22/22 reproduced`. Two checks need the gitignored key `evaluation/human_review/relevance_subset50_key_DO_NOT_SHARE_WITH_ANNOTATORS.json`; ask the project owner for it.
+It recomputes 23 headline values (judge agreement, retrieval NDCG, human agreement and ratings, the LightRAG baseline, citation recommendation on our corpus, DBLP and PubMed, and the time-sliced discovery benchmark) and prints `23/23 reproduced`. Two checks need the gitignored key `evaluation/human_review/relevance_subset50_key_DO_NOT_SHARE_WITH_ANNOTATORS.json`; ask the project owner for it.
 
 **13.2 Rerun experiments.** These need the stores; LLM steps need Ollama. Each writes to its own results folder. Run them as `.\venv\Scripts\python.exe -m ...`; each module's docstring (or `--help`) explains its stages:
 
@@ -246,7 +246,7 @@ It recomputes 22 headline values (judge agreement, retrieval NDCG, human agreeme
 | §2d 44-query retrieval benchmark | `python -m src.evaluation.stratified_benchmark score` |
 | §2f citation recommendation (our corpus) | `python -m src.evaluation.citation_recommendation --help` |
 | §2g LightRAG-style baseline | `python -m src.evaluation.lightrag_baseline build`, then `keywords`, `rank`, `grade`, `score` |
-| §2h DBLP / PubMed | download two files (below), then `python -m src.evaluation.citeomatic_benchmark --dataset dblp --split test` |
+| §2h DBLP / PubMed | download two files (below), then `python -m src.evaluation.citeomatic_benchmark --dataset dblp --split test [--encoder bge\|specter2_base\|scincl]` |
 | §4c–4d time-sliced discovery | `python -m src.evaluation.temporal_hypothesis` |
 | Human ratings | `python -m src.evaluation.human_ratings {hypothesis,contradiction,hypothesis_round2,contradiction_round2} --sheets ...` |
 

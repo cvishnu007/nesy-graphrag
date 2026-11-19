@@ -25,7 +25,7 @@ Measured with frozen dev/test splits, an LLM relevance judge validated against h
 |---|---|---|
 | Topical retrieval (44 queries) | BGE + BM25 + graph NDCG@10 **0.644**, vs 0.287 for the original system; the graph itself adds a non-significant +0.023. A LightRAG-style GraphRAG baseline scores 0.396 | ❌ No |
 | Citation recommendation (our corpus) | Co-citation adds **+28%** Recall@20 over text retrieval (p < 0.0001) | ✅ Yes |
-| Citation recommendation (public DBLP) | +0.069 Recall@20; F1@20 0.284 with no training vs 0.303 for the trained Citeomatic system | ✅ Yes (mixed on PubMed) |
+| Citation recommendation (public DBLP, PubMed) | Co-citation raises Recall@20 on top of BGE, SPECTER2 and SciNCL (+0.07–0.08 on DBLP). SPECTER2 + co-citation, untrained, matches the trained Citeomatic system (F1@20 0.300 vs 0.303; MRR 0.708 vs 0.689) | ✅ Yes in CS (mixed on PubMed) |
 | Time-sliced discovery | Graph signals nearly double average precision for predicting which method–task pairs researchers adopt later | ✅ Yes |
 | Contradiction detection (human-labelled) | Citation grounding raises contradiction-or-tension precision from 9% to 56% | ✅ Yes |
 | Hypothesis candidates (human-rated) | Graph-selected papers rated below vector neighbours in two rounds | ❌ No |
@@ -53,7 +53,7 @@ Generated data (`data/`), the fine-tuned entity model (`models/`) and `.env` are
 
 ```powershell
 .\venv\Scripts\python.exe -m pytest -q                                        # tests
-.\venv\Scripts\python.exe -m src.evaluation.reproduce                         # check 22 headline numbers
+.\venv\Scripts\python.exe -m src.evaluation.reproduce                         # check 23 headline numbers
 .\venv\Scripts\python.exe -m streamlit run app\streamlit_app.py --server.address localhost   # app
 ```
 

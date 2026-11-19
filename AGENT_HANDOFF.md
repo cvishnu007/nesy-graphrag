@@ -40,7 +40,8 @@ The current implementation is an abstract-and-metadata prototype. It is delibera
   - Second rater for round-1 hypotheses (κ 0.82–0.90) and contradictions (κ 0.76).
   - Round 2 (rater 1): hypotheses (the bridge does not beat vector neighbours) and contradictions (56% tension-or-contradiction precision for verdict-flagged pairs).
   - Template/AI-generated second-rater sheets are kept in `evaluation/human_review/excluded/` and used nowhere.
-- `src/evaluation/reproduce.py` checks 22 headline numbers. 404 tests pass.
+- **Citation-trained encoders** (`citeomatic_benchmark --encoder specter2_base|scincl`). Co-citation raises Recall@20 on top of all three encoders in both domains. SPECTER2 + BM25 + co-citation on DBLP test: 0.300 / 0.708 vs trained Citeomatic 0.303 / 0.689. The script exits with `os._exit` after writing results, because Windows CUDA teardown hung.
+- `src/evaluation/reproduce.py` checks 23 headline numbers. 404 tests pass.
 
 **Local `.env` warning.** On November 19 the owner's `.env` had `NEO4J_ALLOW_RESET=true`. It should be `false` except during an intentional graph rebuild.
 
@@ -284,7 +285,7 @@ This requires no live database or LLM, but it reproduces AI-reference package re
 .\venv\Scripts\python.exe -m src.evaluation.reproduce
 ```
 
-This recomputes 22 headline values (judge κ, human agreement and ratings, stratified and regraded NDCG, the LightRAG-style baseline, citation recommendation on our corpus and on DBLP/PubMed, time-sliced AP and P@10) from saved artifacts, and exits non-zero on drift. Two checks need the gitignored subset key in `evaluation/human_review/`.
+This recomputes 23 headline values (judge κ, human agreement and ratings, stratified and regraded NDCG, the LightRAG-style baseline, citation recommendation on our corpus and on DBLP/PubMed, time-sliced AP and P@10) from saved artifacts, and exits non-zero on drift. Two checks need the gitignored subset key in `evaluation/human_review/`.
 
 ### Verify code after changes
 
