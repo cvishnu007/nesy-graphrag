@@ -95,16 +95,25 @@ if run and query:
         provenance_stats = provenance.get("stats", {})
         parse_errors = provenance.get("parse_errors", [])
 
-        st.success(
-            f"Retrieved {len(papers)} papers — {len(verified)}/{len(papers)} papers verified — "
-            f"{len(claims)}/{provenance_stats.get('total_claims', 0)} claims have valid passage references"
-        )
+        llm_failure = next((e for e in parse_errors if "LLM call failed" in e), None)
+        if llm_failure:
+            st.error(
+                "The language model did not return an answer, so no review was written. "
+                "This usually means the PC is short of free memory (RAM) for the local model. "
+                "Close other programs and press Run again.\n\n"
+                f"Details: {llm_failure.split('LLM call failed:', 1)[-1].strip()}"
+            )
+        else:
+            st.success(
+                f"Retrieved {len(papers)} papers — {len(verified)}/{len(papers)} papers verified — "
+                f"{len(claims)}/{provenance_stats.get('total_claims', 0)} claims have valid passage references"
+            )
+            st.markdown("### 📝 Literature Review")
+            st.markdown(answer)
 
-        st.markdown("### 📝 Literature Review")
-        st.markdown(answer)
-
-        st.markdown("### Claim Evidence")
-        if not claims:
+        if claims or not llm_failure:
+            st.markdown("### Claim Evidence")
+        if not claims and not llm_failure:
             st.warning("No claim with a completely valid passage citation set was produced.")
         for index, claim in enumerate(claims, start=1):
             with st.expander(f"Claim {index}: {claim['text'][:90]}"):
@@ -125,7 +134,7 @@ if run and query:
                         ", ".join(claim.get("rejection_reasons", []))
                     )
 
-        if parse_errors:
+        if parse_errors and not llm_failure:
             st.warning(f"Detected {len(parse_errors)} structured-output error(s).")
             with st.expander("Parser audit"):
                 for error in parse_errors:
@@ -140,30 +149,31 @@ if run and query:
             badge = source_badges.get(p["source"], p["source"])
             if p.get("lexical_support"):
                 badge += " + keyword"
-            with st.expander(f"{badge} {p['title'][:80]}... ({p['year']})"):
-                st.write(f"**Category:** {p['category']}")
-                st.write(f"**Fused score:** {round(p['score'], 3)}")
-                st.write(f"**Abstract:** {(p.get('abstract') or 'N/A')[:400]}")
+            title = (p.get("title") or "Untitled").strip()
+            label = f"{badge} · {title[:110]}{'…' if len(title) > 110 else ''} ({p.get('year', '')})"
+            with st.expander(label):
+                st.markdown(f"#### {title}")
+                st.caption(f"{p.get('year', '')} · {p.get('category') or 'uncategorised'} · "
+                           f"fused score {round(p['score'], 3)} · `{p.get('id', '')}`")
+                st.markdown(p.get("abstract") or "_No abstract available._")
 
         # ── METRICS (see docs/EVALUATION_PROTOCOL.md) ──
         stats = provenance_stats
         semantic = result.get("semantic_support", {})
-        st.markdown("### 📊 Answer Checks")
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Citation validity",
-                    f"{stats.get('valid_citations', 0)}/{stats.get('total_citations', 0)}",
-                    help="Cited passage IDs that exist among the supplied evidence passages")
-        col2.metric("Grounded claims",
-                    f"{stats.get('grounded_claims', 0)}/{stats.get('total_claims', 0)}",
-                    help="Claims whose every citation is valid; others are withheld and audited")
-        if semantic.get("enabled"):
-            support = semantic.get("stats", {})
-            col3.metric("Evidence supports claim",
-                        f"{support.get('accepted_claims', 0)}/{support.get('evaluated_claims', 0)}",
-                        help="Local NLI judged the cited passages to support the claim (automated check)")
-        else:
-            col3.metric("Evidence supports claim", "off",
-                        help="Set SEMANTIC_SUPPORT_MODEL to enable NLI checking of each claim")
+        if stats.get("total_claims"):
+            st.markdown("### 📊 Answer Checks")
+            columns = st.columns(3 if semantic.get("enabled") else 2)
+            columns[0].metric("Valid citations",
+                              f"{stats.get('valid_citations', 0)}/{stats.get('total_citations', 0)}",
+                              help="Cited passage IDs that exist among the evidence passages given to the model")
+            columns[1].metric("Grounded claims",
+                              f"{stats.get('grounded_claims', 0)}/{stats.get('total_claims', 0)}",
+                              help="Claims whose every citation is valid; the rest are withheld and listed above")
+            if semantic.get("enabled"):
+                support = semantic.get("stats", {})
+                columns[2].metric("Evidence supports claim",
+                                  f"{support.get('accepted_claims', 0)}/{support.get('evaluated_claims', 0)}",
+                                  help="Local NLI judged the cited passages to support the claim (automated check)")
         sources = {}
         for p in papers:
             sources[p["source"]] = sources.get(p["source"], 0) + 1
@@ -230,7 +240,7 @@ if run and query:
                 h = item.get("paper", {})
                 llm_text = item.get("llm_hypothesis", "")
 
-                with st.expander(f"💡 Hypothesis {i+1}: {h.get('title', '')[:60]}... ({h.get('year', '')})"):
+                with st.expander(f"💡 Hypothesis {i+1}: {h.get('title', '')} ({h.get('year', '')})"):
                     st.markdown(f"**Category:** {h.get('category', 'N/A')}")
                     names = h.get("shared_concept_names") or []
                     st.markdown(f"**Shared Concepts ({h.get('shared_concepts', len(names))}):** "
@@ -260,7 +270,7 @@ if run and query:
         for i, paper in enumerate(result["papers"], 1):
             with st.expander(f"{i}. {paper['title']} ({paper['year']})"):
                 st.markdown(f"**Why:** {paper['why']}")
-                st.markdown((paper.get("abstract") or "")[:800])
+                st.markdown(paper.get("abstract") or "_No abstract available._")
                 st.caption(f"`{paper['id']}`")
 
 elif run and not query:
