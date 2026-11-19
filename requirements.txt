@@ -2,7 +2,7 @@ arxiv==4.0.1
 pandas==3.0.5
 sentence-transformers==6.0.0
 # On NVIDIA systems, install the matching CUDA wheels from download.pytorch.org
-# before this file. See the GPU setup section in README.md.
+# before this file. See docs/RUN_FROM_SCRATCH.md, section 3.
 torch==2.12.1
 transformers==5.16.1
 spacy==3.8.16

@@ -31,7 +31,7 @@ The knowledge graph (Neo4j: papers, authors, 323k scientific entities, and origi
 | Citation recommendation (public DBLP, PubMed) | Co-citation raises Recall@20 on top of BGE, SPECTER2 and SciNCL (+0.07–0.08 on DBLP). With SPECTER2 (itself pretrained on citations) and no training on DBLP, it comes close to the trained Citeomatic system (F1@20 0.300 vs 0.303; MRR 0.708 vs 0.689). The expansion follows Strohman et al. (2007) and Citeomatic's NNSelect; the new evidence is that it still adds to modern encoders | **Adds to modern embeddings, including citation-trained ones**; strongest in CS |
 | Contradiction detection (human-labelled) | Citation grounding raises contradiction-or-tension precision from 9% (5/56) to 56% (5/9; 95% CI 27–81%; one rater) | **Makes the mode work**: candidate pairs are real citation links |
 | Time-sliced discovery | Graph signals nearly double average precision for predicting which method–task pairs researchers adopt later | **Main predictive signal** |
-| Topical retrieval (44 queries) | BGE + BM25 + graph NDCG@10 **0.644**, vs 0.287 for the original system; a LightRAG-style GraphRAG baseline scores 0.396 | Text retrieval already saturates this task. The graph keeps quality level (+0.023) and supplies the citation and ID checks |
+| Topical retrieval (44 queries) | BM25 0.626 and BGE + BM25 0.621 NDCG@10 are already strong; adding the graph gives 0.644 (n.s.). A LightRAG-style GraphRAG baseline scores 0.396 | Text retrieval already saturates this task. The graph keeps quality level (+0.023) and supplies the citation and ID checks |
 | Hypothesis candidates (human-rated) | Graph-selected candidate papers are rated below vector neighbours in two rounds | This led to the method–task ranker now used in the app, which is based on the discovery signal above |
 | Review answer grounding | 41.8% vs 38.9% claims fully supported by the cited passage | Grounding comes from claim-level citation checks, which every answer passes through |
 
@@ -57,7 +57,7 @@ Generated data (`data/`), the fine-tuned entity model (`models/`) and `.env` are
 
 ```powershell
 .\venv\Scripts\python.exe -m pytest -q                                        # tests
-.\venv\Scripts\python.exe -m src.evaluation.reproduce                         # check 24 headline numbers
+.\venv\Scripts\python.exe -m src.evaluation.reproduce                         # check 25 headline numbers
 .\venv\Scripts\python.exe -m streamlit run app\streamlit_app.py --server.address localhost   # app
 ```
 
@@ -78,8 +78,8 @@ Generated data (`data/`), the fine-tuned entity model (`models/`) and `.env` are
 
 - Abstracts and metadata only; no PDF or full-text processing.
 - Only one model is trained: a SciBERT entity tagger fine-tuned on SciERC (typed F1 0.64). Retrieval and generation use pretrained models.
-- Relevance labels come from a 7B LLM judge validated against human grades on GNN-topic pairs (held-out κ 0.75; two humans agree at κ 0.91). On the other ten topics it reaches κ 0.57, below the 0.6 bar: it grades more strictly than a human, equally for systems with and without the graph, but more so for the original system, so the gain over the original system is likely overstated.
-- Rater 1 on every human task built the system (sheets were blind to method); round 2 has one rater.
+- Relevance labels come from a 7B LLM judge validated against human grades on GNN-topic pairs (held-out κ 0.75; two humans agree at κ 0.91). On the other ten topics it reaches κ 0.57, below the 0.6 bar: it grades more strictly than a human, equally for systems with and without the graph, but more so for the original system. A larger 27B judge reaches κ 0.88 on the same pairs; regrading with it is open work.
+- Raters are anonymous. Rater A, on every human task, built the system (sheets were blind to method); round 2 has one rater.
 - Outputs are research suggestions to check, not verified scientific conclusions.
 
 ## Team

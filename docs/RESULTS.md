@@ -34,7 +34,7 @@ Labels come only from the benchmarks. Paired Monte Carlo sign-flip tests (20,000
 | SciNCL | 0.241 | 0.269 | 0.427 | +0.033 |
 | SPECTER | 0.208 | 0.244 | 0.371 | — |
 
-OpenScholar vs BGE: −0.055 (SciDocs) and −0.172 (LitSearch), both p < 0.001. Findings: (1) every alternative beats SPECTER; (2) BM25 fusion helps every dense model on LitSearch; (3) a strong general retriever beats all scientific embedding models tested, and SciNCL's SciDocs strength does not transfer to natural-language questions. SPECTER2 was evaluated without its query adapter (the `adapters` package would downgrade `transformers`), so its scores are a lower bound.
+OpenScholar vs BGE: −0.055 (SciDocs) and −0.172 (LitSearch), both p < 0.001. Findings: (1) every alternative beats SPECTER; (2) BM25 fusion helps every dense model on LitSearch; (3) BGE, a general retriever, has the best NDCG@10 of all embedding models tested on both benchmarks (SciNCL has slightly higher Recall@100 on SciDocs, and BM25 fusion lowers BGE there), and SciNCL's SciDocs strength does not transfer to natural-language questions. SPECTER2 was evaluated without its query adapter (the `adapters` package would downgrade `transformers`), so its scores are a lower bound.
 
 ## 2. Project benchmark (20 GNN queries; AI-reference labels; pool-extended) — superseded by §2c
 
@@ -97,6 +97,8 @@ The 7B judge used for grading sits below human–human agreement (0.76–0.80 vs
 
 **Effect on the conclusions.** On the sampled papers in each system's top 10, the judge under-grades by +0.40 for both BGE + BM25 and BGE + BM25 + graph, so the graph comparison (§2d) is not biased by the judge's error. It under-grades the original system's papers more (+0.61 vs +0.27 to +0.40 for the new systems; 18–30 items per system), so the reported gap between the new and original systems (0.644 vs 0.287) is probably overstated, though the human grades still favour the new systems (mean 1.83 vs 1.44 on the sampled top-10 papers). Absolute NDCG values on the 44-query benchmark are underestimates.
 
+**A larger judge transfers.** The same 100 pairs graded by Qwen3.8-27B (`groq:qwen/qwen3.8-27b`, strict prompt, one paper per call, temperature 0, run 2026-11-20; `build_judge_transfer_sheet.py judge`; grades in `results/retrieval/judge_transfer_20261120/`): κ **0.876** against Rater C (exact 84%, binary 95%; mean grade 1.28 vs the human's 1.34), as on the GNN pairs (0.88). Its errors are small and two-sided (5 higher, 11 lower), and its per-system offsets are 0.17 (original), 0.14 (BGE), −0.04 (BM25), 0.10 (BGE + BM25) and 0.17 (with graph). Regrading the 44-query pool (2,305 pairs) with it would remove the 7B judge's bias; on the free API tier that takes about 12 days, so it is listed as open work.
+
 An earlier full-200 second sheet was excluded: its grades came from a template/AI first pass with 36 of 200 revised by hand (`relevance_sheet_rater2*.csv`, not committed).
 
 ## 2c. GNN benchmark regraded with the validated judge
@@ -135,7 +137,7 @@ Queries: `evaluation/benchmarks/retrieval_queries_v2_stratified_draft.json` v0.5
 | BM25 vs production | +0.339 | [0.270, 0.406] | < 0.0001 | significant |
 | BGE + BM25 vs production | +0.334 | [0.265, 0.405] | < 0.0001 | significant |
 | BGE vs production | +0.306 | [0.235, 0.381] | < 0.0001 | significant |
-| Selected vs BGE alone | +0.052 | [0.012, 0.087] | 0.0095 | borderline (Holm-adjusted p = 0.048; Monte Carlo, 20,000 samples) |
+| Selected vs BGE alone | +0.052 | [0.012, 0.087] | 0.0104 | n.s. (Holm-adjusted ≈ 0.052; 1,000,000 permutations, two seeds; 20,000 gave 0.0095) |
 | Selected vs BGE + BM25 (graph contribution) | +0.023 | [−0.011, 0.059] | 0.21 | n.s. |
 | Selected vs BM25 | +0.019 | [−0.029, 0.064] | 0.46 | n.s. |
 | BGE vs BM25 | −0.033 | [−0.090, 0.024] | 0.27 | n.s. |
@@ -143,7 +145,7 @@ Queries: `evaluation/benchmarks/retrieval_queries_v2_stratified_draft.json` v0.5
 
 Dev and test halves (22 queries each) agree: selected 0.710 / 0.578; production 0.306 / 0.268. Two operating-systems queries have no grade-2 paper in the pool (V2-11-2, V2-11-3).
 
-**Findings.** (1) The selected system beats the original production system by a large margin on every topic split. (2) Its advantage over BGE alone comes from BM25 fusion. Graph expansion over BGE + BM25 is a small, non-significant gain (+0.023), and graph expansion alone does not help BGE (−0.008). (3) BM25 is a strong baseline on this corpus; the selected system's lead over it is not significant. Retrieval claims must therefore credit lexical fusion, not the graph.
+**Findings.** (1) The selected system beats the original production system by a large margin on every topic split. (2) Its advantage over BGE alone (+0.052) is not significant after Holm correction; most of it comes with BM25 fusion. Graph expansion over BGE + BM25 is a small, non-significant gain (+0.023), and graph expansion alone does not help BGE (−0.008). (3) BM25 is a strong baseline on this corpus; the selected system's lead over it is not significant. Retrieval claims must therefore credit lexical fusion, not the graph.
 
 ## 2e. Retrieval on the densified citation graph
 
@@ -265,7 +267,7 @@ All gains and losses are significant (paired sign-flip, p ≤ 0.019). The valida
 
 ## 2g. GraphRAG baseline: LightRAG-style retrieval (44 stratified queries)
 
-A real LightRAG or Microsoft GraphRAG index needs about two LLM extraction calls per chunk, more than a week for 47,619 abstracts on the project's 4 GB laptop GPU. `src/evaluation/lightrag_baseline.py` keeps LightRAG's query-time algorithm (Guo et al., 2024; query logic of v1.4) and replaces only the LLM-built index with the SciERC graph: 558,123 entities embedded by name with BGE, and 604,108 relations (entity pairs co-occurring in at least 2 abstracts) embedded as "source, target". The local 7B model extracts high- and low-level keywords per query with LightRAG's keyword instructions (`keywords.json`). Modes: local (top 60 entities, papers ordered by entity rank and neighbour overlap), global (top 60 relations re-sorted by degree), hybrid (round-robin of local and global) and mix (round-robin of BGE, local and global). Hybrid and mix were pool-extended with the same validated 7B judge (768 new pairs; 3,073 total) and are fully judged at depth 20; local and global are reported with their unjudged papers (44%) counted as non-relevant. Results: `results/retrieval/stratified_v2_lightrag_20261119/summary.json`.
+A real LightRAG or Microsoft GraphRAG index needs about two LLM extraction calls per chunk, more than a week for 47,619 abstracts on the project's 4 GB laptop GPU. `src/evaluation/lightrag_baseline.py` keeps LightRAG's query-time algorithm (Guo et al., 2024; query logic of v1.4) and replaces only the LLM-built index with the SciERC graph: 558,123 entities embedded by name with BGE (every distinct mention; the Neo4j graph keeps only the first 15 mentions per abstract, giving 323,624 `SciEntity` nodes), and 604,108 relations (entity pairs co-occurring in at least 2 abstracts) embedded as "source, target". The local 7B model extracts high- and low-level keywords per query with LightRAG's keyword instructions (`keywords.json`). Modes: local (top 60 entities, papers ordered by entity rank and neighbour overlap), global (top 60 relations re-sorted by degree), hybrid (round-robin of local and global) and mix (round-robin of BGE, local and global). Hybrid and mix were pool-extended with the same validated 7B judge (768 new pairs; 3,073 total) and are fully judged at depth 20; local and global are reported with their unjudged papers (44%) counted as non-relevant. Results: `results/retrieval/stratified_v2_lightrag_20261119/summary.json`.
 
 | NDCG@10 | All 44 | Dev 22 | Test 22 | P@10 (all) |
 |---|---:|---:|---:|---:|

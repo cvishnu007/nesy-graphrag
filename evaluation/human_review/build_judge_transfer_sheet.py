@@ -7,7 +7,9 @@ oversampled, as in the first sheet, so every grade has enough items for kappa).
 
 Build (deterministic, seed 20261120; needs the cleaned corpus for paper text):
     python evaluation/human_review/build_judge_transfer_sheet.py build
-Score a completed copy (needs only committed files):
+Grade the same 100 pairs with another judge (one paper per call; saved under JUDGE_DIR):
+    python evaluation/human_review/build_judge_transfer_sheet.py judge --judge groq:qwen/qwen3.8-27b@strict
+Score a completed copy (needs only committed files; also scores every saved extra judge):
     python evaluation/human_review/build_judge_transfer_sheet.py score --sheet <completed.csv>
 
 The sheet shows only query, title and abstract; items are numbered T001..T100 in shuffled
@@ -33,6 +35,7 @@ LABELS = Path("results/retrieval/stratified_v2_20261114/labels.jsonl")
 SHEET = HERE / "judge_transfer_sheet_blank.csv"
 KEY = HERE / "judge_transfer_key_DO_NOT_SHARE_WITH_ANNOTATORS.json"
 REPORT = HERE / "judge_transfer_report.json"
+JUDGE_DIR = Path("results/retrieval/judge_transfer_20261120")
 EXCLUDED_TOPIC = "graph neural networks"  # already covered by the first validation
 QUOTA = {0: 4, 1: 2, 2: 4}
 SEED = 20261120
@@ -109,6 +112,34 @@ def build():
     print(f"wrote {SHEET} ({len(sheet)} items) and {KEY}")
 
 
+def run_judge(spec):
+    """Grade the blank sheet's 100 pairs with ``provider:model@prompt``, one paper per call."""
+    import re
+    from datetime import date
+
+    from src.evaluation.judge_agreement import judge, make_client
+
+    model_spec, prompt_name = spec.rsplit("@", 1)
+    JUDGE_DIR.mkdir(parents=True, exist_ok=True)
+    safe = re.sub(r"[^A-Za-z0-9]+", "_", spec)
+    sheet = [{"item_id": r["item_id"], "query": r["query"], "paper_title": r["paper_title"],
+              "paper_abstract": r["paper_abstract"]} for r in rows(SHEET)]
+    grades = judge(make_client(model_spec), sheet, prompt_name, JUDGE_DIR / f"{safe}.jsonl", batch_size=1)
+    meta = JUDGE_DIR / "runs.json"
+    runs = json.loads(meta.read_text()) if meta.exists() else {}
+    runs[safe] = {"judge": spec, "papers_per_call": 1, "temperature": 0.0, "date": date.today().isoformat(),
+                  "items": len(grades)}
+    meta.write_text(json.dumps(runs, indent=2) + "\n")
+    print(f"graded {len(grades)} items with {spec}")
+
+
+def extra_judges():
+    """Saved extra-judge grades: {name: {T-id: grade}}."""
+    runs = json.loads((JUDGE_DIR / "runs.json").read_text()) if (JUDGE_DIR / "runs.json").exists() else {}
+    return {name: {r["item_id"]: int(r["grade"]) for r in map(json.loads, (JUDGE_DIR / f"{name}.jsonl").read_text().splitlines())}
+            for name in runs}
+
+
 def score(sheet_path, output=REPORT):
     mapping, labels, qs = subset_mapping(), judge_labels(), queries()
     human = {}
@@ -135,6 +166,8 @@ def score(sheet_path, output=REPORT):
     for row in map(json.loads, (LABELS.parent / "rankings.jsonl").read_text().splitlines()):
         rankings[row["variant"]][row["query_id"]] = row["ranked_paper_ids"][:10]
     by_variant = {}
+    extras = extra_judges()
+    t_of = {item: t for t, item in mapping.items()}
     for variant in VARIANTS:
         its = [i for i in items if i.split("/", 1)[1] in rankings[variant].get(i.split("/")[0], [])]
         if its:
@@ -142,25 +175,40 @@ def score(sheet_path, output=REPORT):
             by_variant[variant] = {"items_in_top10": len(its), "mean_human": round(sum(h) / len(h), 3),
                                    "mean_judge": round(sum(j) / len(j), 3),
                                    "human_minus_judge": round((sum(h) - sum(j)) / len(h), 3)}
+            for name, grades in extras.items():
+                g = [grades[t_of[i]] for i in its]
+                by_variant[variant][f"human_minus_{name}"] = round((sum(h) - sum(g)) / len(h), 3)
+    by_t = {t: human[item] for t, item in mapping.items()}
+    other = {}
+    for name, grades in extra_judges().items():
+        ts = sorted(by_t)
+        other[name] = pair_report([by_t[t] for t in ts], [grades[t] for t in ts])
+        other[name]["mean_judge"] = round(sum(grades[t] for t in ts) / len(ts), 3)
     report = {"sheet": str(sheet_path), "judge": "ollama:qwen2.5:7b-instruct@strict (stored pool labels)",
-              "items": len(items), "judge_vs_human": overall, "per_topic": per_topic,
+              "items": len(items), "judge_vs_human": overall, "other_judges_vs_human": other,
+              "per_topic": per_topic,
               "by_variant_top10": by_variant,
               "first_validation_heldout_kappa_gnn": FIRST_VALIDATION_KAPPA,
               "threshold": "predeclared: quadratic-weighted kappa >= 0.6, as for the first validation",
               "note": "Sample stratified by judge grade, so kappa is not directly comparable with a random sample."}
     Path(output).write_text(json.dumps(report, indent=2) + "\n")
-    print(json.dumps({k: report[k] for k in ("items", "judge_vs_human")}, indent=2))
+    print(json.dumps({k: report[k] for k in ("items", "judge_vs_human", "other_judges_vs_human")}, indent=2))
     return report
 
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("stage", choices=("build", "score"))
+    parser.add_argument("stage", choices=("build", "judge", "score"))
     parser.add_argument("--sheet")
+    parser.add_argument("--judge", help="provider:model@prompt for the judge stage")
     parser.add_argument("--output", default=str(REPORT))
     args = parser.parse_args(argv)
     if args.stage == "build":
         build()
+    elif args.stage == "judge":
+        if not args.judge:
+            parser.error("judge needs --judge")
+        run_judge(args.judge)
     else:
         if not args.sheet:
             parser.error("score needs --sheet")

@@ -65,7 +65,9 @@ def test_graph_view_numbers_suggestions_and_links_query():
     assert labels["s1"] == "1" and labels["s2"] == "2"
     assert nodes[1]["color"] == colors["graph"] and nodes[2]["color"] == colors["text_only"]
     assert {(e["from"], e["to"]) for e in edges} == {("__query__", "s1"), ("__query__", "s2"), ("n1", "s1")}
-    assert "vis-network@9.1.9" in graph_html(result)
+    page = graph_html(result)
+    # The bundled library is inlined so the map works offline; no CDN request.
+    assert "@version 9.1.9" in page and "unpkg.com" not in page
 
 
 def test_attach_citation_evidence_titles_in_similarity_order():

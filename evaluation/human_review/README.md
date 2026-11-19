@@ -15,7 +15,7 @@ These human labels are what make the evaluation publishable: they validate the a
 
 | # | Task | Who | Time | Status |
 |---|---|---|---|---|
-| 1 | Relevance grades, 200 pairs | CV | 2–3 h | ✅ Done (`relevance_sheet_cv.csv`). Selected the AI judge: κ 0.88 held out |
+| 1 | Relevance grades, 200 pairs | CV | 2–3 h | ✅ Done (`relevance_sheet_cv.csv`). Selected the AI judge: the local 7B judge used, held-out κ 0.75 (the 27B judge reached 0.88 but is rate-limited) |
 | 2 | Review the 44-query stratified benchmark | CV | 1 h | ✅ Done (v0.5, `evaluation/benchmarks/`) |
 | 3 | Second relevance annotator, same 200 pairs | Teammate (not CV) | 2–3 h | ⚠️ Returned 2026-11-19, but started from an AI/template pass (36 of 200 grades revised by hand); not usable as independent agreement. Replaced by task 3b |
 | 3b | **Independent** second relevance grader, 50-pair subset | Teammate (not CV) | ~40 min | ✅ Done 2026-11-19 (`relevance_subset50_sheet_rater3.csv`): human–human κ 0.91 |

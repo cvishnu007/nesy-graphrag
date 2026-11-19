@@ -4,7 +4,7 @@ Last updated: November 19, 2026. Detailed state and decisions: [AGENT_HANDOFF.md
 
 ## Stage
 
-**Research and evaluation complete; the paper draft is ready for venue formatting.** All planned experiments, baselines and human ratings are done. Remaining work is non-technical: choose a venue, add authors, and format the draft.
+**Draft; references and figures pending.** The planned experiments, baselines and human ratings are done and an internal audit's blockers are addressed. Open: figures, checking the references not marked †, regrading the 44-query pool with the 27B judge, then venue, authors and formatting.
 
 ## System
 
@@ -17,13 +17,13 @@ Last updated: November 19, 2026. Detailed state and decisions: [AGENT_HANDOFF.md
 | Language model | Local `qwen2.5:7b-instruct` (Ollama) |
 | App modes | Literature Review, Contradiction Detection (citation-grounded), Hypothesis Generation (method–task ranker), Related Work (co-citation, citation map) |
 | Tests | 406 passing (no databases or models needed) |
-| Reproduction | `python -m src.evaluation.reproduce`: 24/24 headline numbers |
+| Reproduction | `python -m src.evaluation.reproduce`: 24/25 headline numbers |
 
 ## Results
 
 Full tables in [docs/RESULTS.md](docs/RESULTS.md).
 
-- **Topical retrieval:** BGE + BM25 + graph NDCG@10 0.644 vs 0.287 for the original system (44 queries). The graph adds a non-significant +0.023. Densifying citations adds −0.003 on test. A LightRAG-style GraphRAG baseline scores 0.396 (§2g).
+- **Topical retrieval:** BM25 0.626, BGE + BM25 0.621 and with the graph 0.644 NDCG@10 (44 queries); the graph adds a non-significant +0.023, and the gain over BGE alone is not significant after Holm (p = 0.0104). Densifying citations adds −0.003 on test. A LightRAG-style GraphRAG baseline scores 0.396 (§2g).
 - **Citation recommendation:** co-citation +28% Recall@20 on our corpus (§2f). On public DBLP and PubMed it raises Recall@20 on top of BGE, SPECTER2 and SciNCL (citation-trained encoders). With SPECTER2 (itself citation-pretrained) on DBLP it comes close to the trained Citeomatic system (F1@20 0.300 vs 0.303; MRR 0.708 vs 0.689). On PubMed it lowers MRR, because text alone is already very precise there (§2h).
 - **Time-sliced discovery:** graph signals nearly double average precision over text similarity (§4c–4d).
 - **Contradictions:**
@@ -31,7 +31,7 @@ Full tables in [docs/RESULTS.md](docs/RESULTS.md).
   - Round 2, citation-grounded index: 5 of 9 verdict-flagged pairs are a contradiction or tension (§5b-2).
 - **Hypotheses:** graph-selected candidate papers are rated below vector neighbours in round 1 (two raters, κ 0.82–0.90) and round 2 (held-out queries) (§4b).
 - **Answer grounding:** 41.8% vs 38.9% supported claims against plain vector RAG, not significant (§5c-2).
-- **Judge:** a local 7B judge reaches held-out κ 0.75 against human grades; two humans agree at κ 0.91 (§2b).
+- **Judge:** a local 7B judge reaches held-out κ 0.75 on GNN pairs but 0.57 on the other ten topics; a 27B judge reaches 0.88 on both; two humans agree at κ 0.91 (§2b).
 
 ## Branches and tags
 

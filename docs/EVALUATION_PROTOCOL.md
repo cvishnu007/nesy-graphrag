@@ -74,3 +74,16 @@ Earlier selection:
 | 2026-11-13 | dev (6 queries, pool-extended) | `full_ta_bm25_similar`: SPECTER title+abstract index, BM25 RRF arm (weight 1), graph expansion over CITES and SIMILAR_TO (limit 50) with relative gate (margin 0.03) | `results/retrieval/variant_ablation_dev_20261113/selection.json` |
 
 One-time test outcome (14 queries, pool-extended): selected 0.476 NDCG@10, production 0.449 (p = 0.56), BM25 0.529 (selected − BM25 = −0.053, p = 0.41). Not confirmed; production defaults unchanged. Six dev queries are too few for selection; use the stratified set (22 dev queries) for the next selection round.
+
+## 8. Amendments (2026-11-20)
+
+Recorded after an internal audit. These are deviations from §4–§5, stated in the paper's limitations.
+
+| Section | Protocol | What was done | Why |
+|---|---|---|---|
+| §5 Judge reliability | Two people grade at least 200 pooled pairs | 200 pairs by one rater (GNN pool); a second rater on a blinded 50-pair subset (κ 0.91); 100 pairs from the ten other topics by a third rater (judge transfer) | Rater time; the second rater's subset was stratified so every grade is covered |
+| §5 Judge reliability | If human–AI agreement is weak, rescore with human labels and state the effect | The 7B judge reaches κ 0.57 on the ten non-GNN topics; the effect is stated (strict, equal with and without the graph, larger for the original system). A 27B judge reaches 0.88 on the same pairs; regrading the pool with it is open | API rate limits |
+| §4 Hypotheses | 1/3/5 rubric over five dimensions, acceptance by `rating_accepted` | Relevance, novelty and promise on 1–5 scales, two raters in round 1 | A shorter rubric for the time raters had; agreement remained high (κ 0.82–0.90) |
+| §4 Contradiction | At least 10 contradiction positives per split | Precision of contradiction-or-tension on human-labelled candidates; at most 2 confirmed contradictions per arm | Real contradictions are rare in CS abstracts; results are reported as small-sample and preliminary |
+| §1 Significance | Monte Carlo tests | Results near a threshold are rechecked with 1,000,000 permutations (Selected vs BGE: p = 0.0104, not significant after Holm) | A 20,000-permutation estimate fell within sampling error of the Holm threshold |
+

@@ -60,7 +60,11 @@ def judge_transfer_kappa():
     human = {mapping[r["item_id"]]: int(r["grade_0_1_2"]) for r in csv.DictReader(
         open("evaluation/human_review/judge_transfer_sheet_raterC.csv", encoding="utf-8-sig"))}
     items = sorted(human)
-    return pair_report([human[i] for i in items], [labels[i] for i in items])["quadratic_weighted_kappa"]
+    kappa = pair_report([human[i] for i in items], [labels[i] for i in items])["quadratic_weighted_kappa"]
+    by_t = {t: human[item] for t, item in mapping.items()}
+    large = builder.extra_judges()["groq_qwen_qwen3_8_27b_strict"]
+    ts = sorted(by_t)
+    return kappa, pair_report([by_t[t] for t in ts], [large[t] for t in ts])["quadratic_weighted_kappa"]
 
 
 def stratified():
@@ -96,6 +100,7 @@ EXPECTED = {
     "judge held-out kappa, 27B strict": 0.8837,
     "human-human kappa, 50-pair subset": 0.9084,
     "judge transfer kappa, 10 non-GNN topics": 0.5714,
+    "judge transfer kappa, 27B, 10 non-GNN topics": 0.8759,
     "hypothesis round 1 relevance kappa, 2 raters": 0.9047,
     "contradiction round 1 kappa, 2 raters": 0.7601,
     "hypothesis round 2 relevance, bridge minus vector": -0.5385,
@@ -121,6 +126,7 @@ EXPECTED = {
 
 def main() -> int:
     kappa = judge_kappa()
+    transfer = judge_transfer_kappa()
     strat = stratified()
     gnn = regraded_gnn()
     cit = "results/retrieval/citation_recommendation_20261115/test_summary.json"
@@ -129,7 +135,8 @@ def main() -> int:
         "judge held-out kappa, 7B strict 1/call": kappa["7b_strict_batch1"],
         "judge held-out kappa, 27B strict": kappa["27b_strict"],
         "human-human kappa, 50-pair subset": human_human_kappa(),
-        "judge transfer kappa, 10 non-GNN topics": judge_transfer_kappa(),
+        "judge transfer kappa, 10 non-GNN topics": transfer[0],
+        "judge transfer kappa, 27B, 10 non-GNN topics": transfer[1],
         "hypothesis round 1 relevance kappa, 2 raters": saved(
             "evaluation/human_review/hypothesis_report_cv_rater3.json", "inter_rater_kappa",
             "hypothesis_sheet_rated_cv~hypothesis_sheet_rated_rater3", "relevance_1_5"),

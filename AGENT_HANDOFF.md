@@ -25,7 +25,7 @@ The current implementation is an abstract-and-metadata prototype. It is delibera
 
 **Application** (`app/streamlit_app.py`; configuration in the local `.env`, mirrored in `.env.example`):
 - Four modes: Literature Review, Contradiction Detection (`CONTRADICTION_CANDIDATE_MODE=citation`), Hypothesis Generation (`HYPOTHESIS_GENERATOR=ranker`), and Related Work.
-- Related Work shows an interactive citation map (`app/graph_view.py`, vis-network 9.1.9 loaded from unpkg) and lists every citation behind each suggestion (`related_work()` returns `graph`, `cited_by_similar`, `cites` and `cited_by`).
+- Related Work shows an interactive citation map (`app/graph_view.py`, vis-network 9.1.9 bundled in `app/static/`, so it works offline) and lists every citation behind each suggestion (`related_work()` returns `graph`, `cited_by_similar`, `cites` and `cited_by`).
 - Review shows a red error with the reason when the LLM returns nothing (usually Ollama refusing for lack of free RAM), instead of empty 0/0 checks.
 - `OLLAMA_KEEP_ALIVE=30m` keeps the model loaded between queries.
 - On a 16 GB machine, run only one model-heavy job at a time.
@@ -41,17 +41,28 @@ The current implementation is an abstract-and-metadata prototype. It is delibera
   - Round 2 (rater 1): hypotheses (the bridge does not beat vector neighbours) and contradictions (56% tension-or-contradiction precision for verdict-flagged pairs).
   - Template/AI-generated second-rater sheets are kept in `evaluation/human_review/excluded/` and used nowhere.
 - **Citation-trained encoders** (`citeomatic_benchmark --encoder specter2_base|scincl`). Co-citation raises Recall@20 on top of all three encoders in both domains. SPECTER2 + BM25 + co-citation on DBLP test: 0.300 / 0.708 vs trained Citeomatic 0.303 / 0.689. The script exits with `os._exit` after writing results, because Windows CUDA teardown hung.
-- `src/evaluation/reproduce.py` checks 24 headline numbers. 406 tests pass.
+- `src/evaluation/reproduce.py` checks 25 headline numbers. 406 tests pass.
 
 **Review fixes (November 19, on `baselines-graphrag-citation`).** An external-style review listed six blockers. Done:
-- `reproduce.py` no longer needs the gitignored subset key; `build_relevance_subset.subset_mapping()` rebuilds it deterministically. Verified 24/24 in a fresh clone.
-- Overstatements corrected in the abstract, README, RESULTS and PROJECT_STATUS: "Selected vs BGE alone" is borderline (p = 0.0095, Holm-adjusted 0.048), not plainly significant; SPECTER2 is citation-pretrained, so "untrained … matches Citeomatic" became "no training on DBLP … comes close to"; contradiction precision now carries counts and CIs (5/9, 27–81%) and the single-rater caveat; "exactly as relevant" became "about as relevant"; the abstract lists four findings and four public benchmarks.
+- `reproduce.py` no longer needs the gitignored subset key; `build_relevance_subset.subset_mapping()` rebuilds it deterministically. Verified 25/25 in a fresh clone.
+- Overstatements corrected in the abstract, README, RESULTS and PROJECT_STATUS: "Selected vs BGE alone" is not significant after Holm (p = 0.0104 with 1,000,000 permutations; adjusted ≈ 0.052); SPECTER2 is citation-pretrained, so "untrained … matches Citeomatic" became "no training on DBLP … comes close to"; contradiction precision now carries counts and CIs (5/9, 27–81%) and the single-rater caveat; "exactly as relevant" became "about as relevant"; the abstract lists four findings and four public benchmarks.
 - Related work rewritten with the closest prior work (Strohman et al. 2007; McNee et al. 2002; Citeomatic NNSelect; Small; Kessler; citation function; AGATHA, Science4Cast, SciMON; HippoRAG; LLM-judge papers) and a 41-entry reference list (11 checked online, marked †).
 - PAPER_DRAFT §3.1 explains what is neural and what is symbolic.
 - `evaluation/human_review/build_judge_transfer_sheet.py` and `judge_transfer_sheet_blank.csv`: 100 blinded pairs from the ten non-GNN topics to check the judge (task 9). The key is gitignored and also rebuildable.
 - `evaluation/human_review/README.md` has a Rater record table with blanks for the owner.
 
 Task 9 graded by Rater C: judge κ 0.57 on the ten non-GNN topics, below the 0.6 bar; the judge is strict, equally with and without the graph (+0.40), more for the original system (+0.61). RESULTS §2b, PAPER §4.3 and §7 report it; `reproduce.py` checks it (24 numbers). Rater C is a project member who did not build the system (no AI, no key). Optional: a second rater for round 2.
+
+**Second audit pass (November 20).** Chinmay's re-check of `7d60f9f` listed remaining items; done on `baselines-graphrag-citation`:
+- Abstract and README no longer claim BGE + BM25 "beats every scientific embedding" (false on SciDocs) or headline "more than doubles the original system"; they lead with BM25 0.626 and BGE + BM25 0.621.
+- Holm recheck with 1,000,000 permutations: p = 0.0104, adjusted ≈ 0.052, not significant (RESULTS §2d, PAPER §5.2).
+- 27B judge on the 100 judge-transfer pairs (`build_judge_transfer_sheet.py judge --judge groq:qwen/qwen3.8-27b@strict`; grades and run settings in `results/retrieval/judge_transfer_20261120/`): κ 0.876 vs Rater C. Regrading the 2,305-pair 44-query pool with it is open (about 12 days on the free tier; the judge checkpoints, so it can run a day at a time). Do not use extra Groq keys to go faster.
+- Entity counts explained: Neo4j keeps the first 15 mentions per abstract (323,624 names); the LightRAG-style index uses all mentions (558,123).
+- Related work adds GraphRAG-Bench (Xiang et al., ICLR 2026), Han et al. (2025), HippoRAG 2, scite, Jurgens et al. (2018), Si et al. (ICLR 2025), UMBRELA; C-Pack updated to SIGIR 2024. 48 references, 18 checked online (†).
+- `EVALUATION_PROTOCOL.md` §8 records the protocol deviations; PROJECT_STATUS no longer says "ready for venue formatting"; the human-review README's "κ 0.88" line now names the 7B judge (0.75); `requirements.txt` points to RUN_FROM_SCRATCH §3.
+- `reproduce.py` checks 25 numbers.
+
+Still open from the audit (larger work): save per-query results for citation recommendation, DBLP/PubMed and time-sliced and recompute them in `reproduce.py`; commit or rebuild the hypothesis/contradiction arm keys; near-duplicate exclusion in neighbour sets and pre-cutoff entity typing; reranker, PageRank-style graph retriever and SPECTER2-with-adapters baselines; figures; a contribution split per team member; demo prep (`NEO4J_ALLOW_RESET=false` in the local `.env`, rehearse on the demo laptop, backup video; vis-network is now bundled).
 
 **Local `.env` warning.** On November 19 the owner's `.env` had `NEO4J_ALLOW_RESET=true`. It should be `false` except during an intentional graph rebuild.
 
@@ -296,7 +307,7 @@ This requires no live database or LLM, but it reproduces AI-reference package re
 .\venv\Scripts\python.exe -m src.evaluation.reproduce
 ```
 
-This recomputes 24 headline values (judge κ including the judge-transfer check, human agreement and ratings, stratified and regraded NDCG, the LightRAG-style baseline, citation recommendation on our corpus and on DBLP/PubMed, time-sliced AP and P@10) from saved artifacts, and exits non-zero on drift. It needs only committed files; the gitignored subset keys are rebuilt deterministically.
+This recomputes 25 headline values (judge κ including the judge-transfer check, human agreement and ratings, stratified and regraded NDCG, the LightRAG-style baseline, citation recommendation on our corpus and on DBLP/PubMed, time-sliced AP and P@10) from saved artifacts, and exits non-zero on drift. It needs only committed files; the gitignored subset keys are rebuilt deterministically.
 
 ### Verify code after changes
 

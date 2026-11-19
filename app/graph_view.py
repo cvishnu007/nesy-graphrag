@@ -9,8 +9,20 @@ from __future__ import annotations
 
 import html
 import json
+from functools import lru_cache
+from pathlib import Path
 
 VIS_NETWORK = "https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"
+# Bundled copy (Apache-2.0 OR MIT) so the map works offline; the CDN is only a fallback.
+VIS_NETWORK_LOCAL = Path(__file__).with_name("static") / "vis-network-9.1.9.min.js"
+
+
+@lru_cache(maxsize=1)
+def vis_script_tag():
+    if VIS_NETWORK_LOCAL.exists():
+        code = VIS_NETWORK_LOCAL.read_text(encoding="utf-8").replace("</script", "<\/script")
+        return f"<script>{code}</script>"
+    return f'<script src="{VIS_NETWORK}"></script>'
 
 PALETTE = {
     "light": {"text": "#1f2328", "muted": "#59636e", "query": "#6d28d9", "graph": "#c2410c",
@@ -68,7 +80,7 @@ def graph_html(result, *, theme="dark", height=560):
     nodes, edges, c = build_graph(result, theme=theme)
     data = json.dumps({"nodes": nodes, "edges": edges})
     return f"""<!doctype html><html><head><meta charset="utf-8">
-<script src="{VIS_NETWORK}"></script>
+{vis_script_tag()}
 <style>
   html,body{{margin:0;background:{c['panel']};font-family:sans-serif;color:{c['text']}}}
   #net{{height:{height - 40}px;width:100%}}

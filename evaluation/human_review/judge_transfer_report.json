@@ -8,6 +8,15 @@
     "exact_agreement": 0.61,
     "binary_relevant_agreement": 0.74
   },
+  "other_judges_vs_human": {
+    "groq_qwen_qwen3_8_27b_strict": {
+      "n": 100,
+      "quadratic_weighted_kappa": 0.8759,
+      "exact_agreement": 0.84,
+      "binary_relevant_agreement": 0.95,
+      "mean_judge": 1.28
+    }
+  },
   "per_topic": {
     "artificial intelligence and machine learning": {
       "items": 10,
@@ -75,31 +84,36 @@
       "items_in_top10": 18,
       "mean_human": 1.444,
       "mean_judge": 0.833,
-      "human_minus_judge": 0.611
+      "human_minus_judge": 0.611,
+      "human_minus_groq_qwen_qwen3_8_27b_strict": 0.167
     },
     "bge": {
       "items_in_top10": 22,
       "mean_human": 1.818,
       "mean_judge": 1.545,
-      "human_minus_judge": 0.273
+      "human_minus_judge": 0.273,
+      "human_minus_groq_qwen_qwen3_8_27b_strict": 0.136
     },
     "bm25": {
       "items_in_top10": 26,
       "mean_human": 1.846,
       "mean_judge": 1.538,
-      "human_minus_judge": 0.308
+      "human_minus_judge": 0.308,
+      "human_minus_groq_qwen_qwen3_8_27b_strict": -0.038
     },
     "rrf_bge_bm25": {
       "items_in_top10": 30,
       "mean_human": 1.9,
       "mean_judge": 1.5,
-      "human_minus_judge": 0.4
+      "human_minus_judge": 0.4,
+      "human_minus_groq_qwen_qwen3_8_27b_strict": 0.1
     },
     "full_bge_bm25_similar": {
       "items_in_top10": 30,
       "mean_human": 1.833,
       "mean_judge": 1.433,
-      "human_minus_judge": 0.4
+      "human_minus_judge": 0.4,
+      "human_minus_groq_qwen_qwen3_8_27b_strict": 0.167
     }
   },
   "first_validation_heldout_kappa_gnn": 0.75,
