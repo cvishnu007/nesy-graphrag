@@ -40,6 +40,7 @@ The repository is on `phase3` at `8f2eaa2`, four commits ahead of `origin/phase3
 - **Citation graph densified.** Reference lists for 46,708 papers (from 10,899) via Semantic Scholar and OpenAlex; opt-in `CITES_ADDED`, `COUPLED_WITH`, and `ExternalPaper` layers. Isolated papers fell from 71.4% to 2.4%.
 - **Application now uses the validated components:** the local 7B model, citation-index contradictions, the method–task hypothesis ranker (RESULTS §4d), and a new Related Work mode. The reasoning switches await round 2 confirmation; see AGENT_HANDOFF.md.
 - **Time-sliced discovery benchmark:** graph signals nearly double average precision over text similarity when predicting 2023–2025 method–task combinations from pre-2023 data (RESULTS §4c).
+- **GraphRAG baseline (branch `baselines-graphrag-citation`).** A LightRAG-style retriever over the SciERC graph scores 0.396 NDCG@10 (mix mode) vs 0.642 for this system and 0.591 for BGE alone (RESULTS §2g).
 - **Where the graph helps.** The densified graph does not improve topical retrieval (test −0.003 vs no graph) but adds +0.068 Recall@20 (28% relative, p < 0.0001) on leakage-controlled citation recommendation. Near-duplicate collapse is enabled in `.env` (no pair co-occurs in any benchmark top 10).
 - 386 tests pass. Tables: [docs/RESULTS.md](docs/RESULTS.md). Human tasks: [evaluation/human_review/README.md](evaluation/human_review/README.md).
 

@@ -79,6 +79,7 @@ EXPECTED = {
     "contradiction round 1 kappa, 2 raters": 0.7601,
     "hypothesis round 2 relevance, bridge minus vector": -0.5385,
     "contradiction round 2, verdict-flagged tension+ precision": 0.556,
+    "LightRAG-style mix NDCG@10 (44 queries)": 0.396,
     "stratified NDCG@10, selected": 0.644,
     "stratified NDCG@10, BM25": 0.626,
     "stratified NDCG@10, BGE+BM25": 0.621,
@@ -116,6 +117,9 @@ def main() -> int:
         "contradiction round 2, verdict-flagged tension+ precision": saved(
             "evaluation/human_review/contradiction_round2_report_cv.json", "arms",
             "index_verdict_contradiction", "precision_contradiction_or_tension"),
+        "LightRAG-style mix NDCG@10 (44 queries)": saved(
+            "results/retrieval/stratified_v2_lightrag_20261119/summary.json", "splits", "all", "variants",
+            "lightrag_mix", "ndcg@10"),
         "stratified NDCG@10, selected": strat["full_bge_bm25_similar"],
         "stratified NDCG@10, BM25": strat["bm25"],
         "stratified NDCG@10, BGE+BM25": strat["rrf_bge_bm25"],

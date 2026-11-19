@@ -13,13 +13,13 @@ Literature review assistants must find relevant work, surface disagreements, and
 We take an empirical stance and ask: *for which tasks does graph structure add value over a strong text retriever?* Our contributions:
 
 1. **A controlled evaluation** of retrieval for scholarly RAG on SciDocs, LitSearch, and two project benchmarks, using a dev/test protocol, pool extension, and an LLM judge validated on human grades (§4).
-2. **A boundary result for graph structure.** It is redundant for topical ranking even after densifying citations 7× (§5.2), but it gives large gains for citation recommendation (§5.3) and for predicting future method–task combinations (§5.4).
+2. **A boundary result for graph structure.** It is redundant for topical ranking even after densifying citations 7×, and a LightRAG-style entity-graph retriever falls far below text retrieval (§5.2), but it gives large gains for citation recommendation (§5.3) and for predicting future method–task combinations (§5.4).
 3. **A methodological warning about LLM judges.** A 3B judge's labels agreed with a human at κ 0.17 because of batch-position bias. Correcting the judge changed every effect size (§4.3).
 4. **Human-rated reasoning modes.** Citation-grounded contradiction detection works where NLI screening on abstracts did not (§5.6). Graph-derived hypothesis candidates do not beat vector neighbours in two human rounds, and a revision chosen with an LLM judge did not transfer to held-out queries (§5.5).
 
 ## 2. Related work
 
-**GraphRAG.** Edge et al. (2024) build LLM-extracted entity graphs with community summaries for query-focused summarisation. We use citation and supervised entity graphs, and we measure task by task where they help.
+**GraphRAG.** Edge et al. (2024) build LLM-extracted entity graphs with community summaries for query-focused summarisation. LightRAG (Guo et al., 2024) indexes LLM-extracted entities and relations and retrieves through dual-level keyword matching; we evaluate its retrieval algorithm as a baseline. We use citation and supervised entity graphs, and we measure task by task where they help.
 
 **Scientific retrieval and RAG.** SPECTER (Cohan et al., 2020) and SciNCL (Ostendorff et al., 2022) learn citation-informed embeddings. OpenScholar (Asai et al., 2024) retrieves over about 45M papers. LitSearch (Ajith et al., 2024) and SciDocs (BEIR; Thakur et al., 2021) benchmark literature search. We find a general embedding (BGE; Xiao et al., 2023) with BM25 beats the scientific embeddings tested.
 
@@ -158,7 +158,7 @@ With a 3B generator, about 30% of claims were supported by their cited passages,
 
 ## 6. Discussion
 
-**Topical retrieval for short queries saturates with text.** The graph substitutes relevant papers rather than adding new ones.
+**Topical retrieval for short queries saturates with text.** The graph substitutes relevant papers rather than adding new ones, and retrieving through entities instead of text loses relevance, because a paper's entities say little about whether it addresses the query.
 
 **Citation structure carries different information.** When the target is citation-level relatedness or future method adoption, which is what "who builds on whom" encodes, graph signals add large, significant gains, and they complement text.
 
@@ -173,6 +173,7 @@ With a 3B generator, about 30% of claims were supported by their cited passages,
 ## 7. Limitations
 
 - Abstracts only; one corpus (CS, 2020–2025, 47,619 papers).
+- The GraphRAG baseline re-implements LightRAG's retrieval over our SciERC graph; the original LLM-built index (and Microsoft GraphRAG) was infeasible at this scale on our hardware, and a stronger LLM might narrow the gap.
 - Project relevance labels come from an LLM judge (held-out κ 0.75 against the first annotator). Human–human agreement was measured on only 50 pairs (κ 0.91), with two annotators.
 - "Confirmed" in the time-sliced benchmark means later co-occurrence in abstracts, not a successful result. Entity extraction is automatic (F1 0.64).
 - SciFact is biomedical; in-corpus contradiction precision rests on small human samples (68 pairs with two raters, 40 with one). Round 2 hypothesis and contradiction labels come from one rater.
