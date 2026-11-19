@@ -117,7 +117,7 @@ def run(dataset, split):
     train_ids = sorted(train)
     print(f"{dataset}/{split}: {len(papers)} papers, {len(train_ids)} candidates, {len(queries)} queries", flush=True)
 
-    cache = OUT / f"{dataset}_train_bge.npy"
+    cache = DATA / dataset / "train_bge.npy"  # derived from the downloaded corpus; not committed
     model = get_embedder()
     if cache.exists():
         doc = np.load(cache)

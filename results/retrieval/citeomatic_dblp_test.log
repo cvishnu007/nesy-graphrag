@@ -1,0 +1,19 @@
+dblp/test: 50227 papers, 28807 candidates, 931 queries
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Embedding device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU, 4.0 GB)
+Loading embedding model: BAAI/bge-base-en-v1.5
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3528.13it/s]
+Model loaded!
+  200/931
+  400/931
+  600/931
+  800/931
+  bm25                       F1@20=0.177 MRR=0.569 R@20=0.230 (n=931)
+  bge                        F1@20=0.227 MRR=0.625 R@20=0.293 (n=931)
+  rrf_bge_bm25               F1@20=0.230 MRR=0.649 R@20=0.298 (n=931)
+  rrf_bge_bm25_cocitation    F1@20=0.284 MRR=0.677 R@20=0.366 (n=931)
+  published BM25 (theirs)      F1@20=0.119 MRR=0.425
+  published ClusCite           F1@20=0.237 MRR=0.548
+  published NNSelect           F1@20=0.282 MRR=0.579
+  published NNSelect + NNRank  F1@20=0.302 MRR=0.672
+  published + metadata         F1@20=0.303 MRR=0.689

@@ -175,6 +175,48 @@ The graph signal is co-citation through neighbours: papers cited by the query's 
 
 Dev agrees (+0.071 Recall@20 over BGE + BM25). **Finding:** when the task depends on citation structure rather than topical similarity, the densified graph gives a large, significant gain (28% relative Recall@20 over BGE + BM25). Together with §2d–2e, this marks the boundary: graph structure is redundant for short topical queries but complementary for citation-level relatedness. BM25 fusion slightly hurts here (long abstract queries), unlike in §2d.
 
+## 2h. Citation recommendation on public benchmarks (DBLP and PubMed)
+
+The §2f method, unchanged, on the global citation recommendation benchmarks of Bhagavatula et al. (NAACL 2018), using AI2's released `comparison/{dblp,pubmed}/corpus.json` (`src/evaluation/citeomatic_benchmark.py`; results in `results/retrieval/citeomatic_20261119/`). The protocol follows the citeomatic code:
+- splits by year (DBLP: train ≤ 2007, valid 2008, test 2009–2011; PubMed: train ≤ 2008, valid 2009, test 2010–2013);
+- candidates are training-split papers only;
+- gold is the query's in-corpus, older, training-split references, and queries need at least 10;
+- F1@20 is the harmonic mean of corpus-level P@20 and R@20, and MRR uses the full list (100).
+
+Nothing is trained on these datasets. Co-citation settings come from §2f (50 BGE neighbours, weight 1.0). The validation year was run first as a check; the test years ran once.
+
+| Test split | DBLP F1@20 | DBLP MRR | PubMed F1@20 | PubMed MRR |
+|---|---:|---:|---:|---:|
+| Queries | 931 | | 8,815 | |
+| BM25 (ours) | 0.177 | 0.569 | 0.243 | 0.687 |
+| BGE | 0.227 | 0.625 | 0.282 | 0.745 |
+| BGE + BM25 | 0.230 | 0.649 | 0.290 | **0.747** |
+| **BGE + BM25 + co-citation** | **0.284** | **0.677** | **0.305** | 0.699 |
+| *Published (Table 2):* BM25 | 0.119 | 0.425 | 0.209 | 0.574 |
+| *ClusCite* | 0.237 | 0.548 | 0.274 | 0.578 |
+| *Citeomatic NNSelect* | 0.282 | 0.579 | 0.309 | 0.699 |
+| *Citeomatic NNSelect + NNRank* | 0.302 | 0.672 | 0.325 | 0.754 |
+| *Citeomatic + metadata* | 0.303 | 0.689 | 0.329 | 0.771 |
+
+Co-citation over BGE + BM25 (paired, Monte Carlo sign-flip, bootstrap 95% CI):
+
+| | Recall@20 | Reciprocal rank |
+|---|---|---|
+| DBLP test | +0.069 [0.062, 0.075], p < 0.0001 | +0.028 [0.005, 0.051], p = 0.019 |
+| DBLP valid | +0.089 [0.081, 0.097], p < 0.0001 | +0.040 [0.014, 0.067], p = 0.003 |
+| PubMed test | +0.014 [0.012, 0.015], p < 0.0001 | −0.049 [−0.057, −0.041], p < 0.0001 |
+| PubMed valid | +0.016 [0.013, 0.018], p < 0.0001 | −0.050 [−0.063, −0.037], p < 0.0001 |
+
+**Finding.**
+- **CS (DBLP):** the co-citation gain replicates. Without training or metadata, the method beats ClusCite and Citeomatic's NNSelect on both metrics, and NNSelect + NNRank on MRR. It stays below the trained Citeomatic systems on F1@20 (0.284 vs 0.302–0.303).
+- **Biomedicine (PubMed):** co-citation still raises recall, but by much less, and it lowers MRR. Its first-ranked suggestion is more often wrong than text retrieval's. A likely reason, not tested here, is that summed neighbour similarity favours widely cited papers, which in PubMed are less often the specific first reference. Text alone (BGE + BM25) already matches the best published MRR within 0.02.
+- The graph's citation benefit is therefore clear for CS and mixed for biomedicine.
+
+**Caveats.**
+- The comparison is with 2018 systems, not the current state of the art.
+- BGE's training data likely includes many of these papers, which may favour the text methods. It does not affect the co-citation-versus-text comparison, which uses the same vectors on both sides.
+- Our BM25 queries with the full title and abstract; Citeomatic's queries with key terms, which explains the higher BM25 here.
+
 ## 2g. GraphRAG baseline: LightRAG-style retrieval (44 stratified queries)
 
 A real LightRAG or Microsoft GraphRAG index needs about two LLM extraction calls per chunk, more than a week for 47,619 abstracts on the project's 4 GB laptop GPU. `src/evaluation/lightrag_baseline.py` keeps LightRAG's query-time algorithm (Guo et al., 2024; query logic of v1.4) and replaces only the LLM-built index with the SciERC graph: 558,123 entities embedded by name with BGE, and 604,108 relations (entity pairs co-occurring in at least 2 abstracts) embedded as "source, target". The local 7B model extracts high- and low-level keywords per query with LightRAG's keyword instructions (`keywords.json`). Modes: local (top 60 entities, papers ordered by entity rank and neighbour overlap), global (top 60 relations re-sorted by degree), hybrid (round-robin of local and global) and mix (round-robin of BGE, local and global). Hybrid and mix were pool-extended with the same validated 7B judge (768 new pairs; 3,073 total) and are fully judged at depth 20; local and global are reported with their unjudged papers (44%) counted as non-relevant. Results: `results/retrieval/stratified_v2_lightrag_20261119/summary.json`.

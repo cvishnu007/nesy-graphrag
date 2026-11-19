@@ -1,0 +1,123 @@
+{
+  "dataset": "pubmed",
+  "split": "test",
+  "protocol": "citeomatic (Bhagavatula et al. 2018)",
+  "min_gold": 10,
+  "neighbours": 50,
+  "graph_weight": 1.0,
+  "depth": 100,
+  "methods": {
+    "bm25": {
+      "queries": 8815,
+      "p@20": 0.2477,
+      "r@20": 0.2395,
+      "f1@20": 0.2435,
+      "mrr": 0.6869
+    },
+    "bge": {
+      "queries": 8815,
+      "p@20": 0.2865,
+      "r@20": 0.2772,
+      "f1@20": 0.2818,
+      "mrr": 0.7446
+    },
+    "rrf_bge_bm25": {
+      "queries": 8815,
+      "p@20": 0.2947,
+      "r@20": 0.2854,
+      "f1@20": 0.29,
+      "mrr": 0.7474
+    },
+    "rrf_bge_bm25_cocitation": {
+      "queries": 8815,
+      "p@20": 0.3117,
+      "r@20": 0.299,
+      "f1@20": 0.3052,
+      "mrr": 0.6986
+    }
+  },
+  "comparisons": {
+    "rrf_bge_bm25_cocitation_vs_rrf_bge_bm25_r@20": {
+      "pair_count": 8815,
+      "mean_delta": 0.01359180769216789,
+      "bootstrap_95_ci": [
+        0.01192669944608299,
+        0.015238109475377407
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bge_bm25_cocitation_vs_rrf_bge_bm25_rr": {
+      "pair_count": 8815,
+      "mean_delta": -0.04881023680356682,
+      "bootstrap_95_ci": [
+        -0.05647929315161029,
+        -0.04118989020482766
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bge_bm25_cocitation_vs_bge_r@20": {
+      "pair_count": 8815,
+      "mean_delta": 0.02179209859764062,
+      "bootstrap_95_ci": [
+        0.019985527202051042,
+        0.023640440068224525
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bge_bm25_cocitation_vs_bge_rr": {
+      "pair_count": 8815,
+      "mean_delta": -0.04603102841155553,
+      "bootstrap_95_ci": [
+        -0.05399969538668196,
+        -0.03802827670040357
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bge_bm25_vs_bm25_r@20": {
+      "pair_count": 8815,
+      "mean_delta": 0.045927900476689466,
+      "bootstrap_95_ci": [
+        0.044262491036259545,
+        0.047562219940722614
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    },
+    "rrf_bge_bm25_vs_bm25_rr": {
+      "pair_count": 8815,
+      "mean_delta": 0.060507951743854406,
+      "bootstrap_95_ci": [
+        0.05444477718936556,
+        0.0666640149744404
+      ],
+      "permutation_samples": 20000,
+      "monte_carlo_two_sided_p": 4.999750012499375e-05
+    }
+  },
+  "published": {
+    "BM25 (theirs)": [
+      0.209,
+      0.574
+    ],
+    "ClusCite": [
+      0.274,
+      0.578
+    ],
+    "NNSelect": [
+      0.309,
+      0.699
+    ],
+    "NNSelect + NNRank": [
+      0.325,
+      0.754
+    ],
+    "+ metadata": [
+      0.329,
+      0.771
+    ]
+  }
+}

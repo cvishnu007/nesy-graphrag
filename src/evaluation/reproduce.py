@@ -80,6 +80,8 @@ EXPECTED = {
     "hypothesis round 2 relevance, bridge minus vector": -0.5385,
     "contradiction round 2, verdict-flagged tension+ precision": 0.556,
     "LightRAG-style mix NDCG@10 (44 queries)": 0.396,
+    "DBLP test F1@20, BGE+BM25+co-citation": 0.284,
+    "PubMed test F1@20, BGE+BM25+co-citation": 0.305,
     "stratified NDCG@10, selected": 0.644,
     "stratified NDCG@10, BM25": 0.626,
     "stratified NDCG@10, BGE+BM25": 0.621,
@@ -120,6 +122,10 @@ def main() -> int:
         "LightRAG-style mix NDCG@10 (44 queries)": saved(
             "results/retrieval/stratified_v2_lightrag_20261119/summary.json", "splits", "all", "variants",
             "lightrag_mix", "ndcg@10"),
+        "DBLP test F1@20, BGE+BM25+co-citation": saved(
+            "results/retrieval/citeomatic_20261119/dblp_test.json", "methods", "rrf_bge_bm25_cocitation", "f1@20"),
+        "PubMed test F1@20, BGE+BM25+co-citation": saved(
+            "results/retrieval/citeomatic_20261119/pubmed_test.json", "methods", "rrf_bge_bm25_cocitation", "f1@20"),
         "stratified NDCG@10, selected": strat["full_bge_bm25_similar"],
         "stratified NDCG@10, BM25": strat["bm25"],
         "stratified NDCG@10, BGE+BM25": strat["rrf_bge_bm25"],

@@ -4,7 +4,7 @@
 
 ## Abstract
 
-Graph-based retrieval-augmented generation (GraphRAG) is increasingly proposed for scientific literature, but it is rarely tested against strong text baselines with controlled protocols. We build a literature assistant over 47,619 computer-science abstracts that combines dense retrieval, BM25, a citation graph densified from Semantic Scholar and OpenAlex (corpus-internal citation edges ×7), and a SciERC entity graph. We evaluate it on two public benchmarks and two project benchmarks graded by an LLM judge validated against human relevance grades. Three findings emerge. (1) For topical queries, a general embedding with BM25 fusion beats every scientific embedding model tested and more than doubles the original system's NDCG@10 (0.644 vs 0.287 on 44 topic-stratified queries). Graph expansion adds no significant gain, even after densification, because the papers it introduces are exactly as relevant as those they displace, and a LightRAG-style entity-graph retriever scores far lower (0.396). (2) For citation recommendation, co-citation over the densified graph improves Recall@20 by 28% relative to text retrieval (p < 0.0001). (3) In a time-sliced discovery benchmark, graph signals nearly double average precision over text similarity when predicting which method–task combinations researchers adopt after a cutoff. (4) For contradiction detection, grounding candidates in citations between critical findings and the papers they dispute raises human-judged precision (contradiction or tension) from 9% for NLI screening to 56% after an LLM verdict filter. We also report negative results: a small LLM relevance judge with position bias, and graph-derived hypothesis candidates rated below a nearest-neighbour baseline by humans in two rounds, including on held-out queries. Together these locate where graph structure helps scholarly RAG: citation-level relatedness and discovery, not topical ranking.
+Graph-based retrieval-augmented generation (GraphRAG) is increasingly proposed for scientific literature, but it is rarely tested against strong text baselines with controlled protocols. We build a literature assistant over 47,619 computer-science abstracts that combines dense retrieval, BM25, a citation graph densified from Semantic Scholar and OpenAlex (corpus-internal citation edges ×7), and a SciERC entity graph. We evaluate it on two public benchmarks and two project benchmarks graded by an LLM judge validated against human relevance grades. Three findings emerge. (1) For topical queries, a general embedding with BM25 fusion beats every scientific embedding model tested and more than doubles the original system's NDCG@10 (0.644 vs 0.287 on 44 topic-stratified queries). Graph expansion adds no significant gain, even after densification, because the papers it introduces are exactly as relevant as those they displace, and a LightRAG-style entity-graph retriever scores far lower (0.396). (2) For citation recommendation, co-citation over the densified graph improves Recall@20 by 28% relative to text retrieval (p < 0.0001). On the public DBLP benchmark, the same untrained method adds +0.069 Recall@20 and is competitive with a trained neural recommender (F1@20 0.284 vs 0.303). On PubMed it raises recall but lowers MRR. (3) In a time-sliced discovery benchmark, graph signals nearly double average precision over text similarity when predicting which method–task combinations researchers adopt after a cutoff. (4) For contradiction detection, grounding candidates in citations between critical findings and the papers they dispute raises human-judged precision (contradiction or tension) from 9% for NLI screening to 56% after an LLM verdict filter. We also report negative results: a small LLM relevance judge with position bias, and graph-derived hypothesis candidates rated below a nearest-neighbour baseline by humans in two rounds, including on held-out queries. Together these locate where graph structure helps scholarly RAG: citation-level relatedness and discovery, not topical ranking.
 
 ## 1. Introduction
 
@@ -26,6 +26,8 @@ We take an empirical stance and ask: *for which tasks does graph structure add v
 **Contradictions and claims.** PaperQA2 (Skarlinski et al., 2024) reports contradiction detection validated by experts in biology. SciFact (Wadden et al., 2020) provides expert-labelled claim–evidence pairs, which we use to validate verdict models.
 
 **Literature-based discovery (LBD).** LBD predicts implicit connections from co-occurrence (ABC models) and evaluates with time slicing: predictions from data before a cutoff are checked against later literature. We apply this protocol to method–task pairs extracted with a SciERC-trained tagger (Luan et al., 2018).
+
+**Citation recommendation.** ClusCite (Ren et al., 2014) and Citeomatic (Bhagavatula et al., 2018) define the global citation recommendation benchmarks on DBLP and PubMed that we reuse with their published protocol.
 
 **Attribution.** ALCE (Gao et al., 2023) evaluates citation precision and NLI support, which we adopt for answer grounding.
 
@@ -117,6 +119,17 @@ Given a paper's title and abstract, rank the corpus papers it cites. Leakage con
 
 +0.068 Recall@20 over BGE + BM25 [0.055, 0.081], p < 0.0001.
 
+**Public benchmarks (RESULTS §2h).** On the DBLP and PubMed benchmarks of Bhagavatula et al. (2018), the same method, with no training on either dataset, gives:
+
+| Test split | DBLP F1@20 / MRR | PubMed F1@20 / MRR |
+|---|---|---|
+| BGE + BM25 | 0.230 / 0.649 | 0.290 / 0.747 |
+| **+ co-citation** | **0.284 / 0.677** | **0.305** / 0.699 |
+| ClusCite (published) | 0.237 / 0.548 | 0.274 / 0.578 |
+| Citeomatic, best (published) | 0.303 / 0.689 | 0.329 / 0.771 |
+
+On DBLP, co-citation adds +0.069 Recall@20 and +0.028 MRR (both significant) and is competitive with the trained Citeomatic system. On PubMed it adds +0.014 Recall@20 but lowers MRR by 0.049, so the citation-graph benefit is clear in CS and mixed in biomedicine.
+
 ### 5.4 Time-sliced discovery: graph signals predict future research (RESULTS §4c–4d)
 
 From papers up to 2022 we rank, for each task, the methods never yet combined with it, and check against 2023–2025 papers (≥ 2 confirming papers).
@@ -173,6 +186,7 @@ With a 3B generator, about 30% of claims were supported by their cited passages,
 ## 7. Limitations
 
 - Abstracts only; one corpus (CS, 2020–2025, 47,619 papers).
+- Public citation benchmarks: the published comparison systems are from 2018, and BGE's training data likely overlaps with DBLP and PubMed papers. The citation-graph benefit does not transfer fully to biomedicine (PubMed MRR drops).
 - The GraphRAG baseline re-implements LightRAG's retrieval over our SciERC graph; the original LLM-built index (and Microsoft GraphRAG) was infeasible at this scale on our hardware, and a stronger LLM might narrow the gap.
 - Project relevance labels come from an LLM judge (held-out κ 0.75 against the first annotator). Human–human agreement was measured on only 50 pairs (κ 0.91), with two annotators.
 - "Confirmed" in the time-sliced benchmark means later co-occurrence in abstracts, not a successful result. Entity extraction is automatic (F1 0.64).
