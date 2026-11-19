@@ -108,5 +108,24 @@ def related_work(driver, text, top_k=10, *, paper_id=None, max_year=None):
         results.append({"id": pid, "title": record["title"], "year": record["year"],
                         "abstract": record["abstract"], "score": score, "source_ranks": ranks,
                         "cited_by_neighbours": len(citing_counts.get(pid, ())), "why": "; ".join(reasons)})
-    return {"query": text, "neighbours": len(neighbours), "papers": results,
-            "graph": citation_graph(driver, results, neighbours, citing_counts)}
+    graph = citation_graph(driver, results, neighbours, citing_counts)
+    attach_citation_evidence(results, neighbours, citing_counts, graph)
+    return {"query": text, "neighbours": len(neighbours), "papers": results, "graph": graph}
+
+
+def attach_citation_evidence(results, neighbours, citers, graph):
+    """Add, per suggestion, the titled papers behind its citation signal.
+
+    ``cited_by_similar``: every one of the similar papers whose reference list includes
+    the suggestion (the co-citation evidence), most similar first.
+    ``cites`` / ``cited_by``: citations between the suggestions themselves.
+    """
+    rank = {p["id"]: i for i, p in enumerate(neighbours)}
+    info = {p["id"]: {"id": p["id"], "title": p.get("title", ""), "year": p.get("year")} for p in neighbours}
+    by_id = {r["id"]: {"id": r["id"], "title": r["title"], "year": r["year"]} for r in results}
+    inner = [(e["source"], e["target"]) for e in graph.get("edges", []) if e["kind"] == "cites"]
+    for r in results:
+        similar = sorted((n for n in citers.get(r["id"], ()) if n in info), key=lambda n: rank[n])
+        r["cited_by_similar"] = [info[n] for n in similar]
+        r["cites"] = [by_id[b] for a, b in inner if a == r["id"] and b in by_id]
+        r["cited_by"] = [by_id[a] for a, b in inner if b == r["id"] and a in by_id]

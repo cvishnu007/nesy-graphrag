@@ -66,3 +66,15 @@ def test_graph_view_numbers_suggestions_and_links_query():
     assert nodes[1]["color"] == colors["graph"] and nodes[2]["color"] == colors["text_only"]
     assert {(e["from"], e["to"]) for e in edges} == {("__query__", "s1"), ("__query__", "s2"), ("n1", "s1")}
     assert "vis-network@9.1.9" in graph_html(result)
+
+
+def test_attach_citation_evidence_titles_in_similarity_order():
+    from src.pipeline.related_work import attach_citation_evidence
+
+    results = [{"id": "s1", "title": "S1", "year": 2020}, {"id": "s2", "title": "S2", "year": 2021}]
+    neighbours = [{"id": "n2", "title": "N2", "year": 2022}, {"id": "n1", "title": "N1", "year": 2023}]
+    graph = {"edges": [{"source": "s1", "target": "s2", "kind": "cites"}]}
+    attach_citation_evidence(results, neighbours, {"s1": ["n1", "n2"]}, graph)
+    assert [x["title"] for x in results[0]["cited_by_similar"]] == ["N2", "N1"]
+    assert results[0]["cites"] == [{"id": "s2", "title": "S2", "year": 2021}]
+    assert results[1]["cited_by"][0]["id"] == "s1" and results[1]["cited_by_similar"] == []

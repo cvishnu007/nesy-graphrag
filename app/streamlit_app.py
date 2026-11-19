@@ -281,11 +281,47 @@ if run and query:
             links = sum(1 for e in graph.get("edges", []) if e["kind"] == "cites")
             st.caption(f"{len(graph.get('nodes', []))} similar papers shown · {links} citation(s) among the suggestions")
             st.markdown("### 📄 Suggestions")
+        number = {p["id"]: i for i, p in enumerate(result["papers"], 1)}
+
+        def cite_line(item):
+            n = number.get(item["id"])
+            tag = f"**[{n}]** " if n else ""
+            return f"- {tag}{item['title']} ({item.get('year') or 'n.d.'})"
+
         for i, paper in enumerate(result["papers"], 1):
             with st.expander(f"{i}. {paper['title']} ({paper['year']})"):
                 st.markdown(f"**Why:** {paper['why']}")
                 st.markdown(paper.get("abstract") or "_No abstract available._")
+                similar = paper.get("cited_by_similar", [])
+                if similar:
+                    st.markdown(f"**Cited by {len(similar)} of the similar papers** (the co-citation evidence):")
+                    st.markdown("\n".join(cite_line(x) for x in similar))
+                if paper.get("cites"):
+                    st.markdown("**Cites these other suggestions:**")
+                    st.markdown("\n".join(cite_line(x) for x in paper["cites"]))
+                if paper.get("cited_by"):
+                    st.markdown("**Cited by these other suggestions:**")
+                    st.markdown("\n".join(cite_line(x) for x in paper["cited_by"]))
                 st.caption(f"`{paper['id']}`")
+
+        if result["papers"]:
+            citing = {}
+            for paper in result["papers"]:
+                for x in paper.get("cited_by_similar", []):
+                    citing.setdefault(x["id"], {**x, "targets": []})["targets"].append(number[paper["id"]])
+            inner = [(p, c) for p in result["papers"] for c in p.get("cites", [])]
+            st.markdown("### 🔗 All citations used")
+            st.caption("Every citation link behind the suggestions, from the stored citation graph "
+                       "(Semantic Scholar and OpenAlex references within the corpus).")
+            with st.expander(f"Similar papers whose reference lists were used ({len(citing)})", expanded=True):
+                rows = sorted(citing.values(), key=lambda x: (-len(x["targets"]), x["title"]))
+                st.markdown("\n".join(
+                    f"- {x['title']} ({x.get('year') or 'n.d.'}) → cites "
+                    + ", ".join(f"[{t}]" for t in sorted(x["targets"])) for x in rows) or "_None._")
+            with st.expander(f"Citations among the suggestions ({len(inner)})"):
+                st.markdown("\n".join(
+                    f"- [{number[p['id']]}] {p['title']} → [{number[c['id']]}] {c['title']}" for p, c in inner)
+                    or "_None._")
 
 elif run and not query:
     st.warning("Please enter a query first.")
