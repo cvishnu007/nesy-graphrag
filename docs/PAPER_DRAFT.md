@@ -133,7 +133,7 @@ Used as generators, ranking method–task pairs directly (P@10 0.067) beats the 
 
 ### 5.5 Hypothesis candidates rated by humans (RESULTS §4b)
 
-Round 1 (30 queries, one rater, blinded): the original structural-hole candidates were rated less relevant than vector neighbours (3.27 vs 4.20 of 5, p = 0.002) and no more novel (1.97 vs 2.07). The rated variant ran without the generic-entity filter. ⏳ Round 2 (14 held-out queries, four arms, two raters).
+Round 1 (30 queries, two raters, blinded; inter-rater κ 0.82–0.90): the original structural-hole candidates were rated less relevant than vector neighbours (3.10 vs 4.12 of 5, p = 0.001), less promising (2.15 vs 2.67, p = 0.03), and no more novel (1.88 vs 2.17, n.s.). The rated variant ran without the generic-entity filter. ⏳ Round 2 (14 held-out queries, four arms, two raters).
 
 ### 5.6 Contradictions (RESULTS §5b, §5b-2)
 

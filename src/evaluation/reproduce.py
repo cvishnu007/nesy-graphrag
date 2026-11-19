@@ -75,6 +75,7 @@ EXPECTED = {
     "judge held-out kappa, 7B strict 1/call": 0.7485,
     "judge held-out kappa, 27B strict": 0.8837,
     "human-human kappa, 50-pair subset": 0.9084,
+    "hypothesis round 1 relevance kappa, 2 raters": 0.9047,
     "stratified NDCG@10, selected": 0.644,
     "stratified NDCG@10, BM25": 0.626,
     "stratified NDCG@10, BGE+BM25": 0.621,
@@ -100,6 +101,9 @@ def main() -> int:
         "judge held-out kappa, 7B strict 1/call": kappa["7b_strict_batch1"],
         "judge held-out kappa, 27B strict": kappa["27b_strict"],
         "human-human kappa, 50-pair subset": human_human_kappa(),
+        "hypothesis round 1 relevance kappa, 2 raters": saved(
+            "evaluation/human_review/hypothesis_report_cv_rater3.json", "inter_rater_kappa",
+            "hypothesis_sheet_rated_cv~hypothesis_sheet_rated_rater3", "relevance_1_5"),
         "stratified NDCG@10, selected": strat["full_bge_bm25_similar"],
         "stratified NDCG@10, BM25": strat["bm25"],
         "stratified NDCG@10, BGE+BM25": strat["rrf_bge_bm25"],

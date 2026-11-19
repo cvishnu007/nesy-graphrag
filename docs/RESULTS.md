@@ -200,15 +200,17 @@ Corpus extraction (47,619 abstracts): 1,225,433 typed mentions (Method 379k, Oth
 
 Representative shared concepts behind the top hypothesis candidate: "molecular property prediction", "drug discovery" (vs "graph neural networks", "algorithms"); "malicious software", "malware" (vs "them", "this report"); "text-to-sql", "sql queries" (vs "resources", "input"). Concept-overlap contradiction pairing is sparse once noise is removed, so contradiction candidates use NLI sentence pairs.
 
-## 4b. Hypothesis candidates: human ratings (round 1, one rater) and revision
+## 4b. Hypothesis candidates: human ratings (round 1, two raters) and revision
 
-30 stratified queries; per query, the top structural-hole candidate from the entity graph and a vector-neighbour baseline (vector rank 6–15, not cited by the top 5), shuffled and blinded (`evaluation/human_review/hypothesis_sheet_rated_cv.csv`). Ratings 1–5; paired by query, Monte Carlo sign-flip test.
+30 stratified queries; per query, the top structural-hole candidate from the entity graph and a vector-neighbour baseline (vector rank 6–15, not cited by the top 5), shuffled and blinded. Two raters, the second without AI assistance (`evaluation/human_review/hypothesis_sheet_rated_cv.csv`, `hypothesis_sheet_rated_rater3.csv`; report `hypothesis_report_cv_rater3.json`). Ratings 1–5, averaged over raters; paired by query, Monte Carlo sign-flip test.
 
 | Mean rating | Structural hole (graph) | Vector neighbour | Graph − vector | p |
 |---|---:|---:|---:|---:|
-| Relevance | 3.27 | **4.20** | −0.93 [−1.43, −0.47] | **0.002** |
-| Novelty | 1.97 | 2.07 | −0.10 | 0.76 |
-| Promise | 2.20 | 2.57 | −0.37 | 0.17 |
+| Relevance | 3.10 | **4.12** | −1.02 [−1.50, −0.52] | **0.001** |
+| Novelty | 1.88 | 2.17 | −0.28 [−0.67, 0.10] | 0.20 |
+| Promise | 2.15 | **2.67** | −0.52 [−0.93, −0.10] | **0.03** |
+
+Inter-rater quadratic-weighted κ: relevance 0.90, novelty 0.82, promise 0.89. First rater alone: relevance 3.27 vs 4.20 (p = 0.002), novelty 1.97 vs 2.07, promise 2.20 vs 2.57 (n.s.). Second rater alone: relevance −1.10 (p = 0.001), novelty −0.47 (p = 0.04), promise −0.67 (p = 0.01). The novelty and promise κ are high for subjective scales; the second rater was not asked to certify that they had not seen the first rater's sheet. An earlier second sheet was excluded because its novelty was a fixed function of relevance (novelty = 7 − relevance in 42 of 60 items).
 
 **Configuration caveat.** The round-1 structural-hole candidates were generated with `CONCEPT_EXCLUDE_GENERIC=false` (the code default), not the `true` recorded for the application on Nov 14. With the generic filter on, 21 of the 30 top candidates change. Round 1 therefore rates the unfiltered variant. Round 2 uses the filtered one (`build_round2_kit.py` refuses to run otherwise).
 
@@ -363,7 +365,7 @@ Per-query support difference (system − vector): +0.046, 95% CI [−0.068, 0.15
 
 Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c).
 
-1. **Second human rater** for round-1 hypotheses and round-1 contradictions. (Relevance done on a 50-pair subset: human–human κ 0.91, §2b.)
+1. **Second human rater** for round-1 contradictions. (Done: relevance on a 50-pair subset, κ 0.91, §2b; round-1 hypotheses, κ 0.82–0.90, §4b.)
 2. **Round 2 human ratings** (`evaluation/human_review/*round2*`): revised hypothesis method and citation-grounded contradiction index on held-out queries.
 3. Retrieval on the densified graph (`CITES_ADDED`, `COUPLED_WITH`) as a new variant: dev selection on the 22 stratified dev queries, pool extension, then test once.
 4. Optional robustness check: regrade both pools with a larger judge (27B class) and confirm the §2c/§2d conclusions hold.
