@@ -1,4 +1,4 @@
-# Results (November 13–15, 2026)
+# Results (November 13–19, 2026)
 
 Every number below states its corpus, label source, and statistical test. Protocol: [EVALUATION_PROTOCOL.md](EVALUATION_PROTOCOL.md). Raw artifacts are in `results/`.
 
@@ -469,10 +469,10 @@ Per-query support difference (system − vector): +0.046, 95% CI [−0.068, 0.15
 
 ## 7. Open items for publication
 
-Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c).
+Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c); a GraphRAG (LightRAG-style) baseline (§2g); public citation benchmarks DBLP and PubMed (§2h).
 
 1. ~~Second human rater~~ Done: relevance on a 50-pair subset (κ 0.91, §2b), round-1 hypotheses (κ 0.82–0.90, §4b), round-1 contradictions (κ 0.76, §5b-2).
 2. ~~Round 2 human ratings~~ Done by rater 1: hypotheses (§4b, the bridge does not beat vector neighbours) and contradictions (§5b-2, the citation index reaches 56% tension-or-contradiction precision with the verdict filter). A second rater for round 2 is optional.
-3. Retrieval on the densified graph (`CITES_ADDED`, `COUPLED_WITH`) as a new variant: dev selection on the 22 stratified dev queries, pool extension, then test once.
+3. Optional: retrieval with `CITES_ADDED`/`COUPLED_WITH` as expansion edges (dev selection on the 22 stratified dev queries, pool extension, test once). §2e already shows densification does not raise topical NDCG, so this is low priority.
 4. Optional robustness check: regrade both pools with a larger judge (27B class) and confirm the §2c/§2d conclusions hold.
 5. Deduplication of 51 near-duplicate pairs; contradiction benchmark with ≥ 10 in-domain positives.

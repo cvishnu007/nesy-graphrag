@@ -63,6 +63,9 @@ These remain in `src/pipeline/metrics.py` for inspecting runs. They are not repo
 | 2026-11-13 | Retrieval (BGE era) | `full_bge_bm25_similar`; test 0.619 vs production 0.449, p = 0.004 (confirmed) | `results/retrieval/variant_ablation_bge_dev_20261113/selection.json` |
 | 2026-11-14 | Embedding model | BGE-base-en-v1.5 over SPECTER, SPECTER2 base, SciNCL, MiniLM, OpenScholar | `results/external/` |
 | 2026-11-14 | Entity extraction | SciBERT fine-tuned on SciERC train, best dev epoch, test once (typed F1 0.639) | `results/external/scierc_ner_comparison_20261114.json` |
+| 2026-11-15 | Citation recommendation | RRF(BGE, BM25, co-citation), k = 50 neighbours, weight 1.0, chosen on 200 dev papers, test once on 400 | `results/retrieval/citation_recommendation_20261115/` |
+| 2026-11-19 | GraphRAG baseline | LightRAG-style mix and hybrid, LightRAG defaults (top 60), no tuning; pool-extended with the same 7B judge | `results/retrieval/stratified_v2_lightrag_20261119/` |
+| 2026-11-19 | Public citation benchmarks | Settings fixed from 2026-11-15 (no tuning on DBLP/PubMed); validation year run first, test years once | `results/retrieval/citeomatic_20261119/` |
 
 Earlier selection:
 

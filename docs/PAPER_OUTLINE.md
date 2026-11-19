@@ -1,5 +1,7 @@
 # Paper Outline (draft)
 
+> Superseded by the full draft, [PAPER_DRAFT.md](PAPER_DRAFT.md), which includes the November 19 baselines (RESULTS §2g–2h). This outline is kept as the planning record.
+
 Full draft text: [PAPER_DRAFT.md](PAPER_DRAFT.md). Headline numbers are checked by `python -m src.evaluation.reproduce`.
 
 Working title options:

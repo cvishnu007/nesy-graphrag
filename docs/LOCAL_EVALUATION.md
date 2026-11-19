@@ -1,5 +1,7 @@
 # Local demo and evaluation runbook
 
+> **Historical runbook (September–November 13 work).** For installing and running the current system, use [RUN_FROM_SCRATCH.md](RUN_FROM_SCRATCH.md); for current results, [RESULTS.md](RESULTS.md). The checkpoint notes below describe the state at the time and are kept for provenance.
+
 > Read [AGENT_HANDOFF.md](../AGENT_HANDOFF.md) first for the current scope, local store snapshot, incomplete checkpoints, and data-safety rules. This document describes evaluation/reproduction procedures. Historical macOS references are examples, not a requirement for the current Windows environment.
 
 **Current checkpoint:** retrieval grading remains paused at 778/1,145 labels. The current local data and stores have been reconciled to **52,822 raw / 47,619 clean / 47,619 NER / 47,619 Chroma / 47,619 Neo4j papers** with 22,370 citation edges. Ollama and Streamlit are stopped unless the operator starts them. The paused pool in `results/retrieval/expanded_20260913/` was frozen on a different 47,627-paper corpus. Resuming `grade`/`evaluate` is safe because they use only saved candidates and rankings, but `matched_rag` runs live on the current 47,619-paper stores, so label each result with its corpus. These commands are resumable/reproducible procedures, not a claim that a live demo is already running.

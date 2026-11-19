@@ -1,5 +1,7 @@
 # Human Review Tasks
 
+**Status (2026-11-19):** all planned ratings are done and scored (RESULTS §2b, §4b, §5b-2). Excluded template/AI sheets are in `excluded/` with the reasons. Remaining optional work: a second rater for round 2.
+
 These human labels are what make the evaluation publishable: they validate the automated judges and measure the two components that have no public benchmark (hypotheses, and contradictions in our CS corpus).
 
 **Rules for every sheet**

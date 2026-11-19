@@ -1,6 +1,8 @@
 # NeSy-GraphRAG Continuation Handoff
 
-Last reconciled: November 14, 2026. Read this file before changing code, data, configuration, or documentation. It is the canonical handoff for a new chat or coding agent. `PROJECT_STATUS.md` is the concise status view; `SETUP.md` is the from-scratch setup guide; `LOCAL_PROJECT_RUNBOOK.md` is a detailed local operations reference.
+Last reconciled: November 19, 2026. Read this file before changing code, data, configuration, or documentation. It is the canonical handoff for a new chat or coding agent. `PROJECT_STATUS.md` is the concise status view; [docs/RUN_FROM_SCRATCH.md](docs/RUN_FROM_SCRATCH.md) is the install, build and run guide (it replaces the old `SETUP.md` content); `LOCAL_PROJECT_RUNBOOK.md` is a local-only operations reference.
+
+**Current stage (November 19):** research and evaluation are complete, and `master` holds everything. Read the November 19 section first; the older sections below are kept as the record of how each decision was made.
 
 ## Mission and Scope
 
@@ -14,6 +16,33 @@ The Phase 1 report defines the project as a trustworthy research assistant that:
 The Phase 1 report (August-December 2025) listed noisy-PDF extraction and model training as Phase 2 objectives. The team later deferred both, so they are not part of the current scope.
 
 The current implementation is an abstract-and-metadata prototype. It is deliberately **not** a PDF/full-text ingestion system, a trained/fine-tuned model, a fully autonomous research agent, or a source of validated scientific conclusions. Do not add PDF ingestion unless the user explicitly reopens that scope.
+
+## November 19, 2026: Current State
+
+**Branches.** `master` contains all work. `research-grade-evaluation` (tags `paper-freeze-2026-11-19`, `app-freeze-2026-11-19`) is the paper state before the two new baselines; `baselines-graphrag-citation` adds them; `corpus-expansion-75k` is an untouched placeholder for a 75k-paper corpus.
+
+**Stores** (unchanged since November 15): 47,619 papers in clean, NER, Chroma (`s2_papers_bge`, plus the historical `s2_papers` and `s2_papers_specter_ta`) and Neo4j. Neo4j has `CITES` 22,370, `CITES_ADDED` 133,527, `COUPLED_WITH` 411,418, `SIMILAR_TO` 238,095, `SciEntity` 323,624 with `MENTIONS` 696,390, and `ExternalPaper` 24,714.
+
+**Application** (`app/streamlit_app.py`; configuration in the local `.env`, mirrored in `.env.example`):
+- Four modes: Literature Review, Contradiction Detection (`CONTRADICTION_CANDIDATE_MODE=citation`), Hypothesis Generation (`HYPOTHESIS_GENERATOR=ranker`), and Related Work.
+- Related Work shows an interactive citation map (`app/graph_view.py`, vis-network 9.1.9 loaded from unpkg) and lists every citation behind each suggestion (`related_work()` returns `graph`, `cited_by_similar`, `cites` and `cited_by`).
+- Review shows a red error with the reason when the LLM returns nothing (usually Ollama refusing for lack of free RAM), instead of empty 0/0 checks.
+- `OLLAMA_KEEP_ALIVE=30m` keeps the model loaded between queries.
+- On a 16 GB machine, run only one model-heavy job at a time.
+
+**Evaluation added November 19** (RESULTS §2g–2h):
+- **LightRAG-style baseline** (`src/evaluation/lightrag_baseline.py`; stages `build`, `keywords`, `rank`, `grade`, `score`; index under ignored `data/lightrag_style/`; results in `results/retrieval/stratified_v2_lightrag_20261119/`). It runs LightRAG's query algorithm over the SciERC graph. Mix 0.396 and hybrid 0.176 NDCG@10, vs 0.642 for this system. The frozen stratified directory is only read.
+- **DBLP/PubMed citation recommendation** (`src/evaluation/citeomatic_benchmark.py`, citeomatic protocol, no training; data: the two `comparison/*/corpus.json` files under ignored `data/external/citeomatic/`; results in `results/retrieval/citeomatic_20261119/`).
+  - DBLP test: F1@20 0.284 and MRR 0.677, vs 0.230 and 0.649 for text alone and 0.303 and 0.689 for trained Citeomatic.
+  - PubMed test: recall rises but MRR falls (0.699 vs 0.747). `src/evaluation/citeomatic_top1_diagnosis.py` shows why: text alone is right at rank 1 71% of the time there, vs 45% for the graph.
+- **Human ratings complete.**
+  - Second relevance grader on a blinded 50-pair subset: κ 0.91.
+  - Second rater for round-1 hypotheses (κ 0.82–0.90) and contradictions (κ 0.76).
+  - Round 2 (rater 1): hypotheses (the bridge does not beat vector neighbours) and contradictions (56% tension-or-contradiction precision for verdict-flagged pairs).
+  - Template/AI-generated second-rater sheets are kept in `evaluation/human_review/excluded/` and used nowhere.
+- `src/evaluation/reproduce.py` checks 22 headline numbers. 404 tests pass.
+
+**Local `.env` warning.** On November 19 the owner's `.env` had `NEO4J_ALLOW_RESET=true`. It should be `false` except during an intentional graph rebuild.
 
 ## Architecture Implemented
 
@@ -196,11 +225,13 @@ Full tables: [docs/RESULTS.md](docs/RESULTS.md) §2b–2d, §4b, §5b-2, §6. Hu
 
 Continue in this order unless the user changes priorities:
 
-1. Score the second rater's sheets and the round 2 sheets when they arrive (`python -m src.evaluation.human_ratings {hypothesis|contradiction|hypothesis_round2|contradiction_round2} --sheets ...`; relevance with `src.evaluation.human_agreement`).
-2. Evaluate retrieval with `CITES_ADDED`/`COUPLED_WITH`: select on the 22 stratified dev queries, extend the pool with the same 7B judge, then test once.
-3. If round 2 supports the revised methods, switch the application to `hypothesis_bridge` and the citation index plus verdict filter, and document it.
-4. Optional robustness: regrade both pools with a 27B-class judge (for example on Kaggle; re-validate on the human sheet first).
-5. Deduplicate near-duplicate papers.
+1. Format `docs/PAPER_DRAFT.md` for the venue the user chooses (template, page limit, figures, 25–40 verified references, AI-use and data-availability statements).
+2. Optional evaluation:
+   - a second rater for round 2;
+   - more labelled contradiction pairs;
+   - human ratings of the method–task ranker.
+3. Optional: the 75k-paper corpus on `corpus-expansion-75k`. Use separate data files and a separate Chroma collection, and a separate Neo4j database (Community edition has one user database, so a second DBMS or instance). Then re-measure the benchmarks.
+4. Optional: evaluate retrieval with `CITES_ADDED`/`COUPLED_WITH` as an expansion edge type; deduplicate near-duplicate papers.
 
 ## Safe Commands
 
@@ -250,10 +281,10 @@ This requires no live database or LLM, but it reproduces AI-reference package re
 ### Reproduce headline numbers (no LLM calls)
 
 ```powershell
-.env\Scripts\python.exe -m src.evaluation.reproduce
+.\venv\Scripts\python.exe -m src.evaluation.reproduce
 ```
 
-This recomputes 14 headline values (judge κ, stratified and regraded NDCG, citation recommendation, time-sliced AP and P@10) from saved artifacts, and exits non-zero on drift.
+This recomputes 22 headline values (judge κ, human agreement and ratings, stratified and regraded NDCG, the LightRAG-style baseline, citation recommendation on our corpus and on DBLP/PubMed, time-sliced AP and P@10) from saved artifacts, and exits non-zero on drift. Two checks need the gitignored subset key in `evaluation/human_review/`.
 
 ### Verify code after changes
 
@@ -278,7 +309,10 @@ This recomputes 14 headline values (judge κ, stratified and regraded NDCG, cita
 | `AGENT_HANDOFF.md` | Current scope, state, decisions, safe continuation path | Canonical |
 | `PROJECT_STATUS.md` | Short current implementation/status report | Canonical summary |
 | `README.md` | Public project overview and quick start | User-facing overview |
-| `SETUP.md` | Clone-to-running-environment instructions | Setup authority |
+| `docs/RUN_FROM_SCRATCH.md` | Install, build every store, run the app, reproduce results | Setup authority |
+| `docs/DEMO_QUERIES.md` | Queries that work well in each app mode | User guide |
+| `docs/PAPER_DRAFT.md` | Paper draft | Paper authority |
+| `SETUP.md` | Pointer to the run guide | — |
 | `LOCAL_PROJECT_RUNBOOK.md` | Detailed local commands and interpretation | Operational reference; local-only |
 | `docs/RESULTS.md` | All result tables with corpus, labels, and tests | Results authority |
 | `docs/EVALUATION_PROTOCOL.md` | Metric definitions, selection rules, recorded selections | Protocol authority |
@@ -287,7 +321,7 @@ This recomputes 14 headline values (judge κ, stratified and regraded NDCG, cita
 
 ## Instructions For a New Agent
 
-1. Read this file, `PROJECT_STATUS.md`, and the relevant subsection of `SETUP.md` before editing.
+1. Read this file, `PROJECT_STATUS.md`, and the relevant section of `docs/RUN_FROM_SCRATCH.md` before editing.
 2. Run `git status --short --branch`; preserve user-owned uncommitted files and never reset/stash them without explicit need.
 3. Confirm the active corpus and live-store counts before interpreting any evaluation result.
 4. Keep production behavior, evaluation protocol, and historical artifacts separate. State which corpus, model, provider, and label source every result used.
