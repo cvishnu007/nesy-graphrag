@@ -15,7 +15,8 @@ These human labels are what make the evaluation publishable: they validate the a
 |---|---|---|---|---|
 | 1 | Relevance grades, 200 pairs | CV | 2–3 h | ✅ Done (`relevance_sheet_cv.csv`). Selected the AI judge: κ 0.88 held out |
 | 2 | Review the 44-query stratified benchmark | CV | 1 h | ✅ Done (v0.5, `evaluation/benchmarks/`) |
-| 3 | Second relevance annotator, same 200 pairs | Teammate (not CV) | 2–3 h | ⏳ Needed for human–human agreement |
+| 3 | Second relevance annotator, same 200 pairs | Teammate (not CV) | 2–3 h | ⚠️ Returned 2026-11-19, but started from an AI/template pass (36 of 200 grades revised by hand); not usable as independent agreement. Replaced by task 3b |
+| 3b | **Independent** second relevance grader, 50-pair subset | Teammate (not CV) | ~40 min | ⏳ Sheet `relevance_subset50_sheet_blank.csv`; rules below |
 | 4 | Hypothesis ratings, 60 items | 2 people | ~1.5 h each | ⏳ |
 | 5 | Contradiction labels, 68 pairs | 2 people | ~1 h each | ⏳ |
 | 6 | Free OpenAlex API key | Project owner | 5 min | ⏳ Unblocks citation densification for papers whose references Semantic Scholar hides |
@@ -40,6 +41,17 @@ Sheet: `relevance_sheet_blank.csv`. For each row, read the query, then the paper
 | **0** | Does not address the query's core subject | A GNN for molecules; a survey of blockchain |
 
 Shared words are not enough: "network traffic" is not "road traffic".
+
+### Task 3b: 50-pair subset (independent grader)
+
+Sheet: `relevance_subset50_sheet_blank.csv`. Same 0/1/2 scale as above. For the result to count as independent agreement:
+
+- Grade every row yourself, from the query, title and abstract only.
+- Do not use ChatGPT, Claude, Copilot or any other AI tool, and do not run a script to fill grades or notes.
+- Do not open `relevance_sheet_cv.csv`, other graded sheets, or anything named `*DO_NOT_SHARE*`.
+- Notes are optional; a few words for uncertain rows is enough.
+
+Return the file renamed `relevance_subset50_sheet_<initials>.csv`.
 
 ## Task 4: Hypothesis ratings
 
@@ -91,6 +103,8 @@ Semantic Scholar hides reference lists for many publishers, and 77% of our paper
 ```powershell
 # Relevance: human-human and human-AI agreement
 .\venv\Scripts\python.exe -m src.evaluation.human_agreement --sheets evaluation\human_review\relevance_sheet_cv.csv evaluation\human_review\relevance_sheet_<initials>.csv
+# Relevance subset (task 3b): kappa vs CV and vs the 7B / 27B judges on the same 50 pairs
+.\venv\Scripts\python.exe evaluation\human_review\build_relevance_subset.py score --sheet evaluation\human_review\relevance_subset50_sheet_<initials>.csv
 # Hypotheses: per-arm means, graph minus vector (paired by query), inter-rater kappa
 .\venv\Scripts\python.exe -m src.evaluation.human_ratings hypothesis --sheets evaluation\human_review\hypothesis_sheet_<A>.csv evaluation\human_review\hypothesis_sheet_<B>.csv
 # Contradictions: precision of top-ranked candidates vs lower-ranked controls, inter-rater kappa
