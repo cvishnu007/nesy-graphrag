@@ -1,0 +1,658 @@
+{
+  "V2-01-1": {
+    "query": "graph neural networks for drug-target interaction prediction",
+    "raw": "{\"high_level_keywords\": [\"Graph neural networks\", \"Drug-target interaction prediction\"], \"low_level_keywords\": [\"Neural networks\", \"Drug molecules\", \"Protein targets\", \"Interaction prediction\"]}",
+    "high_level_keywords": [
+      "Graph neural networks",
+      "Drug-target interaction prediction"
+    ],
+    "low_level_keywords": [
+      "Neural networks",
+      "Drug molecules",
+      "Protein targets",
+      "Interaction prediction"
+    ]
+  },
+  "V2-01-2": {
+    "query": "scalable training of graph neural networks on large graphs",
+    "raw": "{\"high_level_keywords\": [\"Scalable training\", \"Graph neural networks\", \"Large graphs\"], \"low_level_keywords\": [\"Node embedding\", \"Message passing\", \"Graph convolution\", \"Distributed computing\", \"Sparse matrices\"]}",
+    "high_level_keywords": [
+      "Scalable training",
+      "Graph neural networks",
+      "Large graphs"
+    ],
+    "low_level_keywords": [
+      "Node embedding",
+      "Message passing",
+      "Graph convolution",
+      "Distributed computing",
+      "Sparse matrices"
+    ]
+  },
+  "V2-01-3": {
+    "query": "graph neural networks for combinatorial optimization",
+    "raw": "{\"high_level_keywords\": [\"Graph neural networks\", \"Combinatorial optimization\"], \"low_level_keywords\": [\"Neural networks\", \"Optimization problems\", \"Graph theory\", \"Machine learning\"]}",
+    "high_level_keywords": [
+      "Graph neural networks",
+      "Combinatorial optimization"
+    ],
+    "low_level_keywords": [
+      "Neural networks",
+      "Optimization problems",
+      "Graph theory",
+      "Machine learning"
+    ]
+  },
+  "V2-01-4": {
+    "query": "expressive power of message passing neural networks",
+    "raw": "{\"high_level_keywords\": [\"Expressive power\", \"Message passing neural networks\", \"Neural network capabilities\"], \"low_level_keywords\": [\"Message passing\", \"Graph neural networks\", \"Node representation\", \"Feature propagation\"]}",
+    "high_level_keywords": [
+      "Expressive power",
+      "Message passing neural networks",
+      "Neural network capabilities"
+    ],
+    "low_level_keywords": [
+      "Message passing",
+      "Graph neural networks",
+      "Node representation",
+      "Feature propagation"
+    ]
+  },
+  "V2-02-1": {
+    "query": "uncertainty quantification in deep neural networks",
+    "raw": "{\"high_level_keywords\": [\"Uncertainty quantification\", \"Deep neural networks\"], \"low_level_keywords\": [\"Machine learning\", \"Neural network architecture\", \"Predictive uncertainty\", \"Statistical methods\"]}",
+    "high_level_keywords": [
+      "Uncertainty quantification",
+      "Deep neural networks"
+    ],
+    "low_level_keywords": [
+      "Machine learning",
+      "Neural network architecture",
+      "Predictive uncertainty",
+      "Statistical methods"
+    ]
+  },
+  "V2-02-2": {
+    "query": "few-shot learning with meta-learning",
+    "raw": "{\"high_level_keywords\": [\"Few-shot learning\", \"Meta-learning\", \"Machine learning\"], \"low_level_keywords\": [\"Training examples\", \"Learning algorithms\", \"Task adaptation\", \"Efficiency\"]}",
+    "high_level_keywords": [
+      "Few-shot learning",
+      "Meta-learning",
+      "Machine learning"
+    ],
+    "low_level_keywords": [
+      "Training examples",
+      "Learning algorithms",
+      "Task adaptation",
+      "Efficiency"
+    ]
+  },
+  "V2-02-3": {
+    "query": "continual learning and catastrophic forgetting",
+    "raw": "{\"high_level_keywords\": [\"Continual learning\", \"Catastrophic forgetting\"], \"low_level_keywords\": [\"Machine learning\", \"Neural networks\", \"Memory management\", \"Training processes\"]}",
+    "high_level_keywords": [
+      "Continual learning",
+      "Catastrophic forgetting"
+    ],
+    "low_level_keywords": [
+      "Machine learning",
+      "Neural networks",
+      "Memory management",
+      "Training processes"
+    ]
+  },
+  "V2-02-4": {
+    "query": "fairness and bias mitigation in machine learning models",
+    "raw": "{\"high_level_keywords\": [\"Fairness\", \"Bias mitigation\", \"Machine learning\"], \"low_level_keywords\": [\"Algorithmic bias\", \"Discrimination\", \"Equity\", \"Data imbalance\", \"Model training\"]}",
+    "high_level_keywords": [
+      "Fairness",
+      "Bias mitigation",
+      "Machine learning"
+    ],
+    "low_level_keywords": [
+      "Algorithmic bias",
+      "Discrimination",
+      "Equity",
+      "Data imbalance",
+      "Model training"
+    ]
+  },
+  "V2-03-1": {
+    "query": "deep learning for network intrusion detection",
+    "raw": "{\"high_level_keywords\": [\"Deep learning\", \"Network intrusion detection\", \"Machine learning\"], \"low_level_keywords\": [\"Neural networks\", \"Feature extraction\", \"Anomaly detection\", \"Classification algorithms\", \"Data preprocessing\"]}",
+    "high_level_keywords": [
+      "Deep learning",
+      "Network intrusion detection",
+      "Machine learning"
+    ],
+    "low_level_keywords": [
+      "Neural networks",
+      "Feature extraction",
+      "Anomaly detection",
+      "Classification algorithms",
+      "Data preprocessing"
+    ]
+  },
+  "V2-03-2": {
+    "query": "malware detection using machine learning",
+    "raw": "{\"high_level_keywords\": [\"Malware detection\", \"Machine learning\"], \"low_level_keywords\": [\"Data analysis\", \"Algorithm\", \"Feature extraction\", \"Classification\", \"Training dataset\"]}",
+    "high_level_keywords": [
+      "Malware detection",
+      "Machine learning"
+    ],
+    "low_level_keywords": [
+      "Data analysis",
+      "Algorithm",
+      "Feature extraction",
+      "Classification",
+      "Training dataset"
+    ]
+  },
+  "V2-03-3": {
+    "query": "phishing website detection",
+    "raw": "{\"high_level_keywords\": [\"Phishing\", \"Website detection\", \"Cybersecurity\"], \"low_level_keywords\": [\"URL analysis\", \"Malicious code\", \"User authentication\", \"Machine learning\"]}",
+    "high_level_keywords": [
+      "Phishing",
+      "Website detection",
+      "Cybersecurity"
+    ],
+    "low_level_keywords": [
+      "URL analysis",
+      "Malicious code",
+      "User authentication",
+      "Machine learning"
+    ]
+  },
+  "V2-03-4": {
+    "query": "membership inference and model inversion attacks on machine learning models",
+    "raw": "{\"high_level_keywords\": [\"Membership inference\", \"Model inversion attacks\", \"Machine learning security\"], \"low_level_keywords\": [\"Inference attacks\", \"Adversarial attacks\", \"Data privacy\", \"Model training\", \"Machine learning models\"]}",
+    "high_level_keywords": [
+      "Membership inference",
+      "Model inversion attacks",
+      "Machine learning security"
+    ],
+    "low_level_keywords": [
+      "Inference attacks",
+      "Adversarial attacks",
+      "Data privacy",
+      "Model training",
+      "Machine learning models"
+    ]
+  },
+  "V2-04-1": {
+    "query": "traffic engineering in software-defined networks",
+    "raw": "{\"high_level_keywords\": [\"Traffic engineering\", \"Software-defined networks\"], \"low_level_keywords\": [\"Network traffic management\", \"SDN architecture\", \"Flow control\", \"Routing protocols\"]}",
+    "high_level_keywords": [
+      "Traffic engineering",
+      "Software-defined networks"
+    ],
+    "low_level_keywords": [
+      "Network traffic management",
+      "SDN architecture",
+      "Flow control",
+      "Routing protocols"
+    ]
+  },
+  "V2-04-2": {
+    "query": "resource allocation in 5G and 6G wireless networks",
+    "raw": "{\"high_level_keywords\": [\"Resource allocation\", \"Wireless networks\"], \"low_level_keywords\": [\"5G\", \"6G\", \"Network resources\", \"Bandwidth\", \"Spectrum management\"]}",
+    "high_level_keywords": [
+      "Resource allocation",
+      "Wireless networks"
+    ],
+    "low_level_keywords": [
+      "5G",
+      "6G",
+      "Network resources",
+      "Bandwidth",
+      "Spectrum management"
+    ]
+  },
+  "V2-04-3": {
+    "query": "routing protocols for wireless sensor networks",
+    "raw": "{\"high_level_keywords\": [\"Routing protocols\", \"Wireless sensor networks\"], \"low_level_keywords\": [\"Ad hoc On-demand Distance Vector (AODV)\", \"Dynamic Source Routing (DSR)\", \"Reverse Address Resolution Protocol (RARP)\", \"Multi-hop communication\"]}",
+    "high_level_keywords": [
+      "Routing protocols",
+      "Wireless sensor networks"
+    ],
+    "low_level_keywords": [
+      "Ad hoc On-demand Distance Vector (AODV)",
+      "Dynamic Source Routing (DSR)",
+      "Reverse Address Resolution Protocol (RARP)",
+      "Multi-hop communication"
+    ]
+  },
+  "V2-04-4": {
+    "query": "communication and routing in vehicular ad hoc networks",
+    "raw": "{\"high_level_keywords\": [\"Communication\", \"Routing\", \"Vehicular Ad Hoc Networks\"], \"low_level_keywords\": [\"Wireless communication\", \"Node routing\", \"Mobile network\", \"Ad hoc network\", \"Vehicle networking\", \"Data transmission\"]}",
+    "high_level_keywords": [
+      "Communication",
+      "Routing",
+      "Vehicular Ad Hoc Networks"
+    ],
+    "low_level_keywords": [
+      "Wireless communication",
+      "Node routing",
+      "Mobile network",
+      "Ad hoc network",
+      "Vehicle networking",
+      "Data transmission"
+    ]
+  },
+  "V2-05-1": {
+    "query": "learned index structures for database systems",
+    "raw": "{\"high_level_keywords\": [\"Learned index structures\", \"Database systems\", \"Indexing\"], \"low_level_keywords\": [\"Bloom filters\", \"Hash indexes\", \"Tree-based indexes\", \"Memory optimization\"]}",
+    "high_level_keywords": [
+      "Learned index structures",
+      "Database systems",
+      "Indexing"
+    ],
+    "low_level_keywords": [
+      "Bloom filters",
+      "Hash indexes",
+      "Tree-based indexes",
+      "Memory optimization"
+    ]
+  },
+  "V2-05-2": {
+    "query": "query optimization with machine learning",
+    "raw": "{\"high_level_keywords\": [\"Query optimization\", \"Machine learning\", \"Data analysis\"], \"low_level_keywords\": [\"Algorithm\", \"Model training\", \"Feature selection\", \"Performance tuning\", \"Predictive modeling\"]}",
+    "high_level_keywords": [
+      "Query optimization",
+      "Machine learning",
+      "Data analysis"
+    ],
+    "low_level_keywords": [
+      "Algorithm",
+      "Model training",
+      "Feature selection",
+      "Performance tuning",
+      "Predictive modeling"
+    ]
+  },
+  "V2-05-3": {
+    "query": "entity resolution and record linkage",
+    "raw": "{\"high_level_keywords\": [\"Entity resolution\", \"Record linkage\"], \"low_level_keywords\": []}",
+    "high_level_keywords": [
+      "Entity resolution",
+      "Record linkage"
+    ],
+    "low_level_keywords": []
+  },
+  "V2-05-4": {
+    "query": "natural language interfaces to relational databases",
+    "raw": "{\"high_level_keywords\": [\"Natural language interfaces\", \"Relational databases\", \"Database interaction\"], \"low_level_keywords\": [\"SQL queries\", \"User interface\", \"Text-based queries\", \"Database management\"]}",
+    "high_level_keywords": [
+      "Natural language interfaces",
+      "Relational databases",
+      "Database interaction"
+    ],
+    "low_level_keywords": [
+      "SQL queries",
+      "User interface",
+      "Text-based queries",
+      "Database management"
+    ]
+  },
+  "V2-06-1": {
+    "query": "automated program repair",
+    "raw": "{\"high_level_keywords\": [\"Automated program repair\", \"Program repair\"], \"low_level_keywords\": [\"Bug fixing\", \"Software maintenance\", \"Code optimization\", \"Algorithmic repair\"]}",
+    "high_level_keywords": [
+      "Automated program repair",
+      "Program repair"
+    ],
+    "low_level_keywords": [
+      "Bug fixing",
+      "Software maintenance",
+      "Code optimization",
+      "Algorithmic repair"
+    ]
+  },
+  "V2-06-2": {
+    "query": "deep learning for code generation and completion",
+    "raw": "{\"high_level_keywords\": [\"Deep learning\", \"Code generation\", \"Completion\"], \"low_level_keywords\": [\"Neural networks\", \"Machine learning models\", \"Programming languages\", \"Automated coding\", \"Syntax analysis\"]}",
+    "high_level_keywords": [
+      "Deep learning",
+      "Code generation",
+      "Completion"
+    ],
+    "low_level_keywords": [
+      "Neural networks",
+      "Machine learning models",
+      "Programming languages",
+      "Automated coding",
+      "Syntax analysis"
+    ]
+  },
+  "V2-06-3": {
+    "query": "software defect prediction",
+    "raw": "{\"high_level_keywords\": [\"Software defect prediction\", \"Defect prediction\"], \"low_level_keywords\": [\"Software development\", \"Code quality\", \"Testing methods\", \"Machine learning\", \"Statistical models\"]}",
+    "high_level_keywords": [
+      "Software defect prediction",
+      "Defect prediction"
+    ],
+    "low_level_keywords": [
+      "Software development",
+      "Code quality",
+      "Testing methods",
+      "Machine learning",
+      "Statistical models"
+    ]
+  },
+  "V2-06-4": {
+    "query": "test case generation with large language models",
+    "raw": "{\"high_level_keywords\": [\"Test case generation\", \"Large language models\", \"Artificial intelligence\"], \"low_level_keywords\": [\"Model training\", \"Natural language processing\", \"Machine learning\", \"Programming examples\"]}",
+    "high_level_keywords": [
+      "Test case generation",
+      "Large language models",
+      "Artificial intelligence"
+    ],
+    "low_level_keywords": [
+      "Model training",
+      "Natural language processing",
+      "Machine learning",
+      "Programming examples"
+    ]
+  },
+  "V2-07-1": {
+    "query": "task scheduling in cloud computing",
+    "raw": "{\"high_level_keywords\": [\"Task scheduling\", \"Cloud computing\", \"Resource management\"], \"low_level_keywords\": [\"Scheduling algorithms\", \"Virtual machines\", \"Load balancing\", \"Queueing theory\", \"Priority-based scheduling\"]}",
+    "high_level_keywords": [
+      "Task scheduling",
+      "Cloud computing",
+      "Resource management"
+    ],
+    "low_level_keywords": [
+      "Scheduling algorithms",
+      "Virtual machines",
+      "Load balancing",
+      "Queueing theory",
+      "Priority-based scheduling"
+    ]
+  },
+  "V2-07-2": {
+    "query": "serverless computing performance and cold starts",
+    "raw": "{\"high_level_keywords\": [\"Serverless computing\", \"Performance\", \"Cold starts\"], \"low_level_keywords\": [\"Function execution\", \"Response time\", \"Startup latency\", \"Scalability\", \"Resource allocation\"]}",
+    "high_level_keywords": [
+      "Serverless computing",
+      "Performance",
+      "Cold starts"
+    ],
+    "low_level_keywords": [
+      "Function execution",
+      "Response time",
+      "Startup latency",
+      "Scalability",
+      "Resource allocation"
+    ]
+  },
+  "V2-07-3": {
+    "query": "energy-efficient virtual machine placement in data centers",
+    "raw": "{\"high_level_keywords\": [\"Energy-efficient placement\", \"Data center optimization\", \"Virtual machine placement\"], \"low_level_keywords\": [\"Energy efficiency\", \"Virtual machines\", \"Data centers\", \"Server placement\", \"Power consumption\", \"Cooling systems\"]}",
+    "high_level_keywords": [
+      "Energy-efficient placement",
+      "Data center optimization",
+      "Virtual machine placement"
+    ],
+    "low_level_keywords": [
+      "Energy efficiency",
+      "Virtual machines",
+      "Data centers",
+      "Server placement",
+      "Power consumption",
+      "Cooling systems"
+    ]
+  },
+  "V2-07-4": {
+    "query": "edge-cloud offloading for Internet of Things applications",
+    "raw": "{\"high_level_keywords\": [\"Edge-cloud offloading\", \"Internet of Things applications\"], \"low_level_keywords\": [\"Edge computing\", \"Cloud computing\", \"Offloading techniques\", \"IoT devices\", \"Network latency\", \"Resource allocation\"]}",
+    "high_level_keywords": [
+      "Edge-cloud offloading",
+      "Internet of Things applications"
+    ],
+    "low_level_keywords": [
+      "Edge computing",
+      "Cloud computing",
+      "Offloading techniques",
+      "IoT devices",
+      "Network latency",
+      "Resource allocation"
+    ]
+  },
+  "V2-08-1": {
+    "query": "retrieval-augmented generation for question answering",
+    "raw": "{\"high_level_keywords\": [\"Retrieval-augmented generation\", \"Question answering\"], \"low_level_keywords\": [\"Relevant information retrieval\", \"Context-aware generation\", \"Knowledge integration\"]}",
+    "high_level_keywords": [
+      "Retrieval-augmented generation",
+      "Question answering"
+    ],
+    "low_level_keywords": [
+      "Relevant information retrieval",
+      "Context-aware generation",
+      "Knowledge integration"
+    ]
+  },
+  "V2-08-2": {
+    "query": "hallucination in large language models",
+    "raw": "{\"high_level_keywords\": [\"Hallucination\", \"Large language models\"], \"low_level_keywords\": [\"Model accuracy\", \"Generated content validity\", \"Bias\", \"Error rate\"]}",
+    "high_level_keywords": [
+      "Hallucination",
+      "Large language models"
+    ],
+    "low_level_keywords": [
+      "Model accuracy",
+      "Generated content validity",
+      "Bias",
+      "Error rate"
+    ]
+  },
+  "V2-08-3": {
+    "query": "multilingual and low-resource machine translation",
+    "raw": "{\"high_level_keywords\": [\"Multilingual machine translation\", \"Low-resource machine translation\"], \"low_level_keywords\": [\"Machine learning\", \"Translation models\", \"Language resources\", \"Data scarcity\"]}",
+    "high_level_keywords": [
+      "Multilingual machine translation",
+      "Low-resource machine translation"
+    ],
+    "low_level_keywords": [
+      "Machine learning",
+      "Translation models",
+      "Language resources",
+      "Data scarcity"
+    ]
+  },
+  "V2-08-4": {
+    "query": "sentiment analysis of social media text",
+    "raw": "{\"high_level_keywords\": [\"Sentiment analysis\", \"Social media\"], \"low_level_keywords\": [\"Text analysis\", \"Opinion mining\", \"User comments\", \"Tweet\", \"Facebook post\"]}",
+    "high_level_keywords": [
+      "Sentiment analysis",
+      "Social media"
+    ],
+    "low_level_keywords": [
+      "Text analysis",
+      "Opinion mining",
+      "User comments",
+      "Tweet",
+      "Facebook post"
+    ]
+  },
+  "V2-09-1": {
+    "query": "vision transformers for image classification",
+    "raw": "{\"high_level_keywords\": [\"Vision transformers\", \"Image classification\"], \"low_level_keywords\": [\"Computer vision\", \"Deep learning\", \"Neural networks\", \"Convolutional neural networks (CNN)\", \"Self-attention\"]}",
+    "high_level_keywords": [
+      "Vision transformers",
+      "Image classification"
+    ],
+    "low_level_keywords": [
+      "Computer vision",
+      "Deep learning",
+      "Neural networks",
+      "Convolutional neural networks (CNN)",
+      "Self-attention"
+    ]
+  },
+  "V2-09-2": {
+    "query": "object detection in autonomous driving",
+    "raw": "{\"high_level_keywords\": [\"Object detection\", \"Autonomous driving\", \"Computer vision\"], \"low_level_keywords\": [\"Sensor fusion\", \"Deep learning\", \"Bounding boxes\", \"Lane detection\", \"Pedestrian recognition\"]}",
+    "high_level_keywords": [
+      "Object detection",
+      "Autonomous driving",
+      "Computer vision"
+    ],
+    "low_level_keywords": [
+      "Sensor fusion",
+      "Deep learning",
+      "Bounding boxes",
+      "Lane detection",
+      "Pedestrian recognition"
+    ]
+  },
+  "V2-09-3": {
+    "query": "medical image segmentation with deep learning",
+    "raw": "{\"high_level_keywords\": [\"Medical image segmentation\", \"Deep learning\"], \"low_level_keywords\": [\"Image processing\", \"Neural networks\", \"Segmentation algorithms\", \"Training data\", \"Convolutional neural networks\"]}",
+    "high_level_keywords": [
+      "Medical image segmentation",
+      "Deep learning"
+    ],
+    "low_level_keywords": [
+      "Image processing",
+      "Neural networks",
+      "Segmentation algorithms",
+      "Training data",
+      "Convolutional neural networks"
+    ]
+  },
+  "V2-09-4": {
+    "query": "self-supervised visual representation learning",
+    "raw": "{\"high_level_keywords\": [\"Self-supervised learning\", \"Visual representation learning\", \"Representation learning\"], \"low_level_keywords\": [\"Self-supervision\", \"Unsupervised learning\", \"Pre-training\", \"Feature extraction\"]}",
+    "high_level_keywords": [
+      "Self-supervised learning",
+      "Visual representation learning",
+      "Representation learning"
+    ],
+    "low_level_keywords": [
+      "Self-supervision",
+      "Unsupervised learning",
+      "Pre-training",
+      "Feature extraction"
+    ]
+  },
+  "V2-10-1": {
+    "query": "time series forecasting with deep learning",
+    "raw": "{\"high_level_keywords\": [\"Time series forecasting\", \"Deep learning\"], \"low_level_keywords\": [\"Recurrent neural networks\", \"Long short-term memory\", \"Convolutional neural networks\", \"Forecasting models\"]}",
+    "high_level_keywords": [
+      "Time series forecasting",
+      "Deep learning"
+    ],
+    "low_level_keywords": [
+      "Recurrent neural networks",
+      "Long short-term memory",
+      "Convolutional neural networks",
+      "Forecasting models"
+    ]
+  },
+  "V2-10-2": {
+    "query": "anomaly detection in multivariate sensor data",
+    "raw": "{\"high_level_keywords\": [\"Anomaly detection\", \"Multivariate sensor data\"], \"low_level_keywords\": [\"Sensor data\", \"Time series analysis\", \"Machine learning\", \"Statistical methods\"]}",
+    "high_level_keywords": [
+      "Anomaly detection",
+      "Multivariate sensor data"
+    ],
+    "low_level_keywords": [
+      "Sensor data",
+      "Time series analysis",
+      "Machine learning",
+      "Statistical methods"
+    ]
+  },
+  "V2-10-3": {
+    "query": "explainable machine learning for tabular data",
+    "raw": "{\"high_level_keywords\": [\"Explainable machine learning\", \"Tabular data\", \"Machine learning\"], \"low_level_keywords\": [\"Feature importance\", \"Decision trees\", \"Linear models\", \"Interpretability\"]}",
+    "high_level_keywords": [
+      "Explainable machine learning",
+      "Tabular data",
+      "Machine learning"
+    ],
+    "low_level_keywords": [
+      "Feature importance",
+      "Decision trees",
+      "Linear models",
+      "Interpretability"
+    ]
+  },
+  "V2-10-4": {
+    "query": "machine learning on electronic health records",
+    "raw": "{\"high_level_keywords\": [\"Machine learning\", \"Electronic health records\", \"Health informatics\"], \"low_level_keywords\": [\"Data analysis\", \"Patient data\", \"Predictive modeling\", \"Clinical decision support\"]}",
+    "high_level_keywords": [
+      "Machine learning",
+      "Electronic health records",
+      "Health informatics"
+    ],
+    "low_level_keywords": [
+      "Data analysis",
+      "Patient data",
+      "Predictive modeling",
+      "Clinical decision support"
+    ]
+  },
+  "V2-11-1": {
+    "query": "kernel-level security and isolation mechanisms",
+    "raw": "{\"high_level_keywords\": [\"Kernel-level security\", \"Isolation mechanisms\"], \"low_level_keywords\": [\"Security patches\", \"Virtualization\", \"\u6c99\u7bb1\u6280\u672f\", \"\u6743\u9650\u9694\u79bb\"]}",
+    "high_level_keywords": [
+      "Kernel-level security",
+      "Isolation mechanisms"
+    ],
+    "low_level_keywords": [
+      "Security patches",
+      "Virtualization",
+      "\u6c99\u7bb1\u6280\u672f",
+      "\u6743\u9650\u9694\u79bb"
+    ]
+  },
+  "V2-11-2": {
+    "query": "memory management for virtualized systems",
+    "raw": "{\"high_level_keywords\": [\"Memory management\", \"Virtualized systems\", \"Resource allocation\"], \"low_level_keywords\": [\"Page tables\", \"Heap memory\", \"Stack memory\", \"Virtual machines\", \"Memory fragmentation\"]}",
+    "high_level_keywords": [
+      "Memory management",
+      "Virtualized systems",
+      "Resource allocation"
+    ],
+    "low_level_keywords": [
+      "Page tables",
+      "Heap memory",
+      "Stack memory",
+      "Virtual machines",
+      "Memory fragmentation"
+    ]
+  },
+  "V2-11-3": {
+    "query": "real-time operating systems for embedded devices",
+    "raw": "{\"high_level_keywords\": [\"Real-time operating systems\", \"Embedded devices\"], \"low_level_keywords\": [\"RTOS\", \"Operating system\", \"Device embedding\", \"Hardware integration\", \"System timing\"]}",
+    "high_level_keywords": [
+      "Real-time operating systems",
+      "Embedded devices"
+    ],
+    "low_level_keywords": [
+      "RTOS",
+      "Operating system",
+      "Device embedding",
+      "Hardware integration",
+      "System timing"
+    ]
+  },
+  "V2-11-4": {
+    "query": "storage management for flash and solid-state drives",
+    "raw": "{\"high_level_keywords\": [\"Storage management\", \"Flash storage\", \"Solid-state drives\"], \"low_level_keywords\": [\"Data retention\", \"Performance optimization\", \"Error correction\", \"Recovery strategies\", \"Latency\"]}",
+    "high_level_keywords": [
+      "Storage management",
+      "Flash storage",
+      "Solid-state drives"
+    ],
+    "low_level_keywords": [
+      "Data retention",
+      "Performance optimization",
+      "Error correction",
+      "Recovery strategies",
+      "Latency"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "judge": "ollama:qwen2.5:7b-instruct@strict",
+  "batch_size": 1,
+  "pool_depth": 20,
+  "pooled_pairs": 3073,
+  "frozen_labels_reused_from": "results\\retrieval\\stratified_v2_20261114\\labels.jsonl",
+  "human_validation": "results/retrieval/judge_agreement_local_20261114/report.json (kappa 0.7485)"
+}

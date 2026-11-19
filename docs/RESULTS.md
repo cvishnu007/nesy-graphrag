@@ -175,6 +175,26 @@ The graph signal is co-citation through neighbours: papers cited by the query's 
 
 Dev agrees (+0.071 Recall@20 over BGE + BM25). **Finding:** when the task depends on citation structure rather than topical similarity, the densified graph gives a large, significant gain (28% relative Recall@20 over BGE + BM25). Together with §2d–2e, this marks the boundary: graph structure is redundant for short topical queries but complementary for citation-level relatedness. BM25 fusion slightly hurts here (long abstract queries), unlike in §2d.
 
+## 2g. GraphRAG baseline: LightRAG-style retrieval (44 stratified queries)
+
+A real LightRAG or Microsoft GraphRAG index needs about two LLM extraction calls per chunk, more than a week for 47,619 abstracts on the project's 4 GB laptop GPU. `src/evaluation/lightrag_baseline.py` keeps LightRAG's query-time algorithm (Guo et al., 2024; query logic of v1.4) and replaces only the LLM-built index with the SciERC graph: 558,123 entities embedded by name with BGE, and 604,108 relations (entity pairs co-occurring in at least 2 abstracts) embedded as "source, target". The local 7B model extracts high- and low-level keywords per query with LightRAG's keyword instructions (`keywords.json`). Modes: local (top 60 entities, papers ordered by entity rank and neighbour overlap), global (top 60 relations re-sorted by degree), hybrid (round-robin of local and global) and mix (round-robin of BGE, local and global). Hybrid and mix were pool-extended with the same validated 7B judge (768 new pairs; 3,073 total) and are fully judged at depth 20; local and global are reported with their unjudged papers (44%) counted as non-relevant. Results: `results/retrieval/stratified_v2_lightrag_20261119/summary.json`.
+
+| NDCG@10 | All 44 | Dev 22 | Test 22 | P@10 (all) |
+|---|---:|---:|---:|---:|
+| BGE + BM25 + graph (this system) | **0.642** | 0.710 | 0.575 | 0.725 |
+| BGE + BM25 | 0.619 | 0.697 | 0.541 | 0.702 |
+| BGE | 0.591 | 0.646 | 0.535 | 0.684 |
+| LightRAG-style mix | 0.396 | 0.404 | 0.388 | 0.448 |
+| LightRAG-style global (lower bound) | 0.219 | 0.240 | 0.199 | 0.300 |
+| LightRAG-style hybrid | 0.176 | 0.163 | 0.190 | 0.264 |
+| LightRAG-style local (lower bound) | 0.126 | 0.104 | 0.148 | 0.191 |
+
+This system beats LightRAG-style mix by +0.246 NDCG@10 (39 wins, 3 losses; p < 0.0001) and hybrid by +0.466 (40/2); BGE alone beats mix by +0.195 (39/2). All comparisons hold on the test half (p ≤ 0.002). The existing systems' NDCG is 0.002 lower than in §2d because the extended pool adds relevant papers to the ideal ranking; their rankings are unchanged.
+
+**Diagnosis.** Entity-centric retrieval ranks papers by which entities they mention, not by whether they address the query. The 7B model's low-level keywords are often generic (for "serverless computing performance and cold starts": "response time", "scalability", "resource allocation"), and they match entities that appear in thousands of papers, so local mode returns off-topic papers. Global mode, matched on the high-level keywords ("serverless computing", "cold starts"), stays on topic but orders papers within a relation arbitrarily, as LightRAG does. Mix recovers partly because a third of its list is BGE.
+
+**Caveats.** This is a re-implementation over a supervised entity graph, not the LightRAG package with an LLM-built graph. Entity vectors use names, not LLM-written descriptions, and relations are co-occurrence, not typed. A larger LLM would likely write better descriptions and keywords. The query keywords came from the local 7B model, which wrote two keywords for one query (V2-11-1) in Chinese, and returned no low-level keywords for V2-05-3, where both modes then use the high-level keywords. The comparison measures LightRAG's retrieval logic on this graph, for topical ranking only; LightRAG targets query-focused answer generation, which this does not test.
+
 ## 3. Scientific entity extraction (SciERC test; 100 abstracts, 1,685 gold entities)
 
 | Extractor | Typed F1 | Typed F1 w/o Generic | Span F1 |
