@@ -305,16 +305,18 @@ Same structured prompt as the application, no tuning, single run (`src/evaluatio
 
 GPT-OSS-120B answered 337 of 338 items before Groq's daily token limit (200K TPD); the missing item is a non-contradiction, and the worst-case F1 is 0.809. The local 3B model over-detects contradictions (accuracy below the 0.64 majority baseline) and its confidence is uninformative. Recommendation: NLI screening locally, verdicts from a large model.
 
-## 5b-2. Contradictions in the CS corpus: human labels (round 1, one rater)
+## 5b-2. Contradictions in the CS corpus: human labels (round 1, two raters)
 
-68 pairs from the NLI sentence-pair screener (30 stratified queries, top 20 retrieved papers each; `evaluation/human_review/contradiction_sheet_labeled_cv.csv`). Labels: 2 = contradiction, 1 = tension, 0 = none.
+68 pairs from the NLI sentence-pair screener (30 stratified queries, top 20 retrieved papers each). Labels: 2 = contradiction, 1 = tension, 0 = none. Two raters, the second blind to the first and without AI assistance (`evaluation/human_review/contradiction_sheet_labeled_cv.csv`, `contradiction_sheet_labeled_rater3.csv`; report `contradiction_report_cv_rater3.json`). Inter-rater quadratic-weighted κ 0.76; identical labels on 64 of 68 pairs.
 
-| | Pairs | Human contradiction (2) | Human tension (1) |
+| | Pairs | Contradiction (rater 1 / rater 2) | Contradiction or tension (rater 1 / rater 2 / either) |
 |---|---:|---:|---:|
-| Top-ranked NLI candidates | 56 | 0 | 5 (8.9%) |
-| Lower-ranked controls | 12 | 0 | 0 |
+| Top-ranked NLI candidates | 56 | 0 / 2 | 5 / 7 / 7 (8.9% / 12.5% / 12.5%) |
+| Lower-ranked controls | 12 | 0 / 0 | 0 / 0 / 0 |
 
-The screener mostly pairs papers that each report their own good results. The local 7B verdict model, given the same pairs and the application prompt (`src/evaluation/contradiction_human_eval.py`), called 5 of 68 a contradiction: 2 were human tension pairs, and 3 of the 63 human-0 pairs were false alarms (4.8%). Without the verdict step, all 68 would be shown.
+No pair is a contradiction for both raters. The four disagreements are all one step apart: the two pairs rater 2 called contradictions (C013, C021: LLM-based unit-test generation beats SBST tools vs falls behind them) are tensions for rater 1, and C017 and C036 are weak tensions for rater 2 only. The screener mostly pairs papers that each report their own good results.
+
+The local 7B verdict model, given the same pairs and the application prompt (`src/evaluation/contradiction_human_eval.py`), called 5 of 68 a contradiction. Two of them are exactly C013 and C021, the only pairs either rater labelled a contradiction. The other 3 are labelled 0 by both raters: false alarms on 3 of 63 (rater 1) and 3 of 61 (rater 2) negatives, about 5%. Without the verdict step, all 68 would be shown.
 
 **Revision: citation-grounded index** (`src/pipeline/contradiction_citation.py`, `src/evaluation/contradiction_index.py`). Disagreements in CS are usually written on purpose (replications, "revisiting", negative results), and the disputing paper cites the disputed one. The index pairs critical findings ("fails to", "contrary to", "surprisingly", "on par with") with the papers they cite, requires a shared specific SciERC entity in both sentences, and ranks pairs by NLI. On the densified graph: 364 critical-finding papers, 1,958 citation-linked pairs, 591 candidates. The 7B verdict model called 9 of the top 150 contradictions. Human precision is pending (round 2, 40 pairs).
 
@@ -365,7 +367,7 @@ Per-query support difference (system − vector): +0.046, 95% CI [−0.068, 0.15
 
 Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c).
 
-1. **Second human rater** for round-1 contradictions. (Done: relevance on a 50-pair subset, κ 0.91, §2b; round-1 hypotheses, κ 0.82–0.90, §4b.)
+1. ~~Second human rater~~ Done: relevance on a 50-pair subset (κ 0.91, §2b), round-1 hypotheses (κ 0.82–0.90, §4b), round-1 contradictions (κ 0.76, §5b-2).
 2. **Round 2 human ratings** (`evaluation/human_review/*round2*`): revised hypothesis method and citation-grounded contradiction index on held-out queries.
 3. Retrieval on the densified graph (`CITES_ADDED`, `COUPLED_WITH`) as a new variant: dev selection on the 22 stratified dev queries, pool extension, then test once.
 4. Optional robustness check: regrade both pools with a larger judge (27B class) and confirm the §2c/§2d conclusions hold.

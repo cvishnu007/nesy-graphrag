@@ -146,7 +146,7 @@ Round 1 (30 queries, two raters, blinded; inter-rater κ 0.82–0.90): the origi
 | Qwen3.8-27B | 0.79 |
 | GPT-OSS-120B | 0.81 |
 
-**In-corpus, round 1.** No real contradictions among 56 top NLI-screened pairs (5 tensions). The screener mostly pairs papers that each report their own gains. A 7B verdict filter cuts the pairs shown from 68 to 5, with 4.8% false alarms.
+**In-corpus, round 1.** Two raters (κ 0.76) labelled 68 NLI-screened pairs. No pair is a contradiction for both; one rater called 2 of the 56 top pairs contradictions (both LLM versus search-based unit-test generation) and the other called them tensions; 7 of 56 (12.5%) are a tension or contradiction for at least one rater, against 0 of 12 controls. The screener mostly pairs papers that each report their own gains. A 7B verdict filter cuts the pairs shown from 68 to 5: it keeps both disputed pairs, and the other 3 (about 5% of negatives) are false alarms.
 
 **Revision.** A citation-grounded index pairs critical findings ("fails to", "contrary to", "surprisingly") with the papers they cite: 591 candidates, 9 of the top 150 flagged by the verdict model. ⏳ Round 2 precision (40 pairs).
 

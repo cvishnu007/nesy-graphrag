@@ -36,7 +36,7 @@ The repository is on `phase3` at `8f2eaa2`, four commits ahead of `origin/phase3
 
 - **Judge validated on human grades.** One annotator graded 200 pooled pairs. The frozen 3B labels agree at κ 0.17 (batch-position bias). A local 7B judge, one paper per call, reaches held-out κ 0.75; Qwen3.8-27B on Groq reaches 0.88 but the free tier is too small for full pools.
 - **Retrieval, validated labels.** On 44 independent topic-stratified queries, the selected BGE + BM25 + graph system scores NDCG@10 0.644 vs 0.287 for the original production system (p < 0.0001). The gain comes from BGE and BM25 fusion; graph expansion adds a non-significant +0.023. On the regraded GNN benchmark: 0.813 vs 0.349.
-- **Hypotheses and contradictions, human round 1 (negative).** Structural-hole hypotheses were less relevant than a vector baseline (two raters: 3.10 vs 4.12 of 5, p = 0.001; κ 0.90). No real contradictions were found among 56 top NLI-screened pairs. Revised methods (problem-bridge hypotheses; citation-grounded contradiction index with a 7B verdict filter) await round 2 human ratings on held-out queries.
+- **Hypotheses and contradictions, human round 1 (negative).** Structural-hole hypotheses were less relevant than a vector baseline (two raters: 3.10 vs 4.12 of 5, p = 0.001; κ 0.90). Contradictions (two raters, κ 0.76): no pair among 56 top NLI-screened pairs is a contradiction for both raters; 7 are a tension or contradiction for at least one. Revised methods (problem-bridge hypotheses; citation-grounded contradiction index with a 7B verdict filter) await round 2 human ratings on held-out queries.
 - **Citation graph densified.** Reference lists for 46,708 papers (from 10,899) via Semantic Scholar and OpenAlex; opt-in `CITES_ADDED`, `COUPLED_WITH`, and `ExternalPaper` layers. Isolated papers fell from 71.4% to 2.4%.
 - **Application now uses the validated components:** the local 7B model, citation-index contradictions, the method–task hypothesis ranker (RESULTS §4d), and a new Related Work mode. The reasoning switches await round 2 confirmation; see AGENT_HANDOFF.md.
 - **Time-sliced discovery benchmark:** graph signals nearly double average precision over text similarity when predicting 2023–2025 method–task combinations from pre-2023 data (RESULTS §4c).
@@ -61,7 +61,7 @@ The repository is on `phase3` at `8f2eaa2`, four commits ahead of `origin/phase3
 
 ## Incomplete or Not Yet Validated
 
-- Second human rater for round-1 contradictions. (Done: relevance subset κ 0.91; round-1 hypotheses κ 0.82–0.90.)
+- Second human rater: done for relevance (50-pair subset, κ 0.91), round-1 hypotheses (κ 0.82–0.90), and round-1 contradictions (κ 0.76).
 - Round 2 human ratings of the revised hypothesis and contradiction methods.
 - Retrieval with the densified citation layers (a new variant; dev selection, pool extension, then test once).
 - Application-mode live generation checks with the 7B verdict filter.
