@@ -1,6 +1,6 @@
 # NeSy-GraphRAG Continuation Handoff
 
-Last reconciled: November 19, 2026. Read this file before changing code, data, configuration, or documentation. It is the canonical handoff for a new chat or coding agent. `PROJECT_STATUS.md` is the concise status view; [docs/RUN_FROM_SCRATCH.md](docs/RUN_FROM_SCRATCH.md) is the install, build and run guide (it replaces the old `SETUP.md` content); `LOCAL_PROJECT_RUNBOOK.md` is a local-only operations reference.
+Last reconciled: November 20, 2026. Read this file before changing code, data, configuration, or documentation. It is the canonical handoff for a new chat or coding agent. `PROJECT_STATUS.md` is the concise status view; [docs/RUN_FROM_SCRATCH.md](docs/RUN_FROM_SCRATCH.md) is the install, build and run guide (it replaces the old `SETUP.md` content); `LOCAL_PROJECT_RUNBOOK.md` is a local-only operations reference.
 
 **Current stage (November 19):** research and evaluation are complete, and `master` holds everything. Read the November 19 section first; the older sections below are kept as the record of how each decision was made.
 
@@ -41,7 +41,7 @@ The current implementation is an abstract-and-metadata prototype. It is delibera
   - Round 2 (rater 1): hypotheses (the bridge does not beat vector neighbours) and contradictions (56% tension-or-contradiction precision for verdict-flagged pairs).
   - Template/AI-generated second-rater sheets are kept in `evaluation/human_review/excluded/` and used nowhere.
 - **Citation-trained encoders** (`citeomatic_benchmark --encoder specter2_base|scincl`). Co-citation raises Recall@20 on top of all three encoders in both domains. SPECTER2 + BM25 + co-citation on DBLP test: 0.300 / 0.708 vs trained Citeomatic 0.303 / 0.689. The script exits with `os._exit` after writing results, because Windows CUDA teardown hung.
-- `src/evaluation/reproduce.py` checks 25 headline numbers. 406 tests pass.
+- `src/evaluation/reproduce.py` checked 25 headline numbers at this point (35 after the November 20 third pass). 406 tests passed.
 
 **Review fixes (November 19, on `baselines-graphrag-citation`).** An external-style review listed six blockers. Done:
 - `reproduce.py` no longer needs the gitignored subset key; `build_relevance_subset.subset_mapping()` rebuilds it deterministically. Verified 25/25 in a fresh clone.
@@ -62,7 +62,19 @@ Task 9 graded by Rater C: judge κ 0.57 on the ten non-GNN topics, below the 0.6
 - `EVALUATION_PROTOCOL.md` §8 records the protocol deviations; PROJECT_STATUS no longer says "ready for venue formatting"; the human-review README's "κ 0.88" line now names the 7B judge (0.75); `requirements.txt` points to RUN_FROM_SCRATCH §3.
 - `reproduce.py` checks 25 numbers.
 
-Still open from the audit (larger work): save per-query results for citation recommendation, DBLP/PubMed and time-sliced and recompute them in `reproduce.py`; commit or rebuild the hypothesis/contradiction arm keys; near-duplicate exclusion in neighbour sets and pre-cutoff entity typing; reranker, PageRank-style graph retriever and SPECTER2-with-adapters baselines; figures; a contribution split per team member; demo prep (`NEO4J_ALLOW_RESET=false` in the local `.env`, rehearse on the demo laptop, backup video; vis-network is now bundled).
+**Third pass (November 20, on `master` after `52c0065`).** Done without the local stores:
+- `reproduce.py` checks 35 numbers and labels each `recomputed` (26) or `saved` (9). New recomputations: round-1 hypothesis arm means and p, round-1 and round-2 contradiction precision, the four contradiction Fisher tests, inter-rater kappas from the sheets, LightRAG and GNN NDCG from rankings, the frozen 3B labels' κ (0.187 on all 200; the draft's "0.17 (all 200)" was the selection-half value and is corrected), and the Holm-adjusted p (1,000,000 permutations).
+- `evaluation/human_review/rebuild_arm_keys.py` rebuilds the round-1 hypothesis and contradiction keys and the round-2 contradiction key exactly from committed sheets and the kits' seeds (they reproduce every saved arm report). The round-2 hypothesis key cannot be rebuilt; commit it. `build_relevance_sheet.py` now has an importable `build()`.
+- Per-query output added to `citation_recommendation.py` (`*_per_query.json`), `citeomatic_benchmark.py` (`*_per_query.json`, `--output-dir`) and `temporal_hypothesis.py` (`per_task_*.json`); `reproduce.py` switches those 9 checks to `recomputed` when the files exist. Leakage options: `citation_recommendation --exclude-near-duplicates` (cosine ≥ 0.995 out of the neighbour set; writes `citation_recommendation_neardup/`) and `temporal_hypothesis --types-from-past`. Frozen defaults unchanged; none of these has been rerun (needs `data/`, Chroma, Neo4j).
+- `related_work(max_year=...)` filters neighbours, BM25 hits and co-citation candidates before fusion (it used to return fewer than `top_k`; regression test added).
+- Reranker baseline (`src/evaluation/reranker_baseline.py`, RESULTS §2i): MiniLM cross-encoder on the top 20 (pool depth, fully judged): BGE + BM25 0.621 → 0.651 (n.s.), about the same as graph expansion; graph system reranked 0.668.
+- Holm recheck saved (`src/evaluation/holm_recheck.py`, `results/retrieval/holm_recheck_20261120/`).
+- `src/evaluation/regrade_stratified.py`: 27B regrade of the 44-query pool a daily batch at a time (topic round-robin, partial scoring). Needs `data/` and the Groq key; not started.
+- Figures in `docs/figures/` (architecture, topical NDCG with CIs, graph effect per task) from `src/evaluation/make_figures.py`.
+- References: 46 of 48 checked (†); OpenScholar is now Nature 2026 and LightRAG Findings of EMNLP 2025. Unconfirmed: DeBERTaV3's ICLR record, and the volume of Robertson and Zaragoza (Crossref says 4, the common citation says 3(4)).
+- Docs archived to `docs/archive/`; README layout documents `teammate2/`; the app warns when `NEO4J_ALLOW_RESET` is true; `EVALUATION_PROTOCOL.md` §8 adds the leakage and artifact amendments and a hosted-model record.
+
+Still open: run the reruns listed in PROJECT_STATUS (per-query files, leakage checks), the 27B regrade, the round-2 hypothesis key, a PageRank-style graph retriever, SPECTER2 with adapters, a learned link-prediction baseline, a deeper reranker with a larger model, contribution split confirmation, demo rehearsal and backup video, `NEO4J_ALLOW_RESET=false` in the local `.env`.
 
 **Local `.env` warning.** On November 19 the owner's `.env` had `NEO4J_ALLOW_RESET=true`. It should be `false` except during an intentional graph rebuild.
 
@@ -94,7 +106,7 @@ The following was checked on November 1, 2026 from the current working directory
 | Ollama port | Not running on `127.0.0.1:11434` | Start it before generation/evaluation |
 | Streamlit port | Not running on `127.0.0.1:8501` | Start it for the UI |
 
-The current branch is `phase3`, at commit `8f2eaa2`. It is four commits ahead of `origin/phase3` and matches `origin/feat/local-evaluation`. Do not assume the four commits are already pushed to `origin/phase3`.
+*(Historical, November 13: the branch was then `phase3` at `8f2eaa2`.)* Current work is on `master`; check `git status --short --branch` rather than relying on this line.
 
 ### Corpus Snapshot Mismatch
 
@@ -102,7 +114,7 @@ The frozen expanded retrieval pool in `results/retrieval/expanded_20260913/` was
 
 ### Test Record
 
-The latest complete test record is **334 passing tests** (November 13, 2026; 306 earlier tests plus 28 for the new modules). The earlier record was **306 passing tests** from the September 14 cleanup checkpoint. The current data/store parity above was rechecked on November 1; the full suite was not rerun as part of this documentation reconciliation.
+The latest complete test record is **416 passing tests** (November 20, 2026, fresh clone on macOS with the full requirements; includes the `trec_eval` equivalence test). Earlier records: 334 (November 13). The earlier record was **306 passing tests** from the September 14 cleanup checkpoint. The current data/store parity above was rechecked on November 1; the full suite was not rerun as part of this documentation reconciliation.
 
 ## What Has Been Executed
 
@@ -339,7 +351,8 @@ This recomputes 25 headline values (judge κ including the judge-transfer check,
 | `LOCAL_PROJECT_RUNBOOK.md` | Detailed local commands and interpretation | Operational reference; local-only |
 | `docs/RESULTS.md` | All result tables with corpus, labels, and tests | Results authority |
 | `docs/EVALUATION_PROTOCOL.md` | Metric definitions, selection rules, recorded selections | Protocol authority |
-| `docs/LOCAL_EVALUATION.md` | Evaluation protocol and reproducibility commands | Evaluation authority |
+| `docs/figures/` | Paper figures and their data tables (`python -m src.evaluation.make_figures`) | Generated |
+| `docs/archive/` | Superseded: paper outline, September–November runbook (`LOCAL_EVALUATION.md`), September LLM-client plans | Historical only |
 | `Chinmay.md`, `devesh.md`, `VISHNU.md` | Contributor/historical work logs | Historical only |
 
 ## Instructions For a New Agent

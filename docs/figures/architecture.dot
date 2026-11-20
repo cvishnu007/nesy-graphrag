@@ -1,0 +1,43 @@
+// System architecture (PAPER_DRAFT §3, §3.1). Render: python -m src.evaluation.make_figures
+digraph nesy {
+  graph [rankdir=LR, fontname="Helvetica", fontsize=11, bgcolor="#fcfcfb", nodesep=0.22, ranksep=0.55, pad=0.2];
+  node  [shape=box, style="rounded,filled", fillcolor="#ffffff", color="#c9c8c2", fontname="Helvetica",
+         fontsize=9.5, fontcolor="#0b0b0b", margin="0.12,0.06"];
+  edge  [color="#8a8984", arrowsize=0.6, penwidth=0.9];
+
+  corpus [label="47,619 CS abstracts\nSemantic Scholar, 2020–2025\n+ reference lists (S2, OpenAlex)", fillcolor="#f1f0ec"];
+
+  subgraph cluster_neural {
+    label="Neural and statistical models: propose"; fontcolor="#2a78d6"; color="#2a78d6"; style="rounded"; penwidth=1.4;
+    bge    [label="BGE dense retrieval\n+ BM25 (RRF)"];
+    tagger [label="SciBERT tagger\nfine-tuned on SciERC"];
+    nli    [label="NLI cross-encoder\n(DeBERTa-v3)"];
+    llm    [label="Local LLM\nQwen2.5-7B"];
+  }
+
+  subgraph cluster_symbolic {
+    label="Typed graph and explicit rules: constrain and verify"; fontcolor="#c4501f"; labelloc="b"; color="#eb6834"; style="rounded"; penwidth=1.4;
+    kg     [label="Neo4j graph\nPaper, SciEntity (5 types)\nCITES, CITES_ADDED, COUPLED_WITH, MENTIONS"];
+    expand [label="Expansion along typed edges\nwith a similarity gate"];
+    prov   [label="Provenance check: every claim cites\nsentence IDs that were retrieved"];
+    contra [label="Citation link + critical wording\n+ shared specific entity"];
+    lbd    [label="Method–Task pairs never co-occurring;\nAdamic–Adar + citation bridges"];
+    cocite [label="Co-citation: papers cited by\nthe 50 nearest neighbours"];
+  }
+
+  subgraph cluster_modes {
+    label="App modes"; fontcolor="#52514e"; color="#c9c8c2"; style="rounded,dashed";
+    review [label="Literature review", fillcolor="#f1f0ec"];
+    cmode  [label="Contradiction detection", fillcolor="#f1f0ec"];
+    hmode  [label="Hypothesis generation", fillcolor="#f1f0ec"];
+    rmode  [label="Related work", fillcolor="#f1f0ec"];
+  }
+
+  corpus -> bge; corpus -> tagger; corpus -> kg [label=" citations", fontsize=8, fontcolor="#52514e"];
+  tagger -> kg [label=" entities", fontsize=8, fontcolor="#52514e"];
+  bge -> expand; kg -> expand; expand -> prov [label=" passages", fontsize=8, fontcolor="#52514e"];
+  llm -> prov [label=" claims", fontsize=8, fontcolor="#52514e"]; prov -> review;
+  kg -> contra; nli -> contra; llm -> contra [label=" verdict", fontsize=8, fontcolor="#52514e"]; contra -> cmode;
+  kg -> lbd; bge -> lbd; lbd -> hmode;
+  bge -> cocite; kg -> cocite; cocite -> rmode;
+}

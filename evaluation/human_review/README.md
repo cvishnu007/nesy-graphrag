@@ -131,6 +131,8 @@ Semantic Scholar hides reference lists for many publishers, and 77% of our paper
 .\venv\Scripts\python.exe -m src.evaluation.human_ratings contradiction_round2 --sheets evaluation\human_review\contradiction_round2_sheet_<A>.csv
 ```
 
+**Keys on a fresh clone.** Rating is finished. The scorers above read the gitignored `*_key_DO_NOT_SHARE_WITH_ANNOTATORS.json` files. Three of them are rebuilt exactly from the committed blank sheets and the kits' fixed seeds by `python evaluation/human_review/rebuild_arm_keys.py` (round-1 hypotheses and contradictions, round-2 contradictions; it never overwrites an existing key). The rebuilt keys reproduce every saved arm-level report. The round-2 hypothesis key cannot be rebuilt (which arms chose a paper depends on the live graph): commit it from the machine that built the kit.
+
 ## Rater record
 
 All raters are anonymous. Publications and reports refer to them only as Rater A, B and C, with their role; no names are recorded. The suffixes in sheet file names (`_cv`, `_rater3`) are internal sheet IDs, not identities; for double-blind submission, share an anonymised copy of the repository.

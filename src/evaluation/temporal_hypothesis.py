@@ -6,7 +6,11 @@ paper published up to the cutoff year. It counts as confirmed if the pair
 co-occurs in at least ``--min-future`` papers published after the cutoff.
 Scorers see only pre-cutoff papers: their entities, BGE vectors, and citations
 between pre-cutoff papers. Entity frequencies and the generic filter are
-recomputed on pre-cutoff papers alone, so nothing from after the cutoff leaks in.
+recomputed on pre-cutoff papers alone. One input does use later papers by default:
+each entity's Task/Method type is the majority type over all its mentions,
+including post-cutoff ones (this is how the frozen 2026-11-15 results were made).
+``--types-from-past`` takes the majority over pre-cutoff mentions only, which
+closes that path; it was added after the internal audit.
 
 Scorers (predeclared 2026-11-15, nothing tuned):
 * ``random``; ``popularity`` (pre-cutoff document frequency of M);
@@ -22,7 +26,9 @@ For each eligible task, the candidates are every vocabulary Method not co-occurr
 with it before the cutoff. Metrics per task: average precision, precision@20,
 recall@100, and AUROC. Means over tasks; paired sign-flip tests across tasks.
 Tasks are split 50/50 by hash into dev and test; both are reported (nothing is
-selected on dev).
+selected on dev). Per-task metrics for every scorer are written to
+``per_task_<output name>`` so the means and paired tests can be recomputed without
+the stores; the frozen 2026-11-15 summaries predate this.
 """
 from __future__ import annotations
 
@@ -65,6 +71,15 @@ def task_metrics(scores, positives):
             "auroc": auroc}
 
 
+def entity_types(mentions, papers=None):
+    """Majority SciERC type per entity name, counting only mentions in ``papers`` if given."""
+    counts = defaultdict(Counter)
+    for pid, name, kind in mentions:
+        if papers is None or pid in papers:
+            counts[name][kind] += 1
+    return {name: c.most_common(1)[0][0] for name, c in counts.items()}
+
+
 def load_mentions():
     from src.storage.neo4j_store import get_driver
 
@@ -88,6 +103,8 @@ def main(argv=None) -> int:
     parser.add_argument("--informative-only", action="store_true",
                         help="sensitivity check for the app ranker's readability filter (is_informative)")
     parser.add_argument("--output-name", default="summary.json")
+    parser.add_argument("--types-from-past", action="store_true",
+                        help="decide each entity's Task/Method type from pre-cutoff mentions only")
     args = parser.parse_args(argv)
     from scipy.sparse import csr_matrix
 
@@ -102,12 +119,10 @@ def main(argv=None) -> int:
     past = {pid for pid, y in year.items() if 0 < y <= args.cutoff}
     future = {pid for pid, y in year.items() if y > args.cutoff}
     mentions = load_mentions()
-    types = defaultdict(Counter)
     paper_entities = defaultdict(set)
-    for pid, name, kind in mentions:
+    for pid, name, _ in mentions:
         paper_entities[pid].add(name)
-        types[name][kind] += 1
-    etype = {name: counts.most_common(1)[0][0] for name, counts in types.items()}
+    etype = defaultdict(lambda: None, entity_types(mentions, past if args.types_from_past else None))
     df_past = Counter(e for pid in past for e in paper_entities.get(pid, ()))
     max_df = args.max_df_fraction * len(past)
     vocab = sorted(e for e, n in df_past.items()
@@ -223,6 +238,8 @@ def main(argv=None) -> int:
         report["splits"][part] = {"tasks": len(chosen), "scorers": summary, "comparisons": tests}
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / args.output_name).write_text(json.dumps(report, indent=2) + "\n")
+    (OUT / f"per_task_{args.output_name}").write_text(json.dumps(
+        {"split": split, "scorers": {name: dict(values) for name, values in per_task.items()}}) + "\n")
     print(json.dumps({k: v for k, v in report.items() if k != "splits"}, indent=1))
     for part in ("all", "test"):
         print(f"\n{part} ({report['splits'][part]['tasks']} tasks)")

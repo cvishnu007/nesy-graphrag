@@ -1,0 +1,9 @@
+task,metric,delta,ci_low,ci_high,p
+"Topical retrieval, 44 q.",NDCG@10,0.0231,-0.0113,0.0595,0.2091
+"Topical, densified graph, 22 q.",NDCG@10,-0.0026,-0.0512,0.051,0.9247
+"Citation rec., our corpus, 400",R@20,0.0675,0.0545,0.0806,0.0
+"Citation rec., DBLP, BGE, 931",R@20,0.0686,0.062,0.0752,0.0
+"DBLP, SPECTER2, 931",R@20,0.0814,0.0745,0.0887,0.0
+"PubMed, BGE, 8,815",R@20,0.0136,0.0119,0.0152,0.0
+"PubMed, SPECTER2, 8,815",R@20,0.0258,0.0242,0.0274,0.0
+"Time-sliced discovery, 120 tasks",AP,0.039,0.0224,0.0556,0.0

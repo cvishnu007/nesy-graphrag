@@ -80,3 +80,48 @@ def test_attach_citation_evidence_titles_in_similarity_order():
     assert [x["title"] for x in results[0]["cited_by_similar"]] == ["N2", "N1"]
     assert results[0]["cites"] == [{"id": "s2", "title": "S2", "year": 2021}]
     assert results[1]["cited_by"][0]["id"] == "s1" and results[1]["cited_by_similar"] == []
+
+
+def test_within_year_keeps_unknown_years():
+    from src.pipeline.related_work import within_year
+
+    assert within_year(2020, 2021) and not within_year(2022, 2021)
+    assert within_year(None, 2021) and within_year("", 2021) and within_year(2030, None)
+
+
+def test_related_work_year_limit_filters_before_fusion_and_fills_top_k(monkeypatch):
+    """Regression: max_year used to be applied after cutting to 50 neighbours / 100 BM25 hits."""
+    import src.pipeline.retrieval as retrieval
+    import src.storage.chroma_store as chroma_store
+    from src.pipeline.related_work import related_work
+
+    years = {f"new{i}": 2024 for i in range(60)} | {f"old{i}": 2019 for i in range(20)}
+    ranked = [f"new{i}" for i in range(60)] + [f"old{i}" for i in range(20)]  # newest papers rank first
+    monkeypatch.setattr(chroma_store, "query", lambda text, top_k: [
+        {"id": p, "title": p, "year": years[p], "score": 1.0 - i / 100} for i, p in enumerate(ranked[:top_k])])
+    monkeypatch.setattr(retrieval, "lexical_retrieve", lambda text, top_k: [
+        {"id": p, "year": years[p]} for p in ranked[:top_k]])
+
+    class Session:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+        def run(self, cypher, **params):
+            if "collect(DISTINCT nid)" in cypher:  # co-citation: every neighbour cites new0 and old0
+                return [{"id": "new0", "year": 2024, "citing": params["ids"]},
+                        {"id": "old0", "year": 2019, "citing": params["ids"]}]
+            if "p.abstract" in cypher:
+                return [{"id": p, "title": p, "year": years[p], "abstract": ""} for p in params["ids"]]
+            return []
+
+    class Driver:
+        def session(self):
+            return Session()
+
+    result = related_work(Driver(), "query", top_k=10, max_year=2020)
+    ids = [p["id"] for p in result["papers"]]
+    assert len(ids) == 10 and all(p.startswith("old") for p in ids)
+    assert ids[0] == "old0"  # the co-cited paper still gets its graph boost

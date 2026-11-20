@@ -85,5 +85,20 @@ Recorded after an internal audit. These are deviations from §4–§5, stated in
 | §5 Judge reliability | If human–AI agreement is weak, rescore with human labels and state the effect | The 7B judge reaches κ 0.57 on the ten non-GNN topics; the effect is stated (strict, equal with and without the graph, larger for the original system). A 27B judge reaches 0.88 on the same pairs; regrading the pool with it is open | API rate limits |
 | §4 Hypotheses | 1/3/5 rubric over five dimensions, acceptance by `rating_accepted` | Relevance, novelty and promise on 1–5 scales, two raters in round 1 | A shorter rubric for the time raters had; agreement remained high (κ 0.82–0.90) |
 | §4 Contradiction | At least 10 contradiction positives per split | Precision of contradiction-or-tension on human-labelled candidates; at most 2 confirmed contradictions per arm | Real contradictions are rare in CS abstracts; results are reported as small-sample and preliminary |
-| §1 Significance | Monte Carlo tests | Results near a threshold are rechecked with 1,000,000 permutations (Selected vs BGE: p = 0.0104, not significant after Holm) | A 20,000-permutation estimate fell within sampling error of the Holm threshold |
+| §1 Significance | Monte Carlo tests | Results near a threshold are rechecked with 1,000,000 permutations (Selected vs BGE: p = 0.0104, not significant after Holm) | A 20,000-permutation estimate fell within sampling error of the Holm threshold. Saved in `results/retrieval/holm_recheck_20261120/` and recomputed by `reproduce.py` |
+| §2 Leakage | No information from the query or the future reaches a method | Two paths found after the frozen runs: near-duplicate versions of a query paper can be in its citation-recommendation neighbour set, and time-sliced entity types use post-cutoff mentions. Opt-in fixes added (`--exclude-near-duplicates`, `--types-from-past`); frozen results unchanged and not yet rerun | Found by the audit; reruns need the local stores |
+| §3 Artifacts | Every reported number is recomputable from saved artifacts | Citation recommendation, DBLP/PubMed and time-sliced runs saved summaries only. The modules now save per-query metrics, and `reproduce.py` marks those checks `saved` until a rerun provides them | Per-query output had been stripped to keep files small |
+
+**Added baseline, predeclared 2026-11-20 (RESULTS §2i).** Cross-encoder reranking of the top 20 of BGE + BM25 and of the selected system (`cross-encoder/ms-marco-MiniLM-L-6-v2`), scored with the frozen 7B labels (depth 20 = pool depth, so fully judged), compared against its base run, the selected system and BM25 with paired sign-flip tests. No selection was made from these results.
+
+**Hosted models used (record for reruns).** API models can change or be withdrawn; record the exact ID, settings and date with every run.
+
+| Use | Model ID | Settings | Date | Result files |
+|---|---|---|---|---|
+| Judge validation, GNN pairs (RESULTS §2b) | `groq:qwen/qwen3.8-27b` (Groq, listed as Preview) | strict and original prompts, 4 papers per call, temperature 0 | 2026-11-14 | `results/retrieval/judge_agreement_groq_20261114/` |
+| Judge transfer, non-GNN pairs (§2b) | `groq:qwen/qwen3.8-27b` | strict prompt, 1 paper per call, temperature 0 | 2026-11-20 | `results/retrieval/judge_transfer_20261120/runs.json` |
+| SciFact verdicts (§5b) | `groq:qwen/qwen3.8-27b`, `groq:openai/gpt-oss-120b` | temperature 0; GPT-OSS with `reasoning_effort=low`; GPT-OSS answered 337 of 338 items before the daily token limit | 2026-11-14 | `results/reasoning/contradiction_verdicts_scifact_groq_20261114/` |
+| Local judge, generator and verdicts | `ollama:qwen2.5:7b-instruct`, `ollama:qwen2.5:3b-instruct` | temperature 0; JSON schema; 1 paper per call for the validated judge | 2026-11-13 to 11-15 | per-run folders |
+
+No reasoning setting was sent for Qwen3.8-27B, so it ran with Groq's default; future runs should record the provider's default at the time.
 

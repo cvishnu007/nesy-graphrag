@@ -236,7 +236,9 @@ Example queries for each mode: [docs/DEMO_QUERIES.md](DEMO_QUERIES.md). If the r
 .\venv\Scripts\python.exe -m src.evaluation.reproduce
 ```
 
-It recomputes 25 headline values (judge agreement, including the judge-transfer check, retrieval NDCG, human agreement and ratings, the LightRAG baseline, citation recommendation on our corpus, DBLP and PubMed, and the time-sliced discovery benchmark) and prints `25/25 reproduced`. It needs only committed files: the gitignored annotator keys are rebuilt deterministically.
+It checks 35 headline values and prints `35/35 reproduced`. Each line says how the value was obtained:
+- `recomputed` (26): from raw committed files with the project's metric code: judge and human agreement (including the judge-transfer check and the frozen 3B labels), round-1 hypothesis and contradiction ratings, round-2 contradiction precision and the Fisher tests, NDCG on the stratified, GNN and LightRAG pools, and the Holm recheck (1,000,000 permutations). The gitignored annotator keys are rebuilt from the kits' fixed seeds (`evaluation/human_review/rebuild_arm_keys.py`, `build_relevance_subset.py`, `build_relevance_sheet.py`).
+- `saved` (9): read from a saved summary: citation recommendation, DBLP/PubMed and the time-sliced benchmark (their per-query results were not saved), and round-2 hypothesis ratings (key not rebuildable). They switch to `recomputed` once a rerun has written the per-query files (13.2) or the key is committed.
 
 **13.2 Rerun experiments.** These need the stores; LLM steps need Ollama. Each writes to its own results folder. Run them as `.\venv\Scripts\python.exe -m ...`; each module's docstring (or `--help`) explains its stages:
 
@@ -244,10 +246,14 @@ It recomputes 25 headline values (judge agreement, including the judge-transfer 
 |---|---|
 | §2b judge validation | `python -m src.evaluation.judge_agreement --help` |
 | §2d 44-query retrieval benchmark | `python -m src.evaluation.stratified_benchmark score` |
-| §2f citation recommendation (our corpus) | `python -m src.evaluation.citation_recommendation --help` |
+| §2f citation recommendation (our corpus) | `python -m src.evaluation.citation_recommendation`, then `--final-test` (`--exclude-near-duplicates` for the leakage check) |
 | §2g LightRAG-style baseline | `python -m src.evaluation.lightrag_baseline build`, then `keywords`, `rank`, `grade`, `score` |
-| §2h DBLP / PubMed | download two files (below), then `python -m src.evaluation.citeomatic_benchmark --dataset dblp --split test [--encoder bge\|specter2_base\|scincl]` |
-| §4c–4d time-sliced discovery | `python -m src.evaluation.temporal_hypothesis` |
+| §2h DBLP / PubMed | download two files (below), then `python -m src.evaluation.citeomatic_benchmark --dataset dblp --split test [--encoder bge\|specter2_base\|scincl] [--output-dir <new folder>]` |
+| §2i reranker baseline | `python -m src.evaluation.reranker_baseline fetch`, then `rerank [--model BAAI/bge-reranker-base]`, `score` (no stores; fetches abstracts from Semantic Scholar) |
+| §2d Holm recheck | `python -m src.evaluation.holm_recheck` (no stores) |
+| §4c–4d time-sliced discovery | `python -m src.evaluation.temporal_hypothesis` (`--types-from-past` for the leakage check) |
+| §2d with the 27B judge | `python -m src.evaluation.regrade_stratified grade --max-pairs 190` once a day (Groq key), then `score` |
+| Paper figures | `python -m src.evaluation.make_figures` (no stores; Graphviz for the architecture diagram) |
 | Human ratings | `python -m src.evaluation.human_ratings {hypothesis,contradiction,hypothesis_round2,contradiction_round2} --sheets ...` |
 
 DBLP and PubMed files (304 MB in total; only these two are needed, not the 47 GB archive):
@@ -259,7 +265,7 @@ curl.exe -L -o data\external\citeomatic\dblp\corpus.json "$B/dblp/corpus.json"
 curl.exe -L -o data\external\citeomatic\pubmed\corpus.json "$B/pubmed/corpus.json"
 ```
 
-Run grading jobs one at a time, and leave the PC on: the LLM judge steps take hours. Never edit a frozen results folder; every rerun writes to a new one.
+Run grading jobs one at a time, and leave the PC on: the LLM judge steps take hours. Never edit a frozen results folder; every rerun writes to a new one. The citation-recommendation, DBLP/PubMed and time-sliced modules now also write per-query (per-task) metrics; rerunning them is what lets `reproduce.py` recompute their numbers. A plain rerun of `citation_recommendation` writes into its frozen folder by design (same setting, adds the per-query files); check that the summary values match before committing.
 
 ## 14. Troubleshooting
 

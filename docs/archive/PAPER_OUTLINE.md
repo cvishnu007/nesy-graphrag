@@ -1,15 +1,15 @@
 # Paper Outline (draft)
 
-> Superseded by the full draft, [PAPER_DRAFT.md](PAPER_DRAFT.md), which includes the November 19 baselines (RESULTS §2g–2h). This outline is kept as the planning record.
+> Superseded by the full draft, [PAPER_DRAFT.md](../PAPER_DRAFT.md), which includes the November 19 baselines (RESULTS §2g–2h). This outline is kept as the planning record.
 
-Full draft text: [PAPER_DRAFT.md](PAPER_DRAFT.md). Headline numbers are checked by `python -m src.evaluation.reproduce`.
+Full draft text: [PAPER_DRAFT.md](../PAPER_DRAFT.md). Headline numbers are checked by `python -m src.evaluation.reproduce`.
 
 Working title options:
 - *Where Does Graph Structure Help Scholarly RAG? Not Topical Retrieval, but Citation Relatedness and Research Discovery*
 - *Evaluating Provenance-Grounded GraphRAG for Scientific Literature: What Helps, What Does Not, and Why*
 - *Grounded Literature Review, Contradiction Screening, and Hypothesis Generation over a Sparse Scientific Graph*
 
-Framing: an **evaluated system plus empirical findings**, not a new model. Every claim below cites the artifact that supports it ([RESULTS.md](RESULTS.md)). Items marked ⏳ or ❌ must be completed before submission.
+Framing: an **evaluated system plus empirical findings**, not a new model. Every claim below cites the artifact that supports it ([RESULTS.md](../RESULTS.md)). Items marked ⏳ or ❌ must be completed before submission.
 
 ## 1. Contributions
 

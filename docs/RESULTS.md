@@ -15,7 +15,7 @@ Labels come only from the benchmarks. Paired Monte Carlo sign-flip tests (20,000
 | BM25 + SciNCL (RRF) | 0.199 | 0.479 | +0.048, p < 0.001 |
 | SciNCL | 0.196 | 0.508 | +0.045, p < 0.001 |
 | BM25 + BGE (RRF) | 0.198 | 0.468 | +0.047, p < 0.001 |
-| SPECTER2 base (no adapter) | 0.173 | 0.463 | +0.022, p < 0.001 |
+| SPECTER2 base (no adapter) | 0.172 | 0.463 | +0.022, p < 0.001 |
 | OpenScholar retriever | 0.163 | 0.408 | +0.012, p = 0.026 |
 | BM25 | 0.152 | 0.350 | n.s. |
 | SPECTER (historical production) | 0.151 | 0.413 | — |
@@ -24,11 +24,11 @@ Labels come only from the benchmarks. Paired Monte Carlo sign-flip tests (20,000
 
 | Method | NDCG@10 | Recall@5 | Recall@20 | Δ vs SPECTER |
 |---|---:|---:|---:|---|
-| **BM25 + BGE (RRF)** | **0.490** | **0.547** | **0.685** | +0.281, p < 0.001 |
+| **BM25 + BGE (RRF)** | **0.489** | **0.546** | **0.685** | +0.281, p < 0.001 |
 | BM25 + SPECTER2 base | 0.462 | 0.524 | 0.662 | +0.254 |
 | BGE | 0.449 | 0.506 | 0.669 | +0.240 |
 | BM25 + OpenScholar | 0.410 | 0.480 | 0.598 | +0.202 |
-| BM25 | 0.396 | 0.445 | 0.602 | +0.187 |
+| BM25 | 0.395 | 0.445 | 0.602 | +0.187 |
 | SPECTER2 base | 0.331 | 0.388 | 0.560 | +0.123 |
 | OpenScholar | 0.277 | 0.330 | 0.477 | +0.069 |
 | SciNCL | 0.241 | 0.269 | 0.427 | +0.033 |
@@ -38,7 +38,7 @@ OpenScholar vs BGE: −0.055 (SciDocs) and −0.172 (LitSearch), both p < 0.001.
 
 ## 2. Project benchmark (20 GNN queries; AI-reference labels; pool-extended) — superseded by §2c
 
-> **Superseded.** These numbers use the frozen 3B labels, which agree with human grades at κ 0.17 (§2b). They are kept for the record. Use §2c (same rankings, validated labels) and §2d (independent 44-query set).
+> **Superseded.** These numbers use the frozen 3B labels, which agree with human grades at κ 0.17 on the selection half and 0.19 on all 200 pairs (§2b). They are kept for the record. Use §2c (same rankings, validated labels) and §2d (independent 44-query set).
 
 Frozen pool: 1,145 labels from local `qwen2.5:3b-instruct` (grades 0/1/2: 541/126/478), on the 47,627-paper pool corpus. New variants run on the 47,619-paper live stores; their unjudged results were graded by the same blinded judge (`pool_extension.py`), so every scored list is fully judged. Exact paired randomization tests.
 
@@ -59,7 +59,7 @@ One annotator graded a deterministic 200-pair sample of the pool, blinded to the
 
 | Judge | Selection κ (n=100) | Held-out κ (n=100) | Held-out exact | Held-out binary |
 |---|---:|---:|---:|---:|
-| Frozen pool labels (qwen2.5-3B, pool batches) | 0.166 | — | — | — |
+| Frozen pool labels (qwen2.5-3B, pool batches) | 0.166 | 0.199 | — | — |
 | qwen2.5-3B, original prompt, re-run | 0.563 | 0.441 | 0.53 | 0.62 |
 | qwen2.5-3B, strict prompt | 0.329 | — | — | — |
 | qwen2.5-7B (local), original prompt, 4 papers per call | 0.581 | — | — | — |
@@ -143,6 +143,8 @@ Queries: `evaluation/benchmarks/retrieval_queries_v2_stratified_draft.json` v0.5
 | BGE vs BM25 | −0.033 | [−0.090, 0.024] | 0.27 | n.s. |
 | BGE + graph vs BGE | −0.008 | [−0.053, 0.034] | 0.74 | n.s. |
 
+The Holm column uses all nine p-values recomputed with 1,000,000 permutations under two seeds (`src/evaluation/holm_recheck.py`; `results/retrieval/holm_recheck_20261120/summary.json`): Selected vs BGE p = 0.0104 / 0.0103, Holm-adjusted 0.052 / 0.052; the four comparisons against production stay significant and the other four stay non-significant. `reproduce.py` recomputes this check.
+
 Dev and test halves (22 queries each) agree: selected 0.710 / 0.578; production 0.306 / 0.268. Two operating-systems queries have no grade-2 paper in the pool (V2-11-2, V2-11-3).
 
 **Findings.** (1) The selected system beats the original production system by a large margin on every topic split. (2) Its advantage over BGE alone (+0.052) is not significant after Holm correction; most of it comes with BM25 fusion. Graph expansion over BGE + BM25 is a small, non-significant gain (+0.023), and graph expansion alone does not help BGE (−0.008). (3) BM25 is a strong baseline on this corpus; the selected system's lead over it is not significant. Retrieval claims must therefore credit lexical fusion, not the graph.
@@ -188,7 +190,7 @@ The graph signal is co-citation through neighbours: papers cited by the query's 
 | With graph vs BGE | **+0.057** | [0.043, 0.072] | +0.053 | < 0.0001 |
 | Graph alone vs BGE | +0.016 | [−0.006, 0.038] | +0.019 | 0.17 |
 
-Dev agrees (+0.071 Recall@20 over BGE + BM25). **Finding:** when the task depends on citation structure rather than topical similarity, the densified graph gives a large, significant gain (28% relative Recall@20 over BGE + BM25). Together with §2d–2e, this marks the boundary: graph structure is redundant for short topical queries but complementary for citation-level relatedness. BM25 fusion slightly hurts here (long abstract queries), unlike in §2d.
+Dev agrees (+0.071 Recall@20 over BGE + BM25). The frozen run saved summaries only; the module now also writes per-query metrics (`dev_per_query.json`, `test_per_query.json`), which `reproduce.py` uses once a rerun from the local stores has produced them. **Leakage check not yet run:** 51 near-duplicate pairs (cosine ≥ 0.995, mostly preprint and published versions) can sit in a query's neighbour set with an almost identical reference list. `--exclude-near-duplicates` removes them from the neighbour set and writes to `results/retrieval/citation_recommendation_neardup/`; the frozen numbers above keep them. **Finding:** when the task depends on citation structure rather than topical similarity, the densified graph gives a large, significant gain (28% relative Recall@20 over BGE + BM25). Together with §2d–2e, this marks the boundary: graph structure is redundant for short topical queries but complementary for citation-level relatedness. BM25 fusion slightly hurts here (long abstract queries), unlike in §2d.
 
 ## 2h. Citation recommendation on public benchmarks (DBLP and PubMed)
 
@@ -264,10 +266,11 @@ All gains and losses are significant (paired sign-flip, p ≤ 0.019). The valida
 - The published comparison systems are from 2018. The modern baselines here are encoders (BGE 2023, SPECTER2 2023, SciNCL 2022), not trained citation recommenders.
 - BGE's, SPECTER2's and SciNCL's training data likely include many of these papers (SPECTER2 and SciNCL are trained on Semantic Scholar citation data), which may favour the text methods. It does not affect the co-citation-versus-text comparison, which uses the same vectors on both sides.
 - Our BM25 queries with the full title and abstract; Citeomatic's queries with key terms, which explains the higher BM25 here.
+- The 2026-11-19 runs saved summaries only. Reruns now also write `<dataset>_<split>[_<encoder>]_per_query.json`, and `reproduce.py` recomputes F1@20 from it when present (`--output-dir` keeps a rerun out of the frozen folder).
 
 ## 2g. GraphRAG baseline: LightRAG-style retrieval (44 stratified queries)
 
-A real LightRAG or Microsoft GraphRAG index needs about two LLM extraction calls per chunk, more than a week for 47,619 abstracts on the project's 4 GB laptop GPU. `src/evaluation/lightrag_baseline.py` keeps LightRAG's query-time algorithm (Guo et al., 2024; query logic of v1.4) and replaces only the LLM-built index with the SciERC graph: 558,123 entities embedded by name with BGE (every distinct mention; the Neo4j graph keeps only the first 15 mentions per abstract, giving 323,624 `SciEntity` nodes), and 604,108 relations (entity pairs co-occurring in at least 2 abstracts) embedded as "source, target". The local 7B model extracts high- and low-level keywords per query with LightRAG's keyword instructions (`keywords.json`). Modes: local (top 60 entities, papers ordered by entity rank and neighbour overlap), global (top 60 relations re-sorted by degree), hybrid (round-robin of local and global) and mix (round-robin of BGE, local and global). Hybrid and mix were pool-extended with the same validated 7B judge (768 new pairs; 3,073 total) and are fully judged at depth 20; local and global are reported with their unjudged papers (44%) counted as non-relevant. Results: `results/retrieval/stratified_v2_lightrag_20261119/summary.json`.
+A real LightRAG or Microsoft GraphRAG index needs about two LLM extraction calls per chunk, more than a week for 47,619 abstracts on the project's 4 GB laptop GPU. `src/evaluation/lightrag_baseline.py` keeps LightRAG's query-time algorithm (Guo et al., 2025; query logic of v1.4) and replaces only the LLM-built index with the SciERC graph: 558,123 entities embedded by name with BGE (every distinct mention; the Neo4j graph keeps only the first 15 mentions per abstract, giving 323,624 `SciEntity` nodes), and 604,108 relations (entity pairs co-occurring in at least 2 abstracts) embedded as "source, target". The local 7B model extracts high- and low-level keywords per query with LightRAG's keyword instructions (`keywords.json`). Modes: local (top 60 entities, papers ordered by entity rank and neighbour overlap), global (top 60 relations re-sorted by degree), hybrid (round-robin of local and global) and mix (round-robin of BGE, local and global). Hybrid and mix were pool-extended with the same validated 7B judge (768 new pairs; 3,073 total) and are fully judged at depth 20; local and global are reported with their unjudged papers (44%) counted as non-relevant. Results: `results/retrieval/stratified_v2_lightrag_20261119/summary.json`.
 
 | NDCG@10 | All 44 | Dev 22 | Test 22 | P@10 (all) |
 |---|---:|---:|---:|---:|
@@ -284,6 +287,27 @@ This system beats LightRAG-style mix by +0.246 NDCG@10 (39 wins, 3 losses; p < 0
 **Diagnosis.** Entity-centric retrieval ranks papers by which entities they mention, not by whether they address the query. The 7B model's low-level keywords are often generic (for "serverless computing performance and cold starts": "response time", "scalability", "resource allocation"), and they match entities that appear in thousands of papers, so local mode returns off-topic papers. Global mode, matched on the high-level keywords ("serverless computing", "cold starts"), stays on topic but orders papers within a relation arbitrarily, as LightRAG does. Mix recovers partly because a third of its list is BGE.
 
 **Caveats.** This is a re-implementation over a supervised entity graph, not the LightRAG package with an LLM-built graph. Entity vectors use names, not LLM-written descriptions, and relations are co-occurrence, not typed. A larger LLM would likely write better descriptions and keywords. The query keywords came from the local 7B model, which wrote two keywords for one query (V2-11-1) in Chinese, and returned no low-level keywords for V2-05-3, where both modes then use the high-level keywords. The comparison measures LightRAG's retrieval logic on this graph, for topical ranking only; LightRAG targets query-focused answer generation, which this does not test.
+
+## 2i. Cross-encoder reranker baseline (44 stratified queries)
+
+`src/evaluation/reranker_baseline.py`; results in `results/retrieval/reranker_20261120/`. Hybrid search plus a cross-encoder reranker is the standard alternative to graph expansion. Design, fixed before scoring: rerank the top 20 of two frozen runs (BGE + BM25, and the selected system with graph expansion) with `cross-encoder/ms-marco-MiniLM-L-6-v2`. Depth 20 is the pool depth, so every reranked top 10 is fully judged by the frozen 7B labels and no new grades are needed. Paper text (title and abstract) came from the Semantic Scholar API for the same IDs (fetched 2026-11-20; one paper has no abstract) and is not committed. The small reranker was chosen so the run fits in under 1 GB of memory.
+
+| 44 queries | NDCG@10 | P@10 |
+|---|---:|---:|
+| Selected (BGE + BM25 + graph), reranked | **0.668** | 0.725 |
+| BGE + BM25, reranked | 0.651 | 0.714 |
+| Selected (BGE + BM25 + graph) | 0.644 | 0.725 |
+| BM25 | 0.626 | 0.691 |
+| BGE + BM25 | 0.621 | 0.702 |
+
+| Paired comparison | Δ NDCG@10 | 95% CI | p | W/L |
+|---|---:|---|---:|---|
+| BGE + BM25 reranked vs BGE + BM25 | +0.030 | [−0.004, 0.066] | 0.11 | 23/19 |
+| BGE + BM25 reranked vs selected (graph) | +0.007 | [−0.039, 0.053] | 0.78 | 19/23 |
+| Selected reranked vs selected | +0.023 | [−0.022, 0.070] | 0.34 | 21/22 |
+| Selected reranked vs BM25 | +0.042 | [0.009, 0.077] | 0.021 | 27/16 |
+
+**Finding.** A small off-the-shelf reranker gives about the same, non-significant gain over BGE + BM25 as graph expansion does (+0.030 vs +0.023), and the two are not distinguishable (+0.007, p = 0.78). Stacking both is the best configuration measured (0.668) but is not significantly better than either alone; only its lead over BM25 is nominally significant, and that comparison was not predeclared. This supports the reading of §2d: on short topical queries, text retrieval is near saturation and the graph is one of several equivalent ways to reorder an already relevant top 20. **Caveats:** depth 20, not the usual 50–100 (a deeper rerank would surface unjudged papers); a small MS MARCO reranker (`--model BAAI/bge-reranker-base` runs a larger one); the judge saw the corpus's cleaned text while the reranker saw Semantic Scholar's original-case text.
 
 ## 3. Scientific entity extraction (SciERC test; 100 abstracts, 1,685 gold entities)
 
@@ -312,7 +336,7 @@ Representative shared concepts behind the top hypothesis candidate: "molecular p
 
 ## 4b. Hypothesis candidates: human ratings (round 1, two raters) and revision
 
-30 stratified queries; per query, the top structural-hole candidate from the entity graph and a vector-neighbour baseline (vector rank 6–15, not cited by the top 5), shuffled and blinded. Two raters, the second without AI assistance (`evaluation/human_review/hypothesis_sheet_rated_cv.csv`, `hypothesis_sheet_rated_rater3.csv`; report `hypothesis_report_cv_rater3.json`). Ratings 1–5, averaged over raters; paired by query, Monte Carlo sign-flip test.
+30 stratified queries; per query, the top structural-hole candidate from the entity graph and a vector-neighbour baseline (vector rank 6–15, not cited by the top 5), shuffled and blinded. Two raters, the second without AI assistance (`evaluation/human_review/hypothesis_sheet_rated_cv.csv`, `hypothesis_sheet_rated_rater3.csv`; report `hypothesis_report_cv_rater3.json`). Ratings 1–5, averaged over raters; paired by query, Monte Carlo sign-flip test. The arm keys are gitignored, but the round-1 keys and the round-2 contradiction key are rebuilt exactly from the committed sheets and the kits' fixed seeds (`evaluation/human_review/rebuild_arm_keys.py`), so `reproduce.py` re-scores these arm-level results and the contradiction Fisher tests from a fresh clone. The round-2 hypothesis key cannot be rebuilt (which arms chose a paper depends on the live graph) and has to be committed from the machine that built the kit.
 
 | Mean rating | Structural hole (graph) | Vector neighbour | Graph − vector | p |
 |---|---:|---:|---:|---:|
@@ -362,7 +386,7 @@ The judge reproduces the human ordering of the two rated arms (0.43 vs 0.93; hum
 **Setup.**
 - **Hypothesis:** "method M could be applied to task T", for a SciERC (Task, Method) pair that never co-occurs in any paper up to the cutoff.
 - **Confirmed:** the pair co-occurs in ≥ 2 papers after the cutoff.
-- **What scorers see:** only pre-cutoff papers (32,039; cutoff 2022) with their entities, BGE vectors, and citations between pre-cutoff papers. Entity frequencies and the generic filter (document frequency ≤ 1%, specific names only) are recomputed on pre-cutoff papers.
+- **What scorers see:** only pre-cutoff papers (32,039; cutoff 2022) with their entities, BGE vectors, and citations between pre-cutoff papers. Entity frequencies and the generic filter (document frequency ≤ 1%, specific names only) are recomputed on pre-cutoff papers. One input still uses later papers: each entity's Task/Method type is the majority over all its mentions, including post-cutoff ones. `--types-from-past` decides types from pre-cutoff mentions only; that leakage check has not been run yet. Reruns also write per-task metrics (`per_task_<name>.json`) for `reproduce.py`.
 - **Size:** 120 tasks with ≥ 10 pre-cutoff papers and ≥ 3 confirmed methods; on average 4,633 candidate methods and 5.6 confirmed per task. Scorers were predeclared and nothing was tuned. Paired sign-flip tests across tasks.
 
 | Scorer (120 tasks) | AP | P@20 | Recall@100 | AUROC |
@@ -505,10 +529,11 @@ Per-query support difference (system − vector): +0.046, 95% CI [−0.068, 0.15
 
 ## 7. Open items for publication
 
-Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c); a GraphRAG (LightRAG-style) baseline (§2g); public citation benchmarks DBLP and PubMed (§2h).
+Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c); a GraphRAG (LightRAG-style) baseline (§2g); public citation benchmarks DBLP and PubMed (§2h); a cross-encoder reranker baseline at pool depth (§2i).
 
 1. ~~Second human rater~~ Done: relevance on a 50-pair subset (κ 0.91, §2b), round-1 hypotheses (κ 0.82–0.90, §4b), round-1 contradictions (κ 0.76, §5b-2).
 2. ~~Round 2 human ratings~~ Done by rater 1: hypotheses (§4b, the bridge does not beat vector neighbours) and contradictions (§5b-2, the citation index reaches 56% tension-or-contradiction precision with the verdict filter). A second rater for round 2 is optional.
 3. Optional: retrieval with `CITES_ADDED`/`COUPLED_WITH` as expansion edges (dev selection on the 22 stratified dev queries, pool extension, test once). §2e already shows densification does not raise topical NDCG, so this is low priority.
-4. Optional robustness check: regrade both pools with a larger judge (27B class) and confirm the §2c/§2d conclusions hold.
-5. Deduplication of 51 near-duplicate pairs; contradiction benchmark with ≥ 10 in-domain positives.
+4. Regrade the 44-query pool with the 27B judge (κ 0.88 on both GNN and non-GNN pairs) and confirm the §2d conclusions hold: `python -m src.evaluation.regrade_stratified grade --max-pairs 190` once a day (topic round-robin, resumable), then `score`. About 12 days on the free tier.
+5. Rerun citation recommendation with `--exclude-near-duplicates` and the time-sliced benchmark with `--types-from-past` (leakage checks; both write new result files and per-query metrics); contradiction benchmark with ≥ 10 in-domain positives.
+6. Before a main-venue submission: a Personalized-PageRank graph retriever (HippoRAG 2 style) over the SciERC graph; SPECTER2 with its adapters; a deeper reranker run with a larger model; a learned link-prediction baseline for §4c; human checks of about 100 answer-grounding claims.

@@ -1,12 +1,12 @@
 # Local demo and evaluation runbook
 
-> **Historical runbook (September–November 13 work).** For installing and running the current system, use [RUN_FROM_SCRATCH.md](RUN_FROM_SCRATCH.md); for current results, [RESULTS.md](RESULTS.md). The checkpoint notes below describe the state at the time and are kept for provenance.
+> **Historical runbook (September–November 13 work).** For installing and running the current system, use [RUN_FROM_SCRATCH.md](../RUN_FROM_SCRATCH.md); for current results, [RESULTS.md](../RESULTS.md). The checkpoint notes below describe the state at the time and are kept for provenance.
 
-> Read [AGENT_HANDOFF.md](../AGENT_HANDOFF.md) first for the current scope, local store snapshot, incomplete checkpoints, and data-safety rules. This document describes evaluation/reproduction procedures. Historical macOS references are examples, not a requirement for the current Windows environment.
+> Read [AGENT_HANDOFF.md](../../AGENT_HANDOFF.md) first for the current scope, local store snapshot, incomplete checkpoints, and data-safety rules. This document describes evaluation/reproduction procedures. Historical macOS references are examples, not a requirement for the current Windows environment.
 
 **Current checkpoint:** retrieval grading remains paused at 778/1,145 labels. The current local data and stores have been reconciled to **52,822 raw / 47,619 clean / 47,619 NER / 47,619 Chroma / 47,619 Neo4j papers** with 22,370 citation edges. Ollama and Streamlit are stopped unless the operator starts them. The paused pool in `results/retrieval/expanded_20260913/` was frozen on a different 47,627-paper corpus. Resuming `grade`/`evaluate` is safe because they use only saved candidates and rankings, but `matched_rag` runs live on the current 47,619-paper stores, so label each result with its corpus. These commands are resumable/reproducible procedures, not a claim that a live demo is already running.
 
-Historical cleanup and macOS-specific notes remain in [Chinmay.md](../Chinmay.md). They do not override the current snapshot in [AGENT_HANDOFF.md](../AGENT_HANDOFF.md). Abstracts and generated stores remain ignored by Git.
+Historical cleanup and macOS-specific notes remain in [Chinmay.md](../../Chinmay.md). They do not override the current snapshot in [AGENT_HANDOFF.md](../../AGENT_HANDOFF.md). Abstracts and generated stores remain ignored by Git.
 
 Run commands from the repository root. Activate the existing environment with `source venv/bin/activate` on macOS/Linux, or `.\venv\Scripts\Activate.ps1` on Windows, then use `python` below. Install `requirements.txt` and `en_core_web_sm` for a fresh environment. Do not recreate an existing environment.
 
@@ -46,7 +46,7 @@ NEO4J_CONF="$PWD/data/neo4j-local/conf" neo4j start
 
 The removed configuration used loopback Bolt 7687 and HTTP 7474, a 512 MB maximum heap, and a 128 MB page cache. Its generated password was removed when the original `.env` was restored. The pre-session backup was removed after byte-exact restoration of the original environment and JSON files.
 
-On a new machine, create a dedicated database using Neo4j Desktop or the server setup instructions in [SETUP.md](../SETUP.md). Do not copy this Mac's absolute paths into another installation.
+On a new machine, create a dedicated database using Neo4j Desktop or the server setup instructions in [SETUP.md](../../SETUP.md). Do not copy this Mac's absolute paths into another installation.
 
 Ingestion and indexing resume from checkpoints/existing IDs:
 

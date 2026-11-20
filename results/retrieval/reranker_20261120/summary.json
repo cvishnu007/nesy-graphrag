@@ -1,0 +1,114 @@
+{
+  "design": "Hybrid search plus a cross-encoder reranker is today's standard alternative to graph\nexpansion, so the audit asked for it. Design (predeclared 2026-11-20, nothing tuned):",
+  "depth": 20,
+  "judge_labels": "results/retrieval/stratified_v2_20261114/labels.jsonl",
+  "texts": "Semantic Scholar API, fetched 2026-11-20 (not committed)",
+  "variants": {
+    "bge": {
+      "query_count": 44,
+      "ndcg@10": 0.5925,
+      "precision@10": 0.6841,
+      "recall@20": 0.5555,
+      "map": 0.4343,
+      "mrr": 0.8807,
+      "unjudged_rate@20": 0.0
+    },
+    "bm25": {
+      "query_count": 44,
+      "ndcg@10": 0.6256,
+      "precision@10": 0.6909,
+      "recall@20": 0.5336,
+      "map": 0.443,
+      "mrr": 0.9432,
+      "unjudged_rate@20": 0.0
+    },
+    "full_bge_bm25_similar": {
+      "query_count": 44,
+      "ndcg@10": 0.6442,
+      "precision@10": 0.725,
+      "recall@20": 0.6134,
+      "map": 0.4863,
+      "mrr": 0.9009,
+      "unjudged_rate@20": 0.0
+    },
+    "rerank_ms_marco_minilm_l_6_v2__full_bge_bm25_similar": {
+      "query_count": 44,
+      "ndcg@10": 0.6676,
+      "precision@10": 0.725,
+      "recall@20": 0.6134,
+      "map": 0.4939,
+      "mrr": 0.9306,
+      "unjudged_rate@20": 0.0
+    },
+    "rerank_ms_marco_minilm_l_6_v2__rrf_bge_bm25": {
+      "query_count": 44,
+      "ndcg@10": 0.6512,
+      "precision@10": 0.7136,
+      "recall@20": 0.5875,
+      "map": 0.4764,
+      "mrr": 0.9136,
+      "unjudged_rate@20": 0.0
+    },
+    "rrf_bge_bm25": {
+      "query_count": 44,
+      "ndcg@10": 0.6211,
+      "precision@10": 0.7023,
+      "recall@20": 0.5875,
+      "map": 0.4714,
+      "mrr": 0.9091,
+      "unjudged_rate@20": 0.0
+    }
+  },
+  "comparisons": {
+    "rerank_ms_marco_minilm_l_6_v2__full_bge_bm25_similar_vs_full_bge_bm25_similar": {
+      "mean_delta": 0.0234,
+      "bootstrap_95_ci": [
+        -0.0215,
+        0.0703
+      ],
+      "p": 0.3385330733463327,
+      "wins": 21,
+      "losses": 22
+    },
+    "rerank_ms_marco_minilm_l_6_v2__full_bge_bm25_similar_vs_bm25": {
+      "mean_delta": 0.0421,
+      "bootstrap_95_ci": [
+        0.0086,
+        0.0766
+      ],
+      "p": 0.0207989600519974,
+      "wins": 27,
+      "losses": 16
+    },
+    "rerank_ms_marco_minilm_l_6_v2__rrf_bge_bm25_vs_rrf_bge_bm25": {
+      "mean_delta": 0.03,
+      "bootstrap_95_ci": [
+        -0.0035,
+        0.0664
+      ],
+      "p": 0.10624468776561172,
+      "wins": 23,
+      "losses": 19
+    },
+    "rerank_ms_marco_minilm_l_6_v2__rrf_bge_bm25_vs_full_bge_bm25_similar": {
+      "mean_delta": 0.0069,
+      "bootstrap_95_ci": [
+        -0.0387,
+        0.0531
+      ],
+      "p": 0.7817609119544022,
+      "wins": 19,
+      "losses": 23
+    },
+    "rerank_ms_marco_minilm_l_6_v2__rrf_bge_bm25_vs_bm25": {
+      "mean_delta": 0.0256,
+      "bootstrap_95_ci": [
+        -0.0049,
+        0.0572
+      ],
+      "p": 0.12379381030948453,
+      "wins": 24,
+      "losses": 17
+    }
+  }
+}
