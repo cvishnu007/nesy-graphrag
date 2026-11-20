@@ -9,7 +9,12 @@ Leakage controls:
   only from *other* papers' reference lists;
 * papers that cite the query paper are excluded from the neighbour set;
 * every method ranks only papers published no later than the query paper, and
-  never the query paper itself.
+  never the query paper itself;
+* optional (``--exclude-near-duplicates``, added after the internal audit; not used
+  for the frozen 2026-11-15 results): papers whose stored BGE vector has cosine
+  >= 0.995 with the query (preprint and published versions of the same work) are
+  also kept out of the neighbour set, since their reference lists are near copies
+  of the query's own.
 
 Methods: BGE (stored document vectors, cosine), BM25 (title + abstract as the
 query), RRF(BGE, BM25), co-citation graph (papers cited by the query's BGE
@@ -20,6 +25,11 @@ corpus papers no newer than themselves) are split 200 dev / 400 test by hash.
 Graph settings (neighbours k in {10, 20, 50}, fusion weight w in {0.5, 1.0})
 are chosen on dev by Recall@20; the chosen setting runs once on test. Paired
 Monte Carlo sign-flip tests with bootstrap CIs.
+
+Per-query metrics are written next to each summary (``dev_per_query.json``,
+``test_per_query.json``) so that means, intervals and p-values can be recomputed
+without the local stores (``src/evaluation/reproduce.py``). The frozen
+2026-11-15 summaries predate this and have no per-query file.
 """
 from __future__ import annotations
 
@@ -35,6 +45,8 @@ OUT = Path("results/retrieval/citation_recommendation_20261115")
 K_VALUES = (5, 10, 20)
 GRID = [(k, w) for k in (10, 20, 50) for w in (0.5, 1.0)]
 DEPTH = 100
+NEAR_DUPLICATE_COSINE = 0.995
+PER_QUERY_METRICS = ("ndcg@10", "recall@20", "precision@10", "map", "mrr")
 
 
 def rrf(rankings, weights, depth=DEPTH, k=60):
@@ -54,6 +66,29 @@ def cocitation_ranking(neighbours, similarities, cites, allowed, depth=DEPTH):
     return [p for p, _ in sorted(scores.items(), key=lambda item: (-item[1], item[0]))][:depth]
 
 
+def neighbour_list(order, sims, ids, citing_query, *, near_duplicate_cosine=None):
+    """(paper id, similarity) for candidate neighbours in rank order.
+
+    Papers citing the query are always dropped. With ``near_duplicate_cosine`` set,
+    papers at or above that cosine (other versions of the query paper) are dropped too.
+    """
+    out = []
+    for i in order:
+        paper_id, similarity = str(ids[i]), float(sims[i])
+        if paper_id in citing_query:
+            continue
+        if near_duplicate_cosine is not None and similarity >= near_duplicate_cosine:
+            continue
+        out.append((paper_id, similarity))
+    return out
+
+
+def per_query_table(rows):
+    """{variant: {query_id: {metric: value}}} for the metrics reported in the summaries."""
+    return {name: {v["query_id"]: {m: v[m] for m in PER_QUERY_METRICS} for v in values}
+            for name, values in rows.items()}
+
+
 def select_queries(corpus, cites, *, count=600, seed="citrec-v1"):
     year = {p["id"]: int(p.get("year") or 0) for p in corpus}
     eligible = []
@@ -70,7 +105,13 @@ def select_queries(corpus, cites, *, count=600, seed="citrec-v1"):
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--final-test", action="store_true")
+    parser.add_argument("--exclude-near-duplicates", action="store_true",
+                        help=f"drop neighbours with BGE cosine >= {NEAR_DUPLICATE_COSINE} to the query")
+    parser.add_argument("--output-dir", type=Path, default=None,
+                        help="defaults to the frozen folder, or a _neardup folder with --exclude-near-duplicates")
     args = parser.parse_args(argv)
+    out = args.output_dir or (OUT.with_name("citation_recommendation_neardup") if args.exclude_near_duplicates else OUT)
+    dup_cosine = NEAR_DUPLICATE_COSINE if args.exclude_near_duplicates else None
     from src.evaluation.contradiction_index import PLAN, citation_map
     from src.evaluation.ir_metrics import aggregate_query_metrics, evaluate_ranking
     from src.evaluation.retrievers.bm25_retrieval import BM25Retriever
@@ -86,7 +127,7 @@ def main(argv=None) -> int:
         for target in targets:
             cited_by[target].add(source)
     dev, test, eligible = select_queries(corpus, cites)
-    OUT.mkdir(parents=True, exist_ok=True)
+    out.mkdir(parents=True, exist_ok=True)
 
     stored = get_collection().get(include=["embeddings"])
     ids = list(stored["ids"])
@@ -105,7 +146,7 @@ def main(argv=None) -> int:
         sims[position[pid]] = -np.inf
         order = np.argsort(-sims)[:max(DEPTH, 60)]
         bge = [str(id_array[i]) for i in order[:DEPTH]]
-        neighbours = [(str(id_array[i]), float(sims[i])) for i in order if str(id_array[i]) not in cited_by[pid]]
+        neighbours = neighbour_list(order, sims, id_array, cited_by[pid], near_duplicate_cosine=dup_cosine)
         lexical = [r["id"] for r in bm25.retrieve(text[pid], top_k=DEPTH * 3)
                    if r["id"] != pid and 0 < year.get(r["id"], 0) <= own][:DEPTH]
         return bge, lexical, neighbours
@@ -131,7 +172,7 @@ def main(argv=None) -> int:
                              **{m: round(metrics[m]["mean"], 4) for m in ("ndcg@10", "recall@20", "precision@10", "map", "mrr")},
                              "per_query_recall@20": {v["query_id"]: v["recall@20"] for v in values},
                              "per_query_ndcg@10": {v["query_id"]: v["ndcg@10"] for v in values}}
-        return summary
+        return summary, per_query_table(rows)
 
     def compare(summary, pairs):
         out = {}
@@ -153,26 +194,30 @@ def main(argv=None) -> int:
             print(f"  {name:55} delta={data['mean_delta']:+.4f} CI={data['bootstrap_95_ci']} p={data['p']:.4f}")
 
     strip = lambda s: {n: {k: v for k, v in d.items() if not k.startswith("per_query")} for n, d in s.items()}
-    selection_path = OUT / "selection.json"
+    selection_path = out / "selection.json"
     if not args.final_test:
-        summary = run(dev, GRID)
+        summary, per_query = run(dev, GRID)
         fused = {f"rrf_bge_bm25_graph_k{k}_w{w}": (k, w) for k, w in GRID}
         best = max(sorted(fused), key=lambda name: summary[name]["recall@20"])
         comparisons = compare(summary, [(best, "rrf_bge_bm25"), (best, "bge"), ("rrf_bge_bm25", "bge")])
         selection_path.write_text(json.dumps({"selected": best, "k": fused[best][0], "w": fused[best][1],
                                               "eligible_queries": eligible, "dev_queries": len(dev),
-                                              "test_queries": len(test)}, indent=2) + "\n")
-        (OUT / "dev_summary.json").write_text(json.dumps({"variants": strip(summary), "comparisons": comparisons},
+                                              "test_queries": len(test),
+                                              "exclude_near_duplicates": args.exclude_near_duplicates},
+                                             indent=2) + "\n")
+        (out / "dev_per_query.json").write_text(json.dumps(per_query) + "\n")
+        (out / "dev_summary.json").write_text(json.dumps({"variants": strip(summary), "comparisons": comparisons},
                                                           indent=2) + "\n")
         print(f"eligible={eligible} dev={len(dev)} test={len(test)} selected={best}")
         show(strip(summary), comparisons)
         return 0
     selection = json.loads(selection_path.read_text())
-    summary = run(test, [(selection["k"], selection["w"])])
+    summary, per_query = run(test, [(selection["k"], selection["w"])])
     best = selection["selected"]
     comparisons = compare(summary, [(best, "rrf_bge_bm25"), (best, "bge"), (f"graph_k{selection['k']}", "bge"),
                                     ("rrf_bge_bm25", "bge")])
-    (OUT / "test_summary.json").write_text(json.dumps({"selection": selection, "variants": strip(summary),
+    (out / "test_per_query.json").write_text(json.dumps(per_query) + "\n")
+    (out / "test_summary.json").write_text(json.dumps({"selection": selection, "variants": strip(summary),
                                                        "comparisons": comparisons}, indent=2) + "\n")
     print(f"test ({len(test)} papers) selected={best}")
     show(strip(summary), comparisons)

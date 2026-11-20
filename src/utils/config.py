@@ -252,8 +252,9 @@ CONTRADICTION_CANDIDATE_POOL = int(
 CONTRADICTION_MIN_CONFIDENCE = float(
     os.getenv("CONTRADICTION_MIN_CONFIDENCE", "0.70")
 )
-# Candidate generator: "concept" (shared noun-phrase overlap, historical) or
-# "nli" (sentence-level NLI contradiction scores; see pipeline/contradiction_nli.py).
+# Candidate generator: "citation" (citation-grounded index; the evaluated mode, RESULTS §5b-2 round 2),
+# or the experimental "concept" (shared noun-phrase overlap, historical) and "nli" (sentence-level NLI
+# screening, pipeline/contradiction_nli.py; no agreed contradiction among 56 top pairs in round 1).
 CONTRADICTION_CANDIDATE_MODE = os.getenv("CONTRADICTION_CANDIDATE_MODE", "concept").strip().lower()
 if CONTRADICTION_CANDIDATE_MODE not in {"concept", "nli", "citation"}:
     raise ValueError("CONTRADICTION_CANDIDATE_MODE must be 'concept', 'nli' or 'citation'")
@@ -283,8 +284,9 @@ HYPOTHESIS_CANDIDATE_POOL = int(
 )
 # Relationships that disqualify a "structural hole": a candidate linked to any
 # query paper by one of these edge types is already connected.
-# "structural_hole" (original; rated below a vector baseline in round 1) or "bridge"
-# (src/pipeline/hypothesis_bridge.py; dev-selected, time-sliced signals validated, round 2 pending).
+# "ranker" is the evaluated mode (time-sliced benchmark, RESULTS §4c-4d). "structural_hole" (original)
+# and "bridge" (src/pipeline/hypothesis_bridge.py) are experimental: humans rated both below a
+# vector-neighbour baseline (RESULTS §4b, rounds 1 and 2).
 HYPOTHESIS_GENERATOR = os.getenv("HYPOTHESIS_GENERATOR", "structural_hole").strip().lower()
 # "ranker": method-task pairs ranked by the time-sliced benchmark scorer (src/pipeline/hypothesis_ranker.py).
 if HYPOTHESIS_GENERATOR not in {"structural_hole", "bridge", "ranker"}:

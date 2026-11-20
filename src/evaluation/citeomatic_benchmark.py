@@ -28,6 +28,10 @@ Methods (no training on these datasets):
 The query paper's own text and the training papers' reference lists are the only
 inputs, so this is a content-based setting with a candidate-side citation graph;
 citeomatic also trains on the training-split citation graph.
+
+Each run also writes ``<dataset>_<split>[_<encoder>]_per_query.json`` (P@20, R@20 and
+reciprocal rank per query and method), so the summary and the paired tests can be
+recomputed without the downloaded corpus. The 2026-11-19 runs predate this file.
 """
 from __future__ import annotations
 
@@ -124,7 +128,8 @@ def make_encoder(encoder):
     import torch
     from src.evaluation.external_benchmarks import load_encoder
 
-    model = load_encoder(encoder, "cuda" if torch.cuda.is_available() else "cpu")
+    mps = getattr(torch.backends, "mps", None) is not None and torch.backends.mps.is_available()
+    model = load_encoder(encoder, "cuda" if torch.cuda.is_available() else "mps" if mps else "cpu")
     sep = model.tokenizer.sep_token
 
     def encode(texts):
@@ -193,8 +198,10 @@ def main(argv=None) -> int:
     parser.add_argument("--dataset", choices=sorted(SPLITS), required=True)
     parser.add_argument("--split", choices=("valid", "test"), required=True)
     parser.add_argument("--encoder", choices=ENCODERS, default="bge")
+    parser.add_argument("--output-dir", type=Path, default=OUT, help="the frozen 2026-11-19 folder by default")
     args = parser.parse_args(argv)
-    OUT.mkdir(parents=True, exist_ok=True)
+    out = args.output_dir
+    out.mkdir(parents=True, exist_ok=True)
     per_query = run(args.dataset, args.split, args.encoder)
     names = method_names(args.encoder)
     summary = {name: summarise(q) for name, q in per_query.items()}
@@ -208,7 +215,8 @@ def main(argv=None) -> int:
               "min_gold": MIN_GOLD, "neighbours": NEIGHBOURS, "graph_weight": GRAPH_WEIGHT, "depth": DEPTH,
               "methods": summary, "comparisons": comparisons, "published": PUBLISHED[args.dataset]}
     suffix = "" if args.encoder == "bge" else f"_{args.encoder}"
-    (OUT / f"{args.dataset}_{args.split}{suffix}.json").write_text(json.dumps(report, indent=2) + "\n")
+    (out / f"{args.dataset}_{args.split}{suffix}.json").write_text(json.dumps(report, indent=2) + "\n")
+    (out / f"{args.dataset}_{args.split}{suffix}_per_query.json").write_text(json.dumps(per_query) + "\n")
     for name, s in summary.items():
         print(f"  {name:26} F1@20={s['f1@20']:.3f} MRR={s['mrr']:.3f} R@20={s['r@20']:.3f} (n={s['queries']})")
     for name, (f1, mrr) in PUBLISHED[args.dataset].items():

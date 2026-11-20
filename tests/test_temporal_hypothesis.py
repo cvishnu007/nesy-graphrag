@@ -22,3 +22,11 @@ def test_propose_skips_known_and_duplicates():
     from src.evaluation.temporal_generator import propose
 
     assert propose(["a", "b", "a", "c", "d"], known={"b"}, limit=2) == ["a", "c"]
+
+
+def test_entity_types_can_ignore_post_cutoff_mentions():
+    from src.evaluation.temporal_hypothesis import entity_types
+
+    mentions = [("old1", "gnn", "Method"), ("new1", "gnn", "Task"), ("new2", "gnn", "Task")]
+    assert entity_types(mentions) == {"gnn": "Task"}  # majority over every mention (frozen default)
+    assert entity_types(mentions, papers={"old1"}) == {"gnn": "Method"}  # pre-cutoff mentions only

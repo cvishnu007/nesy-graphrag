@@ -16,7 +16,8 @@ from src.pipeline.hypothesis import llm_hypothesis
 from src.pipeline.related_work import related_work
 from src.storage.chroma_store import get_collection
 from src.utils.config import (
-    CHROMA_COLLECTION, CONCEPT_SOURCE, CONTRADICTION_CANDIDATE_MODE, DATA_SOURCE, EMBEDDING_MODEL,
+    CHROMA_COLLECTION, CONCEPT_SOURCE, CONTRADICTION_CANDIDATE_MODE, DATA_SOURCE, EMBEDDING_MODEL, HYPOTHESIS_GENERATOR,
+    NEO4J_ALLOW_RESET,
 )
 from src.utils.llm_client import llm_runtime_metadata
 
@@ -50,6 +51,9 @@ st.set_page_config(page_title="NeSy-GraphRAG", page_icon="🔬", layout="wide")
 
 st.title("🔬 NeSy-GraphRAG — Research Assistant")
 st.caption("Neural + Symbolic Graph Retrieval Augmented Generation")
+if NEO4J_ALLOW_RESET:
+    st.warning("NEO4J_ALLOW_RESET is true in .env. A graph-loading command could clear the Neo4j database; "
+               "set it to false unless you are rebuilding the graph on purpose.")
 
 # ── Sidebar ──────────────────────────────────────────
 with st.sidebar:
@@ -72,7 +76,10 @@ with st.sidebar:
     st.markdown(f"- Neo4j: {paper_nodes} papers, {cites_edges} CITES edges")
     st.markdown(f"- LLM: `{llm_metadata['provider']} / {llm_metadata['model']}`")
     st.markdown(f"- Embedding: `{EMBEDDING_MODEL}`")
-    st.markdown(f"- Concepts: `{CONCEPT_SOURCE}` · contradiction candidates: `{CONTRADICTION_CANDIDATE_MODE}`")
+    st.markdown(f"- Concepts: `{CONCEPT_SOURCE}` · contradiction candidates: `{CONTRADICTION_CANDIDATE_MODE}`"
+                f"{'' if CONTRADICTION_CANDIDATE_MODE == 'citation' else ' (experimental)'}")
+    st.markdown(f"- Hypothesis generator: `{HYPOTHESIS_GENERATOR}`"
+                f"{'' if HYPOTHESIS_GENERATOR == 'ranker' else ' (experimental; rated below vector neighbours)'}")
 
 # ── Main ─────────────────────────────────────────────
 query = st.text_input(

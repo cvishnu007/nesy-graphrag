@@ -8,7 +8,9 @@ neighbours, weighted by neighbour similarity.
 
 Differences from the evaluated setting: the input is encoded as a query (with the
 BGE query prefix), not as a stored document vector, and there is no publication
-year filter unless ``max_year`` is given.
+year filter unless ``max_year`` is given. With ``max_year``, neighbours, BM25
+results and co-citation candidates are all filtered by year before fusion, so the
+fused list is still filled to ``top_k`` (papers with no recorded year are kept).
 """
 from __future__ import annotations
 
@@ -17,6 +19,17 @@ from collections import defaultdict
 NEIGHBOURS = 50
 GRAPH_WEIGHT = 1.0
 RRF_K = 60
+YEAR_FILTER_POOL = 4  # with max_year, fetch this many times more candidates before filtering
+
+
+def within_year(year, max_year):
+    """True if no limit is set, the year is unknown, or it is no later than ``max_year``."""
+    if max_year is None or year in (None, ""):
+        return True
+    try:
+        return int(year) <= int(max_year)
+    except (TypeError, ValueError):
+        return True
 
 
 def fuse(bge, lexical, graph, *, top_k, exclude=(), graph_weight=GRAPH_WEIGHT):
@@ -32,15 +45,15 @@ def fuse(bge, lexical, graph, *, top_k, exclude=(), graph_weight=GRAPH_WEIGHT):
     return [(pid, round(scores[pid], 5), ranks[pid]) for pid in ordered]
 
 
-def cocitation(driver, neighbours, *, exclude=()):
+def cocitation(driver, neighbours, *, exclude=(), max_year=None):
     """Papers cited by the neighbours, scored by summed neighbour similarity."""
     similarity = {p["id"]: float(p.get("score") or 0.0) for p in neighbours}
     with driver.session() as session:
         records = list(session.run(
             "UNWIND $ids AS nid MATCH (n:Paper {id: nid})-[:CITES|CITES_ADDED]->(c:Paper) "
-            "RETURN c.id AS id, collect(DISTINCT nid) AS citing", ids=list(similarity)))
+            "RETURN c.id AS id, c.year AS year, collect(DISTINCT nid) AS citing", ids=list(similarity)))
     scored = {r["id"]: (sum(similarity[n] for n in r["citing"]), list(r["citing"]))
-              for r in records if r["id"] not in exclude}
+              for r in records if r["id"] not in exclude and within_year(r.get("year"), max_year)}
     ranking = sorted(scored, key=lambda pid: (-scored[pid][0], pid))
     return ranking, {pid: citing for pid, (_, citing) in scored.items()}
 
@@ -82,12 +95,11 @@ def related_work(driver, text, top_k=10, *, paper_id=None, max_year=None):
         with driver.session() as session:
             exclude |= {r["id"] for r in session.run(
                 "MATCH (c:Paper)-[:CITES|CITES_ADDED]->(:Paper {id: $pid}) RETURN c.id AS id", pid=paper_id)}
-    neighbours = [p for p in chroma_query(text, top_k=NEIGHBOURS + len(exclude)) if p["id"] not in exclude]
-    neighbours = neighbours[:NEIGHBOURS]
-    if max_year is not None:
-        neighbours = [p for p in neighbours if (p.get("year") or 0) <= max_year]
-    graph, citing_counts = cocitation(driver, neighbours, exclude=exclude)
-    lexical = [p["id"] for p in lexical_retrieve(text, 100)]
+    pool = 1 if max_year is None else YEAR_FILTER_POOL
+    neighbours = [p for p in chroma_query(text, top_k=NEIGHBOURS * pool + len(exclude))
+                  if p["id"] not in exclude and within_year(p.get("year"), max_year)][:NEIGHBOURS]
+    graph, citing_counts = cocitation(driver, neighbours, exclude=exclude, max_year=max_year)
+    lexical = [p["id"] for p in lexical_retrieve(text, 100 * pool) if within_year(p.get("year"), max_year)][:100]
     fused = fuse([p["id"] for p in neighbours], lexical, graph[:100], top_k=top_k, exclude=exclude)
     with driver.session() as session:
         meta = {r["id"]: r for r in session.run(
@@ -96,7 +108,7 @@ def related_work(driver, text, top_k=10, *, paper_id=None, max_year=None):
     results = []
     for pid, score, ranks in fused:
         record = meta.get(pid)
-        if record is None or (max_year is not None and (record["year"] or 0) > max_year):
+        if record is None or not within_year(record["year"], max_year):
             continue
         reasons = []
         if "cocitation" in ranks:

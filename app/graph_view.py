@@ -20,7 +20,7 @@ VIS_NETWORK_LOCAL = Path(__file__).with_name("static") / "vis-network-9.1.9.min.
 @lru_cache(maxsize=1)
 def vis_script_tag():
     if VIS_NETWORK_LOCAL.exists():
-        code = VIS_NETWORK_LOCAL.read_text(encoding="utf-8").replace("</script", "<\/script")
+        code = VIS_NETWORK_LOCAL.read_text(encoding="utf-8").replace("</script", r"<\/script")
         return f"<script>{code}</script>"
     return f'<script src="{VIS_NETWORK}"></script>'
 
