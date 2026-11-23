@@ -215,11 +215,11 @@ sequenceDiagram
 
 ## 6. Results in one table (where the graph helps)
 
-Every number is in [docs/RESULTS.md](../RESULTS.md) with its source file. `python -m src.evaluation.reproduce` recomputes 25 headline numbers.
+Every number is in [docs/RESULTS.md](../RESULTS.md) with its source file. `python -m src.evaluation.reproduce` checks 35 headline numbers (27 recomputed from raw files).
 
 | Feature / task | Result | Role of the graph |
 |---|---|---|
-| Topical retrieval (feeds 1, 2, 3), 44 queries | NDCG@10 **0.644**; BGE + BM25 alone 0.621; graph adds +0.023 (not significant); LightRAG-style baseline 0.396 | Redundant for ranking; provides ID checks |
+| Topical retrieval (feeds 1, 2, 3), 44 queries | NDCG@10 **0.644**; BGE + BM25 alone 0.621; graph adds +0.023 (not significant); a cross-encoder reranker gives a similar gain (0.651; both 0.668); LightRAG-style baseline 0.396 | Redundant for ranking; provides ID checks |
 | **4. Related work**, 400 test papers | Recall@20 **0.308** vs 0.241 for text (**+28%**, p < 0.0001); also helps SPECTER2 and SciNCL on DBLP | Main source of the gain |
 | **3. Hypothesis**, time-sliced (predict 2023–25 from ≤ 2022) | AP **0.083** vs 0.044 for text only (p < 0.0001) | Main predictive signal |
 | **2. Contradiction**, human-labelled | contradiction-or-tension precision **56%** (5/9) vs 9% for the old screener (p = 0.003) | Makes the feature work (small sample) |
@@ -246,7 +246,7 @@ src/utils/           config (reads .env), LLM client
 evaluation/          benchmark queries, human rating sheets and scorers
 results/             saved rankings, labels and summaries behind every number
 docs/                run guide, results, paper draft, protocol, demo queries, these feature files
-tests/               406 unit tests (no database or model needed)
+tests/               416 unit tests (no database or model needed)
 reports/             Phase 3 report (phase3report.docx)
 ```
 
@@ -264,7 +264,7 @@ Full guide: [docs/RUN_FROM_SCRATCH.md](../RUN_FROM_SCRATCH.md). Short version on
    ```
 4. Open http://localhost:8501, pick a mode, and enter a query (examples in [docs/DEMO_QUERIES.md](../DEMO_QUERIES.md)).
 
-Checks: `python -m pytest -q` (406 tests) and `python -m src.evaluation.reproduce` (25 numbers).
+Checks: `python -m pytest -q` (416 tests) and `python -m src.evaluation.reproduce` (35 numbers).
 
 **Safety rules:** keep `NEO4J_ALLOW_RESET=false`, keep secrets only in `.env` (never commit it), and never delete data to restart a stage; all stages resume.
 
