@@ -3,6 +3,8 @@ import importlib.util
 import json
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -19,7 +21,7 @@ def test_fisher_two_sided_matches_known_values():
 
     assert round(fisher_two_sided(5, 9, 5, 56), 4) == 0.0029  # scipy.stats.fisher_exact gives 0.00287
     assert round(fisher_two_sided(3, 3, 0, 3), 4) == 0.1  # classic tea-tasting table
-    assert fisher_two_sided(1, 2, 1, 2) == 1.0
+    assert fisher_two_sided(1, 2, 1, 2) == pytest.approx(1.0)  # summed probabilities may be 0.9999999999999999
 
 
 def test_rebuilt_arm_keys_reproduce_saved_reports(monkeypatch):
