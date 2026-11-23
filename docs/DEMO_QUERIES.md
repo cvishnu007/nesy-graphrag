@@ -1,5 +1,13 @@
 # Demo Queries
 
+## 🚫 Invalid queries (any mode)
+
+Expect: "Not a valid query" with 0 papers, contradictions or hypotheses, and the reason. A query gate runs before every mode.
+
+- hello how are you
+- best pizza near me
+- what is the weather today
+
 ## 📚 Literature Review
 
 Expect: a cited summary of the top papers, with every retrieved paper listed below it.

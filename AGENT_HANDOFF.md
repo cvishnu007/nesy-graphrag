@@ -24,7 +24,7 @@ The current implementation is an abstract-and-metadata prototype. It is delibera
 **Stores** (unchanged since November 15): 47,619 papers in clean, NER, Chroma (`s2_papers_bge`, plus the historical `s2_papers` and `s2_papers_specter_ta`) and Neo4j. Neo4j has `CITES` 22,370, `CITES_ADDED` 133,527, `COUPLED_WITH` 411,418, `SIMILAR_TO` 238,095, `SciEntity` 323,624 with `MENTIONS` 696,390, and `ExternalPaper` 24,714.
 
 **Application** (`app/streamlit_app.py`; configuration in the local `.env`, mirrored in `.env.example`):
-- Four modes: Literature Review, Contradiction Detection (`CONTRADICTION_CANDIDATE_MODE=citation`), Hypothesis Generation (`HYPOTHESIS_GENERATOR=ranker`), and Related Work.
+- Four modes: Literature Review, Contradiction Detection (`CONTRADICTION_CANDIDATE_MODE=citation`), Hypothesis Generation (`HYPOTHESIS_GENERATOR=ranker`), and Related Work. A query gate (`src/pipeline/query_gate.py`) runs first and rejects generic input (RESULTS §6b).
 - Related Work shows an interactive citation map (`app/graph_view.py`, vis-network 9.1.9 bundled in `app/static/`, so it works offline) and lists every citation behind each suggestion (`related_work()` returns `graph`, `cited_by_similar`, `cites` and `cited_by`).
 - Review shows a red error with the reason when the LLM returns nothing (usually Ollama refusing for lack of free RAM), instead of empty 0/0 checks.
 - `OLLAMA_KEEP_ALIVE=30m` keeps the model loaded between queries.
@@ -76,7 +76,9 @@ Task 9 graded by Rater C: judge κ 0.57 on the ten non-GNN topics, below the 0.6
 
 Still open: run the reruns listed in PROJECT_STATUS (per-query files, leakage checks), the 27B regrade, the round-2 hypothesis key, a PageRank-style graph retriever, SPECTER2 with adapters, a learned link-prediction baseline, a deeper reranker with a larger model, contribution split confirmation, demo rehearsal and backup video, `NEO4J_ALLOW_RESET=false` in the local `.env`.
 
-**Local `.env` warning.** On November 19 the owner's `.env` had `NEO4J_ALLOW_RESET=true`. It should be `false` except during an intentional graph rebuild.
+**Query gate (November 23).** `src/pipeline/query_gate.py` refuses generic / non-research queries before any mode runs (app and `graphrag_query`; evaluation scripts call the pipelines directly and are unaffected). Rule: no content words -> invalid; closeness (mean BGE similarity of the 5 nearest papers) >= 0.65 -> valid; >= 0.58 with a multi-word SciERC entity -> valid; else invalid. Calibration: `src/evaluation/query_gate_calibration.py`, `results/query_gate_20261123/` (110/110 valid pass, 40/40 everyday rejected). Settings `QUERY_GATE_*`. 423 tests.
+
+**Local `.env`.** On November 19 the owner's `.env` had `NEO4J_ALLOW_RESET=true`; it was set to `false` on November 23. Keep it `false` except during an intentional graph rebuild.
 
 ## Architecture Implemented
 

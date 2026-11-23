@@ -527,6 +527,22 @@ Per-query support difference (system − vector): +0.046, 95% CI [−0.068, 0.15
 - Before flags, 83.5% of spaCy concepts were singletons and "this paper" linked 7,013 papers; 32,789 generic concepts are now flagged.
 - 238,095 `SIMILAR_TO` edges (top-5 SPECTER neighbours; median cosine 0.907).
 
+## 6b. Query gate calibration
+
+`src/pipeline/query_gate.py` refuses generic and non-research inputs before any mode runs (app and `graphrag_query`; evaluation scripts call the pipelines directly and are unaffected). Calibration: `src/evaluation/query_gate_calibration.py`; per-query scores in `results/query_gate_20261123/scores.jsonl`, summary in `summary.json`.
+
+Statistic: *closeness* = mean BGE cosine similarity of the query's 5 nearest papers (with the BGE query prefix). Rule: no content words → invalid; closeness ≥ 0.65 → valid; closeness ≥ 0.58 and the query names a multi-word SciERC entity in the graph (document frequency ≥ 5) → valid; otherwise invalid.
+
+| Query group | n | Closeness min / median / max | Gate result |
+|---|---:|---|---|
+| Benchmark queries (44 stratified + 20 GNN) | 64 | 0.669 / 0.830 / 0.893 | all pass |
+| Demo queries (docs/DEMO_QUERIES.md) | 30 | 0.770 / 0.831 / 0.872 | all pass |
+| Short topic names ("machine learning", "operating systems", …) | 16 | 0.611 / 0.763 / 0.857 | all pass (2 through the technical-term rule) |
+| Everyday sentences (greetings, food, weather, travel, …) | 40 | 0.424 / 0.502 / 0.605 | all rejected |
+| Science outside CS (biology, physics, medicine) | 8 | 0.600 / 0.657 / 0.693 | 4 rejected, 4 pass |
+
+**Finding.** Closeness alone separates full research queries from everyday sentences, but short topic names come close to the everyday maximum (operating systems 0.611 vs "funny memes" 0.605), so a single threshold would have a margin of 0.006. The two-tier rule keeps a 0.045 margin for queries without a recognised technical term and admits short topic names through the entity graph. Unseen checks: "how to make tea", "netflix shows to watch tonight" and "who is the prime minister of india" are rejected; "kubernetes autoscaling", "SQL injection detection" and "adversarial attacks on image classifiers" pass. Out-of-domain science is only partly rejected because the corpus has overlapping papers (e.g. bioinformatics); the gate targets generic input, not every non-CS topic. The invalid set was written for this check and is small, so treat the thresholds as a guard for the demo, not a tested classifier.
+
 ## 7. Open items for publication
 
 Done: human relevance sample and judge validation (§2b); stratified 44-query benchmark (§2d); citation densification (§6); matched-budget vector RAG vs this system (§5c); a GraphRAG (LightRAG-style) baseline (§2g); public citation benchmarks DBLP and PubMed (§2h); a cross-encoder reranker baseline at pool depth (§2i).

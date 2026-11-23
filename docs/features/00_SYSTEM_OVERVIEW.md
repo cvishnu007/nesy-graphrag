@@ -158,6 +158,7 @@ Full details and formulas: [01_LITERATURE_REVIEW.md](01_LITERATURE_REVIEW.md), S
 
 | Check | Where | Feature |
 |---|---|---|
+| Query must be a computer-science research query (query gate) | `query_gate.py` | all four |
 | Paper IDs must exist in Neo4j | `validator.py` | 1 |
 | Every claim must cite passage IDs that exist | `provenance.py` | 1 |
 | Candidate pairs must be linked by a citation | `contradiction_citation.py` | 2 |
@@ -166,7 +167,22 @@ Full details and formulas: [01_LITERATURE_REVIEW.md](01_LITERATURE_REVIEW.md), S
 | Method and task must never co-occur; generic entities excluded | `hypothesis_ranker.py` | 3 |
 | Suggestions come from neighbours' real reference lists | `related_work.py` | 4 |
 
-### 4.4 Shared building blocks
+### 4.4 Query gate: `src/pipeline/query_gate.py` → `check_query`
+
+Runs before **every** mode. Generic or non-scientific inputs ("hello how are you", "best pizza near me") would otherwise still get the "nearest" papers, and the modes would build reviews, contradictions and hypotheses on unrelated papers. Instead the app shows **"Not a valid query"** with 0 papers, 0 contradictions or 0 hypotheses, and the reason.
+
+Let *closeness* be the mean BGE cosine similarity of the query's 5 nearest papers:
+
+| Condition | Decision |
+|---|---|
+| No content words (only stop words, fillers or numbers) | invalid |
+| closeness ≥ 0.65 | valid |
+| closeness ≥ 0.58 **and** the query names a multi-word SciERC entity from the graph (e.g. "operating systems") | valid |
+| otherwise | invalid |
+
+Short topic names score lower than full questions, so a recognised technical term is accepted as evidence in the borderline band. Calibration (`src/evaluation/query_gate_calibration.py`, `results/query_gate_20261123/`): **110/110** benchmark, demo and topic queries pass, and **40/40** everyday sentences are rejected (the highest scored 0.605 and named no technical term). Science outside computer science is partly accepted (4 of 8), because some of it overlaps CS papers such as bioinformatics. Settings: `QUERY_GATE_*` in `.env`; set `QUERY_GATE_ENABLED=false` to turn it off.
+
+### 4.5 Shared building blocks
 
 - **Passage IDs** (`provenance.py`): every abstract sentence gets a stable ID `P<hash>-S<nnn>`. Features 1 and 2 use them to point at exact sentences.
 - **NLI model** (`cross-encoder/nli-deberta-v3-small`): scores entailment and contradiction between two sentences. Feature 2 uses it to rank candidates; feature 1 uses it for the optional support check.
@@ -200,6 +216,8 @@ sequenceDiagram
     participant C as Chroma
     participant L as Ollama LLM
     U->>A: mode + query
+    A->>C: query gate (closeness of 5 nearest papers)
+    Note over A: generic query -> "Not a valid query", stop
     A->>R: retrieve papers
     R->>C: BGE search
     R->>N: graph expansion
@@ -246,7 +264,7 @@ src/utils/           config (reads .env), LLM client
 evaluation/          benchmark queries, human rating sheets and scorers
 results/             saved rankings, labels and summaries behind every number
 docs/                run guide, results, paper draft, protocol, demo queries, these feature files
-tests/               416 unit tests (no database or model needed)
+tests/               423 unit tests (no database or model needed)
 reports/             Phase 3 report (phase3report.docx)
 ```
 
@@ -264,7 +282,7 @@ Full guide: [docs/RUN_FROM_SCRATCH.md](../RUN_FROM_SCRATCH.md). Short version on
    ```
 4. Open http://localhost:8501, pick a mode, and enter a query (examples in [docs/DEMO_QUERIES.md](../DEMO_QUERIES.md)).
 
-Checks: `python -m pytest -q` (416 tests) and `python -m src.evaluation.reproduce` (35 numbers).
+Checks: `python -m pytest -q` (423 tests) and `python -m src.evaluation.reproduce` (35 numbers).
 
 **Safety rules:** keep `NEO4J_ALLOW_RESET=false`, keep secrets only in `.env` (never commit it), and never delete data to restart a stage; all stages resume.
 

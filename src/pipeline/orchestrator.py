@@ -8,6 +8,7 @@ from src.pipeline.review import llm_review
 from src.pipeline.contradiction import llm_contradict
 from src.pipeline.hypothesis import llm_hypothesis
 from src.pipeline.metrics import compute_all_metrics
+from src.pipeline.query_gate import check_query
 from src.pipeline.results_logger import log_result
 
 # ── Shared clients — init once ─────────────────────────
@@ -42,7 +43,16 @@ def graphrag_query(query: str, mode: str = "review", top_k: int = 10) -> dict:
     Master query function.
     mode: "review" | "contradict" | "hypothesis"
     """
+    if mode not in {"review", "contradict", "hypothesis"}:
+        raise ValueError(f"mode must be: review / contradict / hypothesis. Got: {mode}")
     driver     = get_neo4j()
+
+    gate = check_query(query, driver)
+    if not gate["valid"]:
+        print(f"[Query gate] {gate['message']}")
+        return {"query": query, "invalid_query": gate, "papers": [], "answer": "",
+                "contradictions": [], "hypotheses": []}
+
     llm_client = get_llm()
 
     if mode == "review":

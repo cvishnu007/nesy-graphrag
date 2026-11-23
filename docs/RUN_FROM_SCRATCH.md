@@ -226,7 +226,7 @@ Open <http://localhost:8501>. The sidebar shows the paper count, vector count an
 | 💡 Hypothesis Generation | "Method → task" ideas not yet combined in the corpus, with supporting evidence. The first query takes about a minute |
 | 🔗 Related Work | An interactive citation map plus a list of papers to cite, each with the citation records behind it |
 
-Example queries for each mode: [docs/DEMO_QUERIES.md](DEMO_QUERIES.md). If the review shows a red "did not return an answer" error, the PC is short of RAM for the model: close other programs and run it again.
+Example queries for each mode: [docs/DEMO_QUERIES.md](DEMO_QUERIES.md). Before any mode runs, a query gate checks that the input is a computer-science research query; greetings and everyday sentences show "Not a valid query" with no results (settings `QUERY_GATE_*` in `.env`; set `QUERY_GATE_ENABLED=false` to turn it off). If the review shows a red "did not return an answer" error, the PC is short of RAM for the model: close other programs and run it again.
 
 ## 13. Reproduce the paper's results
 

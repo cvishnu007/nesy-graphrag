@@ -17,6 +17,8 @@ The app runs over 47,619 computer-science abstracts (Semantic Scholar, 2020–20
 
 Example queries for each mode: [docs/DEMO_QUERIES.md](docs/DEMO_QUERIES.md).
 
+Before any mode runs, a **query gate** checks that the input is a computer-science research query; greetings and everyday sentences ("hello how are you", "best pizza near me") get "Not a valid query" and no results. Details: [docs/features/00_SYSTEM_OVERVIEW.md](docs/features/00_SYSTEM_OVERVIEW.md) §4.4.
+
 ## Main findings
 
 **Why "NeSy":** neural models (embeddings, the LLM, NLI, the entity tagger) propose; a typed citation and entity graph and explicit rules (passage-ID provenance checks, citation-link and entity constraints) restrict and verify what is shown. See [PAPER_DRAFT §3.1](docs/PAPER_DRAFT.md).
@@ -49,7 +51,7 @@ src/evaluation/      Benchmarks, LLM judge, human-rating scorers, baselines (Lig
 evaluation/          Benchmark queries, human review sheets and instructions
 results/             Saved rankings, labels and summaries behind every reported number
 docs/                Run guide, results, paper draft, evaluation protocol, demo queries; figures/ for the paper
-tests/               pytest suite (416 tests; no databases or models needed)
+tests/               pytest suite (423 tests; no databases or models needed)
 teammate2/           September evaluation package (AI-reference annotations, packaged reproduction); superseded by
                      the human-validated evaluation, but packaged_reproduction.py, support_calibration.py
                      and three benchmark defaults in src/utils/config.py still read it

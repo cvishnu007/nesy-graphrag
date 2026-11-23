@@ -15,8 +15,8 @@ Last updated: November 20, 2026. Detailed state and decisions: [AGENT_HANDOFF.md
 | Entities | SciBERT fine-tuned on SciERC (typed F1 0.64): 323,624 `SciEntity` nodes |
 | Citations | Original `CITES` plus `CITES_ADDED` (133,527) and `COUPLED_WITH` (411,418) from Semantic Scholar and OpenAlex |
 | Language model | Local `qwen2.5:7b-instruct` (Ollama) |
-| App modes | Literature Review, Contradiction Detection (citation-grounded), Hypothesis Generation (method–task ranker), Related Work (co-citation, citation map) |
-| Tests | 416 passing (no databases or models needed) |
+| App modes | Literature Review, Contradiction Detection (citation-grounded), Hypothesis Generation (method–task ranker), Related Work (co-citation, citation map); a query gate rejects generic, non-research input before any mode runs |
+| Tests | 423 passing (no databases or models needed) |
 | Reproduction | `python -m src.evaluation.reproduce`: 35/35 headline numbers, 26 recomputed from raw files, 9 read from saved summaries |
 
 ## Results

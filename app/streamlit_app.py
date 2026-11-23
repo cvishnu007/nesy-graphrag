@@ -14,6 +14,7 @@ from src.pipeline.contradiction import llm_contradict
 from src.pipeline.verdicts import contradiction_verdict
 from src.pipeline.hypothesis import llm_hypothesis
 from src.pipeline.related_work import related_work
+from src.pipeline.query_gate import check_query
 from src.storage.chroma_store import get_collection
 from src.utils.config import (
     CHROMA_COLLECTION, CONCEPT_SOURCE, CONTRADICTION_CANDIDATE_MODE, DATA_SOURCE, EMBEDDING_MODEL, HYPOTHESIS_GENERATOR,
@@ -89,7 +90,33 @@ query = st.text_input(
 
 run = st.button("🚀 Run Query", type="primary")
 
+def show_invalid_query(gate, mode):
+    """Stop before any mode runs when the query is not a computer-science research query."""
+    st.error(f"**{gate['message']}**")
+    counts = {"review": ("Papers", "Claims"), "contradiction": ("Papers", "Contradictions"),
+              "hypothesis": ("Papers", "Hypotheses"), "related": ("Suggested papers", "Citations used")}
+    labels = next((v for k, v in counts.items() if k in mode.lower()), ("Papers", "Results"))
+    left, right = st.columns(2)
+    left.metric(labels[0], 0)
+    right.metric(labels[1], 0)
+    with st.expander("Why was this rejected?"):
+        st.markdown(
+            f"- Closeness to the corpus (mean similarity of the 5 nearest papers): **{gate['closeness']:.2f}**\n"
+            f"- Subject words found: {', '.join(gate['content_words']) or 'none'}\n"
+            f"- Recognised technical terms: {', '.join(gate['scientific_terms']) or 'none'}\n\n"
+            "Queries pass when they are close to the computer-science papers in the corpus, or "
+            "name a recognised technical term. Try, for example:\n"
+            "- graph neural networks for fraud detection\n"
+            "- LLM-based unit test generation\n"
+            "- serverless computing performance and cold starts")
+    st.stop()
+
+
 if run and query:
+    with st.spinner("Checking the query..."):
+        gate = check_query(query, driver)
+    if not gate["valid"]:
+        show_invalid_query(gate, mode)
 
     # ── REVIEW MODE ──────────────────────────────────
     if "review" in mode.lower():

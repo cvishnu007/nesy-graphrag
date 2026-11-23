@@ -1,0 +1,150 @@
+{
+  "statistic": "mean cosine similarity of the 5 nearest papers (BGE, query prefix)",
+  "rule": "no content words -> invalid; closeness >= 0.65 -> valid; closeness >= 0.58 with a multi-word SciERC entity (df >= 5) -> valid; else invalid",
+  "groups": {
+    "valid_benchmark": {
+      "n": 64,
+      "min": 0.6687,
+      "max": 0.8934,
+      "median": 0.83
+    },
+    "valid_demo": {
+      "n": 30,
+      "min": 0.7699,
+      "max": 0.8719,
+      "median": 0.8307
+    },
+    "valid_short_topic": {
+      "n": 16,
+      "min": 0.6111,
+      "max": 0.8574,
+      "median": 0.7625
+    },
+    "invalid_everyday": {
+      "n": 40,
+      "min": 0.4241,
+      "max": 0.6052,
+      "median": 0.5016
+    },
+    "out_of_domain_science": {
+      "n": 8,
+      "min": 0.5995,
+      "max": 0.6928,
+      "median": 0.6566
+    }
+  },
+  "valid_passed": "110/110",
+  "invalid_rejected": "40/40",
+  "out_of_domain_rejected": "4/8",
+  "lowest_valid": [
+    {
+      "group": "valid_short_topic",
+      "query": "operating systems",
+      "top1": 0.635,
+      "mean_top5": 0.6111,
+      "has_content_words": true,
+      "scientific_terms": [
+        "operating systems"
+      ],
+      "valid": true,
+      "reason": "ok_scientific_term"
+    },
+    {
+      "group": "valid_short_topic",
+      "query": "computer networks",
+      "top1": 0.6476,
+      "mean_top5": 0.6336,
+      "has_content_words": true,
+      "scientific_terms": [
+        "computer networks"
+      ],
+      "valid": true,
+      "reason": "ok_scientific_term"
+    },
+    {
+      "group": "valid_benchmark",
+      "query": "storage management for flash and solid-state drives",
+      "top1": 0.7138,
+      "mean_top5": 0.6687,
+      "has_content_words": true,
+      "scientific_terms": [],
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "group": "valid_benchmark",
+      "query": "real-time operating systems for embedded devices",
+      "top1": 0.7276,
+      "mean_top5": 0.6759,
+      "has_content_words": true,
+      "scientific_terms": [
+        "embedded devices",
+        "operating systems"
+      ],
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "group": "valid_short_topic",
+      "query": "databases",
+      "top1": 0.6881,
+      "mean_top5": 0.6784,
+      "has_content_words": true,
+      "scientific_terms": [],
+      "valid": true,
+      "reason": "ok"
+    }
+  ],
+  "highest_invalid": [
+    {
+      "group": "invalid_everyday",
+      "query": "funny memes",
+      "top1": 0.6502,
+      "mean_top5": 0.6052,
+      "has_content_words": true,
+      "scientific_terms": [],
+      "valid": false,
+      "reason": "off_topic"
+    },
+    {
+      "group": "invalid_everyday",
+      "query": "suggest a good song to listen to",
+      "top1": 0.6234,
+      "mean_top5": 0.5896,
+      "has_content_words": true,
+      "scientific_terms": [],
+      "valid": false,
+      "reason": "off_topic"
+    },
+    {
+      "group": "invalid_everyday",
+      "query": "how old is the earth",
+      "top1": 0.6155,
+      "mean_top5": 0.5848,
+      "has_content_words": true,
+      "scientific_terms": [],
+      "valid": false,
+      "reason": "off_topic"
+    },
+    {
+      "group": "invalid_everyday",
+      "query": "what is the weather today",
+      "top1": 0.5873,
+      "mean_top5": 0.5827,
+      "has_content_words": true,
+      "scientific_terms": [],
+      "valid": false,
+      "reason": "off_topic"
+    },
+    {
+      "group": "invalid_everyday",
+      "query": "how to lose weight fast",
+      "top1": 0.5872,
+      "mean_top5": 0.5695,
+      "has_content_words": true,
+      "scientific_terms": [],
+      "valid": false,
+      "reason": "off_topic"
+    }
+  ]
+}

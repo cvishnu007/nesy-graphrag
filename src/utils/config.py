@@ -313,6 +313,13 @@ HYPOTHESIS_BENCHMARK_FILE = os.getenv(
     str(Path(__file__).resolve().parents[2] / "teammate2/benchmarks/hypothesis_ratings.json"),
 )
 REASONING_RESULTS_DIR = os.getenv("REASONING_RESULTS_DIR", "results/reasoning")
+# Query gate (src/pipeline/query_gate.py): refuse generic / non-research queries.
+# The threshold is calibrated by src/evaluation/query_gate_calibration.py.
+QUERY_GATE_ENABLED = os.getenv("QUERY_GATE_ENABLED", "true").strip().lower() in {"1", "true", "yes", "on"}
+QUERY_GATE_MIN_SIMILARITY = float(os.getenv("QUERY_GATE_MIN_SIMILARITY", "0.65"))
+QUERY_GATE_ENTITY_MIN_SIMILARITY = float(os.getenv("QUERY_GATE_ENTITY_MIN_SIMILARITY", "0.58"))
+QUERY_GATE_TOP_N = int(os.getenv("QUERY_GATE_TOP_N", "5"))
+
 SEMANTIC_SUPPORT_MODEL = os.getenv("SEMANTIC_SUPPORT_MODEL", "unconfigured")
 SEMANTIC_SUPPORT_MIN_CONFIDENCE = float(
     os.getenv("SEMANTIC_SUPPORT_MIN_CONFIDENCE", "0.70")

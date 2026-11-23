@@ -10,6 +10,8 @@
 
 ---
 
+> Before this pipeline runs, the **query gate** (overview §4.4) checks that the input is a computer-science research query; generic input such as "hello how are you" gets "Not a valid query" and no results.
+
 ## 1. Pipeline at a glance
 
 The work is split into an **offline index** (built once over the whole corpus) and an **online query** (per user question).
